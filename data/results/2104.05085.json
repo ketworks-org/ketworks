@@ -26,6 +26,7 @@
       "unit": "J",
       "uncertainty": null,
       "uncertainty_type": "not_reported",
+      "variance": null,
       "source_location": "Table I, p. 4 (row G-CNN, column J2 = 0)",
       "eligibility_evidence": "Variational energy of the G-CNN on the 6 × 6 periodic triangular lattice; ED, DMRG and VMC rows are excluded.",
       "parameter_count": null,

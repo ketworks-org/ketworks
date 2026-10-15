@@ -26,6 +26,7 @@
       "unit": "J1",
       "uncertainty": null,
       "uncertainty_type": "not_reported",
+      "variance": null,
       "source_location": "Table 4, p. 10 (row 10 × 10, column 0.50)",
       "eligibility_evidence": "Variational energy of the deep CNN state reported for the 10 × 10 lattice.",
       "parameter_count": 106529,

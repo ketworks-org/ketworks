@@ -20,7 +20,7 @@ BENCHMARK = next(iter(REGISTRY))
 PAPER = {"id": "2601.00001v1", "title": "Synthetic fixture, not a scientific result", "authors": "Test Author", "published": "2026-01-01T00:00:00Z", "updated": "2026-01-01T00:00:00Z"}
 ROW = {
     "benchmark_id": BENCHMARK, "system_description": "Synthetic unit-test match", "method": "Test NQS", "variant": "fixture", "method_class": "rbm", "method_type": "nqs", "energy_type": "variational", "reported_here": True,
-    "energy": "-50.000", "energy_token": "-50.000(20)", "normalization": "total", "unit": "J1", "uncertainty": "0.020", "uncertainty_type": "standard_error", "source_location": "Synthetic Table 1", "eligibility_evidence": "Synthetic direct NQS expectation-value fixture", "parameter_count": None, "notes": "Not a real result"
+    "energy": "-50.000", "energy_token": "-50.000(20)", "normalization": "total", "unit": "J1", "uncertainty": "0.020", "uncertainty_type": "standard_error", "variance": None, "source_location": "Synthetic Table 1", "eligibility_evidence": "Synthetic direct NQS expectation-value fixture", "parameter_count": None, "notes": "Not a real result"
 }
 SOURCE = {"url": "https://arxiv.org/html/2601.00001v1", "sha256": "0" * 64, "text": "Synthetic table: -50.000(20)"}
 
@@ -97,6 +97,32 @@ class EligibilityTests(unittest.TestCase):
         self.assertIn("Synthetic Table 1", body)
         self.assertIn("| rbm |", body)
         self.assertIn("cannot approve or merge", body)
+
+    def test_variance_is_optional_and_non_negative(self):
+        schema.validate_row(dict(ROW, variance="1.25"), REGISTRY, SOURCE["text"])
+        schema.validate_row(dict(ROW, variance=None), REGISTRY, SOURCE["text"])
+        with self.assertRaises(ValueError): schema.validate_row(dict(ROW, variance="-0.1"), REGISTRY, SOURCE["text"])
+        sites = REGISTRY[BENCHMARK]["sites"]
+        self.assertEqual(schema.variance_per_site(dict(ROW, variance=str(2 * sites)), REGISTRY), "2")
+        self.assertIsNone(schema.variance_per_site(ROW, REGISTRY))
+
+    def test_new_entries_need_an_error_bar(self):
+        import subprocess
+        from nqsbot.check_revisions import check
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "data/results").mkdir(parents=True); (root / "data/proposals").mkdir(parents=True)
+            git = lambda *a: subprocess.run(["git", *a], cwd=root, check=True, capture_output=True, text=True).stdout.strip()
+            git("init", "-q"); git("config", "user.email", "t@example.invalid"); git("config", "user.name", "t")
+            bare = dict(ROW, energy_token="-50.000", uncertainty=None, uncertainty_type="not_reported")
+            path = root / "data/results/2601.00001.json"
+            path.write_text(json.dumps(record(bare)))
+            git("add", "-A"); git("commit", "-qm", "base"); base = git("rev-parse", "HEAD")
+            check(base, root)  # an entry already on main is left alone
+            path.write_text(json.dumps(dict(record(bare), results=[bare, dict(bare, variant="new")])))
+            with self.assertRaises(ValueError): check(base, root)
+            path.write_text(json.dumps(dict(record(bare), results=[bare, dict(ROW, variant="new")])))
+            check(base, root)
 
     def test_build_never_leaks_proposals(self):
         with tempfile.TemporaryDirectory() as tmp:

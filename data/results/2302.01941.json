@@ -26,6 +26,7 @@
       "unit": "J1",
       "uncertainty": "0.0000004",
       "uncertainty_type": "unspecified",
+      "variance": null,
       "source_location": "p. 3, text and Fig. 2b ('the best variational energy E/N = -0.4976921(4)')",
       "eligibility_evidence": "Variational energy of the deep ResNet state; the zero-variance extrapolation E_GS/N = -0.497715(9) in the same paragraph is excluded.",
       "parameter_count": null,

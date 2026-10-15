@@ -26,6 +26,7 @@
       "unit": "t",
       "uncertainty": null,
       "uncertainty_type": "not_reported",
+      "variance": null,
       "source_location": "p. 31, text (Supplementary Sec. 4.1, 'our NQS yields a ground state energy of -0.76298')",
       "eligibility_evidence": "Variational energy of the transformer neural-network backflow state on the 16 × 4 periodic lattice at U = 8 and 1/8 doping, compared in the text with the HFDS value -0.753(2).",
       "parameter_count": null,

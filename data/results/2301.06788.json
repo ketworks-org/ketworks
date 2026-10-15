@@ -26,6 +26,7 @@
       "unit": "J1",
       "uncertainty": "0.00004",
       "uncertainty_type": "unspecified",
+      "variance": null,
       "source_location": "Table I, p. 7 (row CNN, 'This Work')",
       "eligibility_evidence": "Variational energy of the authors' CNN; the other rows of the table are quoted from earlier work and excluded.",
       "parameter_count": null,

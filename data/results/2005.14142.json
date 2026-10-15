@@ -26,6 +26,7 @@
       "unit": "J1",
       "uncertainty": "0.000001",
       "uncertainty_type": "unspecified",
+      "variance": null,
       "source_location": "Table II, p. 14 (row RBM+PP, 'present study')",
       "eligibility_evidence": "Variational energy of the quantum-number-projected RBM+PP state; other rows are quoted comparisons and excluded.",
       "parameter_count": null,

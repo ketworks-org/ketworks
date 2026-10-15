@@ -26,6 +26,7 @@
       "unit": "J1",
       "uncertainty": null,
       "uncertainty_type": "not_reported",
+      "variance": null,
       "source_location": "p. 10, text ('When L = 10 the energy in this work is -0.497468')",
       "eligibility_evidence": "Variational energy of the deep CNN state; the comparison values in the same sentence are excluded.",
       "parameter_count": null,

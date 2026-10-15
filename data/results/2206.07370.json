@@ -26,6 +26,7 @@
       "unit": "J",
       "uncertainty": "0.0004",
       "uncertainty_type": "unspecified",
+      "variance": null,
       "source_location": "Table on p. 8 (row Triangular, size 36, J2 = 0, column 'LCN (ours)')",
       "eligibility_evidence": "Variational energy of the LCN state; the GNN columns are other learned ansätze from the same table and the reference column is ED.",
       "parameter_count": null,

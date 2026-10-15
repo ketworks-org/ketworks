@@ -26,6 +26,7 @@
       "unit": "J",
       "uncertainty": "0.0002",
       "uncertainty_type": "unspecified",
+      "variance": null,
       "source_location": "Table V, p. 20 (row 'RNN wavefunction', bold)",
       "eligibility_evidence": "Variational energy of the authors' RNN wavefunction for the L = 6 periodic cluster; other rows are quoted from the literature and excluded.",
       "parameter_count": null,

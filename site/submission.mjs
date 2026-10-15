@@ -2,7 +2,8 @@ const DECIMAL = /^[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?$/;
 const TOKEN = /^([+-]?(?:\d+(?:\.\d*)?|\.\d+))(?:\((\d+)\))?([eE][+-]?\d+)?$/;
 // Mirrors METHOD_CLASSES in nqsbot/schema.py; labels are what Ketboard displays.
 export const METHOD_CLASSES = {rbm:'Boltzmann machine', feed_forward:'Feed-forward', convolutional:'Convolutional', autoregressive:'Autoregressive', transformer:'Transformer', backflow:'Backflow / determinant', hybrid:'Hybrid', other:'Other'};
-export const UNCERTAINTY_TYPES = ['not_reported','standard_error','standard_deviation','confidence_interval','unspecified'];
+// Every new entry needs an error bar, so "not reported" is not offered for submissions.
+export const UNCERTAINTY_TYPES = ['standard_error','standard_deviation','confidence_interval','unspecified'];
 
 // Parse a printed energy such as "-0.497634(1)" or "-199.05174" into decimal strings.
 // The uncertainty follows from the parenthesized digits and the number of decimal places.
@@ -27,13 +28,20 @@ export function makeSubmission(values, benchmark) {
   if (!benchmark || benchmark.id !== v('benchmark_id')) throw Error('Choose a registered benchmark.');
   if (!(v('method_class') in METHOD_CLASSES)) throw Error('Choose the architecture class of the neural state.');
   if (!['total','per_site'].includes(v('normalization'))) throw Error('Choose total or per-site energy.');
-  const {token, energy, uncertainty} = parseToken(v('energy_token'));
+  const {token, energy, uncertainty: inParentheses} = parseToken(v('energy_token'));
+  // The error bar comes from the parentheses, or from its own field when the paper prints it as ±.
+  const separate = v('uncertainty_value').replace(/^±\s*/, '');
+  if (separate && (!DECIMAL.test(separate) || !(Number(separate) > 0))) throw Error('Enter the error bar as a positive number, for example 0.0004.');
+  if (separate && inParentheses !== null && Number(separate) !== Number(inParentheses)) throw Error('The error bar disagrees with the digits in parentheses.');
+  const uncertainty = inParentheses ?? (separate || null);
+  if (uncertainty === null) throw Error('Every entry needs an error bar: give it in parentheses, as in -0.4976(4), or in the error-bar field if the paper prints it as ±.');
   const uncertaintyType = v('uncertainty_type');
-  if (!UNCERTAINTY_TYPES.includes(uncertaintyType)) throw Error('Choose the uncertainty meaning.');
-  if ((uncertainty === null) !== (uncertaintyType === 'not_reported')) throw Error(uncertainty === null ? 'The printed energy has no parenthesized uncertainty; choose "Not reported".' : 'The printed energy carries an uncertainty; choose what it means.');
+  if (!UNCERTAINTY_TYPES.includes(uncertaintyType)) throw Error('Choose what the error bar means.');
+  const variance = v('variance');
+  if (variance && (!DECIMAL.test(variance) || Number(variance) < 0)) throw Error('The variance must be a non-negative number.');
   const count = v('parameter_count');
   if (count && !/^\d+$/.test(count)) throw Error('The parameter count must be a whole number.');
-  return {schema_version:1,paper:{id:v('paper_id'),title:v('title'),authors:v('authors'),published:'',updated:''},source_url:`https://arxiv.org/pdf/${v('paper_id')}`,source_sha256:null,extraction_model:'human',results:[{benchmark_id:benchmark.id,system_description:`${benchmark.geometry}; ${benchmark.sector}`,method:v('method'),variant:v('variant'),method_class:v('method_class'),method_type:'nqs',energy_type:'variational',reported_here:true,energy,energy_token:token,normalization:v('normalization'),unit:benchmark.unit,uncertainty,uncertainty_type:uncertaintyType,source_location:v('source_location'),eligibility_evidence:v('eligibility_evidence'),parameter_count:count?Number(count):null,notes:v('notes')}],issues:[]};
+  return {schema_version:1,paper:{id:v('paper_id'),title:v('title'),authors:v('authors'),published:'',updated:''},source_url:`https://arxiv.org/pdf/${v('paper_id')}`,source_sha256:null,extraction_model:'human',results:[{benchmark_id:benchmark.id,system_description:`${benchmark.geometry}; ${benchmark.sector}`,method:v('method'),variant:v('variant'),method_class:v('method_class'),method_type:'nqs',energy_type:'variational',reported_here:true,energy,energy_token:token,normalization:v('normalization'),unit:benchmark.unit,uncertainty,uncertainty_type:uncertaintyType,variance:variance||null,source_location:v('source_location'),eligibility_evidence:v('eligibility_evidence'),parameter_count:count?Number(count):null,notes:v('notes')}],issues:[]};
 }
 
 // Append the new row to the record that already holds this paper, keeping the stored paper metadata.

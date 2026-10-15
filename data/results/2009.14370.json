@@ -26,6 +26,7 @@
       "unit": "J1",
       "uncertainty": null,
       "uncertainty_type": "not_reported",
+      "variance": null,
       "source_location": "Table I, p. 4 (row J2 = 0.5, column PEPS+D. CNN); repeated in Table II, p. 5",
       "eligibility_evidence": "Variational energy of a hybrid tensor-network × neural-network state optimized by SR; eligibility of the tensor-network factor is a curator judgement.",
       "parameter_count": null,
