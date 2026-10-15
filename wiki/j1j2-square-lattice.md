@@ -34,7 +34,7 @@ because each nearest-neighbour bond belongs to two plaquettes and each diagonal 
 
 ## Quantum phase diagram
 
-Three regimes are agreed on. Néel order for $J_2/J_1\lesssim0.45$, stripe order for $J_2/J_1\gtrsim0.6$, and a nonmagnetic intermediate region in between. The nature of the intermediate region, and whether it is one phase or two, is the subject of a two-decade debate; the point $J_2/J_1=0.5$ sits inside it, close to the Néel boundary:
+Néel order is established for $J_2/J_1\lesssim0.45$ and stripe order for $J_2/J_1\gtrsim0.6$, with a nonmagnetic region in between. Whether that region is one phase or two has been debated for two decades. The point $J_2/J_1=0.5$ lies inside it, close to the Néel boundary:
 
 - A gapped $\mathbb Z_2$ spin liquid from SU(2)-blind DMRG on cylinders (Jiang, Yao, Balents, arXiv:1112.2241).
 - A gapless $\mathbb Z_2$ spin liquid for $0.45\lesssim J_2/J_1\lesssim0.6$ from Gutzwiller-projected fermionic states with Lanczos steps (Hu, Becca, Parola, Sorella, arXiv:1304.2630).
@@ -60,7 +60,7 @@ Energies per site in units of $J_1$, with the source of each number. These are c
 | Deep convolutional NQS with minSR | $-0.497627(1)$ | Chen and Heyl, arXiv:2302.01941, as tabulated in Rende et al., arXiv:2310.05715, Table 1 |
 | Vision transformer with minSR | $-0.497634(1)$ | Rende et al., arXiv:2310.05715, Table 1 |
 
-Three observations follow from the table. The DMRG energy on the torus lies above every modern NQS result, a consequence of the entanglement across a cut of length $2L$ on a torus (Gong et al. note truncation errors two orders of magnitude larger on the $10\times10$ torus than on a width-10 cylinder, arXiv:1311.5962, note 65). The best NQS energies agree among themselves and with the two-step Lanczos state to within $2\times10^{-4}$, and lie about $1.5\times10^{-4}$ above the variance-extrapolated estimate. And the exact diagonalization value for $6\times6$, $e_0=-0.503810$ (arXiv:1903.06713, Table I), remains the only exact number for this coupling on a finite torus.
+The DMRG energy on the torus lies above every modern NQS result, a consequence of the entanglement across a cut of length $2L$ on a torus (Gong et al. note truncation errors two orders of magnitude larger on the $10\times10$ torus than on a width-10 cylinder, arXiv:1311.5962, note 65). The best NQS energies agree among themselves and with the two-step Lanczos state to within $2\times10^{-4}$, and lie about $1.5\times10^{-4}$ above the variance-extrapolated estimate. The exact diagonalization value for $6\times6$, $e_0=-0.503810$ (arXiv:1903.06713, Table I), remains the only exact number for this coupling on a finite torus.
 
 At this level the ranking of methods changes with the number of parameters, the symmetry projection, the number of samples in the final evaluation, and the convention used to quote the uncertainty. Differences within one standard error do not establish a better ansatz; see the [benchmark conventions](../benchmark-conventions/).
 

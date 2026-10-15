@@ -57,7 +57,7 @@ where the vectors $\mathbf y^\sigma_i(\mathbf n)$ come from a translationally eq
 
 ## Tensor backflow
 
-Zhou, Zhou and Liang parametrize the backflow correction directly as a tensor over sites and orbitals, without a neural network, with backflow terms from nearest or next-nearest neighbours and corrections on fictitious particles of the opposite spin, and improve the result with one Lanczos step (arXiv:2308.11823). Started from an unrestricted Hartree–Fock state, it reaches energies competitive with neural backflow on $16\times4$ and $16\times16$ tori and stabilizes the linear stripe at $t'=0$ (Liang, arXiv:2507.01856); with symmetry projection and a Lanczos step on $8\times8$ at $t'=-0.2$ it reaches $-0.7441(8)$ (arXiv:2609.22618). It is the useful control experiment: the same determinant-plus-correction structure with a simpler correction, and energies within a few $10^{-3}t$ of the best networks.
+Zhou, Zhou and Liang parametrize the backflow correction directly as a tensor over sites and orbitals, without a neural network, with backflow terms from nearest or next-nearest neighbours and corrections on fictitious particles of the opposite spin, and improve the result with one Lanczos step (arXiv:2308.11823). Started from an unrestricted Hartree–Fock state, it reaches energies competitive with neural backflow on $16\times4$ and $16\times16$ tori and stabilizes the linear stripe at $t'=0$ (Liang, arXiv:2507.01856); with symmetry projection and a Lanczos step on $8\times8$ at $t'=-0.2$ it reaches $-0.7441(8)$ (arXiv:2609.22618). It has the same determinant-plus-correction structure with a simpler correction, and its energies are within a few $10^{-3}t$ of the best networks.
 
 ## Backbones, symmetrization and multi-determinant tricks
 

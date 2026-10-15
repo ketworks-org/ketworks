@@ -6,6 +6,7 @@ const text = (tag, value, className) => { const el = document.createElement(tag)
 const link = (label, url, className) => { const a = text('a', label, className); a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer'; return a; };
 const classLabel = key => METHOD_CLASSES[key] || key;
 const formatCount = n => n.toLocaleString('en-US');
+const plural = (n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;
 const shortAuthors = authors => { const list = authors.split(/,\s*/); return list.length > 3 ? `${list.slice(0, 3).join(', ')} et al.` : authors; };
 
 // Small lattice sketch for the ledger: a square grid, or a triangular lattice with rows offset by half a spacing
@@ -29,10 +30,12 @@ function route() {
   document.querySelectorAll('.view').forEach(el => el.hidden = el.id !== name);
   document.querySelectorAll('[data-nav]').forEach(el => { if (el.dataset.nav === name) el.setAttribute('aria-current', 'page'); else el.removeAttribute('aria-current'); });
   const selected = new URLSearchParams(location.hash.split('?')[1] || '').get('system');
-  if (dataset) {
-    const benchmark = dataset.benchmarks.find(b => b.id === selected);
-    if (benchmark) $('model-select').value = benchmark.family;
-    renderInstances('model-select', 'system-select', benchmark?.id);
+  const benchmark = dataset?.benchmarks.find(b => b.id === selected);
+  $('board-overview').hidden = name !== 'benchmarks' || Boolean(benchmark);
+  $('board-detail').hidden = !benchmark;
+  if (benchmark) {
+    $('model-select').value = benchmark.family;
+    renderInstances('model-select', 'system-select', benchmark.id);
     renderResults();
   }
   document.title = name === 'overview' ? 'Ketworks — Neural quantum states' : `${{benchmarks: 'Ketboard', wiki: 'Ketbook'}[name] || name.charAt(0).toUpperCase() + name.slice(1)} — Ketworks`;
@@ -62,6 +65,28 @@ function renderLedger() {
     const energy = text('td', best ? best.energy_per_site : '—', 'num energy'); if (best) energy.append(text('small', `${best.method} · arXiv:${best.paper.id}`));
     tr.append(system, text('td', benchmark.instance_label || benchmark.geometry), key, text('td', count ? formatCount(count) : '0', 'num mono'), energy);
     $('ledger').append(tr);
+  });
+}
+
+// Ketboard without a selected instance: every instance, grouped by system, with its lowest reported energy.
+function renderBoardOverview() {
+  const container = $('board-overview'); container.replaceChildren();
+  const summary = summarize(dataset.benchmarks, dataset.results);
+  [...new Set(dataset.benchmarks.map(b => b.family))].forEach(family => {
+    const entries = summary.filter(s => s.benchmark.family === family);
+    const papers = new Set(dataset.results.filter(r => entries.some(s => s.benchmark.id === r.benchmark_id)).map(r => r.paper.id.replace(/v\d+$/, '')));
+    const group = text('section', '', 'board-family');
+    const head = text('div', '', 'family-head'); const title = text('h2', ''); title.append(lattice(family.includes('Triangular')), text('span', family));
+    const wiki = entries[0].benchmark.wiki; const meta = text('p', `${plural(entries.length, 'instance')}, ${plural(entries.reduce((n, s) => n + s.count, 0), 'result')} from ${plural(papers.size, 'paper')}`, 'family-meta');
+    head.append(title, meta); if (wiki) { const link = text('a', 'Benchmark page', 'text-link'); link.href = `wiki/${wiki}/`; head.append(link); }
+    const wrap = text('div', '', 'table-scroll'); const table = text('table', '', 'ledger'); const body = document.createElement('tbody');
+    table.innerHTML = '<thead><tr><th scope="col">Instance</th><th scope="col" class="num">Sites</th><th scope="col" class="num">Results</th><th scope="col" class="num">Lowest energy / site</th></tr></thead>';
+    entries.forEach(({benchmark, count, best}) => {
+      const tr = document.createElement('tr'); const cell = text('td', ''); const link = text('a', benchmark.instance_label || benchmark.id, 'instance-link'); link.href = '#benchmarks?system=' + encodeURIComponent(benchmark.id); cell.append(link);
+      const energy = text('td', best ? best.energy_per_site : '—', 'num energy'); if (best) energy.append(text('small', `${best.method} · ${classLabel(best.method_class)} · arXiv:${best.paper.id}`));
+      tr.append(cell, text('td', String(benchmark.sites), 'num mono'), text('td', count ? formatCount(count) : '0', 'num mono'), energy); body.append(tr);
+    });
+    table.append(body); wrap.append(table); group.append(head, wrap); container.append(group);
   });
 }
 
@@ -198,4 +223,4 @@ $('submission-form').addEventListener('submit', prepareSubmission);
 $('instance-mode').addEventListener('change', syncInstanceForm); $('new-fields').addEventListener('input', syncInstanceForm); $('new-fields').addEventListener('change', syncInstanceForm);
 $('copy-instance').addEventListener('click', async () => { try { await navigator.clipboard.writeText($('instance-json').textContent); $('copy-instance').textContent = 'Copied'; setTimeout(() => $('copy-instance').textContent = 'Copy entry', 1500); } catch { $('submission-error').textContent = 'Copy failed; select the entry and copy it by hand.'; } });
 $('copy-result').addEventListener('click', async () => { if (!submission) return; try { await navigator.clipboard.writeText($('submission-json').textContent); $('copy-result').textContent = 'Copied'; setTimeout(() => $('copy-result').textContent = 'Copy JSON', 1500); } catch { $('submission-error').textContent = 'Copy failed; select the JSON below and copy it by hand.'; } }); $('download-result').addEventListener('click', () => { if (submission) download(submission, submission.paper.id.replace(/v\d+$/, '') + '.json'); });
-route(); fetch('data.json').then(r => { if (!r.ok) throw Error('Data unavailable'); return r.json(); }).then(data => { dataset = data; renderSelects(); syncInstanceForm(); renderContents(); renderLedger(); renderWiki(); route(); }).catch(() => { $('load-error').hidden = false; });
+route(); fetch('data.json').then(r => { if (!r.ok) throw Error('Data unavailable'); return r.json(); }).then(data => { dataset = data; renderSelects(); syncInstanceForm(); renderContents(); renderLedger(); renderBoardOverview(); renderWiki(); route(); }).catch(() => { $('load-error').hidden = false; });

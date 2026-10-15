@@ -1,6 +1,6 @@
 # Hubbard model on the square lattice at 1/8 doping
 
-> **In brief.** At $U/t=8$ and filling $n=7/8$ the square-lattice Hubbard model is a doped Mott insulator in the regime most relevant to the cuprates, and the hardest point of the 2015 community benchmark. Its ground state is a filled stripe with wavelength 8 and no superconductivity; all controlled methods agree on $e_\infty=-0.767\pm0.004\,t$, but no exact energy exists for any torus beyond $4\times4$. Determinant and Pfaffian wavefunctions dressed by neural networks now give the lowest variational energies on tori, where DMRG cannot go, and the spread between ansätze on a fixed cluster is a hundred times the statistical error bars.
+> **In brief.** At $U/t=8$ and filling $n=7/8$ the square-lattice Hubbard model is a doped Mott insulator in the regime most relevant to the cuprates, and a particularly difficult point of the 2015 community benchmark. Its ground state is a filled stripe with wavelength 8 and no superconductivity; all controlled methods agree on $e_\infty=-0.767\pm0.004\,t$, but no exact energy exists for any torus beyond $4\times4$. Determinant and Pfaffian wavefunctions dressed by neural networks now give the lowest variational energies on tori, where DMRG cannot go, and the spread between ansätze on a fixed cluster is a hundred times the statistical error bars.
 
 Notation follows the [conventions page](../notation/). This page fixes the conventions of the Ketboard instances `hubbard-square-8x8-pbc-u8-n56-sz0`, `hubbard-rectangular-Lx4-pbc-u8-nNe-sz0` with $L=8,12,16$, and `hubbard-square-16x16-pbc-u8-n224-sz0`, explains why this point of the phase diagram is hard, and summarizes what is known about its energy. The same clusters with a next-nearest-neighbour hopping have their [own page](../t-tprime-hubbard/). Reviewed entries live in [Ketboard](../../#benchmarks?system=hubbard-rectangular-16x4-pbc-u8-n56-sz0), not here.
 
@@ -88,7 +88,11 @@ Energies per site in units of $t$, with the source of each number. Ketboard entr
 | Tensor backflow, one Lanczos step | $-0.7552$ | Liang, arXiv:2507.01856, Table I |
 | Deep convolutional backflow (ACE) | $-0.7573$ | Gu et al., arXiv:2604.25775, Table I |
 
-Three observations follow. On a fixed cluster the ansätze differ by up to $10^{-2}t$ per site while the printed error bars are $10^{-4}t$ or smaller, so the ranking is informative here in a way it is not for the [J₁–J₂ instance](../j1j2-square-lattice/). The four-leg series is not monotonic in $L$: for every ansatz that reports all three, the $8\times4$ energy lies below the $12\times4$ energy, which lies below the $16\times4$ energy, a shell effect of the four-leg torus rather than a loss of accuracy; the Loehr–Clark $8\times4$ state sits $8\times10^{-5}$ above their own variance-extrapolated estimate, so that cluster is essentially solved. And the best $16\times16$ energy is $0.01\,t$ above the thermodynamic-limit range; the finite-size correction and the variational error are of the same order and cannot be separated without a size series at fixed ansatz.
+On a fixed cluster the ansätze differ by up to $10^{-2}t$ per site while the printed error bars are $10^{-4}t$ or smaller, so the ranking is informative here in a way it is not for the [J₁–J₂ instance](../j1j2-square-lattice/).
+
+For the hidden-fermion Pfaffian and the deep backflow state the energy rises from $8\times4$ to $12\times4$ to $16\times4$. Tensor backflow does not follow that order ($-0.7633$, $-0.7636$, $-0.7618$ for BW2), so the trend with $L$ reflects how well each ansatz converged on each cluster as well as the clusters themselves. The Loehr–Clark $8\times4$ state lies $8\times10^{-5}$ above their own variance-extrapolated estimate.
+
+The best $16\times16$ energy is $0.01\,t$ above the thermodynamic-limit range. The finite-size correction and the variational error are of the same order, and a size series at fixed ansatz is needed to separate them.
 
 ## Reporting a result for this instance
 

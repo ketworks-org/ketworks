@@ -91,7 +91,11 @@ Energies per site in units of $J$, with the source of each number. Ketboard entr
 | RNN, zero-variance extrapolation of tori up to $30\times30$ | $-0.5517569(9)$ | Moss et al., arXiv:2505.20406 |
 | Transformer, zero-variance extrapolation of tori up to $42\times42$ | $-0.55168(2)$ | Viteritti et al., arXiv:2602.02665 |
 
-Three observations follow. The $6\times6$ instance is close to solved: the best network energy is within $1.1\times10^{-4}$ relative of the exact value, and it mainly tests the symmetry construction. The large tori are where ansätze separate: at $L=18$ the transformer lies $3.1\times10^{-3}$ below the RNN, at $L=30$ the gap is $3.6\times10^{-3}$, so the accuracy of the two states diverges with size rather than converging. And the finite-size energies lie *below* the thermodynamic value, as the $-c/L^3$ correction requires, so a variational energy above $e_\infty$ on a large torus measures a variational error at least as large as the distance; the $42\times42$ transformer energy is $2.5\times10^{-4}$ above the extrapolated $e_\infty$, consistent with the relative error of about $5\times10^{-4}$ estimated from its own variance extrapolation.
+On the $6\times6$ torus the best network energy is within $1.1\times10^{-4}$ relative of the exact value, so that instance mainly tests the symmetry construction.
+
+The large tori separate the ansätze. At $L=18$ the transformer lies $3.1\times10^{-3}$ below the RNN and at $L=30$ the gap is $3.6\times10^{-3}$, so the two states diverge with size.
+
+Finite-size energies lie below the thermodynamic value, as the $-c/L^3$ correction requires, so on a large torus a variational energy above $e_\infty$ measures a variational error at least as large as the distance. The $42\times42$ transformer energy is $2.5\times10^{-4}$ above the extrapolated $e_\infty$, consistent with the relative error of about $5\times10^{-4}$ from its own variance extrapolation.
 
 ## Reporting a result for this instance
 

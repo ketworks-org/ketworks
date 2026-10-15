@@ -2,8 +2,8 @@
 
 Ketworks is a community project on neural quantum states with two parts, shown with one colour each.
 
-- **Ketbook** (red square) is a curated reference: variational Monte Carlo, optimization, architectures and benchmark problems in one notation, every claim cited to its arXiv paper.
-- **Ketboard** (blue circle) is a board of reviewed variational energies for explicitly defined benchmark instances. **Original NQS variational energies only**; every entry is the printed energy of a versioned arXiv paper with its table and row.
+- **Ketbook** (red square) is a reference on variational Monte Carlo, optimization, network architectures and benchmark problems, with a common notation and a citation for each quantitative statement.
+- **Ketboard** (blue circle) lists variational energies for exactly defined benchmark instances. **Original NQS variational energies only.** Each entry is the energy printed in a versioned arXiv paper, with its table and row.
 
 Contributing is the third colour (yellow triangle): wiki edits and result records both go through a pull request that a curator reviews. A daily bot can discover new arXiv papers and revisions, extract numerical results and open a pull request; it is switched off, and a human approves and merges before any number reaches the published site.
 
@@ -36,7 +36,7 @@ Simplest setup, no secrets: in Netlify choose **Add new project → Import an ex
 
 Alternative, when the build should run in GitHub Actions instead: store `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID` as repository secrets, set the variable `PREVIEW_ENABLED=true`, and run the **Preview site** workflow. In that case do not also connect the repository in Netlify.
 
-GitHub Pages stays off (`PUBLISH_PAGES` unset) until the content is curated and the repository is public.
+GitHub Pages stays off (`PUBLISH_PAGES` unset) until the content has been reviewed and the repository is public.
 
 ## Activate the daily bot
 

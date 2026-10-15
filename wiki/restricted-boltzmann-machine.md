@@ -65,7 +65,7 @@ Each feature is a convolution filter of the full lattice size, and the sum over 
 
 An RBM with real parameters is strictly positive, so it can only represent states that are positive in the chosen basis, i.e. stoquastic ground states after a suitable basis rotation. The Marshall sign rule makes the Heisenberg model on a bipartite lattice such a case: rotating the spins on one sublattice by $\pi$ about $z$ multiplies the ground-state amplitudes by $(-1)^{N_\uparrow^A}$ and leaves a positive state, which a real RBM can learn. For the transverse-field Ising model no rotation is needed.
 
-Everything else needs a phase. Three constructions are in use:
+Everything else needs a phase, which is produced in one of these ways:
 
 1. **Complex parameters** $(a,b,W)\in\mathbb C$, the original choice. $\log\Psi$ is holomorphic, the gradient is $F_k=\langle\bar O_k^*\bar E_{\mathrm{loc}}\rangle$ and $S_{kk'}=\langle\bar O_k^*\bar O_{k'}\rangle$ without real parts (see [optimization](../optimization/)). Amplitude and phase share parameters, which couples their optimization.
 2. **Two real networks**, $\log|\Psi|$ and $\arg\Psi$, each an RBM or a different architecture. Decouples the two problems and allows a phase network that outputs a discrete sign; the price is that the phase network is trained through $E_{\mathrm{loc}}$ only, which is a weak signal when the sign structure is wrong almost everywhere.

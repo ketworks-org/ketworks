@@ -1,6 +1,6 @@
 # t–t′ Hubbard model at t′/t = −0.2 and 1/8 doping
 
-> **In brief.** A next-nearest-neighbour hopping $t'=-0.2t$ breaks particle-hole symmetry and brings the square-lattice Hubbard model closer to the cuprate band structure. At $U/t=8$ and $\delta=1/8$ the controlled methods find superconductivity coexisting with partially filled stripes, and neural quantum states have carried the question to tori of 576 sites. On these clusters the variational energies of different ansätze differ at the $10^{-2}t$ level, states with nearly equal energies have qualitatively different correlations, and the symmetry breaking built into an ansatz decides what it finds. This is the active frontier of fermionic NQS.
+> **In brief.** A next-nearest-neighbour hopping $t'=-0.2t$ breaks particle-hole symmetry and brings the square-lattice Hubbard model closer to the cuprate band structure. At $U/t=8$ and $\delta=1/8$ the controlled methods find superconductivity coexisting with partially filled stripes, and neural quantum states have carried the question to tori of 576 sites. On these clusters the variational energies of different ansätze differ at the $10^{-2}t$ level, states with nearly equal energies have qualitatively different correlations, and the symmetry breaking built into an ansatz decides what it finds.
 
 Notation follows the [conventions page](../notation/). This page fixes the conventions of the Ketboard instances `hubbard-square-LxL-pbc-u8-tp-0p2-nNe-sz0` with $L=8,12,16,20,24$, explains what changes with respect to the [pure model](../hubbard-square-lattice/), and summarizes what is known about the energy. Reviewed entries live in [Ketboard](../../#benchmarks?system=hubbard-square-16x16-pbc-u8-tp-0p2-n224-sz0), not here.
 
@@ -65,7 +65,11 @@ Energies per site in units of $t$, with the source of each number. Ketboard entr
 | 20 | Symmetry-preserving backflow pairing | $-0.74382(1)$ | Rende, Viteritti, Georges, arXiv:2608.12465, Table I |
 | 24 | Symmetry-preserving backflow pairing | $-0.74397(1)$ | Rende, Viteritti, Georges, arXiv:2608.12465, Table I |
 
-Three observations follow. On $16\times16$ the spread between ansätze is $1.8\times10^{-2}t$ per site, two orders of magnitude above the error bars; the instance discriminates between methods. The $8\times8$ torus sits far from the larger clusters ($-0.7506$ against $-0.744$) because of its shell structure, while the $12\times12$ to $24\times24$ energies of a single ansatz agree within $5\times10^{-4}t$, so the thermodynamic-limit energy of the model at this point is about $-0.744\,t$ with a variational error that cannot yet be separated from the finite-size trend. And the lowest energies on the large tori come from the state that keeps translation symmetry, not from a state with a stripe built in, which is the quantitative content of the "variational bias" argument.
+On $16\times16$ the spread between ansätze is $1.8\times10^{-2}t$ per site, two orders of magnitude above the error bars.
+
+The $8\times8$ torus lies far from the larger clusters ($-0.7506$ against $-0.744$) because of its shell structure. The $12\times12$ to $24\times24$ energies of the symmetry-preserving state agree within $5\times10^{-4}t$, so the energy per site at this point is about $-0.744\,t$, with a variational error that cannot yet be separated from the finite-size trend.
+
+The lowest energies on the large tori come from the state that keeps translation symmetry, not from states with a stripe built in. This is what the variational-bias argument above predicts.
 
 ## Reporting a result for this instance
 
