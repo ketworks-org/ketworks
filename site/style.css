@@ -48,7 +48,7 @@ p{margin-top:0}
 .nav-body a[aria-current=page],.nav-body a.active{border-left-color:var(--area);font-weight:800}
 .content{min-width:0}
 .brand{font:900 28px/1 var(--display);letter-spacing:-.06em;display:flex;align-items:center}
-.brand-symbol{display:block;width:36px;height:26px;margin-right:11px;flex:none}
+.brand-symbol{display:block;width:38px;height:34px;margin-right:12px;flex:none}
 .brand-period{color:var(--ink)}
 footer{max-width:1240px;margin:auto;padding:30px 56px;display:flex;align-items:center;justify-content:space-between;border-top:2px solid var(--ink);gap:25px;font:500 12px/1.5 var(--display)}footer .brand{font-size:27px}footer p{margin:0;color:var(--muted);font-family:var(--serif);font-style:italic;font-size:15px}
 main{max-width:1240px;margin:auto;padding:0 56px}.view{padding-bottom:80px}.interior{padding-top:56px}
