@@ -11,6 +11,31 @@ from urllib.parse import quote
 from .schema import ROOT, per_site, validate_tree
 
 
+def nav_html(index, registry, prefix="", current=None):
+    """Site-wide left navigation: wiki pages by section, Ketboard instances by system, contribution links."""
+    out = []
+    sections = list(dict.fromkeys(page["section"] for page in index))
+    out.append('<div class="nav-group"><p class="nav-title"><a href="' + prefix + '#wiki" data-nav="wiki">Wiki</a></p>')
+    for section in sections:
+        out.append(f'<p class="nav-section">{html.escape(section)}</p>')
+        for page in index:
+            if page["section"] == section:
+                current_attr = ' aria-current="page"' if page["slug"] == current else ""
+                out.append(f'<a href="{prefix}wiki/{page["slug"]}/"{current_attr}>{html.escape(page["title"])}</a>')
+    out.append('</div><div class="nav-group"><p class="nav-title"><a href="' + prefix + '#benchmarks" data-nav="benchmarks">Ketboard</a></p>')
+    families = list(dict.fromkeys(b["family"] for b in registry.values()))
+    for family in families:
+        out.append(f'<p class="nav-section">{html.escape(family)}</p>')
+        for b in registry.values():
+            if b["family"] == family:
+                out.append(f'<a href="{prefix}#benchmarks?system={quote(b["id"])}" data-instance="{html.escape(b["id"])}">{html.escape(b.get("instance_label") or b["id"])}</a>')
+    out.append('</div><div class="nav-group"><p class="nav-title"><a href="' + prefix + '#contribute" data-nav="contribute">Contribute</a></p>')
+    out.append(f'<a href="{prefix}#submit" data-nav="submit">Submit a result</a>')
+    out.append('<a href="https://github.com/gcarleo/ketbook/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Contribution guide ↗</a>')
+    out.append('<a href="https://github.com/gcarleo/ketbook" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>')
+    return "".join(out)
+
+
 def render_content(root, destination, registry):
     if not (root / "wiki/index.json").exists():
         return [], {}
@@ -31,16 +56,12 @@ def render_content(root, destination, registry):
     sections = list(dict.fromkeys(page["section"] for page in index))
     for article in rendered["articles"]:
         slug = article["slug"]
-        sidebar = ""
-        for section in sections:
-            links = "".join(f'<a href="../{page["slug"]}/"' + (' aria-current="page"' if page["slug"] == slug else '') + f'>{html.escape(page["title"])}</a>' for page in index if page["section"] == section)
-            sidebar += f'<div class="side-group"><p class="side-section">{html.escape(section)}</p>{links}</div>'
         toc = "".join(f'<a href="#{h["id"]}" class="toc-{h["level"]}">{html.escape(h["text"])}</a>' for h in article["headings"] if h["level"] == 2)
         status = article.get("status", "draft")
         if status not in ("draft", "reviewed"):
             raise ValueError(f"{slug}: status must be draft or reviewed")
         status_html = '<span class="status status-reviewed">Reviewed</span>' if status == "reviewed" else '<span class="status status-draft">Draft · not yet reviewed by a curator</span>'
-        values = {"TITLE": html.escape(article["title"]), "DESCRIPTION": html.escape(article["summary"], quote=True), "SECTION": html.escape(article["section"]), "SIDEBAR": sidebar, "TOC": toc, "STATUS": status_html,
+        values = {"TITLE": html.escape(article["title"]), "DESCRIPTION": html.escape(article["summary"], quote=True), "SECTION": html.escape(article["section"]), "NAV": nav_html(index, registry, "../../", slug), "TOC": toc, "STATUS": status_html,
                   "SLUG": slug, "EDIT_URL": f"https://github.com/gcarleo/ketbook/edit/{source_ref}/wiki/{slug}.md", "HISTORY_URL": f"https://github.com/gcarleo/ketbook/commits/{source_ref}/wiki/{slug}.md", "CONTENT": article["html"]}
         page_html = re.sub(r"\{\{([A-Z_]+)\}\}", lambda match: values[match[1]], template)
         page_dir = destination / "wiki" / slug
@@ -73,7 +94,7 @@ def build(root=ROOT, destination=None):
     source_ref = os.getenv("KETBOOK_SOURCE_REF", "main")
     home = destination / "index.html"
     if home.exists():
-        home_html = home.read_text().replace("<!--HERO_MATH-->", equations.get("hero", ""))
+        home_html = home.read_text().replace("<!--HERO_MATH-->", equations.get("hero", "")).replace("<!--NAV-->", nav_html(registry=registry, index=wiki))
         for action in ("new", "edit", "blob"):
             home_html = home_html.replace(f"https://github.com/gcarleo/ketbook/{action}/main/", f"https://github.com/gcarleo/ketbook/{action}/{quote(source_ref, safe='/')}/")
             home_html = home_html.replace(f"https://github.com/gcarleo/ketbook/{action}/main?", f"https://github.com/gcarleo/ketbook/{action}/{quote(source_ref, safe='/')}?")

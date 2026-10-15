@@ -91,7 +91,7 @@ The kernel picture also clarifies what SR can and cannot do with finite samples.
 $S$ is singular whenever parameters are redundant, which for a neural network is always: the normalization of $\Psi$ is a flat direction, and so are the gauge freedoms of each layer. Finite sampling adds noise to the small eigenvalues that $S^{-1}$ then amplifies. The standard remedies are:
 
 - **Diagonal shift**, $S\to S+\lambda\,\mathbb 1$ with $\lambda\sim10^{-4}$–$10^{-2}$. Equivalent to adding $\lambda\|\delta\theta\|^2$ to the Fubini–Study distance, i.e. a trust region in parameter space. Breaks the reparametrization invariance of SR by the amount $\lambda$.
-- **Scale-invariant (relative) shift**, $S_{kk'}\to S_{kk'}+\lambda\,\delta_{kk'}S_{kk}$ (Sorella, Casula, Rocca, arXiv:cond-mat/0702349). Regularizes each direction relative to its own curvature, so parameters with tiny natural scale are not frozen by a uniform shift. The same idea applied to the kernel is $T\to T+\lambda\operatorname{diag}(T)$.
+- **Scale-invariant (relative) shift**, $S_{kk}\to S_{kk}(1+\lambda)$ (Sorella, Casula, Rocca, arXiv:cond-mat/0702349, Eq. 11). Regularizes each direction relative to its own curvature, so parameters with tiny natural scale are not frozen by a uniform shift. The same idea applied to the kernel is $T\to T+\lambda\operatorname{diag}(T)$.
 - **Spectral cut-off**: diagonalize $S$ (or $T$) and discard eigen-directions with eigenvalue below a threshold relative to the largest. Equivalent to the pseudo-inverse with a tolerance; the threshold sets how many effective directions are updated per step.
 - **Signal-to-noise filtering** (Schmitt and Heyl, arXiv:1912.08828): in the eigenbasis of $S$, estimate the Monte Carlo error of each component of $F$ and zero the components whose signal-to-noise ratio is below a cut. Unlike a fixed cut-off this adapts to the actual noise level and is the method of choice for real-time evolution, where unfiltered noise is integrated instead of damped.
 
@@ -108,7 +108,7 @@ Regularization strength, learning rate and sample size are coupled: a larger $\l
 ## Alternatives and extensions
 
 - **Linear method** (Toulouse and Umrigar, arXiv:physics/0701039): diagonalize $H$ in the basis $\{|\Psi_\theta\rangle,\partial_k|\Psi_\theta\rangle\}$ each step. Quadratic convergence near the minimum and no step-size tuning, at the price of a generalized eigenproblem of size $N_p+1$; used for Jastrow–Slater and small networks, impractical beyond $10^4$ parameters.
-- **Lanczos steps**: apply $(1+\alpha_1 H+\dots)$ to the optimized state and optimize the few $\alpha_p$. Each step is a legitimate variational state whose energy can be evaluated directly, so it is eligible for Ketboard; the subsequent zero-variance extrapolation is not (Hu et al., arXiv:1304.1676; Nomura and Imada, arXiv:2005.14142).
+- **Lanczos steps**: apply $(1+\alpha_1 H+\dots)$ to the optimized state and optimize the few $\alpha_p$. Each step is a legitimate variational state whose energy can be evaluated directly, so it is eligible for Ketboard; the subsequent zero-variance extrapolation is not (Hu et al., arXiv:1304.2630; Nomura and Imada, arXiv:2005.14142).
 - **First-order optimizers with preconditioning** (Adam, RMSProp): no $S$ at all, cheap per step, competitive in early optimization and for autoregressive models where exact sampling makes gradients clean. Converge slowly in the final phase on frustrated models, where the metric matters most.
 - **Supervised and projected schemes**: fit the network to $H|\Psi\rangle$ or to a power-method target instead of minimizing the energy; the final state is still variational and its directly evaluated energy qualifies, provided the number reported is $\langle\Psi_\theta|H|\Psi_\theta\rangle/\langle\Psi_\theta|\Psi_\theta\rangle$ and not a projected estimate.
 
@@ -121,7 +121,7 @@ Regularization strength, learning rate and sample size are coupled: a larger $\l
 - J. Stokes, J. Izaac, N. Killoran, G. Carleo, *Quantum natural gradient*, arXiv:1909.02108 (2019). The Fubini–Study metric as the natural metric for variational states.
 - X. Yuan, S. Endo, Q. Zhao, Y. Li, S. Benjamin, *Theory of variational quantum simulation*, arXiv:1812.08767 (2018). Variational principles for imaginary- and real-time evolution.
 - C.-Y. Park, M. J. Kastoryano, *Geometry of learning neural quantum states*, arXiv:1910.11163 (2019). The geometry of $S$ for complex-parameter networks.
-- A. Chen, M. Heyl, *Efficient optimization of deep neural quantum states toward machine precision*, arXiv:2302.01941 (2023). minSR.
+- A. Chen, M. Heyl, *Empowering deep neural quantum states through efficient optimization*, arXiv:2302.01941 (2023). minSR.
 - R. Rende, L. L. Viteritti, L. Bardone, F. Becca, S. Goldt, *A simple linear algebra identity to optimize large-scale neural network quantum states*, arXiv:2310.05715 (2023). The kernel identity and its real-parameter form.
 - M. Schmitt, M. Heyl, *Quantum many-body dynamics in two dimensions with artificial neural networks*, arXiv:1912.08828 (2019). Signal-to-noise regularization.
 - J. Toulouse, C. J. Umrigar, *Optimization of quantum Monte Carlo wave functions by energy minimization*, arXiv:physics/0701039 (2007). The linear method.

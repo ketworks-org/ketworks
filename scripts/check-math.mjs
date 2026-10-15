@@ -11,6 +11,8 @@ assert.match(renderMarkdown('<script>alert(1)</script>'), /&lt;script&gt;/);
 assert.doesNotMatch(renderMarkdown('[bad](javascript:alert(1))'), /href="javascript:/);
 const anchors = renderArticle('# T\n\n## The local energy\n\n## The local energy\n\n### Sub $x$\n');
 assert.deepEqual(anchors.headings.map(h=>h.id), ['the-local-energy','the-local-energy-2','sub-x']);
+const mathHeading = renderArticle('# T\n\n## Why $J_2/J_1=0.5$\n\n## Known energies for $10\\times10$\n');
+assert.deepEqual(mathHeading.headings.map(h=>h.text), ['Why J2/J1=0.5', 'Known energies for 10×10']);
 assert.match(anchors.html, /<h2 id="the-local-energy">/);
 for (const page of JSON.parse(fs.readFileSync('wiki/index.json','utf8'))) {
   const article = renderArticle(fs.readFileSync(`wiki/${page.slug}.md`,'utf8'));

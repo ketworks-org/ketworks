@@ -41,7 +41,7 @@ at a cost of $|G|$ evaluations per amplitude, with $\chi_\Gamma$ the character. 
 ## Architectures
 
 - **Restricted Boltzmann machine.** One hidden layer, analytic marginalization, a closed-form $\log\Psi_\theta$; the reference architecture and the subject of its [own page](../restricted-boltzmann-machine/).
-- **Feed-forward and convolutional networks.** Dense layers (Cai and Liu, arXiv:1704.05148; Saito, arXiv:1709.06296) and convolutional layers with translation-invariant pooling (Choo, Neupert, Carleo, arXiv:1903.06713; Liang et al., arXiv:1807.09422). Group-convolutional networks extend the weight sharing to the full space group and are among the most accurate ansätze on frustrated lattices (Roth, Szabó, MacDonald, arXiv:2211.07749).
+- **Feed-forward and convolutional networks.** Dense layers (Cai and Liu, arXiv:1704.05148; Saito, arXiv:1707.09723) and convolutional layers with translation-invariant pooling (Choo, Neupert, Carleo, arXiv:1903.06713; Liang et al., arXiv:1807.09422). Group-convolutional networks extend the weight sharing to the full space group and are among the most accurate ansätze on frustrated lattices (Roth, Szabó, MacDonald, arXiv:2211.07749).
 - **Autoregressive models.** Factorize $\Psi_\theta(\boldsymbol{\sigma})=\prod_i\psi_i(\sigma_i|\sigma_{<i})$ with normalized conditionals, so that $|\Psi_\theta|^2$ can be sampled exactly without a Markov chain: PixelCNN-style networks (Sharir et al., arXiv:1902.04057) and recurrent networks (Hibat-Allah et al., arXiv:2002.02973).
 - **Transformers.** Attention over site embeddings, with or without the autoregressive constraint (Viteritti, Rende, Becca, arXiv:2211.05504); currently competitive with group-convolutional networks on the J₁–J₂ model.
 - **Fermionic states.** A Slater or Pfaffian determinant supplies antisymmetry, and the network supplies either a multiplicative correlator, a backflow transformation of the orbitals (Luo and Clark, arXiv:1807.10770), or hidden degrees of freedom that enlarge the determinant (Moreno et al., arXiv:2111.10420). In continuous space the same idea gives FermiNet (Pfau et al., arXiv:1909.02487) and PauliNet (Hermann, Schätzle, Noé, arXiv:1909.08423).
@@ -58,7 +58,7 @@ The [variational Monte Carlo page](../variational-monte-carlo/) covers estimator
 
 - G. Carleo, M. Troyer, *Solving the quantum many-body problem with artificial neural networks*, arXiv:1606.02318 (2016). The founding paper: complex RBM, stochastic reconfiguration, ground states and dynamics.
 - H. Lange, A. Van de Walle, A. Bohrdt, *From architectures to applications: a review of neural quantum states*, arXiv:2402.09402 (2024). Survey of architectures and applications.
-- K. Choo, T. Neupert, G. Carleo, *Two-dimensional frustrated J₁–J₂ model studied with neural network quantum states*, arXiv:1903.06713 (2019). Convolutional NQS and the sign-structure problem on a frustrated lattice.
+- K. Choo, T. Neupert, G. Carleo, *Study of the two-dimensional frustrated J₁–J₂ model with neural network quantum states*, arXiv:1903.06713 (2019). Convolutional NQS and the sign-structure problem on a frustrated lattice.
 - C. Roth, A. H. MacDonald, *Group convolutional neural networks improve quantum state accuracy*, arXiv:2104.05085 (2021).
 - O. Sharir, Y. Levine, N. Wies, G. Carleo, A. Shashua, *Deep autoregressive models for the efficient variational simulation of many-body quantum systems*, arXiv:1902.04057 (2019).
 - M. Hibat-Allah, M. Ganahl, L. E. Hayward, R. G. Melko, J. Carrasquilla, *Recurrent neural network wave functions*, arXiv:2002.02973 (2020).
@@ -72,5 +72,5 @@ The [variational Monte Carlo page](../variational-monte-carlo/) covers estimator
 - O. Sharir, A. Shashua, G. Carleo, *Neural tensor contractions and the expressive power of deep neural quantum states*, arXiv:2103.10293 (2021).
 - Y. Nomura, A. S. Darmawan, Y. Yamaji, M. Imada, *Restricted Boltzmann machine learning for solving strongly correlated quantum systems*, arXiv:1709.06475 (2017).
 - Z. Cai, J. Liu, *Approximating quantum many-body wave functions using artificial neural networks*, arXiv:1704.05148 (2017).
-- H. Saito, *Solving the Bose–Hubbard model with machine learning*, arXiv:1709.06296 (2017).
+- H. Saito, *Solving the Bose–Hubbard model with machine learning*, arXiv:1707.09723 (2017).
 - X. Liang, W.-Y. Liu, P.-Z. Lin, G.-C. Guo, Y.-S. Zhang, L. He, *Solving frustrated quantum many-particle models with convolutional neural networks*, arXiv:1807.09422 (2018).

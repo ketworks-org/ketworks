@@ -92,6 +92,7 @@ function renderResults() {
   const b = dataset.benchmarks.find(b => b.id === $('system-select').value); if (!b) return;
   $('system-name').textContent = b.family; $('instance-label').textContent = b.instance_label || ''; $('system-key').textContent = b.id;
   $('system-wiki').hidden = !b.wiki; if (b.wiki) $('system-wiki').href = `wiki/${b.wiki}/`;
+  document.querySelectorAll('[data-instance]').forEach(a => a.classList.toggle('active', a.dataset.instance === b.id));
   $('system-definition').replaceChildren(); const dl = document.createElement('dl');
   const h = text('dd', ''); if (b.hamiltonian_html) h.innerHTML = b.hamiltonian_html; else h.textContent = b.hamiltonian;
   dl.append(text('dt', 'Hamiltonian'), h);
@@ -114,8 +115,8 @@ function renderResults() {
   });
   document.querySelectorAll('.board th').forEach(th => { const button = th.querySelector('.sort'); if (!button) return; if (button.dataset.sort === sort.key) th.setAttribute('aria-sort', sort.direction === 'asc' ? 'ascending' : 'descending'); else th.removeAttribute('aria-sort'); });
   $('result-count').textContent = `${rows.length} result${rows.length === 1 ? '' : 's'}`; $('empty-results').hidden = rows.length > 0;
-  const any = dataset.results.some(r => r.benchmark_id === b.id); $('empty-results').querySelector('h3').textContent = any ? 'No results match this filter.' : 'The first result starts here.';
-  $('empty-results').querySelector('p').textContent = any ? 'Try another class, method, author, or paper identifier.' : 'Results appear after their pull request has been reviewed and merged.';
+  const any = dataset.results.some(r => r.benchmark_id === b.id); $('empty-results').querySelector('h3').textContent = any ? 'No results match this filter.' : 'No reviewed results for this instance yet.';
+  $('empty-results').querySelector('p').textContent = any ? 'Change the class filter or the search text.' : 'Results appear after their pull request is reviewed and merged.';
 }
 
 function download(value, filename) { const url = URL.createObjectURL(new Blob([JSON.stringify(value, null, 2) + '\n'], {type: 'application/json'})); const a = document.createElement('a'); a.href = url; a.download = filename; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
@@ -133,7 +134,7 @@ function prepareSubmission(event) {
   $('submission-ready').hidden = false; $('submission-ready').scrollIntoView({behavior: 'smooth', block: 'start'});
 }
 
-window.addEventListener('hashchange', route);
+window.addEventListener('hashchange', () => { route(); document.getElementById('site-nav')?.classList.remove('open'); });
 $('model-select').addEventListener('change', () => { if (!dataset) return; renderInstances('model-select', 'system-select'); location.hash = '#benchmarks?system=' + encodeURIComponent($('system-select').value); });
 $('system-select').addEventListener('change', () => location.hash = '#benchmarks?system=' + encodeURIComponent($('system-select').value));
 $('submit-model').addEventListener('change', () => { if (dataset) renderInstances('submit-model', 'submit-system'); });
