@@ -1,8 +1,8 @@
 name: Deploy site
 # Builds the site and uploads it to the Netlify project that serves ketworks.org. Netlify's free plan
 # does not build private repositories owned by an organization, so the build runs here instead.
-# Requires the secrets NETLIFY_AUTH_TOKEN and NETLIFY_SITE_ID and the repository variable
-# DEPLOY_ENABLED=true. Pages stay noindex until the project goes public. See README.
+# Requires the repository secrets NETLIFY_AUTH_TOKEN and NETLIFY_SITE_ID; without them the run stops
+# with a warning. Pages stay noindex until the project goes public. See README.
 on:
   push:
     branches: [main]
@@ -13,8 +13,24 @@ concurrency:
   group: deploy
   cancel-in-progress: true
 jobs:
+  credentials:
+    runs-on: ubuntu-latest
+    outputs:
+      ok: ${{ steps.check.outputs.ok }}
+    steps:
+      - id: check
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          missing=""
+          [ -n "$NETLIFY_AUTH_TOKEN" ] || missing="$missing NETLIFY_AUTH_TOKEN"
+          [ -n "$NETLIFY_SITE_ID" ] || missing="$missing NETLIFY_SITE_ID"
+          if [ -z "$missing" ]; then echo "ok=true" >> "$GITHUB_OUTPUT"
+          else echo "::warning::Not deploying: repository secret(s) missing:$missing"; echo "ok=false" >> "$GITHUB_OUTPUT"; fi
   deploy:
-    if: vars.DEPLOY_ENABLED == 'true'
+    needs: credentials
+    if: needs.credentials.outputs.ok == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
