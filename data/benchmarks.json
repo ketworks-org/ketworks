@@ -63,5 +63,21 @@
     "lattice_size": "8 × 8 · 64 sites",
     "boundary_conditions": "Periodic in both directions",
     "parameters_latex": "t=1,\\qquad U/t=8,\\qquad t^{\\prime}=0"
+  },
+  {
+    "id": "hubbard-rectangular-16x4-pbc-u8-n56-sz0",
+    "name": "Hubbard",
+    "family": "Hubbard",
+    "sites": 64,
+    "geometry": "16 by 4 rectangular lattice (16 sites along x, 4 along y); periodic in both directions; nearest-neighbor hopping only",
+    "hamiltonian": "H = -t sum_<ij>,s (c†_is c_js + h.c.) + U sum_i n_iup n_idown; t = 1; U = 8; tprime = 0; no chemical-potential term or constant shift",
+    "sector": "Nup = 28; Ndown = 28; 56 electrons; ground-state variational calculation",
+    "unit": "t",
+    "description": "Interacting fermions hopping on a square lattice.",
+    "hamiltonian_latex": "H=-t\\!\\sum_{\\langle i,j\\rangle,\\sigma}\\!\\left(c^\\dagger_{i\\sigma}c_{j\\sigma}+\\mathrm{h.c.}\\right)+U\\sum_i n_{i\\uparrow}n_{i\\downarrow}",
+    "instance_label": "16 × 4 · U/t = 8 · periodic · N↑ = N↓ = 28",
+    "lattice_size": "16 × 4 · 64 sites",
+    "boundary_conditions": "Periodic in both directions",
+    "parameters_latex": "t=1,\\qquad U/t=8,\\qquad t^{\\prime}=0"
   }
 ]

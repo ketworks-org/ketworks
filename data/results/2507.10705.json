@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2507.10705v1",
+    "title": "Neural Network-Augmented Pfaffian Wave-functions for Scalable Simulations of Interacting Fermions",
+    "authors": "Ao Chen, Zhou-Quan Wan, Anirvan Sengupta, Antoine Georges, Christopher Roth",
+    "published": "2025-07-14T18:20:19Z",
+    "updated": "2025-07-14T18:20:19Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2507.10705v1",
+  "source_sha256": "97b1cddb95a211367926cb56386caa3a3bf99b58b635f0b3d766b389792f75f1",
+  "extraction_model": "human",
+  "results": [
+    {
+      "benchmark_id": "hubbard-rectangular-16x4-pbc-u8-n56-sz0",
+      "system_description": "16x4 rectangular lattice (Lx = 16, Ly = 4), periodic in both directions; U/t = 8, t' = 0; 56 electrons (28 up, 28 down), 1/8 hole doping",
+      "method": "Hidden-fermion Pfaffian state",
+      "variant": "HFPS with GCNN backbone (about 600K parameters), d-wave-paired mean-field initialization",
+      "method_class": "backflow",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.76413",
+      "energy_token": "-0.76413(3)",
+      "normalization": "per_site",
+      "unit": "t",
+      "uncertainty": "0.00003",
+      "uncertainty_type": "unspecified",
+      "source_location": "Table IV, p. 16 (row 16 × 4); also p. 9 text",
+      "eligibility_evidence": "Variational energy of the HFPS on the 16 × 4 PBC lattice at 1/8 doping and U = 8; the paper states the L × 4 lattices are PBC.",
+      "parameter_count": null,
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+    }
+  ],
+  "issues": []
+}

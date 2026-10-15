@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2604.25775v1",
+    "title": "Pareto Frontier of Neural Quantum States: Scalable, Affordable, and Accurate Convolutional Backflow for Strongly Correlated Lattice Fermions",
+    "authors": "Yuntian Gu, Zeyao Han, Wenrui Li, Zhiyu Xiao, Tao Xiang, Mingpu Qin, Liwei Wang, Dingshun Lv",
+    "published": "2026-04-28T15:42:01Z",
+    "updated": "2026-04-28T15:42:01Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2604.25775v1",
+  "source_sha256": "60fc3923249c4c4f99ef4345906f1c3eb4679d22fb016630de1800c48bd99171",
+  "extraction_model": "human",
+  "results": [
+    {
+      "benchmark_id": "hubbard-rectangular-16x4-pbc-u8-n56-sz0",
+      "system_description": "16x4 rectangular lattice (Lx = 16, Ly = 4), periodic in both directions; U/t = 8, t' = 0; 56 electrons (28 up, 28 down), 1/8 hole doping",
+      "method": "Attention-based convolutional backflow (ACE)",
+      "variant": "ACE without explicit symmetries",
+      "method_class": "backflow",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.76464",
+      "energy_token": "-0.76464(1)",
+      "normalization": "per_site",
+      "unit": "t",
+      "uncertainty": "0.00001",
+      "uncertainty_type": "unspecified",
+      "source_location": "p. 7, text (Sec. 'Accuracy on 16×4 systems')",
+      "eligibility_evidence": "Variational energy of the ACE state on the 16 × 4 lattice under PBC at U = 8 and 1/8 hole doping.",
+      "parameter_count": null,
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+    },
+    {
+      "benchmark_id": "hubbard-rectangular-16x4-pbc-u8-n56-sz0",
+      "system_description": "16x4 rectangular lattice (Lx = 16, Ly = 4), periodic in both directions; U/t = 8, t' = 0; 56 electrons (28 up, 28 down), 1/8 hole doping",
+      "method": "Attention-based convolutional backflow (ACE)",
+      "variant": "ACE, projected and symmetrized state optimized directly",
+      "method_class": "backflow",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.76623",
+      "energy_token": "-0.76623(1)",
+      "normalization": "per_site",
+      "unit": "t",
+      "uncertainty": "0.00001",
+      "uncertainty_type": "unspecified",
+      "source_location": "p. 7, text (Sec. 'Accuracy on 16×4 systems')",
+      "eligibility_evidence": "Variational energy of the symmetry-projected ACE state; the GFMC value -0.76647(2) in the same paragraph is a projected estimate and excluded.",
+      "parameter_count": null,
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+    }
+  ],
+  "issues": []
+}
