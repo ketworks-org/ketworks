@@ -23,6 +23,7 @@ def render_content(root, destination, registry):
     articles = [{**page, "markdown": (root / "wiki" / (page["slug"] + ".md")).read_text()} for page in index]
     equations = {"hero": r"E_\theta = \frac{\langle\Psi_\theta|H|\Psi_\theta\rangle}{\langle\Psi_\theta|\Psi_\theta\rangle} \geq E_0"}
     equations.update({key: value["hamiltonian_latex"] for key, value in registry.items() if "hamiltonian_latex" in value})
+    equations.update({key + ":parameters": value["parameters_latex"] for key, value in registry.items() if "parameters_latex" in value})
     result = subprocess.run(["node", str(root / "scripts/render-content.mjs")], input=json.dumps({"articles": articles, "equations": equations}), text=True, capture_output=True, check=True, cwd=root)
     rendered = json.loads(result.stdout)
     source_ref = quote(os.getenv("KETBOOK_SOURCE_REF", "main"), safe="/")
@@ -72,7 +73,7 @@ def build(root=ROOT, destination=None):
             energy, error = per_site(row, registry)
             rows.append({**row, "energy_per_site": energy, "uncertainty_per_site": error, "paper": record["paper"], "source_url": record["source_url"]})
     # Proposal files and extraction artifacts never enter the public payload.
-    payload = {"source_ref": source_ref, "benchmarks": [{**b, "hamiltonian_html": equations.get(b["id"])} for b in registry.values()], "wiki": wiki, "results": rows, "paper_count": len(papers)}
+    payload = {"source_ref": source_ref, "benchmarks": [{**b, "hamiltonian_html": equations.get(b["id"]), "parameters_html": equations.get(b["id"] + ":parameters")} for b in registry.values()], "wiki": wiki, "results": rows, "paper_count": len(papers)}
     (destination / "data.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
     (destination / ".nojekyll").touch()
     print(f"Built {destination}: {len(wiki)} wiki pages, {len(rows)} reviewed rows from {len(papers)} papers")

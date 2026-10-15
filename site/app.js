@@ -14,19 +14,33 @@ function route(){
   document.querySelectorAll('.view').forEach(el=>el.hidden=el.id!==name);
   document.querySelectorAll('[data-nav]').forEach(el=>{if(el.dataset.nav===name)el.setAttribute('aria-current','page');else el.removeAttribute('aria-current');});
   const selected=new URLSearchParams(location.hash.split('?')[1]||'').get('system');
-  if(dataset&&selected&&dataset.benchmarks.some(b=>b.id===selected))$('system-select').value=selected;
-  if(dataset)renderResults();
+  if(dataset){
+    const benchmark=dataset.benchmarks.find(b=>b.id===selected);
+    if(benchmark)$('model-select').value=benchmark.family;
+    renderInstances('model-select','system-select',benchmark?.id);
+    renderResults();
+  }
   document.title=name==='overview'?'Ketbook — Neural quantum states':`${name==='benchmarks'?'Ketboard':name.charAt(0).toUpperCase()+name.slice(1)} — Ketbook`;
 }
 function renderCards(){
-  dataset.benchmarks.forEach(benchmark=>{
+  const models=[...new Set(dataset.benchmarks.map(b=>b.family))];
+  models.forEach(model=>{
+    const instances=dataset.benchmarks.filter(b=>b.family===model), benchmark=instances[0];
     const card=text('a','','model-card');card.href='#benchmarks?system='+encodeURIComponent(benchmark.id);
-    const count=dataset.results.filter(r=>r.benchmark_id===benchmark.id).length;
+    const count=dataset.results.filter(r=>instances.some(b=>b.id===r.benchmark_id)).length;
     const top=text('div','','card-top');top.append(lattice(benchmark.family.includes('Triangular')),text('span',`${count} reviewed results`,'card-count'));
-    const bottom=text('div','','card-bottom');bottom.append(text('span',`${benchmark.sites} sites · periodic boundaries`),text('span','↗'));
+    const bottom=text('div','','card-bottom');bottom.append(text('span',`${instances.length} benchmark instance${instances.length===1?'':'s'}`),text('span','↗'));
     card.append(top,text('h3',benchmark.family),text('p',benchmark.description),bottom);$('model-cards').append(card);
-    for(const id of ['system-select','submit-system']){const option=text('option',benchmark.name);option.value=benchmark.id;$(id).append(option);}
+    for(const id of ['model-select','submit-model']){const option=text('option',model);option.value=model;$(id).append(option);}
   });
+  renderInstances('submit-model','submit-system');
+}
+function renderInstances(modelId,instanceId,selectedId){
+  const select=$(instanceId), previous=selectedId||select.value;
+  const instances=dataset.benchmarks.filter(b=>b.family===$(modelId).value);
+  select.replaceChildren();
+  instances.forEach(b=>{const option=text('option',b.instance_label||`${b.sites} sites · ${b.geometry} · ${b.hamiltonian} · ${b.sector}`);option.value=b.id;select.append(option);});
+  if(instances.some(b=>b.id===previous))select.value=previous;
 }
 function renderWiki(){
   const query=$('wiki-search').value.toLowerCase();$('wiki-list').replaceChildren();
@@ -39,11 +53,15 @@ function currentRows(){const q=$('search').value.toLowerCase();return dataset.re
 function link(label,url){const a=text('a',label);a.href=url;a.target='_blank';a.rel='noopener noreferrer';return a;}
 function renderResults(){
   const b=dataset.benchmarks.find(b=>b.id===$('system-select').value);if(!b)return;
-  $('system-definition').replaceChildren(text('h3',b.name));const dl=document.createElement('dl');
+  $('system-name').textContent=b.family;
+  $('system-definition').replaceChildren();const dl=document.createElement('dl');
   const h=text('dd','');if(b.hamiltonian_html)h.innerHTML=b.hamiltonian_html;else h.textContent=b.hamiltonian;
   dl.append(text('dt','Hamiltonian'),h);
-  [['Convention',b.hamiltonian],['Geometry',b.geometry],['Sector',b.sector],['Units',`${b.unit} per site`]].forEach(([k,v])=>dl.append(text('dt',k),text('dd',v)));
-  $('system-definition').append(dl);const rows=currentRows();$('results').replaceChildren();
+  const parameters=text('dd','');if(b.parameters_html)parameters.innerHTML=b.parameters_html;else parameters.textContent=b.hamiltonian;
+  dl.append(text('dt','Parameters'),parameters);
+  [['Lattice size',b.lattice_size||`${b.sites} sites`],['Boundaries',b.boundary_conditions||b.geometry],['Sector',b.sector],['Units',`${b.unit} per site`]].forEach(([k,v])=>dl.append(text('dt',k),text('dd',v)));
+  const conventions=document.createElement('details');conventions.className='instance-conventions';conventions.append(text('summary','Full geometry and conventions'),text('p',b.geometry),text('p',b.hamiltonian));
+  $('system-definition').append(dl,conventions);const rows=currentRows();$('results').replaceChildren();
   rows.forEach(row=>{const tr=document.createElement('tr'),method=text('td',row.method);method.append(text('small',row.variant));
     const energy=text('td',row.energy_per_site,'energy'),uncertainty=text('td',row.uncertainty_per_site===null?'Not reported':`± ${row.uncertainty_per_site}`);uncertainty.append(text('small',row.uncertainty_type.replaceAll('_',' ')));
     const paper=text('td','');paper.append(link(row.paper.id,`https://arxiv.org/abs/${row.paper.id}`),text('small',row.paper.published.slice(0,10)));paper.title=`${row.paper.title} — ${row.paper.authors}`;
@@ -68,7 +86,9 @@ function prepareSubmission(event){
   $('submission-ready').hidden=false;$('submission-ready').scrollIntoView({behavior:'smooth',block:'start'});
 }
 window.addEventListener('hashchange',route);
+$('model-select').addEventListener('change',()=>{if(!dataset)return;renderInstances('model-select','system-select');location.hash='#benchmarks?system='+encodeURIComponent($('system-select').value);});
 $('system-select').addEventListener('change',()=>location.hash='#benchmarks?system='+encodeURIComponent($('system-select').value));
+$('submit-model').addEventListener('change',()=>{if(dataset)renderInstances('submit-model','submit-system');});
 $('search').addEventListener('input',()=>{if(dataset)renderResults();});$('wiki-search').addEventListener('input',()=>{if(dataset)renderWiki();});
 $('download').addEventListener('click',()=>{if(dataset)download({benchmark:dataset.benchmarks.find(b=>b.id===$('system-select').value),results:currentRows()},`${$('system-select').value}.json`);});
 $('submission-form').addEventListener('submit',prepareSubmission);$('download-result').addEventListener('click',()=>{if(submission)download(submission,submission.paper.id.replace(/v\d+$/,'')+'.json');});

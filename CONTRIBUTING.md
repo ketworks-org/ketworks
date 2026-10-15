@@ -23,7 +23,7 @@ Results live in `data/results/<unversioned-arxiv-id>.json`. The record itself pi
 
 Human submissions use `extraction_model: "human"`. A source checksum may be null for a human entry; the exact versioned source URL and location are still required. Bot records always include a source checksum. All result rows undergo the same scientific validation.
 
-For a new benchmark, add its explicit definition to `data/benchmarks.json` in the same PR, and reference its ID in the result file. Include a `hamiltonian_latex` expression for the displayed equation and a complete plain-text convention. Eligible but unresolved bot discoveries live in `data/proposals/`; those files are never published.
+For a new benchmark, add its explicit definition to `data/benchmarks.json` in the same PR, and reference its ID in the result file. Keep `name` and `family` as the system name, without size or parameter values. Instances of the same system share that name and appear under one system entry. Put size, boundaries, couplings, and sector in a distinguishing `instance_label`, with `lattice_size` and `boundary_conditions` for their detail rows. Include a symbolic `hamiltonian_latex`, the instance values in `parameters_latex`, and a complete plain-text Hamiltonian convention. The instance ID remains unique and includes the full physical specification. Eligible but unresolved bot discoveries live in `data/proposals/`; those files are never published.
 
 Only original NQS variational results are accepted. Extrapolated energies, projected estimates, non-NQS methods, and numbers quoted from earlier papers are excluded. See the wiki's benchmark-conventions page for details.
 
