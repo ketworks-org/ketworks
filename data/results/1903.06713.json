@@ -26,6 +26,7 @@
       "unit": "J1",
       "uncertainty": "0.00001",
       "uncertainty_type": "unspecified",
+      "variance": null,
       "source_location": "Table I, p. 6 (10 × 10, J2 = 0.5, row CNN)",
       "eligibility_evidence": "Variational Monte Carlo energy of an explicitly represented CNN wavefunction; the table also lists VMC and DMRG comparison values, which are excluded.",
       "parameter_count": null,

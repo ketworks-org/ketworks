@@ -8,7 +8,7 @@ import shutil
 import subprocess
 from urllib.parse import quote
 
-from .schema import ROOT, per_site, validate_tree
+from .schema import ROOT, per_site, validate_tree, variance_per_site
 
 
 def nav_html(index, registry, prefix="", current=None):
@@ -114,7 +114,7 @@ def build(root=ROOT, destination=None):
         records[path.stem] = {key: record[key] for key in ("schema_version", "paper", "source_url", "source_sha256", "extraction_model", "issues")}
         for row in record["results"]:
             energy, error = per_site(row, registry)
-            rows.append({**row, "energy_per_site": energy, "uncertainty_per_site": error, "paper": record["paper"], "source_url": record["source_url"]})
+            rows.append({**row, "energy_per_site": energy, "uncertainty_per_site": error, "variance_per_site": variance_per_site(row, registry), "paper": record["paper"], "source_url": record["source_url"]})
     # Proposal files and extraction artifacts never enter the public payload.
     payload = {"source_ref": source_ref, "benchmarks": [{**b, "hamiltonian_html": equations.get(b["id"]), "parameters_html": equations.get(b["id"] + ":parameters")} for b in registry.values()], "wiki": wiki, "results": rows, "papers": records, "paper_count": len(papers)}
     (destination / "data.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")

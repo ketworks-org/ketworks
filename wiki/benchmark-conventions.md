@@ -18,8 +18,8 @@ Each instance has a key such as `j1j2-square-10x10-pbc-j2-0p5-sz0` that appears 
 ## What is reported
 
 - The variational energy $E_\theta=\langle\Psi_\theta|H|\Psi_\theta\rangle/\langle\Psi_\theta|\Psi_\theta\rangle$, evaluated on the final fixed state with its own Monte Carlo run. Not the last value of the optimization trace.
-- The statistical uncertainty, with its meaning: one standard error of the mean from a [binning analysis](../variational-monte-carlo/), a standard deviation, a confidence interval, or an unspecified reported uncertainty. A missing uncertainty is recorded as missing, never as zero.
-- The energy variance $\operatorname{Var}_\theta(H)$ or its per-site value when the paper gives it. It is the only intrinsic accuracy measure when $E_0$ is unknown.
+- The statistical uncertainty, with its meaning: one standard error of the mean from a [binning analysis](../variational-monte-carlo/), a standard deviation, a confidence interval, or an unspecified reported uncertainty. Every entry must have one; an energy printed without an error bar is not accepted. A bound stated in the text, such as a caption saying that statistical errors are below the last printed digit, counts and is recorded as an upper bound.
+- The energy variance $\operatorname{Var}_\theta(H)$, optional, recorded in the same normalization as the energy ($\operatorname{Var}_\theta(H)/N$ for a per-site energy) when the paper prints it. It is the only intrinsic accuracy measure when $E_0$ is unknown, and with a reference energy $E_\infty$ it gives the V-score $N\operatorname{Var}_\theta(H)/(E-E_\infty)^2$ of Wu et al. (arXiv:2302.04919).
 - The printed digits exactly as they appear, as a decimal string, with the parenthesized uncertainty preserved in the original token. Only the conversion from total to per-site energy is done by the site.
 - The number of parameters, the architecture class, the symmetry treatment and the sampling budget, when available.
 

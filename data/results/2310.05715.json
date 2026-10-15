@@ -26,6 +26,7 @@
       "unit": "J1",
       "uncertainty": "0.000001",
       "uncertainty_type": "unspecified",
+      "variance": null,
       "source_location": "Table 1 (row 'Present work')",
       "eligibility_evidence": "Variational energy of the ViT wavefunction optimized with the kernel formulation of SR.",
       "parameter_count": 267720,

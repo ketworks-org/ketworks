@@ -26,6 +26,7 @@
       "unit": "J1",
       "uncertainty": "0.000006",
       "uncertainty_type": "unspecified",
+      "variance": null,
       "source_location": "Table III, p. 6 (row aCNN(C4v), column J2/J1 = 0.5)",
       "eligibility_evidence": "Variational energy of the aCNN state; VMC, DMRG and quoted RBM+PP/ViT rows are excluded.",
       "parameter_count": null,

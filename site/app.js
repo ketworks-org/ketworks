@@ -1,5 +1,5 @@
 import {makeSubmission, mergeSubmission, makeProposal, instanceFromForm, METHOD_CLASSES, MODELS} from './submission.mjs';
-import {filterRows, sortRows, rankByEnergy, summarize} from './leaderboard.mjs';
+import {filterRows, sortRows, rankByEnergy, summarize, withErrorBar} from './leaderboard.mjs';
 let dataset, submission, sort = {key: 'energy', direction: 'asc'};
 const $ = id => document.getElementById(id);
 const text = (tag, value, className) => { const el = document.createElement(tag); el.textContent = value; if (className) el.className = className; return el; };
@@ -64,7 +64,7 @@ function renderLedger() {
     const tr = document.createElement('tr');
     const system = text('td', ''); const name = text('a', '', 'ledger-system'); name.href = '#benchmarks?system=' + encodeURIComponent(benchmark.id); name.append(lattice(benchmark.family.includes('Triangular')), text('span', benchmark.family)); system.append(name);
     const key = text('td', ''); key.append(text('code', benchmark.id, 'key'));
-    const energy = text('td', best ? best.energy_per_site : '—', 'num energy'); if (best) energy.append(text('small', `${best.method} · arXiv:${best.paper.id}`));
+    const shown = best ? withErrorBar(best.energy_per_site, best.uncertainty_per_site, best.uncertainty_type) : {text: '—'}; const energy = text('td', shown.text, 'num energy'); if (best) energy.append(text('small', `${best.method} · arXiv:${best.paper.id}${shown.missing ? ' · no error bar printed' : ''}`));
     tr.append(system, text('td', benchmark.instance_label || benchmark.geometry), key, text('td', count ? formatCount(count) : '0', 'num mono'), energy);
     $('ledger').append(tr);
   });
@@ -85,7 +85,7 @@ function renderBoardOverview() {
     table.innerHTML = '<thead><tr><th scope="col">Instance</th><th scope="col" class="num">Sites</th><th scope="col" class="num">Results</th><th scope="col" class="num">Lowest energy / site</th></tr></thead>';
     entries.forEach(({benchmark, count, best}) => {
       const tr = document.createElement('tr'); const cell = text('td', ''); const link = text('a', benchmark.instance_label || benchmark.id, 'instance-link'); link.href = '#benchmarks?system=' + encodeURIComponent(benchmark.id); cell.append(link);
-      const energy = text('td', best ? best.energy_per_site : '—', 'num energy'); if (best) energy.append(text('small', `${best.method} · ${classLabel(best.method_class)} · arXiv:${best.paper.id}`));
+      const shown = best ? withErrorBar(best.energy_per_site, best.uncertainty_per_site, best.uncertainty_type) : {text: '—'}; const energy = text('td', shown.text, 'num energy'); if (best) energy.append(text('small', `${best.method} · ${classLabel(best.method_class)} · arXiv:${best.paper.id}${shown.missing ? ' · no error bar printed' : ''}`));
       tr.append(cell, text('td', String(benchmark.sites), 'num mono'), text('td', count ? formatCount(count) : '0', 'num mono'), energy); body.append(tr);
     });
     table.append(body); wrap.append(table); group.append(head, wrap); container.append(group);
@@ -143,12 +143,13 @@ function renderResults() {
     const tr = document.createElement('tr');
     const method = text('td', row.method); method.append(text('small', row.variant));
     const cls = text('td', ''); cls.append(text('span', classLabel(row.method_class), 'tag'));
-    const energy = text('td', row.energy_per_site, 'num energy');
-    const uncertainty = text('td', row.uncertainty_per_site === null ? '—' : `± ${row.uncertainty_per_site}`, 'num mono'); uncertainty.append(text('small', row.uncertainty_type.replaceAll('_', ' ')));
+    const energy = text('td', withErrorBar(row.energy_per_site, row.uncertainty_per_site, row.uncertainty_type).text, 'num energy');
+    const uncertainty = text('td', row.uncertainty_per_site === null ? '—' : `${row.uncertainty_type === 'upper_bound' ? '< ' : '± '}${row.uncertainty_per_site}`, 'num mono'); uncertainty.append(text('small', row.uncertainty_per_site === null ? 'not printed' : row.uncertainty_type.replaceAll('_', ' ')));
+    const variance = text('td', row.variance_per_site ?? '—', 'num mono');
     const parameters = text('td', row.parameter_count === null ? '—' : formatCount(row.parameter_count), 'num mono');
     const paper = text('td', ''); paper.append(link(`arXiv:${row.paper.id}`, `https://arxiv.org/abs/${row.paper.id}`, 'mono'), text('small', `${row.paper.published.slice(0, 4) || ''} · ${shortAuthors(row.paper.authors)}`)); paper.title = row.paper.title;
     const evidence = text('td', ''); evidence.append(link(row.source_location, row.source_url));
-    tr.append(text('td', String(ranks.get(row)), 'num mono rank'), method, cls, energy, uncertainty, parameters, paper, evidence); $('results').append(tr);
+    tr.append(text('td', String(ranks.get(row)), 'num mono rank'), method, cls, energy, uncertainty, variance, parameters, paper, evidence); $('results').append(tr);
   });
   document.querySelectorAll('.board th').forEach(th => { const button = th.querySelector('.sort'); if (!button) return; if (button.dataset.sort === sort.key) th.setAttribute('aria-sort', sort.direction === 'asc' ? 'ascending' : 'descending'); else th.removeAttribute('aria-sort'); });
   $('result-count').textContent = `${rows.length} result${rows.length === 1 ? '' : 's'}`; $('empty-results').hidden = rows.length > 0;

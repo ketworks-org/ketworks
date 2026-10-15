@@ -38,7 +38,11 @@ ROW = obj({
     "normalization": string(["total", "per_site", "unknown"]),
     "unit": string(),
     "uncertainty": string(nullable=True),
-    "uncertainty_type": string(["standard_error", "standard_deviation", "confidence_interval", "unspecified", "not_reported"]),
+    # upper_bound: the text states that the error is smaller than this value (for example "below the last digit").
+    "uncertainty_type": string(["standard_error", "standard_deviation", "confidence_interval", "unspecified", "upper_bound", "not_reported"]),
+    # Energy variance Var(H) as printed, in the same normalization as the energy (Var(H)/N for a per-site
+    # energy); null when the paper does not print it. With a reference energy it gives the V-score.
+    "variance": string(nullable=True),
     "source_location": string(),
     "eligibility_evidence": string(),
     "parameter_count": {"type": ["integer", "null"]},
@@ -104,11 +108,14 @@ def validate_row(row, registry, source_text=None, allow_unmatched=False):
         implied_error = Decimal(printed[2]) * Decimal(10) ** (exponent - places)
         if row["uncertainty"] is None or decimal(row["uncertainty"]) != implied_error:
             raise ValueError("Uncertainty disagrees with the printed parentheses")
-    if row["uncertainty"] is not None:
-        if decimal(row["uncertainty"]) < 0 or row["uncertainty_type"] == "not_reported":
-            raise ValueError("Invalid uncertainty")
-    elif row["uncertainty_type"] != "not_reported":
-        raise ValueError("An absent uncertainty must be marked not_reported")
+    # Every entry needs an error bar, printed or stated in the text; "not_reported" stays in the enum only
+    # so that automated extraction can say so, and such rows are then rejected here for review.
+    if row["uncertainty"] is None:
+        raise ValueError("No error bar: entries need the uncertainty printed or stated in the paper")
+    if decimal(row["uncertainty"]) <= 0 or row["uncertainty_type"] == "not_reported":
+        raise ValueError("Invalid uncertainty")
+    if row["variance"] is not None and decimal(row["variance"]) < 0:
+        raise ValueError("Invalid variance")
     if row["parameter_count"] is not None and row["parameter_count"] < 0:
         raise ValueError("Negative parameter count")
     if source_text is not None:
@@ -148,6 +155,15 @@ def validate_record(record, registry, allow_unmatched=False):
         keys.append(row_key(row))
     if len(set(keys)) != len(keys):
         raise ValueError("Duplicate benchmark/method/variant rows")
+
+
+def variance_per_site(row, registry):
+    """Var(H)/N, or None when no variance is recorded."""
+    if row["variance"] is None:
+        return None
+    divisor = registry[row["benchmark_id"]]["sites"] if row["normalization"] == "total" else 1
+    value = decimal(row["variance"]) / divisor
+    return format(value.normalize() if value == value.to_integral() else value, "f")
 
 
 def per_site(row, registry):

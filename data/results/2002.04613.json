@@ -26,6 +26,7 @@
       "unit": "J1",
       "uncertainty": "0.000012",
       "uncertainty_type": "unspecified",
+      "variance": null,
       "source_location": "Table I, p. 3 (row 'our work', column J2/J1 = 0.5)",
       "eligibility_evidence": "Variational energy of the authors' CNN ansatz; comparison rows (GWF, GWF+RBM, CNN of Ref. 4) are excluded.",
       "parameter_count": null,
