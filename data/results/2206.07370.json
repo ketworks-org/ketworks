@@ -25,11 +25,11 @@
       "normalization": "per_site",
       "unit": "J",
       "uncertainty": "0.0004",
-      "uncertainty_type": "unspecified",
+      "uncertainty_type": "standard_deviation",
       "source_location": "Table on p. 8 (row Triangular, size 36, J2 = 0, column 'LCN (ours)')",
       "eligibility_evidence": "Variational energy of the LCN state; the GNN columns are other learned ansätze from the same table and the reference column is ED.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "The p. 8 experimental setup defines the error bar as the standard deviation of average energies across 100 bins. The reported 0.0004 is retained without converting it to a standard error. Source-level audit performed 2026-10-15; independent numerical reproduction and curator approval are separate."
     }
   ],
   "issues": []

@@ -29,7 +29,7 @@
       "source_location": "Table I (Appendix E), p. 16, left table (row HFDS (8×8 Torus))",
       "eligibility_evidence": "Variational energy of a hidden-fermion determinant NQS at U/t = 8 and 1/8 hole doping on the periodic 8 × 8 lattice.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-n56-sz0",
@@ -49,7 +49,7 @@
       "source_location": "Table I (Appendix E), p. 16, left table (row JBf (8×8 Torus))",
       "eligibility_evidence": "Variational energy of a Jastrow-backflow determinant NQS at U/t = 8 and 1/8 hole doping on the periodic 8 × 8 lattice.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-n56-sz0",
@@ -69,7 +69,7 @@
       "source_location": "Table I (Appendix E), p. 16, right table (row HFDS-ViT)",
       "eligibility_evidence": "Variational energy of the HFDS with a vision-transformer backbone.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-n56-sz0",
@@ -89,7 +89,7 @@
       "source_location": "Table I (Appendix E), p. 16, right table (row HFDS Symm-ViT-Ti)",
       "eligibility_evidence": "Variational energy of the HFDS with a symmetrized ViT backbone.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-n56-sz0",
@@ -109,7 +109,7 @@
       "source_location": "Table I (Appendix E), p. 16, right table (row JBf-ViT)",
       "eligibility_evidence": "Variational energy of the JBf state with a vision-transformer backbone.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-n56-sz0",
@@ -129,8 +129,10 @@
       "source_location": "Table I (Appendix E), p. 16, right table (row JBf Symm-ViT-Ti)",
       "eligibility_evidence": "Variational energy of the JBf state with a symmetrized ViT backbone.",
       "parameter_count": null,
-      "notes": "Electron numbers inferred from n_h = 1/8 on 64 sites (56 electrons); the paper reports the lowest-energy momentum sector k = (pi/2, pi/2). Curator should confirm Nup = Ndown = 28. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Electron numbers inferred from n_h = 1/8 on 64 sites (56 electrons); the paper reports the lowest-energy momentum sector k = (pi/2, pi/2). Curator should confirm Nup = Ndown = 28. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     }
   ],
-  "issues": []
+  "issues": [
+    "Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
+  ]
 }

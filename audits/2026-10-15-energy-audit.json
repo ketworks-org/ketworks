@@ -1,0 +1,1267 @@
+{
+  "audit_date": "2026-10-15",
+  "baseline_commit": "34ac2a0e85416c636c1ac5a9d20385d5a13f6c19",
+  "scope": "Every one of the 64 result rows in the 28 data/results records at the baseline commit, plus two 16x4 ACE rows lost during the later seed merge.",
+  "summary": {
+    "baseline_rows": 64,
+    "baseline_papers": 28,
+    "printed_energy_tokens_matching_exact_version": 64,
+    "numeric_transcription_corrections": 0,
+    "excluded_non_neural_rows": 10,
+    "restored_rows": 2,
+    "remaining_nqs_rows": 56,
+    "remaining_papers": 25
+  },
+  "method": [
+    "Download all 28 exact-version PDFs and compare SHA-256 with stored PDF provenance.",
+    "Read energy tables/text and surrounding method/model descriptions; visually inspect the listed energy pages, including headers, row labels and captions.",
+    "Check central decimals and parentheses with the existing Decimal-based validator; retain printed precision and missing uncertainties.",
+    "Separate original NQS variational results from comparison numbers, non-neural tensors, projector methods and extrapolations."
+  ],
+  "limits": [
+    "This is a source audit, not an independent numerical reproduction or human curator approval.",
+    "Unstated spin sectors remain unconfirmed and are flagged in affected result notes and paper issues. Existing benchmark IDs are retained for curator review, not certified by this audit.",
+    "An error bar with no explicit convention remains unspecified; no standard-error convention is assumed.",
+    "The audit covers the recorded rows and the two overwritten ACE rows. It does not claim that all eligible energies in these papers or all relevant arXiv papers have been collected."
+  ],
+  "source_integrity": {
+    "pdf_records_with_matching_stored_raw_sha256": 27,
+    "html_record": {
+      "paper_id": "2310.05715v2",
+      "previous_source_url": "https://arxiv.org/html/2310.05715v2",
+      "previous_sha256": "47c7d86dc60a1641c972ae0bdc4eae511c13d2a4f9a08d65ee0a593761927457",
+      "downloaded_html_sha256": "1c3750a5d0f956b0db7af7406537c29bf6274b298f5e9968a0153aa7809b95bf",
+      "action": "The current HTML bytes do not reproduce the stored hash; the cause is not established. Replace provenance with the independently inspected exact-version PDF and its raw SHA-256."
+    }
+  },
+  "papers": [
+    {
+      "paper_id": "1903.06713v1",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/1903.06713.json",
+      "pdf_url": "https://arxiv.org/pdf/1903.06713v1",
+      "pdf_sha256": "5b7348361cf6a878e07ced8cc021349972fc03ce9d579543fb67df4101e1bd44",
+      "visually_checked_pdf_pages": [
+        6
+      ],
+      "context_pages_read": [
+        2,
+        4,
+        6
+      ],
+      "evidence": "Table I, CNN row, J2=0.5 column. Spin-1/2, J1=1, 10x10 PBC and zero magnetization are stated in the model/results sections.",
+      "spin_sector_check": "confirmed",
+      "actions": [],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+          "method": "Convolutional neural network",
+          "variant": "CNN with Marshall-sign prior, symmetrized",
+          "energy_token": "-0.49516(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 6 (10 × 10, J2 = 0.5, row CNN)"
+        }
+      ]
+    },
+    {
+      "paper_id": "2002.04613v3",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2002.04613.json",
+      "pdf_url": "https://arxiv.org/pdf/2002.04613v3",
+      "pdf_sha256": "89e6b0941621ad18cca46b8be7b77d97805f4ac02a3cfcfaf8bf231f9cf6e426",
+      "visually_checked_pdf_pages": [
+        3
+      ],
+      "context_pages_read": [
+        2,
+        3,
+        6,
+        11
+      ],
+      "evidence": "Table I, our-work row, J2/J1=0.5. Table reports J1 per spin; p2 specifies 10x10 PBC. Appendix E, p11, explicitly uses zero sum of z spins and N/2 down spins.",
+      "spin_sector_check": "confirmed",
+      "actions": [],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+          "method": "Convolutional neural network",
+          "variant": "separate amplitude and phase CNNs",
+          "energy_token": "-0.494757(12)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 3 (row 'our work', column J2/J1 = 0.5)"
+        }
+      ]
+    },
+    {
+      "paper_id": "2005.14142v6",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2005.14142.json",
+      "pdf_url": "https://arxiv.org/pdf/2005.14142v6",
+      "pdf_sha256": "af398ebf5ed7c49fd7845af6bbb2d66effb29bb34a1e5914cf16e11086c68419",
+      "visually_checked_pdf_pages": [
+        14
+      ],
+      "context_pages_read": [
+        2,
+        3,
+        14
+      ],
+      "evidence": "Table II, present-study RBM+PP row, 10x10 J2=0.5. PBC/spin-1/2 are specified; the pair-product construction has equal up/down populations. The 16 hidden units and symmetry projections are described in the method.",
+      "spin_sector_check": "derived_from_state_definition",
+      "actions": [],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+          "method": "RBM + pair-product state",
+          "variant": "RBM+PP, 16 hidden units, momentum K = 0, A1 and spin-parity projections",
+          "energy_token": "-0.497629(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table II, p. 14 (row RBM+PP, 'present study')"
+        }
+      ]
+    },
+    {
+      "paper_id": "2009.14370v2",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2009.14370.json",
+      "pdf_url": "https://arxiv.org/pdf/2009.14370v2",
+      "pdf_sha256": "74b1aa5375d3afa863c7ee4aa2685dfd0a737e7399a96531b8d27fa4b69be483",
+      "visually_checked_pdf_pages": [
+        4
+      ],
+      "context_pages_read": [
+        3,
+        4,
+        5
+      ],
+      "evidence": "Table I PEPS+D. CNN column and Table II agree. Eq. (10) multiplies a CNN amplitude by the sign of a PEPS, not its amplitude. The J2=0 PEPS sign prior has D=1; the deep CNN has 3531 parameters and rotational symmetrization. The physical 10x10 Hamiltonian has PBC even though the sign-prior PEPS uses open boundaries.",
+      "spin_sector_check": "not_confirmed",
+      "actions": [
+        "Correct the PEPS/CNN state description, D=1 sign prior, method class and parameter count."
+      ],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+          "method": "PEPS × deep CNN",
+          "variant": "PEPS (D = 2) multiplied by a deep CNN",
+          "energy_token": "-0.495502",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 4 (row J2 = 0.5, column PEPS+D. CNN); repeated in Table II, p. 5"
+        }
+      ]
+    },
+    {
+      "paper_id": "2104.05085v3",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2104.05085.json",
+      "pdf_url": "https://arxiv.org/pdf/2104.05085v3",
+      "pdf_sha256": "4400710f8c425c0e1b00697931f9f14e85e1ca4c0cfae5af5c7018dd1f0ce1e3",
+      "visually_checked_pdf_pages": [
+        4
+      ],
+      "context_pages_read": [
+        4,
+        7
+      ],
+      "evidence": "Table I, own G-CNN row, J2=0. Appendix C specifies a 6x6 torus, represented as a rectangular grid with one diagonal coupling. Normalization follows the table comparison to the spin-1/2 per-spin benchmark; the paper does not give a separately explicit Hamiltonian normalization beside this table.",
+      "spin_sector_check": "not_confirmed",
+      "actions": [],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "heisenberg-triangular-6x6-pbc-sz0",
+          "method": "Group-convolutional neural network",
+          "variant": "G-CNN",
+          "energy_token": "-0.55922",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 4 (row G-CNN, column J2 = 0)"
+        }
+      ]
+    },
+    {
+      "paper_id": "2108.13830v4",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2108.13830.json",
+      "pdf_url": "https://arxiv.org/pdf/2108.13830v4",
+      "pdf_sha256": "566c074053cd686390a49f64d9051da7ddc051b5c9dd673e87dc50cc04c1d999",
+      "visually_checked_pdf_pages": [
+        10
+      ],
+      "context_pages_read": [
+        2,
+        4,
+        6,
+        10
+      ],
+      "evidence": "Table 4, L=10, J2/J1=0.50. The model uses spin-1/2 (Pauli operators with the 1/4 Hamiltonian prefactor), PBC, and 106529 parameters. The Neel initialization and opposite-spin swaps in Fig. 2/Sec. 3.1 preserve Sz=0.",
+      "spin_sector_check": "derived_from_sampling",
+      "actions": [],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+          "method": "Deep convolutional neural network",
+          "variant": "CNN with 106529 parameters, transfer learning and symmetrization",
+          "energy_token": "-0.49717",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table 4, p. 10 (row 10 × 10, column 0.50)"
+        }
+      ]
+    },
+    {
+      "paper_id": "2111.10420v2",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2111.10420.json",
+      "pdf_url": "https://arxiv.org/pdf/2111.10420v2",
+      "pdf_sha256": "4291292a61f305c7dcb377693c3e44069147e64c4684d713adc36845fbea3fd2",
+      "visually_checked_pdf_pages": [
+        20
+      ],
+      "context_pages_read": [
+        5,
+        7,
+        20
+      ],
+      "evidence": "Table IV, PBC-PBC, L=16. Section III B specifies Lx4, U=8, 1/8 hole doping and zero total magnetization. The two-layer fully connected network and 16 hidden fermions are stated on p7. Open-boundary results are different rows and were not used.",
+      "spin_sector_check": "confirmed",
+      "actions": [],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "hubbard-rectangular-16x4-pbc-u8-n56-sz0",
+          "method": "Hidden-fermion determinant state",
+          "variant": "HFDS, 16 hidden fermions, fully connected network, PBC-PBC",
+          "energy_token": "-0.753(2)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table IV, p. 20 (row L = 16, column HFDS (PBC-PBC))"
+        }
+      ]
+    },
+    {
+      "paper_id": "2204.07816v1",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2204.07816.json",
+      "pdf_url": "https://arxiv.org/pdf/2204.07816v1",
+      "pdf_sha256": "941aa5657c9ad326884befd95047284f948fb5441b48143f8f28f174e1b13e5e",
+      "visually_checked_pdf_pages": [
+        10
+      ],
+      "context_pages_read": [
+        3,
+        4,
+        10
+      ],
+      "evidence": "Section 7.3.1 explicitly prints the L=10 own-work energy; CNN1 is used at J2/J1=0.5 with periodic padding. No parenthesized uncertainty is printed. Parameter-count discussion elsewhere includes both 106529 and 421953; the record deliberately retains null rather than importing a count from a later comparison paper.",
+      "spin_sector_check": "not_confirmed",
+      "actions": [],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+          "method": "Deep convolutional neural network",
+          "variant": "CNN1, L = 10",
+          "energy_token": "-0.497468",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "p. 10, text ('When L = 10 the energy in this work is -0.497468')"
+        }
+      ]
+    },
+    {
+      "paper_id": "2206.07370v1",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2206.07370.json",
+      "pdf_url": "https://arxiv.org/pdf/2206.07370v1",
+      "pdf_sha256": "1887769697dd7dab69eefd263e48f73bf521847cdafdeded4f45b91f4af74ecf",
+      "visually_checked_pdf_pages": [
+        8
+      ],
+      "context_pages_read": [
+        4,
+        5,
+        8,
+        14
+      ],
+      "evidence": "Table 1, triangular lattice, 36 sites, J2=0, LCN. Periodic lattice construction is described in Sec. 3. Appendix A initializes equal up/down populations. On p8 the error bar is explicitly the standard deviation of 100 bin-average energies.",
+      "spin_sector_check": "derived_from_sampling",
+      "actions": [
+        "Set uncertainty_type to standard_deviation; do not divide the printed 0.0004 by sqrt(100)."
+      ],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "heisenberg-triangular-6x6-pbc-sz0",
+          "method": "Lattice convolutional network",
+          "variant": "LCN",
+          "energy_token": "-0.5601(4)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table on p. 8 (row Triangular, size 36, J2 = 0, column 'LCN (ours)')"
+        }
+      ]
+    },
+    {
+      "paper_id": "2206.14307v1",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2206.14307.json",
+      "pdf_url": "https://arxiv.org/pdf/2206.14307v1",
+      "pdf_sha256": "42791286642faa8294ecf008c4e68b2d804cada16ccf69bcdf4174b527386979",
+      "visually_checked_pdf_pages": [
+        7
+      ],
+      "context_pages_read": [
+        2,
+        5,
+        6,
+        7
+      ],
+      "evidence": "Table 4, J2/J1=0.5, symmetric RBM and one-Lanczos-step rows. The model fixes equal up/down populations and uses 10x10 PBC. Section 3 defines a finite improved trial state and its variational energy; this is not zero-variance extrapolation.",
+      "spin_sector_check": "confirmed",
+      "actions": [
+        "Make Table 4 explicit in both source locations."
+      ],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+          "method": "Restricted Boltzmann machine",
+          "variant": "symmetric RBM, p = 0",
+          "energy_token": "-0.49580(2)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "p. 7, table of ground-state energies for the J1-J2 model on the 10 × 10 lattice (row Energy(RBM), column J2 = 0.5)"
+        },
+        {
+          "baseline_row_index": 1,
+          "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+          "method": "Restricted Boltzmann machine",
+          "variant": "symmetric RBM with one Lanczos step, p = 1",
+          "energy_token": "-0.4968(4)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "p. 7, same table (row Energy(RBM) p = 1, column J2 = 0.5)"
+        }
+      ]
+    },
+    {
+      "paper_id": "2211.07749v2",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2211.07749.json",
+      "pdf_url": "https://arxiv.org/pdf/2211.07749v2",
+      "pdf_sha256": "5fdcee4b560636a2d306c250d08d462238b69afd27b3d2bc7293beeb62d7431c",
+      "visually_checked_pdf_pages": [
+        4,
+        7
+      ],
+      "context_pages_read": [
+        2,
+        4,
+        6,
+        7
+      ],
+      "evidence": "Table I, square 10x10 J2/J1=0.5, Our work; Table III, triangular N=36 J2=0, GCNN. Both captions specify energy in J1 per spin. These are plain optimized GCNN values, not comparison columns or the GCNN+LS column.",
+      "spin_sector_check": "not_confirmed",
+      "actions": [],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+          "method": "Group-convolutional neural network",
+          "variant": "GCNN",
+          "energy_token": "-0.497437(7)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 4 (row J2/J1 = 0.5, 10 × 10, column 'Our work')"
+        },
+        {
+          "baseline_row_index": 1,
+          "benchmark_id": "heisenberg-triangular-6x6-pbc-sz0",
+          "method": "Group-convolutional neural network",
+          "variant": "GCNN",
+          "energy_token": "-0.560313(3)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table III, p. 7 (row J2/J1 = 0, N = 36, column GCNN)"
+        }
+      ]
+    },
+    {
+      "paper_id": "2301.06788v2",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2301.06788.json",
+      "pdf_url": "https://arxiv.org/pdf/2301.06788v2",
+      "pdf_sha256": "bbe9896e1684b9f73204fc1455195b272864b335a19c74be88df6e2e6a822c90",
+      "visually_checked_pdf_pages": [
+        7
+      ],
+      "context_pages_read": [
+        5,
+        7
+      ],
+      "evidence": "Table I, This Work CNN, 10x10 J2/J1=0.5. Section III specifies periodic boundaries and the zero-magnetization sector. Error bars are described as fluctuations across independently drawn sample sets, without identifying the printed table uncertainty as SEM versus standard deviation.",
+      "spin_sector_check": "confirmed",
+      "actions": [],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+          "method": "Convolutional neural network",
+          "variant": "CNN, design choices of this work",
+          "energy_token": "-0.49586(4)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 7 (row CNN, 'This Work')"
+        }
+      ]
+    },
+    {
+      "paper_id": "2302.01941v3",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2302.01941.json",
+      "pdf_url": "https://arxiv.org/pdf/2302.01941v3",
+      "pdf_sha256": "097af42c411cd1d06b0a8e410d5d6282897401879a240f1997542ca7e73564f9",
+      "visually_checked_pdf_pages": [
+        3
+      ],
+      "context_pages_read": [
+        2,
+        3,
+        4,
+        8,
+        9
+      ],
+      "evidence": "The p3 text explicitly reports E/N=-0.4976921(4) for the large ResNet2 on the 10x10 J1-J2 model. The adjacent -0.497715(9) is zero-variance extrapolated and excluded. Model equation fixes spin-1/2 and J1=1; the relevant square-lattice comparison is at J2/J1=0.5.",
+      "spin_sector_check": "not_confirmed",
+      "actions": [],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+          "method": "Deep residual CNN",
+          "variant": "ResNet2, more than 10^6 parameters, MinSR",
+          "energy_token": "-0.4976921(4)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "p. 3, text and Fig. 2b ('the best variational energy E/N = -0.4976921(4)')"
+        }
+      ]
+    },
+    {
+      "paper_id": "2308.09664v2",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2308.09664.json",
+      "pdf_url": "https://arxiv.org/pdf/2308.09664v2",
+      "pdf_sha256": "f66e546894e17a7062d1c3bd60d16cc8c2487a9aba6a7422fa4484a83a1a85c5",
+      "visually_checked_pdf_pages": [
+        6
+      ],
+      "context_pages_read": [
+        4,
+        5,
+        6
+      ],
+      "evidence": "Table III, aCNN(C4v) row, J2/J1=0.5, L=10. Sampling keeps equal up/down spins. The following paragraph identifies a fixed checkerboard Marshall sign for this result. VMC/DMRG/extrapolation and other-paper comparison rows are excluded.",
+      "spin_sector_check": "confirmed",
+      "actions": [],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+          "method": "Amplitude-optimized CNN (aCNN)",
+          "variant": "aCNN with C4v symmetry",
+          "energy_token": "-0.495627(6)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table III, p. 6 (row aCNN(C4v), column J2/J1 = 0.5)"
+        }
+      ]
+    },
+    {
+      "paper_id": "2308.11823v6",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2308.11823.json",
+      "pdf_url": "https://arxiv.org/pdf/2308.11823v6",
+      "pdf_sha256": "20467bc826ac7ab3f7443db45f6d3a923bc67319b17719c752fca0134d4000b9",
+      "visually_checked_pdf_pages": [
+        5
+      ],
+      "context_pages_read": [
+        1,
+        2,
+        3,
+        5,
+        6
+      ],
+      "evidence": "Table III BW1/BW2, n=0.875, 4x16 PBC, both p=1. Section II.2, Eqs. (8)-(9), represents the orbitals by directly indexed variational tensor coefficients. There is no neural network in this ansatz. The energies and finite Lanczos step are variational, but the method is non-NQS.",
+      "spin_sector_check": "not_assessed_after_scope_exclusion",
+      "actions": [
+        "Exclude both rows from Ketboard as non-NQS."
+      ],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "hubbard-rectangular-16x4-pbc-u8-n56-sz0",
+          "method": "Tensor backflow",
+          "variant": "BW1, one Lanczos step (p = 1)",
+          "energy_token": "-0.7597",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "exclude_non_nqs",
+          "source_location": "Table III, p. 5 (row n = 0.875, 4 × 16, column BW1)"
+        },
+        {
+          "baseline_row_index": 1,
+          "benchmark_id": "hubbard-rectangular-16x4-pbc-u8-n56-sz0",
+          "method": "Tensor backflow",
+          "variant": "BW2, one Lanczos step (p = 1)",
+          "energy_token": "-0.7618",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "exclude_non_nqs",
+          "source_location": "Table III, p. 5 (row n = 0.875, 4 × 16, column BW2)"
+        }
+      ]
+    },
+    {
+      "paper_id": "2310.05715v2",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2310.05715.json",
+      "pdf_url": "https://arxiv.org/pdf/2310.05715v2",
+      "pdf_sha256": "3b4d809d0ccfe6db794befb273ba35ff43d31923bd3db8b14bada6a84a5e9956",
+      "visually_checked_pdf_pages": [
+        2
+      ],
+      "context_pages_read": [
+        2,
+        4
+      ],
+      "evidence": "PDF Table I, Present work, Deep ViT, 267720 parameters, energy per site at 10x10 J2/J1=0.5. Spin-1/2 Hamiltonian and Sz=0 sampling are explicit. Periodicity is supported by the full lattice translation symmetry construction; it is not independently restated in the caption.",
+      "spin_sector_check": "confirmed",
+      "actions": [
+        "Replace non-reproducible HTML checksum provenance with the downloaded exact-version PDF and Table I, p2."
+      ],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+          "method": "Vision transformer",
+          "variant": "Deep ViT, 267720 parameters",
+          "energy_token": "-0.497634(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table 1 (row 'Present work')"
+        }
+      ]
+    },
+    {
+      "paper_id": "2505.20406v3",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2505.20406.json",
+      "pdf_url": "https://arxiv.org/pdf/2505.20406v3",
+      "pdf_sha256": "77cd660daa4e5578b25501c98bccc4d9f572092568c7e8cfefafe00f6d7c8d5e",
+      "visually_checked_pdf_pages": [
+        20
+      ],
+      "context_pages_read": [
+        2,
+        3,
+        5,
+        20
+      ],
+      "evidence": "Table V, bold own RNN wavefunction row: finite L=6 with PBC, per-spin energy, scale s=4.0 and rate r=0.158. Section III enforces zero z-magnetization. Thermodynamic-limit values in Table VI are excluded.",
+      "spin_sector_check": "confirmed",
+      "actions": [],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "heisenberg-triangular-6x6-pbc-sz0",
+          "method": "Recurrent neural network wavefunction",
+          "variant": "RNN, scale s = 4.0, rate r = 0.158",
+          "energy_token": "-0.5562(2)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table V, p. 20 (row 'RNN wavefunction', bold)"
+        }
+      ]
+    },
+    {
+      "paper_id": "2507.01856v4",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2507.01856.json",
+      "pdf_url": "https://arxiv.org/pdf/2507.01856v4",
+      "pdf_sha256": "bb6c48e7b0aa4900bdbc2bd6d43e1bcf3f5ea59df0869e33a85835e5412cfd3c",
+      "visually_checked_pdf_pages": [
+        5
+      ],
+      "context_pages_read": [
+        1,
+        2,
+        5
+      ],
+      "evidence": "Table I, n=0.875 U=8, 16x16 PBC, p=0 and p=1. Section II A, Eqs. (4)-(6), defines direct full-tensor backflow parameters and a determinant, not an ANN. Variational but outside NQS-only scope.",
+      "spin_sector_check": "not_assessed_after_scope_exclusion",
+      "actions": [
+        "Exclude both rows from Ketboard as non-NQS."
+      ],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "hubbard-square-16x16-pbc-u8-n224-sz0",
+          "method": "Tensor backflow",
+          "variant": "p = 0",
+          "energy_token": "-0.7509",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "exclude_non_nqs",
+          "source_location": "Table I, p. 5 (row n = 0.875, U = 8, 16×16, PBC, column Ep=0)"
+        },
+        {
+          "baseline_row_index": 1,
+          "benchmark_id": "hubbard-square-16x16-pbc-u8-n224-sz0",
+          "method": "Tensor backflow",
+          "variant": "one Lanczos step (p = 1)",
+          "energy_token": "-0.7552",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "exclude_non_nqs",
+          "source_location": "Table I, p. 5 (row n = 0.875, U = 8, 16×16, PBC, column Ep=1)"
+        }
+      ]
+    },
+    {
+      "paper_id": "2507.10705v1",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2507.10705.json",
+      "pdf_url": "https://arxiv.org/pdf/2507.10705v1",
+      "pdf_sha256": "97b1cddb95a211367926cb56386caa3a3bf99b58b635f0b3d766b389792f75f1",
+      "visually_checked_pdf_pages": [
+        16
+      ],
+      "context_pages_read": [
+        2,
+        7,
+        9,
+        16
+      ],
+      "evidence": "Table IV gives the L=16 raw HFPS energy for the Lx4 stripe benchmark. Section III D explicitly specifies PBC, U=8, n=7/8, the GCNN with about 600K parameters, and d-wave mean-field initialization. The pairing field is an initialization device; the quoted energy is for the original Hubbard model.",
+      "spin_sector_check": "not_confirmed",
+      "actions": [],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "hubbard-rectangular-16x4-pbc-u8-n56-sz0",
+          "method": "Hidden-fermion Pfaffian state",
+          "variant": "HFPS with GCNN backbone (about 600K parameters), d-wave-paired mean-field initialization",
+          "energy_token": "-0.76413(3)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table IV, p. 16 (row 16 × 4); also p. 9 text"
+        }
+      ]
+    },
+    {
+      "paper_id": "2510.11710v2",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2510.11710.json",
+      "pdf_url": "https://arxiv.org/pdf/2510.11710v2",
+      "pdf_sha256": "d6c87db63c9f59b397b3423b81214557c46e6b740eff670e2b0df224dd9a0f0f",
+      "visually_checked_pdf_pages": [
+        16
+      ],
+      "context_pages_read": [
+        2,
+        16
+      ],
+      "evidence": "Appendix E Table I: retain only the two left-table 8x8 torus rows plus all four right-table torus ViT rows. The caption fixes U/t=8, 1/8 hole doping, per-site energies and 131072 samples. Section II fixes particle number and magnetization but does not explicitly give the magnetization value for these runs.",
+      "spin_sector_check": "not_confirmed",
+      "actions": [],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "hubbard-square-8x8-pbc-u8-n56-sz0",
+          "method": "Hidden-fermion determinant state",
+          "variant": "HFDS, 8 × 8 torus",
+          "energy_token": "-0.7454(9)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I (Appendix E), p. 16, left table (row HFDS (8×8 Torus))"
+        },
+        {
+          "baseline_row_index": 1,
+          "benchmark_id": "hubbard-square-8x8-pbc-u8-n56-sz0",
+          "method": "Jastrow-backflow determinant state",
+          "variant": "JBf, 8 × 8 torus",
+          "energy_token": "-0.7458(6)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I (Appendix E), p. 16, left table (row JBf (8×8 Torus))"
+        },
+        {
+          "baseline_row_index": 2,
+          "benchmark_id": "hubbard-square-8x8-pbc-u8-n56-sz0",
+          "method": "Hidden-fermion determinant state",
+          "variant": "HFDS-ViT backbone, 8 × 8 torus",
+          "energy_token": "-0.736(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I (Appendix E), p. 16, right table (row HFDS-ViT)"
+        },
+        {
+          "baseline_row_index": 3,
+          "benchmark_id": "hubbard-square-8x8-pbc-u8-n56-sz0",
+          "method": "Hidden-fermion determinant state",
+          "variant": "HFDS Symm-ViT-Ti backbone, 8 × 8 torus",
+          "energy_token": "-0.729(4)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I (Appendix E), p. 16, right table (row HFDS Symm-ViT-Ti)"
+        },
+        {
+          "baseline_row_index": 4,
+          "benchmark_id": "hubbard-square-8x8-pbc-u8-n56-sz0",
+          "method": "Jastrow-backflow determinant state",
+          "variant": "JBf-ViT backbone, 8 × 8 torus",
+          "energy_token": "-0.7422(3)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I (Appendix E), p. 16, right table (row JBf-ViT)"
+        },
+        {
+          "baseline_row_index": 5,
+          "benchmark_id": "hubbard-square-8x8-pbc-u8-n56-sz0",
+          "method": "Jastrow-backflow determinant state",
+          "variant": "JBf Symm-ViT-Ti backbone, 8 × 8 torus",
+          "energy_token": "-0.726(9)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I (Appendix E), p. 16, right table (row JBf Symm-ViT-Ti)"
+        }
+      ]
+    },
+    {
+      "paper_id": "2510.26906v1",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2510.26906.json",
+      "pdf_url": "https://arxiv.org/pdf/2510.26906v1",
+      "pdf_sha256": "d469ec696318089febe56c9f92e380330c6b7f64f1f9d68ef4ad5f9a246a0d05",
+      "visually_checked_pdf_pages": [
+        3,
+        5
+      ],
+      "context_pages_read": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "evidence": "The p3 text assigns -0.76258(1) to a two-layer 8192-neuron single determinant; p5 assigns -0.76340(2) to four determinants from four optimized symmetries at nh=2048. These are original variational states for 16x4 PBC U=8, 1/8 hole doping. FNDMC and the extrapolated -0.76748 are excluded.",
+      "spin_sector_check": "not_confirmed",
+      "actions": [],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "hubbard-rectangular-16x4-pbc-u8-n56-sz0",
+          "method": "Neural-network backflow (MLP)",
+          "variant": "two-layer MLP with 8192 hidden neurons, single determinant",
+          "energy_token": "-0.76258(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "p. 3, text ('a two-layer MLP with 8192 neurons reaches an energy of -0.76258(1)')"
+        },
+        {
+          "baseline_row_index": 1,
+          "benchmark_id": "hubbard-rectangular-16x4-pbc-u8-n56-sz0",
+          "method": "Neural-network backflow (MLP)",
+          "variant": "nh = 2048, four determinants from four optimized symmetries",
+          "energy_token": "-0.76340(2)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "p. 5, text ('our ansatz with four determinants generated by optimizing four symmetries has an energy of -0.76340(2)')"
+        }
+      ]
+    },
+    {
+      "paper_id": "2511.07566v1",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2511.07566.json",
+      "pdf_url": "https://arxiv.org/pdf/2511.07566v1",
+      "pdf_sha256": "0200b57987eafe4a9fbd88e3fd4cbfbfc87ae859039e97a8f74b09cb2f7c33ab",
+      "visually_checked_pdf_pages": [
+        20
+      ],
+      "context_pages_read": [
+        1,
+        3,
+        4,
+        5,
+        20
+      ],
+      "evidence": "Table V: four recorded tprime=-0.2/0 filled-stripe or half-filled-stripe-with-SC cells match exactly. Sec. II B defines a hidden-fermion Pfaffian with a GCNN; Sec. III and Fig. 2 specify 16x16 PBC U=8 and delta=1/8. These are competing variational minima, not four claims of exact ground-state energies.",
+      "spin_sector_check": "not_confirmed",
+      "actions": [
+        "Use the actual name Hidden-fermion Pfaffian state (HFPS), rather than a generic pairing/backflow label."
+      ],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "hubbard-square-16x16-pbc-u8-tp-0p2-n224-sz0",
+          "method": "Neural-network backflow with pairing (Pfaffian-type)",
+          "variant": "half-filled stripe with superconductivity",
+          "energy_token": "-0.7360(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table V, p. 20 (row t' = -0.2, column Half-filled stripe + SC)"
+        },
+        {
+          "baseline_row_index": 1,
+          "benchmark_id": "hubbard-square-16x16-pbc-u8-tp-0p2-n224-sz0",
+          "method": "Neural-network backflow with pairing (Pfaffian-type)",
+          "variant": "filled stripe",
+          "energy_token": "-0.7261(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table V, p. 20 (row t' = -0.2, column Filled Stripe)"
+        },
+        {
+          "baseline_row_index": 2,
+          "benchmark_id": "hubbard-square-16x16-pbc-u8-n224-sz0",
+          "method": "Neural-network backflow with pairing (Pfaffian-type)",
+          "variant": "filled stripe",
+          "energy_token": "-0.7515(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table V, p. 20 (row t' = 0.0, column Filled Stripe)"
+        },
+        {
+          "baseline_row_index": 3,
+          "benchmark_id": "hubbard-square-16x16-pbc-u8-n224-sz0",
+          "method": "Neural-network backflow with pairing (Pfaffian-type)",
+          "variant": "half-filled stripe with superconductivity",
+          "energy_token": "-0.7401(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table V, p. 20 (row t' = 0.0, column Half-filled stripe + SC)"
+        }
+      ]
+    },
+    {
+      "paper_id": "2602.02665v1",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2602.02665.json",
+      "pdf_url": "https://arxiv.org/pdf/2602.02665v1",
+      "pdf_sha256": "c03c3b3632608c103ae45544878887654443e094717ce31ed8560bf477e937ef",
+      "visually_checked_pdf_pages": [
+        3
+      ],
+      "context_pages_read": [
+        3,
+        9
+      ],
+      "evidence": "Table I, This work ViT rows at 18x18, 24x24, 30x30, 42x42. Caption specifies translation and C6v symmetries; Sec. III gives spin-1/2 nearest-neighbor triangular Heisenberg on periodic LxL clusters. All Zero Variance rows and the thermodynamic extrapolation are excluded.",
+      "spin_sector_check": "not_confirmed",
+      "actions": [],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "heisenberg-triangular-18x18-pbc-sz0",
+          "method": "Vision transformer",
+          "variant": "spatial-attention ViT with translational and C6v symmetries",
+          "energy_token": "-0.551703(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 3 (row 18 × 18, Ansatz ViT, 'This work')"
+        },
+        {
+          "baseline_row_index": 1,
+          "benchmark_id": "heisenberg-triangular-24x24-pbc-sz0",
+          "method": "Vision transformer",
+          "variant": "spatial-attention ViT with translational and C6v symmetries",
+          "energy_token": "-0.551602(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 3 (row 24 × 24, Ansatz ViT, 'This work')"
+        },
+        {
+          "baseline_row_index": 2,
+          "benchmark_id": "heisenberg-triangular-30x30-pbc-sz0",
+          "method": "Vision transformer",
+          "variant": "spatial-attention ViT with translational and C6v symmetries",
+          "energy_token": "-0.551528(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 3 (row 30 × 30, Ansatz ViT, 'This work')"
+        },
+        {
+          "baseline_row_index": 3,
+          "benchmark_id": "heisenberg-triangular-42x42-pbc-sz0",
+          "method": "Vision transformer",
+          "variant": "spatial-attention ViT with translational and C6v symmetries",
+          "energy_token": "-0.551429(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 3 (row 42 × 42, Ansatz ViT, 'This work')"
+        }
+      ]
+    },
+    {
+      "paper_id": "2604.21978v1",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2604.21978.json",
+      "pdf_url": "https://arxiv.org/pdf/2604.21978v1",
+      "pdf_sha256": "21bba33fea479d1a3a2e5030f9496e1dd5f99e73b1db66f4e2aec274e90e63f9",
+      "visually_checked_pdf_pages": [
+        4
+      ],
+      "context_pages_read": [
+        2,
+        4
+      ],
+      "evidence": "Table I: all nine own Det, Det-PH and Pfaffian entries across none/T/T+R. Caption explicitly fixes 8x8 PBC, U=8, tprime=-0.2 and delta=1/8, energies per site. Eq. (1) and text fix t=1. The Transformer parameterizes each backflow construction. Reference and Zero-Var.Extr. rows are excluded.",
+      "spin_sector_check": "not_confirmed",
+      "actions": [],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
+          "method": "Slater determinant with neural backflow (Det)",
+          "variant": "no symmetry projection",
+          "energy_token": "-0.74512(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 4 (row Det, Symm -)"
+        },
+        {
+          "baseline_row_index": 1,
+          "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
+          "method": "Slater determinant with neural backflow (Det)",
+          "variant": "translations (T)",
+          "energy_token": "-0.74834(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 4 (row Det, Symm T)"
+        },
+        {
+          "baseline_row_index": 2,
+          "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
+          "method": "Slater determinant with neural backflow (Det)",
+          "variant": "translations and rotations (T+R)",
+          "energy_token": "-0.74993(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 4 (row Det, Symm T+R)"
+        },
+        {
+          "baseline_row_index": 3,
+          "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
+          "method": "particle-hole transformed determinant with neural backflow (Det-PH)",
+          "variant": "no symmetry projection",
+          "energy_token": "-0.74649(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 4 (row Det-PH, Symm -)"
+        },
+        {
+          "baseline_row_index": 4,
+          "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
+          "method": "particle-hole transformed determinant with neural backflow (Det-PH)",
+          "variant": "translations (T)",
+          "energy_token": "-0.74934(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 4 (row Det-PH, Symm T)"
+        },
+        {
+          "baseline_row_index": 5,
+          "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
+          "method": "particle-hole transformed determinant with neural backflow (Det-PH)",
+          "variant": "translations and rotations (T+R)",
+          "energy_token": "-0.75026(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 4 (row Det-PH, Symm T+R)"
+        },
+        {
+          "baseline_row_index": 6,
+          "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
+          "method": "neural Pfaffian",
+          "variant": "no symmetry projection",
+          "energy_token": "-0.74705(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 4 (row Pfaffian, Symm -)"
+        },
+        {
+          "baseline_row_index": 7,
+          "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
+          "method": "neural Pfaffian",
+          "variant": "translations (T)",
+          "energy_token": "-0.74952(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 4 (row Pfaffian, Symm T)"
+        },
+        {
+          "baseline_row_index": 8,
+          "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
+          "method": "neural Pfaffian",
+          "variant": "translations and rotations (T+R)",
+          "energy_token": "-0.75058(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 4 (row Pfaffian, Symm T+R)"
+        }
+      ]
+    },
+    {
+      "paper_id": "2604.25775v1",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2604.25775.json",
+      "pdf_url": "https://arxiv.org/pdf/2604.25775v1",
+      "pdf_sha256": "60fc3923249c4c4f99ef4345906f1c3eb4679d22fb016630de1800c48bd99171",
+      "visually_checked_pdf_pages": [
+        7,
+        8
+      ],
+      "context_pages_read": [
+        1,
+        5,
+        6,
+        7,
+        8
+      ],
+      "evidence": "Table I: only ACE/SCALE in the two PBC columns, on 16x16 at U=8 and 1/8 doping. Abstract defines the names Accurate Convolutional ansatz for lattice Electrons and Sparse Convolutional Ansatz for Lattice Electrons. P7 separately prints the two missing 16x4 ACE variational results, before GFMC. Finite symmetry projection is part of the represented variational state; GFMC is excluded.",
+      "spin_sector_check": "not_confirmed",
+      "actions": [
+        "Correct ACE and SCALE names.",
+        "Restore the two 16x4 rows overwritten by the subsequent seed merge."
+      ],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "hubbard-square-16x16-pbc-u8-tp-0p2-n224-sz0",
+          "method": "Attention-based convolutional backflow (ACE)",
+          "variant": "ACE",
+          "energy_token": "-0.7430",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 8 (row ACE, column t' = -0.2, PBC)"
+        },
+        {
+          "baseline_row_index": 1,
+          "benchmark_id": "hubbard-square-16x16-pbc-u8-tp-0p2-n224-sz0",
+          "method": "Scalable convolutional backflow (SCALE)",
+          "variant": "SCALE",
+          "energy_token": "-0.7373",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 8 (row SCALE, column t' = -0.2, PBC)"
+        },
+        {
+          "baseline_row_index": 2,
+          "benchmark_id": "hubbard-square-16x16-pbc-u8-n224-sz0",
+          "method": "Attention-based convolutional backflow (ACE)",
+          "variant": "ACE",
+          "energy_token": "-0.7573",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 8 (row ACE, column t' = 0, PBC)"
+        },
+        {
+          "baseline_row_index": 3,
+          "benchmark_id": "hubbard-square-16x16-pbc-u8-n224-sz0",
+          "method": "Scalable convolutional backflow (SCALE)",
+          "variant": "SCALE",
+          "energy_token": "-0.7529",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 8 (row SCALE, column t' = 0, PBC)"
+        },
+        {
+          "baseline_row_index": null,
+          "benchmark_id": "hubbard-rectangular-16x4-pbc-u8-n56-sz0",
+          "method": "Accurate convolutional ansatz for lattice electrons (ACE)",
+          "variant": "ACE without explicit symmetries",
+          "energy_token": "-0.76464(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "restore_overwritten_row",
+          "source_location": "p. 7, text below Fig. 3; 16 x 4 PBC setup in Sec. III B.1, p. 6"
+        },
+        {
+          "baseline_row_index": null,
+          "benchmark_id": "hubbard-rectangular-16x4-pbc-u8-n56-sz0",
+          "method": "Accurate convolutional ansatz for lattice electrons (ACE)",
+          "variant": "ACE, projected and symmetrized state optimized directly",
+          "energy_token": "-0.76623(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "restore_overwritten_row",
+          "source_location": "p. 7, text below Fig. 3; 16 x 4 PBC setup in Sec. III B.1, p. 6"
+        }
+      ]
+    },
+    {
+      "paper_id": "2608.12465v1",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2608.12465.json",
+      "pdf_url": "https://arxiv.org/pdf/2608.12465v1",
+      "pdf_sha256": "f450c467c1bbb98a56ea4d02053bdfceff28e711a261cad62ceb39bc91f50c88",
+      "visually_checked_pdf_pages": [
+        5
+      ],
+      "context_pages_read": [
+        1,
+        2,
+        5
+      ],
+      "evidence": "Table I: four bold This work SBP rows at L=12,16,20,24. Caption fixes PBC, tprime=-0.2, U=8 and 1/8 doping, per site; p1 fixes t=1. Eq. (2) constructs Ne/2 opposite-spin pairs, so spin balance follows from the state definition. SBP expands to Symmetry-Preserving Backflow Pairing, not backflow-Pfaffian.",
+      "spin_sector_check": "derived_from_state_definition",
+      "actions": [
+        "Correct SBP expansion to Symmetry-preserving backflow pairing (SBP)."
+      ],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "hubbard-square-12x12-pbc-u8-tp-0p2-n126-sz0",
+          "method": "Symmetry-preserving backflow-Pfaffian state (SBP)",
+          "variant": "SBP",
+          "energy_token": "-0.74425(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 5 (row SBP, size 12×12)"
+        },
+        {
+          "baseline_row_index": 1,
+          "benchmark_id": "hubbard-square-16x16-pbc-u8-tp-0p2-n224-sz0",
+          "method": "Symmetry-preserving backflow-Pfaffian state (SBP)",
+          "variant": "SBP",
+          "energy_token": "-0.74411(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 5 (row SBP, size 16×16)"
+        },
+        {
+          "baseline_row_index": 2,
+          "benchmark_id": "hubbard-square-20x20-pbc-u8-tp-0p2-n350-sz0",
+          "method": "Symmetry-preserving backflow-Pfaffian state (SBP)",
+          "variant": "SBP",
+          "energy_token": "-0.74382(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 5 (row SBP, size 20×20)"
+        },
+        {
+          "baseline_row_index": 3,
+          "benchmark_id": "hubbard-square-24x24-pbc-u8-tp-0p2-n504-sz0",
+          "method": "Symmetry-preserving backflow-Pfaffian state (SBP)",
+          "variant": "SBP",
+          "energy_token": "-0.74397(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "Table I, p. 5 (row SBP, size 24×24)"
+        }
+      ]
+    },
+    {
+      "paper_id": "2609.22618v1",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2609.22618.json",
+      "pdf_url": "https://arxiv.org/pdf/2609.22618v1",
+      "pdf_sha256": "11747486b2124866bab0eb2aeef3f23a7e108a1a391020cf2612dedfd24bd2e4",
+      "visually_checked_pdf_pages": [
+        4,
+        7
+      ],
+      "context_pages_read": [
+        2,
+        4,
+        7
+      ],
+      "evidence": "Table II verifies four recorded 8x8 values; Table III verifies the two PF3 U_UHF=4 16x16 values in the last column. Pinning fields have been removed before these energies, as the Table III caption states. Section II Eq. (3) still uses a directly parameterized full tensor, not an ANN; neither symmetry nor a Lanczos step changes that classification.",
+      "spin_sector_check": "not_assessed_after_scope_exclusion",
+      "actions": [
+        "Exclude all six rows from Ketboard as non-NQS."
+      ],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
+          "method": "Tensor backflow",
+          "variant": "no symmetry projection, p = 0",
+          "energy_token": "-0.7374(4)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "exclude_non_nqs",
+          "source_location": "Table II, p. 4 (row Ep=0, column No Sym)"
+        },
+        {
+          "baseline_row_index": 1,
+          "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
+          "method": "Tensor backflow",
+          "variant": "T+R symmetry projection, p = 0",
+          "energy_token": "-0.7395(4)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "exclude_non_nqs",
+          "source_location": "Table II, p. 4 (row Ep=0, column T+R)"
+        },
+        {
+          "baseline_row_index": 2,
+          "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
+          "method": "Tensor backflow",
+          "variant": "no symmetry projection, one Lanczos step (p = 1)",
+          "energy_token": "-0.7424(3)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "exclude_non_nqs",
+          "source_location": "Table II, p. 4 (row Ep=1, column No Sym)"
+        },
+        {
+          "baseline_row_index": 3,
+          "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
+          "method": "Tensor backflow",
+          "variant": "T+R symmetry projection, one Lanczos step (p = 1)",
+          "energy_token": "-0.7441(8)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "exclude_non_nqs",
+          "source_location": "Table II, p. 4 (row Ep=1, column T+R); also p. 2 text"
+        },
+        {
+          "baseline_row_index": 4,
+          "benchmark_id": "hubbard-square-16x16-pbc-u8-tp-0p2-n224-sz0",
+          "method": "Tensor backflow",
+          "variant": "pinning field PF3, U_UHF = 4, p = 0",
+          "energy_token": "-0.7360(7)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "exclude_non_nqs",
+          "source_location": "Table III, p. 7 (row Ep=0, last column)"
+        },
+        {
+          "baseline_row_index": 5,
+          "benchmark_id": "hubbard-square-16x16-pbc-u8-tp-0p2-n224-sz0",
+          "method": "Tensor backflow",
+          "variant": "pinning field PF3, U_UHF = 4, one Lanczos step (p = 1)",
+          "energy_token": "-0.7408(1)",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "exclude_non_nqs",
+          "source_location": "Table III, p. 7 (row Ep=1, last column); also p. 2 text"
+        }
+      ]
+    },
+    {
+      "paper_id": "2609.26544v1",
+      "baseline_file_url": "https://github.com/gcarleo/ketbook/blob/34ac2a0e85416c636c1ac5a9d20385d5a13f6c19/data/results/2609.26544.json",
+      "pdf_url": "https://arxiv.org/pdf/2609.26544v1",
+      "pdf_sha256": "fb645b8fdfc3118c29e47033344b4f910cef46646bc8445ae221b958dcef045b",
+      "visually_checked_pdf_pages": [
+        6
+      ],
+      "context_pages_read": [
+        2,
+        3,
+        5,
+        6
+      ],
+      "evidence": "P6 text gives the two 4x16 per-site energies. Section III A specifies both-direction PBC, U/t=8 and 1/8 doping. The method uses an actual neural encoder/backflow and low-rank multideterminants. Eq. (9) defines the finite (1+alpha H) trial state; no extrapolation is used. Exact error magnitudes are not printed with these tokens.",
+      "spin_sector_check": "not_confirmed",
+      "actions": [],
+      "rows": [
+        {
+          "baseline_row_index": 0,
+          "benchmark_id": "hubbard-rectangular-16x4-pbc-u8-n56-sz0",
+          "method": "Deep neural-network backflow",
+          "variant": "Deep BF with low-rank multi-determinant updates",
+          "energy_token": "-0.7598",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "p. 6, text ('On the largest 4×16 lattice, the Deep BF model achieves an energy of -0.7598 per site')"
+        },
+        {
+          "baseline_row_index": 1,
+          "benchmark_id": "hubbard-rectangular-16x4-pbc-u8-n56-sz0",
+          "method": "Deep neural-network backflow",
+          "variant": "Deep BF with one Lanczos step",
+          "energy_token": "-0.7622",
+          "numeric_check": "matches_original_result_in_exact_version",
+          "disposition": "retain_energy",
+          "source_location": "p. 6, text ('Deep BF Lanczos finishes at -0.7622 per site')"
+        }
+      ]
+    }
+  ]
+}

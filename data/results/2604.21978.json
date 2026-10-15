@@ -29,7 +29,7 @@
       "source_location": "Table I, p. 4 (row Det, Symm -)",
       "eligibility_evidence": "Variational energy of the neural backflow state on the 8 × 8 PBC cluster at U = 8, t' = -0.2, 1/8 doping; the zero-variance extrapolation -0.7540(4) in the same table and the quoted Ref. [21] value are excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
@@ -49,7 +49,7 @@
       "source_location": "Table I, p. 4 (row Det, Symm T)",
       "eligibility_evidence": "Variational energy of the neural backflow state on the 8 × 8 PBC cluster at U = 8, t' = -0.2, 1/8 doping; the zero-variance extrapolation -0.7540(4) in the same table and the quoted Ref. [21] value are excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
@@ -69,7 +69,7 @@
       "source_location": "Table I, p. 4 (row Det, Symm T+R)",
       "eligibility_evidence": "Variational energy of the neural backflow state on the 8 × 8 PBC cluster at U = 8, t' = -0.2, 1/8 doping; the zero-variance extrapolation -0.7540(4) in the same table and the quoted Ref. [21] value are excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
@@ -89,7 +89,7 @@
       "source_location": "Table I, p. 4 (row Det-PH, Symm -)",
       "eligibility_evidence": "Variational energy of the neural backflow state on the 8 × 8 PBC cluster at U = 8, t' = -0.2, 1/8 doping; the zero-variance extrapolation -0.7540(4) in the same table and the quoted Ref. [21] value are excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
@@ -109,7 +109,7 @@
       "source_location": "Table I, p. 4 (row Det-PH, Symm T)",
       "eligibility_evidence": "Variational energy of the neural backflow state on the 8 × 8 PBC cluster at U = 8, t' = -0.2, 1/8 doping; the zero-variance extrapolation -0.7540(4) in the same table and the quoted Ref. [21] value are excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
@@ -129,7 +129,7 @@
       "source_location": "Table I, p. 4 (row Det-PH, Symm T+R)",
       "eligibility_evidence": "Variational energy of the neural backflow state on the 8 × 8 PBC cluster at U = 8, t' = -0.2, 1/8 doping; the zero-variance extrapolation -0.7540(4) in the same table and the quoted Ref. [21] value are excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
@@ -149,7 +149,7 @@
       "source_location": "Table I, p. 4 (row Pfaffian, Symm -)",
       "eligibility_evidence": "Variational energy of the neural backflow state on the 8 × 8 PBC cluster at U = 8, t' = -0.2, 1/8 doping; the zero-variance extrapolation -0.7540(4) in the same table and the quoted Ref. [21] value are excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
@@ -169,7 +169,7 @@
       "source_location": "Table I, p. 4 (row Pfaffian, Symm T)",
       "eligibility_evidence": "Variational energy of the neural backflow state on the 8 × 8 PBC cluster at U = 8, t' = -0.2, 1/8 doping; the zero-variance extrapolation -0.7540(4) in the same table and the quoted Ref. [21] value are excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
@@ -189,8 +189,10 @@
       "source_location": "Table I, p. 4 (row Pfaffian, Symm T+R)",
       "eligibility_evidence": "Variational energy of the neural backflow state on the 8 × 8 PBC cluster at U = 8, t' = -0.2, 1/8 doping; the zero-variance extrapolation -0.7540(4) in the same table and the quoted Ref. [21] value are excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     }
   ],
-  "issues": []
+  "issues": [
+    "Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
+  ]
 }

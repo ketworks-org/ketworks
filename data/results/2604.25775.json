@@ -14,7 +14,7 @@
     {
       "benchmark_id": "hubbard-square-16x16-pbc-u8-tp-0p2-n224-sz0",
       "system_description": "16x16 square lattice, periodic in both directions; U/t = 8, t'/t = -0.2; 224 electrons (112 up, 112 down), 1/8 hole doping",
-      "method": "Attention-based convolutional backflow (ACE)",
+      "method": "Accurate convolutional ansatz for lattice electrons (ACE)",
       "variant": "ACE",
       "method_class": "backflow",
       "method_type": "nqs",
@@ -29,12 +29,12 @@
       "source_location": "Table I, p. 8 (row ACE, column t' = -0.2, PBC)",
       "eligibility_evidence": "Variational energy of the ACE state on the 16 × 16 PBC cluster at U = 8, 1/8 hole doping, t' = -0.2; the ACE+GFMC row is a projected estimate and excluded.",
       "parameter_count": null,
-      "notes": "The table states that omitted statistical errors are smaller than the last displayed digit. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "The table states that omitted statistical errors are smaller than the last displayed digit. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     },
     {
       "benchmark_id": "hubbard-square-16x16-pbc-u8-tp-0p2-n224-sz0",
       "system_description": "16x16 square lattice, periodic in both directions; U/t = 8, t'/t = -0.2; 224 electrons (112 up, 112 down), 1/8 hole doping",
-      "method": "Scalable convolutional backflow (SCALE)",
+      "method": "Sparse convolutional ansatz for lattice electrons (SCALE)",
       "variant": "SCALE",
       "method_class": "backflow",
       "method_type": "nqs",
@@ -49,12 +49,12 @@
       "source_location": "Table I, p. 8 (row SCALE, column t' = -0.2, PBC)",
       "eligibility_evidence": "Variational energy of the SCALE state; SCALE+GFMC excluded.",
       "parameter_count": null,
-      "notes": "Statistical error smaller than the last displayed digit per the table caption. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Statistical error smaller than the last displayed digit per the table caption. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     },
     {
       "benchmark_id": "hubbard-square-16x16-pbc-u8-n224-sz0",
       "system_description": "16x16 square lattice, periodic in both directions; U/t = 8, t' = 0; 224 electrons (112 up, 112 down), 1/8 hole doping",
-      "method": "Attention-based convolutional backflow (ACE)",
+      "method": "Accurate convolutional ansatz for lattice electrons (ACE)",
       "variant": "ACE",
       "method_class": "backflow",
       "method_type": "nqs",
@@ -69,12 +69,12 @@
       "source_location": "Table I, p. 8 (row ACE, column t' = 0, PBC)",
       "eligibility_evidence": "Variational energy of the ACE state on the 16 × 16 PBC cluster at U = 8, 1/8 hole doping, t' = 0.",
       "parameter_count": null,
-      "notes": "Statistical error smaller than the last displayed digit per the table caption. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Statistical error smaller than the last displayed digit per the table caption. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     },
     {
       "benchmark_id": "hubbard-square-16x16-pbc-u8-n224-sz0",
       "system_description": "16x16 square lattice, periodic in both directions; U/t = 8, t' = 0; 224 electrons (112 up, 112 down), 1/8 hole doping",
-      "method": "Scalable convolutional backflow (SCALE)",
+      "method": "Sparse convolutional ansatz for lattice electrons (SCALE)",
       "variant": "SCALE",
       "method_class": "backflow",
       "method_type": "nqs",
@@ -89,8 +89,50 @@
       "source_location": "Table I, p. 8 (row SCALE, column t' = 0, PBC)",
       "eligibility_evidence": "Variational energy of the SCALE state at t' = 0.",
       "parameter_count": null,
-      "notes": "Statistical error smaller than the last displayed digit per the table caption. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Statistical error smaller than the last displayed digit per the table caption. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
+    },
+    {
+      "benchmark_id": "hubbard-rectangular-16x4-pbc-u8-n56-sz0",
+      "system_description": "16x4 rectangular lattice (Lx = 16, Ly = 4), periodic in both directions; U/t = 8, t' = 0; 56 electrons (28 up, 28 down), 1/8 hole doping",
+      "method": "Accurate convolutional ansatz for lattice electrons (ACE)",
+      "variant": "ACE without explicit symmetries",
+      "method_class": "backflow",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.76464",
+      "energy_token": "-0.76464(1)",
+      "normalization": "per_site",
+      "unit": "t",
+      "uncertainty": "0.00001",
+      "uncertainty_type": "unspecified",
+      "source_location": "p. 7, text below Fig. 3; 16 x 4 PBC setup in Sec. III B.1, p. 6",
+      "eligibility_evidence": "Variational energy of the ACE state on the 16 × 4 lattice under PBC at U = 8 and 1/8 hole doping.",
+      "parameter_count": null,
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Restored after checking the exact-version PDF; this row was lost when later 16 x 16 entries replaced the paper record. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
+    },
+    {
+      "benchmark_id": "hubbard-rectangular-16x4-pbc-u8-n56-sz0",
+      "system_description": "16x4 rectangular lattice (Lx = 16, Ly = 4), periodic in both directions; U/t = 8, t' = 0; 56 electrons (28 up, 28 down), 1/8 hole doping",
+      "method": "Accurate convolutional ansatz for lattice electrons (ACE)",
+      "variant": "ACE, projected and symmetrized state optimized directly",
+      "method_class": "backflow",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.76623",
+      "energy_token": "-0.76623(1)",
+      "normalization": "per_site",
+      "unit": "t",
+      "uncertainty": "0.00001",
+      "uncertainty_type": "unspecified",
+      "source_location": "p. 7, text below Fig. 3; 16 x 4 PBC setup in Sec. III B.1, p. 6",
+      "eligibility_evidence": "Variational energy of the symmetry-projected ACE state; the GFMC value -0.76647(2) in the same paragraph is a projected estimate and excluded.",
+      "parameter_count": null,
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Restored after checking the exact-version PDF; this row was lost when later 16 x 16 entries replaced the paper record. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     }
   ],
-  "issues": []
+  "issues": [
+    "Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
+  ]
 }

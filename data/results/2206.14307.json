@@ -26,7 +26,7 @@
       "unit": "J1",
       "uncertainty": "0.00002",
       "uncertainty_type": "unspecified",
-      "source_location": "p. 7, table of ground-state energies for the J1-J2 model on the 10 × 10 lattice (row Energy(RBM), column J2 = 0.5)",
+      "source_location": "Table 4, p. 7 (10 x 10, J2/J1 = 0.5, symmetric RBM row)",
       "eligibility_evidence": "Variational energy of the RBM state before Lanczos improvement.",
       "parameter_count": null,
       "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
@@ -46,7 +46,7 @@
       "unit": "J1",
       "uncertainty": "0.0004",
       "uncertainty_type": "unspecified",
-      "source_location": "p. 7, same table (row Energy(RBM) p = 1, column J2 = 0.5)",
+      "source_location": "Table 4, p. 7 (10 x 10, J2/J1 = 0.5, RBM + Lanczos row)",
       "eligibility_evidence": "Directly evaluated energy of the explicitly constructed Lanczos-improved state (1 + alpha H)|RBM>; no extrapolation.",
       "parameter_count": null,
       "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."

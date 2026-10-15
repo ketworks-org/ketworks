@@ -29,7 +29,7 @@
       "source_location": "Table I, p. 3 (row 18 × 18, Ansatz ViT, 'This work')",
       "eligibility_evidence": "Variational energy of the symmetrized ViT wavefunction on the periodic L × L triangular cluster; the 'Zero Variance' rows of the same table are extrapolations and excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     },
     {
       "benchmark_id": "heisenberg-triangular-24x24-pbc-sz0",
@@ -49,7 +49,7 @@
       "source_location": "Table I, p. 3 (row 24 × 24, Ansatz ViT, 'This work')",
       "eligibility_evidence": "Variational energy of the symmetrized ViT wavefunction on the periodic L × L triangular cluster; the 'Zero Variance' rows of the same table are extrapolations and excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     },
     {
       "benchmark_id": "heisenberg-triangular-30x30-pbc-sz0",
@@ -69,7 +69,7 @@
       "source_location": "Table I, p. 3 (row 30 × 30, Ansatz ViT, 'This work')",
       "eligibility_evidence": "Variational energy of the symmetrized ViT wavefunction on the periodic L × L triangular cluster; the 'Zero Variance' rows of the same table are extrapolations and excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     },
     {
       "benchmark_id": "heisenberg-triangular-42x42-pbc-sz0",
@@ -89,8 +89,10 @@
       "source_location": "Table I, p. 3 (row 42 × 42, Ansatz ViT, 'This work')",
       "eligibility_evidence": "Variational energy of the symmetrized ViT wavefunction on the periodic L × L triangular cluster; the 'Zero Variance' rows of the same table are extrapolations and excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     }
   ],
-  "issues": []
+  "issues": [
+    "Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
+  ]
 }

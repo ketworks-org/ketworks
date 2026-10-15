@@ -14,7 +14,7 @@
     {
       "benchmark_id": "hubbard-square-16x16-pbc-u8-tp-0p2-n224-sz0",
       "system_description": "16x16 square lattice, periodic in both directions; U/t = 8, t'/t = -0.2; 224 electrons (112 up, 112 down), 1/8 hole doping",
-      "method": "Neural-network backflow with pairing (Pfaffian-type)",
+      "method": "Hidden-fermion Pfaffian state (HFPS)",
       "variant": "half-filled stripe with superconductivity",
       "method_class": "backflow",
       "method_type": "nqs",
@@ -27,14 +27,14 @@
       "uncertainty": "0.0001",
       "uncertainty_type": "unspecified",
       "source_location": "Table V, p. 20 (row t' = -0.2, column Half-filled stripe + SC)",
-      "eligibility_evidence": "Variational energy of the converged NQS on the 256-site (16 × 16) periodic cluster at U = 8, 1/8 doping; competing phases are separate variational states.",
+      "eligibility_evidence": "Original variational energy of the hidden-fermion Pfaffian state with a group-convolutional neural network (Sec. II B, p. 3). Table V reports competing variational phases on the 16 x 16 cluster; the initialization fields do not enter the target energy.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     },
     {
       "benchmark_id": "hubbard-square-16x16-pbc-u8-tp-0p2-n224-sz0",
       "system_description": "16x16 square lattice, periodic in both directions; U/t = 8, t'/t = -0.2; 224 electrons (112 up, 112 down), 1/8 hole doping",
-      "method": "Neural-network backflow with pairing (Pfaffian-type)",
+      "method": "Hidden-fermion Pfaffian state (HFPS)",
       "variant": "filled stripe",
       "method_class": "backflow",
       "method_type": "nqs",
@@ -47,14 +47,14 @@
       "uncertainty": "0.0001",
       "uncertainty_type": "unspecified",
       "source_location": "Table V, p. 20 (row t' = -0.2, column Filled Stripe)",
-      "eligibility_evidence": "Variational energy of the filled-stripe NQS solution on the 16 × 16 periodic cluster at t' = -0.2.",
+      "eligibility_evidence": "Original variational energy of the hidden-fermion Pfaffian state with a group-convolutional neural network (Sec. II B, p. 3). Table V reports competing variational phases on the 16 x 16 cluster; the initialization fields do not enter the target energy.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     },
     {
       "benchmark_id": "hubbard-square-16x16-pbc-u8-n224-sz0",
       "system_description": "16x16 square lattice, periodic in both directions; U/t = 8, t' = 0; 224 electrons (112 up, 112 down), 1/8 hole doping",
-      "method": "Neural-network backflow with pairing (Pfaffian-type)",
+      "method": "Hidden-fermion Pfaffian state (HFPS)",
       "variant": "filled stripe",
       "method_class": "backflow",
       "method_type": "nqs",
@@ -67,14 +67,14 @@
       "uncertainty": "0.0001",
       "uncertainty_type": "unspecified",
       "source_location": "Table V, p. 20 (row t' = 0.0, column Filled Stripe)",
-      "eligibility_evidence": "Variational energy of the filled-stripe NQS solution on the 16 × 16 periodic cluster at t' = 0.",
+      "eligibility_evidence": "Original variational energy of the hidden-fermion Pfaffian state with a group-convolutional neural network (Sec. II B, p. 3). Table V reports competing variational phases on the 16 x 16 cluster; the initialization fields do not enter the target energy.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     },
     {
       "benchmark_id": "hubbard-square-16x16-pbc-u8-n224-sz0",
       "system_description": "16x16 square lattice, periodic in both directions; U/t = 8, t' = 0; 224 electrons (112 up, 112 down), 1/8 hole doping",
-      "method": "Neural-network backflow with pairing (Pfaffian-type)",
+      "method": "Hidden-fermion Pfaffian state (HFPS)",
       "variant": "half-filled stripe with superconductivity",
       "method_class": "backflow",
       "method_type": "nqs",
@@ -87,10 +87,12 @@
       "uncertainty": "0.0001",
       "uncertainty_type": "unspecified",
       "source_location": "Table V, p. 20 (row t' = 0.0, column Half-filled stripe + SC)",
-      "eligibility_evidence": "Variational energy of the half-filled-stripe superconducting NQS solution at t' = 0.",
+      "eligibility_evidence": "Original variational energy of the hidden-fermion Pfaffian state with a group-convolutional neural network (Sec. II B, p. 3). Table V reports competing variational phases on the 16 x 16 cluster; the initialization fields do not enter the target energy.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     }
   ],
-  "issues": []
+  "issues": [
+    "Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
+  ]
 }

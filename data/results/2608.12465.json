@@ -14,7 +14,7 @@
     {
       "benchmark_id": "hubbard-square-12x12-pbc-u8-tp-0p2-n126-sz0",
       "system_description": "12x12 square lattice, periodic in both directions; U/t = 8, t'/t = -0.2; 126 electrons (63 up, 63 down), 1/8 hole doping",
-      "method": "Symmetry-preserving backflow-Pfaffian state (SBP)",
+      "method": "Symmetry-preserving backflow pairing (SBP)",
       "variant": "SBP",
       "method_class": "backflow",
       "method_type": "nqs",
@@ -34,7 +34,7 @@
     {
       "benchmark_id": "hubbard-square-16x16-pbc-u8-tp-0p2-n224-sz0",
       "system_description": "16x16 square lattice, periodic in both directions; U/t = 8, t'/t = -0.2; 224 electrons (112 up, 112 down), 1/8 hole doping",
-      "method": "Symmetry-preserving backflow-Pfaffian state (SBP)",
+      "method": "Symmetry-preserving backflow pairing (SBP)",
       "variant": "SBP",
       "method_class": "backflow",
       "method_type": "nqs",
@@ -54,7 +54,7 @@
     {
       "benchmark_id": "hubbard-square-20x20-pbc-u8-tp-0p2-n350-sz0",
       "system_description": "20x20 square lattice, periodic in both directions; U/t = 8, t'/t = -0.2; 350 electrons (175 up, 175 down), 1/8 hole doping",
-      "method": "Symmetry-preserving backflow-Pfaffian state (SBP)",
+      "method": "Symmetry-preserving backflow pairing (SBP)",
       "variant": "SBP",
       "method_class": "backflow",
       "method_type": "nqs",
@@ -74,7 +74,7 @@
     {
       "benchmark_id": "hubbard-square-24x24-pbc-u8-tp-0p2-n504-sz0",
       "system_description": "24x24 square lattice, periodic in both directions; U/t = 8, t'/t = -0.2; 504 electrons (252 up, 252 down), 1/8 hole doping",
-      "method": "Symmetry-preserving backflow-Pfaffian state (SBP)",
+      "method": "Symmetry-preserving backflow pairing (SBP)",
       "variant": "SBP",
       "method_class": "backflow",
       "method_type": "nqs",

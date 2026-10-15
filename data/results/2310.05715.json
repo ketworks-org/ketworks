@@ -7,8 +7,8 @@
     "published": "2023-10-09T13:38:36Z",
     "updated": "2024-08-02T12:22:58Z"
   },
-  "source_url": "https://arxiv.org/html/2310.05715v2",
-  "source_sha256": "47c7d86dc60a1641c972ae0bdc4eae511c13d2a4f9a08d65ee0a593761927457",
+  "source_url": "https://arxiv.org/pdf/2310.05715v2",
+  "source_sha256": "3b4d809d0ccfe6db794befb273ba35ff43d31923bd3db8b14bada6a84a5e9956",
   "extraction_model": "human",
   "results": [
     {
@@ -26,7 +26,7 @@
       "unit": "J1",
       "uncertainty": "0.000001",
       "uncertainty_type": "unspecified",
-      "source_location": "Table 1 (row 'Present work')",
+      "source_location": "Table I, PDF p. 2 (bold 'Present work' Deep ViT row)",
       "eligibility_evidence": "Variational energy of the ViT wavefunction optimized with the kernel formulation of SR.",
       "parameter_count": 267720,
       "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."

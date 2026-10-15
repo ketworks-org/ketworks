@@ -29,8 +29,10 @@
       "source_location": "p. 3, text and Fig. 2b ('the best variational energy E/N = -0.4976921(4)')",
       "eligibility_evidence": "Variational energy of the deep ResNet state; the zero-variance extrapolation E_GS/N = -0.497715(9) in the same paragraph is excluded.",
       "parameter_count": null,
-      "notes": "Earlier versions of this paper and later comparison tables quote -0.497627(1); v3 reports the improved value. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Earlier versions of this paper and later comparison tables quote -0.497627(1); v3 reports the improved value. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     }
   ],
-  "issues": []
+  "issues": [
+    "Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
+  ]
 }

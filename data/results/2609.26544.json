@@ -29,7 +29,7 @@
       "source_location": "p. 6, text ('On the largest 4×16 lattice, the Deep BF model achieves an energy of -0.7598 per site')",
       "eligibility_evidence": "Variational energy of the deep backflow state; periodic boundary conditions in both directions are stated in Sec. III.",
       "parameter_count": null,
-      "notes": "No uncertainty printed. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "No uncertainty printed. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     },
     {
       "benchmark_id": "hubbard-rectangular-16x4-pbc-u8-n56-sz0",
@@ -49,8 +49,10 @@
       "source_location": "p. 6, text ('Deep BF Lanczos finishes at -0.7622 per site')",
       "eligibility_evidence": "Directly evaluated energy of the Lanczos-improved deep backflow state.",
       "parameter_count": null,
-      "notes": "No uncertainty printed. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "No uncertainty printed. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it. Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
     }
   ],
-  "issues": []
+  "issues": [
+    "Audit 2026-10-15: the energy token, original NQS attribution and variational status were checked, but the exact spin-sector assignment in benchmark_id was not independently confirmed from the cited paper. Curator confirmation is still required; this is not a fully verified exact-instance match."
+  ]
 }
