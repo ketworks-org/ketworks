@@ -1,0 +1,5 @@
+# Copy to CODEOWNERS and replace these with actual GitHub users or teams.
+# /data/ @your-org/nqs-curators
+# /prompts/ @your-org/nqs-curators
+# /nqsbot/ @your-org/maintainers
+# /.github/ @your-org/maintainers

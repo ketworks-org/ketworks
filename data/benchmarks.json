@@ -1,0 +1,35 @@
+[
+  {
+    "id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+    "name": "J₁–J₂ · 10 × 10",
+    "family": "Square J₁–J₂",
+    "sites": 100,
+    "geometry": "10 by 10 square lattice; periodic in both directions; each nearest-neighbor and diagonal next-nearest-neighbor bond counted once",
+    "hamiltonian": "H = J1 sum_<ij> S_i · S_j + J2 sum_<<ij>> S_i · S_j; spin-1/2 operators S = sigma/2; J1 = 1; J2 = 0.5; no constant shift",
+    "sector": "Total Sz = 0; ground-state variational calculation",
+    "unit": "J1",
+    "description": "Frustrated square-lattice antiferromagnet at J₂/J₁ = 0.5."
+  },
+  {
+    "id": "heisenberg-triangular-12x12-pbc-sz0",
+    "name": "Triangular Heisenberg · 12 × 12",
+    "family": "Triangular Heisenberg",
+    "sites": 144,
+    "geometry": "12 by 12 triangular Bravais lattice; periodic along both primitive vectors; nearest-neighbor displacements (1,0), (0,1), (1,-1), each undirected bond counted once",
+    "hamiltonian": "H = J sum_<ij> S_i · S_j; spin-1/2 operators S = sigma/2; J = 1; no constant shift",
+    "sector": "Total Sz = 0; ground-state variational calculation",
+    "unit": "J",
+    "description": "Nearest-neighbor triangular-lattice antiferromagnet."
+  },
+  {
+    "id": "hubbard-square-8x8-pbc-u8-n56-sz0",
+    "name": "Hubbard · 8 × 8",
+    "family": "Hubbard",
+    "sites": 64,
+    "geometry": "8 by 8 square lattice; periodic in both directions; nearest-neighbor hopping only",
+    "hamiltonian": "H = -t sum_<ij>,s (c†_is c_js + h.c.) + U sum_i n_iup n_idown; t = 1; U = 8; tprime = 0; no chemical-potential term or constant shift",
+    "sector": "Nup = 28; Ndown = 28; 56 electrons; ground-state variational calculation",
+    "unit": "t",
+    "description": "Repulsive Hubbard model at U/t = 8 and one-eighth hole doping."
+  }
+]
