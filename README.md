@@ -35,9 +35,9 @@ This needs Python 3.12 and Node.js 22. The build renders LaTeX with KaTeX and wr
 | `data/results/` | Reviewed Ketboard entries, one file per paper |
 | `data/proposals/` | Results for instances not yet defined; never published |
 | `site/` | Page templates, styles and scripts |
-| `nqsbot/` | Validation, site build, and the optional arXiv bot |
+| `nqsbot/` | Validation, paper metadata from arXiv, and the site build |
 | `brand/` | The Ketworks mark, avatar and social-preview image |
-| `docs/maintainers.md` | Deployment and the arXiv bot |
+| `docs/maintainers.md` | Deployment and repository rules |
 
 ## License
 
