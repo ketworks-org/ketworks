@@ -1,0 +1,45 @@
+name: Preview build
+# Builds the site of a pull request as a preview and uploads it as an artifact.
+# Runs the pull request's code, so it has no secrets and a read-only token.
+# The Preview deploy workflow uploads the artifact to Netlify and comments on the pull request.
+on:
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: preview-build-${{ github.event.number }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: python -m pip install -r requirements.txt
+      - name: Build the preview (noindex, with a preview banner)
+        env:
+          KETWORKS_PREVIEW: '1'
+        run: python -m nqsbot.build
+      - name: Describe the changes
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          NUMBER: ${{ github.event.number }}
+        run: |
+          mkdir preview
+          python -m nqsbot.preview_summary "$BASE_SHA" > preview/summary.md
+          cp -r dist preview/site
+          echo "$NUMBER" > preview/number
+      - uses: actions/upload-artifact@v4
+        with:
+          name: preview
+          path: preview
+          retention-days: 7

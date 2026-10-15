@@ -8,8 +8,9 @@ import unittest
 from unittest.mock import Mock, patch
 
 from nqsbot import schema
-from nqsbot.build import build
+from nqsbot.build import build, mark_preview
 from nqsbot.fill_metadata import fill
+from nqsbot.preview_summary import describe
 
 REGISTRY = schema.benchmarks()
 BENCHMARK = next(iter(REGISTRY))
@@ -131,6 +132,30 @@ class EligibilityTests(unittest.TestCase):
             self.assertEqual(payload["papers"]["2601.00001"]["paper"]["id"], "2601.00001v1")
             self.assertNotIn("results", payload["papers"]["2601.00001"])
             self.assertIn("<loc>https://ketworks.org/</loc>", (root / "dist/sitemap.xml").read_text())
+
+    def test_preview_summary_links_changed_instances_entries_and_pages(self):
+        registry = json.dumps(list(REGISTRY.values()))
+        path = "data/results/2601.00001.json"
+        before = {"data/benchmarks.json": registry, path: json.dumps(record())}
+        changed = dict(ROW, energy="-50.010", energy_token="-50.010(20)")
+        after = {"data/benchmarks.json": registry, path: json.dumps(dict(record(), results=[changed, dict(ROW, variant="new")])), "wiki/new-page.md": "# New"}
+        text = describe([path, "wiki/new-page.md"], before, after)
+        self.assertIn("{PREVIEW}/#benchmarks?system=" + BENCHMARK, text)
+        self.assertIn("1 added, 1 changed (arXiv:2601.00001v1)", text)
+        self.assertIn("[new-page]({PREVIEW}/wiki/new-page/)", text)
+        self.assertIn("No pages, instances or entries change", describe(["README.md"], {}, {}))
+
+    def test_preview_build_is_not_indexed_and_carries_a_banner(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "index.html").write_text('<html><head><meta name="viewport" content="x"></head><body></body></html>')
+            (root / "_headers").write_text("/*\n  X-Content-Type-Options: nosniff\n")
+            mark_preview(root)
+            page = (root / "index.html").read_text()
+            self.assertIn('<meta name="robots" content="noindex">', page)
+            self.assertIn('class="preview-banner"', page)
+            self.assertIn("Disallow: /", (root / "robots.txt").read_text())
+            self.assertIn("X-Robots-Tag: noindex", (root / "_headers").read_text())
 
     def test_metadata_is_filled_only_where_empty(self):
         feed = ('<feed xmlns="http://www.w3.org/2005/Atom"><entry><id>http://arxiv.org/abs/2601.00001v1</id><title>Filled  title</title>'

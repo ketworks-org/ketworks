@@ -1,0 +1,83 @@
+name: Preview deploy
+# Uploads the site built by Preview build to Netlify under the address pr-<number>--<project>.netlify.app
+# and posts or updates one comment on the pull request with the link and a summary of the changes.
+# It never checks out or runs pull-request code: it only uploads the built files, so it can hold the
+# Netlify secrets also for pull requests from forks. Runs only once this file is on the default branch.
+on:
+  workflow_run:
+    workflows: ['Preview build']
+    types: [completed]
+permissions:
+  actions: read
+  pull-requests: write
+concurrency:
+  group: preview-deploy-${{ github.event.workflow_run.head_repository.full_name }}-${{ github.event.workflow_run.head_branch }}
+  cancel-in-progress: true
+jobs:
+  deploy:
+    if: github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: preview
+          path: preview
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+      - name: Check the pull request
+        id: pr
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const number = fs.readFileSync('preview/number', 'utf8').trim();
+            if (!/^[0-9]+$/.test(number)) throw new Error('Not a pull request number: ' + number);
+            const { data: pull } = await github.rest.pulls.get({ ...context.repo, pull_number: Number(number) });
+            // The number comes from the artifact; accept it only if that pull request is at the built commit.
+            const current = pull.head.sha === context.payload.workflow_run.head_sha;
+            if (!current) core.notice(`Pull request #${number} has moved on from ${context.payload.workflow_run.head_sha}; skipping.`);
+            core.setOutput('number', number);
+            core.setOutput('current', String(current && pull.state === 'open'));
+      - name: Check credentials
+        id: credentials
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          if [ -n "$NETLIFY_AUTH_TOKEN" ] && [ -n "$NETLIFY_SITE_ID" ]; then echo "ok=true" >> "$GITHUB_OUTPUT"
+          else echo "::warning::Not deploying the preview: NETLIFY_AUTH_TOKEN or NETLIFY_SITE_ID missing"; echo "ok=false" >> "$GITHUB_OUTPUT"; fi
+      - uses: actions/setup-node@v4
+        if: steps.pr.outputs.current == 'true' && steps.credentials.outputs.ok == 'true'
+        with:
+          node-version: '22'
+      - name: Deploy to Netlify
+        id: netlify
+        if: steps.pr.outputs.current == 'true' && steps.credentials.outputs.ok == 'true'
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NUMBER: ${{ steps.pr.outputs.number }}
+          SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          npx --yes netlify-cli@17 deploy --dir preview/site --alias "pr-$NUMBER" --message "Preview of #$NUMBER at $SHA" --json > netlify.json
+          url=$(jq -r '.deploy_url' netlify.json)
+          case "$url" in https://*) echo "url=$url" >> "$GITHUB_OUTPUT" ;; *) cat netlify.json; exit 1 ;; esac
+      - name: Comment on the pull request
+        if: steps.netlify.outputs.url
+        uses: actions/github-script@v7
+        env:
+          NUMBER: ${{ steps.pr.outputs.number }}
+          URL: ${{ steps.netlify.outputs.url }}
+        with:
+          script: |
+            const fs = require('fs');
+            const marker = '<!-- ketworks-preview -->';
+            const { NUMBER, URL } = process.env;
+            const sha = context.payload.workflow_run.head_sha;
+            let summary = fs.readFileSync('preview/summary.md', 'utf8').split('{PREVIEW}').join(URL);
+            if (summary.length > 50000) summary = summary.slice(0, 50000) + '\n\n(summary truncated)';
+            const body = [marker, `**Preview:** ${URL}`, '', summary, '', `Built from ${sha.slice(0, 7)}. The preview is not indexed and is updated on every push.`].join('\n');
+            const comments = await github.paginate(github.rest.issues.listComments, { ...context.repo, issue_number: Number(NUMBER), per_page: 100 });
+            const mine = comments.find(c => c.user.type === 'Bot' && c.body.startsWith(marker));
+            if (mine) await github.rest.issues.updateComment({ ...context.repo, comment_id: mine.id, body });
+            else await github.rest.issues.createComment({ ...context.repo, issue_number: Number(NUMBER), body });
