@@ -17,6 +17,22 @@
     "wiki": "j1j2-square-lattice"
   },
   {
+    "id": "heisenberg-triangular-6x6-pbc-sz0",
+    "name": "Triangular Heisenberg",
+    "family": "Triangular Heisenberg",
+    "sites": 36,
+    "geometry": "6 by 6 triangular Bravais lattice; periodic along both primitive vectors; nearest-neighbor displacements (1,0), (0,1), (1,-1), each undirected bond counted once",
+    "hamiltonian": "H = J sum_<ij> S_i · S_j; spin-1/2 operators S = sigma/2; J = 1; no constant shift",
+    "sector": "Total Sz = 0; ground-state variational calculation",
+    "unit": "J",
+    "description": "Nearest-neighbor exchange on a triangular lattice.",
+    "hamiltonian_latex": "H=J\\sum_{\\langle i,j\\rangle}\\mathbf{S}_i\\cdot\\mathbf{S}_j",
+    "instance_label": "6 × 6 · J = 1 · periodic · Sz = 0",
+    "lattice_size": "6 × 6 · 36 sites",
+    "boundary_conditions": "Periodic along both primitive vectors",
+    "parameters_latex": "J=1,\\qquad S=\\tfrac12"
+  },
+  {
     "id": "heisenberg-triangular-12x12-pbc-sz0",
     "name": "Triangular Heisenberg",
     "family": "Triangular Heisenberg",

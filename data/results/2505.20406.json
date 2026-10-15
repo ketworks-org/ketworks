@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2505.20406v3",
+    "title": "Leveraging recurrence in neural network wavefunctions for large-scale simulations of Heisenberg antiferromagnets on the triangular lattice",
+    "authors": "M. Schuyler Moss, Roeland Wiersema, Mohamed Hibat-Allah, Juan Carrasquilla, Roger G. Melko",
+    "published": "2025-05-26T18:00:20Z",
+    "updated": "2025-10-13T15:55:48Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2505.20406v3",
+  "source_sha256": "77cd660daa4e5578b25501c98bccc4d9f572092568c7e8cfefafe00f6d7c8d5e",
+  "extraction_model": "human",
+  "results": [
+    {
+      "benchmark_id": "heisenberg-triangular-6x6-pbc-sz0",
+      "system_description": "6x6 triangular lattice, periodic along both primitive vectors; J = 1; S = sigma/2; total Sz = 0",
+      "method": "Recurrent neural network wavefunction",
+      "variant": "RNN, scale s = 4.0, rate r = 0.158",
+      "method_class": "autoregressive",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.5562",
+      "energy_token": "-0.5562(2)",
+      "normalization": "per_site",
+      "unit": "J",
+      "uncertainty": "0.0002",
+      "uncertainty_type": "unspecified",
+      "source_location": "Table V, p. 20 (row 'RNN wavefunction', bold)",
+      "eligibility_evidence": "Variational energy of the authors' RNN wavefunction for the L = 6 periodic cluster; other rows are quoted from the literature and excluded.",
+      "parameter_count": null,
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+    }
+  ],
+  "issues": []
+}

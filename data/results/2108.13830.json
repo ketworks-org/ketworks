@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2108.13830v4",
+    "title": "Bridging the Gap between Deep Learning and Frustrated Quantum Spin System for Extreme-scale Simulations on New Generation of Sunway Supercomputer",
+    "authors": "Mingfan Li, Junshi Chen, Qian Xiao, Qingcai Jiang, Xuncheng Zhao, Rongfen Lin, Fei Wang, Hong An, Xiao Liang, Lixin He",
+    "published": "2021-08-31T13:38:04Z",
+    "updated": "2022-04-14T06:48:49Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2108.13830v4",
+  "source_sha256": "566c074053cd686390a49f64d9051da7ddc051b5c9dd673e87dc50cc04c1d999",
+  "extraction_model": "human",
+  "results": [
+    {
+      "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+      "system_description": "10x10 square lattice, periodic; J1 = 1, J2 = 0.5; S = sigma/2; total Sz = 0",
+      "method": "Deep convolutional neural network",
+      "variant": "CNN with 106529 parameters, transfer learning and symmetrization",
+      "method_class": "convolutional",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.49717",
+      "energy_token": "-0.49717",
+      "normalization": "per_site",
+      "unit": "J1",
+      "uncertainty": null,
+      "uncertainty_type": "not_reported",
+      "source_location": "Table 4, p. 10 (row 10 × 10, column 0.50)",
+      "eligibility_evidence": "Variational energy of the deep CNN state reported for the 10 × 10 lattice.",
+      "parameter_count": 106529,
+      "notes": "No uncertainty printed. Parameter count stated in the text on p. 10. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+    }
+  ],
+  "issues": []
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2002.04613v3",
+    "title": "Neural network wave functions and the sign problem",
+    "authors": "Attila Szabó, Claudio Castelnovo",
+    "published": "2020-02-11T19:00:01Z",
+    "updated": "2020-07-30T16:17:21Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2002.04613v3",
+  "source_sha256": "89e6b0941621ad18cca46b8be7b77d97805f4ac02a3cfcfaf8bf231f9cf6e426",
+  "extraction_model": "human",
+  "results": [
+    {
+      "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+      "system_description": "10x10 square lattice, periodic; J1 = 1, J2 = 0.5; S = sigma/2; total Sz = 0",
+      "method": "Convolutional neural network",
+      "variant": "separate amplitude and phase CNNs",
+      "method_class": "convolutional",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.494757",
+      "energy_token": "-0.494757(12)",
+      "normalization": "per_site",
+      "unit": "J1",
+      "uncertainty": "0.000012",
+      "uncertainty_type": "unspecified",
+      "source_location": "Table I, p. 3 (row 'our work', column J2/J1 = 0.5)",
+      "eligibility_evidence": "Variational energy of the authors' CNN ansatz; comparison rows (GWF, GWF+RBM, CNN of Ref. 4) are excluded.",
+      "parameter_count": null,
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+    }
+  ],
+  "issues": []
+}

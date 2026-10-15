@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2009.14370v2",
+    "title": "Hybrid convolutional neural network and PEPS wave functions for quantum many-particle states",
+    "authors": "Xiao Liang, Shao-Jun Dong, Lixin He",
+    "published": "2020-09-30T01:18:44Z",
+    "updated": "2021-01-13T14:55:34Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2009.14370v2",
+  "source_sha256": "74b1aa5375d3afa863c7ee4aa2685dfd0a737e7399a96531b8d27fa4b69be483",
+  "extraction_model": "human",
+  "results": [
+    {
+      "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+      "system_description": "10x10 square lattice, periodic; J1 = 1, J2 = 0.5; S = sigma/2; total Sz = 0",
+      "method": "PEPS × deep CNN",
+      "variant": "PEPS (D = 2) multiplied by a deep CNN",
+      "method_class": "hybrid",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.495502",
+      "energy_token": "-0.495502",
+      "normalization": "per_site",
+      "unit": "J1",
+      "uncertainty": null,
+      "uncertainty_type": "not_reported",
+      "source_location": "Table I, p. 4 (row J2 = 0.5, column PEPS+D. CNN); repeated in Table II, p. 5",
+      "eligibility_evidence": "Variational energy of a hybrid tensor-network × neural-network state optimized by SR; eligibility of the tensor-network factor is a curator judgement.",
+      "parameter_count": null,
+      "notes": "No uncertainty printed. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+    }
+  ],
+  "issues": []
+}

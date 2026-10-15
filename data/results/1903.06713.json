@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "1903.06713v1",
+    "title": "Study of the Two-Dimensional Frustrated J1-J2 Model with Neural Network Quantum States",
+    "authors": "Kenny Choo, Titus Neupert, Giuseppe Carleo",
+    "published": "2019-03-15T18:00:01Z",
+    "updated": "2019-03-15T18:00:01Z"
+  },
+  "source_url": "https://arxiv.org/pdf/1903.06713v1",
+  "source_sha256": "5b7348361cf6a878e07ced8cc021349972fc03ce9d579543fb67df4101e1bd44",
+  "extraction_model": "human",
+  "results": [
+    {
+      "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+      "system_description": "10x10 square lattice, periodic; J1 = 1, J2 = 0.5; S = sigma/2; total Sz = 0",
+      "method": "Convolutional neural network",
+      "variant": "CNN with Marshall-sign prior, symmetrized",
+      "method_class": "convolutional",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.49516",
+      "energy_token": "-0.49516(1)",
+      "normalization": "per_site",
+      "unit": "J1",
+      "uncertainty": "0.00001",
+      "uncertainty_type": "unspecified",
+      "source_location": "Table I, p. 6 (10 × 10, J2 = 0.5, row CNN)",
+      "eligibility_evidence": "Variational Monte Carlo energy of an explicitly represented CNN wavefunction; the table also lists VMC and DMRG comparison values, which are excluded.",
+      "parameter_count": null,
+      "notes": "Also tabulated in arXiv:2005.14142v6 Table II and arXiv:2310.05715v2 Table 1. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+    }
+  ],
+  "issues": []
+}
