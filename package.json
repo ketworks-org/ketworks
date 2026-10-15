@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Ketworks: the Ketbook reference and the Ketboard NQS energy board",
+  "license": "MIT",
   "scripts": {
     "build": "python3 -m nqsbot.build",
     "test": "node scripts/check-math.mjs"
