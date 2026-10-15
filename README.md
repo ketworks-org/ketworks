@@ -38,3 +38,7 @@ This needs Python 3.12 and Node.js 22. The build renders LaTeX with KaTeX and wr
 | `nqsbot/` | Validation, site build, and the optional arXiv bot |
 | `brand/` | The Ketworks mark, avatar and social-preview image |
 | `docs/maintainers.md` | Deployment and the arXiv bot |
+
+## License
+
+Everything in this repository, the pages and data as well as the code, is released under the [MIT License](LICENSE).

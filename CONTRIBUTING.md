@@ -1,6 +1,6 @@
 # Contributing to Ketbook and Ketboard
 
-Wiki pages and NQS energy results both enter through pull requests. Anyone can propose a contribution. You do not need direct write access: GitHub can create a fork and a branch for your proposal. A maintainer reviews and merges the change.
+Wiki pages and NQS energy results both enter through pull requests. Anyone can propose a contribution. You do not need direct write access: GitHub can create a fork and a branch for your proposal. A maintainer reviews and merges the change. Contributions are released under the repository's [MIT License](LICENSE).
 
 ## Edit the wiki
 

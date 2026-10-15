@@ -14,7 +14,9 @@ GitHub Pages is not used (`PUBLISH_PAGES` unset); Netlify serves the site.
 
 ## Repository rules
 
-`main` should only change through reviewed pull requests. A suggested ruleset (required approval, code-owner review, the `validate` check, no bypass) is in `.github/ruleset.example.json`; apply it under Settings, Rules. The reviewer is set in `.github/CODEOWNERS`.
+`main` should only change through pull requests that pass the `validate` check. Protect it under Settings, Branches (or Rules) with: require a pull request before merging; require the status check `validate`; block force pushes and deletion.
+
+While there is a single maintainer, set the number of required approvals to 0 and leave administrators able to bypass. GitHub does not let anyone approve their own pull request, so a required approval with one maintainer blocks every merge. Once there are two or more curators, raise it to 1 and require code-owner review; `.github/ruleset.example.json` holds that stricter ruleset, and the reviewers are listed in `.github/CODEOWNERS`.
 
 ## The arXiv bot
 
