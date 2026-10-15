@@ -92,7 +92,7 @@ function renderResults() {
   const b = dataset.benchmarks.find(b => b.id === $('system-select').value); if (!b) return;
   $('system-name').textContent = b.family; $('instance-label').textContent = b.instance_label || ''; $('system-key').textContent = b.id;
   $('system-wiki').hidden = !b.wiki; if (b.wiki) $('system-wiki').href = `wiki/${b.wiki}/`;
-  document.querySelectorAll('[data-instance]').forEach(a => a.classList.toggle('active', a.dataset.instance === b.id));
+  document.querySelectorAll('[data-instance]').forEach(a => { const active = a.dataset.instance === b.id; a.classList.toggle('active', active); if (active && location.hash.startsWith('#benchmarks')) a.closest('details')?.setAttribute('open', ''); });
   $('system-definition').replaceChildren(); const dl = document.createElement('dl');
   const h = text('dd', ''); if (b.hamiltonian_html) h.innerHTML = b.hamiltonian_html; else h.textContent = b.hamiltonian;
   dl.append(text('dt', 'Hamiltonian'), h);

@@ -12,28 +12,26 @@ from .schema import ROOT, per_site, validate_tree
 
 
 def nav_html(index, registry, prefix="", current=None):
-    """Site-wide left navigation: wiki pages by section, Ketboard instances by system, contribution links."""
-    out = []
-    sections = list(dict.fromkeys(page["section"] for page in index))
-    out.append('<div class="nav-group"><p class="nav-title"><a href="' + prefix + '#wiki" data-nav="wiki">Wiki</a></p>')
-    for section in sections:
-        out.append(f'<p class="nav-section">{html.escape(section)}</p>')
-        for page in index:
-            if page["section"] == section:
-                current_attr = ' aria-current="page"' if page["slug"] == current else ""
-                out.append(f'<a href="{prefix}wiki/{page["slug"]}/"{current_attr}>{html.escape(page["title"])}</a>')
-    out.append('</div><div class="nav-group"><p class="nav-title"><a href="' + prefix + '#benchmarks" data-nav="benchmarks">Ketboard</a></p>')
-    families = list(dict.fromkeys(b["family"] for b in registry.values()))
-    for family in families:
-        out.append(f'<p class="nav-section">{html.escape(family)}</p>')
-        for b in registry.values():
-            if b["family"] == family:
-                out.append(f'<a href="{prefix}#benchmarks?system={quote(b["id"])}" data-instance="{html.escape(b["id"])}">{html.escape(b.get("instance_label") or b["id"])}</a>')
-    out.append('</div><div class="nav-group"><p class="nav-title"><a href="' + prefix + '#contribute" data-nav="contribute">Contribute</a></p>')
-    out.append(f'<a href="{prefix}#submit" data-nav="submit">Submit a result</a>')
-    out.append('<a href="https://github.com/gcarleo/ketbook/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Contribution guide ↗</a>')
-    out.append('<a href="https://github.com/gcarleo/ketbook" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>')
-    return "".join(out)
+    """Site-wide left navigation: collapsed sections of wiki pages and Ketboard instances, open only where the reader is."""
+    def group(title, href, key, sections):
+        parts = [f'<div class="nav-group"><p class="nav-title"><a href="{href}" data-nav="{key}">{html.escape(title)}</a></p>']
+        for name, links, is_open in sections:
+            parts.append(f'<details class="nav-sub"{" open" if is_open else ""}><summary>{html.escape(name)}</summary>{"".join(links)}</details>')
+        return "".join(parts) + "</div>"
+    current_section = next((page["section"] for page in index if page["slug"] == current), None)
+    wiki_sections = []
+    for section in dict.fromkeys(page["section"] for page in index):
+        links = [f'<a href="{prefix}wiki/{page["slug"]}/"' + (' aria-current="page"' if page["slug"] == current else "") + f'>{html.escape(page["title"])}</a>' for page in index if page["section"] == section]
+        wiki_sections.append((section, links, section == current_section))
+    board_sections = []
+    for family in dict.fromkeys(b["family"] for b in registry.values()):
+        links = [f'<a href="{prefix}#benchmarks?system={quote(b["id"])}" data-instance="{html.escape(b["id"])}">{html.escape(b.get("instance_label") or b["id"])}</a>' for b in registry.values() if b["family"] == family]
+        board_sections.append((family, links, False))
+    contribute = (f'<div class="nav-group"><p class="nav-title"><a href="{prefix}#contribute" data-nav="contribute">Contribute</a></p>'
+                  f'<a href="{prefix}#submit" data-nav="submit">Submit a result</a>'
+                  '<a href="https://github.com/gcarleo/ketbook/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Contribution guide ↗</a>'
+                  '<a href="https://github.com/gcarleo/ketbook" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>')
+    return group("Wiki", prefix + "#wiki", "wiki", wiki_sections) + group("Ketboard", prefix + "#benchmarks", "benchmarks", board_sections) + contribute
 
 
 def render_content(root, destination, registry):
