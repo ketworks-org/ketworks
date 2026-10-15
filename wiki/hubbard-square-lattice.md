@@ -2,7 +2,7 @@
 
 > **In brief.** At $U/t=8$ and filling $n=7/8$ the square-lattice Hubbard model is a doped Mott insulator in the regime most relevant to the cuprates, and the hardest point of the 2015 community benchmark. Its ground state is a filled stripe with wavelength 8 and no superconductivity; all controlled methods agree on $e_\infty=-0.767\pm0.004\,t$, but no exact energy exists for any torus beyond $4\times4$. Determinant and Pfaffian wavefunctions dressed by neural networks now give the lowest variational energies on tori, where DMRG cannot go, and the spread between ansätze on a fixed cluster is a hundred times the statistical error bars.
 
-Notation follows the [conventions page](../notation/). This page fixes the conventions of the Ketboard instances `hubbard-square-8x8-pbc-u8-n56-sz0`, `hubbard-rectangular-16x4-pbc-u8-n56-sz0` and `hubbard-square-16x16-pbc-u8-n224-sz0`, explains why this point of the phase diagram is hard, and summarizes what is known about its energy. The same clusters with a next-nearest-neighbour hopping have their [own page](../t-tprime-hubbard/). Reviewed entries live in [Ketboard](../../#benchmarks?system=hubbard-rectangular-16x4-pbc-u8-n56-sz0), not here.
+Notation follows the [conventions page](../notation/). This page fixes the conventions of the Ketboard instances `hubbard-square-8x8-pbc-u8-n56-sz0`, `hubbard-rectangular-Lx4-pbc-u8-nNe-sz0` with $L=8,12,16$, and `hubbard-square-16x16-pbc-u8-n224-sz0`, explains why this point of the phase diagram is hard, and summarizes what is known about its energy. The same clusters with a next-nearest-neighbour hopping have their [own page](../t-tprime-hubbard/). Reviewed entries live in [Ketboard](../../#benchmarks?system=hubbard-rectangular-16x4-pbc-u8-n56-sz0), not here.
 
 ## Hamiltonian and instances
 
@@ -11,12 +11,12 @@ H=-t\sum_{\langle i,j\rangle,\sigma}\bigl(c^\dagger_{i\sigma}c_{j\sigma}+\mathrm
 \qquad t=1,\quad U=8,\quad t'=0 .
 $$
 
-- Lattices: $8\times8$ (64 sites), $16\times4$ (64 sites, 16 along $x$ and 4 along $y$), and $16\times16$ (256 sites), periodic in both directions with no twist and no antiperiodic direction. Nearest-neighbour hopping only; each undirected bond counted once per spin.
-- Filling: $N_\uparrow=N_\downarrow$ and $N_e=\tfrac78N$, i.e. 28+28 electrons on the 64-site clusters and 112+112 on $16\times16$, a hole doping of $\delta=1/8$. On all three tori the noninteracting problem at this filling is open-shell (the Fermi level falls inside a degenerate set of $\mathbf k$ points), so the mean-field determinant from which a fermionic ansatz starts is itself a choice.
+- Lattices: $8\times8$ (64 sites), the four-leg tori $8\times4$, $12\times4$ and $16\times4$ ($L$ along $x$ and 4 along $y$), and $16\times16$ (256 sites), periodic in both directions with no twist and no antiperiodic direction. Nearest-neighbour hopping only; each undirected bond counted once per spin.
+- Filling: $N_\uparrow=N_\downarrow$ and $N_e=\tfrac78N$, i.e. 14+14 on $8\times4$, 21+21 on $12\times4$, 28+28 on the 64-site clusters and 112+112 on $16\times16$, a hole doping of $\delta=1/8$. On all five tori the noninteracting problem at this filling is open-shell (the Fermi level falls inside a degenerate set of $\mathbf k$ points), so the mean-field determinant from which a fermionic ansatz starts is itself a choice.
 - Sector: $S^z=0$ and fixed particle numbers. No momentum or point-group sector is imposed by the instance; a projected or symmetry-restricted calculation must say which sector it targets, since the lowest state of a finite torus need not have zero momentum.
 - Energy: reported per *site*, $e=E/N$, in units of $t$. Energies per electron, which differ by the factor $8/7$, must be converted. The variational energy is a strict upper bound to $e_0$.
 
-Cylinders (periodic along $y$, open along $x$), used by DMRG, are different instances; a $16\times4$ cylinder and a $16\times4$ torus are not comparable (Moreno, Carleo, Georges, Stokes, arXiv:2111.10420, Table IV, lists both). Energies per site differ between the three tori by up to $0.02\,t$ because of shell effects and because each cluster accommodates different stripe patterns, so results are compared only within one instance.
+Cylinders (periodic along $y$, open along $x$), used by DMRG, are different instances; a $16\times4$ cylinder and a $16\times4$ torus are not comparable (Moreno, Carleo, Georges, Stokes, arXiv:2111.10420, Table IV, lists both). Energies per site differ between the tori by up to $0.02\,t$ because of shell effects and because each cluster accommodates different stripe patterns, so results are compared only within one instance.
 
 ## Why $U/t=8$ and $n=7/8$
 
@@ -44,9 +44,29 @@ Energies per site in units of $t$, with the source of each number. Ketboard entr
 | Tensor backflow, one Lanczos step | $-0.7597$, $-0.7618$ | Zhou, Zhou, Liang, arXiv:2308.11823, Table III, two backflow forms |
 | Deep neural backflow with low-rank multi-determinant updates | $-0.7598$; $-0.7622$ with one Lanczos step | Huang, Ou, Ozolins, arXiv:2609.26544, p. 6 |
 | MLP neural backflow, single determinant, 8192 hidden units | $-0.76258(1)$ | Loehr and Clark, arXiv:2510.26906, p. 3 |
-| Transformer neural backflow | $-0.76298$ | Gu et al., arXiv:2507.02644, as quoted in arXiv:2507.10705, p. 9 |
+| Transformer neural backflow | $-0.76298$ | Gu et al., arXiv:2507.02644, p. 31 |
 | MLP neural backflow, four determinants from optimized symmetries | $-0.76340(2)$ | Loehr and Clark, arXiv:2510.26906, p. 5 |
 | Hidden-fermion Pfaffian state, group-convolutional backbone | $-0.76413(3)$ | Chen, Wan, Sengupta, Georges, Roth, arXiv:2507.10705, Table IV |
+| MLP neural backflow, 32 determinants from optimized symmetries | $-0.76486(2)$ | Loehr and Clark, arXiv:2510.26906, p. 5 |
+| Same state projected onto the fully symmetric sector | $-0.76560(1)$ | Loehr and Clark, arXiv:2510.26906, p. 5 |
+
+**$8\times4$ torus, 14+14 electrons.**
+
+| Method | $e$ | Source |
+| --- | --- | --- |
+| Tensor backflow, one Lanczos step | $-0.7591$, $-0.7633$ | Zhou, Zhou, Liang, arXiv:2308.11823, Table III, two backflow forms |
+| Hidden-fermion determinant state | $-0.7633(7)$ | Moreno et al., arXiv:2111.10420, Table IV |
+| Deep neural backflow | $-0.7659$; $-0.7671$ with one Lanczos step | Huang, Ou, Ozolins, arXiv:2609.26544, p. 6 |
+| Hidden-fermion Pfaffian state | $-0.76690(1)$ | Chen et al., arXiv:2507.10705, Table IV |
+| MLP neural backflow, fully symmetrized, 128 determinants | $-0.768337(2)$ | Loehr and Clark, arXiv:2510.26906, p. 6 |
+
+**$12\times4$ torus, 21+21 electrons.**
+
+| Method | $e$ | Source |
+| --- | --- | --- |
+| Tensor backflow, one Lanczos step | $-0.7608$, $-0.7636$ | Zhou, Zhou, Liang, arXiv:2308.11823, Table III, two backflow forms |
+| Deep neural backflow | $-0.7640$; $-0.7662$ with one Lanczos step | Huang, Ou, Ozolins, arXiv:2609.26544, p. 6 |
+| Hidden-fermion Pfaffian state | $-0.76608(1)$ | Chen et al., arXiv:2507.10705, Table IV |
 
 **$8\times8$ torus, 28+28 electrons.** All from Sharma et al., arXiv:2510.11710, Appendix E, Table I.
 
@@ -68,7 +88,7 @@ Energies per site in units of $t$, with the source of each number. Ketboard entr
 | Tensor backflow, one Lanczos step | $-0.7552$ | Liang, arXiv:2507.01856, Table I |
 | Deep convolutional backflow (ACE) | $-0.7573$ | Gu et al., arXiv:2604.25775, Table I |
 
-Three observations follow. On a fixed cluster the ansätze differ by up to $10^{-2}t$ per site while the printed error bars are $10^{-4}t$ or smaller, so the ranking is informative here in a way it is not for the [J₁–J₂ instance](../j1j2-square-lattice/). The $16\times4$ series is not monotonic in $L$: the hidden-fermion Pfaffian energies on $8\times4$ and $12\times4$ are $-0.76690(1)$ and $-0.76608(1)$ (arXiv:2507.10705, Table IV), below the $16\times4$ value, which is a shell effect, not a loss of accuracy. And the best $16\times16$ energy is $0.01\,t$ above the thermodynamic-limit range; the finite-size correction and the variational error are of the same order and cannot be separated without a size series at fixed ansatz.
+Three observations follow. On a fixed cluster the ansätze differ by up to $10^{-2}t$ per site while the printed error bars are $10^{-4}t$ or smaller, so the ranking is informative here in a way it is not for the [J₁–J₂ instance](../j1j2-square-lattice/). The four-leg series is not monotonic in $L$: for every ansatz that reports all three, the $8\times4$ energy lies below the $12\times4$ energy, which lies below the $16\times4$ energy, a shell effect of the four-leg torus rather than a loss of accuracy; the Loehr–Clark $8\times4$ state sits $8\times10^{-5}$ above their own variance-extrapolated estimate, so that cluster is essentially solved. And the best $16\times16$ energy is $0.01\,t$ above the thermodynamic-limit range; the finite-size correction and the variational error are of the same order and cannot be separated without a size series at fixed ansatz.
 
 ## Reporting a result for this instance
 

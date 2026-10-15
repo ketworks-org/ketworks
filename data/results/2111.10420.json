@@ -30,6 +30,26 @@
       "eligibility_evidence": "Variational energy of the hidden-fermion determinant state on the 4 × 16 lattice with periodic boundaries in both directions at n = 7/8 and U = 8.",
       "parameter_count": null,
       "notes": "Cross-checked with varbench Hubbard/rectangular-4x16_64_P_28_8: total energy -48.192(3), i.e. -0.753 per site. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+    },
+    {
+      "benchmark_id": "hubbard-rectangular-8x4-pbc-u8-n28-sz0",
+      "system_description": "8x4 rectangular lattice (Lx = 8, Ly = 4), periodic in both directions; U/t = 8, t' = 0; 28 electrons (14 up, 14 down), 1/8 hole doping",
+      "method": "Hidden-fermion determinant state",
+      "variant": "HFDS, 16 hidden fermions, two-layer fully connected network with hidden-unit density alpha = 14, PBC-PBC",
+      "method_class": "backflow",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.7633",
+      "energy_token": "-0.7633(7)",
+      "normalization": "per_site",
+      "unit": "t",
+      "uncertainty": "0.0007",
+      "uncertainty_type": "unspecified",
+      "source_location": "Table IV, p. 20 (row L = 8, column HFDS (PBC-PBC))",
+      "eligibility_evidence": "Variational energy of the hidden fermion determinant state with a fully parametrized hidden sub-matrix on the 4 × 8 lattice with periodic boundaries along both sides (16 hidden fermions for all sizes, alpha = 14 for L = 8, p. 7).",
+      "parameter_count": null,
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     }
   ],
   "issues": []
