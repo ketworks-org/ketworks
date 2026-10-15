@@ -30,7 +30,8 @@
     "instance_label": "6 × 6 · J = 1 · periodic · Sz = 0",
     "lattice_size": "6 × 6 · 36 sites",
     "boundary_conditions": "Periodic along both primitive vectors",
-    "parameters_latex": "J=1,\\qquad S=\\tfrac12"
+    "parameters_latex": "J=1,\\qquad S=\\tfrac12",
+    "wiki": "triangular-heisenberg"
   },
   {
     "id": "heisenberg-triangular-12x12-pbc-sz0",
@@ -46,7 +47,8 @@
     "instance_label": "12 × 12 · J = 1 · periodic · Sz = 0",
     "lattice_size": "12 × 12 · 144 sites",
     "boundary_conditions": "Periodic along both primitive vectors",
-    "parameters_latex": "J=1,\\qquad S=\\tfrac12"
+    "parameters_latex": "J=1,\\qquad S=\\tfrac12",
+    "wiki": "triangular-heisenberg"
   },
   {
     "id": "heisenberg-triangular-18x18-pbc-sz0",
@@ -62,7 +64,8 @@
     "instance_label": "18 × 18 · J = 1 · periodic · Sz = 0",
     "lattice_size": "18 × 18 · 324 sites",
     "boundary_conditions": "Periodic along both primitive vectors",
-    "parameters_latex": "J=1,\\qquad S=\\tfrac12"
+    "parameters_latex": "J=1,\\qquad S=\\tfrac12",
+    "wiki": "triangular-heisenberg"
   },
   {
     "id": "heisenberg-triangular-24x24-pbc-sz0",
@@ -78,7 +81,8 @@
     "instance_label": "24 × 24 · J = 1 · periodic · Sz = 0",
     "lattice_size": "24 × 24 · 576 sites",
     "boundary_conditions": "Periodic along both primitive vectors",
-    "parameters_latex": "J=1,\\qquad S=\\tfrac12"
+    "parameters_latex": "J=1,\\qquad S=\\tfrac12",
+    "wiki": "triangular-heisenberg"
   },
   {
     "id": "heisenberg-triangular-30x30-pbc-sz0",
@@ -94,7 +98,8 @@
     "instance_label": "30 × 30 · J = 1 · periodic · Sz = 0",
     "lattice_size": "30 × 30 · 900 sites",
     "boundary_conditions": "Periodic along both primitive vectors",
-    "parameters_latex": "J=1,\\qquad S=\\tfrac12"
+    "parameters_latex": "J=1,\\qquad S=\\tfrac12",
+    "wiki": "triangular-heisenberg"
   },
   {
     "id": "heisenberg-triangular-42x42-pbc-sz0",
@@ -110,7 +115,8 @@
     "instance_label": "42 × 42 · J = 1 · periodic · Sz = 0",
     "lattice_size": "42 × 42 · 1764 sites",
     "boundary_conditions": "Periodic along both primitive vectors",
-    "parameters_latex": "J=1,\\qquad S=\\tfrac12"
+    "parameters_latex": "J=1,\\qquad S=\\tfrac12",
+    "wiki": "triangular-heisenberg"
   },
   {
     "id": "hubbard-square-8x8-pbc-u8-n56-sz0",
@@ -126,7 +132,8 @@
     "instance_label": "8 × 8 · U/t = 8 · periodic · N↑ = N↓ = 28",
     "lattice_size": "8 × 8 · 64 sites",
     "boundary_conditions": "Periodic in both directions",
-    "parameters_latex": "t=1,\\qquad U/t=8,\\qquad t^{\\prime}=0"
+    "parameters_latex": "t=1,\\qquad U/t=8,\\qquad t^{\\prime}=0",
+    "wiki": "hubbard-square-lattice"
   },
   {
     "id": "hubbard-rectangular-16x4-pbc-u8-n56-sz0",
@@ -142,7 +149,8 @@
     "instance_label": "16 × 4 · U/t = 8 · periodic · N↑ = N↓ = 28",
     "lattice_size": "16 × 4 · 64 sites",
     "boundary_conditions": "Periodic in both directions",
-    "parameters_latex": "t=1,\\qquad U/t=8,\\qquad t^{\\prime}=0"
+    "parameters_latex": "t=1,\\qquad U/t=8,\\qquad t^{\\prime}=0",
+    "wiki": "hubbard-square-lattice"
   },
   {
     "id": "hubbard-square-16x16-pbc-u8-n224-sz0",
@@ -158,7 +166,8 @@
     "instance_label": "16 × 16 · U/t = 8 · periodic · N↑ = N↓ = 112",
     "lattice_size": "16 × 16 · 256 sites",
     "boundary_conditions": "Periodic in both directions",
-    "parameters_latex": "t=1,\\qquad U/t=8,\\qquad t^{\\prime}=0"
+    "parameters_latex": "t=1,\\qquad U/t=8,\\qquad t^{\\prime}=0",
+    "wiki": "hubbard-square-lattice"
   },
   {
     "id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
@@ -174,7 +183,8 @@
     "instance_label": "8 × 8 · U/t = 8 · t′/t = −0.2 · periodic · N↑ = N↓ = 28",
     "lattice_size": "8 × 8 · 64 sites",
     "boundary_conditions": "Periodic in both directions",
-    "parameters_latex": "t=1,\\qquad t'/t=-0.2,\\qquad U/t=8"
+    "parameters_latex": "t=1,\\qquad t'/t=-0.2,\\qquad U/t=8",
+    "wiki": "t-tprime-hubbard"
   },
   {
     "id": "hubbard-square-12x12-pbc-u8-tp-0p2-n126-sz0",
@@ -190,7 +200,8 @@
     "instance_label": "12 × 12 · U/t = 8 · t′/t = −0.2 · periodic · N↑ = N↓ = 63",
     "lattice_size": "12 × 12 · 144 sites",
     "boundary_conditions": "Periodic in both directions",
-    "parameters_latex": "t=1,\\qquad t'/t=-0.2,\\qquad U/t=8"
+    "parameters_latex": "t=1,\\qquad t'/t=-0.2,\\qquad U/t=8",
+    "wiki": "t-tprime-hubbard"
   },
   {
     "id": "hubbard-square-16x16-pbc-u8-tp-0p2-n224-sz0",
@@ -206,7 +217,8 @@
     "instance_label": "16 × 16 · U/t = 8 · t′/t = −0.2 · periodic · N↑ = N↓ = 112",
     "lattice_size": "16 × 16 · 256 sites",
     "boundary_conditions": "Periodic in both directions",
-    "parameters_latex": "t=1,\\qquad t'/t=-0.2,\\qquad U/t=8"
+    "parameters_latex": "t=1,\\qquad t'/t=-0.2,\\qquad U/t=8",
+    "wiki": "t-tprime-hubbard"
   },
   {
     "id": "hubbard-square-20x20-pbc-u8-tp-0p2-n350-sz0",
@@ -222,7 +234,8 @@
     "instance_label": "20 × 20 · U/t = 8 · t′/t = −0.2 · periodic · N↑ = N↓ = 175",
     "lattice_size": "20 × 20 · 400 sites",
     "boundary_conditions": "Periodic in both directions",
-    "parameters_latex": "t=1,\\qquad t'/t=-0.2,\\qquad U/t=8"
+    "parameters_latex": "t=1,\\qquad t'/t=-0.2,\\qquad U/t=8",
+    "wiki": "t-tprime-hubbard"
   },
   {
     "id": "hubbard-square-24x24-pbc-u8-tp-0p2-n504-sz0",
@@ -238,6 +251,7 @@
     "instance_label": "24 × 24 · U/t = 8 · t′/t = −0.2 · periodic · N↑ = N↓ = 252",
     "lattice_size": "24 × 24 · 576 sites",
     "boundary_conditions": "Periodic in both directions",
-    "parameters_latex": "t=1,\\qquad t'/t=-0.2,\\qquad U/t=8"
+    "parameters_latex": "t=1,\\qquad t'/t=-0.2,\\qquad U/t=8",
+    "wiki": "t-tprime-hubbard"
   }
 ]
