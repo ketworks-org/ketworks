@@ -1,12 +1,15 @@
-# Ketbook
+# Ketworks
 
-Ketbook is a reference site; **Ketboard** is its reviewed scoreboard for **original NQS variational energies only**. A daily bot discovers new arXiv papers and revisions, extracts numerical results, and opens a pull request. A human approves and merges before any number reaches the published site.
+Ketworks is a community project on neural quantum states with two parts, shown with one colour each.
+
+- **Ketbook** (red square) is a curated reference: variational Monte Carlo, optimization, architectures and benchmark problems in one notation, every claim cited to its arXiv paper.
+- **Ketboard** (blue circle) is a board of reviewed variational energies for explicitly defined benchmark instances. **Original NQS variational energies only**; every entry is the printed energy of a versioned arXiv paper with its table and row.
+
+Contributing is the third colour (yellow triangle): wiki edits and result records both go through a pull request that a curator reviews. A daily bot can discover new arXiv papers and revisions, extract numerical results and open a pull request; it is switched off, and a human approves and merges before any number reaches the published site.
 
 ## Current state
 
-The repository includes a working static site, three initial benchmark definitions, an arXiv collector, structured extraction, deterministic validation, a PR writer, and GitHub Actions workflows. **There are no published energy records yet.** No live collection occurs without credentials. The private Sites prototype and the eventual GitHub Pages site are separate deployments; GitHub Pages is the automatic destination after merge.
-
-Initial scope: square J1–J2 (10×10, J2/J1=0.5, PBC), triangular Heisenberg (12×12, PBC), and Hubbard (8×8, U/t=8, 56 electrons, PBC). These are proposed starting instances, editable in `data/benchmarks.json`.
+The repository is private and the site is a draft. Ketbook has 14 pages, all drafts awaiting curator review: fundamentals, five architecture pages and the benchmark pages. Ketboard has 17 instances (square J1–J2, triangular Heisenberg, Hubbard and t–t′ Hubbard) with 79 reviewed rows from 29 papers. Instances are defined in `data/benchmarks.json`, records in `data/results/`.
 
 ## Run locally
 

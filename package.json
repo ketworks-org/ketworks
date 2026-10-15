@@ -2,7 +2,7 @@
   "name": "ketbook",
   "version": "0.1.0",
   "private": true,
-  "description": "Ketbook wiki and Ketboard NQS energy scoreboard",
+  "description": "Ketworks: the Ketbook reference and the Ketboard NQS energy board",
   "scripts": {
     "build": "python3 -m nqsbot.build",
     "test": "node scripts/check-math.mjs"

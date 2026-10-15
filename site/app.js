@@ -35,7 +35,7 @@ function route() {
     renderInstances('model-select', 'system-select', benchmark?.id);
     renderResults();
   }
-  document.title = name === 'overview' ? 'Ketbook — Neural quantum states' : `${name === 'benchmarks' ? 'Ketboard' : name.charAt(0).toUpperCase() + name.slice(1)} — Ketbook`;
+  document.title = name === 'overview' ? 'Ketworks — Neural quantum states' : `${{benchmarks: 'Ketboard', wiki: 'Ketbook'}[name] || name.charAt(0).toUpperCase() + name.slice(1)} — Ketworks`;
 }
 
 // Landing page: the book's contents grouped by section, and a ledger of benchmark instances.

@@ -1,4 +1,4 @@
-"""Build Ketbook and Ketboard from reviewed content, with static LaTeX rendering."""
+"""Build Ketworks (Ketbook and Ketboard) from reviewed content, with static LaTeX rendering."""
 import html
 import json
 import os
@@ -31,7 +31,7 @@ def nav_html(index, registry, prefix="", current=None):
                   f'<a href="{prefix}#submit" data-nav="submit">Submit a result</a>'
                   '<a href="https://github.com/gcarleo/ketbook/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Contribution guide ↗</a>'
                   '<a href="https://github.com/gcarleo/ketbook" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>')
-    return group("Wiki", prefix + "#wiki", "wiki", wiki_sections, "wiki") + group("Ketboard", prefix + "#benchmarks", "benchmarks", board_sections, "board") + contribute
+    return group("Ketbook", prefix + "#wiki", "wiki", wiki_sections, "wiki") + group("Ketboard", prefix + "#benchmarks", "benchmarks", board_sections, "board") + contribute
 
 
 def render_content(root, destination, registry):
