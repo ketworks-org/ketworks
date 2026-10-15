@@ -6,6 +6,7 @@ const text = (tag, value, className) => { const el = document.createElement(tag)
 const link = (label, url, className) => { const a = text('a', label, className); a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer'; return a; };
 const classLabel = key => METHOD_CLASSES[key] || key;
 const formatCount = n => n.toLocaleString('en-US');
+const shortAuthors = authors => { const list = authors.split(/,\s*/); return list.length > 3 ? `${list.slice(0, 3).join(', ')} et al.` : authors; };
 
 function lattice(triangular = false) {
   const ns = 'http://www.w3.org/2000/svg', svg = document.createElementNS(ns, 'svg'); svg.setAttribute('viewBox', '0 0 68 66'); svg.setAttribute('aria-hidden', 'true');
@@ -109,7 +110,7 @@ function renderResults() {
     const energy = text('td', row.energy_per_site, 'num energy');
     const uncertainty = text('td', row.uncertainty_per_site === null ? '—' : `± ${row.uncertainty_per_site}`, 'num mono'); uncertainty.append(text('small', row.uncertainty_type.replaceAll('_', ' ')));
     const parameters = text('td', row.parameter_count === null ? '—' : formatCount(row.parameter_count), 'num mono');
-    const paper = text('td', ''); paper.append(link(`arXiv:${row.paper.id}`, `https://arxiv.org/abs/${row.paper.id}`, 'mono'), text('small', `${row.paper.published.slice(0, 4) || ''} · ${row.paper.authors}`)); paper.title = row.paper.title;
+    const paper = text('td', ''); paper.append(link(`arXiv:${row.paper.id}`, `https://arxiv.org/abs/${row.paper.id}`, 'mono'), text('small', `${row.paper.published.slice(0, 4) || ''} · ${shortAuthors(row.paper.authors)}`)); paper.title = row.paper.title;
     const evidence = text('td', ''); evidence.append(link(row.source_location, row.source_url));
     tr.append(text('td', String(ranks.get(row)), 'num mono rank'), method, cls, energy, uncertainty, parameters, paper, evidence); $('results').append(tr);
   });

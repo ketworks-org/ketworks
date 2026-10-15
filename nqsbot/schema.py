@@ -154,7 +154,9 @@ def per_site(row, registry):
     divisor = registry[row["benchmark_id"]]["sites"] if row["normalization"] == "total" else 1
     energy = decimal(row["energy"]) / divisor
     error = decimal(row["uncertainty"]) / divisor if row["uncertainty"] is not None else None
-    return str(energy), str(error) if error is not None else None
+    # Plain decimal strings (no exponent) so the site shows 0.0000004 rather than 4E-7.
+    plain = lambda value: format(value.normalize() if value == value.to_integral() else value, "f")
+    return plain(energy), plain(error) if error is not None else None
 
 
 def fingerprint(value):
