@@ -26,11 +26,11 @@
       "unit": "t",
       "uncertainty": "0.0009",
       "uncertainty_type": "unspecified",
-      "variance": null,
+      "variance": "0.0563",
       "source_location": "Table I (Appendix E), p. 16, left table (row HFDS (8×8 Torus))",
       "eligibility_evidence": "Variational energy of a hidden-fermion determinant NQS at U/t = 8 and 1/8 hole doping on the periodic 8 × 8 lattice.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from the same Table I (Appendix E), column sigma^2/M. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-n56-sz0",
@@ -47,11 +47,11 @@
       "unit": "t",
       "uncertainty": "0.0006",
       "uncertainty_type": "unspecified",
-      "variance": null,
+      "variance": "0.0525",
       "source_location": "Table I (Appendix E), p. 16, left table (row JBf (8×8 Torus))",
       "eligibility_evidence": "Variational energy of a Jastrow-backflow determinant NQS at U/t = 8 and 1/8 hole doping on the periodic 8 × 8 lattice.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from the same Table I (Appendix E), column sigma^2/M. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-n56-sz0",
@@ -68,11 +68,11 @@
       "unit": "t",
       "uncertainty": "0.001",
       "uncertainty_type": "unspecified",
-      "variance": null,
+      "variance": "0.105",
       "source_location": "Table I (Appendix E), p. 16, right table (row HFDS-ViT)",
       "eligibility_evidence": "Variational energy of the HFDS with a vision-transformer backbone.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from the same Table I (Appendix E), column sigma^2/M. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-n56-sz0",
@@ -89,11 +89,11 @@
       "unit": "t",
       "uncertainty": "0.004",
       "uncertainty_type": "unspecified",
-      "variance": null,
+      "variance": "0.139",
       "source_location": "Table I (Appendix E), p. 16, right table (row HFDS Symm-ViT-Ti)",
       "eligibility_evidence": "Variational energy of the HFDS with a symmetrized ViT backbone.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from the same Table I (Appendix E), column sigma^2/M. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-n56-sz0",
@@ -110,11 +110,11 @@
       "unit": "t",
       "uncertainty": "0.0003",
       "uncertainty_type": "unspecified",
-      "variance": null,
+      "variance": "0.0698",
       "source_location": "Table I (Appendix E), p. 16, right table (row JBf-ViT)",
       "eligibility_evidence": "Variational energy of the JBf state with a vision-transformer backbone.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from the same Table I (Appendix E), column sigma^2/M. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-n56-sz0",
@@ -131,11 +131,11 @@
       "unit": "t",
       "uncertainty": "0.009",
       "uncertainty_type": "unspecified",
-      "variance": null,
+      "variance": "0.168",
       "source_location": "Table I (Appendix E), p. 16, right table (row JBf Symm-ViT-Ti)",
       "eligibility_evidence": "Variational energy of the JBf state with a symmetrized ViT backbone.",
       "parameter_count": null,
-      "notes": "Electron numbers inferred from n_h = 1/8 on 64 sites (56 electrons); the paper reports the lowest-energy momentum sector k = (pi/2, pi/2). Curator should confirm Nup = Ndown = 28. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from the same Table I (Appendix E), column sigma^2/M. Electron numbers inferred from n_h = 1/8 on 64 sites (56 electrons); the paper reports the lowest-energy momentum sector k = (pi/2, pi/2). Curator should confirm Nup = Ndown = 28. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     }
   ],
   "issues": []
