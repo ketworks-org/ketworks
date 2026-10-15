@@ -26,11 +26,11 @@
       "unit": "t",
       "uncertainty": "0.00001",
       "uncertainty_type": "unspecified",
-      "variance": null,
+      "variance": "0.035",
       "source_location": "Table I, p. 5 (row SBP, size 12×12)",
       "eligibility_evidence": "Variational energy of the symmetry-preserving SBP state on the periodic L × L cluster at t' = -0.2, U = 8, 1/8 doping; the Transformer, HFPS, Tensor-Backflow and ACE rows are quoted comparisons and excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from the same Table I, column Variance, printed with an uncertainty of 1 in the last digit (e.g. 0.035(1)); only the value is recorded. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     },
     {
       "benchmark_id": "hubbard-square-16x16-pbc-u8-tp-0p2-n224-sz0",
@@ -47,11 +47,11 @@
       "unit": "t",
       "uncertainty": "0.00001",
       "uncertainty_type": "unspecified",
-      "variance": null,
+      "variance": "0.037",
       "source_location": "Table I, p. 5 (row SBP, size 16×16)",
       "eligibility_evidence": "Variational energy of the symmetry-preserving SBP state on the periodic L × L cluster at t' = -0.2, U = 8, 1/8 doping; the Transformer, HFPS, Tensor-Backflow and ACE rows are quoted comparisons and excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from the same Table I, column Variance, printed with an uncertainty of 1 in the last digit (e.g. 0.035(1)); only the value is recorded. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     },
     {
       "benchmark_id": "hubbard-square-20x20-pbc-u8-tp-0p2-n350-sz0",
@@ -68,11 +68,11 @@
       "unit": "t",
       "uncertainty": "0.00001",
       "uncertainty_type": "unspecified",
-      "variance": null,
+      "variance": "0.041",
       "source_location": "Table I, p. 5 (row SBP, size 20×20)",
       "eligibility_evidence": "Variational energy of the symmetry-preserving SBP state on the periodic L × L cluster at t' = -0.2, U = 8, 1/8 doping; the Transformer, HFPS, Tensor-Backflow and ACE rows are quoted comparisons and excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from the same Table I, column Variance, printed with an uncertainty of 1 in the last digit (e.g. 0.035(1)); only the value is recorded. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     },
     {
       "benchmark_id": "hubbard-square-24x24-pbc-u8-tp-0p2-n504-sz0",
@@ -89,11 +89,11 @@
       "unit": "t",
       "uncertainty": "0.00001",
       "uncertainty_type": "unspecified",
-      "variance": null,
+      "variance": "0.054",
       "source_location": "Table I, p. 5 (row SBP, size 24×24)",
       "eligibility_evidence": "Variational energy of the symmetry-preserving SBP state on the periodic L × L cluster at t' = -0.2, U = 8, 1/8 doping; the Transformer, HFPS, Tensor-Backflow and ACE rows are quoted comparisons and excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from the same Table I, column Variance, printed with an uncertainty of 1 in the last digit (e.g. 0.035(1)); only the value is recorded. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     }
   ],
   "issues": []

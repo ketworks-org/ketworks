@@ -26,11 +26,11 @@
       "unit": "t",
       "uncertainty": "0.0001",
       "uncertainty_type": "unspecified",
-      "variance": null,
+      "variance": "0.07623",
       "source_location": "Table V, p. 20 (row t' = -0.2, column Half-filled stripe + SC)",
       "eligibility_evidence": "Variational energy of the converged NQS on the 256-site (16 × 16) periodic cluster at U = 8, 1/8 doping; competing phases are separate variational states.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from Table VI, p. 20, which lists the variances of the states in Table V (same rows and columns). Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     },
     {
       "benchmark_id": "hubbard-square-16x16-pbc-u8-tp-0p2-n224-sz0",
@@ -47,11 +47,11 @@
       "unit": "t",
       "uncertainty": "0.0001",
       "uncertainty_type": "unspecified",
-      "variance": null,
+      "variance": "0.05810",
       "source_location": "Table V, p. 20 (row t' = -0.2, column Filled Stripe)",
       "eligibility_evidence": "Variational energy of the filled-stripe NQS solution on the 16 × 16 periodic cluster at t' = -0.2.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from Table VI, p. 20, which lists the variances of the states in Table V (same rows and columns). Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     },
     {
       "benchmark_id": "hubbard-square-16x16-pbc-u8-n224-sz0",
@@ -68,11 +68,11 @@
       "unit": "t",
       "uncertainty": "0.0001",
       "uncertainty_type": "unspecified",
-      "variance": null,
+      "variance": "0.06379",
       "source_location": "Table V, p. 20 (row t' = 0.0, column Filled Stripe)",
       "eligibility_evidence": "Variational energy of the filled-stripe NQS solution on the 16 × 16 periodic cluster at t' = 0.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from Table VI, p. 20, which lists the variances of the states in Table V (same rows and columns). Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     },
     {
       "benchmark_id": "hubbard-square-16x16-pbc-u8-n224-sz0",
@@ -89,11 +89,11 @@
       "unit": "t",
       "uncertainty": "0.0001",
       "uncertainty_type": "unspecified",
-      "variance": null,
+      "variance": "0.07838",
       "source_location": "Table V, p. 20 (row t' = 0.0, column Half-filled stripe + SC)",
       "eligibility_evidence": "Variational energy of the half-filled-stripe superconducting NQS solution at t' = 0.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from Table VI, p. 20, which lists the variances of the states in Table V (same rows and columns). Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     }
   ],
   "issues": []

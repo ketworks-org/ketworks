@@ -26,11 +26,11 @@
       "unit": "t",
       "uncertainty": "0.00001",
       "uncertainty_type": "unspecified",
-      "variance": null,
+      "variance": "0.037",
       "source_location": "Table I, p. 4 (row Det, Symm -)",
       "eligibility_evidence": "Variational energy of the neural backflow state on the 8 × 8 PBC cluster at U = 8, t' = -0.2, 1/8 doping; the zero-variance extrapolation -0.7540(4) in the same table and the quoted Ref. [21] value are excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from the same Table I, column Variance. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
@@ -47,11 +47,11 @@
       "unit": "t",
       "uncertainty": "0.00001",
       "uncertainty_type": "unspecified",
-      "variance": null,
+      "variance": "0.024",
       "source_location": "Table I, p. 4 (row Det, Symm T)",
       "eligibility_evidence": "Variational energy of the neural backflow state on the 8 × 8 PBC cluster at U = 8, t' = -0.2, 1/8 doping; the zero-variance extrapolation -0.7540(4) in the same table and the quoted Ref. [21] value are excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from the same Table I, column Variance. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
@@ -68,11 +68,11 @@
       "unit": "t",
       "uncertainty": "0.00001",
       "uncertainty_type": "unspecified",
-      "variance": null,
+      "variance": "0.019",
       "source_location": "Table I, p. 4 (row Det, Symm T+R)",
       "eligibility_evidence": "Variational energy of the neural backflow state on the 8 × 8 PBC cluster at U = 8, t' = -0.2, 1/8 doping; the zero-variance extrapolation -0.7540(4) in the same table and the quoted Ref. [21] value are excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from the same Table I, column Variance. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
@@ -89,11 +89,11 @@
       "unit": "t",
       "uncertainty": "0.00001",
       "uncertainty_type": "unspecified",
-      "variance": null,
+      "variance": "0.037",
       "source_location": "Table I, p. 4 (row Det-PH, Symm -)",
       "eligibility_evidence": "Variational energy of the neural backflow state on the 8 × 8 PBC cluster at U = 8, t' = -0.2, 1/8 doping; the zero-variance extrapolation -0.7540(4) in the same table and the quoted Ref. [21] value are excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from the same Table I, column Variance. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
@@ -110,11 +110,11 @@
       "unit": "t",
       "uncertainty": "0.00001",
       "uncertainty_type": "unspecified",
-      "variance": null,
+      "variance": "0.022",
       "source_location": "Table I, p. 4 (row Det-PH, Symm T)",
       "eligibility_evidence": "Variational energy of the neural backflow state on the 8 × 8 PBC cluster at U = 8, t' = -0.2, 1/8 doping; the zero-variance extrapolation -0.7540(4) in the same table and the quoted Ref. [21] value are excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from the same Table I, column Variance. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
@@ -131,11 +131,11 @@
       "unit": "t",
       "uncertainty": "0.00001",
       "uncertainty_type": "unspecified",
-      "variance": null,
+      "variance": "0.017",
       "source_location": "Table I, p. 4 (row Det-PH, Symm T+R)",
       "eligibility_evidence": "Variational energy of the neural backflow state on the 8 × 8 PBC cluster at U = 8, t' = -0.2, 1/8 doping; the zero-variance extrapolation -0.7540(4) in the same table and the quoted Ref. [21] value are excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from the same Table I, column Variance. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
@@ -152,11 +152,11 @@
       "unit": "t",
       "uncertainty": "0.00001",
       "uncertainty_type": "unspecified",
-      "variance": null,
+      "variance": "0.037",
       "source_location": "Table I, p. 4 (row Pfaffian, Symm -)",
       "eligibility_evidence": "Variational energy of the neural backflow state on the 8 × 8 PBC cluster at U = 8, t' = -0.2, 1/8 doping; the zero-variance extrapolation -0.7540(4) in the same table and the quoted Ref. [21] value are excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from the same Table I, column Variance. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
@@ -173,11 +173,11 @@
       "unit": "t",
       "uncertainty": "0.00001",
       "uncertainty_type": "unspecified",
-      "variance": null,
+      "variance": "0.021",
       "source_location": "Table I, p. 4 (row Pfaffian, Symm T)",
       "eligibility_evidence": "Variational energy of the neural backflow state on the 8 × 8 PBC cluster at U = 8, t' = -0.2, 1/8 doping; the zero-variance extrapolation -0.7540(4) in the same table and the quoted Ref. [21] value are excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from the same Table I, column Variance. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     },
     {
       "benchmark_id": "hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0",
@@ -194,11 +194,11 @@
       "unit": "t",
       "uncertainty": "0.00001",
       "uncertainty_type": "unspecified",
-      "variance": null,
+      "variance": "0.016",
       "source_location": "Table I, p. 4 (row Pfaffian, Symm T+R)",
       "eligibility_evidence": "Variational energy of the neural backflow state on the 8 × 8 PBC cluster at U = 8, t' = -0.2, 1/8 doping; the zero-variance extrapolation -0.7540(4) in the same table and the quoted Ref. [21] value are excluded.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from the same Table I, column Variance. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     }
   ],
   "issues": []
