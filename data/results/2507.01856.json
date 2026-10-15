@@ -12,8 +12,8 @@
   "extraction_model": "human",
   "results": [
     {
-      "benchmark_id": "hubbard-square-16x16-pbc-u8-tp0-n224-sz0",
-      "system_description": "16x16 square lattice, periodic in both directions; U/t = 8, t'/t = 0; 224 electrons (112 up, 112 down), 1/8 hole doping",
+      "benchmark_id": "hubbard-square-16x16-pbc-u8-n224-sz0",
+      "system_description": "16x16 square lattice, periodic in both directions; U/t = 8, t' = 0; 224 electrons (112 up, 112 down), 1/8 hole doping",
       "method": "Tensor backflow",
       "variant": "p = 0",
       "method_class": "backflow",
@@ -32,8 +32,8 @@
       "notes": "No uncertainty printed. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     },
     {
-      "benchmark_id": "hubbard-square-16x16-pbc-u8-tp0-n224-sz0",
-      "system_description": "16x16 square lattice, periodic in both directions; U/t = 8, t'/t = 0; 224 electrons (112 up, 112 down), 1/8 hole doping",
+      "benchmark_id": "hubbard-square-16x16-pbc-u8-n224-sz0",
+      "system_description": "16x16 square lattice, periodic in both directions; U/t = 8, t' = 0; 224 electrons (112 up, 112 down), 1/8 hole doping",
       "method": "Tensor backflow",
       "variant": "one Lanczos step (p = 1)",
       "method_class": "backflow",
