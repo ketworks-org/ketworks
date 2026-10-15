@@ -13,7 +13,8 @@
     "instance_label": "10 × 10 · J₂/J₁ = 0.5 · periodic · Sz = 0",
     "lattice_size": "10 × 10 · 100 sites",
     "boundary_conditions": "Periodic in both directions",
-    "parameters_latex": "J_1=1,\\qquad J_2/J_1=0.5,\\qquad S=\\tfrac12"
+    "parameters_latex": "J_1=1,\\qquad J_2/J_1=0.5,\\qquad S=\\tfrac12",
+    "wiki": "j1j2-square-lattice"
   },
   {
     "id": "heisenberg-triangular-12x12-pbc-sz0",

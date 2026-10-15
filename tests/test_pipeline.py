@@ -18,7 +18,7 @@ REGISTRY = schema.benchmarks()
 BENCHMARK = next(iter(REGISTRY))
 PAPER = {"id": "2601.00001v1", "title": "Synthetic fixture, not a scientific result", "authors": "Test Author", "published": "2026-01-01T00:00:00Z", "updated": "2026-01-01T00:00:00Z"}
 ROW = {
-    "benchmark_id": BENCHMARK, "system_description": "Synthetic unit-test match", "method": "Test NQS", "variant": "fixture", "method_type": "nqs", "energy_type": "variational", "reported_here": True,
+    "benchmark_id": BENCHMARK, "system_description": "Synthetic unit-test match", "method": "Test NQS", "variant": "fixture", "method_class": "rbm", "method_type": "nqs", "energy_type": "variational", "reported_here": True,
     "energy": "-50.000", "energy_token": "-50.000(20)", "normalization": "total", "unit": "J1", "uncertainty": "0.020", "uncertainty_type": "standard_error", "source_location": "Synthetic Table 1", "eligibility_evidence": "Synthetic direct NQS expectation-value fixture", "parameter_count": None, "notes": "Not a real result"
 }
 SOURCE = {"url": "https://arxiv.org/html/2601.00001v1", "sha256": "0" * 64, "text": "Synthetic table: -50.000(20)"}
@@ -56,6 +56,12 @@ class EligibilityTests(unittest.TestCase):
         for bad in (dict(ROW, energy="NaN"), dict(ROW, energy="-Infinity"), dict(ROW, unit="sigma"), dict(ROW, normalization="unknown")):
             with self.assertRaises(ValueError): schema.validate_row(bad, REGISTRY)
 
+    def test_method_class_is_a_known_label(self):
+        for label in schema.METHOD_CLASSES:
+            schema.validate_row(dict(ROW, method_class=label), REGISTRY)
+        with self.assertRaises(Exception): schema.validate_row(dict(ROW, method_class="RBM"), REGISTRY)
+        with self.assertRaises(Exception): schema.validate_row({k: v for k, v in ROW.items() if k != "method_class"}, REGISTRY)
+
     def test_unmatched_is_proposal_only(self):
         row = dict(ROW, benchmark_id=None)
         schema.validate_row(row, REGISTRY, allow_unmatched=True)
@@ -88,6 +94,7 @@ class EligibilityTests(unittest.TestCase):
         body = pr_body(PAPER, records, [], REGISTRY)
         self.assertIn("arXiv:2601.00001v1", body)
         self.assertIn("Synthetic Table 1", body)
+        self.assertIn("| rbm |", body)
         self.assertIn("cannot approve or merge", body)
 
     def test_build_never_leaks_proposals(self):

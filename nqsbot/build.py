@@ -28,11 +28,16 @@ def render_content(root, destination, registry):
     rendered = json.loads(result.stdout)
     source_ref = quote(os.getenv("KETBOOK_SOURCE_REF", "main"), safe="/")
     template = (root / "site/wiki.template.html").read_text()
+    sections = list(dict.fromkeys(page["section"] for page in index))
     for article in rendered["articles"]:
         slug = article["slug"]
-        sidebar = "".join(f'<a href="../{page["slug"]}/"' + (' aria-current="page"' if page["slug"] == slug else '') + f'>{html.escape(page["title"])}</a>' for page in index)
-        values = {"TITLE": html.escape(article["title"]), "DESCRIPTION": html.escape(article["summary"], quote=True), "SECTION": html.escape(article["section"]), "SIDEBAR": sidebar,
-                  "EDIT_URL": f"https://github.com/gcarleo/ketbook/edit/{source_ref}/wiki/{slug}.md", "HISTORY_URL": f"https://github.com/gcarleo/ketbook/commits/{source_ref}/wiki/{slug}.md", "CONTENT": article["html"]}
+        sidebar = ""
+        for section in sections:
+            links = "".join(f'<a href="../{page["slug"]}/"' + (' aria-current="page"' if page["slug"] == slug else '') + f'>{html.escape(page["title"])}</a>' for page in index if page["section"] == section)
+            sidebar += f'<div class="side-group"><p class="side-section">{html.escape(section)}</p>{links}</div>'
+        toc = "".join(f'<a href="#{h["id"]}" class="toc-{h["level"]}">{html.escape(h["text"])}</a>' for h in article["headings"] if h["level"] == 2)
+        values = {"TITLE": html.escape(article["title"]), "DESCRIPTION": html.escape(article["summary"], quote=True), "SECTION": html.escape(article["section"]), "SIDEBAR": sidebar, "TOC": toc,
+                  "SLUG": slug, "EDIT_URL": f"https://github.com/gcarleo/ketbook/edit/{source_ref}/wiki/{slug}.md", "HISTORY_URL": f"https://github.com/gcarleo/ketbook/commits/{source_ref}/wiki/{slug}.md", "CONTENT": article["html"]}
         page_html = re.sub(r"\{\{([A-Z_]+)\}\}", lambda match: values[match[1]], template)
         page_dir = destination / "wiki" / slug
         page_dir.mkdir(parents=True, exist_ok=True)
@@ -57,6 +62,10 @@ def build(root=ROOT, destination=None):
         if path.is_file() and not path.name.endswith(".template.html"):
             shutil.copy2(path, destination / path.name)
     wiki, equations = render_content(root, destination, registry)
+    slugs = {page["slug"] for page in wiki}
+    for benchmark in registry.values():
+        if wiki and benchmark.get("wiki") and benchmark["wiki"] not in slugs:
+            raise ValueError(f"{benchmark['id']}: wiki page {benchmark['wiki']!r} does not exist")
     source_ref = os.getenv("KETBOOK_SOURCE_REF", "main")
     home = destination / "index.html"
     if home.exists():

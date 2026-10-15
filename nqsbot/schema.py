@@ -21,11 +21,15 @@ def string(enum=None, nullable=False):
     return result
 
 
+# Architecture class of the neural state; a coarse label used for filtering on Ketboard.
+METHOD_CLASSES = ["rbm", "feed_forward", "convolutional", "autoregressive", "transformer", "backflow", "hybrid", "other"]
+
 ROW = obj({
     "benchmark_id": string(nullable=True),
     "system_description": string(),
     "method": string(),
     "variant": string(),
+    "method_class": string(METHOD_CLASSES),
     "method_type": string(["nqs", "non_nqs", "unknown"]),
     "energy_type": string(["variational", "extrapolated", "projected", "reference", "unknown"]),
     "reported_here": {"type": "boolean"},

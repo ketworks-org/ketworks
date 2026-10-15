@@ -21,7 +21,7 @@ python -m nqsbot.build
 python -m http.server 8080 --directory dist
 ```
 
-Requires Node.js 22+ and Python 3.12+. LaTeX is rendered by pinned KaTeX during the build, including accessible MathML; CSS and math fonts are bundled with the site. Wiki edits and manually contributed results are proposed through GitHub PRs. See [CONTRIBUTING.md](CONTRIBUTING.md). The repository must be public for anyone to fork and contribute.
+Requires Node.js 22+ and Python 3.12+. LaTeX is rendered by pinned KaTeX during the build, including accessible MathML; CSS and math fonts are bundled with the site. Section headings get stable anchors and each article carries a table of contents. The site's own typography is DM Sans for display, Source Serif 4 for reading text, and IBM Plex Mono for benchmark keys, energies and identifiers, all with local fallbacks. Wiki edits and manually contributed results are proposed through GitHub PRs. See [CONTRIBUTING.md](CONTRIBUTING.md). The repository must be public for anyone to fork and contribute.
 
 The site works under a subdirectory, including a GitHub project Pages URL. It uses no server database or browser API keys. Fonts have local fallbacks.
 
@@ -47,6 +47,7 @@ GitHub schedules can be delayed and public-repository schedules can be disabled 
 - One PR is opened per paper version. Existing open, merged, or closed PRs suppress repeat proposals; a deliberately closed PR is not reopened. A new arXiv version can produce a new PR. Review must reconcile pending earlier versions; CI rejects version regressions.
 - Results matching registered instances go to `data/results/<arxiv-id>.json`. Eligible unmatched systems go to `data/proposals/<arxiv-id>.json` in a **draft PR**. A curator can add the exact definition and move matching rows into results. Proposal files never enter the site payload. Extraction issues also make a PR a draft.
 - Source locations and reviewer checkboxes are included in the PR. A source-level review is not an independent reproduction. Statistical uncertainties are displayed with their reported type; absent uncertainties remain unknown.
+- Every result row carries a `method_class` (one of `rbm`, `feed_forward`, `convolutional`, `autoregressive`, `transformer`, `backflow`, `hybrid`, `other`) used for filtering on Ketboard; the extraction prompt defines the classes.
 - Store printed decimals as strings. Only total-to-per-site normalization is automatic. Pauli/spin conventions, energy offsets, and unit conversions require curator reconciliation.
 - Only newly reported ground-state NQS variational results are in scope. Neural backflow and neural fermionic wavefunctions may qualify; using a neural guide in a projection method does not. Extrapolated energies, non-NQS references, and results quoted from earlier papers are excluded.
 
@@ -60,8 +61,8 @@ This writes proposed files and a PR body under ignored `.run/`. Add `--publish-p
 
 ## Layout
 
-- `site/`: Bauhaus-inspired interface; publication includes only reviewed result files.
-- `wiki/`: community-editable Markdown articles with build-time LaTeX rendering.
+- `site/`: Bauhaus-inspired interface; publication includes only reviewed result files. `site/leaderboard.mjs` holds the Ketboard table logic (filtering by architecture class and text, sorting by any column, per-instance summaries) and is unit-tested in `npm test`.
+- `wiki/`: community-editable Markdown articles with build-time LaTeX rendering, grouped by section (Fundamentals, Architectures, Benchmarks) in `wiki/index.json`.
 - `CONTRIBUTING.md`: wiki and result PR instructions; the site has direct edit links and a result preparation form.
 - `data/benchmarks.json`: canonical physical definitions.
 - `data/results/`: entries approved by merging their PRs.

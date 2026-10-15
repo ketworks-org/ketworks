@@ -50,12 +50,12 @@ def pr_body(paper, records, issues, registry):
         return str(value).replace("|", "\\|").replace("\n", " ").replace("@", "＠")
     lines = [f"Proposed original NQS variational energies from [arXiv:{paper['id']}](https://arxiv.org/abs/{paper['id']}).",
              "", "These are automated extractions awaiting scientific review. Merging publishes only rows in `data/results/`; `data/proposals/` is never published.", "",
-             "| Instance | Method / variant | Reported energy | Uncertainty | Source location |",
-             "| --- | --- | --- | --- | --- |"]
+             "| Instance | Method / variant | Class | Reported energy | Uncertainty | Source location |",
+             "| --- | --- | --- | --- | --- | --- |"]
     for record in records.values():
         for row in record["results"]:
             name = registry.get(row["benchmark_id"], {}).get("name", "Unmatched — needs benchmark definition")
-            values = [name, row["method"] + " / " + row["variant"], f"{row['energy']} {row['unit']} ({row['normalization']})", f"{row['uncertainty'] or 'not reported'}; {row['uncertainty_type']}", row["source_location"]]
+            values = [name, row["method"] + " / " + row["variant"], row["method_class"], f"{row['energy']} {row['unit']} ({row['normalization']})", f"{row['uncertainty'] or 'not reported'}; {row['uncertainty_type']}", row["source_location"]]
             lines.append("| " + " | ".join(escape(x) for x in values) + " |")
     lines += ["", "Reviewer checks:", "", "- [ ] The state is an NQS and each energy is directly variational, without extrapolation or projection.",
               "- [ ] Each number is a result of this paper, not a cited comparison.",
