@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2507.01856v4",
+    "title": "Investigating the Fermi-Hubbard model by the tensor-backflow method",
+    "authors": "Xiao Liang",
+    "published": "2025-07-02T16:14:33Z",
+    "updated": "2026-03-26T17:07:46Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2507.01856v4",
+  "source_sha256": "bb6c48e7b0aa4900bdbc2bd6d43e1bcf3f5ea59df0869e33a85835e5412cfd3c",
+  "extraction_model": "human",
+  "results": [
+    {
+      "benchmark_id": "hubbard-square-16x16-pbc-u8-tp0-n224-sz0",
+      "system_description": "16x16 square lattice, periodic in both directions; U/t = 8, t'/t = 0; 224 electrons (112 up, 112 down), 1/8 hole doping",
+      "method": "Tensor backflow",
+      "variant": "p = 0",
+      "method_class": "backflow",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.7509",
+      "energy_token": "-0.7509",
+      "normalization": "per_site",
+      "unit": "t",
+      "uncertainty": null,
+      "uncertainty_type": "not_reported",
+      "source_location": "Table I, p. 5 (row n = 0.875, U = 8, 16×16, PBC, column Ep=0)",
+      "eligibility_evidence": "Variational energy of the tensor-backflow state on the 16 × 16 PBC cluster at t' = 0, U = 8, n = 0.875.",
+      "parameter_count": null,
+      "notes": "No uncertainty printed. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+    },
+    {
+      "benchmark_id": "hubbard-square-16x16-pbc-u8-tp0-n224-sz0",
+      "system_description": "16x16 square lattice, periodic in both directions; U/t = 8, t'/t = 0; 224 electrons (112 up, 112 down), 1/8 hole doping",
+      "method": "Tensor backflow",
+      "variant": "one Lanczos step (p = 1)",
+      "method_class": "backflow",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.7552",
+      "energy_token": "-0.7552",
+      "normalization": "per_site",
+      "unit": "t",
+      "uncertainty": null,
+      "uncertainty_type": "not_reported",
+      "source_location": "Table I, p. 5 (row n = 0.875, U = 8, 16×16, PBC, column Ep=1)",
+      "eligibility_evidence": "Directly evaluated energy of the p = 1 Lanczos-improved tensor-backflow state.",
+      "parameter_count": null,
+      "notes": "No uncertainty printed. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+    }
+  ],
+  "issues": []
+}
