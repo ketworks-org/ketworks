@@ -1,4 +1,2 @@
-beautifulsoup4>=4.12,<5
 jsonschema>=4.23,<5
-pypdf>=5,<7
 requests>=2.32,<3

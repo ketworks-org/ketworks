@@ -9,10 +9,6 @@ from unittest.mock import Mock, patch
 
 from nqsbot import schema
 from nqsbot.build import build
-from nqsbot.collect import prepare, pr_body
-from nqsbot.extract import extract
-from nqsbot.github import GitHub
-from nqsbot.arxiv import Arxiv
 from nqsbot.fill_metadata import fill
 
 REGISTRY = schema.benchmarks()
@@ -80,24 +76,6 @@ class EligibilityTests(unittest.TestCase):
         for bad in (dict(record(), source_url="https://arxiv.org/html/2601.00001v2"), dict(record(), results=[ROW, ROW])):
             with self.assertRaises(ValueError): schema.validate_record(bad, REGISTRY)
 
-    def test_prepare_filters_comparison_and_extrapolation(self):
-        records, issues, draft = prepare(PAPER, SOURCE, {"results": [ROW, dict(ROW, method_type="non_nqs"), dict(ROW, energy_type="extrapolated"), dict(ROW, reported_here=False)], "issues": []}, REGISTRY, "test-model")
-        self.assertEqual(len(records), 1)
-        self.assertEqual(len(next(iter(records.values()))["results"]), 1)
-        self.assertFalse(draft)
-        self.assertEqual(issues, [])
-
-    def test_unmatched_enters_draft_proposal(self):
-        records, _, draft = prepare(PAPER, SOURCE, {"results": [dict(ROW, benchmark_id=None)], "issues": []}, REGISTRY, "test-model")
-        self.assertTrue(draft)
-        self.assertIn("data/proposals/2601.00001.json", records)
-        self.assertNotIn("data/results/2601.00001.json", records)
-        body = pr_body(PAPER, records, [], REGISTRY)
-        self.assertIn("arXiv:2601.00001v1", body)
-        self.assertIn("Synthetic Table 1", body)
-        self.assertIn("| rbm |", body)
-        self.assertIn("cannot approve or merge", body)
-
     def test_build_never_leaks_proposals(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -132,86 +110,6 @@ class EligibilityTests(unittest.TestCase):
             filled = json.loads((root / "data/results/2601.00001.json").read_text())["paper"]
             self.assertEqual(filled["title"], "Filled title"); self.assertEqual(filled["authors"], "A. Author, B. Author"); self.assertEqual(filled["published"], "2026-01-02T00:00:00Z")
             session.get.assert_called_once()
-
-
-class GitHubTests(unittest.TestCase):
-    def fake(self):
-        github = object.__new__(GitHub)
-        github.repository = "test/nqs"
-        github.base = "main"
-        return github
-
-    def test_review_gate_is_required(self):
-        github = self.fake()
-        github.call = Mock(side_effect=[[], None])
-        with self.assertRaises(RuntimeError): github.require_review_gate()
-        github.call = Mock(return_value=[{"type": "pull_request", "parameters": {"required_approving_review_count": 1, "dismiss_stale_reviews_on_push": True}}])
-        github.require_review_gate()
-
-    def test_existing_closed_or_open_pr_is_not_recreated(self):
-        for state in ("open", "closed"):
-            github = self.fake()
-            github.existing_pr = Mock(return_value={"state": state})
-            github.call = Mock()
-            self.assertIsNone(github.propose(PAPER, {}, "body", REGISTRY))
-            github.call.assert_not_called()
-
-    def test_pr_writer_only_writes_paper_files(self):
-        github = self.fake()
-        github.existing_pr = Mock(return_value=None)
-        with self.assertRaises(ValueError): github.propose(PAPER, {".github/workflows/injected.yml": record()}, "body", REGISTRY)
-
-    def test_pr_never_pushes_main_or_merges(self):
-        github = self.fake()
-        github.existing_pr = Mock(return_value=None)
-        def call(method, path, **kwargs):
-            if path == '/git/ref/heads/main': return {"object": {"sha": "base"}}
-            if path == '/git/commits/base': return {"tree": {"sha": "tree"}}
-            if path.startswith('/contents/'): return None
-            if path == '/git/trees': return {"sha": "new-tree"}
-            if path == '/git/commits': return {"sha": "new-commit"}
-            if path.startswith('/git/ref/heads/bot/'): return None
-            if path == '/git/refs':
-                self.assertEqual(kwargs['json']['ref'], 'refs/heads/bot/arxiv-2601-00001v1'); return {}
-            if path == '/pulls': return {"html_url": "https://github.com/test/nqs/pull/1"}
-            self.fail(f"Unexpected API operation: {method} {path}")
-        github.call = Mock(side_effect=call)
-        pr = github.propose(PAPER, {'data/results/2601.00001.json': record()}, "body", REGISTRY)
-        self.assertTrue(pr['html_url'].endswith('/1'))
-        self.assertFalse(any('/merge' in c.args[1] or '/reviews' in c.args[1] or c.args[0] == 'PATCH' for c in github.call.call_args_list))
-
-
-class ExtractionTests(unittest.TestCase):
-    @patch.dict(os.environ, {"OPENAI_API_KEY": "synthetic-test-key", "OPENAI_MODEL": "test-model"})
-    def test_structured_response_and_no_tools(self):
-        session = Mock()
-        session.post.return_value.ok = True
-        session.post.return_value.json.return_value = {"status": "completed", "output": [{"content": [{"type": "output_text", "text": json.dumps({"results": [ROW], "issues": []})}]}]}
-        result = extract(PAPER, SOURCE, REGISTRY, session)
-        self.assertEqual(result['results'][0]['energy'], '-50.000')
-        sent = session.post.call_args.kwargs['json']
-        self.assertNotIn('tools', sent)
-        self.assertFalse(sent['store'])
-        self.assertTrue(sent['text']['format']['strict'])
-        self.assertNotIn('synthetic-test-key', sent['input'])
-
-    @patch.dict(os.environ, {"OPENAI_API_KEY": "synthetic-test-key", "OPENAI_MODEL": "test-model"})
-    def test_incomplete_and_refused_outputs_do_not_produce_rows(self):
-        for payload in ({"status": "incomplete"}, {"status": "completed", "output": [{"content": [{"type": "refusal", "refusal": "No"}]}]}):
-            session = Mock()
-            session.post.return_value.ok = True
-            session.post.return_value.json.return_value = payload
-            with self.assertRaises(ValueError): extract(PAPER, SOURCE, REGISTRY, session)
-
-    def test_discovery_deduplicates_and_obeys_cutoff(self):
-        arxiv = Arxiv('test@example.invalid')
-        template = '<entry><id>https://arxiv.org/abs/{id}</id><title>Test</title><published>{date}</published><updated>{date}</updated><author><name>Author</name></author></entry>'
-        from datetime import datetime, timezone
-        today = datetime.now(timezone.utc).isoformat()
-        xml = '<feed xmlns="http://www.w3.org/2005/Atom">' + template.format(id='2601.00001v2', date=today) * 2 + template.format(id='2001.00001v1', date='2020-01-01T00:00:00Z') + '</feed>'
-        arxiv.get = Mock(return_value=xml.encode())
-        result = arxiv.discover({'query': 'test', 'lookback_days': 14, 'page_size': 100, 'max_pages': 2})
-        self.assertEqual([p['id'] for p in result], ['2601.00001v2'])
 
 
 if __name__ == '__main__':

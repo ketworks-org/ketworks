@@ -1,7 +1,0 @@
-{
-  "query": "(all:\"neural quantum\" OR all:\"neural-network quantum\" OR all:\"neural network quantum\" OR all:\"neural wavefunction\" OR all:\"neural wave function\" OR all:\"neural backflow\" OR all:fermionic-neural OR all:FermiNet OR all:PauliNet) AND (cat:cond-mat.str-el OR cat:quant-ph OR cat:cond-mat.dis-nn OR cat:physics.comp-ph OR cat:physics.chem-ph)",
-  "lookback_days": 14,
-  "max_papers_per_run": 20,
-  "page_size": 100,
-  "max_pages": 20
-}
