@@ -13,8 +13,8 @@ from .schema import ROOT, per_site, validate_tree
 
 def nav_html(index, registry, prefix="", current=None):
     """Site-wide left navigation: collapsed sections of wiki pages and Ketboard instances, open only where the reader is."""
-    def group(title, href, key, sections):
-        parts = [f'<div class="nav-group"><p class="nav-title"><a href="{href}" data-nav="{key}">{html.escape(title)}</a></p>']
+    def group(title, href, key, sections, area):
+        parts = [f'<div class="nav-group" data-area="{area}"><p class="nav-title"><a href="{href}" data-nav="{key}">{html.escape(title)}</a></p>']
         for name, links, is_open in sections:
             parts.append(f'<details class="nav-sub"{" open" if is_open else ""}><summary>{html.escape(name)}</summary>{"".join(links)}</details>')
         return "".join(parts) + "</div>"
@@ -27,11 +27,11 @@ def nav_html(index, registry, prefix="", current=None):
     for family in dict.fromkeys(b["family"] for b in registry.values()):
         links = [f'<a href="{prefix}#benchmarks?system={quote(b["id"])}" data-instance="{html.escape(b["id"])}">{html.escape(b.get("instance_label") or b["id"])}</a>' for b in registry.values() if b["family"] == family]
         board_sections.append((family, links, False))
-    contribute = (f'<div class="nav-group"><p class="nav-title"><a href="{prefix}#contribute" data-nav="contribute">Contribute</a></p>'
+    contribute = (f'<div class="nav-group" data-area="contribute"><p class="nav-title"><a href="{prefix}#contribute" data-nav="contribute">Contribute</a></p>'
                   f'<a href="{prefix}#submit" data-nav="submit">Submit a result</a>'
                   '<a href="https://github.com/gcarleo/ketbook/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Contribution guide ↗</a>'
                   '<a href="https://github.com/gcarleo/ketbook" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>')
-    return group("Wiki", prefix + "#wiki", "wiki", wiki_sections) + group("Ketboard", prefix + "#benchmarks", "benchmarks", board_sections) + contribute
+    return group("Wiki", prefix + "#wiki", "wiki", wiki_sections, "wiki") + group("Ketboard", prefix + "#benchmarks", "benchmarks", board_sections, "board") + contribute
 
 
 def render_content(root, destination, registry):
