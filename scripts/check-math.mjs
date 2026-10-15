@@ -9,6 +9,13 @@ assert.match(renderMarkdown('$$\nE=\\frac{\\langle\\Psi|H|\\Psi\\rangle}{\\langl
 assert.throws(() => renderMarkdown('$\\notARealCommand$'));
 assert.match(renderMarkdown('<script>alert(1)</script>'), /&lt;script&gt;/);
 assert.doesNotMatch(renderMarkdown('[bad](javascript:alert(1))'), /href="javascript:/);
+const linked = renderMarkdown('See Carleo and Troyer, arXiv:1606.02318 (2016), Sandvik, arXiv:cond-mat/9707123, and v3 of arXiv:2302.01941v3; not in `arXiv:0000.0000` nor [arXiv:1111.1111](https://example.org).');
+assert.match(linked, /<a href="https:\/\/arxiv.org\/abs\/1606.02318" class="arxiv">arXiv:1606.02318<\/a> \(2016\)/);
+assert.match(linked, /href="https:\/\/arxiv.org\/abs\/cond-mat\/9707123"/);
+assert.match(linked, /href="https:\/\/arxiv.org\/abs\/2302.01941v3"/);
+assert.match(linked, /<code>arXiv:0000.0000<\/code>/);
+assert.equal((linked.match(/example.org/g) || []).length, 1);
+assert.doesNotMatch(linked, /arxiv.org\/abs\/1111.1111/);
 const anchors = renderArticle('# T\n\n## The local energy\n\n## The local energy\n\n### Sub $x$\n');
 assert.deepEqual(anchors.headings.map(h=>h.id), ['the-local-energy','the-local-energy-2','sub-x']);
 const mathHeading = renderArticle('# T\n\n## Why $J_2/J_1=0.5$\n\n## Known energies for $10\\times10$\n');
