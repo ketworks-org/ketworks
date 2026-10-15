@@ -2,7 +2,7 @@ name: Deploy site
 # Tests and builds the site and uploads it to the Netlify project that serves ketworks.org.
 # The Netlify project is not linked to the repository; this workflow is the only deploy path.
 # Requires the repository secrets NETLIFY_AUTH_TOKEN and NETLIFY_SITE_ID; without them the run stops
-# with a warning. Pages stay noindex until the project goes public. See README.
+# with a warning. See docs/maintainers.md.
 on:
   push:
     branches: [main]

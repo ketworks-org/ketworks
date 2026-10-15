@@ -7,7 +7,7 @@ Ketworks is a community project on neural quantum states, published at **[ketwor
 - **Ketbook** is a reference on neural quantum states: variational Monte Carlo, optimization, network architectures and benchmark problems. Its pages are Markdown files with LaTeX in [`wiki/`](wiki/).
 - **Ketboard** lists variational energies of neural quantum states on benchmark problems that are defined exactly. Each entry is the energy printed in a versioned arXiv paper, with the table or line it comes from. Instances are defined in [`data/benchmarks.json`](data/benchmarks.json), entries are in [`data/results/`](data/results/).
 
-The site is a draft. Pages are marked as drafts until a maintainer has reviewed them, and for now the site asks search engines not to index it.
+Pages are marked as drafts until a maintainer has reviewed them.
 
 ## Contributing
 
