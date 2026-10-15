@@ -189,19 +189,19 @@ function prepareSubmission(event) {
   if (entry) {
     $('instance-json').textContent = JSON.stringify(entry, null, 2);
     $('instance-help').textContent = `Append this entry to the array in data/benchmarks.json (before the closing bracket, after a comma). Its key is ${entry.id}. Put the definition and the result record in the same pull request; the checks validate both.`;
-    $('github-edit-benchmarks').href = `https://github.com/gcarleo/ketbook/edit/${sourceRef}/data/benchmarks.json`;
+    $('github-edit-benchmarks').href = `https://github.com/ketworks-org/ketworks/edit/${sourceRef}/data/benchmarks.json`;
   }
   $('github-new-result').hidden = Boolean(existing); $('github-edit-result').hidden = !existing;
   if (existing) {
     $('submission-title').textContent = `Row added to the existing file for arXiv:${base}`;
     $('submission-help').textContent = 'This paper already has a record. The JSON below is the complete file with your row appended. Open the existing file on GitHub, replace its whole content with this JSON (Copy JSON, then paste), and propose the change as a pull request.';
-    $('github-edit-result').href = `https://github.com/gcarleo/ketbook/edit/${sourceRef}/${filename}`;
+    $('github-edit-result').href = `https://github.com/ketworks-org/ketworks/edit/${sourceRef}/${filename}`;
   } else {
     $('submission-title').textContent = folder === 'proposals' ? 'Proposal prepared' : (entry ? 'Definition and record prepared' : 'Record prepared');
     $('submission-help').textContent = folder === 'proposals'
       ? 'Create the file under data/proposals on GitHub and open a pull request. A curator defines the instance and moves the row to the published results; nothing is published before that.'
       : 'Check the JSON, then create the file on GitHub: the editor opens with the content and path filled in. Create a branch or fork and open a pull request. Title, authors and dates left empty are filled from arXiv automatically on the pull request.';
-    $('github-new-result').href = `https://github.com/gcarleo/ketbook/new/${sourceRef}?` + new URLSearchParams({filename, value: json}).toString();
+    $('github-new-result').href = `https://github.com/ketworks-org/ketworks/new/${sourceRef}?` + new URLSearchParams({filename, value: json}).toString();
   }
   $('submission-ready').hidden = false; $('submission-ready').scrollIntoView({behavior: 'smooth', block: 'start'});
 }

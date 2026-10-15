@@ -30,7 +30,7 @@ jobs:
       - run: python -m unittest discover -s tests
       - name: Build (edit links point at the deployed branch)
         env:
-          KETBOOK_SOURCE_REF: ${{ github.ref_name }}
+          KETWORKS_SOURCE_REF: ${{ github.ref_name }}
         run: python -m nqsbot.build
       - name: Deploy to Netlify
         env:

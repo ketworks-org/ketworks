@@ -1,7 +1,7 @@
 # Netlify builds the site directly from the repository ("Import an existing project").
 # The private preview is marked noindex by the build (meta tags, robots.txt, _headers).
 [build]
-  command = "python3 -m pip install -r requirements.txt && npm test && KETBOOK_SOURCE_REF=$BRANCH python3 -m nqsbot.build"
+  command = "python3 -m pip install -r requirements.txt && npm test && KETWORKS_SOURCE_REF=$BRANCH python3 -m nqsbot.build"
   publish = "dist"
 
 [build.environment]

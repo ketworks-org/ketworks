@@ -32,7 +32,7 @@ The site works under a subdirectory, including a GitHub project Pages URL. It us
 
 While the repository is private, the site is previewed on a Netlify project with a random hostname. The build adds `noindex` to every page, a `robots.txt` that disallows everything, and an `X-Robots-Tag` header, so the preview is not indexed even if the address leaks. It is obscurity, not authentication: share the address only with reviewers.
 
-Simplest setup, no secrets: in Netlify choose **Add new project → Import an existing project → GitHub**, authorize access to `gcarleo/ketbook`, and pick the branch to deploy. `netlify.toml` supplies the build command, the publish directory and the Python and Node versions; Netlify rebuilds on every push to that branch and gives the project a random name. Deploy previews for pull requests get their own random addresses. Edit links on the preview point at the deployed branch.
+Simplest setup, no secrets: in Netlify choose **Add new project → Import an existing project → GitHub**, authorize access to `ketworks-org/ketworks`, and pick the branch to deploy. `netlify.toml` supplies the build command, the publish directory and the Python and Node versions; Netlify rebuilds on every push to that branch and gives the project a random name. Deploy previews for pull requests get their own random addresses. Edit links on the preview point at the deployed branch.
 
 Alternative, when the build should run in GitHub Actions instead: store `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID` as repository secrets, set the variable `PREVIEW_ENABLED=true`, and run the **Preview site** workflow. In that case do not also connect the repository in Netlify.
 
@@ -40,7 +40,7 @@ GitHub Pages stays off (`PUBLISH_PAGES` unset) until the content has been review
 
 ## Activate the daily bot
 
-1. The repository is [gcarleo/ketbook](https://github.com/gcarleo/ketbook), with `main` as its default branch. The bot discovers the default branch; the included validation/publication workflows target `main`.
+1. The repository is [ketworks-org/ketworks](https://github.com/ketworks-org/ketworks), with `main` as its default branch. The bot discovers the default branch; the included validation/publication workflows target `main`.
 2. The initial reviewer is `@gcarleo` in `.github/CODEOWNERS`; add other curators as needed. In repository settings, require at least one human approval, dismiss stale approvals on new commits, require code-owner review and the `validate` check, and disallow bypasses. A suggested ruleset is in `.github/ruleset.example.json`. The bot checks for a required approval and stale-review dismissal before writing anything.
 3. Configure repository **secrets** `OPENAI_API_KEY` and `NQS_BOT_TOKEN`. Use a dedicated bot identity and a repository-scoped fine-grained token with Contents read/write, Pull requests read/write, and Administration read (for branch-protection inspection). Do not give the bot a ruleset bypass or approval responsibility. An installation token from a GitHub App can replace this token if supplied at runtime.
 4. Configure repository **variables** `OPENAI_MODEL` (a model supporting Responses structured outputs) and `ARXIV_CONTACT` (maintainer email). No model or API key is assumed.

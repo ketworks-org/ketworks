@@ -19,7 +19,7 @@ def lookup(identifier, session=None):
     """Return {title, authors, published, updated} for one versioned arXiv id, or None if the API has no entry."""
     paper_parts(identifier)
     response = (session or requests).get("https://export.arxiv.org/api/query", params={"id_list": identifier, "max_results": 1}, timeout=(20, 60),
-                                        headers={"User-Agent": "ketbook-metadata/0.1 (https://github.com/gcarleo/ketbook)"})
+                                        headers={"User-Agent": "ketworks-metadata/0.1 (https://github.com/ketworks-org/ketworks)"})
     response.raise_for_status()
     feed = ET.fromstring(response.content)
     for entry in feed.findall("a:entry", NS):

@@ -29,8 +29,8 @@ def nav_html(index, registry, prefix="", current=None):
         board_sections.append((family, links, False))
     contribute = (f'<div class="nav-group" data-area="contribute"><p class="nav-title"><a href="{prefix}#contribute" data-nav="contribute">Contribute</a></p>'
                   f'<a href="{prefix}#submit" data-nav="submit">Submit a result</a>'
-                  '<a href="https://github.com/gcarleo/ketbook/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Contribution guide ↗</a>'
-                  '<a href="https://github.com/gcarleo/ketbook" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>')
+                  '<a href="https://github.com/ketworks-org/ketworks/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Contribution guide ↗</a>'
+                  '<a href="https://github.com/ketworks-org/ketworks" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>')
     return group("Ketbook", prefix + "#wiki", "wiki", wiki_sections, "wiki") + group("Ketboard", prefix + "#benchmarks", "benchmarks", board_sections, "board") + contribute
 
 
@@ -49,7 +49,7 @@ def render_content(root, destination, registry):
     equations.update({key + ":parameters": value["parameters_latex"] for key, value in registry.items() if "parameters_latex" in value})
     result = subprocess.run(["node", str(root / "scripts/render-content.mjs")], input=json.dumps({"articles": articles, "equations": equations}), text=True, capture_output=True, check=True, cwd=root)
     rendered = json.loads(result.stdout)
-    source_ref = quote(os.getenv("KETBOOK_SOURCE_REF", "main"), safe="/")
+    source_ref = quote(os.getenv("KETWORKS_SOURCE_REF", "main"), safe="/")
     template = (root / "site/wiki.template.html").read_text()
     sections = list(dict.fromkeys(page["section"] for page in index))
     for article in rendered["articles"]:
@@ -60,7 +60,7 @@ def render_content(root, destination, registry):
             raise ValueError(f"{slug}: status must be draft or reviewed")
         status_html = '<span class="status status-reviewed">Reviewed</span>' if status == "reviewed" else '<span class="status status-draft">Draft · not yet reviewed by a curator</span>'
         values = {"TITLE": html.escape(article["title"]), "DESCRIPTION": html.escape(article["summary"], quote=True), "SECTION": html.escape(article["section"]), "NAV": nav_html(index, registry, "../../", slug), "TOC": toc, "STATUS": status_html,
-                  "SLUG": slug, "EDIT_URL": f"https://github.com/gcarleo/ketbook/edit/{source_ref}/wiki/{slug}.md", "HISTORY_URL": f"https://github.com/gcarleo/ketbook/commits/{source_ref}/wiki/{slug}.md", "CONTENT": article["html"]}
+                  "SLUG": slug, "EDIT_URL": f"https://github.com/ketworks-org/ketworks/edit/{source_ref}/wiki/{slug}.md", "HISTORY_URL": f"https://github.com/ketworks-org/ketworks/commits/{source_ref}/wiki/{slug}.md", "CONTENT": article["html"]}
         page_html = re.sub(r"\{\{([A-Z_]+)\}\}", lambda match: values[match[1]], template)
         page_dir = destination / "wiki" / slug
         page_dir.mkdir(parents=True, exist_ok=True)
@@ -89,13 +89,13 @@ def build(root=ROOT, destination=None):
     for benchmark in registry.values():
         if wiki and benchmark.get("wiki") and benchmark["wiki"] not in slugs:
             raise ValueError(f"{benchmark['id']}: wiki page {benchmark['wiki']!r} does not exist")
-    source_ref = os.getenv("KETBOOK_SOURCE_REF", "main")
+    source_ref = os.getenv("KETWORKS_SOURCE_REF", "main")
     home = destination / "index.html"
     if home.exists():
         home_html = home.read_text().replace("<!--HERO_MATH-->", equations.get("hero", "")).replace("<!--NAV-->", nav_html(registry=registry, index=wiki))
         for action in ("new", "edit", "blob"):
-            home_html = home_html.replace(f"https://github.com/gcarleo/ketbook/{action}/main/", f"https://github.com/gcarleo/ketbook/{action}/{quote(source_ref, safe='/')}/")
-            home_html = home_html.replace(f"https://github.com/gcarleo/ketbook/{action}/main?", f"https://github.com/gcarleo/ketbook/{action}/{quote(source_ref, safe='/')}?")
+            home_html = home_html.replace(f"https://github.com/ketworks-org/ketworks/{action}/main/", f"https://github.com/ketworks-org/ketworks/{action}/{quote(source_ref, safe='/')}/")
+            home_html = home_html.replace(f"https://github.com/ketworks-org/ketworks/{action}/main?", f"https://github.com/ketworks-org/ketworks/{action}/{quote(source_ref, safe='/')}?")
         home.write_text(home_html)
     rows, papers, records = [], set(), {}
     for path in sorted((root / "data/results").glob("*.json")):
