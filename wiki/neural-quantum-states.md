@@ -27,6 +27,7 @@ The network defines a family of states. Sampling and optimization determine how 
 ## Next steps
 
 - [Estimate the energy with variational Monte Carlo](../variational-monte-carlo/).
+- [Start from the restricted Boltzmann machine](../restricted-boltzmann-machine/).
 - [Optimize the variational parameters](../optimization/).
 
 ## References
