@@ -23,10 +23,10 @@ KaTeX renders equations into HTML and accessible MathML during the build. Its CS
 
 ## Add a Ketboard result
 
-1. Open **Ketboard → Add a result**. Select the exact benchmark and fill in the paper, method, printed energy, uncertainty, and source location.
-2. Confirm that the paper reports an original, directly evaluated NQS variational energy. The instance must match the complete Hamiltonian, lattice, boundaries, couplings, and sector.
-3. Prepare the contribution and inspect its JSON. Use **New paper file on GitHub** for a new paper, or **Edit existing paper file** to append to a paper already in the collection. Do not replace existing results accidentally. You can also download the JSON and edit it locally.
-4. Open a PR and explain the result. A maintainer checks the scientific eligibility and transcription before merging.
+1. Open **Ketboard → Submit a result**. Choose the system and the exact instance, type the versioned arXiv identifier, the method, the variant, the architecture class, the energy **exactly as printed** (for example `-0.497634(1)`; the decimal value and the uncertainty are derived from it), whether that printed value is per site or total, what the parenthesized uncertainty means, the table or page, and one sentence on why the result is a directly evaluated NQS variational energy. Title and authors can be left empty; they are filled from arXiv on the pull request.
+2. Confirm that the paper reports an original, directly evaluated NQS variational energy and that the instance matches the complete Hamiltonian, lattice, boundaries, couplings and sector.
+3. Click **Prepare the record**. For a paper not yet on the board, **Create the file on GitHub** opens the editor with the file filled in. For a paper that already has a record, the page shows the complete file with your row appended: open the existing file on GitHub, replace its content with the JSON shown, and propose the change.
+4. Open the pull request and explain the result. A maintainer checks eligibility and transcription before merging.
 
 Results live in `data/results/<unversioned-arxiv-id>.json`. Each row names an architecture class in `method_class` (`rbm`, `feed_forward`, `convolutional`, `autoregressive`, `transformer`, `backflow`, `hybrid`, or `other`); Ketboard filters on it. The record itself pins the exact arXiv version. `energy` and `uncertainty` are decimal strings; `energy_token` preserves the original printed number including parenthesized uncertainty. Unreported uncertainty is `null`, never an invented zero. Leave unknown bibliographic dates empty rather than guessing them.
 

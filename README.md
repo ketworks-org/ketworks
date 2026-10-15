@@ -79,7 +79,7 @@ This writes proposed files and a PR body under ignored `.run/`. Add `--publish-p
 - `data/proposals/`: unmatched instances, excluded from the site.
 - `nqsbot/`: collection, extraction, validation, PR creation, and static build.
 - `prompts/extract.txt`: extraction scope and scientific rules.
-- `.github/workflows/`: daily collection, PR checks, and publication after merge.
+- `.github/workflows/`: daily collection, PR checks, metadata completion on result pull requests, preview and publication after merge.
 
 ## Verification limits
 

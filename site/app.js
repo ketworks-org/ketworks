@@ -1,4 +1,4 @@
-import {makeSubmission, METHOD_CLASSES} from './submission.mjs';
+import {makeSubmission, mergeSubmission, METHOD_CLASSES} from './submission.mjs';
 import {filterRows, sortRows, rankByEnergy, summarize} from './leaderboard.mjs';
 let dataset, submission, sort = {key: 'energy', direction: 'asc'};
 const $ = id => document.getElementById(id);
@@ -8,13 +8,21 @@ const classLabel = key => METHOD_CLASSES[key] || key;
 const formatCount = n => n.toLocaleString('en-US');
 const shortAuthors = authors => { const list = authors.split(/,\s*/); return list.length > 3 ? `${list.slice(0, 3).join(', ')} et al.` : authors; };
 
+// Small lattice sketch for the ledger: a square grid, or a triangular lattice with rows offset by half a spacing
+// and bonds along the three primitive directions (1,0), (0,1) and (-1,1).
 function lattice(triangular = false) {
-  const ns = 'http://www.w3.org/2000/svg', svg = document.createElementNS(ns, 'svg'); svg.setAttribute('viewBox', '0 0 68 66'); svg.setAttribute('aria-hidden', 'true');
-  const points = Array.from({length: 9}, (_, i) => [10 + i % 3 * 21 + (triangular && Math.floor(i / 3) % 2 ? 8 : 0), 10 + Math.floor(i / 3) * 21]);
-  points.forEach(([x, y], i) => {[i % 3 < 2 ? i + 1 : -1, i < 6 ? i + 3 : -1, triangular && i < 6 && i % 3 < 2 ? i + 4 : -1].filter(j => j >= 0).forEach(j => { const line = document.createElementNS(ns, 'line'); Object.entries({x1: x, y1: y, x2: points[j][0], y2: points[j][1]}).forEach(([k, v]) => line.setAttribute(k, v)); svg.append(line); });});
-  points.forEach(([cx, cy]) => { const circle = document.createElementNS(ns, 'circle'); Object.entries({cx, cy, r: 3}).forEach(([k, v]) => circle.setAttribute(k, v)); svg.append(circle); }); return svg;
+  const ns = 'http://www.w3.org/2000/svg', svg = document.createElementNS(ns, 'svg'); svg.setAttribute('viewBox', '0 0 76 66'); svg.setAttribute('aria-hidden', 'true');
+  const a = 21, rows = 3, cols = 3, dy = triangular ? a * Math.sqrt(3) / 2 : a;
+  const at = (i, j) => [10 + i * a + (triangular ? j * a / 2 : 0), 12 + j * dy];
+  const line = (p, q) => { const l = document.createElementNS(ns, 'line'); Object.entries({x1: p[0], y1: p[1], x2: q[0], y2: q[1]}).forEach(([k, v]) => l.setAttribute(k, v)); svg.append(l); };
+  for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
+    if (i + 1 < cols) line(at(i, j), at(i + 1, j));
+    if (j + 1 < rows) line(at(i, j), at(i, j + 1));
+    if (triangular && j + 1 < rows && i > 0) line(at(i, j), at(i - 1, j + 1));
+  }
+  for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) { const [cx, cy] = at(i, j); const c = document.createElementNS(ns, 'circle'); Object.entries({cx, cy, r: 3}).forEach(([k, v]) => c.setAttribute(k, v)); svg.append(c); }
+  return svg;
 }
-
 function route() {
   const requested = location.hash.slice(1).split('?')[0] || 'overview';
   const name = ['overview', 'benchmarks', 'wiki', 'contribute', 'submit'].includes(requested) ? requested : (requested === 'learn' ? 'wiki' : 'overview');
@@ -125,16 +133,28 @@ function prepareSubmission(event) {
   event.preventDefault(); $('submission-error').textContent = ''; if (!dataset) return;
   const values = Object.fromEntries(new FormData(event.target));
   const b = dataset.benchmarks.find(b => b.id === values.benchmark_id);
-  try { submission = makeSubmission(values, b); } catch (error) { $('submission-error').textContent = error.message; return; }
-  const id = submission.paper.id;
-  const filename = `data/results/${id.replace(/v\d+$/, '')}.json`, json = JSON.stringify(submission, null, 2) + '\n';
+  let record;
+  try { record = makeSubmission(values, b); } catch (error) { $('submission-error').textContent = error.message; return; }
+  const base = record.paper.id.replace(/v\d+$/, ''), existing = dataset.papers?.[base];
+  try { if (existing) record = mergeSubmission({...existing, results: dataset.results.filter(r => r.paper.id === existing.paper.id).map(stripRow)}, record); } catch (error) { $('submission-error').textContent = error.message; return; }
+  submission = record;
+  const filename = `data/results/${base}.json`, json = JSON.stringify(record, null, 2) + '\n';
   $('submission-json').textContent = json;
   const sourceRef = dataset.source_ref.split('/').map(encodeURIComponent).join('/');
-  $('github-new-result').href = `https://github.com/gcarleo/ketbook/new/${sourceRef}?` + new URLSearchParams({filename, value: json}).toString();
-  $('github-edit-result').href = `https://github.com/gcarleo/ketbook/edit/${sourceRef}/${filename}`;
+  $('github-new-result').hidden = Boolean(existing); $('github-edit-result').hidden = !existing;
+  if (existing) {
+    $('submission-title').textContent = `Row added to the existing file for arXiv:${base}`;
+    $('submission-help').textContent = 'This paper already has a record. The JSON below is the complete file with your row appended. Open the existing file on GitHub, replace its whole content with this JSON (Copy JSON, then paste), and propose the change as a pull request.';
+    $('github-edit-result').href = `https://github.com/gcarleo/ketbook/edit/${sourceRef}/${filename}`;
+  } else {
+    $('submission-title').textContent = 'Record prepared';
+    $('submission-help').textContent = 'Check the JSON, then create the file on GitHub: the editor opens with the content and path filled in. Create a branch or fork and open a pull request. Title, authors and dates left empty are filled from arXiv automatically on the pull request.';
+    $('github-new-result').href = `https://github.com/gcarleo/ketbook/new/${sourceRef}?` + new URLSearchParams({filename, value: json}).toString();
+  }
   $('submission-ready').hidden = false; $('submission-ready').scrollIntoView({behavior: 'smooth', block: 'start'});
 }
-
+// Rows in data.json carry display fields (per-site values, paper, source URL) that are not part of the stored record.
+function stripRow(row) { const {energy_per_site, uncertainty_per_site, paper, source_url, ...stored} = row; return stored; }
 window.addEventListener('hashchange', () => { route(); document.getElementById('site-nav')?.classList.remove('open'); });
 $('model-select').addEventListener('change', () => { if (!dataset) return; renderInstances('model-select', 'system-select'); location.hash = '#benchmarks?system=' + encodeURIComponent($('system-select').value); });
 $('system-select').addEventListener('change', () => location.hash = '#benchmarks?system=' + encodeURIComponent($('system-select').value));
@@ -147,5 +167,6 @@ document.querySelectorAll('.board .sort').forEach(button => button.addEventListe
   if (dataset) renderResults();
 }));
 $('download').addEventListener('click', () => { if (dataset) download({benchmark: dataset.benchmarks.find(b => b.id === $('system-select').value), results: currentRows()}, `${$('system-select').value}.json`); });
-$('submission-form').addEventListener('submit', prepareSubmission); $('download-result').addEventListener('click', () => { if (submission) download(submission, submission.paper.id.replace(/v\d+$/, '') + '.json'); });
+$('submission-form').addEventListener('submit', prepareSubmission);
+$('copy-result').addEventListener('click', async () => { if (!submission) return; try { await navigator.clipboard.writeText($('submission-json').textContent); $('copy-result').textContent = 'Copied'; setTimeout(() => $('copy-result').textContent = 'Copy JSON', 1500); } catch { $('submission-error').textContent = 'Copy failed; select the JSON below and copy it by hand.'; } }); $('download-result').addEventListener('click', () => { if (submission) download(submission, submission.paper.id.replace(/v\d+$/, '') + '.json'); });
 route(); fetch('data.json').then(r => { if (!r.ok) throw Error('Data unavailable'); return r.json(); }).then(data => { dataset = data; renderSelects(); renderContents(); renderLedger(); renderWiki(); route(); }).catch(() => { $('load-error').hidden = false; });

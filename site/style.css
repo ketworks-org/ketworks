@@ -122,6 +122,7 @@ input,select,textarea{border:1px solid var(--ink);background:var(--white);paddin
 .policy{border-top:5px solid var(--ink);padding:30px;background:var(--white)}.policy h2{font-size:30px}
 .submission-form{max-width:1000px}.submission-form fieldset{display:grid;grid-template-columns:1fr 1fr;gap:22px;border:0;border-top:2px solid var(--ink);padding:27px 0;margin:35px 0}.submission-form legend{font:700 12px/1.5 var(--display);letter-spacing:.08em;padding-right:20px}
 .submission-form .check-label{flex-direction:row;align-items:center;grid-column:1/-1;font:400 15px/1.5 var(--serif)}.check-label input{width:18px;height:18px;min-height:18px;accent-color:var(--blue);flex:none}
+.optional{font:400 11px/1.4 var(--display);color:var(--muted);text-transform:none;letter-spacing:0}
 .form-note{font-size:14.5px;color:var(--muted);max-width:720px}.form-note a{text-decoration:underline}
 .submission-ready{margin-top:45px;border-top:6px solid var(--blue);padding:30px;background:var(--white)}.submission-ready>p{max-width:750px;font-size:15px}
 pre{white-space:pre;overflow:auto;font-size:12.5px;background:var(--sand);padding:24px;line-height:1.7}.submission-ready pre{margin-top:28px}#submission-error{color:#a02018;margin-top:16px;font-family:var(--display);font-size:14px}

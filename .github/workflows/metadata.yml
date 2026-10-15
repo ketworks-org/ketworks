@@ -1,0 +1,30 @@
+name: Fill paper metadata
+# On pull requests from this repository, fill empty title/authors/dates in result records from the arXiv API
+# and push the completed records back to the branch. Forked pull requests cannot be pushed to; the
+# contributor fills the fields by hand there (the schema accepts the record either way).
+on:
+  pull_request:
+    paths: ['data/results/**', 'data/proposals/**']
+permissions:
+  contents: write
+jobs:
+  fill:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - run: python -m nqsbot.fill_metadata
+      - name: Commit completed metadata
+        run: |
+          if git diff --quiet; then echo "Nothing to fill"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "Fill paper metadata from arXiv"
+          git push

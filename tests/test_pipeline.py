@@ -13,6 +13,7 @@ from nqsbot.collect import prepare, pr_body
 from nqsbot.extract import extract
 from nqsbot.github import GitHub
 from nqsbot.arxiv import Arxiv
+from nqsbot.fill_metadata import fill
 
 REGISTRY = schema.benchmarks()
 BENCHMARK = next(iter(REGISTRY))
@@ -112,6 +113,24 @@ class EligibilityTests(unittest.TestCase):
             payload = build(root)
             self.assertEqual(payload["results"][0]["energy_per_site"], "-0.500")
             self.assertEqual(payload["paper_count"], 1)
+            self.assertEqual(payload["papers"]["2601.00001"]["paper"]["id"], "2601.00001v1")
+            self.assertNotIn("results", payload["papers"]["2601.00001"])
+
+    def test_metadata_is_filled_only_where_empty(self):
+        feed = ('<feed xmlns="http://www.w3.org/2005/Atom"><entry><id>http://arxiv.org/abs/2601.00001v1</id><title>Filled  title</title>'
+                '<published>2026-01-02T00:00:00Z</published><updated>2026-01-03T00:00:00Z</updated><author><name>A. Author</name></author><author><name>B. Author</name></author></entry></feed>')
+        session = Mock(); session.get.return_value.content = feed.encode(); session.get.return_value.raise_for_status = Mock()
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); (root / "data/results").mkdir(parents=True); (root / "data/proposals").mkdir(parents=True)
+            incomplete = record(); incomplete["paper"].update(title="", authors="", published="", updated="")
+            (root / "data/results/2601.00001.json").write_text(json.dumps(incomplete))
+            complete = record(); complete["paper"]["id"] = "2601.00002v1"
+            (root / "data/results/2601.00002.json").write_text(json.dumps(complete))
+            changed = fill(root, session, pause=0)
+            self.assertEqual([p.name for p in changed], ["2601.00001.json"])
+            filled = json.loads((root / "data/results/2601.00001.json").read_text())["paper"]
+            self.assertEqual(filled["title"], "Filled title"); self.assertEqual(filled["authors"], "A. Author, B. Author"); self.assertEqual(filled["published"], "2026-01-02T00:00:00Z")
+            session.get.assert_called_once()
 
 
 class GitHubTests(unittest.TestCase):
