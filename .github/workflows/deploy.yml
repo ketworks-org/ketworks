@@ -1,7 +1,8 @@
-name: Preview site
-# Deploys the built site to a Netlify site with a random hostname. The site is marked noindex;
-# it is a private preview, not a publication. Requires secrets NETLIFY_AUTH_TOKEN and
-# NETLIFY_SITE_ID and the repository variable PREVIEW_ENABLED=true. See README.
+name: Deploy site
+# Builds the site and uploads it to the Netlify project that serves ketworks.org. Netlify's free plan
+# does not build private repositories owned by an organization, so the build runs here instead.
+# Requires the secrets NETLIFY_AUTH_TOKEN and NETLIFY_SITE_ID and the repository variable
+# DEPLOY_ENABLED=true. Pages stay noindex until the project goes public. See README.
 on:
   push:
     branches: [main]
@@ -9,11 +10,11 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: preview
+  group: deploy
   cancel-in-progress: true
 jobs:
-  preview:
-    if: vars.PREVIEW_ENABLED == 'true'
+  deploy:
+    if: vars.DEPLOY_ENABLED == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

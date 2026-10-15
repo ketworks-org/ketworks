@@ -34,9 +34,7 @@ The site is served by Netlify at **https://ketworks.org**, built from `main`. Th
 
 While the repository is private, the site is not meant to be found. The build adds `noindex` to every page, a `robots.txt` that disallows everything, and an `X-Robots-Tag` header, so neither address is indexed even if it leaks. It is obscurity, not authentication: share the address only with reviewers, and note that the domain name itself is public in certificate logs.
 
-Simplest setup, no secrets: in Netlify choose **Add new project → Import an existing project → GitHub**, authorize access to `ketworks-org/ketworks`, and pick the branch to deploy. `netlify.toml` supplies the build command, the publish directory and the Python and Node versions; Netlify rebuilds on every push to that branch and gives the project a random name. Deploy previews for pull requests get their own random addresses. Edit links on the preview point at the deployed branch.
-
-Alternative, when the build should run in GitHub Actions instead: store `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID` as repository secrets, set the variable `PREVIEW_ENABLED=true`, and run the **Preview site** workflow. In that case do not also connect the repository in Netlify.
+Deployment runs in GitHub Actions. Netlify's free plan does not build private repositories owned by an organization, so the **Deploy site** workflow (`.github/workflows/deploy.yml`) builds the site on every push to `main` and uploads `dist` to the Netlify project with the Netlify CLI. It needs two repository secrets, `NETLIFY_AUTH_TOKEN` (a personal access token from Netlify) and `NETLIFY_SITE_ID` (the project ID), and the repository variable `DEPLOY_ENABLED=true`. The Netlify project itself is not linked to the repository. `netlify.toml` still describes the build for a linked setup, should the repository become public or the plan change.
 
 GitHub Pages stays off (`PUBLISH_PAGES` unset) until the content has been reviewed and the repository is public.
 
