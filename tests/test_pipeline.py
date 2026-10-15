@@ -150,9 +150,9 @@ class GitHubTests(unittest.TestCase):
             if path.startswith('/contents/'): return None
             if path == '/git/trees': return {"sha": "new-tree"}
             if path == '/git/commits': return {"sha": "new-commit"}
-            if path.startswith('/git/ref/heads/codex/'): return None
+            if path.startswith('/git/ref/heads/bot/'): return None
             if path == '/git/refs':
-                self.assertEqual(kwargs['json']['ref'], 'refs/heads/codex/arxiv-2601-00001v1'); return {}
+                self.assertEqual(kwargs['json']['ref'], 'refs/heads/bot/arxiv-2601-00001v1'); return {}
             if path == '/pulls': return {"html_url": "https://github.com/test/nqs/pull/1"}
             self.fail(f"Unexpected API operation: {method} {path}")
         github.call = Mock(side_effect=call)

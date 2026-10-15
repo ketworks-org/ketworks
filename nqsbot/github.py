@@ -38,7 +38,7 @@ class GitHub:
 
     def branch(self, identifier):
         paper_parts(identifier)
-        return f"codex/arxiv-{identifier.replace('.', '-')}"
+        return f"bot/arxiv-{identifier.replace('.', '-')}"
 
     def existing_pr(self, identifier):
         head = f"{self.repository.split('/')[0]}:{self.branch(identifier)}"
