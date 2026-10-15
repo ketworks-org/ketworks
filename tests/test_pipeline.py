@@ -8,8 +8,9 @@ import unittest
 from unittest.mock import Mock, patch
 
 from nqsbot import schema
-from nqsbot.build import build
+from nqsbot.build import build, mark_preview
 from nqsbot.fill_metadata import fill
+from nqsbot.preview_summary import describe
 
 REGISTRY = schema.benchmarks()
 BENCHMARK = next(iter(REGISTRY))
@@ -28,7 +29,7 @@ def record(row=None):
 class EligibilityTests(unittest.TestCase):
     def test_total_normalization_preserves_uncertainty(self):
         schema.validate_row(ROW, REGISTRY, SOURCE["text"])
-        self.assertEqual(schema.per_site(ROW, REGISTRY), ("-0.500", "0.0002"))
+        self.assertEqual(schema.per_site(ROW, REGISTRY), ("-0.50000", "0.00020"))
 
     def test_only_original_variational_nqs(self):
         for field, values in {"method_type": ["non_nqs", "unknown"], "energy_type": ["extrapolated", "projected", "reference", "unknown"], "reported_here": [False]}.items():
@@ -79,12 +80,20 @@ class EligibilityTests(unittest.TestCase):
         for bad in (dict(record(), source_url="https://arxiv.org/html/2601.00001v2"), dict(record(), results=[ROW, ROW])):
             with self.assertRaises(ValueError): schema.validate_record(bad, REGISTRY)
 
+    def test_total_energies_keep_the_printed_precision_per_site(self):
+        # 144 sites, as the 12 x 12 TFIM instances: no repeating decimals, error bar to two digits.
+        registry = dict(REGISTRY, big={"sites": 144, "unit": "J1"})
+        row = dict(ROW, benchmark_id="big", energy="-456.4977", uncertainty="0.0088")
+        self.assertEqual(schema.per_site(row, registry), ("-3.170123", "0.000061"))
+        self.assertEqual(schema.per_site(dict(row, energy="-456.4209", uncertainty="0.0636"), registry), ("-3.16959", "0.00044"))
+        self.assertEqual(schema.per_site(dict(ROW, normalization="per_site", energy="-0.4976921", uncertainty="0.0000004"), REGISTRY), ("-0.4976921", "0.0000004"))
+
     def test_variance_is_optional_and_non_negative(self):
         schema.validate_row(dict(ROW, variance="1.25"), REGISTRY, SOURCE["text"])
         schema.validate_row(dict(ROW, variance=None), REGISTRY, SOURCE["text"])
         with self.assertRaises(ValueError): schema.validate_row(dict(ROW, variance="-0.1"), REGISTRY, SOURCE["text"])
         sites = REGISTRY[BENCHMARK]["sites"]
-        self.assertEqual(schema.variance_per_site(dict(ROW, variance=str(2 * sites)), REGISTRY), "2")
+        self.assertEqual(schema.variance_per_site(dict(ROW, variance=str(2 * sites)), REGISTRY), "2.00")
         self.assertIsNone(schema.variance_per_site(ROW, REGISTRY))
 
     def test_new_entries_need_an_error_bar(self):
@@ -118,11 +127,35 @@ class EligibilityTests(unittest.TestCase):
             self.assertNotIn("Test Author", (root / "dist/data.json").read_text())
             (root / "data/results/2601.00001.json").write_text(json.dumps(record()))
             payload = build(root)
-            self.assertEqual(payload["results"][0]["energy_per_site"], "-0.500")
+            self.assertEqual(payload["results"][0]["energy_per_site"], "-0.50000")
             self.assertEqual(payload["paper_count"], 1)
             self.assertEqual(payload["papers"]["2601.00001"]["paper"]["id"], "2601.00001v1")
             self.assertNotIn("results", payload["papers"]["2601.00001"])
             self.assertIn("<loc>https://ketworks.org/</loc>", (root / "dist/sitemap.xml").read_text())
+
+    def test_preview_summary_links_changed_instances_entries_and_pages(self):
+        registry = json.dumps(list(REGISTRY.values()))
+        path = "data/results/2601.00001.json"
+        before = {"data/benchmarks.json": registry, path: json.dumps(record())}
+        changed = dict(ROW, energy="-50.010", energy_token="-50.010(20)")
+        after = {"data/benchmarks.json": registry, path: json.dumps(dict(record(), results=[changed, dict(ROW, variant="new")])), "wiki/new-page.md": "# New"}
+        text = describe([path, "wiki/new-page.md"], before, after)
+        self.assertIn("{PREVIEW}/#benchmarks?system=" + BENCHMARK, text)
+        self.assertIn("1 added, 1 changed (arXiv:2601.00001v1)", text)
+        self.assertIn("[new-page]({PREVIEW}/wiki/new-page/)", text)
+        self.assertIn("No pages, instances or entries change", describe(["README.md"], {}, {}))
+
+    def test_preview_build_is_not_indexed_and_carries_a_banner(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "index.html").write_text('<html><head><meta name="viewport" content="x"></head><body></body></html>')
+            (root / "_headers").write_text("/*\n  X-Content-Type-Options: nosniff\n")
+            mark_preview(root)
+            page = (root / "index.html").read_text()
+            self.assertIn('<meta name="robots" content="noindex">', page)
+            self.assertIn('class="preview-banner"', page)
+            self.assertIn("Disallow: /", (root / "robots.txt").read_text())
+            self.assertIn("X-Robots-Tag: noindex", (root / "_headers").read_text())
 
     def test_metadata_is_filled_only_where_empty(self):
         feed = ('<feed xmlns="http://www.w3.org/2005/Atom"><entry><id>http://arxiv.org/abs/2601.00001v1</id><title>Filled  title</title>'

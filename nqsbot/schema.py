@@ -157,22 +157,46 @@ def validate_record(record, registry, allow_unmatched=False):
         raise ValueError("Duplicate benchmark/method/variant rows")
 
 
+def significant_digits(text):
+    """Significant digits of a printed decimal, e.g. 0.0099 -> 2, -202.4230 -> 7, 0.020 -> 2."""
+    digits = re.sub(r"[eE].*$", "", str(text)).lstrip("+-").replace(".", "").lstrip("0")
+    return max(len(digits), 1)
+
+
+def round_significant(value, digits):
+    if value == 0:
+        return value
+    return value.quantize(Decimal(1).scaleb(value.adjusted() - digits + 1))
+
+
+# Plain decimal strings (no exponent) so the site shows 0.0000004 rather than 4E-7.
+def plain(value):
+    return format(value.normalize() if value == value.to_integral() and value.as_tuple().exponent >= 0 else value, "f")
+
+
 def variance_per_site(row, registry):
-    """Var(H)/N, or None when no variance is recorded."""
+    """Var(H)/N to the significant digits of the printed variance, or None when none is recorded."""
     if row["variance"] is None:
         return None
     divisor = registry[row["benchmark_id"]]["sites"] if row["normalization"] == "total" else 1
-    value = decimal(row["variance"]) / divisor
-    return format(value.normalize() if value == value.to_integral() else value, "f")
+    value = decimal(row["variance"])
+    return plain(value if divisor == 1 else round_significant(value / divisor, significant_digits(row["variance"])))
 
 
 def per_site(row, registry):
+    """Energy and error bar per site, as printed for per-site rows. A total energy is divided by the
+    number of sites and rounded back to the printed precision: the error bar keeps its printed
+    significant digits (at most two) and the energy is cut at the error bar's last digit."""
     divisor = registry[row["benchmark_id"]]["sites"] if row["normalization"] == "total" else 1
-    energy = decimal(row["energy"]) / divisor
-    error = decimal(row["uncertainty"]) / divisor if row["uncertainty"] is not None else None
-    # Plain decimal strings (no exponent) so the site shows 0.0000004 rather than 4E-7.
-    plain = lambda value: format(value.normalize() if value == value.to_integral() else value, "f")
-    return plain(energy), plain(error) if error is not None else None
+    energy = decimal(row["energy"])
+    error = decimal(row["uncertainty"]) if row["uncertainty"] is not None else None
+    if divisor == 1:
+        return plain(energy), plain(error) if error is not None else None
+    if error is None:
+        return plain(round_significant(energy / divisor, significant_digits(row["energy"]))), None
+    error = round_significant(error / divisor, min(2, significant_digits(row["uncertainty"])))
+    energy = (energy / divisor).quantize(Decimal(1).scaleb(error.as_tuple().exponent))
+    return plain(energy), plain(error)
 
 
 def fingerprint(value):
