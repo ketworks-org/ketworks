@@ -21,7 +21,7 @@ for (const page of JSON.parse(fs.readFileSync('wiki/index.json','utf8'))) {
   assert.ok(article.headings.length >= 2, `${page.slug} needs section headings for its table of contents`);
 }
 console.log('KaTeX inline/display rendering, malformed LaTeX rejection, Markdown safety, and all wiki articles pass.');
-const {makeSubmission, mergeSubmission, parseToken}=await import('../site/submission.mjs');
+const {makeSubmission, mergeSubmission, parseToken, instanceFromForm, makeProposal}=await import('../site/submission.mjs');
 assert.deepEqual(parseToken('-0.497634(1)'), {token:'-0.497634(1)', energy:'-0.497634', uncertainty:'0.000001'});
 assert.deepEqual(parseToken('−199.05174'), {token:'-199.05174', energy:'-199.05174', uncertainty:null});
 assert.deepEqual(parseToken('-50.000(20)'), {token:'-50.000(20)', energy:'-50.000', uncertainty:'0.020'});
@@ -51,7 +51,33 @@ assert.throws(()=>mergeSubmission(existing,makeSubmission({...fields,variant:'Ot
 assert.throws(()=>mergeSubmission({...existing,paper:{...existing.paper,id:'2601.00001v2'}},submission), /newer/);
 const upgraded=mergeSubmission(existing,makeSubmission({...fields,paper_id:'2601.00001v2'},benchmark));
 assert.equal(upgraded.paper.id,'2601.00001v2'); assert.equal(upgraded.source_sha256,null);
-console.log('Human contribution generation and invalid-input checks pass.');
+// Generated instance keys must reproduce the existing ones, so conventions stay uniform.
+const registry=JSON.parse(fs.readFileSync('data/benchmarks.json','utf8'));
+const generated=[
+  ['j1j2-square-10x10-pbc-j2-0p5-sz0', {model:'j1j2',lattice:'square',lx:'10',ly:'10',boundaries:'pbc',j2:'0.5',sz:'0'}],
+  ['heisenberg-triangular-6x6-pbc-sz0', {model:'heisenberg',lattice:'triangular',lx:'6',ly:'6',boundaries:'pbc'}],
+  ['hubbard-square-8x8-pbc-u8-n56-sz0', {model:'hubbard',lattice:'square',lx:'8',ly:'8',boundaries:'pbc',u:'8',nup:'28',ndown:'28'}],
+  ['hubbard-rectangular-16x4-pbc-u8-n56-sz0', {model:'hubbard',lattice:'rectangular',lx:'16',ly:'4',boundaries:'pbc',u:'8',nup:'28',ndown:'28'}],
+];
+for (const [id, form] of generated) {
+  const entry = instanceFromForm(form);
+  assert.equal(entry.id, id);
+  const stored = registry.find(b => b.id === id);
+  if (stored) { assert.equal(entry.sites, stored.sites); assert.equal(entry.unit, stored.unit); assert.equal(entry.hamiltonian_latex, stored.hamiltonian_latex); assert.equal(entry.name, stored.name); }
+  for (const key of ['id','name','family','geometry','hamiltonian','sector','unit','instance_label','lattice_size','boundary_conditions']) assert.ok(entry[key], `${id}: ${key} must not be empty`);
+  assert.throws(() => instanceFromForm(form, [id]), /already exists/);
+}
+assert.equal(instanceFromForm({model:'tfim',lattice:'square',lx:'12',ly:'12',boundaries:'pbc',h:'3.05'}).id, 'tfim-square-12x12-pbc-h3p05');
+assert.equal(instanceFromForm({model:'heisenberg',lattice:'honeycomb',lx:'6',ly:'6',boundaries:'cyl',sz:'0'}).sites, 72);
+assert.equal(instanceFromForm({model:'heisenberg',lattice:'chain',lx:'32',boundaries:'pbc'}).id, 'heisenberg-chain-32-pbc-sz0');
+assert.throws(() => instanceFromForm({model:'j1j2',lattice:'square',lx:'10',ly:'8',boundaries:'pbc',j2:'0.5'}), /equal extents/);
+assert.throws(() => instanceFromForm({model:'hubbard',lattice:'square',lx:'4',ly:'4',boundaries:'pbc',u:'8',nup:'20',ndown:'2'}), /electrons/);
+const custom = instanceFromForm({model:'custom',lattice:'square',lx:'6',ly:'6',boundaries:'pbc',system_name:'Kagome Heisenberg',hamiltonian_text:'H = ...',unit:'J'});
+assert.equal(custom.id, 'kagome-heisenberg-square-6x6-pbc'); assert.equal(custom.family, 'Kagome Heisenberg');
+const proposal = makeProposal({...fields, system_description:'Shuriken lattice Heisenberg, 24 sites, periodic, Sz = 0', unit:'J'});
+assert.equal(proposal.results[0].benchmark_id, null); assert.equal(proposal.results[0].unit, 'J'); assert.equal(proposal.results[0].energy, '-50.000');
+assert.throws(() => makeProposal({...fields, unit:'J'}), /Describe the system/);
+console.log('Human contribution generation, new-instance keys, proposals and invalid-input checks pass.');
 const {filterRows,sortRows,rankByEnergy,summarize}=await import('../site/leaderboard.mjs');
 const paper=id=>({id,title:'T',authors:'A. Author',published:id==='2601.00003v1'?'2026-03-01T00:00:00Z':'2026-01-01T00:00:00Z'});
 const rows=[

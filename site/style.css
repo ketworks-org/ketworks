@@ -121,6 +121,7 @@ input,select,textarea{border:1px solid var(--ink);background:var(--white);paddin
 .steps{list-style:none;padding:0;margin:45px 0;max-width:940px}.steps li{display:flex;gap:35px;border-top:1px solid var(--line);padding:25px 0 10px}.steps li>span{font:800 48px/1 var(--display);color:var(--blue);width:40px;flex:none}.steps h2{font-size:28px;margin-bottom:10px}.steps p,.policy p{font-size:16px;color:var(--muted)}
 .policy{border-top:5px solid var(--ink);padding:30px;background:var(--white)}.policy h2{font-size:30px}
 .submission-form{max-width:1000px}.submission-form fieldset{display:grid;grid-template-columns:1fr 1fr;gap:22px;border:0;border-top:2px solid var(--ink);padding:27px 0;margin:35px 0}.submission-form legend{font:700 12px/1.5 var(--display);letter-spacing:.08em;padding-right:20px}
+.submission-form .wide-field{grid-column:1/-1}.submission-form fieldset[hidden]{display:none}.submission-ready h3{font-size:20px;margin:26px 0 8px}#instance-json{margin-top:18px}
 .submission-form .check-label{flex-direction:row;align-items:center;grid-column:1/-1;font:400 15px/1.5 var(--serif)}.check-label input{width:18px;height:18px;min-height:18px;accent-color:var(--blue);flex:none}
 .optional{font:400 11px/1.4 var(--display);color:var(--muted);text-transform:none;letter-spacing:0}
 .form-note{font-size:14.5px;color:var(--muted);max-width:720px}.form-note a{text-decoration:underline}

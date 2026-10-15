@@ -1,4 +1,4 @@
-import {makeSubmission, mergeSubmission, METHOD_CLASSES} from './submission.mjs';
+import {makeSubmission, mergeSubmission, makeProposal, instanceFromForm, METHOD_CLASSES, MODELS} from './submission.mjs';
 import {filterRows, sortRows, rankByEnergy, summarize} from './leaderboard.mjs';
 let dataset, submission, sort = {key: 'energy', direction: 'asc'};
 const $ = id => document.getElementById(id);
@@ -67,6 +67,7 @@ function renderLedger() {
 
 function renderSelects() {
   [...new Set(dataset.benchmarks.map(b => b.family))].forEach(model => { for (const id of ['model-select', 'submit-model']) { const option = text('option', model); option.value = model; $(id).append(option); } });
+  Object.entries(MODELS).forEach(([value, model]) => { const option = text('option', model.label); option.value = value; $('new-model').append(option); });
   Object.entries(METHOD_CLASSES).forEach(([value, label]) => { for (const id of ['class-filter', 'submit-class']) { const option = text('option', label); option.value = value; $(id).append(option); } });
   renderInstances('submit-model', 'submit-system');
 }
@@ -129,26 +130,52 @@ function renderResults() {
 }
 
 function download(value, filename) { const url = URL.createObjectURL(new Blob([JSON.stringify(value, null, 2) + '\n'], {type: 'application/json'})); const a = document.createElement('a'); a.href = url; a.download = filename; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
+function instanceMode() { return $('instance-mode').value; }
+function syncInstanceForm() {
+  const mode = instanceMode();
+  for (const [id, on] of [['existing-fields', mode === 'existing'], ['new-fields', mode === 'new'], ['proposal-fields', mode === 'proposal']]) { $(id).hidden = !on; $(id).disabled = !on; }
+  if (mode !== 'new') return;
+  const model = MODELS[$('new-model').value] || MODELS.heisenberg, lattice = $('new-lattice').value;
+  $('ly-label').hidden = lattice === 'chain';
+  document.querySelectorAll('[data-coupling]').forEach(el => el.hidden = !model.couplings.some(([key]) => key === el.dataset.coupling));
+  document.querySelectorAll('[data-sector]').forEach(el => el.hidden = model.spin === null || model.nosector || (el.dataset.sector === 'spin') !== model.spin);
+  document.querySelectorAll('[data-custom]').forEach(el => el.hidden = model !== MODELS.custom);
+  try { $('new-key').textContent = instanceFromForm(formValues()).id; } catch (error) { $('new-key').textContent = error.message; }
+}
+function formValues() { const values = Object.fromEntries(new FormData($('submission-form'))); if (values.unit_custom) values.unit = values.unit_custom; return values; }
 function prepareSubmission(event) {
   event.preventDefault(); $('submission-error').textContent = ''; if (!dataset) return;
-  const values = Object.fromEntries(new FormData(event.target));
-  const b = dataset.benchmarks.find(b => b.id === values.benchmark_id);
-  let record;
-  try { record = makeSubmission(values, b); } catch (error) { $('submission-error').textContent = error.message; return; }
-  const base = record.paper.id.replace(/v\d+$/, ''), existing = dataset.papers?.[base];
+  const values = formValues(), mode = instanceMode();
+  let record, entry = null, folder = 'results';
+  try {
+    if (mode === 'proposal') { record = makeProposal(values); folder = 'proposals'; }
+    else {
+      const b = mode === 'new' ? (entry = instanceFromForm(values, dataset.benchmarks.map(x => x.id))) : dataset.benchmarks.find(b => b.id === values.benchmark_id);
+      record = makeSubmission({...values, benchmark_id: b?.id}, b);
+    }
+  } catch (error) { $('submission-error').textContent = error.message; return; }
+  const base = record.paper.id.replace(/v\d+$/, ''), existing = folder === 'results' ? dataset.papers?.[base] : null;
   try { if (existing) record = mergeSubmission({...existing, results: dataset.results.filter(r => r.paper.id === existing.paper.id).map(stripRow)}, record); } catch (error) { $('submission-error').textContent = error.message; return; }
   submission = record;
-  const filename = `data/results/${base}.json`, json = JSON.stringify(record, null, 2) + '\n';
+  const filename = `data/${folder}/${base}.json`, json = JSON.stringify(record, null, 2) + '\n';
   $('submission-json').textContent = json;
   const sourceRef = dataset.source_ref.split('/').map(encodeURIComponent).join('/');
+  $('instance-block').hidden = !entry;
+  if (entry) {
+    $('instance-json').textContent = JSON.stringify(entry, null, 2);
+    $('instance-help').textContent = `Append this entry to the array in data/benchmarks.json (before the closing bracket, after a comma). Its key is ${entry.id}. Put the definition and the result record in the same pull request; the checks validate both.`;
+    $('github-edit-benchmarks').href = `https://github.com/gcarleo/ketbook/edit/${sourceRef}/data/benchmarks.json`;
+  }
   $('github-new-result').hidden = Boolean(existing); $('github-edit-result').hidden = !existing;
   if (existing) {
     $('submission-title').textContent = `Row added to the existing file for arXiv:${base}`;
     $('submission-help').textContent = 'This paper already has a record. The JSON below is the complete file with your row appended. Open the existing file on GitHub, replace its whole content with this JSON (Copy JSON, then paste), and propose the change as a pull request.';
     $('github-edit-result').href = `https://github.com/gcarleo/ketbook/edit/${sourceRef}/${filename}`;
   } else {
-    $('submission-title').textContent = 'Record prepared';
-    $('submission-help').textContent = 'Check the JSON, then create the file on GitHub: the editor opens with the content and path filled in. Create a branch or fork and open a pull request. Title, authors and dates left empty are filled from arXiv automatically on the pull request.';
+    $('submission-title').textContent = folder === 'proposals' ? 'Proposal prepared' : (entry ? 'Definition and record prepared' : 'Record prepared');
+    $('submission-help').textContent = folder === 'proposals'
+      ? 'Create the file under data/proposals on GitHub and open a pull request. A curator defines the instance and moves the row to the published results; nothing is published before that.'
+      : 'Check the JSON, then create the file on GitHub: the editor opens with the content and path filled in. Create a branch or fork and open a pull request. Title, authors and dates left empty are filled from arXiv automatically on the pull request.';
     $('github-new-result').href = `https://github.com/gcarleo/ketbook/new/${sourceRef}?` + new URLSearchParams({filename, value: json}).toString();
   }
   $('submission-ready').hidden = false; $('submission-ready').scrollIntoView({behavior: 'smooth', block: 'start'});
@@ -168,5 +195,7 @@ document.querySelectorAll('.board .sort').forEach(button => button.addEventListe
 }));
 $('download').addEventListener('click', () => { if (dataset) download({benchmark: dataset.benchmarks.find(b => b.id === $('system-select').value), results: currentRows()}, `${$('system-select').value}.json`); });
 $('submission-form').addEventListener('submit', prepareSubmission);
+$('instance-mode').addEventListener('change', syncInstanceForm); $('new-fields').addEventListener('input', syncInstanceForm); $('new-fields').addEventListener('change', syncInstanceForm);
+$('copy-instance').addEventListener('click', async () => { try { await navigator.clipboard.writeText($('instance-json').textContent); $('copy-instance').textContent = 'Copied'; setTimeout(() => $('copy-instance').textContent = 'Copy entry', 1500); } catch { $('submission-error').textContent = 'Copy failed; select the entry and copy it by hand.'; } });
 $('copy-result').addEventListener('click', async () => { if (!submission) return; try { await navigator.clipboard.writeText($('submission-json').textContent); $('copy-result').textContent = 'Copied'; setTimeout(() => $('copy-result').textContent = 'Copy JSON', 1500); } catch { $('submission-error').textContent = 'Copy failed; select the JSON below and copy it by hand.'; } }); $('download-result').addEventListener('click', () => { if (submission) download(submission, submission.paper.id.replace(/v\d+$/, '') + '.json'); });
-route(); fetch('data.json').then(r => { if (!r.ok) throw Error('Data unavailable'); return r.json(); }).then(data => { dataset = data; renderSelects(); renderContents(); renderLedger(); renderWiki(); route(); }).catch(() => { $('load-error').hidden = false; });
+route(); fetch('data.json').then(r => { if (!r.ok) throw Error('Data unavailable'); return r.json(); }).then(data => { dataset = data; renderSelects(); syncInstanceForm(); renderContents(); renderLedger(); renderWiki(); route(); }).catch(() => { $('load-error').hidden = false; });
