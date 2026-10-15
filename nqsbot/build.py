@@ -84,6 +84,20 @@ def sitemap(wiki):
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{entries}</urlset>\n'
 
 
+PREVIEW_BANNER = ('<div class="preview-banner" role="note">Preview of a pull request, not the published site. '
+                  '<a href="https://ketworks.org/">ketworks.org</a></div>')
+
+
+def mark_preview(destination):
+    """A pull-request preview: keep search engines out and say on every page that it is a preview."""
+    (destination / "robots.txt").write_text("User-agent: *\nDisallow: /\n")
+    headers = destination / "_headers"
+    headers.write_text((headers.read_text() if headers.exists() else "/*\n") + "  X-Robots-Tag: noindex\n")
+    for page in destination.rglob("*.html"):
+        text = page.read_text()
+        page.write_text(text.replace('<meta name="viewport"', '<meta name="robots" content="noindex"><meta name="viewport"', 1).replace("<body>", "<body>" + PREVIEW_BANNER, 1))
+
+
 def build(root=ROOT, destination=None):
     registry = validate_tree(root)
     destination = destination or root / "dist"
@@ -119,6 +133,8 @@ def build(root=ROOT, destination=None):
     payload = {"source_ref": source_ref, "benchmarks": [{**b, "hamiltonian_html": equations.get(b["id"]), "parameters_html": equations.get(b["id"] + ":parameters")} for b in registry.values()], "wiki": wiki, "results": rows, "papers": records, "paper_count": len(papers)}
     (destination / "data.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
     (destination / "sitemap.xml").write_text(sitemap(wiki))
+    if os.getenv("KETWORKS_PREVIEW"):
+        mark_preview(destination)
     (destination / ".nojekyll").touch()
     print(f"Built {destination}: {len(wiki)} wiki pages, {len(rows)} reviewed rows from {len(papers)} papers")
     return payload

@@ -2,6 +2,8 @@
 
 Wiki pages and NQS energy results both enter through pull requests. Anyone can propose a contribution. You do not need direct write access: GitHub can create a fork and a branch for your proposal. A maintainer reviews and merges the change. Contributions are released under the repository's [MIT License](LICENSE).
 
+Every pull request gets a preview of the site with the change applied. A few minutes after each push, a comment on the pull request links to it and to the instances, entries and pages that changed. The preview carries a yellow banner and is not indexed.
+
 ## Edit the wiki
 
 1. Open an article on Ketbook and choose **Edit this page**.
