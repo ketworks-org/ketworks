@@ -12,7 +12,7 @@
   "extraction_model": "ChatGPT Work assisted extraction with deterministic table parsing; no model API",
   "results": [
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-8x8-obc-h3",
       "system_description": "Square 8x8 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Euclidean 2DRNN",
       "variant": "2D; best seed",
@@ -30,10 +30,10 @@
       "source_location": "Table 2, Euclidean 2DRNN, Best energy and sampling error; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 5352,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-8x8-obc-h3",
       "system_description": "Square 8x8 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Lorentz 2DRNN",
       "variant": "2D; best seed; Lmax=2.0",
@@ -51,10 +51,10 @@
       "source_location": "Table 2, Lorentz 2DRNN ( L_{max}=2.0), Best energy and sampling error; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 5352,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-10x10-obc-h3",
       "system_description": "Square 10x10 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Euclidean 2DRNN",
       "variant": "2D; best seed",
@@ -72,10 +72,10 @@
       "source_location": "Table 3, Euclidean 2DRNN, Best energy and sampling error; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 7622,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-10x10-obc-h3",
       "system_description": "Square 10x10 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Lorentz 2DRNN",
       "variant": "2D; best seed; Lmax=2.0",
@@ -93,10 +93,10 @@
       "source_location": "Table 3, Lorentz 2DRNN ( L_{max}=2.0), Best energy and sampling error; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 7622,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-12x12-obc-h3",
       "system_description": "Square 12x12 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Euclidean 2DRNN",
       "variant": "2D; best seed",
@@ -114,10 +114,10 @@
       "source_location": "Table 4, Euclidean 2DRNN, Best energy and sampling error; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 7622,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-12x12-obc-h3",
       "system_description": "Square 12x12 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Lorentz 2DRNN",
       "variant": "2D; best seed; Lmax=2.0",
@@ -135,10 +135,10 @@
       "source_location": "Table 4, Lorentz 2DRNN ( L_{max}=2.0), Best energy and sampling error; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 7622,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-12x12-obc-h3",
       "system_description": "Square 12x12 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Lorentz 2DRNN",
       "variant": "2D; best seed; Lmax=5.0",
@@ -156,10 +156,10 @@
       "source_location": "Table 4, Lorentz 2DRNN ( L_{max}=5.0), Best energy and sampling error; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 7622,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-12x12-obc-h2",
       "system_description": "Square 12x12 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=2; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Euclidean 2DRNN",
       "variant": "2D; best seed",
@@ -177,10 +177,10 @@
       "source_location": "Table 5, Euclidean 2DRNN, Best energy and sampling error; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 7622,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-12x12-obc-h2",
       "system_description": "Square 12x12 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=2; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Lorentz 2DRNN",
       "variant": "2D; best seed; Lmax=2.0",
@@ -198,10 +198,10 @@
       "source_location": "Table 5, Lorentz 2DRNN ( L_{max}=2.0), Best energy and sampling error; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 7622,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-12x12-obc-h2",
       "system_description": "Square 12x12 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=2; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Lorentz 2DRNN",
       "variant": "2D; best seed; Lmax=6.0",
@@ -219,10 +219,10 @@
       "source_location": "Table 5, Lorentz 2DRNN ( L_{max}=6.0), Best energy and sampling error; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 7622,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-12x12-obc-h4",
       "system_description": "Square 12x12 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=4; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Euclidean 2DRNN",
       "variant": "2D; best seed",
@@ -240,10 +240,10 @@
       "source_location": "Table 6, Euclidean 2DRNN, Best energy and sampling error; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 7622,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-12x12-obc-h4",
       "system_description": "Square 12x12 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=4; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Lorentz 2DRNN",
       "variant": "2D; best seed; Lmax=2.0",
@@ -261,10 +261,10 @@
       "source_location": "Table 6, Lorentz 2DRNN ( L_{max}=2.0), Best energy and sampling error; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 7622,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-12x12-obc-h4",
       "system_description": "Square 12x12 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=4; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Lorentz 2DRNN",
       "variant": "2D; best seed; Lmax=1.5",
@@ -282,10 +282,10 @@
       "source_location": "Table 6, Lorentz 2DRNN ( L_{max}=1.5), Best energy and sampling error; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 7622,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-8x8-obc-h3",
       "system_description": "Square 8x8 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Euclidean RNN",
       "variant": "1D unrolled; best seed",
@@ -303,10 +303,10 @@
       "source_location": "Table 8, Euclidean RNN, 8x8 column; energy row and error row immediately below; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 3902,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-10x10-obc-h3",
       "system_description": "Square 10x10 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Euclidean RNN",
       "variant": "1D unrolled; best seed",
@@ -324,10 +324,10 @@
       "source_location": "Table 8, Euclidean RNN, 10x10 column; energy row and error row immediately below; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 5252,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-12x12-obc-h3",
       "system_description": "Square 12x12 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Euclidean RNN",
       "variant": "1D unrolled; best seed",
@@ -345,10 +345,10 @@
       "source_location": "Table 8, Euclidean RNN, 12x12 column; energy row and error row immediately below; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 5252,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-8x8-obc-h3",
       "system_description": "Square 8x8 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Poincare RNN",
       "variant": "1D unrolled; best seed",
@@ -366,10 +366,10 @@
       "source_location": "Table 8, Poincare RNN, 8x8 column; energy row and error row immediately below; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 3902,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-10x10-obc-h3",
       "system_description": "Square 10x10 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Poincare RNN",
       "variant": "1D unrolled; best seed",
@@ -387,10 +387,10 @@
       "source_location": "Table 8, Poincare RNN, 10x10 column; energy row and error row immediately below; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 5252,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-12x12-obc-h3",
       "system_description": "Square 12x12 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Poincare RNN",
       "variant": "1D unrolled; best seed",
@@ -408,10 +408,10 @@
       "source_location": "Table 8, Poincare RNN, 12x12 column; energy row and error row immediately below; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 5252,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-8x8-obc-h3",
       "system_description": "Square 8x8 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Lorentz RNN",
       "variant": "1D unrolled; best seed",
@@ -429,10 +429,10 @@
       "source_location": "Table 8, Lorentz RNN, 8x8 column; energy row and error row immediately below; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 3902,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-10x10-obc-h3",
       "system_description": "Square 10x10 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Lorentz RNN",
       "variant": "1D unrolled; best seed",
@@ -450,10 +450,10 @@
       "source_location": "Table 8, Lorentz RNN, 10x10 column; energy row and error row immediately below; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 5252,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-12x12-obc-h3",
       "system_description": "Square 12x12 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Lorentz RNN",
       "variant": "1D unrolled; best seed",
@@ -471,10 +471,10 @@
       "source_location": "Table 8, Lorentz RNN, 12x12 column; energy row and error row immediately below; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 5252,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-8x8-obc-h3",
       "system_description": "Square 8x8 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Euclidean GRU",
       "variant": "1D unrolled; best seed",
@@ -492,10 +492,10 @@
       "source_location": "Table 8, Euclidean GRU, 8x8 column; energy row and error row immediately below; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 11462,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-10x10-obc-h3",
       "system_description": "Square 10x10 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Euclidean GRU",
       "variant": "1D unrolled; best seed",
@@ -513,10 +513,10 @@
       "source_location": "Table 8, Euclidean GRU, 10x10 column; energy row and error row immediately below; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 15472,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-12x12-obc-h3",
       "system_description": "Square 12x12 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Euclidean GRU",
       "variant": "1D unrolled; best seed",
@@ -534,10 +534,10 @@
       "source_location": "Table 8, Euclidean GRU, 12x12 column; energy row and error row immediately below; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 15472,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-8x8-obc-h3",
       "system_description": "Square 8x8 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Poincare GRU",
       "variant": "1D unrolled; best seed",
@@ -555,10 +555,10 @@
       "source_location": "Table 8, Poincare GRU, 8x8 column; energy row and error row immediately below; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 11462,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-10x10-obc-h3",
       "system_description": "Square 10x10 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Poincare GRU",
       "variant": "1D unrolled; best seed",
@@ -576,10 +576,10 @@
       "source_location": "Table 8, Poincare GRU, 10x10 column; energy row and error row immediately below; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 15472,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-12x12-obc-h3",
       "system_description": "Square 12x12 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Poincare GRU",
       "variant": "1D unrolled; best seed",
@@ -597,10 +597,10 @@
       "source_location": "Table 8, Poincare GRU, 12x12 column; energy row and error row immediately below; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 15472,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-8x8-obc-h3",
       "system_description": "Square 8x8 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Lorentz GRU",
       "variant": "1D unrolled; best seed",
@@ -618,10 +618,10 @@
       "source_location": "Table 8, Lorentz GRU, 8x8 column; energy row and error row immediately below; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 11462,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-10x10-obc-h3",
       "system_description": "Square 10x10 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Lorentz GRU",
       "variant": "1D unrolled; best seed",
@@ -639,10 +639,10 @@
       "source_location": "Table 8, Lorentz GRU, 10x10 column; energy row and error row immediately below; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 15472,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     },
     {
-      "benchmark_id": null,
+      "benchmark_id": "tfim-square-12x12-obc-h3",
       "system_description": "Square 12x12 transverse-field Ising model, open boundaries, H=-J sum_<ij> sigma_z(i)sigma_z(j)-Bx sum_i sigma_x(i); J=1, Bx=3; horizontal/vertical nearest neighbors, Pauli sigma convention (Eq. 17); no fixed Sz sector.",
       "method": "Lorentz GRU",
       "variant": "1D unrolled; best seed",
@@ -660,13 +660,8 @@
       "source_location": "Table 8, Lorentz GRU, 12x12 column; energy row and error row immediately below; Eq. 17",
       "eligibility_evidence": "Sections 3-5: original VMC estimates of autoregressive real neural wavefunctions; selected Best column/rows, without extrapolation or projection. Table caption identifies the uncertainty as the VMC sampling standard error.",
       "parameter_count": 15472,
-      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated."
+      "notes": "Best initialization run, not the average across initializations. Energy variance not tabulated. Pauli normalization and the negative bond/field signs follow Eq. 17 and the author code. On this bipartite open square lattice, the positive-sign Varbench Hamiltonian is related by sublattice spin flips and a global field-sign rotation, with no energy rescaling or shift."
     }
   ],
-  "issues": [
-    "No exact TFIM benchmark is registered. Five new instances are needed: 8x8/10x10/12x12 at Bx=3, and 12x12 at Bx=2 and 4; all open boundaries and J=1.",
-    "Selected Best estimates only. Cross-initialization averages (Tables 2-6 and 9) and non-NQS DMRG comparisons are excluded.",
-    "Best-seed selection is recorded; these statistical sampling errors do not include initialization/optimization variability.",
-    "Verify the Pauli operator convention and full sector definition during new-benchmark review; variance was not recorded."
-  ]
+  "issues": []
 }
