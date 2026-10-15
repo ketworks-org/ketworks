@@ -56,3 +56,13 @@ const summary=summarize([{id:'b'},{id:'none'}],rows);
 assert.equal(summary[0].count,3);assert.equal(summary[0].best.method,'ViT');assert.deepEqual(summary[0].classes,['transformer','convolutional','rbm']);
 assert.equal(summary[1].best,null);
 console.log('Ketboard filtering, sorting, ranking, and summary checks pass.');
+// A stray closing tag silently ends <main>, so the structure of the shipped HTML is checked here.
+for (const file of ['site/index.html', 'site/wiki.template.html']) {
+  const html = fs.readFileSync(file, 'utf8');
+  const main = html.slice(html.indexOf('<main'), html.indexOf('</main>'));
+  for (const tag of ['div', 'section', 'form', 'table', 'details']) {
+    const open = (main.match(new RegExp(`<${tag}[\\s>]`, 'g')) || []).length, close = (main.match(new RegExp(`</${tag}>`, 'g')) || []).length;
+    assert.equal(open, close, `${file}: <${tag}> opens ${open} times but closes ${close} times inside <main>`);
+  }
+}
+console.log('HTML structure of the homepage and article template is balanced.');
