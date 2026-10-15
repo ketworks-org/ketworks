@@ -74,6 +74,16 @@ def render_content(root, destination, registry):
     return index, rendered["equations"]
 
 
+SITE_URL = os.getenv("KETWORKS_SITE_URL", "https://ketworks.org").rstrip("/")
+
+
+def sitemap(wiki):
+    """The landing page and every Ketbook page; Ketboard views are part of the landing page."""
+    urls = [SITE_URL + "/"] + [f"{SITE_URL}/wiki/{page['slug']}/" for page in wiki]
+    entries = "".join(f"  <url><loc>{html.escape(url)}</loc></url>\n" for url in urls)
+    return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{entries}</urlset>\n'
+
+
 def build(root=ROOT, destination=None):
     registry = validate_tree(root)
     destination = destination or root / "dist"
@@ -108,6 +118,7 @@ def build(root=ROOT, destination=None):
     # Proposal files and extraction artifacts never enter the public payload.
     payload = {"source_ref": source_ref, "benchmarks": [{**b, "hamiltonian_html": equations.get(b["id"]), "parameters_html": equations.get(b["id"] + ":parameters")} for b in registry.values()], "wiki": wiki, "results": rows, "papers": records, "paper_count": len(papers)}
     (destination / "data.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
+    (destination / "sitemap.xml").write_text(sitemap(wiki))
     (destination / ".nojekyll").touch()
     print(f"Built {destination}: {len(wiki)} wiki pages, {len(rows)} reviewed rows from {len(papers)} papers")
     return payload

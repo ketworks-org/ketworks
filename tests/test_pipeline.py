@@ -115,6 +115,7 @@ class EligibilityTests(unittest.TestCase):
             self.assertEqual(payload["paper_count"], 1)
             self.assertEqual(payload["papers"]["2601.00001"]["paper"]["id"], "2601.00001v1")
             self.assertNotIn("results", payload["papers"]["2601.00001"])
+            self.assertIn("<loc>https://ketworks.org/</loc>", (root / "dist/sitemap.xml").read_text())
 
     def test_metadata_is_filled_only_where_empty(self):
         feed = ('<feed xmlns="http://www.w3.org/2005/Atom"><entry><id>http://arxiv.org/abs/2601.00001v1</id><title>Filled  title</title>'

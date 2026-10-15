@@ -1,5 +1,5 @@
 # Netlify builds the site directly from the repository ("Import an existing project").
-# The site is marked noindex by the build (meta tags, robots.txt, _headers) until it goes public.
+# Search engines find the site through robots.txt and the sitemap written by the build.
 [build]
   command = "python3 -m pip install -r requirements.txt && npm test && KETWORKS_SOURCE_REF=$BRANCH python3 -m nqsbot.build"
   publish = "dist"
