@@ -38,7 +38,8 @@ ROW = obj({
     "normalization": string(["total", "per_site", "unknown"]),
     "unit": string(),
     "uncertainty": string(nullable=True),
-    "uncertainty_type": string(["standard_error", "standard_deviation", "confidence_interval", "unspecified", "not_reported"]),
+    # upper_bound: the text states that the error is smaller than this value (for example "below the last digit").
+    "uncertainty_type": string(["standard_error", "standard_deviation", "confidence_interval", "unspecified", "upper_bound", "not_reported"]),
     # Energy variance Var(H) as printed, in the same normalization as the energy (Var(H)/N for a per-site
     # energy); null when the paper does not print it. With a reference energy it gives the V-score.
     "variance": string(nullable=True),
@@ -107,11 +108,12 @@ def validate_row(row, registry, source_text=None, allow_unmatched=False):
         implied_error = Decimal(printed[2]) * Decimal(10) ** (exponent - places)
         if row["uncertainty"] is None or decimal(row["uncertainty"]) != implied_error:
             raise ValueError("Uncertainty disagrees with the printed parentheses")
-    if row["uncertainty"] is not None:
-        if decimal(row["uncertainty"]) < 0 or row["uncertainty_type"] == "not_reported":
-            raise ValueError("Invalid uncertainty")
-    elif row["uncertainty_type"] != "not_reported":
-        raise ValueError("An absent uncertainty must be marked not_reported")
+    # Every entry needs an error bar, printed or stated in the text; "not_reported" stays in the enum only
+    # so that automated extraction can say so, and such rows are then rejected here for review.
+    if row["uncertainty"] is None:
+        raise ValueError("No error bar: entries need the uncertainty printed or stated in the paper")
+    if decimal(row["uncertainty"]) <= 0 or row["uncertainty_type"] == "not_reported":
+        raise ValueError("Invalid uncertainty")
     if row["variance"] is not None and decimal(row["variance"]) < 0:
         raise ValueError("Invalid variance")
     if row["parameter_count"] is not None and row["parameter_count"] < 0:

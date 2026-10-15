@@ -64,7 +64,7 @@ function renderLedger() {
     const tr = document.createElement('tr');
     const system = text('td', ''); const name = text('a', '', 'ledger-system'); name.href = '#benchmarks?system=' + encodeURIComponent(benchmark.id); name.append(lattice(benchmark.family.includes('Triangular')), text('span', benchmark.family)); system.append(name);
     const key = text('td', ''); key.append(text('code', benchmark.id, 'key'));
-    const shown = best ? withErrorBar(best.energy_per_site, best.uncertainty_per_site) : {text: '—'}; const energy = text('td', shown.text, 'num energy'); if (best) energy.append(text('small', `${best.method} · arXiv:${best.paper.id}${shown.missing ? ' · no error bar printed' : ''}`));
+    const shown = best ? withErrorBar(best.energy_per_site, best.uncertainty_per_site, best.uncertainty_type) : {text: '—'}; const energy = text('td', shown.text, 'num energy'); if (best) energy.append(text('small', `${best.method} · arXiv:${best.paper.id}${shown.missing ? ' · no error bar printed' : ''}`));
     tr.append(system, text('td', benchmark.instance_label || benchmark.geometry), key, text('td', count ? formatCount(count) : '0', 'num mono'), energy);
     $('ledger').append(tr);
   });
@@ -85,7 +85,7 @@ function renderBoardOverview() {
     table.innerHTML = '<thead><tr><th scope="col">Instance</th><th scope="col" class="num">Sites</th><th scope="col" class="num">Results</th><th scope="col" class="num">Lowest energy / site</th></tr></thead>';
     entries.forEach(({benchmark, count, best}) => {
       const tr = document.createElement('tr'); const cell = text('td', ''); const link = text('a', benchmark.instance_label || benchmark.id, 'instance-link'); link.href = '#benchmarks?system=' + encodeURIComponent(benchmark.id); cell.append(link);
-      const shown = best ? withErrorBar(best.energy_per_site, best.uncertainty_per_site) : {text: '—'}; const energy = text('td', shown.text, 'num energy'); if (best) energy.append(text('small', `${best.method} · ${classLabel(best.method_class)} · arXiv:${best.paper.id}${shown.missing ? ' · no error bar printed' : ''}`));
+      const shown = best ? withErrorBar(best.energy_per_site, best.uncertainty_per_site, best.uncertainty_type) : {text: '—'}; const energy = text('td', shown.text, 'num energy'); if (best) energy.append(text('small', `${best.method} · ${classLabel(best.method_class)} · arXiv:${best.paper.id}${shown.missing ? ' · no error bar printed' : ''}`));
       tr.append(cell, text('td', String(benchmark.sites), 'num mono'), text('td', count ? formatCount(count) : '0', 'num mono'), energy); body.append(tr);
     });
     table.append(body); wrap.append(table); group.append(head, wrap); container.append(group);
@@ -143,8 +143,8 @@ function renderResults() {
     const tr = document.createElement('tr');
     const method = text('td', row.method); method.append(text('small', row.variant));
     const cls = text('td', ''); cls.append(text('span', classLabel(row.method_class), 'tag'));
-    const energy = text('td', withErrorBar(row.energy_per_site, row.uncertainty_per_site).text, 'num energy');
-    const uncertainty = text('td', row.uncertainty_per_site === null ? '—' : `± ${row.uncertainty_per_site}`, 'num mono'); uncertainty.append(text('small', row.uncertainty_per_site === null ? 'not printed' : row.uncertainty_type.replaceAll('_', ' ')));
+    const energy = text('td', withErrorBar(row.energy_per_site, row.uncertainty_per_site, row.uncertainty_type).text, 'num energy');
+    const uncertainty = text('td', row.uncertainty_per_site === null ? '—' : `${row.uncertainty_type === 'upper_bound' ? '< ' : '± '}${row.uncertainty_per_site}`, 'num mono'); uncertainty.append(text('small', row.uncertainty_per_site === null ? 'not printed' : row.uncertainty_type.replaceAll('_', ' ')));
     const variance = text('td', row.variance_per_site ?? '—', 'num mono');
     const parameters = text('td', row.parameter_count === null ? '—' : formatCount(row.parameter_count), 'num mono');
     const paper = text('td', ''); paper.append(link(`arXiv:${row.paper.id}`, `https://arxiv.org/abs/${row.paper.id}`, 'mono'), text('small', `${row.paper.published.slice(0, 4) || ''} · ${shortAuthors(row.paper.authors)}`)); paper.title = row.paper.title;

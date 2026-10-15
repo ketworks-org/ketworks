@@ -115,6 +115,7 @@ assert.equal(withErrorBar('-0.76413','0.00003').text,'-0.76413(3)');
 assert.equal(withErrorBar('-0.7454','0.0009').text,'-0.7454(9)');
 assert.equal(withErrorBar('-0.5','0.00002').text,'-0.5 ± 0.00002');
 assert.deepEqual(withErrorBar('-0.7598',null),{text:'-0.7598',missing:true});
+assert.equal(withErrorBar('-0.7430','0.0001','upper_bound').text,'-0.7430 ± <0.0001');
 console.log('Ketboard filtering, sorting, ranking, summary and error-bar checks pass.');
 // A stray closing tag silently ends <main>, so the structure of the shipped HTML is checked here.
 for (const file of ['site/index.html', 'site/wiki.template.html']) {

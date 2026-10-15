@@ -52,9 +52,10 @@ export function summarize(benchmarks, results) {
 // An energy with its error bar in the usual compact form, -0.4976921(4), when the error bar is a
 // whole number of units of the last printed digit; otherwise "energy ± error". Without an error
 // bar the energy is returned alone and `missing` is set.
-export function withErrorBar(energy, uncertainty) {
+export function withErrorBar(energy, uncertainty, type = null) {
   if (energy === null || energy === undefined) return {text: '—', missing: false};
   if (uncertainty === null || uncertainty === undefined || uncertainty === '') return {text: energy, missing: true};
+  if (type === 'upper_bound') return {text: `${energy} ± <${uncertainty}`, missing: false};
   const places = energy.includes('.') ? energy.split('.')[1].replace(/[eE].*$/, '').length : 0;
   const scaled = Number(uncertainty) * 10 ** places, digits = Math.round(scaled);
   if (!/[eE]/.test(energy) && digits > 0 && Math.abs(scaled - digits) < 1e-6 * Math.max(1, scaled)) return {text: `${energy}(${digits})`, missing: false};

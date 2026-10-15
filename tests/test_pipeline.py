@@ -37,12 +37,15 @@ class EligibilityTests(unittest.TestCase):
                     row = dict(ROW, **{field: value})
                     with self.assertRaises(ValueError): schema.validate_row(row, REGISTRY)
 
-    def test_uncertainty_is_not_fabricated(self):
-        row = dict(ROW, uncertainty=None, uncertainty_type="not_reported", energy_token="-50.000")
-        schema.validate_row(row, REGISTRY)
-        self.assertIsNone(schema.per_site(row, REGISTRY)[1])
-        for bad in (dict(row, uncertainty_type="standard_error"), dict(ROW, uncertainty="-0.2")):
+    def test_every_entry_needs_an_error_bar(self):
+        missing = dict(ROW, uncertainty=None, uncertainty_type="not_reported", energy_token="-50.000")
+        for bad in (missing, dict(missing, uncertainty_type="standard_error"), dict(ROW, uncertainty="-0.2"), dict(ROW, energy_token="-50.000", uncertainty="0")):
             with self.assertRaises(ValueError): schema.validate_row(bad, REGISTRY)
+        # An error bar printed separately (as ±) or a bound stated in the text is accepted.
+        schema.validate_row(dict(ROW, energy_token="-50.000", uncertainty="0.020"), REGISTRY)
+        bound = dict(ROW, energy_token="-50.000", uncertainty="0.001", uncertainty_type="upper_bound")
+        schema.validate_row(bound, REGISTRY)
+        self.assertEqual(schema.per_site(bound, REGISTRY)[1], "0.00001")
 
     def test_source_token_required_and_decimal_must_agree(self):
         with self.assertRaises(ValueError): schema.validate_row(ROW, REGISTRY, "no energy here")

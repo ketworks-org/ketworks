@@ -24,13 +24,13 @@
       "energy_token": "-0.7430",
       "normalization": "per_site",
       "unit": "t",
-      "uncertainty": null,
-      "uncertainty_type": "not_reported",
+      "uncertainty": "0.0001",
+      "uncertainty_type": "upper_bound",
       "variance": null,
       "source_location": "Table I, p. 8 (row ACE, column t' = -0.2, PBC)",
       "eligibility_evidence": "Variational energy of the ACE state on the 16 × 16 PBC cluster at U = 8, 1/8 hole doping, t' = -0.2; the ACE+GFMC row is a projected estimate and excluded.",
       "parameter_count": null,
-      "notes": "The table states that omitted statistical errors are smaller than the last displayed digit. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Table I caption: 'For results where statistical errors are not shown, they are one or several orders of magnitude smaller than the last displayed significant digit.' Recorded as an upper bound of one unit in the last printed digit. The table states that omitted statistical errors are smaller than the last displayed digit. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     },
     {
       "benchmark_id": "hubbard-square-16x16-pbc-u8-tp-0p2-n224-sz0",
@@ -45,13 +45,13 @@
       "energy_token": "-0.7373",
       "normalization": "per_site",
       "unit": "t",
-      "uncertainty": null,
-      "uncertainty_type": "not_reported",
+      "uncertainty": "0.0001",
+      "uncertainty_type": "upper_bound",
       "variance": null,
       "source_location": "Table I, p. 8 (row SCALE, column t' = -0.2, PBC)",
       "eligibility_evidence": "Variational energy of the SCALE state; SCALE+GFMC excluded.",
       "parameter_count": null,
-      "notes": "Statistical error smaller than the last displayed digit per the table caption. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Table I caption: 'For results where statistical errors are not shown, they are one or several orders of magnitude smaller than the last displayed significant digit.' Recorded as an upper bound of one unit in the last printed digit. Statistical error smaller than the last displayed digit per the table caption. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     },
     {
       "benchmark_id": "hubbard-square-16x16-pbc-u8-n224-sz0",
@@ -66,13 +66,13 @@
       "energy_token": "-0.7573",
       "normalization": "per_site",
       "unit": "t",
-      "uncertainty": null,
-      "uncertainty_type": "not_reported",
+      "uncertainty": "0.0001",
+      "uncertainty_type": "upper_bound",
       "variance": null,
       "source_location": "Table I, p. 8 (row ACE, column t' = 0, PBC)",
       "eligibility_evidence": "Variational energy of the ACE state on the 16 × 16 PBC cluster at U = 8, 1/8 hole doping, t' = 0.",
       "parameter_count": null,
-      "notes": "Statistical error smaller than the last displayed digit per the table caption. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Table I caption: 'For results where statistical errors are not shown, they are one or several orders of magnitude smaller than the last displayed significant digit.' Recorded as an upper bound of one unit in the last printed digit. Statistical error smaller than the last displayed digit per the table caption. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     },
     {
       "benchmark_id": "hubbard-square-16x16-pbc-u8-n224-sz0",
@@ -87,13 +87,13 @@
       "energy_token": "-0.7529",
       "normalization": "per_site",
       "unit": "t",
-      "uncertainty": null,
-      "uncertainty_type": "not_reported",
+      "uncertainty": "0.0001",
+      "uncertainty_type": "upper_bound",
       "variance": null,
       "source_location": "Table I, p. 8 (row SCALE, column t' = 0, PBC)",
       "eligibility_evidence": "Variational energy of the SCALE state at t' = 0.",
       "parameter_count": null,
-      "notes": "Statistical error smaller than the last displayed digit per the table caption. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Table I caption: 'For results where statistical errors are not shown, they are one or several orders of magnitude smaller than the last displayed significant digit.' Recorded as an upper bound of one unit in the last printed digit. Statistical error smaller than the last displayed digit per the table caption. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     }
   ],
   "issues": []

@@ -3,7 +3,7 @@ const TOKEN = /^([+-]?(?:\d+(?:\.\d*)?|\.\d+))(?:\((\d+)\))?([eE][+-]?\d+)?$/;
 // Mirrors METHOD_CLASSES in nqsbot/schema.py; labels are what Ketboard displays.
 export const METHOD_CLASSES = {rbm:'Boltzmann machine', feed_forward:'Feed-forward', convolutional:'Convolutional', autoregressive:'Autoregressive', transformer:'Transformer', backflow:'Backflow / determinant', hybrid:'Hybrid', other:'Other'};
 // Every new entry needs an error bar, so "not reported" is not offered for submissions.
-export const UNCERTAINTY_TYPES = ['standard_error','standard_deviation','confidence_interval','unspecified'];
+export const UNCERTAINTY_TYPES = ['standard_error','standard_deviation','confidence_interval','unspecified','upper_bound'];
 
 // Parse a printed energy such as "-0.497634(1)" or "-199.05174" into decimal strings.
 // The uncertainty follows from the parenthesized digits and the number of decimal places.
