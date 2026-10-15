@@ -48,7 +48,7 @@ p{margin-top:0}
 .nav-body a[aria-current=page],.nav-body a.active{border-left-color:var(--area);font-weight:800}
 .content{min-width:0}
 .brand{font:900 28px/1 var(--display);letter-spacing:-.06em;display:flex;align-items:center}
-.brand-symbol{display:block;width:48px;height:36px;margin-right:13px;flex:none}
+.brand-symbol{display:block;width:79px;height:23px;margin-right:12px;flex:none}
 .brand-period{color:var(--ink)}
 footer{max-width:1240px;margin:auto;padding:30px 56px;display:flex;align-items:center;justify-content:space-between;border-top:2px solid var(--ink);gap:25px;font:500 12px/1.5 var(--display)}footer .brand{font-size:27px}footer p{margin:0;color:var(--muted);font-family:var(--serif);font-style:italic;font-size:15px}
 main{max-width:1240px;margin:auto;padding:0 56px}.view{padding-bottom:80px}.interior{padding-top:56px}
@@ -65,7 +65,7 @@ main{max-width:1240px;margin:auto;padding:0 56px}.view{padding-bottom:80px}.inte
 .hero{display:grid;grid-template-columns:1.3fr 1fr;gap:60px;align-items:center;padding:56px 0 52px;border-bottom:2px solid var(--ink)}
 .title-underline{position:relative;display:inline-block}.title-underline:after{content:'';position:absolute;height:8px;background:var(--red);bottom:-12px;left:0;right:0}
 .hero-footnote{font:700 9.5px/1.5 var(--display);text-transform:uppercase;letter-spacing:.2em;margin:46px 0 0;color:var(--muted)}
-.logo-plate{border:2px solid var(--ink);max-width:400px;justify-self:end}.logo-plate svg{display:block;width:100%}
+.logo-plate{border:2px solid var(--ink);max-width:420px;width:100%;justify-self:end;align-self:start;margin-top:96px}.logo-plate svg{display:block;width:100%}
 .name-block{display:grid;grid-template-columns:48px 1fr;gap:22px;align-items:start;padding:24px 0;border-top:2px solid var(--ink)}.name-block+.name-block{border-top-width:1px;border-color:var(--line)}
 .name-mark{width:48px;height:48px;margin-top:10px}.name-mark.square{background:var(--red)}.name-mark.circle{background:var(--blue);border-radius:50%}
 .project-name{font-size:clamp(64px,7.4vw,104px);font-weight:900;letter-spacing:-.045em;line-height:.95;margin:6px 0 14px}.project-lede{font-size:19px;line-height:1.45;color:#3f3d37;margin:0 0 30px;max-width:540px}
