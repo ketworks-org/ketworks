@@ -25,6 +25,16 @@ Requires Node.js 22+ and Python 3.12+. LaTeX is rendered by pinned KaTeX during 
 
 The site works under a subdirectory, including a GitHub project Pages URL. It uses no server database or browser API keys. Fonts have local fallbacks.
 
+## Private preview
+
+While the repository is private, the site is previewed on a Netlify site with a random hostname. The build adds `noindex` to every page, a `robots.txt` that disallows everything, and an `X-Robots-Tag` header, so the preview is not indexed even if the address leaks. It is obscurity, not authentication: share the address only with reviewers.
+
+1. Sign in at netlify.com with GitHub. Under User settings → Applications → Personal access tokens, create a token and store it as the repository secret `NETLIFY_AUTH_TOKEN`.
+2. Create a site (Add new site → Deploy manually, drop any folder). Netlify assigns a random name. Copy its Site ID from Site configuration → Site details into the repository secret `NETLIFY_SITE_ID`. Do not connect the repository in Netlify; GitHub Actions does the build.
+3. Set the repository variable `PREVIEW_ENABLED=true`. Run the **Preview site** workflow manually on the branch to preview; it also runs on every push to `main`. Edit links on the preview point at the deployed branch.
+
+GitHub Pages stays off (`PUBLISH_PAGES` unset) until the content is curated and the repository is public.
+
 ## Activate the daily bot
 
 1. The repository is [gcarleo/ketbook](https://github.com/gcarleo/ketbook), with `main` as its default branch. The bot discovers the default branch; the included validation/publication workflows target `main`.
