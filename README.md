@@ -28,9 +28,11 @@ Requires Node.js 22+ and Python 3.12+. LaTeX is rendered by pinned KaTeX during 
 
 The site works under a subdirectory, including a GitHub project Pages URL. It uses no server database or browser API keys. Fonts have local fallbacks.
 
-## Private preview
+## Hosting and private preview
 
-While the repository is private, the site is previewed on a Netlify project with a random hostname. The build adds `noindex` to every page, a `robots.txt` that disallows everything, and an `X-Robots-Tag` header, so the preview is not indexed even if the address leaks. It is obscurity, not authentication: share the address only with reviewers.
+The site is served by Netlify at **https://ketworks.org**, built from `main`. The domain is registered at Hostpoint, which also keeps its DNS: an A record for `ketworks.org` points to Netlify's load balancer `75.2.60.5`, and `www` is a CNAME to the Netlify project, which redirects to the bare domain. Netlify issues the HTTPS certificate. The project's own address, `nqs-draft-k7x2m9.netlify.app`, keeps working.
+
+While the repository is private, the site is not meant to be found. The build adds `noindex` to every page, a `robots.txt` that disallows everything, and an `X-Robots-Tag` header, so neither address is indexed even if it leaks. It is obscurity, not authentication: share the address only with reviewers, and note that the domain name itself is public in certificate logs.
 
 Simplest setup, no secrets: in Netlify choose **Add new project → Import an existing project → GitHub**, authorize access to `ketworks-org/ketworks`, and pick the branch to deploy. `netlify.toml` supplies the build command, the publish directory and the Python and Node versions; Netlify rebuilds on every push to that branch and gives the project a random name. Deploy previews for pull requests get their own random addresses. Edit links on the preview point at the deployed branch.
 
