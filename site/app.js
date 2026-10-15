@@ -26,6 +26,8 @@ function lattice(triangular = false) {
 }
 function route() {
   const requested = location.hash.slice(1).split('?')[0] || 'overview';
+  // In-page anchors such as the skip link are not routes; leave the current view alone.
+  if (!['overview', 'benchmarks', 'wiki', 'contribute', 'submit', 'learn'].includes(requested) && document.getElementById(requested)) return;
   const name = ['overview', 'benchmarks', 'wiki', 'contribute', 'submit'].includes(requested) ? requested : (requested === 'learn' ? 'wiki' : 'overview');
   document.querySelectorAll('.view').forEach(el => el.hidden = el.id !== name);
   document.querySelectorAll('[data-nav]').forEach(el => { if (el.dataset.nav === name) el.setAttribute('aria-current', 'page'); else el.removeAttribute('aria-current'); });

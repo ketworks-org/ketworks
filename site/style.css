@@ -67,7 +67,7 @@ main{max-width:1240px;margin:auto;padding:0 56px}.view{padding-bottom:80px}.inte
 .hero-footnote{font:700 9.5px/1.5 var(--display);text-transform:uppercase;letter-spacing:.2em;margin:46px 0 0;color:var(--muted)}
 .logo-plate{border:2px solid var(--ink);max-width:420px;width:100%;justify-self:end;align-self:start;margin-top:96px}.logo-plate svg{display:block;width:100%}
 .name-block{display:grid;grid-template-columns:48px 1fr;gap:22px;align-items:start;padding:24px 0;border-top:2px solid var(--ink)}.name-block+.name-block{border-top-width:1px;border-color:var(--line)}
-.name-mark{width:48px;height:48px;margin-top:10px}.name-mark.square{background:var(--red)}.name-mark.circle{background:var(--blue);border-radius:50%}
+.name-mark{width:48px;height:48px;margin-top:10px}.name-mark.square{background:var(--red)}.name-mark.circle{background:var(--blue);border-radius:50%}.name-mark.triangle{background:var(--yellow);clip-path:polygon(50% 0,100% 100%,0 100%)}
 .project-name{font-size:clamp(64px,7.4vw,104px);font-weight:900;letter-spacing:-.045em;line-height:.95;margin:6px 0 14px}.project-lede{font-size:19px;line-height:1.45;color:#3f3d37;margin:0 0 30px;max-width:540px}
 .name-block h1,.name-block h2{font-size:clamp(38px,3.8vw,54px);font-weight:900;letter-spacing:-.05em;line-height:1;margin:0 0 10px}.name-block p{font-size:17px;line-height:1.5;color:#3f3d37;margin:0;max-width:520px}.name-block:hover h1,.name-block:hover h2{color:var(--area-ink)}.name-block:hover .name-mark{transform:translateX(4px)}
 .hero-note{font-size:15.5px;color:var(--muted);margin:24px 0 0;max-width:560px;border-top:2px solid var(--ink);padding-top:18px}
@@ -174,7 +174,7 @@ pre{white-space:pre;overflow:auto;font-size:12.5px;background:var(--sand);paddin
   .wiki-row{grid-template-columns:40px 1fr 20px;gap:12px;padding:20px 5px}.wiki-row h3{font-size:22px}.wiki-row p{font-size:14px}.wiki-row .wiki-number{font-size:20px}.wiki-group-title{padding-left:5px}
   .contribute-options{grid-template-columns:1fr}.contribute-options>a+a{border-left:0;border-top:2px solid var(--ink)}.contribute-options>a{padding:24px}
   .steps li{gap:18px}.steps h2{font-size:25px}.steps li>span{font-size:40px;width:30px}.submission-form fieldset{grid-template-columns:1fr}.submission-ready{padding:23px 18px}
-  .article-layout{grid-template-columns:1fr;padding-top:30px;gap:32px}.article-top{flex-direction:column;gap:10px}
+  .article-layout{grid-template-columns:minmax(0,1fr);padding-top:30px;gap:32px}.article-top{flex-direction:column;gap:10px}
   .article-content h1{font-size:42px}.article-content{font-size:16.5px}.article-content .katex-display{font-size:.9em;padding:18px 12px}.article-top .text-link{font-size:10px}.article-top .eyebrow{font-size:9px;flex-wrap:wrap}.article-end{gap:18px}.article-end h2{font-size:23px}
   footer{padding:25px 22px;flex-wrap:wrap;gap:15px}footer p{display:none}.view{padding-bottom:50px}
 }
@@ -182,5 +182,5 @@ pre{white-space:pre;overflow:auto;font-size:12.5px;background:var(--sand);paddin
 
 /* Ketboard overview */
 .back-link{display:inline-block;margin:6px 0 22px;font:700 12px/1 var(--display);text-transform:uppercase;letter-spacing:.14em}.back-link:before{content:'';display:inline-block;width:0;height:0;border-right:6px solid var(--blue);border-top:5px solid transparent;border-bottom:5px solid transparent;margin-right:10px;vertical-align:-1px}.back-link:hover{color:var(--blue)}
-.board-family{margin-top:46px}.family-head{display:flex;align-items:center;gap:22px;border-top:2px solid var(--ink);padding:18px 0 14px}.family-head h2{display:flex;align-items:center;gap:14px;font-size:28px;letter-spacing:-.03em;margin:0}.family-head svg{width:36px;height:36px;stroke:var(--ink);fill:var(--paper);flex:none}.family-meta{margin:0 auto 0 0;font:500 12px/1.4 var(--mono);color:var(--muted)}
+.board-family{margin-top:46px}.family-head{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;border-top:2px solid var(--ink);padding:18px 0 14px}.family-head h2{display:flex;align-items:center;gap:14px;font-size:28px;letter-spacing:-.03em;margin:0}.family-head svg{width:36px;height:36px;stroke:var(--ink);fill:var(--paper);flex:none}.family-meta{margin:0 auto 0 0;font:500 12px/1.4 var(--mono);color:var(--muted)}
 .board-family .ledger{min-width:640px}.instance-link{font:700 15px/1.3 var(--display);text-decoration:none}.instance-link:hover{color:var(--blue);text-decoration:underline}
