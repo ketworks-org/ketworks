@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2111.10420v2",
+    "title": "Fermionic Wave Functions from Neural-Network Constrained Hidden States",
+    "authors": "Javier Robledo Moreno, Giuseppe Carleo, Antoine Georges, James Stokes",
+    "published": "2021-11-19T20:02:03Z",
+    "updated": "2022-06-18T22:12:42Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2111.10420v2",
+  "source_sha256": "4291292a61f305c7dcb377693c3e44069147e64c4684d713adc36845fbea3fd2",
+  "extraction_model": "human",
+  "results": [
+    {
+      "benchmark_id": "hubbard-rectangular-16x4-pbc-u8-n56-sz0",
+      "system_description": "16x4 rectangular lattice (Lx = 16, Ly = 4), periodic in both directions; U/t = 8, t' = 0; 56 electrons (28 up, 28 down), 1/8 hole doping",
+      "method": "Hidden-fermion determinant state",
+      "variant": "HFDS, 16 hidden fermions, fully connected network, PBC-PBC",
+      "method_class": "backflow",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.753",
+      "energy_token": "-0.753(2)",
+      "normalization": "per_site",
+      "unit": "t",
+      "uncertainty": "0.002",
+      "uncertainty_type": "unspecified",
+      "source_location": "Table IV, p. 20 (row L = 16, column HFDS (PBC-PBC))",
+      "eligibility_evidence": "Variational energy of the hidden-fermion determinant state on the 4 × 16 lattice with periodic boundaries in both directions at n = 7/8 and U = 8.",
+      "parameter_count": null,
+      "notes": "Cross-checked with varbench Hubbard/rectangular-4x16_64_P_28_8: total energy -48.192(3), i.e. -0.753 per site. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+    }
+  ],
+  "issues": []
+}

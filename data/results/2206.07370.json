@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2206.07370v1",
+    "title": "Lattice Convolutional Networks for Learning Ground States of Quantum Many-Body Systems",
+    "authors": "Cong Fu, Xuan Zhang, Huixin Zhang, Hongyi Ling, Shenglong Xu, Shuiwang Ji",
+    "published": "2022-06-15T08:24:37Z",
+    "updated": "2022-06-15T08:24:37Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2206.07370v1",
+  "source_sha256": "1887769697dd7dab69eefd263e48f73bf521847cdafdeded4f45b91f4af74ecf",
+  "extraction_model": "human",
+  "results": [
+    {
+      "benchmark_id": "heisenberg-triangular-6x6-pbc-sz0",
+      "system_description": "6x6 triangular lattice, periodic along both primitive vectors; J = 1; S = sigma/2; total Sz = 0",
+      "method": "Lattice convolutional network",
+      "variant": "LCN",
+      "method_class": "convolutional",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.5601",
+      "energy_token": "-0.5601(4)",
+      "normalization": "per_site",
+      "unit": "J",
+      "uncertainty": "0.0004",
+      "uncertainty_type": "unspecified",
+      "source_location": "Table on p. 8 (row Triangular, size 36, J2 = 0, column 'LCN (ours)')",
+      "eligibility_evidence": "Variational energy of the LCN state; the GNN columns are other learned ansätze from the same table and the reference column is ED.",
+      "parameter_count": null,
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+    }
+  ],
+  "issues": []
+}

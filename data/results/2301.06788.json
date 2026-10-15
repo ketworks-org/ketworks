@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2301.06788v2",
+    "title": "Optimizing Design Choices for Neural Quantum States",
+    "authors": "Moritz Reh, Markus Schmitt, Martin Gärttner",
+    "published": "2023-01-17T10:30:05Z",
+    "updated": "2023-02-01T15:11:09Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2301.06788v2",
+  "source_sha256": "bbe9896e1684b9f73204fc1455195b272864b335a19c74be88df6e2e6a822c90",
+  "extraction_model": "human",
+  "results": [
+    {
+      "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+      "system_description": "10x10 square lattice, periodic; J1 = 1, J2 = 0.5; S = sigma/2; total Sz = 0",
+      "method": "Convolutional neural network",
+      "variant": "CNN, design choices of this work",
+      "method_class": "convolutional",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.49586",
+      "energy_token": "-0.49586(4)",
+      "normalization": "per_site",
+      "unit": "J1",
+      "uncertainty": "0.00004",
+      "uncertainty_type": "unspecified",
+      "source_location": "Table I, p. 7 (row CNN, 'This Work')",
+      "eligibility_evidence": "Variational energy of the authors' CNN; the other rows of the table are quoted from earlier work and excluded.",
+      "parameter_count": null,
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+    }
+  ],
+  "issues": []
+}

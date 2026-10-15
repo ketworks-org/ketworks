@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2005.14142v6",
+    "title": "Dirac-type nodal spin liquid revealed by refined quantum many-body solver using neural-network wave function, correlation ratio, and level spectroscopy",
+    "authors": "Yusuke Nomura, Masatoshi Imada",
+    "published": "2020-05-28T16:54:47Z",
+    "updated": "2021-07-12T09:53:31Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2005.14142v6",
+  "source_sha256": "af398ebf5ed7c49fd7845af6bbb2d66effb29bb34a1e5914cf16e11086c68419",
+  "extraction_model": "human",
+  "results": [
+    {
+      "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+      "system_description": "10x10 square lattice, periodic; J1 = 1, J2 = 0.5; S = sigma/2; total Sz = 0",
+      "method": "RBM + pair-product state",
+      "variant": "RBM+PP, 16 hidden units, momentum K = 0, A1 and spin-parity projections",
+      "method_class": "rbm",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.497629",
+      "energy_token": "-0.497629(1)",
+      "normalization": "per_site",
+      "unit": "J1",
+      "uncertainty": "0.000001",
+      "uncertainty_type": "unspecified",
+      "source_location": "Table II, p. 14 (row RBM+PP, 'present study')",
+      "eligibility_evidence": "Variational energy of the quantum-number-projected RBM+PP state; other rows are quoted comparisons and excluded.",
+      "parameter_count": null,
+      "notes": "Cross-checked with varbench J1J2/square_100_P_0.5: total energy -199.05174 in the Pauli convention, i.e. -0.49762935 per site in the spin convention. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+    }
+  ],
+  "issues": []
+}

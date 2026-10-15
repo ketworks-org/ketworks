@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2211.07749v2",
+    "title": "High-accuracy variational Monte Carlo for frustrated magnets with deep neural networks",
+    "authors": "Christopher Roth, Attila Szabó, Allan MacDonald",
+    "published": "2022-11-14T20:51:19Z",
+    "updated": "2023-05-22T22:37:50Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2211.07749v2",
+  "source_sha256": "5fdcee4b560636a2d306c250d08d462238b69afd27b3d2bc7293beeb62d7431c",
+  "extraction_model": "human",
+  "results": [
+    {
+      "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+      "system_description": "10x10 square lattice, periodic; J1 = 1, J2 = 0.5; S = sigma/2; total Sz = 0",
+      "method": "Group-convolutional neural network",
+      "variant": "GCNN",
+      "method_class": "convolutional",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.497437",
+      "energy_token": "-0.497437(7)",
+      "normalization": "per_site",
+      "unit": "J1",
+      "uncertainty": "0.000007",
+      "uncertainty_type": "unspecified",
+      "source_location": "Table I, p. 4 (row J2/J1 = 0.5, 10 × 10, column 'Our work')",
+      "eligibility_evidence": "Variational energy of the GCNN; the Ref. [7] column (RBM+PP) is a quoted comparison and excluded.",
+      "parameter_count": null,
+      "notes": "Also tabulated in arXiv:2310.05715v2 Table 1 with 67548 parameters. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+    },
+    {
+      "benchmark_id": "heisenberg-triangular-6x6-pbc-sz0",
+      "system_description": "6x6 triangular lattice, periodic along both primitive vectors; J = 1; S = sigma/2; total Sz = 0",
+      "method": "Group-convolutional neural network",
+      "variant": "GCNN",
+      "method_class": "convolutional",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.560313",
+      "energy_token": "-0.560313(3)",
+      "normalization": "per_site",
+      "unit": "J",
+      "uncertainty": "0.000003",
+      "uncertainty_type": "unspecified",
+      "source_location": "Table III, p. 7 (row J2/J1 = 0, N = 36, column GCNN)",
+      "eligibility_evidence": "Variational energy of the GCNN on the 36-site periodic triangular cluster; exact value -0.5603734 given alongside.",
+      "parameter_count": null,
+      "notes": "varbench triangular_36_P lists the exact diagonalization value -80.6937689612426 in the Pauli convention, i.e. -0.5603734 per site in the spin convention. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+    }
+  ],
+  "issues": []
+}

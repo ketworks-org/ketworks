@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2302.01941v3",
+    "title": "Empowering deep neural quantum states through efficient optimization",
+    "authors": "Ao Chen, Markus Heyl",
+    "published": "2023-02-03T19:00:03Z",
+    "updated": "2025-07-02T00:05:00Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2302.01941v3",
+  "source_sha256": "097af42c411cd1d06b0a8e410d5d6282897401879a240f1997542ca7e73564f9",
+  "extraction_model": "human",
+  "results": [
+    {
+      "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+      "system_description": "10x10 square lattice, periodic; J1 = 1, J2 = 0.5; S = sigma/2; total Sz = 0",
+      "method": "Deep residual CNN",
+      "variant": "ResNet2, more than 10^6 parameters, MinSR",
+      "method_class": "convolutional",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.4976921",
+      "energy_token": "-0.4976921(4)",
+      "normalization": "per_site",
+      "unit": "J1",
+      "uncertainty": "0.0000004",
+      "uncertainty_type": "unspecified",
+      "source_location": "p. 3, text and Fig. 2b ('the best variational energy E/N = -0.4976921(4)')",
+      "eligibility_evidence": "Variational energy of the deep ResNet state; the zero-variance extrapolation E_GS/N = -0.497715(9) in the same paragraph is excluded.",
+      "parameter_count": null,
+      "notes": "Earlier versions of this paper and later comparison tables quote -0.497627(1); v3 reports the improved value. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+    }
+  ],
+  "issues": []
+}

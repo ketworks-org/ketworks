@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2308.09664v2",
+    "title": "Variational optimization of the amplitude of neural-network quantum many-body ground states",
+    "authors": "Jia-Qi Wang, Rong-Qiang He, Zhong-Yi Lu",
+    "published": "2023-08-18T16:30:57Z",
+    "updated": "2024-06-18T11:50:24Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2308.09664v2",
+  "source_sha256": "f66e546894e17a7062d1c3bd60d16cc8c2487a9aba6a7422fa4484a83a1a85c5",
+  "extraction_model": "human",
+  "results": [
+    {
+      "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+      "system_description": "10x10 square lattice, periodic; J1 = 1, J2 = 0.5; S = sigma/2; total Sz = 0",
+      "method": "Amplitude-optimized CNN (aCNN)",
+      "variant": "aCNN with C4v symmetry",
+      "method_class": "convolutional",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.495627",
+      "energy_token": "-0.495627(6)",
+      "normalization": "per_site",
+      "unit": "J1",
+      "uncertainty": "0.000006",
+      "uncertainty_type": "unspecified",
+      "source_location": "Table III, p. 6 (row aCNN(C4v), column J2/J1 = 0.5)",
+      "eligibility_evidence": "Variational energy of the aCNN state; VMC, DMRG and quoted RBM+PP/ViT rows are excluded.",
+      "parameter_count": null,
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+    }
+  ],
+  "issues": []
+}
