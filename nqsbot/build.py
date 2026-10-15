@@ -36,7 +36,11 @@ def render_content(root, destination, registry):
             links = "".join(f'<a href="../{page["slug"]}/"' + (' aria-current="page"' if page["slug"] == slug else '') + f'>{html.escape(page["title"])}</a>' for page in index if page["section"] == section)
             sidebar += f'<div class="side-group"><p class="side-section">{html.escape(section)}</p>{links}</div>'
         toc = "".join(f'<a href="#{h["id"]}" class="toc-{h["level"]}">{html.escape(h["text"])}</a>' for h in article["headings"] if h["level"] == 2)
-        values = {"TITLE": html.escape(article["title"]), "DESCRIPTION": html.escape(article["summary"], quote=True), "SECTION": html.escape(article["section"]), "SIDEBAR": sidebar, "TOC": toc,
+        status = article.get("status", "draft")
+        if status not in ("draft", "reviewed"):
+            raise ValueError(f"{slug}: status must be draft or reviewed")
+        status_html = '<span class="status status-reviewed">Reviewed</span>' if status == "reviewed" else '<span class="status status-draft">Draft · not yet reviewed by a curator</span>'
+        values = {"TITLE": html.escape(article["title"]), "DESCRIPTION": html.escape(article["summary"], quote=True), "SECTION": html.escape(article["section"]), "SIDEBAR": sidebar, "TOC": toc, "STATUS": status_html,
                   "SLUG": slug, "EDIT_URL": f"https://github.com/gcarleo/ketbook/edit/{source_ref}/wiki/{slug}.md", "HISTORY_URL": f"https://github.com/gcarleo/ketbook/commits/{source_ref}/wiki/{slug}.md", "CONTENT": article["html"]}
         page_html = re.sub(r"\{\{([A-Z_]+)\}\}", lambda match: values[match[1]], template)
         page_dir = destination / "wiki" / slug

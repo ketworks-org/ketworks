@@ -1,12 +1,16 @@
 # Variational Monte Carlo
 
-Variational Monte Carlo (VMC) turns the Rayleigh–Ritz principle into a stochastic algorithm. For a trial state $|\Psi_\theta\rangle$ with parameters $\theta$,
+> **In brief.** The variational energy is the mean of a local energy over configurations sampled from $|\Psi_\theta|^2$. The local energy is cheap for sparse Hamiltonians, and its variance vanishes at an eigenstate, so the estimate gets more precise as the ansatz improves. Samples from a Markov chain are correlated; a reported error bar is only meaningful after a binning or autocorrelation analysis of a dedicated evaluation of the final state.
+
+Notation follows the [conventions page](../notation/).
+
+Variational Monte Carlo (VMC) turns the Rayleigh–Ritz principle into a stochastic algorithm. For a trial state $|\Psi_\theta\rangle$,
 
 $$
 E_\theta=\frac{\langle\Psi_\theta|H|\Psi_\theta\rangle}{\langle\Psi_\theta|\Psi_\theta\rangle}\ \ge\ E_0 ,
 $$
 
-and the two sums over the configuration basis hidden in this ratio are replaced by an average over samples drawn from $|\Psi_\theta|^2$. The whole method rests on two facts: the energy can be written as the mean of a *local* quantity that is cheap to evaluate for a sparse Hamiltonian, and that local quantity has zero variance when $|\Psi_\theta\rangle$ is an eigenstate. Everything else, Markov chains, error bars, gradients, is bookkeeping around those two facts.
+and the two sums over the configuration basis hidden in this ratio are replaced by an average over samples drawn from $|\Psi_\theta|^2$. The method rests on two facts: the energy is the mean of a *local* quantity that is cheap to evaluate for a sparse Hamiltonian, and that quantity has zero variance when $|\Psi_\theta\rangle$ is an eigenstate.
 
 ## The local energy estimator
 
@@ -59,7 +63,7 @@ $$
 =\frac{\langle\Psi_\theta|H^2|\Psi_\theta\rangle}{\langle\Psi_\theta|\Psi_\theta\rangle}-E_\theta^2
 $$
 
-vanishes exactly at any eigenstate, and the statistical error of the estimator vanishes with it. Three consequences matter in practice.
+vanishes exactly at any eigenstate, and the statistical error of the estimator vanishes with it.
 
 1. **Noise shrinks as the ansatz improves.** The statistical error bar on $E_\theta$ scales as $\sqrt{\operatorname{Var}_\theta(H)/N_{\mathrm{eff}}}$, so a better wavefunction needs fewer samples for the same precision. This is the opposite of what happens for most other observables.
 
@@ -73,7 +77,7 @@ and Weinstein's bound guarantees an eigenvalue within $\sqrt{\operatorname{Var}_
 
 3. **Variance extrapolation is not a variational energy.** Plotting $E$ against $\operatorname{Var}(H)$ for a family of states and extrapolating to zero variance produces estimates that are typically more accurate than any member of the family, but no longer satisfy $E\ge E_0$ and depend on the extrapolation model. Ketboard records the directly evaluated $E_\theta$ only; extrapolated values belong in the paper, not in the table.
 
-Report $\operatorname{Var}_\theta(H)$, or the variance per site, next to every energy. Two states with the same energy and different variances are not equally good.
+Report $\operatorname{Var}_\theta(H)$, or the variance per site, next to every energy. Two states with the same energy and different variances are not equally close to the ground state.
 
 ## Error bars and autocorrelation
 
@@ -120,11 +124,11 @@ which is also a zero-variance estimator at an eigenstate because the centred loc
 
 ## References
 
-- W. L. McMillan, *Ground state of liquid He⁴*, Phys. Rev. 138, A442 (1965). The original VMC calculation.
-- F. Becca and S. Sorella, *Quantum Monte Carlo Approaches for Correlated Systems* (Cambridge University Press, 2017). Standard reference for VMC estimators and stochastic reconfiguration.
-- A. W. Sandvik, *Computational studies of quantum spin systems*, arXiv:1101.3281. Lecture notes with a careful treatment of Monte Carlo error analysis.
-- U. Wolff, *Monte Carlo errors with less errors*, arXiv:hep-lat/0306017. The $\Gamma$-method for autocorrelation analysis.
-- V. Ambegaokar and M. Troyer, *Estimating errors reliably in Monte Carlo simulations of the Ehrenfest model*, arXiv:0906.0943. Binning analysis, explained from scratch.
-- D. Wu et al., *Variational benchmarks for quantum many-body problems*, arXiv:2302.04919. Energy variance as a universal accuracy metric; the varbench dataset.
-- O. Sharir, Y. Levine, N. Wies, G. Carleo, A. Shashua, *Deep autoregressive models for the efficient variational simulation of many-body quantum systems*, arXiv:1902.04057.
-- M. Hibat-Allah, M. Ganahl, L. E. Hayward, R. G. Melko, J. Carrasquilla, *Recurrent neural network wave functions*, arXiv:2002.02973.
+- W. L. McMillan, *Ground state of liquid He⁴*, Phys. Rev. 138, A442 (1965). The first variational Monte Carlo calculation.
+- F. Becca, S. Sorella, *Quantum Monte Carlo Approaches for Correlated Systems*, Cambridge University Press (2017). Textbook treatment of estimators, sampling and stochastic reconfiguration.
+- A. W. Sandvik, *Computational studies of quantum spin systems*, arXiv:1101.3281 (2010). Lecture notes; Monte Carlo error analysis in Section 3.
+- U. Wolff, *Monte Carlo errors with less errors*, arXiv:hep-lat/0306017 (2003). The $\Gamma$-method for autocorrelation analysis, with an error estimate for $\tau_{\mathrm{int}}$.
+- V. Ambegaokar, M. Troyer, *Estimating errors reliably in Monte Carlo simulations of the Ehrenfest model*, arXiv:0906.0943 (2009). The binning analysis from first principles.
+- D. Wu et al., *Variational benchmarks for quantum many-body problems*, arXiv:2302.04919 (2023). The V-score and the varbench dataset.
+- O. Sharir, Y. Levine, N. Wies, G. Carleo, A. Shashua, *Deep autoregressive models for the efficient variational simulation of many-body quantum systems*, arXiv:1902.04057 (2019). Exact sampling from autoregressive NQS.
+- M. Hibat-Allah, M. Ganahl, L. E. Hayward, R. G. Melko, J. Carrasquilla, *Recurrent neural network wave functions*, arXiv:2002.02973 (2020).

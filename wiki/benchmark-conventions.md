@@ -1,40 +1,44 @@
 # Benchmark conventions
 
-A benchmark is a precise physical problem. Ketboard compares original, directly evaluated NQS variational energies for the same problem.
+> **In brief.** Ketboard compares energies only between calculations of the same explicitly defined problem. An entry is a directly evaluated variational energy of a neural quantum state, with its uncertainty, its paper version and its location in the paper. Extrapolations, projections and numbers quoted from other papers are not entries.
 
-## Fix the Hamiltonian
+Notation follows the [conventions page](../notation/).
 
-State the operators, couplings, energy units, and any constant offset. For example, a spin-half Heisenberg Hamiltonian written with spin operators is
+## An instance is a complete specification
 
-$$
-H=J\sum_{\langle i,j\rangle}\mathbf{S}_i\cdot\mathbf{S}_j,
-\qquad \mathbf{S}_i=\frac{1}{2}\boldsymbol{\sigma}_i.
-$$
+A benchmark instance fixes everything that changes the number:
 
-Replacing $\mathbf{S}$ by Pauli operators without adjusting the coefficient changes the Hamiltonian. Also specify how bonds are counted.
+1. **Hamiltonian and operator convention.** The operators ($\mathbf S$ versus $\boldsymbol\sigma$, fermionic sign conventions), every coupling with its value and sign, and any constant offset. For spin-$\tfrac12$ bilinear terms the Pauli convention gives energies four times larger than the spin convention.
+2. **Lattice, cluster and boundaries.** Primitive vectors or an explicit bond list, the number of sites, and periodic, open, cylindrical or twisted boundaries. A $10\times10$ torus and a $10\times10$ cylinder are different instances. Bond counting must be stated: each undirected bond once.
+3. **Sector.** Total $S^z$, particle numbers, momentum and point-group representation when the calculation is restricted to one. A projected state is reported as the energy of the projected state, with the group named.
+4. **Normalization and units.** Energy per site or total, and the coupling that sets the unit.
 
-## Fix the instance
+Each instance has a key such as `j1j2-square-10x10-pbc-j2-0p5-sz0` that appears on the board and in the data files. Instances of the same model with different sizes or couplings share the system name and are listed separately.
 
-Record the lattice and its primitive vectors or bond list, number of sites, boundary conditions, coupling values, and symmetry or particle-number sector. A cylinder and a torus are different benchmarks. Finite clusters and thermodynamic extrapolations are different quantities.
+## What is reported
 
-## Energy and uncertainty
-
-For a system with $N$ sites, the per-site energy is
-
-$$
-e=\frac{E}{N},\qquad \delta e=\frac{\delta E}{N}.
-$$
-
-Keep the printed energy and uncertainty as decimal strings. State whether an uncertainty is a standard error, standard deviation, confidence interval, or an unspecified reported uncertainty. Missing error bars remain unknown.
-
-A numerical ordering of estimates does not establish a statistically significant improvement. Ketboard displays the reported uncertainty and its interpretation alongside the energy.
+- The variational energy $E_\theta=\langle\Psi_\theta|H|\Psi_\theta\rangle/\langle\Psi_\theta|\Psi_\theta\rangle$, evaluated on the final fixed state with its own Monte Carlo run. Not the last value of the optimization trace.
+- The statistical uncertainty, with its meaning: one standard error of the mean from a [binning analysis](../variational-monte-carlo/), a standard deviation, a confidence interval, or an unspecified reported uncertainty. A missing uncertainty is recorded as missing, never as zero.
+- The energy variance $\operatorname{Var}_\theta(H)$ or its per-site value when the paper gives it. It is the only intrinsic accuracy measure when $E_0$ is unknown.
+- The printed digits exactly as they appear, as a decimal string, with the parenthesized uncertainty preserved in the original token. Only the conversion from total to per-site energy is done by the site.
+- The number of parameters, the architecture class, the symmetry treatment and the sampling budget, when available.
 
 ## Eligibility
 
-Accepted results evaluate $\langle\Psi_\theta|H|\Psi_\theta\rangle/\langle\Psi_\theta|\Psi_\theta\rangle$ for an explicit neural variational state. Neural fermionic wavefunctions and neural backflow can qualify.
+An entry represents a state $|\Psi_\theta\rangle$ whose amplitude is given by a neural network, possibly multiplied by a determinant, Pfaffian, Jastrow factor or sign prior, and whose energy is the expectation value of $H$ in that state. Lanczos-improved states $(1+\alpha_1H+\dots)|\Psi_\theta\rangle$ with explicitly evaluated energies qualify.
 
-Excluded results include non-NQS states, projection-method energies, extrapolated energies, and comparison values credited to earlier papers. A neural guide or sampler alone does not make a projected calculation an NQS variational result.
+Not eligible: energies extrapolated in the variance, the system size, the bond dimension or the number of Lanczos steps; energies from projection methods (Green's function, diffusion or auxiliary-field Monte Carlo) even when a neural state is the guiding function; non-neural variational states; and comparison values credited to earlier work. Such numbers belong in the benchmark pages as context, clearly marked.
+
+## Comparing entries
+
+The variational energy is an upper bound, so a lower energy is a better bound. It is not evidence that one method is better in general: results differ in parameter count, sampling budget, symmetry projection and optimization time, and differences within one or two standard errors are not resolved. Ketboard orders by energy and shows the uncertainty next to it; the reader draws the conclusion.
+
+Two caveats specific to this field. The sample mean of the local energy can lie below $E_0$ by a statistical fluctuation; this is not a violation of the variational principle. And an energy quoted to more digits than its uncertainty supports is recorded as printed, with the uncertainty displayed alongside.
 
 ## Provenance and review
 
-Every entry links to an exact paper version and source location. Both bot discoveries and human submissions enter through GitHub pull requests. Curators check the transcription, eligibility, and instance matching before merge. This review is distinct from independent reproduction.
+Every entry links to a specific arXiv version and to a table, figure or equation in it. Bot-proposed entries carry a checksum of the source file; human entries carry the exact versioned source URL. A curator checks eligibility, instance matching and transcription before merging. Review confirms that the number is what the paper says for the problem the instance defines; it is not an independent reproduction.
+
+## Adding an instance
+
+Propose the definition in `data/benchmarks.json` with the result that needs it: the symbolic Hamiltonian in LaTeX, the parameter values, the cluster, the boundaries, the sector, the unit, and a plain-text statement of every convention. Keep the system name free of sizes and couplings; put those in the instance label. A benchmark page in the wiki, linked from the instance, gives the physics context and the non-variational reference values.

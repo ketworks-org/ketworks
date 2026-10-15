@@ -1,8 +1,10 @@
 # Optimization
 
-Minimizing $E_\theta$ over the parameters of a neural quantum state is a stochastic optimization problem with three unusual features: the objective and its gradient are only available as noisy Monte Carlo estimates, the noise vanishes at the solution (the zero-variance property), and the parametrization is massively redundant, so the Euclidean geometry of $\theta$ bears no relation to the geometry of the states $|\Psi_\theta\rangle$. Stochastic reconfiguration exists to deal with the third point, and the kernel (minSR) reformulation exists to make it affordable for networks with $10^5$–$10^7$ parameters.
+> **In brief.** The energy gradient is a Monte Carlo estimate built from the same samples as the energy. Stochastic reconfiguration (SR) preconditions it with the quantum geometric tensor $S$, which turns the update into a step of imaginary-time evolution projected onto the variational manifold, equivalently a natural-gradient step. For networks with more parameters than samples the same update is computed exactly from an $N_s\times N_s$ kernel instead of the $N_p\times N_p$ matrix $S$ (minSR). Regularization is unavoidable because $S$ is singular, and the choice of regularizer, learning rate and sample size is part of the method.
 
-Throughout, $O_k(\boldsymbol{\sigma})=\partial_{\theta_k}\log\Psi_\theta(\boldsymbol{\sigma})$, expectation values are over $p_\theta\propto|\Psi_\theta|^2$, $N_p$ is the number of parameters and $N_s$ the number of Monte Carlo samples. Centred quantities carry a bar: $\bar O_k=O_k-\langle O_k\rangle$, $\bar E_{\mathrm{loc}}=E_{\mathrm{loc}}-\langle E_{\mathrm{loc}}\rangle$.
+Notation follows the [conventions page](../notation/). Centred quantities carry a bar: $\bar O_k=O_k-\langle O_k\rangle$, $\bar E_{\mathrm{loc}}=E_{\mathrm{loc}}-\langle E_{\mathrm{loc}}\rangle$.
+
+Minimizing $E_\theta$ over the parameters of a neural quantum state is a stochastic optimization problem with three unusual features: the objective and its gradient are available only as noisy Monte Carlo estimates, the noise vanishes at the solution, and the parametrization is massively redundant, so the Euclidean geometry of $\theta$ bears no relation to the geometry of the states $|\Psi_\theta\rangle$. Stochastic reconfiguration addresses the third point; its kernel formulation makes it affordable for networks with $10^5$–$10^7$ parameters.
 
 ## Energy gradient
 
@@ -43,7 +45,7 @@ $$
 
 for complex-holomorphic and real parametrizations respectively. The same update is obtained by projecting one step of imaginary-time evolution onto the manifold: minimizing the Fubini–Study distance between $|\Psi_{\theta+\delta\theta}\rangle$ and $(1-\tau H)|\Psi_\theta\rangle$ gives $S\,\delta\theta=-\tau F$, so $\eta$ is literally an imaginary-time step (Stokes et al., arXiv:1909.02108; Yuan et al., arXiv:1812.08767). Replacing $\tau$ by $i\,\mathrm{d}t$ gives the time-dependent variational principle used for real-time dynamics with the same $S$ and $F$ (Carleo and Troyer, arXiv:1606.02318; Schmitt and Heyl, arXiv:1912.08828).
 
-Two properties follow directly. SR is invariant under reparametrization of $\theta$, so rescaling a layer or changing the activation's normalization does not change the trajectory in state space. And the energy decreases to first order in $\eta$ for any positive semi-definite $S$, with the decrease $-\eta F^\dagger S^{-1}F$ bounded by the inverse metric rather than by the raw gradient norm.
+SR is invariant under reparametrization of $\theta$, so rescaling a layer or changing the activation's normalization does not change the trajectory in state space. And the energy decreases to first order in $\eta$ for any positive semi-definite $S$, with the decrease $-\eta F^\dagger S^{-1}F$ bounded by the inverse metric rather than by the raw gradient norm.
 
 Estimating $S$ and $F$ from the same $N_s$ samples is standard. $S$ is then a rank-$\le N_s$ matrix of size $N_p\times N_p$; building and inverting it costs $O(N_sN_p^2+N_p^3)$ in time and $O(N_p^2)$ in memory, which caps SR at a few $10^4$ parameters when done naively. Iterative solvers (conjugate gradient on $S\,\delta\theta=-\eta F$ using only matrix-vector products $\bar O^\dagger(\bar O v)$) remove the memory cost but still need many passes over the Jacobian per step.
 
@@ -80,7 +82,7 @@ $$
 \delta\theta=-\eta\,X^\dagger\left(T+\lambda\,\mathbb 1\right)^{-1}\varepsilon ,
 $$
 
-at a cost of $O(N_pN_s^2+N_s^3)$ and memory $O(N_sN_p)$ for the Jacobian, which is what a reverse-mode pass stores anyway. Chen and Heyl (arXiv:2302.01941) derived this as the minimum-norm solution of the least-squares problem and used it to optimize networks with $\sim10^6$ parameters on $N_s\sim10^4$ samples; Rende et al. (arXiv:2310.05715) pointed out the identity above and the fact that no approximation is involved: for $\lambda\to0$ the kernel update coincides with SR using the pseudo-inverse of $S$. For real parameters and complex $\Psi$, stack real and imaginary parts, $\tilde X=\begin{pmatrix}\operatorname{Re}X\\ \operatorname{Im}X\end{pmatrix}$, $\tilde\varepsilon=\begin{pmatrix}\operatorname{Re}\varepsilon\\ \operatorname{Im}\varepsilon\end{pmatrix}$, and invert the real $2N_s\times 2N_s$ kernel $\tilde X\tilde X^{\top}$.
+at a cost of $O(N_pN_s^2+N_s^3)$ and memory $O(N_sN_p)$ for the Jacobian, which is what a reverse-mode pass stores anyway. Chen and Heyl (arXiv:2302.01941) derived this as the minimum-norm solution of the least-squares problem and used it to optimize deep networks with far more parameters than samples; Rende et al. (arXiv:2310.05715) pointed out the identity above and the fact that no approximation is involved: for $\lambda\to0$ the kernel update coincides with SR using the pseudo-inverse of $S$. For real parameters and complex $\Psi$, stack real and imaginary parts, $\tilde X=\begin{pmatrix}\operatorname{Re}X\\ \operatorname{Im}X\end{pmatrix}$, $\tilde\varepsilon=\begin{pmatrix}\operatorname{Re}\varepsilon\\ \operatorname{Im}\varepsilon\end{pmatrix}$, and invert the real $2N_s\times 2N_s$ kernel $\tilde X\tilde X^{\top}$.
 
 The kernel picture also clarifies what SR can and cannot do with finite samples. $S$ estimated from $N_s$ samples has rank at most $N_s$, so with $N_p>N_s$ the update lives in the $N_s$-dimensional span of the sampled log-derivative vectors; directions of parameter space invisible to the current batch are not moved. This is a feature (no spurious updates from unsampled directions) and the reason why increasing $N_s$ keeps improving minSR optimizations well beyond the point where the gradient itself is converged.
 
@@ -112,15 +114,16 @@ Regularization strength, learning rate and sample size are coupled: a larger $\l
 
 ## References
 
-- S. Sorella, *Green function Monte Carlo with stochastic reconfiguration*, arXiv:cond-mat/9803107; *Generalized Lanczos algorithm for variational quantum Monte Carlo*, arXiv:cond-mat/0009149.
-- S. Sorella, M. Casula, D. Rocca, *Weak binding between two aromatic rings: Feeling the van der Waals attraction by quantum Monte Carlo methods*, arXiv:cond-mat/0702349. Introduces the scale-invariant regularization of SR.
-- S. Amari, *Natural gradient works efficiently in learning*, Neural Computation 10, 251 (1998).
-- J. Stokes, J. Izaac, N. Killoran, G. Carleo, *Quantum natural gradient*, arXiv:1909.02108.
-- X. Yuan, S. Endo, Q. Zhao, Y. Li, S. Benjamin, *Theory of variational quantum simulation*, arXiv:1812.08767.
-- C.-Y. Park, M. J. Kastoryano, *Geometry of learning neural quantum states*, arXiv:1910.11163.
-- A. Chen, M. Heyl, *Efficient optimization of deep neural quantum states toward machine precision*, arXiv:2302.01941.
-- R. Rende, L. L. Viteritti, L. Bardone, F. Becca, S. Goldt, *A simple linear algebra identity to optimize large-scale neural network quantum states*, arXiv:2310.05715.
-- M. Schmitt, M. Heyl, *Quantum many-body dynamics in two dimensions with artificial neural networks*, arXiv:1912.08828.
-- J. Toulouse, C. J. Umrigar, *Optimization of quantum Monte Carlo wave functions by energy minimization*, arXiv:physics/0701039.
-- M. Bukov, M. Schmitt, M. Dupont, *Learning the ground state of a non-stoquastic quantum Hamiltonian in a rugged neural network landscape*, arXiv:2011.11214.
-- F. Vicentini et al., *NetKet 3: Machine learning toolbox for many-body quantum systems*, arXiv:2112.10526. Reference implementations of SR, minSR and the estimators above.
+- S. Sorella, *Green function Monte Carlo with stochastic reconfiguration*, arXiv:cond-mat/9803107 (1998). The SR update.
+- S. Sorella, *Generalized Lanczos algorithm for variational quantum Monte Carlo*, arXiv:cond-mat/0009149 (2000). SR as imaginary-time projection; Lanczos steps on a variational state.
+- S. Sorella, M. Casula, D. Rocca, *Weak binding between two aromatic rings: Feeling the van der Waals attraction by quantum Monte Carlo methods*, arXiv:cond-mat/0702349 (2007). Scale-invariant regularization of SR.
+- S. Amari, *Natural gradient works efficiently in learning*, Neural Computation 10, 251 (1998). The natural gradient.
+- J. Stokes, J. Izaac, N. Killoran, G. Carleo, *Quantum natural gradient*, arXiv:1909.02108 (2019). The Fubini–Study metric as the natural metric for variational states.
+- X. Yuan, S. Endo, Q. Zhao, Y. Li, S. Benjamin, *Theory of variational quantum simulation*, arXiv:1812.08767 (2018). Variational principles for imaginary- and real-time evolution.
+- C.-Y. Park, M. J. Kastoryano, *Geometry of learning neural quantum states*, arXiv:1910.11163 (2019). The geometry of $S$ for complex-parameter networks.
+- A. Chen, M. Heyl, *Efficient optimization of deep neural quantum states toward machine precision*, arXiv:2302.01941 (2023). minSR.
+- R. Rende, L. L. Viteritti, L. Bardone, F. Becca, S. Goldt, *A simple linear algebra identity to optimize large-scale neural network quantum states*, arXiv:2310.05715 (2023). The kernel identity and its real-parameter form.
+- M. Schmitt, M. Heyl, *Quantum many-body dynamics in two dimensions with artificial neural networks*, arXiv:1912.08828 (2019). Signal-to-noise regularization.
+- J. Toulouse, C. J. Umrigar, *Optimization of quantum Monte Carlo wave functions by energy minimization*, arXiv:physics/0701039 (2007). The linear method.
+- M. Bukov, M. Schmitt, M. Dupont, *Learning the ground state of a non-stoquastic quantum Hamiltonian in a rugged neural network landscape*, arXiv:2011.11214 (2020). Optimization landscapes with sign structure.
+- F. Vicentini et al., *NetKet 3: Machine learning toolbox for many-body quantum systems*, arXiv:2112.10526 (2021). Reference implementations.

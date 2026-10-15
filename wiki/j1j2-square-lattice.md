@@ -1,6 +1,8 @@
 # J₁–J₂ Heisenberg model on the square lattice
 
-The spin-$\tfrac12$ J₁–J₂ antiferromagnet at $J_2/J_1=0.5$ on a $10\times10$ torus is the most frequently reported neural-quantum-state benchmark and the one on which NQS results currently lead all other variational methods. This page fixes the conventions of the Ketboard instance `j1j2-square-10x10-pbc-j2-0p5-sz0`, explains why this point of the phase diagram is hard, and summarizes what is known about its energy. Reviewed numbers live in [Ketboard](../../#benchmarks?system=j1j2-square-10x10-pbc-j2-0p5-sz0), not here.
+> **In brief.** At $J_2/J_1=0.5$ the classical model is extensively degenerate, the Marshall sign rule fails, quantum Monte Carlo has a sign problem, and the ground state sits in a nonmagnetic region whose nature is still debated. On a $10\times10$ torus there is no exact energy; the best variational energies come from neural quantum states and agree to about $10^{-4}J_1$ per site. This is why the instance is the standard NQS benchmark.
+
+Notation follows the [conventions page](../notation/). This page fixes the conventions of the Ketboard instance `j1j2-square-10x10-pbc-j2-0p5-sz0`, explains why this point of the phase diagram is hard, and summarizes what is known about its energy. Reviewed entries live in [Ketboard](../../#benchmarks?system=j1j2-square-10x10-pbc-j2-0p5-sz0), not here.
 
 ## Hamiltonian and instance
 
@@ -28,7 +30,7 @@ because each nearest-neighbour bond belongs to two plaquettes and each diagonal 
 
 **No Marshall sign rule.** For $J_2=0$ the Marshall rule gives the exact sign of every amplitude, $\operatorname{sgn}\Psi_0(\boldsymbol{\sigma})=(-1)^{N^A_\uparrow(\boldsymbol{\sigma})}$, with $N^A_\uparrow$ the number of up spins on sublattice $A$. The diagonal coupling $J_2$ connects sites of the same sublattice and violates the rule. The violation is small for $J_2/J_1\lesssim0.4$ and grows through the intermediate region; near $0.5$ a substantial weight of the ground state sits on configurations whose sign disagrees with Marshall's (Choo, Neupert, Carleo, arXiv:1903.06713). A positive ansatz multiplied by the Marshall sign is therefore a good starting point and a poor end point, and the quality of a method at this instance is essentially the quality of its sign structure (Szabó and Castelnovo, arXiv:2002.04613; Westerhout et al., arXiv:1907.08186; Bukov, Schmitt, Dupont, arXiv:2011.11214).
 
-**No unbiased reference.** The same frustration gives stochastic series expansion and other world-line quantum Monte Carlo methods a sign problem, so there is no exact $10\times10$ energy. Exact diagonalization stops at $6\times6$ ($e_0=-0.503810$ for $J_2/J_1=0.5$). DMRG on a torus must carry the entanglement of a cut of length $2L$ and is variationally *above* the best NQS energies at $L=10$. The instance is thus a genuine open benchmark: a lower energy is a better upper bound and nothing else is known with certainty.
+**No unbiased reference.** The same frustration gives stochastic series expansion and other world-line quantum Monte Carlo methods a sign problem, so there is no exact $10\times10$ energy. Exact diagonalization stops at $6\times6$, where $e_0=-0.503810$ for $J_2/J_1=0.5$. DMRG on a torus must carry the entanglement of a cut of length $2L$, and at $L=10$ its energies lie above the best NQS energies. The instance is a genuine open benchmark: a lower energy is a better upper bound, and nothing else is known with certainty.
 
 ## Quantum phase diagram
 
@@ -44,12 +46,11 @@ For the benchmark the conclusion is the relevant one: at $J_2/J_1=0.5$ the groun
 
 ## Known energies for $10\times10$
 
-Orders of magnitude only; exact digits, versions and uncertainties are in Ketboard.
+Values are rounded to four digits to give the scale; the printed digits, arXiv versions and uncertainties belong in Ketboard.
 
-- Gutzwiller-projected fermionic states with Jastrow factors give $e\approx-0.495$; two Lanczos steps lower this to $\approx-0.4977$, and the zero-variance extrapolation of that sequence, $\approx-0.4978$, is the usual estimate of the true ground-state energy (arXiv:1304.1676). The extrapolated value is not variational.
-- SU(2) DMRG on the torus with bond dimension in the several thousands gives $e\approx-0.4955$ (arXiv:1311.5962).
-- The first convolutional NQS with a Marshall-sign prior reached $e\approx-0.4952$ (arXiv:1903.06713), already competitive with the un-projected fermionic states.
-- RBM+pair-product states with symmetry projection (arXiv:2005.14142), group-convolutional networks (arXiv:2211.07749), transformer wavefunctions (arXiv:2211.05504, arXiv:2310.05715) and deep convolutional networks optimized with minSR (arXiv:2302.01941) all reach $e\approx-0.4976$, within about $10^{-4}$ of each other and of the Lanczos extrapolation. Their directly evaluated energies are the Ketboard entries.
+- Gutzwiller-projected fermionic states with a Jastrow factor give $e\approx-0.495$; two Lanczos steps lower this to $\approx-0.4976$, and the zero-variance extrapolation of that sequence, $\approx-0.4978$, is the usual estimate of the true ground-state energy (Hu et al., arXiv:1304.1676). The extrapolated value is not variational.
+- The first convolutional NQS with a Marshall-sign prior reached $e\approx-0.4952$ (Choo, Neupert, Carleo, arXiv:1903.06713), competitive with the un-projected fermionic states.
+- RBM+pair-product states with symmetry projection (Nomura and Imada, arXiv:2005.14142), group-convolutional networks (Roth, Szabó, MacDonald, arXiv:2211.07749), transformer wavefunctions (Viteritti, Rende, Becca, arXiv:2211.05504; Rende et al., arXiv:2310.05715) and deep convolutional networks optimized with minSR (Chen and Heyl, arXiv:2302.01941) reach $e\approx-0.4976$, within about $10^{-4}$ of one another and of the Lanczos extrapolation. Their directly evaluated energies are the Ketboard entries.
 
 At this level the ranking of methods changes with the number of parameters, the symmetry projection, the number of samples in the final evaluation, and the convention used to quote the uncertainty. Differences within one standard error do not establish a better ansatz; see the [benchmark conventions](../benchmark-conventions/).
 
@@ -64,17 +65,17 @@ At this level the ranking of methods changes with the number of parameters, the 
 ## References
 
 - P. Chandra, B. Doucot, *Possible spin-liquid state at large S for the frustrated square Heisenberg lattice*, Phys. Rev. B 38, 9335 (1988). The classical degeneracy at $J_2=J_1/2$.
-- H.-C. Jiang, H. Yao, L. Balents, *Spin liquid ground state of the spin-1/2 square J₁-J₂ Heisenberg model*, arXiv:1112.2241.
-- W.-J. Hu, F. Becca, A. Parola, S. Sorella, *Direct evidence for a gapless Z₂ spin liquid by frustrating Néel antiferromagnetism*, arXiv:1304.1676.
-- S.-S. Gong, W. Zhu, D. N. Sheng, O. I. Motrunich, M. P. A. Fisher, *Plaquette ordered phase and quantum phase diagram in the spin-1/2 J₁-J₂ square Heisenberg model*, arXiv:1311.5962.
-- L. Wang, A. W. Sandvik, *Critical level crossings and gapless spin liquid in the square-lattice spin-1/2 J₁-J₂ Heisenberg antiferromagnet*, arXiv:1702.08197.
-- K. Choo, T. Neupert, G. Carleo, *Two-dimensional frustrated J₁-J₂ model studied with neural network quantum states*, arXiv:1903.06713.
-- Y. Nomura, M. Imada, *Dirac-type nodal spin liquid revealed by refined quantum many-body solver using neural-network wave function, correlation ratio, and level spectroscopy*, arXiv:2005.14142.
-- A. Szabó, C. Castelnovo, *Neural network wave functions and the sign problem*, arXiv:2002.04613.
-- T. Westerhout et al., *Generalization properties of neural network approximations to frustrated magnet ground states*, arXiv:1907.08186.
-- M. Bukov, M. Schmitt, M. Dupont, *Learning the ground state of a non-stoquastic quantum Hamiltonian in a rugged neural network landscape*, arXiv:2011.11214.
-- C. Roth, A. Szabó, A. H. MacDonald, *High-accuracy variational Monte Carlo for frustrated magnets with deep neural networks*, arXiv:2211.07749.
-- L. L. Viteritti, R. Rende, F. Becca, *Transformer variational wave functions for frustrated quantum spin systems*, arXiv:2211.05504.
-- A. Chen, M. Heyl, *Efficient optimization of deep neural quantum states toward machine precision*, arXiv:2302.01941.
-- R. Rende, L. L. Viteritti, L. Bardone, F. Becca, S. Goldt, *A simple linear algebra identity to optimize large-scale neural network quantum states*, arXiv:2310.05715.
-- D. Wu et al., *Variational benchmarks for quantum many-body problems*, arXiv:2302.04919. Collects J₁-J₂ energies and V-scores across methods.
+- H.-C. Jiang, H. Yao, L. Balents, *Spin liquid ground state of the spin-1/2 square J₁–J₂ Heisenberg model*, arXiv:1112.2241 (2011). DMRG; gapped spin liquid.
+- W.-J. Hu, F. Becca, A. Parola, S. Sorella, *Direct evidence for a gapless Z₂ spin liquid by frustrating Néel antiferromagnetism*, arXiv:1304.1676 (2013). Projected fermionic states with Lanczos steps; the reference variational and extrapolated energies.
+- S.-S. Gong, W. Zhu, D. N. Sheng, O. I. Motrunich, M. P. A. Fisher, *Plaquette ordered phase and quantum phase diagram in the spin-1/2 J₁–J₂ square Heisenberg model*, arXiv:1311.5962 (2013). SU(2) DMRG; plaquette valence-bond solid.
+- L. Wang, A. W. Sandvik, *Critical level crossings and gapless spin liquid in the square-lattice spin-1/2 J₁–J₂ Heisenberg antiferromagnet*, arXiv:1702.08197 (2017). Level spectroscopy of the intermediate region.
+- K. Choo, T. Neupert, G. Carleo, *Two-dimensional frustrated J₁–J₂ model studied with neural network quantum states*, arXiv:1903.06713 (2019). First NQS study of the model; Marshall-rule violation.
+- Y. Nomura, M. Imada, *Dirac-type nodal spin liquid revealed by refined quantum many-body solver using neural-network wave function, correlation ratio, and level spectroscopy*, arXiv:2005.14142 (2020).
+- A. Szabó, C. Castelnovo, *Neural network wave functions and the sign problem*, arXiv:2002.04613 (2020).
+- T. Westerhout et al., *Generalization properties of neural network approximations to frustrated magnet ground states*, arXiv:1907.08186 (2019).
+- M. Bukov, M. Schmitt, M. Dupont, *Learning the ground state of a non-stoquastic quantum Hamiltonian in a rugged neural network landscape*, arXiv:2011.11214 (2020).
+- C. Roth, A. Szabó, A. H. MacDonald, *High-accuracy variational Monte Carlo for frustrated magnets with deep neural networks*, arXiv:2211.07749 (2022).
+- L. L. Viteritti, R. Rende, F. Becca, *Transformer variational wave functions for frustrated quantum spin systems*, arXiv:2211.05504 (2022).
+- A. Chen, M. Heyl, *Efficient optimization of deep neural quantum states toward machine precision*, arXiv:2302.01941 (2023).
+- R. Rende, L. L. Viteritti, L. Bardone, F. Becca, S. Goldt, *A simple linear algebra identity to optimize large-scale neural network quantum states*, arXiv:2310.05715 (2023).
+- D. Wu et al., *Variational benchmarks for quantum many-body problems*, arXiv:2302.04919 (2023). J₁–J₂ energies and V-scores across methods.

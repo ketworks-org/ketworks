@@ -12,6 +12,15 @@ To add an article, create `wiki/your-topic.md` and add a slug, title, section, a
 
 KaTeX renders equations into HTML and accessible MathML during the build. Its CSS and fonts are served with the site. Invalid LaTeX fails the build. Raw HTML is escaped; use Markdown for content. Text changes, references, examples, and new topics all follow the same PR process.
 
+## Editorial standards for wiki pages
+
+- **Shape.** Every page opens with a blockquote beginning `**In brief.**` that states the result of the page in three or four sentences, followed by `Notation follows the [conventions page](../notation/).` Sections use `##` headings; they become anchors and the table of contents. The page ends with `## References`.
+- **Voice.** State things; do not announce them. No "in this page we will", no "it is worth noting", no lists introduced by a sentence that counts their items. Prefer a derivation or an equation to a description of one.
+- **Claims.** Every quantitative statement cites the table, figure or equation it comes from, as an arXiv identifier. Numbers that cannot be traced to a source are not written; if a rounded value is given for scale, say so and point to Ketboard for the digits. Phase-diagram and method attributions name the paper.
+- **Notation.** Symbols are those of the [notation page](wiki/notation.md). A page that needs a new symbol defines it where it first appears.
+- **References.** One entry per line: authors, *title*, arXiv identifier with year in parentheses, then a short note saying what the reference is for. Journal references are given only for works without an arXiv version.
+- **Status.** Each entry in `wiki/index.json` carries `"status": "draft"` or `"reviewed"`. A curator flips a page to reviewed after checking its claims against the sources; the page shows the status next to its section. New and substantially rewritten pages are drafts.
+
 ## Add a Ketboard result
 
 1. Open **Ketboard → Add a result**. Select the exact benchmark and fill in the paper, method, printed energy, uncertainty, and source location.

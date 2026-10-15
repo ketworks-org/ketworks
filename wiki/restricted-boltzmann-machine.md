@@ -1,6 +1,10 @@
 # Restricted Boltzmann machine
 
-The restricted Boltzmann machine (RBM) is the ansatz with which Carleo and Troyer introduced neural quantum states (arXiv:1606.02318). It is still the reference architecture: two layers, one analytic marginalization, a closed-form log-amplitude, and a parameter count that interpolates between a Jastrow factor and an arbitrarily expressive variational state through a single integer, the hidden-unit density $\alpha$.
+> **In brief.** The RBM is a two-layer network whose hidden layer can be summed analytically, giving the closed form $\log\Psi=\sum_ia_i\sigma_i+\sum_j\log2\cosh(b_j+\sum_iW_{ij}\sigma_i)$. Its accuracy is controlled by one integer, the hidden-unit density $\alpha=M/N$. Weight sharing over lattice translations makes it a one-layer convolutional network; complex parameters give it a phase. It is the ansatz of the founding paper and still the baseline against which new architectures are measured.
+
+Notation follows the [conventions page](../notation/).
+
+The restricted Boltzmann machine (RBM) is the ansatz with which Carleo and Troyer introduced neural quantum states (arXiv:1606.02318). Two layers, one analytic marginalization, a closed-form log-amplitude, and a parameter count that interpolates between a Jastrow factor and an arbitrarily expressive variational state through $\alpha$.
 
 ## Definition
 
@@ -37,7 +41,7 @@ O_{b_j}=\tanh\vartheta_j,\qquad
 O_{W_{ij}}=\sigma_i\tanh\vartheta_j .
 $$
 
-Note that $\tanh\vartheta_j$ is the conditional expectation of the hidden unit $h_j$ given the visible configuration, so the RBM log-derivatives are the connected correlators of the underlying Boltzmann model, which is why early stochastic-reconfiguration code for RBMs could be written in a few hundred lines.
+$\tanh\vartheta_j$ is the conditional expectation of the hidden unit $h_j$ given the visible configuration, so the RBM log-derivatives are the connected correlators of the underlying Boltzmann model.
 
 - **Expansion in visible correlations.** Expanding $\log2\cosh\vartheta_j$ in powers of $\vartheta_j$ shows that each hidden unit generates all even-order products of spins weighted by $W_{ij}$ (and odd orders through $b_j$). A Jastrow factor $\exp(\sum_{i<k}J_{ik}\sigma_i\sigma_k)$ is recovered exactly in the limit of small weights with $\alpha$ large; an RBM with $\alpha\ge1$ strictly contains it.
 
@@ -79,34 +83,31 @@ Expressivity theorems say what is representable, not what is reachable by stocha
 
 ## Original 2017 results
 
-Carleo and Troyer optimized symmetric complex RBMs with stochastic reconfiguration on three models with periodic boundaries: the one-dimensional transverse-field Ising chain at and near its critical field $h=1$, the one-dimensional antiferromagnetic Heisenberg chain, and the two-dimensional Heisenberg model on a $10\times10$ square lattice, with $\alpha=1,2,4,\dots,32$. The Marshall sign rule was applied to the Heisenberg cases. Accuracy was reported as the relative error $\epsilon_{\mathrm{rel}}=|E_{\mathrm{RBM}}-E_{\mathrm{ref}}|/|E_{\mathrm{ref}}|$ against exact (Ising, Bethe-ansatz) or quantum Monte Carlo reference energies. The qualitative picture:
+Carleo and Troyer optimized symmetric complex RBMs with stochastic reconfiguration on three models with periodic boundaries: the transverse-field Ising chain around its critical field, the antiferromagnetic Heisenberg chain, and the antiferromagnetic Heisenberg model on a $10\times10$ square lattice, for hidden-unit densities between $\alpha=1$ and $\alpha=32$. Accuracy was measured by the relative error $\epsilon_{\mathrm{rel}}=|E_{\mathrm{RBM}}-E_{\mathrm{ref}}|/|E_{\mathrm{ref}}|$ against exact or quantum Monte Carlo reference energies; for the $10\times10$ lattice the reference is the stochastic-series-expansion value $E/N=-0.671549(4)$ (Sandvik, arXiv:cond-mat/9707123).
 
-- In one dimension $\epsilon_{\mathrm{rel}}$ decreases systematically with $\alpha$, reaching the $10^{-5}$ level and below for the Ising chain, and $10^{-3}$–$10^{-4}$ for the Heisenberg chain with $N=80$ at moderate $\alpha$.
-- On the $10\times10$ Heisenberg lattice the relative error improves from the $10^{-3}$ level at $\alpha=1$ to a few $10^{-4}$ at $\alpha=32$, below the contemporary entangled-plaquette and PEPS results for the same cluster; the stochastic-series-expansion reference is $E/N=-0.671549(4)$ (Sandvik, arXiv:cond-mat/9707123).
-- The same ansatz, with $S$ and $F$ used in the time-dependent variational principle, reproduces the unitary dynamics after a quench of the transverse field and of the Heisenberg coupling.
+The result that defined the field is the systematic decrease of $\epsilon_{\mathrm{rel}}$ with $\alpha$ on all three models, with no sign of the structural ceiling that limits mean-field and low-order Jastrow states, and, on the two-dimensional lattice, energies below the entangled-plaquette and PEPS results available for the same cluster at the time. The same paper used $S$ and $F$ in the time-dependent variational principle to follow the unitary dynamics after quenches of the transverse field and of the Heisenberg coupling. The error curves are in Figure 3 of the paper; Ketboard does not list these energies because they predate its instance definitions.
 
-The exact curves are in the paper's Figure 3 and supplementary tables; Ketboard does not reproduce them because they predate its benchmark instances and conventions.
-
-Two observations from that work set the agenda for the field. The systematic improvement with $\alpha$ meant the ansatz could be made as accurate as the compute budget allowed, with no structural ceiling of the kind that limits mean-field or low-order Jastrow states. And the fact that frustrated models were *not* in the paper pointed directly at the sign-structure problem discussed above.
+What was absent is as telling as what was present: no frustrated model appears, and the limitation of the RBM on frustrated lattices was identified in the following years as a problem of sign structure rather than of amplitude expressivity.
 
 ## Variants
 
 - **RBM + pair product (RBM+pp)**: multiply the RBM by a Pfaffian or determinant of a pair-product state, giving a fermionic sign prior with a neural correlator (Nomura, Darmawan, Yamaji, Imada, arXiv:1709.06475). With quantum-number projection and a few Lanczos steps this remains among the most accurate ansätze for the square-lattice J₁–J₂ model (Nomura and Imada, arXiv:2005.14142).
 - **Deep Boltzmann machines**: a second hidden layer makes the marginalization intractable in general but exact for specific constructions (arXiv:1802.09558); sampling the hidden layer jointly with the visible one restores tractability at the price of a larger state space.
-- **Complex RBM as a layer**: in modern architectures the $\log2\cosh$ layer with pooling survives as the first layer of group-convolutional networks (Roth, Szabó, MacDonald, arXiv:2211.07749), and the hidden-unit density $\alpha$ as the channel count.
+- **Convolutional generalizations**: replacing the single $\log2\cosh$ layer by a stack of convolutional layers with a final pooling gives the convolutional and group-convolutional NQS (Choo, Neupert, Carleo, arXiv:1903.06713; Roth, Szabó, MacDonald, arXiv:2211.07749), with the hidden-unit density $\alpha$ reappearing as the channel count.
 
 ## References
 
-- G. Carleo, M. Troyer, *Solving the quantum many-body problem with artificial neural networks*, arXiv:1606.02318.
-- A. W. Sandvik, *Finite-size scaling of the ground-state parameters of the two-dimensional Heisenberg model*, arXiv:cond-mat/9707123.
-- D.-L. Deng, X. Li, S. Das Sarma, *Quantum entanglement in neural network states*, arXiv:1701.04844.
-- J. Chen, S. Cheng, H. Xie, L. Wang, T. Xiang, *Equivalence of restricted Boltzmann machines and tensor network states*, arXiv:1701.04831.
-- I. Glasser, N. Pancotti, M. August, I. D. Rodriguez, J. I. Cirac, *Neural-network quantum states, string-bond states, and chiral topological states*, arXiv:1710.04045.
-- G. Carleo, Y. Nomura, M. Imada, *Constructing exact representations of quantum many-body systems with deep neural networks*, arXiv:1802.09558.
-- Y. Nomura, A. S. Darmawan, Y. Yamaji, M. Imada, *Restricted Boltzmann machine learning for solving strongly correlated quantum systems*, arXiv:1709.06475.
-- Y. Nomura, M. Imada, *Dirac-type nodal spin liquid revealed by refined quantum many-body solver using neural-network wave function, correlation ratio, and level spectroscopy*, arXiv:2005.14142.
-- F. Ferrari, F. Becca, J. Carrasquilla, *Neural Gutzwiller-projected variational wave functions*, arXiv:1906.00463.
-- A. Szabó, C. Castelnovo, *Neural network wave functions and the sign problem*, arXiv:2002.04613.
-- T. Westerhout, N. Astrakhantsev, K. S. Tikhonov, M. I. Katsnelson, A. A. Bagrov, *Generalization properties of neural network approximations to frustrated magnet ground states*, arXiv:1907.08186.
-- C. Roth, A. Szabó, A. H. MacDonald, *High-accuracy variational Monte Carlo for frustrated magnets with deep neural networks*, arXiv:2211.07749.
-- R. G. Melko, G. Carleo, J. Carrasquilla, J. I. Cirac, *Restricted Boltzmann machines in quantum physics*, Nature Physics 15, 887 (2019).
+- G. Carleo, M. Troyer, *Solving the quantum many-body problem with artificial neural networks*, arXiv:1606.02318 (2016). The complex symmetric RBM, its optimization, and the results discussed above.
+- R. G. Melko, G. Carleo, J. Carrasquilla, J. I. Cirac, *Restricted Boltzmann machines in quantum physics*, Nature Physics 15, 887 (2019). Review of RBMs as quantum states.
+- A. W. Sandvik, *Finite-size scaling of the ground-state parameters of the two-dimensional Heisenberg model*, arXiv:cond-mat/9707123 (1997). Reference energies for the square-lattice Heisenberg model.
+- D.-L. Deng, X. Li, S. Das Sarma, *Quantum entanglement in neural network states*, arXiv:1701.04844 (2017). Entanglement of RBM states; exact representations of topological states.
+- J. Chen, S. Cheng, H. Xie, L. Wang, T. Xiang, *Equivalence of restricted Boltzmann machines and tensor network states*, arXiv:1701.04831 (2017).
+- I. Glasser, N. Pancotti, M. August, I. D. Rodriguez, J. I. Cirac, *Neural-network quantum states, string-bond states, and chiral topological states*, arXiv:1710.04045 (2017).
+- G. Carleo, Y. Nomura, M. Imada, *Constructing exact representations of quantum many-body systems with deep neural networks*, arXiv:1802.09558 (2018).
+- Y. Nomura, A. S. Darmawan, Y. Yamaji, M. Imada, *Restricted Boltzmann machine learning for solving strongly correlated quantum systems*, arXiv:1709.06475 (2017). RBM times pair-product states.
+- Y. Nomura, M. Imada, *Dirac-type nodal spin liquid revealed by refined quantum many-body solver using neural-network wave function, correlation ratio, and level spectroscopy*, arXiv:2005.14142 (2020).
+- F. Ferrari, F. Becca, J. Carrasquilla, *Neural Gutzwiller-projected variational wave functions*, arXiv:1906.00463 (2019).
+- A. Szabó, C. Castelnovo, *Neural network wave functions and the sign problem*, arXiv:2002.04613 (2020).
+- T. Westerhout, N. Astrakhantsev, K. S. Tikhonov, M. I. Katsnelson, A. A. Bagrov, *Generalization properties of neural network approximations to frustrated magnet ground states*, arXiv:1907.08186 (2019).
+- K. Choo, T. Neupert, G. Carleo, *Two-dimensional frustrated J₁–J₂ model studied with neural network quantum states*, arXiv:1903.06713 (2019).
+- C. Roth, A. Szabó, A. H. MacDonald, *High-accuracy variational Monte Carlo for frustrated magnets with deep neural networks*, arXiv:2211.07749 (2022).

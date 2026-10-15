@@ -1,8 +1,9 @@
 [
-  {"slug":"neural-quantum-states","title":"Neural quantum states","section":"Fundamentals","summary":"A neural network as the amplitude map of a many-body wavefunction."},
-  {"slug":"variational-monte-carlo","title":"Variational Monte Carlo","section":"Fundamentals","summary":"Local energy estimator, the zero-variance property, and error bars that account for autocorrelation."},
-  {"slug":"optimization","title":"Optimization","section":"Fundamentals","summary":"Stochastic reconfiguration, its kernel (minSR) formulation, natural gradient, and regularization."},
-  {"slug":"restricted-boltzmann-machine","title":"Restricted Boltzmann machine","section":"Architectures","summary":"Definition, log-amplitude form, symmetric and complex RBMs, and the original 2017 results."},
-  {"slug":"j1j2-square-lattice","title":"J₁–J₂ square lattice","section":"Benchmarks","summary":"Conventions for the 10 × 10 instance and why J₂/J₁ = 0.5 is the hard case."},
-  {"slug":"benchmark-conventions","title":"Benchmark conventions","section":"Benchmarks","summary":"How a comparable instance is defined and how a variational energy is reported."}
+  {"slug":"neural-quantum-states","title":"Neural quantum states","section":"Fundamentals","status":"draft","summary":"The amplitude map, amplitude and phase, symmetries, and the families of architectures."},
+  {"slug":"variational-monte-carlo","title":"Variational Monte Carlo","section":"Fundamentals","status":"draft","summary":"Local energy estimator, the zero-variance property, and error bars that account for autocorrelation."},
+  {"slug":"optimization","title":"Optimization","section":"Fundamentals","status":"draft","summary":"Stochastic reconfiguration, its kernel (minSR) formulation, natural gradient, and regularization."},
+  {"slug":"notation","title":"Notation and conventions","section":"Fundamentals","status":"draft","summary":"The symbols and operator conventions used throughout the book."},
+  {"slug":"restricted-boltzmann-machine","title":"Restricted Boltzmann machine","section":"Architectures","status":"draft","summary":"Definition, log-amplitude form, symmetric and complex RBMs, and the original 2017 results."},
+  {"slug":"j1j2-square-lattice","title":"J₁–J₂ square lattice","section":"Benchmarks","status":"draft","summary":"Conventions for the 10 × 10 instance and why J₂/J₁ = 0.5 is the hard case."},
+  {"slug":"benchmark-conventions","title":"Benchmark conventions","section":"Benchmarks","status":"draft","summary":"What defines a comparable instance, what is reported, and what is eligible."}
 ]
