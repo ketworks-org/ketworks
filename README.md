@@ -27,11 +27,11 @@ The site works under a subdirectory, including a GitHub project Pages URL. It us
 
 ## Private preview
 
-While the repository is private, the site is previewed on a Netlify site with a random hostname. The build adds `noindex` to every page, a `robots.txt` that disallows everything, and an `X-Robots-Tag` header, so the preview is not indexed even if the address leaks. It is obscurity, not authentication: share the address only with reviewers.
+While the repository is private, the site is previewed on a Netlify project with a random hostname. The build adds `noindex` to every page, a `robots.txt` that disallows everything, and an `X-Robots-Tag` header, so the preview is not indexed even if the address leaks. It is obscurity, not authentication: share the address only with reviewers.
 
-1. Sign in at netlify.com with GitHub. Under User settings → Applications → Personal access tokens, create a token and store it as the repository secret `NETLIFY_AUTH_TOKEN`.
-2. Create a site (Add new site → Deploy manually, drop any folder). Netlify assigns a random name. Copy its Site ID from Site configuration → Site details into the repository secret `NETLIFY_SITE_ID`. Do not connect the repository in Netlify; GitHub Actions does the build.
-3. Set the repository variable `PREVIEW_ENABLED=true`. Run the **Preview site** workflow manually on the branch to preview; it also runs on every push to `main`. Edit links on the preview point at the deployed branch.
+Simplest setup, no secrets: in Netlify choose **Add new project → Import an existing project → GitHub**, authorize access to `gcarleo/ketbook`, and pick the branch to deploy. `netlify.toml` supplies the build command, the publish directory and the Python and Node versions; Netlify rebuilds on every push to that branch and gives the project a random name. Deploy previews for pull requests get their own random addresses. Edit links on the preview point at the deployed branch.
+
+Alternative, when the build should run in GitHub Actions instead: store `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID` as repository secrets, set the variable `PREVIEW_ENABLED=true`, and run the **Preview site** workflow. In that case do not also connect the repository in Netlify.
 
 GitHub Pages stays off (`PUBLISH_PAGES` unset) until the content is curated and the repository is public.
 
