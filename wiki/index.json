@@ -1,0 +1,6 @@
+[
+  {"slug":"neural-quantum-states","title":"Neural quantum states","section":"Foundations","summary":"Represent a many-body wavefunction with a neural network."},
+  {"slug":"variational-monte-carlo","title":"Variational Monte Carlo","section":"Methods","summary":"Sampling, local energies, and statistical uncertainty."},
+  {"slug":"optimization","title":"Optimization","section":"Methods","summary":"Energy gradients and stochastic reconfiguration."},
+  {"slug":"benchmark-conventions","title":"Benchmark conventions","section":"Ketboard","summary":"Define comparable systems and report variational energies."}
+]

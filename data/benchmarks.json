@@ -8,7 +8,8 @@
     "hamiltonian": "H = J1 sum_<ij> S_i · S_j + J2 sum_<<ij>> S_i · S_j; spin-1/2 operators S = sigma/2; J1 = 1; J2 = 0.5; no constant shift",
     "sector": "Total Sz = 0; ground-state variational calculation",
     "unit": "J1",
-    "description": "Frustrated square-lattice antiferromagnet at J₂/J₁ = 0.5."
+    "description": "Frustrated square-lattice antiferromagnet at J₂/J₁ = 0.5.",
+    "hamiltonian_latex": "H=J_1\\!\\sum_{\\langle i,j\\rangle}\\!\\mathbf{S}_i\\!\\cdot\\!\\mathbf{S}_j+J_2\\!\\sum_{\\langle\\!\\langle i,j\\rangle\\!\\rangle}\\!\\mathbf{S}_i\\!\\cdot\\!\\mathbf{S}_j,\\quad J_1=1,\\;J_2=0.5,\\;S=\\tfrac12"
   },
   {
     "id": "heisenberg-triangular-12x12-pbc-sz0",
@@ -19,7 +20,8 @@
     "hamiltonian": "H = J sum_<ij> S_i · S_j; spin-1/2 operators S = sigma/2; J = 1; no constant shift",
     "sector": "Total Sz = 0; ground-state variational calculation",
     "unit": "J",
-    "description": "Nearest-neighbor triangular-lattice antiferromagnet."
+    "description": "Nearest-neighbor triangular-lattice antiferromagnet.",
+    "hamiltonian_latex": "H=J\\sum_{\\langle i,j\\rangle}\\mathbf{S}_i\\cdot\\mathbf{S}_j,\\qquad J=1,\\quad S=\\tfrac12"
   },
   {
     "id": "hubbard-square-8x8-pbc-u8-n56-sz0",
@@ -30,6 +32,7 @@
     "hamiltonian": "H = -t sum_<ij>,s (c†_is c_js + h.c.) + U sum_i n_iup n_idown; t = 1; U = 8; tprime = 0; no chemical-potential term or constant shift",
     "sector": "Nup = 28; Ndown = 28; 56 electrons; ground-state variational calculation",
     "unit": "t",
-    "description": "Repulsive Hubbard model at U/t = 8 and one-eighth hole doping."
+    "description": "Repulsive Hubbard model at U/t = 8 and one-eighth hole doping.",
+    "hamiltonian_latex": "H=-t\\!\\sum_{\\langle i,j\\rangle,\\sigma}\\!\\left(c^\\dagger_{i\\sigma}c_{j\\sigma}+\\mathrm{h.c.}\\right)+U\\sum_i n_{i\\uparrow}n_{i\\downarrow},\\quad t=1,\\;U=8"
   }
 ]

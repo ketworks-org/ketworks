@@ -14,10 +14,14 @@ Initial scope: square J1–J2 (10×10, J2/J1=0.5, PBC), triangular Heisenberg (1
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
+npm ci --ignore-scripts
+npm test
 python -m unittest discover -s tests -v
 python -m nqsbot.build
 python -m http.server 8080 --directory dist
 ```
+
+Requires Node.js 22+ and Python 3.12+. LaTeX is rendered by pinned KaTeX during the build, including accessible MathML; CSS and math fonts are bundled with the site. Wiki edits and manually contributed results are proposed through GitHub PRs. See [CONTRIBUTING.md](CONTRIBUTING.md). The repository must be public for anyone to fork and contribute.
 
 The site works under a subdirectory, including a GitHub project Pages URL. It uses no server database or browser API keys. Fonts have local fallbacks.
 
@@ -56,7 +60,9 @@ This writes proposed files and a PR body under ignored `.run/`. Add `--publish-p
 
 ## Layout
 
-- `site/`: accessible responsive interface; publication includes only reviewed result files.
+- `site/`: Bauhaus-inspired interface; publication includes only reviewed result files.
+- `wiki/`: community-editable Markdown articles with build-time LaTeX rendering.
+- `CONTRIBUTING.md`: wiki and result PR instructions; the site has direct edit links and a result preparation form.
 - `data/benchmarks.json`: canonical physical definitions.
 - `data/results/`: entries approved by merging their PRs.
 - `data/proposals/`: unmatched instances, excluded from the site.

@@ -62,6 +62,12 @@ class EligibilityTests(unittest.TestCase):
         with self.assertRaises(ValueError): schema.validate_row(row, REGISTRY)
         with self.assertRaises(ValueError): schema.validate_row(dict(ROW, benchmark_id="invented"), REGISTRY, allow_unmatched=True)
 
+    def test_human_submissions_can_omit_checksum_but_bot_cannot(self):
+        human = dict(record(), extraction_model="human", source_sha256=None)
+        schema.validate_record(human, REGISTRY)
+        with self.assertRaises(ValueError):
+            schema.validate_record(dict(record(), source_sha256=None), REGISTRY)
+
     def test_versioned_source_and_duplicate_validation(self):
         schema.validate_record(record(), REGISTRY)
         for bad in (dict(record(), source_url="https://arxiv.org/html/2601.00001v2"), dict(record(), results=[ROW, ROW])):

@@ -44,7 +44,7 @@ EXTRACTION = obj({"results": {"type": "array", "items": ROW}, "issues": {"type":
 PAPER = obj({k: string() for k in ("id", "title", "authors", "published", "updated")})
 RECORD = obj({
     "schema_version": {"const": 1}, "paper": PAPER,
-    "source_url": string(), "source_sha256": string(),
+    "source_url": string(), "source_sha256": string(nullable=True),
     "extraction_model": string(), "results": {"type": "array", "items": ROW},
     "issues": {"type": "array", "items": string()},
 })
@@ -132,8 +132,12 @@ def validate_record(record, registry, allow_unmatched=False):
     expected_urls = [f"https://arxiv.org/{kind}/{record['paper']['id']}" for kind in ("html", "pdf")]
     if record["source_url"] not in expected_urls:
         raise ValueError("Source must be the exact versioned arXiv HTML or PDF")
-    if not re.fullmatch(r"[0-9a-f]{64}", record["source_sha256"]):
-        raise ValueError("Missing source checksum")
+    checksum = record["source_sha256"]
+    if checksum is None:
+        if record["extraction_model"] != "human":
+            raise ValueError("Automated extraction requires a source checksum")
+    elif not re.fullmatch(r"[0-9a-f]{64}", checksum):
+        raise ValueError("Invalid source checksum")
     keys = []
     for row in record["results"]:
         validate_row(row, registry, allow_unmatched=allow_unmatched)

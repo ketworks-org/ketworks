@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {renderMarkdown} from './render-content.mjs';
+const inline = renderMarkdown('A state $|\\Psi_\\theta\\rangle$ and energy.');
+assert.match(inline, /katex-mathml/);
+assert.match(inline, /annotation encoding="application\/x-tex"/);
+assert.doesNotMatch(inline, /katex-display/);
+assert.match(renderMarkdown('$$\nE=\\frac{\\langle\\Psi|H|\\Psi\\rangle}{\\langle\\Psi|\\Psi\\rangle}\n$$'), /katex-display/);
+assert.throws(() => renderMarkdown('$\\notARealCommand$'));
+assert.match(renderMarkdown('<script>alert(1)</script>'), /&lt;script&gt;/);
+assert.doesNotMatch(renderMarkdown('[bad](javascript:alert(1))'), /href="javascript:/);
+for (const page of JSON.parse(fs.readFileSync('wiki/index.json','utf8'))) {
+  const html = renderMarkdown(fs.readFileSync(`wiki/${page.slug}.md`,'utf8'));
+  assert.match(html, /katex/);
+  assert.match(html, /<h1>/);
+}
+console.log('KaTeX inline/display rendering, malformed LaTeX rejection, Markdown safety, and all wiki articles pass.');
+const {makeSubmission}=await import('../site/submission.mjs');
+const benchmark=JSON.parse(fs.readFileSync('data/benchmarks.json','utf8'))[0];
+const fields={paper_id:'2601.00001v1',benchmark_id:benchmark.id,title:'Synthetic test',authors:'Test',method:'Test NQS',variant:'Test',energy:'-50.000',energy_token:'-50.000(20)',normalization:'total',uncertainty:'0.020',uncertainty_type:'standard_error',source_location:'Synthetic Table 1',eligibility_evidence:'Synthetic test only',notes:''};
+const submission=makeSubmission(fields,benchmark);
+assert.equal(submission.source_sha256,null);
+assert.equal(submission.extraction_model,'human');
+assert.equal(submission.results[0].energy,'-50.000');
+assert.throws(()=>makeSubmission({...fields,energy:'-60'},benchmark));
+assert.throws(()=>makeSubmission({...fields,energy:'-50.000000000000000001'},benchmark));
+assert.throws(()=>makeSubmission({...fields,uncertainty:'0.2'},benchmark));
+assert.throws(()=>makeSubmission({...fields,paper_id:'2601.00001'},benchmark));
+assert.throws(()=>makeSubmission({...fields,uncertainty_type:'not_reported'},benchmark));
+console.log('Human contribution generation and invalid-input checks pass.');
