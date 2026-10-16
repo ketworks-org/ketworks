@@ -113,16 +113,26 @@ function markFamily(family) {
 }
 
 function renderSelects() {
-  for (const id of ['model-select', 'submit-model']) Object.entries(dataset.categories || {}).forEach(([category, title]) => {
-    const families = [...new Set(dataset.benchmarks.filter(b => b.category === category).map(b => b.family))]; if (!families.length) return;
+  Object.entries(dataset.categories || {}).forEach(([category, title]) => {
+    const families = [...new Set(dataset.benchmarks.filter(b => b.category === category).map(b => b.family))];
+    const option = text('option', title); option.value = category; $('submit-category').append(option);
+    if (!families.length) return;
     const group = document.createElement('optgroup'); group.label = title;
     families.forEach(family => { const option = text('option', family); option.value = family; group.append(option); });
-    $(id).append(group);
+    $('model-select').append(group);
   });
-  Object.entries(dataset.categories || {}).forEach(([value, title]) => { const option = text('option', title); option.value = value; $('new-category').append(option); });
-  Object.entries(MODELS).forEach(([value, model]) => { const option = text('option', model.label); option.value = value; $('new-model').append(option); });
+  renderSubmitModels();
   Object.entries(METHOD_CLASSES).forEach(([value, label]) => { for (const id of ['class-filter', 'submit-class']) { const option = text('option', label); option.value = value; $(id).append(option); } });
   renderInstances('submit-model', 'submit-system');
+}
+// The submission form starts from the class of system: it narrows the models on the board and the templates for a new instance.
+function renderSubmitModels() {
+  const category = $('submit-category').value, families = [...new Set(dataset.benchmarks.filter(b => b.category === category).map(b => b.family))];
+  $('submit-model').replaceChildren(...families.map(family => { const option = text('option', family); option.value = family; return option; }));
+  if (!families.length) { const none = text('option', 'No instance in this class yet: choose \u201cA new instance\u201d above'); none.value = ''; $('submit-model').append(none); }
+  const previous = $('new-model').value;
+  $('new-model').replaceChildren(...Object.entries(MODELS).filter(([, model]) => model.category === category || model.category === null).map(([value, model]) => { const option = text('option', model.label); option.value = value; return option; }));
+  if ([...$('new-model').options].some(o => o.value === previous)) $('new-model').value = previous;
 }
 function renderInstances(modelId, instanceId, selectedId) {
   const select = $(instanceId), previous = selectedId || select.value;
@@ -196,7 +206,7 @@ function syncInstanceForm() {
   document.querySelectorAll('[data-custom]').forEach(el => el.hidden = model !== MODELS.custom);
   try { $('new-key').textContent = instanceFromForm(formValues()).id; } catch (error) { $('new-key').textContent = error.message; }
 }
-function formValues() { const values = Object.fromEntries(new FormData($('submission-form'))); if (values.unit_custom) values.unit = values.unit_custom; return values; }
+function formValues() { const values = Object.fromEntries(new FormData($('submission-form'))); if (values.unit_custom) values.unit = values.unit_custom; values.category_label = dataset?.categories?.[values.category] || ''; return values; }
 function prepareSubmission(event) {
   event.preventDefault(); $('submission-error').textContent = ''; if (!dataset) return;
   const values = formValues(), mode = instanceMode();
@@ -240,6 +250,7 @@ window.addEventListener('hashchange', () => { route(); document.getElementById('
 $('model-select').addEventListener('change', () => { if (!dataset) return; renderInstances('model-select', 'system-select'); location.hash = '#benchmarks?system=' + encodeURIComponent($('system-select').value); });
 $('system-select').addEventListener('change', () => location.hash = '#benchmarks?system=' + encodeURIComponent($('system-select').value));
 $('submit-model').addEventListener('change', () => { if (dataset) renderInstances('submit-model', 'submit-system'); });
+$('submit-category').addEventListener('change', () => { if (!dataset) return; renderSubmitModels(); renderInstances('submit-model', 'submit-system'); syncInstanceForm(); });
 ['search', 'class-filter'].forEach(id => $(id).addEventListener('input', () => { if (dataset) renderResults(); }));
 $('wiki-search').addEventListener('input', () => { if (dataset) renderWiki(); });
 document.querySelectorAll('.board .sort').forEach(button => button.addEventListener('click', () => {
