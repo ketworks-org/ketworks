@@ -74,8 +74,8 @@ for (const [id, form] of generated) {
   const entry = instanceFromForm(form);
   assert.equal(entry.id, id);
   const stored = registry.find(b => b.id === id);
-  if (stored) { assert.equal(entry.sites, stored.sites); assert.equal(entry.unit, stored.unit); assert.equal(entry.hamiltonian_latex, stored.hamiltonian_latex); assert.equal(entry.name, stored.name); }
-  for (const key of ['id','name','family','geometry','hamiltonian','sector','unit','instance_label','lattice_size','boundary_conditions']) assert.ok(entry[key], `${id}: ${key} must not be empty`);
+  if (stored) { assert.equal(entry.sites, stored.sites); assert.equal(entry.unit, stored.unit); assert.equal(entry.hamiltonian_latex, stored.hamiltonian_latex); assert.equal(entry.name, stored.name); assert.equal(entry.category, stored.category); }
+  for (const key of ['id','name','family','category','geometry','hamiltonian','sector','unit','instance_label','lattice_size','boundary_conditions']) assert.ok(entry[key], `${id}: ${key} must not be empty`);
   assert.throws(() => instanceFromForm(form, [id]), /already exists/);
 }
 assert.equal(instanceFromForm({model:'tfim',lattice:'square',lx:'12',ly:'12',boundaries:'pbc',h:'3.05'}).id, 'tfim-square-12x12-pbc-h3p05');
@@ -83,8 +83,9 @@ assert.equal(instanceFromForm({model:'heisenberg',lattice:'honeycomb',lx:'6',ly:
 assert.equal(instanceFromForm({model:'heisenberg',lattice:'chain',lx:'32',boundaries:'pbc'}).id, 'heisenberg-chain-32-pbc-sz0');
 assert.throws(() => instanceFromForm({model:'j1j2',lattice:'square',lx:'10',ly:'8',boundaries:'pbc',j2:'0.5'}), /equal extents/);
 assert.throws(() => instanceFromForm({model:'hubbard',lattice:'square',lx:'4',ly:'4',boundaries:'pbc',u:'8',nup:'20',ndown:'2'}), /electrons/);
-const custom = instanceFromForm({model:'custom',lattice:'square',lx:'6',ly:'6',boundaries:'pbc',system_name:'Kagome Heisenberg',hamiltonian_text:'H = ...',unit:'J'});
-assert.equal(custom.id, 'kagome-heisenberg-square-6x6-pbc'); assert.equal(custom.family, 'Kagome Heisenberg');
+const custom = instanceFromForm({model:'custom',lattice:'square',lx:'6',ly:'6',boundaries:'pbc',system_name:'Kagome Heisenberg',hamiltonian_text:'H = ...',unit:'J',category:'lattice-spins'});
+assert.equal(custom.id, 'kagome-heisenberg-square-6x6-pbc'); assert.equal(custom.family, 'Kagome Heisenberg'); assert.equal(custom.category, 'lattice-spins');
+assert.throws(() => instanceFromForm({model:'custom',lattice:'square',lx:'6',ly:'6',boundaries:'pbc',system_name:'Kagome Heisenberg',hamiltonian_text:'H = ...',unit:'J'}), /class of system/);
 const proposal = makeProposal({...fields, system_description:'Shuriken lattice Heisenberg, 24 sites, periodic, Sz = 0', unit:'J'});
 assert.equal(proposal.results[0].benchmark_id, null); assert.equal(proposal.results[0].unit, 'J'); assert.equal(proposal.results[0].energy, '-50.000');
 assert.throws(() => makeProposal({...fields, unit:'J'}), /Describe the system/);

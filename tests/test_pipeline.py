@@ -147,6 +147,16 @@ class EligibilityTests(unittest.TestCase):
         self.assertIn("No pages, instances or entries change", describe(["README.md"], {}, {}))
         self.assertIn("[about]({PREVIEW}/about/)", describe(["pages/about.md", "brand/logo.png"], {}, {"pages/about.md": "# About"}))
 
+    def test_every_instance_has_a_known_category(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); (root / "data").mkdir()
+            rows = [dict(b) for b in REGISTRY.values()]
+            (root / "data/benchmarks.json").write_text(json.dumps(rows))
+            self.assertEqual(set(schema.benchmarks(root)), set(REGISTRY))
+            rows[0]["category"] = "spins"
+            (root / "data/benchmarks.json").write_text(json.dumps(rows))
+            with self.assertRaises(AssertionError): schema.benchmarks(root)
+
     def test_preview_build_is_not_indexed_and_carries_a_banner(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

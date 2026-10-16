@@ -8,7 +8,7 @@ import shutil
 import subprocess
 from urllib.parse import quote
 
-from .schema import ROOT, per_site, validate_tree, variance_per_site
+from .schema import CATEGORIES, ROOT, per_site, validate_tree, variance_per_site
 
 
 def nav_html(index, registry, prefix="", current=None):
@@ -24,9 +24,11 @@ def nav_html(index, registry, prefix="", current=None):
         links = [f'<a href="{prefix}wiki/{page["slug"]}/"' + (' aria-current="page"' if page["slug"] == current else "") + f'>{html.escape(page["title"])}</a>' for page in index if page["section"] == section]
         wiki_sections.append((section, links, section == current_section))
     board_sections = []
-    for family in dict.fromkeys(b["family"] for b in registry.values()):
-        links = [f'<a href="{prefix}#benchmarks?system={quote(b["id"])}" data-instance="{html.escape(b["id"])}">{html.escape(b.get("instance_label") or b["id"])}</a>' for b in registry.values() if b["family"] == family]
-        board_sections.append((family, links, False))
+    for key, title in CATEGORIES.items():
+        families = list(dict.fromkeys(b["family"] for b in registry.values() if b["category"] == key))
+        links = [f'<a href="{prefix}#benchmarks?family={quote(family)}" data-family="{html.escape(family)}">{html.escape(family)}</a>' for family in families]
+        if links:
+            board_sections.append((title, links, False))
     contribute = (f'<div class="nav-group" data-area="contribute"><p class="nav-title"><a href="{prefix}#contribute" data-nav="contribute">Contribute</a></p>'
                   f'<a href="{prefix}#submit" data-nav="submit">Submit a result</a>'
                   '<a href="https://github.com/ketworks-org/ketworks/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Contribution guide ↗</a>'
@@ -153,7 +155,7 @@ def build(root=ROOT, destination=None):
             energy, error = per_site(row, registry)
             rows.append({**row, "energy_per_site": energy, "uncertainty_per_site": error, "variance_per_site": variance_per_site(row, registry), "paper": record["paper"], "source_url": record["source_url"]})
     # Proposal files and extraction artifacts never enter the public payload.
-    payload = {"source_ref": source_ref, "benchmarks": [{**b, "hamiltonian_html": equations.get(b["id"]), "parameters_html": equations.get(b["id"] + ":parameters")} for b in registry.values()], "wiki": wiki, "results": rows, "papers": records, "paper_count": len(papers)}
+    payload = {"source_ref": source_ref, "benchmarks": [{**b, "hamiltonian_html": equations.get(b["id"]), "parameters_html": equations.get(b["id"] + ":parameters")} for b in registry.values()], "wiki": wiki, "results": rows, "papers": records, "paper_count": len(papers), "categories": CATEGORIES}
     (destination / "data.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
     (destination / "sitemap.xml").write_text(sitemap(wiki))
     if os.getenv("KETWORKS_PREVIEW"):
