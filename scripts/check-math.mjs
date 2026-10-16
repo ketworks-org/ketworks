@@ -90,6 +90,22 @@ const proposal = makeProposal({...fields, system_description:'Shuriken lattice H
 assert.equal(makeProposal({...fields, system_description:'Shuriken lattice Heisenberg', unit:'J', category:'lattice-spins', category_label:'Lattice spins'}).results[0].system_description, 'Lattice spins. Shuriken lattice Heisenberg');
 assert.equal(proposal.results[0].benchmark_id, null); assert.equal(proposal.results[0].unit, 'J'); assert.equal(proposal.results[0].energy, '-50.000');
 assert.throws(() => makeProposal({...fields, unit:'J'}), /Describe the system/);
+// Continuous space: every stored instance is reproduced from its structured system, and the presets give stable keys.
+const {continuumInstance, continuumInstanceFromForm} = await import('../site/continuum.mjs');
+for (const b of registry.filter(b => b.category === 'continuous-space')) assert.deepEqual(continuumInstance(b.system), b, `${b.id}: stored instance differs from its generated form`);
+assert.equal(continuumInstanceFromForm({cpreset:'heg',cdim:'3',cup:'7',cdown:'7',ccell:'sc',crs:'1',ctwist:'Gamma'}).id, 'heg3d-sc-n14-unpol-rs1');
+assert.throws(() => continuumInstanceFromForm({cpreset:'heg',cdim:'3',cup:'7',cdown:'7',ccell:'sc',crs:'1'}, ['heg3d-sc-n14-unpol-rs1']), /already exists/);
+const dot = continuumInstanceFromForm({cpreset:'trap',cdim:'2',cup:'3',cdown:'3',comega:'0.28'});
+assert.equal(dot.id, 'trap2d-electrons-n6-unpol-w0p28'); assert.equal(dot.family, '2D quantum dot'); assert.equal(dot.per, 'system');
+const n2 = continuumInstanceFromForm({cpreset:'molecule',cdim:'3',cup:'7',cdown:'7',cgeometry:'R = 2.068 bohr',cnuclei:'N 0 0 0\n7 0 0 2.068'});
+assert.equal(n2.id, 'mol-n2-r-2p068-bohr-s0'); assert.equal(n2.system.external.charge, 0); assert.equal(n2.family, 'Atoms and molecules');
+assert.equal(continuumInstanceFromForm({cpreset:'molecule',cdim:'3',cup:'1',cdown:'0',cgeometry:'atom',cnuclei:'He 0 0 0'}).system.external.charge, 1);
+assert.throws(() => continuumInstanceFromForm({cpreset:'molecule',cdim:'3',cup:'1',cdown:'1',cgeometry:'R = 1.4 bohr',cnuclei:'H 0 0'}), /coordinates/);
+assert.throws(() => continuumInstanceFromForm({cpreset:'molecule',cdim:'3',cup:'1',cdown:'1',cgeometry:'R = 1.4 bohr',cnuclei:'Xx 0 0 0'}), /Unknown nucleus/);
+assert.throws(() => continuumInstanceFromForm({cpreset:'trap',cdim:'2',cup:'3',cdown:'3'}), /trap frequency/);
+const he = continuumInstanceFromForm({cpreset:'other',cdim:'3',cspecies:'helium-4 atoms',ccount:'64',cname:'Liquid helium-4',cspace:'periodic',ccell:'sc',csize:'L = 15.4 angstrom',cext:'none',cint:'other',cint_text:'Aziz HFDHE2',cunit:'K',cper:'particle'});
+assert.equal(he.id, 'liquid-helium-4-3d-n64-sc'); assert.equal(he.unit, 'K'); assert.equal(he.per, 'particle');
+assert.throws(() => continuumInstanceFromForm({cpreset:'other',cdim:'3',cspecies:'atoms',ccount:'4',cname:'X',cspace:'free',cext:'none',cint:'other',cunit:'K'}), /interaction/);
 console.log('Human contribution generation, new-instance keys, proposals and invalid-input checks pass.');
 const {filterRows,sortRows,rankByEnergy,summarize}=await import('../site/leaderboard.mjs');
 const paper=id=>({id,title:'T',authors:'A. Author',published:id==='2601.00003v1'?'2026-03-01T00:00:00Z':'2026-01-01T00:00:00Z'});

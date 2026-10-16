@@ -72,6 +72,50 @@ CATEGORIES = {
 }
 
 
+# Continuous-space instances (first quantization) carry a structured `system`: dimension, particles, space
+# (a periodic cell or free space), external potential, interaction, unit and normalization. The readable fields
+# are generated from it by site/continuum.mjs; these checks keep the stored structure complete.
+EXTERNAL_POTENTIALS = ("none", "uniform background", "harmonic trap", "fixed nuclei", "other")
+
+
+def validate_system(row):
+    s, where = row.get("system"), row["id"]
+    assert isinstance(s, dict), f"{where}: a continuous-space instance needs a structured system"
+    assert s.get("dimension") in (1, 2, 3), f"{where}: dimension must be 1, 2 or 3"
+    particles = s.get("particles")
+    assert isinstance(particles, list) and particles, f"{where}: list the particles"
+    total = 0
+    for p in particles:
+        assert str(p.get("name", "")).strip(), f"{where}: every particle species needs a name"
+        if "count" in p:
+            assert isinstance(p["count"], int) and p["count"] > 0, f"{where}: particle counts must be positive integers"
+            total += p["count"]
+        else:
+            assert all(isinstance(p.get(k), int) and p[k] >= 0 for k in ("up", "down")), f"{where}: give up and down counts"
+            total += p["up"] + p["down"]
+    assert total == row["sites"], f"{where}: the particle numbers must add up to sites ({row['sites']})"
+    space = s.get("space") or {}
+    assert space.get("type") in ("periodic", "free"), f"{where}: space must be a periodic cell or free space"
+    if space["type"] == "periodic":
+        assert str(space.get("cell", "")).strip() and str(space.get("twist", "")).strip(), f"{where}: a periodic cell needs its shape and twist"
+        assert "r_s" in space or str(space.get("size", "")).strip(), f"{where}: a periodic cell needs the density r_s or its size"
+    external = s.get("external") or {}
+    assert external.get("type") in EXTERNAL_POTENTIALS, f"{where}: external potential must be one of {', '.join(EXTERNAL_POTENTIALS)}"
+    if external["type"] == "harmonic trap":
+        decimal(external.get("omega"))
+    if external["type"] == "fixed nuclei":
+        nuclei = external.get("nuclei")
+        assert isinstance(nuclei, list) and nuclei, f"{where}: list the nuclei"
+        assert all(isinstance(n.get("Z"), int) and n["Z"] > 0 and len(n.get("position", [])) == s["dimension"] for n in nuclei), f"{where}: each nucleus needs Z and {s['dimension']} coordinates"
+        assert external.get("coordinate_units") in ("bohr", "angstrom") and str(external.get("geometry", "")).strip(), f"{where}: give the coordinate units and name the geometry"
+        assert external.get("charge") == sum(n["Z"] for n in nuclei) - total, f"{where}: charge must equal the nuclear charge minus the number of electrons"
+    if external["type"] == "other":
+        assert str(external.get("description", "")).strip(), f"{where}: describe the external potential"
+    interaction = s.get("interaction") or {}
+    assert interaction.get("type") == "coulomb" or (interaction.get("type") == "other" and str(interaction.get("description", "")).strip()), f"{where}: the interaction is Coulomb or described"
+    assert s.get("unit") == row["unit"] and s.get("per") == row.get("per", "site"), f"{where}: system unit and normalization must match the instance"
+
+
 def benchmarks(root=ROOT):
     rows = json.loads((root / "data/benchmarks.json").read_text())
     assert len({x["id"] for x in rows}) == len(rows), "Duplicate benchmark IDs"
@@ -81,7 +125,9 @@ def benchmarks(root=ROOT):
         assert row.get("category") in CATEGORIES, f"{row['id']}: category must be one of {', '.join(CATEGORIES)}"
         # Optional: what the energy is normalized by on the board (default "site"), and a section name used to
         # group the instances of a model on its page (default: the boundary class).
-        assert row.get("per", "site") in ("site", "electron"), f"{row['id']}: per must be site or electron"
+        assert row.get("per", "site") in ("site", "electron", "particle", "system"), f"{row['id']}: per must be site, electron, particle or system"
+        if row["category"] == "continuous-space":
+            validate_system(row)
         assert isinstance(row.get("group", ""), str), f"{row['id']}: group must be a string"
     return {x["id"]: x for x in rows}
 
@@ -153,6 +199,8 @@ def validate_row(row, registry, source_text=None, allow_unmatched=False):
             return
         raise ValueError("Result needs an exact registered benchmark")
     # A unit other than the instance's is allowed only with a convention_factor that converts it (e.g. Ry to Ha).
+    if benchmark.get("per") == "system" and row["normalization"] != "total":
+        raise ValueError("This instance is compared by total energy; record the printed total")
     if row["normalization"] not in ("total", "per_site") or (row["unit"] != benchmark["unit"] and "convention_factor" not in row):
         raise ValueError("Unresolved normalization or mismatched units")
 
@@ -204,12 +252,21 @@ def variance_per_site(row, registry):
     """Var(H)/N to the significant digits of the printed variance (at most six), or None when none is recorded."""
     if row["variance"] is None:
         return None
-    divisor = registry[row["benchmark_id"]]["sites"] if row["normalization"] == "total" else 1
+    divisor = per_divisor(row, registry)
     factor = convention_factor(row)
     value = decimal(row["variance"])
     if divisor == 1 and factor == 1 and significant_digits(row["variance"]) <= 6:
         return plain(value)
     return plain(round_significant(value * factor * factor / divisor, min(6, significant_digits(row["variance"]))))
+
+
+def per_divisor(row, registry):
+    """What a printed total is divided by: the number of sites or particles, or 1 for an instance whose
+    board value is the total energy of the system (per = "system", e.g. a molecule)."""
+    benchmark = registry[row["benchmark_id"]]
+    if benchmark.get("per") == "system":
+        return 1
+    return benchmark["sites"] if row["normalization"] == "total" else 1
 
 
 def convention_factor(row):
@@ -221,8 +278,7 @@ def per_site(row, registry):
     number of sites (and a converted one multiplied by its convention_factor) and rounded back to the
     printed precision: the error bar keeps its printed significant digits (at most two) and the energy
     is cut at the error bar's last digit."""
-    divisor = registry[row["benchmark_id"]]["sites"] if row["normalization"] == "total" else 1
-    divisor = divisor / convention_factor(row)
+    divisor = per_divisor(row, registry) / convention_factor(row)
     energy = decimal(row["energy"])
     error = decimal(row["uncertainty"]) if row["uncertainty"] is not None else None
     if divisor == 1:

@@ -162,6 +162,22 @@ class EligibilityTests(unittest.TestCase):
         with self.assertRaises(ValueError): schema.validate_row(dict(row, convention_factor="1"), REGISTRY)
         with self.assertRaises(Exception): schema.validate_record(dict(record(row), results=[dict(row, unknown="x")]), REGISTRY)
 
+    def test_continuum_instances_are_checked_and_totals_are_not_divided(self):
+        h2 = json.loads((Path(__file__).parent / "fixture_h2.json").read_text())
+        registry = {**REGISTRY, h2["id"]: h2}
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); (root / "data").mkdir()
+            (root / "data/benchmarks.json").write_text(json.dumps(list(registry.values())))
+            self.assertIn(h2["id"], schema.benchmarks(root))
+            for broken in (dict(h2, system=None), dict(h2, sites=3),
+                           dict(h2, system=dict(h2["system"], external=dict(h2["system"]["external"], charge=1)))):
+                (root / "data/benchmarks.json").write_text(json.dumps(list(REGISTRY.values()) + [broken]))
+                with self.assertRaises(AssertionError): schema.benchmarks(root)
+        row = dict(ROW, benchmark_id=h2["id"], unit="Ha", energy="-1.17447", energy_token="-1.17447(1)", uncertainty="0.00001")
+        schema.validate_row(row, registry)
+        self.assertEqual(schema.per_site(row, registry), ("-1.17447", "0.00001"))
+        with self.assertRaises(ValueError): schema.validate_row(dict(row, normalization="per_site"), registry)
+
     def test_every_instance_has_a_known_category(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp); (root / "data").mkdir()
