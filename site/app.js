@@ -1,5 +1,5 @@
 import {makeSubmission, mergeSubmission, makeProposal, instanceFromForm, METHOD_CLASSES, MODELS} from './submission.mjs';
-import {filterRows, sortRows, rankByEnergy, summarize, withErrorBar} from './leaderboard.mjs';
+import {filterRows, sortRows, rankByEnergy, summarize, withErrorBar, boundaryClass, BOUNDARY_CLASSES} from './leaderboard.mjs';
 let dataset, submission, sort = {key: 'energy', direction: 'asc'};
 const $ = id => document.getElementById(id);
 const text = (tag, value, className) => { const el = document.createElement(tag); el.textContent = value; if (className) el.className = className; return el; };
@@ -98,14 +98,22 @@ function familyBlock(family, summary) {
   const head = text('div', '', 'family-head'); const title = text('h3', ''); title.append(lattice(latticeKind(family)), text('span', family));
   head.append(title, text('p', `${plural(counts.instances, 'instance')}, ${plural(counts.results, 'result')} from ${plural(counts.papers, 'paper')}`, 'family-meta'));
   const wiki = entries[0].benchmark.wiki; if (wiki) { const link = text('a', 'Benchmark page', 'text-link'); link.href = `wiki/${wiki}/`; head.append(link); }
-  const wrap = text('div', '', 'table-scroll'); const table = text('table', '', 'ledger'); const body = document.createElement('tbody');
-  table.innerHTML = '<thead><tr><th scope="col">Instance</th><th scope="col" class="num">Sites</th><th scope="col" class="num">Results</th><th scope="col" class="num">Lowest energy / site</th></tr></thead>';
-  entries.forEach(({benchmark, count, best}) => {
-    const tr = document.createElement('tr'); const cell = text('td', ''); const link = text('a', benchmark.instance_label || benchmark.id, 'instance-link'); link.href = '#benchmarks?system=' + encodeURIComponent(benchmark.id); cell.append(link);
-    const shown = best ? withErrorBar(best.energy_per_site, best.uncertainty_per_site, best.uncertainty_type) : {text: '—'}; const energy = text('td', shown.text, 'num energy'); if (best) energy.append(text('small', `${best.method} · ${classLabel(best.method_class)} · arXiv:${best.paper.id}${shown.missing ? ' · no error bar printed' : ''}`));
-    tr.append(cell, text('td', String(benchmark.sites), 'num mono'), text('td', count ? formatCount(count) : '0', 'num mono'), energy); body.append(tr);
+  group.append(head);
+  // One table per boundary class (periodic, periodic × antiperiodic, cylinder, open), each with its own heading
+  // when a model has more than one, so that clusters with different boundaries are not read as one series.
+  const classes = BOUNDARY_CLASSES.filter(c => entries.some(s => boundaryClass(s.benchmark) === c));
+  classes.forEach(boundary => {
+    if (classes.length > 1) group.append(text('h4', boundary === 'Cylinder' ? 'Cylinders (periodic along one direction, open along the other)' : boundary === 'Open' ? 'Open boundaries' : boundary === 'Periodic' ? 'Periodic boundaries' : 'Periodic × antiperiodic boundaries', 'boundary-head'));
+    const wrap = text('div', '', 'table-scroll'); const table = text('table', '', 'ledger'); const body = document.createElement('tbody');
+    table.innerHTML = '<thead><tr><th scope="col">Instance</th><th scope="col" class="num">Sites</th><th scope="col" class="num">Results</th><th scope="col" class="num">Lowest energy / site</th></tr></thead>';
+    entries.filter(s => boundaryClass(s.benchmark) === boundary).forEach(({benchmark, count, best}) => {
+      const tr = document.createElement('tr'); const cell = text('td', ''); const link = text('a', benchmark.instance_label || benchmark.id, 'instance-link'); link.href = '#benchmarks?system=' + encodeURIComponent(benchmark.id); cell.append(link);
+      const shown = best ? withErrorBar(best.energy_per_site, best.uncertainty_per_site, best.uncertainty_type) : {text: '—'}; const energy = text('td', shown.text, 'num energy'); if (best) energy.append(text('small', `${best.method} · ${classLabel(best.method_class)} · arXiv:${best.paper.id}${shown.missing ? ' · no error bar printed' : ''}`));
+      tr.append(cell, text('td', String(benchmark.sites), 'num mono'), text('td', count ? formatCount(count) : '0', 'num mono'), energy); body.append(tr);
+    });
+    table.append(body); wrap.append(table); group.append(wrap);
   });
-  table.append(body); wrap.append(table); group.append(head, wrap); return group;
+  return group;
 }
 function modelIndex(container, onlyCategory) {
   const categories = dataset.categories || {};
