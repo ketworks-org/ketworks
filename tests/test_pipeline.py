@@ -145,6 +145,8 @@ class EligibilityTests(unittest.TestCase):
         self.assertIn("1 added, 1 changed (arXiv:2601.00001v1)", text)
         self.assertIn("[new-page]({PREVIEW}/wiki/new-page/)", text)
         self.assertIn("No pages, instances or entries change", describe(["README.md"], {}, {}))
+        changed = json.dumps([dict(b, category="lattice-bosons") for b in REGISTRY.values()])
+        self.assertIn(f"- `category` changed on {len(REGISTRY)} instances", describe(["data/benchmarks.json"], {"data/benchmarks.json": registry}, {"data/benchmarks.json": changed}))
         self.assertIn("[about]({PREVIEW}/about/)", describe(["pages/about.md", "brand/logo.png"], {}, {"pages/about.md": "# About"}))
 
     def test_every_instance_has_a_known_category(self):
