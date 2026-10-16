@@ -15,6 +15,12 @@ A benchmark instance fixes everything that changes the number:
 
 Each instance has a key such as `j1j2-square-10x10-pbc-j2-0p5-sz0` that appears on the board and in the data files. Instances of the same model with different sizes or couplings share the system name and are listed separately.
 
+## Instances in continuous space
+
+For the homogeneous electron gas an instance fixes the dimension, the number of electrons $N$ and its spin polarization ($N_\uparrow$, $N_\downarrow$), the density $r_s$, the shape of the simulation cell (simple cubic, body-centred cubic, rectangular, rhombic), and the boundary condition. The cell shape matters: at $N=27$ and $r_s=1$ a body-centred cubic cell and a simple cubic cell differ by $0.2$ Ha per electron. Energies are in Hartree per electron, with the Coulomb interaction summed by Ewald's method, a uniform neutralizing background and the Madelung self-image term included; sources in Rydberg are converted with a factor $\tfrac12$.
+
+All instances so far are at the $\Gamma$ point. A twist-averaged energy is a different instance from the $\Gamma$-point one at the same $N$ and $r_s$, and a single arbitrary twist is not accepted. Energies with an analytic finite-size correction added, extrapolations to $N\to\infty$, and correlation energies relative to a Hartree–Fock energy that the paper does not print are not entries.
+
 ## What is reported
 
 - The variational energy $E_\theta=\langle\Psi_\theta|H|\Psi_\theta\rangle/\langle\Psi_\theta|\Psi_\theta\rangle$, evaluated on the final fixed state with its own Monte Carlo run. Not the last value of the optimization trace.

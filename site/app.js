@@ -11,7 +11,7 @@ const shortAuthors = authors => { const list = authors.split(/,\s*/); return lis
 
 // Small lattice sketch next to a model: a square grid, a triangular lattice (rows offset by half a spacing,
 // bonds along (1,0), (0,1) and (-1,1)), a chain, or a kagome patch of corner-sharing triangles.
-function latticeKind(family) { return /triangular/i.test(family) ? 'triangular' : /kagome/i.test(family) ? 'kagome' : /pyrochlore/i.test(family) ? 'pyrochlore' : /chain/i.test(family) ? 'chain' : 'square'; }
+function latticeKind(family) { return /electron gas|continuum/i.test(family) ? 'continuum' : /triangular/i.test(family) ? 'triangular' : /kagome/i.test(family) ? 'kagome' : /pyrochlore/i.test(family) ? 'pyrochlore' : /chain/i.test(family) ? 'chain' : 'square'; }
 function lattice(kind = 'square') {
   const ns = 'http://www.w3.org/2000/svg', svg = document.createElementNS(ns, 'svg'); svg.setAttribute('viewBox', '0 0 76 66'); svg.setAttribute('aria-hidden', 'true');
   const line = (p, q) => { const l = document.createElementNS(ns, 'line'); Object.entries({x1: p[0], y1: p[1], x2: q[0], y2: q[1]}).forEach(([k, v]) => l.setAttribute(k, v)); svg.append(l); };
@@ -19,6 +19,11 @@ function lattice(kind = 'square') {
   if (kind === 'chain') {
     const points = [0, 1, 2, 3].map(i => [8 + i * 20, 33]);
     points.slice(1).forEach((p, i) => line(points[i], p)); points.forEach(dot); return svg;
+  }
+  if (kind === 'continuum') {
+    // Particles at irregular positions in a periodic box: a system in continuous space.
+    const box = document.createElementNS(ns, 'rect'); Object.entries({x: 6, y: 6, width: 64, height: 54, fill: 'none'}).forEach(([k, v]) => box.setAttribute(k, v)); svg.append(box);
+    [[18, 18], [44, 14], [60, 30], [30, 34], [14, 48], [50, 48], [38, 54]].forEach(dot); return svg;
   }
   if (kind === 'pyrochlore') {
     // A tetrahedron, the building block of the pyrochlore lattice, drawn in perspective.
@@ -99,14 +104,20 @@ function familyBlock(family, summary) {
   head.append(title, text('p', `${plural(counts.instances, 'instance')}, ${plural(counts.results, 'result')} from ${plural(counts.papers, 'paper')}`, 'family-meta'));
   const wiki = entries[0].benchmark.wiki; if (wiki) { const link = text('a', 'Benchmark page', 'text-link'); link.href = `wiki/${wiki}/`; head.append(link); }
   group.append(head);
-  // One table per boundary class (periodic, periodic × antiperiodic, cylinder, open), each with its own heading
-  // when a model has more than one, so that clusters with different boundaries are not read as one series.
-  const classes = BOUNDARY_CLASSES.filter(c => entries.some(s => boundaryClass(s.benchmark) === c));
+  // One table per section, each with its own heading when a model has more than one, so that problems of
+  // different kinds are not read as one series. Lattice instances are sectioned by boundary class (periodic,
+  // periodic × antiperiodic, cylinder, open); an instance can name its own section instead (continuum instances
+  // are sectioned by particle number, polarization and cell).
+  const sectionOf = b => b.group || boundaryClass(b);
+  const boundaryTitle = c => ({Cylinder: 'Cylinders (periodic along one direction, open along the other)', Open: 'Open boundaries', Periodic: 'Periodic boundaries', 'Periodic × antiperiodic': 'Periodic × antiperiodic boundaries'})[c] || c;
+  const smallest = c => Math.min(...entries.filter(s => sectionOf(s.benchmark) === c).map(s => s.benchmark.sites));
+  const classes = [...new Set([...BOUNDARY_CLASSES, ...entries.map(s => sectionOf(s.benchmark)).sort((x, y) => smallest(x) - smallest(y))])].filter(c => entries.some(s => sectionOf(s.benchmark) === c));
+  const per = entries[0].benchmark.per || 'site';
   classes.forEach(boundary => {
-    if (classes.length > 1) group.append(text('h4', boundary === 'Cylinder' ? 'Cylinders (periodic along one direction, open along the other)' : boundary === 'Open' ? 'Open boundaries' : boundary === 'Periodic' ? 'Periodic boundaries' : 'Periodic × antiperiodic boundaries', 'boundary-head'));
+    if (classes.length > 1) group.append(text('h4', boundaryTitle(boundary), 'boundary-head'));
     const wrap = text('div', '', 'table-scroll'); const table = text('table', '', 'ledger'); const body = document.createElement('tbody');
-    table.innerHTML = '<thead><tr><th scope="col">Instance</th><th scope="col" class="num">Sites</th><th scope="col" class="num">Results</th><th scope="col" class="num">Lowest energy / site</th></tr></thead>';
-    entries.filter(s => boundaryClass(s.benchmark) === boundary).forEach(({benchmark, count, best}) => {
+    table.innerHTML = `<thead><tr><th scope="col">Instance</th><th scope="col" class="num">${per === 'electron' ? 'Electrons' : 'Sites'}</th><th scope="col" class="num">Results</th><th scope="col" class="num">Lowest energy / ${per}</th></tr></thead>`;
+    entries.filter(s => sectionOf(s.benchmark) === boundary).forEach(({benchmark, count, best}) => {
       const tr = document.createElement('tr'); const cell = text('td', ''); const link = text('a', benchmark.instance_label || benchmark.id, 'instance-link'); link.href = '#benchmarks?system=' + encodeURIComponent(benchmark.id); cell.append(link);
       const shown = best ? withErrorBar(best.energy_per_site, best.uncertainty_per_site, best.uncertainty_type) : {text: '—'}; const energy = text('td', shown.text, 'num energy'); if (best) energy.append(text('small', `${best.method} · ${classLabel(best.method_class)} · arXiv:${best.paper.id}${shown.missing ? ' · no error bar printed' : ''}`));
       tr.append(cell, text('td', String(benchmark.sites), 'num mono'), text('td', count ? formatCount(count) : '0', 'num mono'), energy); body.append(tr);
@@ -214,7 +225,8 @@ function renderResults() {
   dl.append(text('dt', 'Hamiltonian'), h);
   const parameters = text('dd', ''); if (b.parameters_html) parameters.innerHTML = b.parameters_html; else parameters.textContent = b.sector;
   dl.append(text('dt', 'Parameters'), parameters);
-  [['Lattice size', b.lattice_size || `${b.sites} sites`], ['Boundaries', b.boundary_conditions || b.geometry], ['Sector', b.sector], ['Units', `${b.unit} per site`]].forEach(([k, v]) => dl.append(text('dt', k), text('dd', v)));
+  const per = b.per || 'site'; document.querySelectorAll('.per-unit').forEach(el => el.textContent = per);
+  [[per === 'site' ? 'Lattice size' : 'Size', b.lattice_size || `${b.sites} sites`], ['Boundaries', b.boundary_conditions || b.geometry], ['Sector', b.sector], ['Units', `${b.unit} per ${per}`]].forEach(([k, v]) => dl.append(text('dt', k), text('dd', v)));
   const conventions = document.createElement('details'); conventions.className = 'instance-conventions'; conventions.append(text('summary', 'Full geometry and conventions'), text('p', b.geometry), text('p', b.hamiltonian));
   $('system-definition').append(dl, conventions);
   const rows = currentRows(), ranks = rankByEnergy(rows); $('results').replaceChildren();

@@ -79,6 +79,10 @@ def benchmarks(root=ROOT):
         assert isinstance(row["sites"], int) and row["sites"] > 0
         assert all(row[k].strip() for k in ("id", "name", "family", "geometry", "hamiltonian", "sector", "unit"))
         assert row.get("category") in CATEGORIES, f"{row['id']}: category must be one of {', '.join(CATEGORIES)}"
+        # Optional: what the energy is normalized by on the board (default "site"), and a section name used to
+        # group the instances of a model on its page (default: the boundary class).
+        assert row.get("per", "site") in ("site", "electron"), f"{row['id']}: per must be site or electron"
+        assert isinstance(row.get("group", ""), str), f"{row['id']}: group must be a string"
     return {x["id"]: x for x in rows}
 
 
@@ -148,7 +152,8 @@ def validate_row(row, registry, source_text=None, allow_unmatched=False):
         if allow_unmatched and row["benchmark_id"] is None:
             return
         raise ValueError("Result needs an exact registered benchmark")
-    if row["normalization"] not in ("total", "per_site") or row["unit"] != benchmark["unit"]:
+    # A unit other than the instance's is allowed only with a convention_factor that converts it (e.g. Ry to Ha).
+    if row["normalization"] not in ("total", "per_site") or (row["unit"] != benchmark["unit"] and "convention_factor" not in row):
         raise ValueError("Unresolved normalization or mismatched units")
 
 
