@@ -66,12 +66,12 @@ const slugNumber = s => num(s).replace('.', 'p');
 const pretty = s => num(s).replace('-', '−');
 const sub = {1: '₁', 2: '₂'};
 export const MODELS = {
-  heisenberg: {label: 'Heisenberg', couplings: [], unit: 'J', spin: true},
-  j1j2: {label: 'J₁–J₂ Heisenberg', couplings: [['j2', 'J₂/J₁']], unit: 'J1', spin: true},
-  tfim: {label: 'Transverse-field Ising', couplings: [['h', 'h/J']], unit: 'J', spin: true, nosector: true},
-  hubbard: {label: 'Hubbard', couplings: [['u', 'U/t']], unit: 't', spin: false},
-  ttphubbard: {label: 't–t′ Hubbard', couplings: [['u', 'U/t'], ['tp', 't′/t']], unit: 't', spin: false},
-  custom: {label: 'Other (describe it)', couplings: [], unit: null, spin: null},
+  heisenberg: {label: 'Heisenberg', couplings: [], unit: 'J', spin: true, category: 'lattice-spins'},
+  j1j2: {label: 'J₁–J₂ Heisenberg', couplings: [['j2', 'J₂/J₁']], unit: 'J1', spin: true, category: 'lattice-spins'},
+  tfim: {label: 'Transverse-field Ising', couplings: [['h', 'h/J']], unit: 'J', spin: true, nosector: true, category: 'lattice-spins'},
+  hubbard: {label: 'Hubbard', couplings: [['u', 'U/t']], unit: 't', spin: false, category: 'lattice-fermions'},
+  ttphubbard: {label: 't–t′ Hubbard', couplings: [['u', 'U/t'], ['tp', 't′/t']], unit: 't', spin: false, category: 'lattice-fermions'},
+  custom: {label: 'Other (describe it)', couplings: [], unit: null, spin: null, category: null},
 };
 export const LATTICES = {square: 'square', rectangular: 'rectangular', triangular: 'triangular', honeycomb: 'honeycomb', chain: 'chain'};
 export const BOUNDARIES = {pbc: 'periodic', obc: 'open', cyl: 'cylinder'};
@@ -102,8 +102,9 @@ export function instanceFromForm(values, existingIds = []) {
   if (v('model') === 'custom') {
     const name = v('system_name'), ham = v('hamiltonian_text'), unit = v('unit');
     if (!name || !ham || !unit) throw Error('A custom model needs a system name, a plain-text Hamiltonian with its conventions, and an energy unit.');
+    if (!v('category')) throw Error('Choose the class of system (for example lattice spins or lattice fermions).');
     const slug = name.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-    entry = {id: `${slug}-${lattice}-${extents}-${bc}${v('sector_text') ? '-' + v('sector_text').toLowerCase().replace(/[^a-z0-9]+/g, '') : ''}`, name, family: name, sites: geo.sites, geometry: geo.geometry, hamiltonian: ham,
+    entry = {id: `${slug}-${lattice}-${extents}-${bc}${v('sector_text') ? '-' + v('sector_text').toLowerCase().replace(/[^a-z0-9]+/g, '') : ''}`, name, family: name, category: v('category'), sites: geo.sites, geometry: geo.geometry, hamiltonian: ham,
              sector: v('sector_text') || 'Full Hilbert space; ground-state variational calculation', unit, description: v('description') || `${name} on the ${lattice} lattice.`,
              hamiltonian_latex: v('hamiltonian_latex') || '', instance_label: `${geo.label} · ${v('parameters_text') || 'see definition'} · ${BOUNDARIES[bc]}`, lattice_size: geo.size, boundary_conditions: geo.bcLabel, parameters_latex: v('parameters_latex') || ''};
   } else if (model.spin) {
@@ -116,7 +117,7 @@ export function instanceFromForm(values, existingIds = []) {
       j1j2: {key: `-j2-${slugNumber(v('j2'))}`, ham: `H = J1 sum_<ij> S_i · S_j + J2 sum_<<ij>> S_i · S_j; spin-1/2 operators S = sigma/2; J1 = 1; J2 = ${num(v('j2'))}; no constant shift`, latex: 'H=J_1\\!\\sum_{\\langle i,j\\rangle}\\!\\mathbf{S}_i\\!\\cdot\\!\\mathbf{S}_j+J_2\\!\\sum_{\\langle\\!\\langle i,j\\rangle\\!\\rangle}\\!\\mathbf{S}_i\\!\\cdot\\!\\mathbf{S}_j', params: `J_1=1,\\qquad J_2/J_1=${num(v('j2'))},\\qquad S=\\tfrac12`, label: `J₂/J₁ = ${pretty(v('j2'))}`, desc: 'Competing nearest- and next-nearest-neighbor exchange.'},
       tfim: {key: `-h${slugNumber(v('h'))}`, ham: `H = -J sum_<ij> sigma^z_i sigma^z_j - h sum_i sigma^x_i; Pauli matrices; J = 1; h = ${num(v('h'))}; no constant shift`, latex: 'H=-J\\sum_{\\langle i,j\\rangle}\\sigma^z_i\\sigma^z_j-h\\sum_i\\sigma^x_i', params: `J=1,\\qquad h/J=${num(v('h'))}`, label: `h/J = ${pretty(v('h'))}`, desc: 'Ising coupling in a transverse field.'},
     }[v('model')];
-    entry = {id: `${v('model')}-${lattice}-${extents}-${bc}${defs.key}${sectorKey}`, name: names[v('model')], family: names[v('model')], sites: geo.sites, geometry: geo.geometry, hamiltonian: defs.ham, sector: sectorText, unit: model.unit,
+    entry = {id: `${v('model')}-${lattice}-${extents}-${bc}${defs.key}${sectorKey}`, name: names[v('model')], family: names[v('model')], category: model.category, sites: geo.sites, geometry: geo.geometry, hamiltonian: defs.ham, sector: sectorText, unit: model.unit,
              description: defs.desc, hamiltonian_latex: defs.latex, instance_label: `${geo.label} · ${defs.label} · ${BOUNDARIES[bc]}${model.nosector ? '' : ` · Sz = ${pretty(sz)}`}`, lattice_size: geo.size, boundary_conditions: geo.bcLabel, parameters_latex: defs.params};
   } else {
     const nup = Number(v('nup')), ndown = Number(v('ndown'));
@@ -129,7 +130,7 @@ export function instanceFromForm(values, existingIds = []) {
     const latex = tp === '0' ? 'H=-t\\!\\sum_{\\langle i,j\\rangle,\\sigma}\\!\\left(c^\\dagger_{i\\sigma}c_{j\\sigma}+\\mathrm{h.c.}\\right)+U\\sum_i n_{i\\uparrow}n_{i\\downarrow}'
                              : "H=-t\\!\\sum_{\\langle i,j\\rangle,\\sigma}\\!\\left(c^\\dagger_{i\\sigma}c_{j\\sigma}+\\mathrm{h.c.}\\right)-t'\\!\\sum_{\\langle\\!\\langle i,j\\rangle\\!\\rangle,\\sigma}\\!\\left(c^\\dagger_{i\\sigma}c_{j\\sigma}+\\mathrm{h.c.}\\right)+U\\sum_i n_{i\\uparrow}n_{i\\downarrow}";
     const name = tp === '0' ? 'Hubbard' : 't–t′ Hubbard';
-    entry = {id: `hubbard-${lattice}-${extents}-${bc}-u${slugNumber(u)}${tp === '0' ? '' : `-tp${slugNumber(tp)}`}${sectorKey}`, name, family: name, sites: geo.sites, geometry: `${geo.geometry.replace('; each nearest-neighbor bond counted once', '')}; ${hopping}`, hamiltonian: ham,
+    entry = {id: `hubbard-${lattice}-${extents}-${bc}-u${slugNumber(u)}${tp === '0' ? '' : `-tp${slugNumber(tp)}`}${sectorKey}`, name, family: name, category: model.category, sites: geo.sites, geometry: `${geo.geometry.replace('; each nearest-neighbor bond counted once', '')}; ${hopping}`, hamiltonian: ham,
              sector: `Nup = ${nup}; Ndown = ${ndown}; ${n} electrons; ground-state variational calculation`, unit: 't', description: tp === '0' ? 'Interacting fermions hopping on a lattice.' : 'Interacting fermions with nearest- and next-nearest-neighbor hopping.',
              hamiltonian_latex: latex, instance_label: `${geo.label} · U/t = ${pretty(u)}${tp === '0' ? '' : ` · t′/t = ${pretty(tp)}`} · ${BOUNDARIES[bc]} · ${nup === ndown ? `N↑ = N↓ = ${nup}` : `N↑ = ${nup} · N↓ = ${ndown}`}`, lattice_size: geo.size, boundary_conditions: geo.bcLabel,
              parameters_latex: tp === '0' ? `t=1,\\qquad U/t=${u},\\qquad t^{\\prime}=0` : `t=1,\\qquad t'/t=${tp},\\qquad U/t=${u}`};
@@ -144,6 +145,7 @@ export function makeProposal(values) {
   const v = name => String(values[name] ?? '').trim();
   if (!v('system_description') || !v('unit')) throw Error('Describe the system completely (Hamiltonian, convention, cluster, boundaries, couplings, sector) and give the energy unit.');
   const record = makeSubmission(values, {id: v('benchmark_id') || '__proposal__', geometry: '', sector: '', unit: v('unit')});
-  record.results[0].benchmark_id = null; record.results[0].system_description = v('system_description');
+  const category = v('category_label') || v('category');
+  record.results[0].benchmark_id = null; record.results[0].system_description = (category ? `${category}. ` : '') + v('system_description');
   return record;
 }

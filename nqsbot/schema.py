@@ -58,12 +58,22 @@ RECORD = obj({
 })
 
 
+# Broad classes of systems on Ketboard, in display order. A class appears once it has an instance.
+CATEGORIES = {
+    "lattice-spins": "Lattice spins",
+    "lattice-fermions": "Lattice fermions",
+    "lattice-bosons": "Lattice bosons",
+    "continuous-space": "Continuous space",
+}
+
+
 def benchmarks(root=ROOT):
     rows = json.loads((root / "data/benchmarks.json").read_text())
     assert len({x["id"] for x in rows}) == len(rows), "Duplicate benchmark IDs"
     for row in rows:
         assert isinstance(row["sites"], int) and row["sites"] > 0
         assert all(row[k].strip() for k in ("id", "name", "family", "geometry", "hamiltonian", "sector", "unit"))
+        assert row.get("category") in CATEGORIES, f"{row['id']}: category must be one of {', '.join(CATEGORIES)}"
     return {x["id"]: x for x in rows}
 
 

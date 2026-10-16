@@ -40,7 +40,17 @@ def describe(paths, before, after):
         if added or edited or removed:
             lines.append("**Instances**")
             lines += [f"- new: {link(bid)}" for bid in added]
-            lines += [f"- definition changed: {link(bid)}" for bid in edited]
+            # Group instances by the fields that changed, so a field added to every instance is one line.
+            groups = {}
+            for bid in edited:
+                fields = sorted(k for k in set(old[bid]) | set(new[bid]) if old[bid].get(k) != new[bid].get(k))
+                groups.setdefault(tuple(fields), []).append(bid)
+            for fields, bids in groups.items():
+                names = ", ".join(f"`{f}`" for f in fields)
+                if len(bids) > 3:
+                    lines.append(f"- {names} changed on {len(bids)} instances")
+                else:
+                    lines += [f"- {names} changed: {link(bid)}" for bid in bids]
             lines += [f"- removed: `{bid}`" for bid in removed]
             lines.append("")
     entries = {}
