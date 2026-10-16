@@ -9,19 +9,33 @@ const formatCount = n => n.toLocaleString('en-US');
 const plural = (n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;
 const shortAuthors = authors => { const list = authors.split(/,\s*/); return list.length > 3 ? `${list.slice(0, 3).join(', ')} et al.` : authors; };
 
-// Small lattice sketch for the ledger: a square grid, or a triangular lattice with rows offset by half a spacing
-// and bonds along the three primitive directions (1,0), (0,1) and (-1,1).
-function lattice(triangular = false) {
+// Small lattice sketch next to a model: a square grid, a triangular lattice (rows offset by half a spacing,
+// bonds along (1,0), (0,1) and (-1,1)), a chain, or a kagome patch of corner-sharing triangles.
+function latticeKind(family) { return /triangular/i.test(family) ? 'triangular' : /kagome/i.test(family) ? 'kagome' : /chain/i.test(family) ? 'chain' : 'square'; }
+function lattice(kind = 'square') {
   const ns = 'http://www.w3.org/2000/svg', svg = document.createElementNS(ns, 'svg'); svg.setAttribute('viewBox', '0 0 76 66'); svg.setAttribute('aria-hidden', 'true');
+  const line = (p, q) => { const l = document.createElementNS(ns, 'line'); Object.entries({x1: p[0], y1: p[1], x2: q[0], y2: q[1]}).forEach(([k, v]) => l.setAttribute(k, v)); svg.append(l); };
+  const dot = ([cx, cy]) => { const c = document.createElementNS(ns, 'circle'); Object.entries({cx, cy, r: 3}).forEach(([k, v]) => c.setAttribute(k, v)); svg.append(c); };
+  if (kind === 'chain') {
+    const points = [0, 1, 2, 3].map(i => [8 + i * 20, 33]);
+    points.slice(1).forEach((p, i) => line(points[i], p)); points.forEach(dot); return svg;
+  }
+  if (kind === 'kagome') {
+    // A row of the kagome lattice: a straight line of bonds with corner-sharing triangles alternately below and above.
+    const a = 20, h = a * Math.sqrt(3) / 2, row = [0, 1, 2, 3].map(i => [8 + i * a, 33]);
+    row.slice(1).forEach((p, i) => line(row[i], p));
+    [[0, 1, h], [1, 2, -h], [2, 3, h]].forEach(([i, j, dy]) => { const apex = [(row[i][0] + row[j][0]) / 2, 33 + dy]; line(row[i], apex); line(row[j], apex); dot(apex); });
+    row.forEach(dot); return svg;
+  }
+  const triangular = kind === 'triangular';
   const a = 21, rows = 3, cols = 3, dy = triangular ? a * Math.sqrt(3) / 2 : a;
   const at = (i, j) => [10 + i * a + (triangular ? j * a / 2 : 0), 12 + j * dy];
-  const line = (p, q) => { const l = document.createElementNS(ns, 'line'); Object.entries({x1: p[0], y1: p[1], x2: q[0], y2: q[1]}).forEach(([k, v]) => l.setAttribute(k, v)); svg.append(l); };
   for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
     if (i + 1 < cols) line(at(i, j), at(i + 1, j));
     if (j + 1 < rows) line(at(i, j), at(i, j + 1));
     if (triangular && j + 1 < rows && i > 0) line(at(i, j), at(i - 1, j + 1));
   }
-  for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) { const [cx, cy] = at(i, j); const c = document.createElementNS(ns, 'circle'); Object.entries({cx, cy, r: 3}).forEach(([k, v]) => c.setAttribute(k, v)); svg.append(c); }
+  for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) dot(at(i, j));
   return svg;
 }
 function route() {
@@ -76,7 +90,7 @@ function categoryHead(category, title, meta) {
 function familyBlock(family, summary) {
   const entries = summary.filter(s => s.benchmark.family === family), counts = boardCounts(entries.map(s => s.benchmark));
   const group = text('section', '', 'board-family');
-  const head = text('div', '', 'family-head'); const title = text('h3', ''); title.append(lattice(family.includes('Triangular')), text('span', family));
+  const head = text('div', '', 'family-head'); const title = text('h3', ''); title.append(lattice(latticeKind(family)), text('span', family));
   head.append(title, text('p', `${plural(counts.instances, 'instance')}, ${plural(counts.results, 'result')} from ${plural(counts.papers, 'paper')}`, 'family-meta'));
   const wiki = entries[0].benchmark.wiki; if (wiki) { const link = text('a', 'Benchmark page', 'text-link'); link.href = `wiki/${wiki}/`; head.append(link); }
   const wrap = text('div', '', 'table-scroll'); const table = text('table', '', 'ledger'); const body = document.createElement('tbody');
@@ -102,7 +116,7 @@ function modelIndex(container, onlyCategory) {
       table.innerHTML = '<thead><tr><th scope="col">Model</th><th scope="col" class="num">Instances</th><th scope="col" class="num">Results</th><th scope="col" class="num">Papers</th><th scope="col">Latest paper</th></tr></thead>';
       families.forEach(family => {
         const counts = boardCounts(inCategory.filter(b => b.family === family));
-        const tr = document.createElement('tr'); const cell = text('td', ''); const name = text('a', '', 'model-link'); name.href = '#benchmarks?family=' + encodeURIComponent(family); name.append(lattice(family.includes('Triangular')), text('span', family)); cell.append(name);
+        const tr = document.createElement('tr'); const cell = text('td', ''); const name = text('a', '', 'model-link'); name.href = '#benchmarks?family=' + encodeURIComponent(family); name.append(lattice(latticeKind(family)), text('span', family)); cell.append(name);
         const latest = text('td', counts.latest ? counts.latest.published.slice(0, 7) : '—', 'mono latest'); if (counts.latest) latest.append(text('small', `arXiv:${counts.latest.id}`));
         tr.append(cell, text('td', String(counts.instances), 'num mono'), text('td', formatCount(counts.results), 'num mono'), text('td', String(counts.papers), 'num mono'), latest); body.append(tr);
       });

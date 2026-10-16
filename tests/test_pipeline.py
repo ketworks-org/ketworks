@@ -1,5 +1,6 @@
 """Synthetic records test mechanics only; none are real scientific results."""
 import copy
+from decimal import Decimal
 import json
 import os
 from pathlib import Path
@@ -148,6 +149,18 @@ class EligibilityTests(unittest.TestCase):
         changed = json.dumps([dict(b, category="lattice-bosons") for b in REGISTRY.values()])
         self.assertIn(f"- `category` changed on {len(REGISTRY)} instances", describe(["data/benchmarks.json"], {"data/benchmarks.json": registry}, {"data/benchmarks.json": changed}))
         self.assertIn("[about]({PREVIEW}/about/)", describe(["pages/about.md", "brand/logo.png"], {}, {"pages/about.md": "# About"}))
+
+    def test_convention_factor_converts_and_is_explained(self):
+        sites = REGISTRY[BENCHMARK]["sites"]
+        row = dict(ROW, energy="-200.000", energy_token="-200.000", uncertainty="0.080", variance="16.0", convention_factor="0.25", notes="Source uses the Pauli convention")
+        schema.validate_row(row, REGISTRY)
+        energy, error = schema.per_site(row, REGISTRY)
+        self.assertEqual(Decimal(energy), Decimal("-50.000") / sites)
+        self.assertEqual(Decimal(error), Decimal("0.020") / sites)
+        self.assertEqual(Decimal(schema.variance_per_site(row, REGISTRY)), Decimal("1.00") / sites)
+        with self.assertRaises(ValueError): schema.validate_row(dict(row, notes="no reason given"), REGISTRY)
+        with self.assertRaises(ValueError): schema.validate_row(dict(row, convention_factor="1"), REGISTRY)
+        with self.assertRaises(Exception): schema.validate_record(dict(record(row), results=[dict(row, unknown="x")]), REGISTRY)
 
     def test_every_instance_has_a_known_category(self):
         with tempfile.TemporaryDirectory() as tmp:

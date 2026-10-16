@@ -49,11 +49,16 @@ ROW = obj({
     "notes": string(),
 })
 EXTRACTION = obj({"results": {"type": "array", "items": ROW}, "issues": {"type": "array", "items": string()}})
+# A stored entry may also carry convention_factor, set by a curator when the source uses another operator
+# convention than the instance, for example Pauli matrices for a spin-1/2 Heisenberg instance defined with
+# S = sigma/2 (factor 0.25). The printed energy, error bar and variance stay as printed; Ketboard shows the
+# energy and error bar multiplied by the factor and the variance by its square. It is not shown on the site.
+STORED_ROW = {**ROW, "properties": {**ROW["properties"], "convention_factor": string()}}
 PAPER = obj({k: string() for k in ("id", "title", "authors", "published", "updated")})
 RECORD = obj({
     "schema_version": {"const": 1}, "paper": PAPER,
     "source_url": string(), "source_sha256": string(nullable=True),
-    "extraction_model": string(), "results": {"type": "array", "items": ROW},
+    "extraction_model": string(), "results": {"type": "array", "items": STORED_ROW},
     "issues": {"type": "array", "items": string()},
 })
 
@@ -101,7 +106,13 @@ def eligible(row):
 
 
 def validate_row(row, registry, source_text=None, allow_unmatched=False):
-    validate(row, ROW)
+    validate(row, STORED_ROW)
+    if "convention_factor" in row:
+        factor = decimal(row["convention_factor"])
+        if factor <= 0 or factor == 1:
+            raise ValueError("convention_factor must be positive and different from 1")
+        if "convention" not in row["notes"].lower():
+            raise ValueError("Explain the convention_factor in the notes (which convention the source uses)")
     if not eligible(row):
         raise ValueError("Only original NQS variational estimates are eligible")
     for field in ("method", "variant", "system_description", "source_location", "eligibility_evidence", "energy_token"):
@@ -189,15 +200,24 @@ def variance_per_site(row, registry):
     if row["variance"] is None:
         return None
     divisor = registry[row["benchmark_id"]]["sites"] if row["normalization"] == "total" else 1
+    factor = convention_factor(row)
     value = decimal(row["variance"])
-    return plain(value if divisor == 1 else round_significant(value / divisor, significant_digits(row["variance"])))
+    if divisor == 1 and factor == 1:
+        return plain(value)
+    return plain(round_significant(value * factor * factor / divisor, significant_digits(row["variance"])))
+
+
+def convention_factor(row):
+    return decimal(row["convention_factor"]) if row.get("convention_factor") else Decimal(1)
 
 
 def per_site(row, registry):
     """Energy and error bar per site, as printed for per-site rows. A total energy is divided by the
-    number of sites and rounded back to the printed precision: the error bar keeps its printed
-    significant digits (at most two) and the energy is cut at the error bar's last digit."""
+    number of sites (and a converted one multiplied by its convention_factor) and rounded back to the
+    printed precision: the error bar keeps its printed significant digits (at most two) and the energy
+    is cut at the error bar's last digit."""
     divisor = registry[row["benchmark_id"]]["sites"] if row["normalization"] == "total" else 1
+    divisor = divisor / convention_factor(row)
     energy = decimal(row["energy"])
     error = decimal(row["uncertainty"]) if row["uncertainty"] is not None else None
     if divisor == 1:

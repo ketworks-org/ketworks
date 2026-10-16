@@ -42,7 +42,7 @@ A benchmark may name a wiki page in `wiki` (a slug from `wiki/index.json`); Ketb
 
 **A result whose instance you cannot define.** Choose *An instance I cannot define* and describe the system completely in words. The record goes to `data/proposals/<arxiv-id>.json` with `benchmark_id: null`; it validates but is never published. A curator adds the definition and moves the row to `data/results/`, exactly as for unmatched results found by the bot.
 
-Only original NQS variational results are accepted. Extrapolated energies, projected estimates, non-NQS methods, and numbers quoted from earlier papers are excluded. See the wiki's benchmark-conventions page for details.
+Only original NQS variational results are accepted. A data release published with a paper, such as the Varbench data of arXiv:2302.04919, counts as that paper's own results; the entry names the file and the commit. If the source uses another operator convention than the instance (Pauli matrices instead of $S=\sigma/2$, for instance), keep the printed numbers and add `convention_factor` to the entry, with the reason in `notes`; the board shows the converted values. Extrapolated energies, projected estimates, non-NQS methods, and numbers quoted from earlier papers are excluded. See the wiki's benchmark-conventions page for details.
 
 ## Local checks
 
