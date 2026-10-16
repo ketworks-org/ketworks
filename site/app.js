@@ -11,7 +11,7 @@ const shortAuthors = authors => { const list = authors.split(/,\s*/); return lis
 
 // Small lattice sketch next to a model: a square grid, a triangular lattice (rows offset by half a spacing,
 // bonds along (1,0), (0,1) and (-1,1)), a chain, or a kagome patch of corner-sharing triangles.
-function latticeKind(family) { return /triangular/i.test(family) ? 'triangular' : /kagome/i.test(family) ? 'kagome' : /chain/i.test(family) ? 'chain' : 'square'; }
+function latticeKind(family) { return /triangular/i.test(family) ? 'triangular' : /kagome/i.test(family) ? 'kagome' : /pyrochlore/i.test(family) ? 'pyrochlore' : /chain/i.test(family) ? 'chain' : 'square'; }
 function lattice(kind = 'square') {
   const ns = 'http://www.w3.org/2000/svg', svg = document.createElementNS(ns, 'svg'); svg.setAttribute('viewBox', '0 0 76 66'); svg.setAttribute('aria-hidden', 'true');
   const line = (p, q) => { const l = document.createElementNS(ns, 'line'); Object.entries({x1: p[0], y1: p[1], x2: q[0], y2: q[1]}).forEach(([k, v]) => l.setAttribute(k, v)); svg.append(l); };
@@ -19,6 +19,11 @@ function lattice(kind = 'square') {
   if (kind === 'chain') {
     const points = [0, 1, 2, 3].map(i => [8 + i * 20, 33]);
     points.slice(1).forEach((p, i) => line(points[i], p)); points.forEach(dot); return svg;
+  }
+  if (kind === 'pyrochlore') {
+    // A tetrahedron, the building block of the pyrochlore lattice, drawn in perspective.
+    const p = [[12, 52], [60, 54], [40, 40], [34, 10]];
+    [[0, 1], [0, 2], [1, 2], [0, 3], [1, 3], [2, 3]].forEach(([i, j]) => line(p[i], p[j])); p.forEach(dot); return svg;
   }
   if (kind === 'kagome') {
     // A row of the kagome lattice: a straight line of bonds with corner-sharing triangles alternately below and above.

@@ -207,6 +207,28 @@
       "eligibility_evidence": "Energy of a neural-network state optimized and evaluated with variational Monte Carlo (NetKet) by the Varbench authors and published with arXiv:2302.04919; columns Energy, Sigma (statistical error) and Energy Variance. Script: https://github.com/varbench/methods/blob/main/scripts/TFIsing/chain_32_P_1/vmc_rbm.sh",
       "parameter_count": null,
       "notes": "Varbench writes H = J sum sigma^z sigma^z + Gamma sum sigma^x; the NetKet script uses IsingJax with J = -1, which is this instance's Hamiltonian. On the even ring the two are related by flipping every other spin and a global rotation, with the same spectrum, so no factor is needed."
+    },
+    {
+      "benchmark_id": "heisenberg-pyrochlore-2x2x2-pbc-sz0",
+      "system_description": "Varbench Heisenberg/pyrochlore-2x2x2_32_P: spin-1/2 Heisenberg model, Pauli convention, J = 1",
+      "method": "RBM with symmetry projections",
+      "variant": "RBM with all symmetry projectors applied at the end",
+      "method_class": "rbm",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-65.949",
+      "energy_token": "-65.949",
+      "normalization": "total",
+      "unit": "J",
+      "uncertainty": "0.003",
+      "uncertainty_type": "standard_error",
+      "variance": "6.08",
+      "source_location": "Varbench data release, file Heisenberg/pyrochlore-2x2x2_32_P.md, row \"RBM with symmetry projections\" (commit 390a21e)",
+      "eligibility_evidence": "Energy of a symmetry-projected RBM neural-network state evaluated by VMC, published in the Varbench data with columns Energy, Sigma (statistical error) and Energy Variance. Varbench credits arXiv:2101.08787, whose appendix (Appendix on NQS) says an RBM with symmetry projectors was used to improve the CNN results on the 4 x 2^3 cluster.",
+      "parameter_count": null,
+      "convention_factor": "0.25",
+      "notes": "Varbench defines the Heisenberg model with Pauli matrices, H = J sum sigma_i · sigma_j; this instance uses S = sigma/2, so the printed energy and error bar are multiplied by convention_factor 0.25 and the variance by 0.0625. This number is not printed in arXiv:2101.08787, whose table gives the CNN value -0.5128(1) per site for this cluster; it is recorded from the Varbench data, where it was first published."
     }
   ],
   "issues": [

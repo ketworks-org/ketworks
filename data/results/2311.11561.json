@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2311.11561v1",
+    "title": "Ground state of the $S$=1/2 pyrochlore Heisenberg antiferromagnet: A quantum spin liquid emergent from dimensional reduction",
+    "authors": "Rico Pohle, Youhei Yamaji, Masatoshi Imada",
+    "published": "2023-11-20T06:52:23Z",
+    "updated": "2023-11-20T06:52:23Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2311.11561v1",
+  "source_sha256": null,
+  "extraction_model": "human",
+  "results": [
+    {
+      "benchmark_id": "heisenberg-pyrochlore-cubic-2x2x2-pbc-sz0",
+      "system_description": "Spin-1/2 Heisenberg antiferromagnet on the pyrochlore lattice, Eq. (1), H = J sum S_i · S_j with spin operators, J = 1; L = 2 cubic cluster with N_s = 128 sites, periodic boundaries; spin-parity even singlet sector.",
+      "method": "mVMC-RBM",
+      "variant": "pair-product wave function with RBM correlator, spin-parity projection",
+      "method_class": "hybrid",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.489089",
+      "energy_token": "−0.489089(2)",
+      "normalization": "per_site",
+      "unit": "J",
+      "uncertainty": "0.000002",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Supplemental Material, Table SI, row mVMC-RBM, column psi+ (random)",
+      "eligibility_evidence": "Supplemental Material, Table SI, column psi+ (random): E/N_s of the optimized pair-product wave function multiplied by a restricted Boltzmann machine correlator (mVMC-RBM), evaluated by VMC, with spin-parity projection. The text calls these strictly variational energies; the variance-extrapolated E_0 in the last row is not used.",
+      "parameter_count": null,
+      "notes": "Energy per site in spin units, as printed. The second line of the table is the relative variance (<E^2> - <E>^2)/<E>^2 (Eq. S26), not Var(H), so no variance is recorded: sigma^2 = 0.000407(19). The error bar is from 20 to 40 statistically independent measurements; its exact meaning is not stated."
+    },
+    {
+      "benchmark_id": "heisenberg-pyrochlore-cubic-2x2x2-pbc-sz0",
+      "system_description": "Spin-1/2 Heisenberg antiferromagnet on the pyrochlore lattice, Eq. (1), H = J sum S_i · S_j with spin operators, J = 1; L = 2 cubic cluster with N_s = 128 sites, periodic boundaries; spin-parity even singlet sector.",
+      "method": "mVMC-RBM/Lanczos",
+      "variant": "pair-product wave function with RBM correlator, first Lanczos step, spin-parity projection",
+      "method_class": "hybrid",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.49229",
+      "energy_token": "−0.49229(7)",
+      "normalization": "per_site",
+      "unit": "J",
+      "uncertainty": "0.00007",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Supplemental Material, Table SI, row mVMC-RBM/Lanczos, column psi+ (random); main text, best variational energy",
+      "eligibility_evidence": "Supplemental Material, Table SI, column psi+ (random): E/N_s of the optimized pair-product wave function multiplied by a restricted Boltzmann machine correlator (mVMC-RBM), improved by one Lanczos step (1 + alpha H) and evaluated by VMC, with spin-parity projection. The text calls these strictly variational energies; the variance-extrapolated E_0 in the last row is not used.",
+      "parameter_count": null,
+      "notes": "Energy per site in spin units, as printed. The second line of the table is the relative variance (<E^2> - <E>^2)/<E>^2 (Eq. S26), not Var(H), so no variance is recorded: sigma^2 = 0.000169(12). The error bar is from 20 to 40 statistically independent measurements; its exact meaning is not stated. Varbench lists -252.007(21) for this cluster and method (-0.492201 per site in spin units), which is not printed in the paper; the paper's value is used."
+    }
+  ],
+  "issues": [
+    "The mVMC and mVMC/Lanczos rows (pair-product without the RBM) are not neural-network states and are not entries. Tables SII and SIII (432 and 1024 sites) have no RBM rows."
+  ]
+}
