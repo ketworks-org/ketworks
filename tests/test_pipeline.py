@@ -145,6 +145,7 @@ class EligibilityTests(unittest.TestCase):
         self.assertIn("1 added, 1 changed (arXiv:2601.00001v1)", text)
         self.assertIn("[new-page]({PREVIEW}/wiki/new-page/)", text)
         self.assertIn("No pages, instances or entries change", describe(["README.md"], {}, {}))
+        self.assertIn("[about]({PREVIEW}/about/)", describe(["pages/about.md", "brand/logo.png"], {}, {"pages/about.md": "# About"}))
 
     def test_preview_build_is_not_indexed_and_carries_a_banner(self):
         with tempfile.TemporaryDirectory() as tmp:
