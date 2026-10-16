@@ -140,6 +140,26 @@ export function instanceFromForm(values, existingIds = []) {
   return entry;
 }
 
+// The form values that rebuild an existing instance from its template, so that a new instance of the same model
+// starts from it and only what differs is changed. Null when no template rebuilds it exactly (an instance written
+// by a curator, such as the kagome or t–V instances); those are proposed for a curator instead.
+export function newInstanceValues(b) {
+  const unslug = s => s.replace('p', '.');
+  const m = /^(heisenberg|j1j2|tfim|hubbard)-(square|rectangular|triangular|honeycomb|chain)-(\d+)(?:x(\d+))?-(pbc|obc|cyl)(.*)$/.exec(b.id);
+  if (!m) return null;
+  const [, model, lattice, lx, ly, boundaries, rest] = m;
+  const values = {category: b.category, instance_mode: 'new', lattice, lx, ly: ly || '', boundaries};
+  let p;
+  if (model === 'heisenberg' && (p = /^-sz(-?[\dp]+)$/.exec(rest))) Object.assign(values, {model, sz: unslug(p[1])});
+  else if (model === 'j1j2' && (p = /^-j2-(-?[\dp]+)-sz(-?[\dp]+)$/.exec(rest))) Object.assign(values, {model, j2: unslug(p[1]), sz: unslug(p[2])});
+  else if (model === 'tfim' && (p = /^-h(-?[\dp]+)$/.exec(rest))) Object.assign(values, {model, h: unslug(p[1])});
+  else if (model === 'hubbard' && (p = /^-u([\dp]+)(?:-tp(-?[\dp]+))?-(?:n(\d+)-sz0|nup(\d+)-ndown(\d+))$/.exec(rest))) {
+    const [, u, tp, n, nup, ndown] = p;
+    Object.assign(values, {model: tp ? 'ttphubbard' : 'hubbard', u: unslug(u), ...(tp ? {tp: unslug(tp)} : {}), nup: n ? String(n / 2) : nup, ndown: n ? String(n / 2) : ndown});
+  } else return null;
+  try { const rebuilt = instanceFromForm(values); return rebuilt.id === b.id && rebuilt.family === b.family ? values : null; } catch { return null; }
+}
+
 // A result whose instance is not defined yet: stored under data/proposals/, never published,
 // until a curator adds the definition and moves the row to data/results/.
 export function makeProposal(values) {

@@ -1,0 +1,63 @@
+{
+ "id": "mol-h2-r-1p4-bohr-s0",
+ "name": "Atoms and molecules",
+ "family": "Atoms and molecules",
+ "category": "continuous-space",
+ "sites": 2,
+ "per": "system",
+ "group": "H2",
+ "geometry": "3D electrons, N = 2, in free space; nuclei (bohr): H (0, 0, 0); H (0, 0, 1.4)",
+ "hamiltonian": "H = sum_i (-1/2 nabla_i^2 - sum_A Z_A/|r_i - R_A|) + sum_{i<j} 1/|r_i - r_j| + sum_{A<B} Z_A Z_B/|R_A - R_B|; nuclei fixed (Born-Oppenheimer), all electrons, nonrelativistic; Hartree atomic units",
+ "sector": "N↑ = 1, N↓ = 1 (unpolarized); ground-state variational calculation",
+ "unit": "Ha",
+ "description": "H2, R = 1.4 bohr.",
+ "hamiltonian_latex": "H=\\sum_i\\Big(-\\tfrac12\\nabla_i^2-\\sum_A\\frac{Z_A}{|\\mathbf r_i-\\mathbf R_A|}\\Big)+\\sum_{i<j}\\frac{1}{|\\mathbf r_i-\\mathbf r_j|}+\\sum_{A<B}\\frac{Z_AZ_B}{|\\mathbf R_A-\\mathbf R_B|}",
+ "instance_label": "H2 · R = 1.4 bohr · charge 0 · N↑ = 1, N↓ = 1",
+ "lattice_size": "2 electrons, 2 nuclei (H2)",
+ "boundary_conditions": "Free space (open)",
+ "parameters_latex": "N_\\uparrow=1,\\qquad N_\\downarrow=1",
+ "system": {
+  "dimension": 3,
+  "particles": [
+   {
+    "name": "electrons",
+    "up": 1,
+    "down": 1
+   }
+  ],
+  "space": {
+   "type": "free"
+  },
+  "external": {
+   "type": "fixed nuclei",
+   "coordinate_units": "bohr",
+   "geometry": "R = 1.4 bohr",
+   "nuclei": [
+    {
+     "Z": 1,
+     "position": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "Z": 1,
+     "position": [
+      0,
+      0,
+      1.4
+     ]
+    }
+   ],
+   "charge": 0
+  },
+  "interaction": {
+   "type": "coulomb"
+  },
+  "unit": "Ha",
+  "per": "system",
+  "preset": "molecule",
+  "name": "H2"
+ }
+}

@@ -21,6 +21,8 @@ For the homogeneous electron gas an instance fixes the dimension, the number of 
 
 All instances so far are at the $\Gamma$ point. A twist-averaged energy is a different instance from the $\Gamma$-point one at the same $N$ and $r_s$, and a single arbitrary twist is not accepted. Energies with an analytic finite-size correction added, extrapolations to $N\to\infty$, and correlation energies relative to a Hartree–Fock energy that the paper does not print are not entries.
 
+Other systems in continuous space are described the same way, in first quantization: the particles and their spin populations, the space (a periodic cell or free space), the external potential, the interaction, and the energy unit. For a quantum dot the instance fixes the trap frequency $\omega$ and the electron numbers $N_\uparrow$, $N_\downarrow$. For an atom or a molecule it fixes the nuclei (charges and positions, in bohr or ångström), the electron numbers and hence the charge and spin, and the geometry; two bond lengths are two instances. Nuclei are fixed point charges (Born–Oppenheimer, no relativistic terms), and the energy is the total electronic energy including the nuclear repulsion, in Hartree, not divided by the number of electrons. Results in a basis set (second quantization) are a different problem from the first-quantized one and are not compared with it.
+
 ## What is reported
 
 - The variational energy $E_\theta=\langle\Psi_\theta|H|\Psi_\theta\rangle/\langle\Psi_\theta|\Psi_\theta\rangle$, evaluated on the final fixed state with its own Monte Carlo run. Not the last value of the optimization trace.

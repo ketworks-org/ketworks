@@ -1588,8 +1588,8 @@
     "sites": 7,
     "per": "electron",
     "group": "N↑ = 7, N↓ = 0 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 7 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 1, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 7, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 1, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 7, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -1597,7 +1597,32 @@
     "instance_label": "N↑ = 7, N↓ = 0 · rₛ = 1 · simple cubic · Γ",
     "lattice_size": "N = 7 electrons (N↑ = 7, N↓ = 0) · rₛ = 1",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=0,\\qquad r_s=1"
+    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=0,\\qquad r_s=1",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 7,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "1",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n7-pol-rs2",
@@ -1607,8 +1632,8 @@
     "sites": 7,
     "per": "electron",
     "group": "N↑ = 7, N↓ = 0 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 7 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 2, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 7, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 2, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 7, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -1616,7 +1641,32 @@
     "instance_label": "N↑ = 7, N↓ = 0 · rₛ = 2 · simple cubic · Γ",
     "lattice_size": "N = 7 electrons (N↑ = 7, N↓ = 0) · rₛ = 2",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=0,\\qquad r_s=2"
+    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=0,\\qquad r_s=2",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 7,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "2",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n7-pol-rs5",
@@ -1626,8 +1676,8 @@
     "sites": 7,
     "per": "electron",
     "group": "N↑ = 7, N↓ = 0 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 7 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 5, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 7, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 5, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 7, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -1635,7 +1685,32 @@
     "instance_label": "N↑ = 7, N↓ = 0 · rₛ = 5 · simple cubic · Γ",
     "lattice_size": "N = 7 electrons (N↑ = 7, N↓ = 0) · rₛ = 5",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=0,\\qquad r_s=5"
+    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=0,\\qquad r_s=5",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 7,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "5",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n7-pol-rs10",
@@ -1645,8 +1720,8 @@
     "sites": 7,
     "per": "electron",
     "group": "N↑ = 7, N↓ = 0 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 7 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 10, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 7, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 10, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 7, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -1654,7 +1729,32 @@
     "instance_label": "N↑ = 7, N↓ = 0 · rₛ = 10 · simple cubic · Γ",
     "lattice_size": "N = 7 electrons (N↑ = 7, N↓ = 0) · rₛ = 10",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=0,\\qquad r_s=10"
+    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=0,\\qquad r_s=10",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 7,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "10",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n7-pol-rs20",
@@ -1664,8 +1764,8 @@
     "sites": 7,
     "per": "electron",
     "group": "N↑ = 7, N↓ = 0 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 7 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 20, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 7, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 20, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 7, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -1673,7 +1773,32 @@
     "instance_label": "N↑ = 7, N↓ = 0 · rₛ = 20 · simple cubic · Γ",
     "lattice_size": "N = 7 electrons (N↑ = 7, N↓ = 0) · rₛ = 20",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=0,\\qquad r_s=20"
+    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=0,\\qquad r_s=20",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 7,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "20",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n7-pol-rs50",
@@ -1683,8 +1808,8 @@
     "sites": 7,
     "per": "electron",
     "group": "N↑ = 7, N↓ = 0 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 7 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 50, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 7, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 50, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 7, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -1692,7 +1817,32 @@
     "instance_label": "N↑ = 7, N↓ = 0 · rₛ = 50 · simple cubic · Γ",
     "lattice_size": "N = 7 electrons (N↑ = 7, N↓ = 0) · rₛ = 50",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=0,\\qquad r_s=50"
+    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=0,\\qquad r_s=50",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 7,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "50",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n7-pol-rs100",
@@ -1702,8 +1852,8 @@
     "sites": 7,
     "per": "electron",
     "group": "N↑ = 7, N↓ = 0 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 7 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 100, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 7, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 100, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 7, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -1711,7 +1861,32 @@
     "instance_label": "N↑ = 7, N↓ = 0 · rₛ = 100 · simple cubic · Γ",
     "lattice_size": "N = 7 electrons (N↑ = 7, N↓ = 0) · rₛ = 100",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=0,\\qquad r_s=100"
+    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=0,\\qquad r_s=100",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 7,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "100",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n14-unpol-rs1",
@@ -1721,8 +1896,8 @@
     "sites": 14,
     "per": "electron",
     "group": "N↑ = 7, N↓ = 7 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 14 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 1, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 14, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 1, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 7, N↓ = 7 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -1730,7 +1905,32 @@
     "instance_label": "N↑ = 7, N↓ = 7 · rₛ = 1 · simple cubic · Γ",
     "lattice_size": "N = 14 electrons (N↑ = 7, N↓ = 7) · rₛ = 1",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=7,\\qquad r_s=1"
+    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=7,\\qquad r_s=1",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 7,
+          "down": 7
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "1",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n14-unpol-rs2",
@@ -1740,8 +1940,8 @@
     "sites": 14,
     "per": "electron",
     "group": "N↑ = 7, N↓ = 7 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 14 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 2, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 14, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 2, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 7, N↓ = 7 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -1749,7 +1949,32 @@
     "instance_label": "N↑ = 7, N↓ = 7 · rₛ = 2 · simple cubic · Γ",
     "lattice_size": "N = 14 electrons (N↑ = 7, N↓ = 7) · rₛ = 2",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=7,\\qquad r_s=2"
+    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=7,\\qquad r_s=2",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 7,
+          "down": 7
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "2",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n14-unpol-rs5",
@@ -1759,8 +1984,8 @@
     "sites": 14,
     "per": "electron",
     "group": "N↑ = 7, N↓ = 7 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 14 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 5, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 14, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 5, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 7, N↓ = 7 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -1768,7 +1993,32 @@
     "instance_label": "N↑ = 7, N↓ = 7 · rₛ = 5 · simple cubic · Γ",
     "lattice_size": "N = 14 electrons (N↑ = 7, N↓ = 7) · rₛ = 5",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=7,\\qquad r_s=5"
+    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=7,\\qquad r_s=5",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 7,
+          "down": 7
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "5",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n14-unpol-rs10",
@@ -1778,8 +2028,8 @@
     "sites": 14,
     "per": "electron",
     "group": "N↑ = 7, N↓ = 7 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 14 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 10, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 14, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 10, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 7, N↓ = 7 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -1787,7 +2037,32 @@
     "instance_label": "N↑ = 7, N↓ = 7 · rₛ = 10 · simple cubic · Γ",
     "lattice_size": "N = 14 electrons (N↑ = 7, N↓ = 7) · rₛ = 10",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=7,\\qquad r_s=10"
+    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=7,\\qquad r_s=10",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 7,
+          "down": 7
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "10",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n14-unpol-rs20",
@@ -1797,8 +2072,8 @@
     "sites": 14,
     "per": "electron",
     "group": "N↑ = 7, N↓ = 7 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 14 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 20, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 14, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 20, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 7, N↓ = 7 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -1806,7 +2081,32 @@
     "instance_label": "N↑ = 7, N↓ = 7 · rₛ = 20 · simple cubic · Γ",
     "lattice_size": "N = 14 electrons (N↑ = 7, N↓ = 7) · rₛ = 20",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=7,\\qquad r_s=20"
+    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=7,\\qquad r_s=20",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 7,
+          "down": 7
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "20",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n14-unpol-rs50",
@@ -1816,8 +2116,8 @@
     "sites": 14,
     "per": "electron",
     "group": "N↑ = 7, N↓ = 7 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 14 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 50, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 14, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 50, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 7, N↓ = 7 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -1825,7 +2125,32 @@
     "instance_label": "N↑ = 7, N↓ = 7 · rₛ = 50 · simple cubic · Γ",
     "lattice_size": "N = 14 electrons (N↑ = 7, N↓ = 7) · rₛ = 50",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=7,\\qquad r_s=50"
+    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=7,\\qquad r_s=50",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 7,
+          "down": 7
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "50",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n14-unpol-rs100",
@@ -1835,8 +2160,8 @@
     "sites": 14,
     "per": "electron",
     "group": "N↑ = 7, N↓ = 7 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 14 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 100, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 14, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 100, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 7, N↓ = 7 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -1844,7 +2169,32 @@
     "instance_label": "N↑ = 7, N↓ = 7 · rₛ = 100 · simple cubic · Γ",
     "lattice_size": "N = 14 electrons (N↑ = 7, N↓ = 7) · rₛ = 100",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=7,\\qquad r_s=100"
+    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=7,\\qquad r_s=100",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 7,
+          "down": 7
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "100",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n19-pol-rs1",
@@ -1854,8 +2204,8 @@
     "sites": 19,
     "per": "electron",
     "group": "N↑ = 19, N↓ = 0 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 19 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 1, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 19, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 1, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 19, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -1863,7 +2213,32 @@
     "instance_label": "N↑ = 19, N↓ = 0 · rₛ = 1 · simple cubic · Γ",
     "lattice_size": "N = 19 electrons (N↑ = 19, N↓ = 0) · rₛ = 1",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=19,\\qquad N_\\downarrow=0,\\qquad r_s=1"
+    "parameters_latex": "N_\\uparrow=19,\\qquad N_\\downarrow=0,\\qquad r_s=1",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 19,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "1",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n19-pol-rs2",
@@ -1873,8 +2248,8 @@
     "sites": 19,
     "per": "electron",
     "group": "N↑ = 19, N↓ = 0 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 19 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 2, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 19, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 2, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 19, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -1882,7 +2257,32 @@
     "instance_label": "N↑ = 19, N↓ = 0 · rₛ = 2 · simple cubic · Γ",
     "lattice_size": "N = 19 electrons (N↑ = 19, N↓ = 0) · rₛ = 2",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=19,\\qquad N_\\downarrow=0,\\qquad r_s=2"
+    "parameters_latex": "N_\\uparrow=19,\\qquad N_\\downarrow=0,\\qquad r_s=2",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 19,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "2",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n19-pol-rs5",
@@ -1892,8 +2292,8 @@
     "sites": 19,
     "per": "electron",
     "group": "N↑ = 19, N↓ = 0 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 19 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 5, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 19, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 5, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 19, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -1901,7 +2301,32 @@
     "instance_label": "N↑ = 19, N↓ = 0 · rₛ = 5 · simple cubic · Γ",
     "lattice_size": "N = 19 electrons (N↑ = 19, N↓ = 0) · rₛ = 5",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=19,\\qquad N_\\downarrow=0,\\qquad r_s=5"
+    "parameters_latex": "N_\\uparrow=19,\\qquad N_\\downarrow=0,\\qquad r_s=5",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 19,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "5",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n19-pol-rs10",
@@ -1911,8 +2336,8 @@
     "sites": 19,
     "per": "electron",
     "group": "N↑ = 19, N↓ = 0 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 19 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 10, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 19, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 10, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 19, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -1920,7 +2345,32 @@
     "instance_label": "N↑ = 19, N↓ = 0 · rₛ = 10 · simple cubic · Γ",
     "lattice_size": "N = 19 electrons (N↑ = 19, N↓ = 0) · rₛ = 10",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=19,\\qquad N_\\downarrow=0,\\qquad r_s=10"
+    "parameters_latex": "N_\\uparrow=19,\\qquad N_\\downarrow=0,\\qquad r_s=10",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 19,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "10",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n19-pol-rs20",
@@ -1930,8 +2380,8 @@
     "sites": 19,
     "per": "electron",
     "group": "N↑ = 19, N↓ = 0 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 19 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 20, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 19, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 20, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 19, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -1939,7 +2389,32 @@
     "instance_label": "N↑ = 19, N↓ = 0 · rₛ = 20 · simple cubic · Γ",
     "lattice_size": "N = 19 electrons (N↑ = 19, N↓ = 0) · rₛ = 20",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=19,\\qquad N_\\downarrow=0,\\qquad r_s=20"
+    "parameters_latex": "N_\\uparrow=19,\\qquad N_\\downarrow=0,\\qquad r_s=20",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 19,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "20",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n19-pol-rs50",
@@ -1949,8 +2424,8 @@
     "sites": 19,
     "per": "electron",
     "group": "N↑ = 19, N↓ = 0 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 19 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 50, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 19, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 50, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 19, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -1958,7 +2433,32 @@
     "instance_label": "N↑ = 19, N↓ = 0 · rₛ = 50 · simple cubic · Γ",
     "lattice_size": "N = 19 electrons (N↑ = 19, N↓ = 0) · rₛ = 50",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=19,\\qquad N_\\downarrow=0,\\qquad r_s=50"
+    "parameters_latex": "N_\\uparrow=19,\\qquad N_\\downarrow=0,\\qquad r_s=50",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 19,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "50",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n19-pol-rs100",
@@ -1968,8 +2468,8 @@
     "sites": 19,
     "per": "electron",
     "group": "N↑ = 19, N↓ = 0 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 19 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 100, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 19, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 100, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 19, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -1977,7 +2477,32 @@
     "instance_label": "N↑ = 19, N↓ = 0 · rₛ = 100 · simple cubic · Γ",
     "lattice_size": "N = 19 electrons (N↑ = 19, N↓ = 0) · rₛ = 100",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=19,\\qquad N_\\downarrow=0,\\qquad r_s=100"
+    "parameters_latex": "N_\\uparrow=19,\\qquad N_\\downarrow=0,\\qquad r_s=100",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 19,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "100",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-bcc-n27-pol-rs0p2",
@@ -1987,8 +2512,8 @@
     "sites": 27,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 0 · body-centred cubic",
-    "geometry": "3D homogeneous electron gas of N = 27 electrons in a body-centred cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 0.2, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 27, in a body-centred cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 0.2, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -1996,7 +2521,32 @@
     "instance_label": "N↑ = 27, N↓ = 0 · rₛ = 0.2 · body-centred cubic · Γ",
     "lattice_size": "N = 27 electrons (N↑ = 27, N↓ = 0) · rₛ = 0.2",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=0.2"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=0.2",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "body-centred cubic",
+        "r_s": "0.2",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-bcc-n27-pol-rs0p5",
@@ -2006,8 +2556,8 @@
     "sites": 27,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 0 · body-centred cubic",
-    "geometry": "3D homogeneous electron gas of N = 27 electrons in a body-centred cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 0.5, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 27, in a body-centred cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 0.5, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2015,7 +2565,32 @@
     "instance_label": "N↑ = 27, N↓ = 0 · rₛ = 0.5 · body-centred cubic · Γ",
     "lattice_size": "N = 27 electrons (N↑ = 27, N↓ = 0) · rₛ = 0.5",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=0.5"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=0.5",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "body-centred cubic",
+        "r_s": "0.5",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-bcc-n27-pol-rs1",
@@ -2025,8 +2600,8 @@
     "sites": 27,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 0 · body-centred cubic",
-    "geometry": "3D homogeneous electron gas of N = 27 electrons in a body-centred cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 1, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 27, in a body-centred cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 1, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2034,7 +2609,32 @@
     "instance_label": "N↑ = 27, N↓ = 0 · rₛ = 1 · body-centred cubic · Γ",
     "lattice_size": "N = 27 electrons (N↑ = 27, N↓ = 0) · rₛ = 1",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=1"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=1",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "body-centred cubic",
+        "r_s": "1",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-bcc-n27-pol-rs2",
@@ -2044,8 +2644,8 @@
     "sites": 27,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 0 · body-centred cubic",
-    "geometry": "3D homogeneous electron gas of N = 27 electrons in a body-centred cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 2, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 27, in a body-centred cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 2, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2053,7 +2653,32 @@
     "instance_label": "N↑ = 27, N↓ = 0 · rₛ = 2 · body-centred cubic · Γ",
     "lattice_size": "N = 27 electrons (N↑ = 27, N↓ = 0) · rₛ = 2",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=2"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=2",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "body-centred cubic",
+        "r_s": "2",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-bcc-n27-pol-rs3",
@@ -2063,8 +2688,8 @@
     "sites": 27,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 0 · body-centred cubic",
-    "geometry": "3D homogeneous electron gas of N = 27 electrons in a body-centred cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 3, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 27, in a body-centred cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 3, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2072,7 +2697,32 @@
     "instance_label": "N↑ = 27, N↓ = 0 · rₛ = 3 · body-centred cubic · Γ",
     "lattice_size": "N = 27 electrons (N↑ = 27, N↓ = 0) · rₛ = 3",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=3"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=3",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "body-centred cubic",
+        "r_s": "3",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-bcc-n27-pol-rs5",
@@ -2082,8 +2732,8 @@
     "sites": 27,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 0 · body-centred cubic",
-    "geometry": "3D homogeneous electron gas of N = 27 electrons in a body-centred cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 5, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 27, in a body-centred cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 5, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2091,7 +2741,32 @@
     "instance_label": "N↑ = 27, N↓ = 0 · rₛ = 5 · body-centred cubic · Γ",
     "lattice_size": "N = 27 electrons (N↑ = 27, N↓ = 0) · rₛ = 5",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=5"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=5",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "body-centred cubic",
+        "r_s": "5",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-bcc-n27-pol-rs10",
@@ -2101,8 +2776,8 @@
     "sites": 27,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 0 · body-centred cubic",
-    "geometry": "3D homogeneous electron gas of N = 27 electrons in a body-centred cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 10, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 27, in a body-centred cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 10, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2110,7 +2785,32 @@
     "instance_label": "N↑ = 27, N↓ = 0 · rₛ = 10 · body-centred cubic · Γ",
     "lattice_size": "N = 27 electrons (N↑ = 27, N↓ = 0) · rₛ = 10",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=10"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=10",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "body-centred cubic",
+        "r_s": "10",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-bcc-n27-pol-rs30",
@@ -2120,8 +2820,8 @@
     "sites": 27,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 0 · body-centred cubic",
-    "geometry": "3D homogeneous electron gas of N = 27 electrons in a body-centred cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 30, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 27, in a body-centred cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 30, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2129,7 +2829,32 @@
     "instance_label": "N↑ = 27, N↓ = 0 · rₛ = 30 · body-centred cubic · Γ",
     "lattice_size": "N = 27 electrons (N↑ = 27, N↓ = 0) · rₛ = 30",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=30"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=30",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "body-centred cubic",
+        "r_s": "30",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-bcc-n27-pol-rs50",
@@ -2139,8 +2864,8 @@
     "sites": 27,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 0 · body-centred cubic",
-    "geometry": "3D homogeneous electron gas of N = 27 electrons in a body-centred cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 50, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 27, in a body-centred cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 50, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2148,7 +2873,32 @@
     "instance_label": "N↑ = 27, N↓ = 0 · rₛ = 50 · body-centred cubic · Γ",
     "lattice_size": "N = 27 electrons (N↑ = 27, N↓ = 0) · rₛ = 50",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=50"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=50",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "body-centred cubic",
+        "r_s": "50",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-bcc-n27-pol-rs70",
@@ -2158,8 +2908,8 @@
     "sites": 27,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 0 · body-centred cubic",
-    "geometry": "3D homogeneous electron gas of N = 27 electrons in a body-centred cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 70, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 27, in a body-centred cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 70, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2167,7 +2917,32 @@
     "instance_label": "N↑ = 27, N↓ = 0 · rₛ = 70 · body-centred cubic · Γ",
     "lattice_size": "N = 27 electrons (N↑ = 27, N↓ = 0) · rₛ = 70",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=70"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=70",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "body-centred cubic",
+        "r_s": "70",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-bcc-n27-pol-rs90",
@@ -2177,8 +2952,8 @@
     "sites": 27,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 0 · body-centred cubic",
-    "geometry": "3D homogeneous electron gas of N = 27 electrons in a body-centred cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 90, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 27, in a body-centred cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 90, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2186,7 +2961,32 @@
     "instance_label": "N↑ = 27, N↓ = 0 · rₛ = 90 · body-centred cubic · Γ",
     "lattice_size": "N = 27 electrons (N↑ = 27, N↓ = 0) · rₛ = 90",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=90"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=90",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "body-centred cubic",
+        "r_s": "90",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n54-unpol-rs0p5",
@@ -2196,8 +2996,8 @@
     "sites": 54,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 27 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 54 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 0.5, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 54, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 0.5, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 27 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2205,7 +3005,32 @@
     "instance_label": "N↑ = 27, N↓ = 27 · rₛ = 0.5 · simple cubic · Γ",
     "lattice_size": "N = 54 electrons (N↑ = 27, N↓ = 27) · rₛ = 0.5",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=27,\\qquad r_s=0.5"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=27,\\qquad r_s=0.5",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 27
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "0.5",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n54-unpol-rs1",
@@ -2215,8 +3040,8 @@
     "sites": 54,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 27 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 54 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 1, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 54, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 1, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 27 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2224,7 +3049,32 @@
     "instance_label": "N↑ = 27, N↓ = 27 · rₛ = 1 · simple cubic · Γ",
     "lattice_size": "N = 54 electrons (N↑ = 27, N↓ = 27) · rₛ = 1",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=27,\\qquad r_s=1"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=27,\\qquad r_s=1",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 27
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "1",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n54-unpol-rs2",
@@ -2234,8 +3084,8 @@
     "sites": 54,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 27 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 54 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 2, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 54, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 2, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 27 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2243,7 +3093,32 @@
     "instance_label": "N↑ = 27, N↓ = 27 · rₛ = 2 · simple cubic · Γ",
     "lattice_size": "N = 54 electrons (N↑ = 27, N↓ = 27) · rₛ = 2",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=27,\\qquad r_s=2"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=27,\\qquad r_s=2",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 27
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "2",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n54-unpol-rs5",
@@ -2253,8 +3128,8 @@
     "sites": 54,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 27 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 54 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 5, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 54, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 5, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 27 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2262,7 +3137,32 @@
     "instance_label": "N↑ = 27, N↓ = 27 · rₛ = 5 · simple cubic · Γ",
     "lattice_size": "N = 54 electrons (N↑ = 27, N↓ = 27) · rₛ = 5",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=27,\\qquad r_s=5"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=27,\\qquad r_s=5",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 27
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "5",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n54-unpol-rs10",
@@ -2272,8 +3172,8 @@
     "sites": 54,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 27 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 54 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 10, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 54, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 10, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 27 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2281,7 +3181,32 @@
     "instance_label": "N↑ = 27, N↓ = 27 · rₛ = 10 · simple cubic · Γ",
     "lattice_size": "N = 54 electrons (N↑ = 27, N↓ = 27) · rₛ = 10",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=27,\\qquad r_s=10"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=27,\\qquad r_s=10",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 27
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "10",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n54-unpol-rs20",
@@ -2291,8 +3216,8 @@
     "sites": 54,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 27 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 54 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 20, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 54, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 20, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 27 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2300,7 +3225,32 @@
     "instance_label": "N↑ = 27, N↓ = 27 · rₛ = 20 · simple cubic · Γ",
     "lattice_size": "N = 54 electrons (N↑ = 27, N↓ = 27) · rₛ = 20",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=27,\\qquad r_s=20"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=27,\\qquad r_s=20",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 27
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "20",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n54-unpol-rs50",
@@ -2310,8 +3260,8 @@
     "sites": 54,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 27 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 54 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 50, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 54, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 50, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 27 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2319,7 +3269,32 @@
     "instance_label": "N↑ = 27, N↓ = 27 · rₛ = 50 · simple cubic · Γ",
     "lattice_size": "N = 54 electrons (N↑ = 27, N↓ = 27) · rₛ = 50",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=27,\\qquad r_s=50"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=27,\\qquad r_s=50",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 27
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "50",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n54-unpol-rs100",
@@ -2329,8 +3304,8 @@
     "sites": 54,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 27 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 54 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 100, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 54, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 100, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 27 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2338,7 +3313,32 @@
     "instance_label": "N↑ = 27, N↓ = 27 · rₛ = 100 · simple cubic · Γ",
     "lattice_size": "N = 54 electrons (N↑ = 27, N↓ = 27) · rₛ = 100",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=27,\\qquad r_s=100"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=27,\\qquad r_s=100",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 27
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "100",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n128-unpol-rs110",
@@ -2348,8 +3348,8 @@
     "sites": 128,
     "per": "electron",
     "group": "N↑ = 64, N↓ = 64 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 128 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 110, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 128, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 110, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 64, N↓ = 64 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2357,7 +3357,32 @@
     "instance_label": "N↑ = 64, N↓ = 64 · rₛ = 110 · simple cubic · Γ",
     "lattice_size": "N = 128 electrons (N↑ = 64, N↓ = 64) · rₛ = 110",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=64,\\qquad N_\\downarrow=64,\\qquad r_s=110"
+    "parameters_latex": "N_\\uparrow=64,\\qquad N_\\downarrow=64,\\qquad r_s=110",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 64,
+          "down": 64
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "110",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n128-unpol-rs200",
@@ -2367,8 +3392,8 @@
     "sites": 128,
     "per": "electron",
     "group": "N↑ = 64, N↓ = 64 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 128 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 200, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 128, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 200, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 64, N↓ = 64 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2376,7 +3401,32 @@
     "instance_label": "N↑ = 64, N↓ = 64 · rₛ = 200 · simple cubic · Γ",
     "lattice_size": "N = 128 electrons (N↑ = 64, N↓ = 64) · rₛ = 200",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=64,\\qquad N_\\downarrow=64,\\qquad r_s=200"
+    "parameters_latex": "N_\\uparrow=64,\\qquad N_\\downarrow=64,\\qquad r_s=200",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 64,
+          "down": 64
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "200",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n27-pol-rs1",
@@ -2386,8 +3436,8 @@
     "sites": 27,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 0 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 27 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 1, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 27, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 1, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2395,7 +3445,32 @@
     "instance_label": "N↑ = 27, N↓ = 0 · rₛ = 1 · simple cubic · Γ",
     "lattice_size": "N = 27 electrons (N↑ = 27, N↓ = 0) · rₛ = 1",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=1"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=1",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "1",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n27-pol-rs2",
@@ -2405,8 +3480,8 @@
     "sites": 27,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 0 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 27 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 2, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 27, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 2, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2414,7 +3489,32 @@
     "instance_label": "N↑ = 27, N↓ = 0 · rₛ = 2 · simple cubic · Γ",
     "lattice_size": "N = 27 electrons (N↑ = 27, N↓ = 0) · rₛ = 2",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=2"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=2",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "2",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n27-pol-rs5",
@@ -2424,8 +3524,8 @@
     "sites": 27,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 0 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 27 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 5, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 27, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 5, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2433,7 +3533,32 @@
     "instance_label": "N↑ = 27, N↓ = 0 · rₛ = 5 · simple cubic · Γ",
     "lattice_size": "N = 27 electrons (N↑ = 27, N↓ = 0) · rₛ = 5",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=5"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=5",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "5",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n27-pol-rs10",
@@ -2443,8 +3568,8 @@
     "sites": 27,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 0 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 27 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 10, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 27, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 10, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2452,7 +3577,32 @@
     "instance_label": "N↑ = 27, N↓ = 0 · rₛ = 10 · simple cubic · Γ",
     "lattice_size": "N = 27 electrons (N↑ = 27, N↓ = 0) · rₛ = 10",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=10"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=10",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "10",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n27-pol-rs30",
@@ -2462,8 +3612,8 @@
     "sites": 27,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 0 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 27 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 30, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 27, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 30, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2471,7 +3621,32 @@
     "instance_label": "N↑ = 27, N↓ = 0 · rₛ = 30 · simple cubic · Γ",
     "lattice_size": "N = 27 electrons (N↑ = 27, N↓ = 0) · rₛ = 30",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=30"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=30",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "30",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n27-pol-rs50",
@@ -2481,8 +3656,8 @@
     "sites": 27,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 0 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 27 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 50, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 27, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 50, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2490,7 +3665,32 @@
     "instance_label": "N↑ = 27, N↓ = 0 · rₛ = 50 · simple cubic · Γ",
     "lattice_size": "N = 27 electrons (N↑ = 27, N↓ = 0) · rₛ = 50",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=50"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=50",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "50",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n27-pol-rs70",
@@ -2500,8 +3700,8 @@
     "sites": 27,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 0 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 27 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 70, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 27, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 70, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2509,7 +3709,32 @@
     "instance_label": "N↑ = 27, N↓ = 0 · rₛ = 70 · simple cubic · Γ",
     "lattice_size": "N = 27 electrons (N↑ = 27, N↓ = 0) · rₛ = 70",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=70"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=70",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "70",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n27-pol-rs90",
@@ -2519,8 +3744,8 @@
     "sites": 27,
     "per": "electron",
     "group": "N↑ = 27, N↓ = 0 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 27 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 90, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 27, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 90, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 27, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2528,7 +3753,32 @@
     "instance_label": "N↑ = 27, N↓ = 0 · rₛ = 90 · simple cubic · Γ",
     "lattice_size": "N = 27 electrons (N↑ = 27, N↓ = 0) · rₛ = 90",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=90"
+    "parameters_latex": "N_\\uparrow=27,\\qquad N_\\downarrow=0,\\qquad r_s=90",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 27,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "90",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg2d-sq-n37-pol-rs5",
@@ -2538,8 +3788,8 @@
     "sites": 37,
     "per": "electron",
     "group": "N↑ = 37, N↓ = 0 · square",
-    "geometry": "2D homogeneous electron gas of N = 37 electrons in a square cell of area N pi r_s^2 (r_s = 5, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "2D electrons, N = 37, in a square cell of area N pi r_s^2 (r_s = 5, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 37, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2547,7 +3797,32 @@
     "instance_label": "N↑ = 37, N↓ = 0 · rₛ = 5 · square · Γ",
     "lattice_size": "N = 37 electrons (N↑ = 37, N↓ = 0) · rₛ = 5",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=37,\\qquad N_\\downarrow=0,\\qquad r_s=5"
+    "parameters_latex": "N_\\uparrow=37,\\qquad N_\\downarrow=0,\\qquad r_s=5",
+    "system": {
+      "dimension": 2,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 37,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "square",
+        "r_s": "5",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg2d-rect-n56-unpol-rs20",
@@ -2557,8 +3832,8 @@
     "sites": 56,
     "per": "electron",
     "group": "N↑ = 28, N↓ = 28 · rectangular commensurate with a triangular lattice",
-    "geometry": "2D homogeneous electron gas of N = 56 electrons in a rectangular cell commensurate with a triangular lattice of area N pi r_s^2 (r_s = 20, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "2D electrons, N = 56, in a rectangular commensurate with a triangular lattice cell of area N pi r_s^2 (r_s = 20, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 28, N↓ = 28 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2566,7 +3841,32 @@
     "instance_label": "N↑ = 28, N↓ = 28 · rₛ = 20 · rectangular commensurate with a triangular lattice · Γ",
     "lattice_size": "N = 56 electrons (N↑ = 28, N↓ = 28) · rₛ = 20",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=28,\\qquad N_\\downarrow=28,\\qquad r_s=20"
+    "parameters_latex": "N_\\uparrow=28,\\qquad N_\\downarrow=28,\\qquad r_s=20",
+    "system": {
+      "dimension": 2,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 28,
+          "down": 28
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "rectangular commensurate with a triangular lattice",
+        "r_s": "20",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg2d-rect-n56-unpol-rs25",
@@ -2576,8 +3876,8 @@
     "sites": 56,
     "per": "electron",
     "group": "N↑ = 28, N↓ = 28 · rectangular commensurate with a triangular lattice",
-    "geometry": "2D homogeneous electron gas of N = 56 electrons in a rectangular cell commensurate with a triangular lattice of area N pi r_s^2 (r_s = 25, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "2D electrons, N = 56, in a rectangular commensurate with a triangular lattice cell of area N pi r_s^2 (r_s = 25, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 28, N↓ = 28 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2585,7 +3885,32 @@
     "instance_label": "N↑ = 28, N↓ = 28 · rₛ = 25 · rectangular commensurate with a triangular lattice · Γ",
     "lattice_size": "N = 56 electrons (N↑ = 28, N↓ = 28) · rₛ = 25",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=28,\\qquad N_\\downarrow=28,\\qquad r_s=25"
+    "parameters_latex": "N_\\uparrow=28,\\qquad N_\\downarrow=28,\\qquad r_s=25",
+    "system": {
+      "dimension": 2,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 28,
+          "down": 28
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "rectangular commensurate with a triangular lattice",
+        "r_s": "25",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg2d-rect-n56-unpol-rs30",
@@ -2595,8 +3920,8 @@
     "sites": 56,
     "per": "electron",
     "group": "N↑ = 28, N↓ = 28 · rectangular commensurate with a triangular lattice",
-    "geometry": "2D homogeneous electron gas of N = 56 electrons in a rectangular cell commensurate with a triangular lattice of area N pi r_s^2 (r_s = 30, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "2D electrons, N = 56, in a rectangular commensurate with a triangular lattice cell of area N pi r_s^2 (r_s = 30, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 28, N↓ = 28 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2604,7 +3929,32 @@
     "instance_label": "N↑ = 28, N↓ = 28 · rₛ = 30 · rectangular commensurate with a triangular lattice · Γ",
     "lattice_size": "N = 56 electrons (N↑ = 28, N↓ = 28) · rₛ = 30",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=28,\\qquad N_\\downarrow=28,\\qquad r_s=30"
+    "parameters_latex": "N_\\uparrow=28,\\qquad N_\\downarrow=28,\\qquad r_s=30",
+    "system": {
+      "dimension": 2,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 28,
+          "down": 28
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "rectangular commensurate with a triangular lattice",
+        "r_s": "30",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg2d-rect-n56-unpol-rs34",
@@ -2614,8 +3964,8 @@
     "sites": 56,
     "per": "electron",
     "group": "N↑ = 28, N↓ = 28 · rectangular commensurate with a triangular lattice",
-    "geometry": "2D homogeneous electron gas of N = 56 electrons in a rectangular cell commensurate with a triangular lattice of area N pi r_s^2 (r_s = 34, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "2D electrons, N = 56, in a rectangular commensurate with a triangular lattice cell of area N pi r_s^2 (r_s = 34, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 28, N↓ = 28 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2623,7 +3973,32 @@
     "instance_label": "N↑ = 28, N↓ = 28 · rₛ = 34 · rectangular commensurate with a triangular lattice · Γ",
     "lattice_size": "N = 56 electrons (N↑ = 28, N↓ = 28) · rₛ = 34",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=28,\\qquad N_\\downarrow=28,\\qquad r_s=34"
+    "parameters_latex": "N_\\uparrow=28,\\qquad N_\\downarrow=28,\\qquad r_s=34",
+    "system": {
+      "dimension": 2,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 28,
+          "down": 28
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "rectangular commensurate with a triangular lattice",
+        "r_s": "34",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg2d-rect-n56-unpol-rs35",
@@ -2633,8 +4008,8 @@
     "sites": 56,
     "per": "electron",
     "group": "N↑ = 28, N↓ = 28 · rectangular commensurate with a triangular lattice",
-    "geometry": "2D homogeneous electron gas of N = 56 electrons in a rectangular cell commensurate with a triangular lattice of area N pi r_s^2 (r_s = 35, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "2D electrons, N = 56, in a rectangular commensurate with a triangular lattice cell of area N pi r_s^2 (r_s = 35, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 28, N↓ = 28 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2642,7 +4017,32 @@
     "instance_label": "N↑ = 28, N↓ = 28 · rₛ = 35 · rectangular commensurate with a triangular lattice · Γ",
     "lattice_size": "N = 56 electrons (N↑ = 28, N↓ = 28) · rₛ = 35",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=28,\\qquad N_\\downarrow=28,\\qquad r_s=35"
+    "parameters_latex": "N_\\uparrow=28,\\qquad N_\\downarrow=28,\\qquad r_s=35",
+    "system": {
+      "dimension": 2,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 28,
+          "down": 28
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "rectangular commensurate with a triangular lattice",
+        "r_s": "35",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg2d-rect-n56-unpol-rs36",
@@ -2652,8 +4052,8 @@
     "sites": 56,
     "per": "electron",
     "group": "N↑ = 28, N↓ = 28 · rectangular commensurate with a triangular lattice",
-    "geometry": "2D homogeneous electron gas of N = 56 electrons in a rectangular cell commensurate with a triangular lattice of area N pi r_s^2 (r_s = 36, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "2D electrons, N = 56, in a rectangular commensurate with a triangular lattice cell of area N pi r_s^2 (r_s = 36, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 28, N↓ = 28 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2661,7 +4061,32 @@
     "instance_label": "N↑ = 28, N↓ = 28 · rₛ = 36 · rectangular commensurate with a triangular lattice · Γ",
     "lattice_size": "N = 56 electrons (N↑ = 28, N↓ = 28) · rₛ = 36",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=28,\\qquad N_\\downarrow=28,\\qquad r_s=36"
+    "parameters_latex": "N_\\uparrow=28,\\qquad N_\\downarrow=28,\\qquad r_s=36",
+    "system": {
+      "dimension": 2,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 28,
+          "down": 28
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "rectangular commensurate with a triangular lattice",
+        "r_s": "36",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg2d-rect-n56-unpol-rs38",
@@ -2671,8 +4096,8 @@
     "sites": 56,
     "per": "electron",
     "group": "N↑ = 28, N↓ = 28 · rectangular commensurate with a triangular lattice",
-    "geometry": "2D homogeneous electron gas of N = 56 electrons in a rectangular cell commensurate with a triangular lattice of area N pi r_s^2 (r_s = 38, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "2D electrons, N = 56, in a rectangular commensurate with a triangular lattice cell of area N pi r_s^2 (r_s = 38, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 28, N↓ = 28 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2680,7 +4105,32 @@
     "instance_label": "N↑ = 28, N↓ = 28 · rₛ = 38 · rectangular commensurate with a triangular lattice · Γ",
     "lattice_size": "N = 56 electrons (N↑ = 28, N↓ = 28) · rₛ = 38",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=28,\\qquad N_\\downarrow=28,\\qquad r_s=38"
+    "parameters_latex": "N_\\uparrow=28,\\qquad N_\\downarrow=28,\\qquad r_s=38",
+    "system": {
+      "dimension": 2,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 28,
+          "down": 28
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "rectangular commensurate with a triangular lattice",
+        "r_s": "38",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg2d-rect-n56-unpol-rs40",
@@ -2690,8 +4140,8 @@
     "sites": 56,
     "per": "electron",
     "group": "N↑ = 28, N↓ = 28 · rectangular commensurate with a triangular lattice",
-    "geometry": "2D homogeneous electron gas of N = 56 electrons in a rectangular cell commensurate with a triangular lattice of area N pi r_s^2 (r_s = 40, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "2D electrons, N = 56, in a rectangular commensurate with a triangular lattice cell of area N pi r_s^2 (r_s = 40, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 28, N↓ = 28 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2699,7 +4149,32 @@
     "instance_label": "N↑ = 28, N↓ = 28 · rₛ = 40 · rectangular commensurate with a triangular lattice · Γ",
     "lattice_size": "N = 56 electrons (N↑ = 28, N↓ = 28) · rₛ = 40",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=28,\\qquad N_\\downarrow=28,\\qquad r_s=40"
+    "parameters_latex": "N_\\uparrow=28,\\qquad N_\\downarrow=28,\\qquad r_s=40",
+    "system": {
+      "dimension": 2,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 28,
+          "down": 28
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "rectangular commensurate with a triangular lattice",
+        "r_s": "40",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg2d-rect-n56-unpol-rs45",
@@ -2709,8 +4184,8 @@
     "sites": 56,
     "per": "electron",
     "group": "N↑ = 28, N↓ = 28 · rectangular commensurate with a triangular lattice",
-    "geometry": "2D homogeneous electron gas of N = 56 electrons in a rectangular cell commensurate with a triangular lattice of area N pi r_s^2 (r_s = 45, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "2D electrons, N = 56, in a rectangular commensurate with a triangular lattice cell of area N pi r_s^2 (r_s = 45, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 28, N↓ = 28 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2718,7 +4193,32 @@
     "instance_label": "N↑ = 28, N↓ = 28 · rₛ = 45 · rectangular commensurate with a triangular lattice · Γ",
     "lattice_size": "N = 56 electrons (N↑ = 28, N↓ = 28) · rₛ = 45",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=28,\\qquad N_\\downarrow=28,\\qquad r_s=45"
+    "parameters_latex": "N_\\uparrow=28,\\qquad N_\\downarrow=28,\\qquad r_s=45",
+    "system": {
+      "dimension": 2,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 28,
+          "down": 28
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "rectangular commensurate with a triangular lattice",
+        "r_s": "45",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg2d-rect-n56-unpol-rs50",
@@ -2728,8 +4228,8 @@
     "sites": 56,
     "per": "electron",
     "group": "N↑ = 28, N↓ = 28 · rectangular commensurate with a triangular lattice",
-    "geometry": "2D homogeneous electron gas of N = 56 electrons in a rectangular cell commensurate with a triangular lattice of area N pi r_s^2 (r_s = 50, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "2D electrons, N = 56, in a rectangular commensurate with a triangular lattice cell of area N pi r_s^2 (r_s = 50, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 28, N↓ = 28 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2737,7 +4237,32 @@
     "instance_label": "N↑ = 28, N↓ = 28 · rₛ = 50 · rectangular commensurate with a triangular lattice · Γ",
     "lattice_size": "N = 56 electrons (N↑ = 28, N↓ = 28) · rₛ = 50",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=28,\\qquad N_\\downarrow=28,\\qquad r_s=50"
+    "parameters_latex": "N_\\uparrow=28,\\qquad N_\\downarrow=28,\\qquad r_s=50",
+    "system": {
+      "dimension": 2,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 28,
+          "down": 28
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "rectangular commensurate with a triangular lattice",
+        "r_s": "50",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-sc-n14-unpol-rs15",
@@ -2747,8 +4272,8 @@
     "sites": 14,
     "per": "electron",
     "group": "N↑ = 7, N↓ = 7 · simple cubic",
-    "geometry": "3D homogeneous electron gas of N = 14 electrons in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 15, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 14, in a simple cubic cell of volume N (4 pi / 3) r_s^3 (r_s = 15, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 7, N↓ = 7 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2756,7 +4281,32 @@
     "instance_label": "N↑ = 7, N↓ = 7 · rₛ = 15 · simple cubic · Γ",
     "lattice_size": "N = 14 electrons (N↑ = 7, N↓ = 7) · rₛ = 15",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=7,\\qquad r_s=15"
+    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=7,\\qquad r_s=15",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 7,
+          "down": 7
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "simple cubic",
+        "r_s": "15",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-rect332-n36-unpol-rs5",
@@ -2766,8 +4316,8 @@
     "sites": 36,
     "per": "electron",
     "group": "N↑ = 18, N↓ = 18 · rectangular with sides in the ratio 3:3:2",
-    "geometry": "3D homogeneous electron gas of N = 36 electrons in a rectangular cell with sides in the ratio 3:3:2 of volume N (4 pi / 3) r_s^3 (r_s = 5, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 36, in a rectangular with sides in the ratio 3:3:2 cell of volume N (4 pi / 3) r_s^3 (r_s = 5, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 18, N↓ = 18 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2775,7 +4325,32 @@
     "instance_label": "N↑ = 18, N↓ = 18 · rₛ = 5 · rectangular with sides in the ratio 3:3:2 · Γ",
     "lattice_size": "N = 36 electrons (N↑ = 18, N↓ = 18) · rₛ = 5",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=5"
+    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=5",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 18,
+          "down": 18
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "rectangular with sides in the ratio 3:3:2",
+        "r_s": "5",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-rect332-n36-unpol-rs10",
@@ -2785,8 +4360,8 @@
     "sites": 36,
     "per": "electron",
     "group": "N↑ = 18, N↓ = 18 · rectangular with sides in the ratio 3:3:2",
-    "geometry": "3D homogeneous electron gas of N = 36 electrons in a rectangular cell with sides in the ratio 3:3:2 of volume N (4 pi / 3) r_s^3 (r_s = 10, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 36, in a rectangular with sides in the ratio 3:3:2 cell of volume N (4 pi / 3) r_s^3 (r_s = 10, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 18, N↓ = 18 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2794,7 +4369,32 @@
     "instance_label": "N↑ = 18, N↓ = 18 · rₛ = 10 · rectangular with sides in the ratio 3:3:2 · Γ",
     "lattice_size": "N = 36 electrons (N↑ = 18, N↓ = 18) · rₛ = 10",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=10"
+    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=10",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 18,
+          "down": 18
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "rectangular with sides in the ratio 3:3:2",
+        "r_s": "10",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-rect332-n36-unpol-rs30",
@@ -2804,8 +4404,8 @@
     "sites": 36,
     "per": "electron",
     "group": "N↑ = 18, N↓ = 18 · rectangular with sides in the ratio 3:3:2",
-    "geometry": "3D homogeneous electron gas of N = 36 electrons in a rectangular cell with sides in the ratio 3:3:2 of volume N (4 pi / 3) r_s^3 (r_s = 30, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 36, in a rectangular with sides in the ratio 3:3:2 cell of volume N (4 pi / 3) r_s^3 (r_s = 30, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 18, N↓ = 18 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2813,7 +4413,32 @@
     "instance_label": "N↑ = 18, N↓ = 18 · rₛ = 30 · rectangular with sides in the ratio 3:3:2 · Γ",
     "lattice_size": "N = 36 electrons (N↑ = 18, N↓ = 18) · rₛ = 30",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=30"
+    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=30",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 18,
+          "down": 18
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "rectangular with sides in the ratio 3:3:2",
+        "r_s": "30",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-rect332-n36-unpol-rs50",
@@ -2823,8 +4448,8 @@
     "sites": 36,
     "per": "electron",
     "group": "N↑ = 18, N↓ = 18 · rectangular with sides in the ratio 3:3:2",
-    "geometry": "3D homogeneous electron gas of N = 36 electrons in a rectangular cell with sides in the ratio 3:3:2 of volume N (4 pi / 3) r_s^3 (r_s = 50, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 36, in a rectangular with sides in the ratio 3:3:2 cell of volume N (4 pi / 3) r_s^3 (r_s = 50, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 18, N↓ = 18 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2832,7 +4457,32 @@
     "instance_label": "N↑ = 18, N↓ = 18 · rₛ = 50 · rectangular with sides in the ratio 3:3:2 · Γ",
     "lattice_size": "N = 36 electrons (N↑ = 18, N↓ = 18) · rₛ = 50",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=50"
+    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=50",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 18,
+          "down": 18
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "rectangular with sides in the ratio 3:3:2",
+        "r_s": "50",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-rect332-n36-unpol-rs80",
@@ -2842,8 +4492,8 @@
     "sites": 36,
     "per": "electron",
     "group": "N↑ = 18, N↓ = 18 · rectangular with sides in the ratio 3:3:2",
-    "geometry": "3D homogeneous electron gas of N = 36 electrons in a rectangular cell with sides in the ratio 3:3:2 of volume N (4 pi / 3) r_s^3 (r_s = 80, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 36, in a rectangular with sides in the ratio 3:3:2 cell of volume N (4 pi / 3) r_s^3 (r_s = 80, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 18, N↓ = 18 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2851,7 +4501,32 @@
     "instance_label": "N↑ = 18, N↓ = 18 · rₛ = 80 · rectangular with sides in the ratio 3:3:2 · Γ",
     "lattice_size": "N = 36 electrons (N↑ = 18, N↓ = 18) · rₛ = 80",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=80"
+    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=80",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 18,
+          "down": 18
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "rectangular with sides in the ratio 3:3:2",
+        "r_s": "80",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-rect332-n36-unpol-rs100",
@@ -2861,8 +4536,8 @@
     "sites": 36,
     "per": "electron",
     "group": "N↑ = 18, N↓ = 18 · rectangular with sides in the ratio 3:3:2",
-    "geometry": "3D homogeneous electron gas of N = 36 electrons in a rectangular cell with sides in the ratio 3:3:2 of volume N (4 pi / 3) r_s^3 (r_s = 100, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 36, in a rectangular with sides in the ratio 3:3:2 cell of volume N (4 pi / 3) r_s^3 (r_s = 100, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 18, N↓ = 18 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2870,7 +4545,32 @@
     "instance_label": "N↑ = 18, N↓ = 18 · rₛ = 100 · rectangular with sides in the ratio 3:3:2 · Γ",
     "lattice_size": "N = 36 electrons (N↑ = 18, N↓ = 18) · rₛ = 100",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=100"
+    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=100",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 18,
+          "down": 18
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "rectangular with sides in the ratio 3:3:2",
+        "r_s": "100",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-rect332-n36-unpol-rs86p6",
@@ -2880,8 +4580,8 @@
     "sites": 36,
     "per": "electron",
     "group": "N↑ = 18, N↓ = 18 · rectangular with sides in the ratio 3:3:2",
-    "geometry": "3D homogeneous electron gas of N = 36 electrons in a rectangular cell with sides in the ratio 3:3:2 of volume N (4 pi / 3) r_s^3 (r_s = 86.6, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 36, in a rectangular with sides in the ratio 3:3:2 cell of volume N (4 pi / 3) r_s^3 (r_s = 86.6, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 18, N↓ = 18 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2889,7 +4589,32 @@
     "instance_label": "N↑ = 18, N↓ = 18 · rₛ = 86.6 · rectangular with sides in the ratio 3:3:2 · Γ",
     "lattice_size": "N = 36 electrons (N↑ = 18, N↓ = 18) · rₛ = 86.6",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=86.6"
+    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=86.6",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 18,
+          "down": 18
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "rectangular with sides in the ratio 3:3:2",
+        "r_s": "86.6",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-rect332-n36-unpol-rs86p7",
@@ -2899,8 +4624,8 @@
     "sites": 36,
     "per": "electron",
     "group": "N↑ = 18, N↓ = 18 · rectangular with sides in the ratio 3:3:2",
-    "geometry": "3D homogeneous electron gas of N = 36 electrons in a rectangular cell with sides in the ratio 3:3:2 of volume N (4 pi / 3) r_s^3 (r_s = 86.7, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 36, in a rectangular with sides in the ratio 3:3:2 cell of volume N (4 pi / 3) r_s^3 (r_s = 86.7, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 18, N↓ = 18 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2908,7 +4633,32 @@
     "instance_label": "N↑ = 18, N↓ = 18 · rₛ = 86.7 · rectangular with sides in the ratio 3:3:2 · Γ",
     "lattice_size": "N = 36 electrons (N↑ = 18, N↓ = 18) · rₛ = 86.7",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=86.7"
+    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=86.7",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 18,
+          "down": 18
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "rectangular with sides in the ratio 3:3:2",
+        "r_s": "86.7",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-rect332-n36-unpol-rs86p8",
@@ -2918,8 +4668,8 @@
     "sites": 36,
     "per": "electron",
     "group": "N↑ = 18, N↓ = 18 · rectangular with sides in the ratio 3:3:2",
-    "geometry": "3D homogeneous electron gas of N = 36 electrons in a rectangular cell with sides in the ratio 3:3:2 of volume N (4 pi / 3) r_s^3 (r_s = 86.8, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 36, in a rectangular with sides in the ratio 3:3:2 cell of volume N (4 pi / 3) r_s^3 (r_s = 86.8, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 18, N↓ = 18 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2927,7 +4677,32 @@
     "instance_label": "N↑ = 18, N↓ = 18 · rₛ = 86.8 · rectangular with sides in the ratio 3:3:2 · Γ",
     "lattice_size": "N = 36 electrons (N↑ = 18, N↓ = 18) · rₛ = 86.8",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=86.8"
+    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=86.8",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 18,
+          "down": 18
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "rectangular with sides in the ratio 3:3:2",
+        "r_s": "86.8",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-rect332-n36-unpol-rs86p9",
@@ -2937,8 +4712,8 @@
     "sites": 36,
     "per": "electron",
     "group": "N↑ = 18, N↓ = 18 · rectangular with sides in the ratio 3:3:2",
-    "geometry": "3D homogeneous electron gas of N = 36 electrons in a rectangular cell with sides in the ratio 3:3:2 of volume N (4 pi / 3) r_s^3 (r_s = 86.9, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 36, in a rectangular with sides in the ratio 3:3:2 cell of volume N (4 pi / 3) r_s^3 (r_s = 86.9, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 18, N↓ = 18 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2946,7 +4721,32 @@
     "instance_label": "N↑ = 18, N↓ = 18 · rₛ = 86.9 · rectangular with sides in the ratio 3:3:2 · Γ",
     "lattice_size": "N = 36 electrons (N↑ = 18, N↓ = 18) · rₛ = 86.9",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=86.9"
+    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=86.9",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 18,
+          "down": 18
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "rectangular with sides in the ratio 3:3:2",
+        "r_s": "86.9",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-rect332-n36-unpol-rs87",
@@ -2956,8 +4756,8 @@
     "sites": 36,
     "per": "electron",
     "group": "N↑ = 18, N↓ = 18 · rectangular with sides in the ratio 3:3:2",
-    "geometry": "3D homogeneous electron gas of N = 36 electrons in a rectangular cell with sides in the ratio 3:3:2 of volume N (4 pi / 3) r_s^3 (r_s = 87, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 36, in a rectangular with sides in the ratio 3:3:2 cell of volume N (4 pi / 3) r_s^3 (r_s = 87, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 18, N↓ = 18 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2965,7 +4765,32 @@
     "instance_label": "N↑ = 18, N↓ = 18 · rₛ = 87 · rectangular with sides in the ratio 3:3:2 · Γ",
     "lattice_size": "N = 36 electrons (N↑ = 18, N↓ = 18) · rₛ = 87",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=87"
+    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=87",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 18,
+          "down": 18
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "rectangular with sides in the ratio 3:3:2",
+        "r_s": "87",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg3d-rect332-n36-unpol-rs87p1",
@@ -2975,8 +4800,8 @@
     "sites": 36,
     "per": "electron",
     "group": "N↑ = 18, N↓ = 18 · rectangular with sides in the ratio 3:3:2",
-    "geometry": "3D homogeneous electron gas of N = 36 electrons in a rectangular cell with sides in the ratio 3:3:2 of volume N (4 pi / 3) r_s^3 (r_s = 87.1, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "3D electrons, N = 36, in a rectangular with sides in the ratio 3:3:2 cell of volume N (4 pi / 3) r_s^3 (r_s = 87.1, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 18, N↓ = 18 (unpolarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -2984,7 +4809,32 @@
     "instance_label": "N↑ = 18, N↓ = 18 · rₛ = 87.1 · rectangular with sides in the ratio 3:3:2 · Γ",
     "lattice_size": "N = 36 electrons (N↑ = 18, N↓ = 18) · rₛ = 87.1",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=87.1"
+    "parameters_latex": "N_\\uparrow=18,\\qquad N_\\downarrow=18,\\qquad r_s=87.1",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 18,
+          "down": 18
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "rectangular with sides in the ratio 3:3:2",
+        "r_s": "87.1",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg2d-rhombus-n91-pol-rs30",
@@ -2994,8 +4844,8 @@
     "sites": 91,
     "per": "electron",
     "group": "N↑ = 91, N↓ = 0 · 60-degree rhombic (triangular-lattice)",
-    "geometry": "2D homogeneous electron gas of N = 91 electrons in a 60-degree rhombic (triangular-lattice) cell of area N pi r_s^2 (r_s = 30, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "2D electrons, N = 91, in a 60-degree rhombic (triangular-lattice) cell of area N pi r_s^2 (r_s = 30, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 91, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -3003,7 +4853,32 @@
     "instance_label": "N↑ = 91, N↓ = 0 · rₛ = 30 · 60-degree rhombic (triangular-lattice) · Γ",
     "lattice_size": "N = 91 electrons (N↑ = 91, N↓ = 0) · rₛ = 30",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=91,\\qquad N_\\downarrow=0,\\qquad r_s=30"
+    "parameters_latex": "N_\\uparrow=91,\\qquad N_\\downarrow=0,\\qquad r_s=30",
+    "system": {
+      "dimension": 2,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 91,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "60-degree rhombic (triangular-lattice)",
+        "r_s": "30",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg2d-rhombus-n91-pol-rs40",
@@ -3013,8 +4888,8 @@
     "sites": 91,
     "per": "electron",
     "group": "N↑ = 91, N↓ = 0 · 60-degree rhombic (triangular-lattice)",
-    "geometry": "2D homogeneous electron gas of N = 91 electrons in a 60-degree rhombic (triangular-lattice) cell of area N pi r_s^2 (r_s = 40, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "2D electrons, N = 91, in a 60-degree rhombic (triangular-lattice) cell of area N pi r_s^2 (r_s = 40, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 91, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -3022,7 +4897,32 @@
     "instance_label": "N↑ = 91, N↓ = 0 · rₛ = 40 · 60-degree rhombic (triangular-lattice) · Γ",
     "lattice_size": "N = 91 electrons (N↑ = 91, N↓ = 0) · rₛ = 40",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=91,\\qquad N_\\downarrow=0,\\qquad r_s=40"
+    "parameters_latex": "N_\\uparrow=91,\\qquad N_\\downarrow=0,\\qquad r_s=40",
+    "system": {
+      "dimension": 2,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 91,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "60-degree rhombic (triangular-lattice)",
+        "r_s": "40",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg2d-rhombus-n169-pol-rs30",
@@ -3032,8 +4932,8 @@
     "sites": 169,
     "per": "electron",
     "group": "N↑ = 169, N↓ = 0 · 60-degree rhombic (triangular-lattice)",
-    "geometry": "2D homogeneous electron gas of N = 169 electrons in a 60-degree rhombic (triangular-lattice) cell of area N pi r_s^2 (r_s = 30, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "2D electrons, N = 169, in a 60-degree rhombic (triangular-lattice) cell of area N pi r_s^2 (r_s = 30, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 169, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -3041,7 +4941,32 @@
     "instance_label": "N↑ = 169, N↓ = 0 · rₛ = 30 · 60-degree rhombic (triangular-lattice) · Γ",
     "lattice_size": "N = 169 electrons (N↑ = 169, N↓ = 0) · rₛ = 30",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=169,\\qquad N_\\downarrow=0,\\qquad r_s=30"
+    "parameters_latex": "N_\\uparrow=169,\\qquad N_\\downarrow=0,\\qquad r_s=30",
+    "system": {
+      "dimension": 2,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 169,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "60-degree rhombic (triangular-lattice)",
+        "r_s": "30",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   },
   {
     "id": "heg2d-rhombus-n16-pol-rs30",
@@ -3051,8 +4976,8 @@
     "sites": 16,
     "per": "electron",
     "group": "N↑ = 16, N↓ = 0 · 60-degree rhombic (triangular-lattice)",
-    "geometry": "2D homogeneous electron gas of N = 16 electrons in a 60-degree rhombic (triangular-lattice) cell of area N pi r_s^2 (r_s = 30, lengths in Bohr), periodic boundary conditions at the Gamma point (no twist)",
-    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j|, with Ewald summation, a uniform neutralizing background and the Madelung self-image term included; Hartree atomic units",
+    "geometry": "2D electrons, N = 16, in a 60-degree rhombic (triangular-lattice) cell of area N pi r_s^2 (r_s = 30, lengths in Bohr); periodic boundary conditions, Gamma point (no twist)",
+    "hamiltonian": "H = -1/2 sum_i nabla_i^2 + sum_{i<j} 1/|r_i - r_j| + uniform neutralizing background; Coulomb sums by Ewald summation with the Madelung self-image term included; Hartree atomic units",
     "sector": "N↑ = 16, N↓ = 0 (fully polarized); ground-state variational calculation",
     "unit": "Ha",
     "description": "Electrons in a uniform neutralizing background (jellium).",
@@ -3060,6 +4985,31 @@
     "instance_label": "N↑ = 16, N↓ = 0 · rₛ = 30 · 60-degree rhombic (triangular-lattice) · Γ",
     "lattice_size": "N = 16 electrons (N↑ = 16, N↓ = 0) · rₛ = 30",
     "boundary_conditions": "Periodic, Gamma point (no twist)",
-    "parameters_latex": "N_\\uparrow=16,\\qquad N_\\downarrow=0,\\qquad r_s=30"
+    "parameters_latex": "N_\\uparrow=16,\\qquad N_\\downarrow=0,\\qquad r_s=30",
+    "system": {
+      "dimension": 2,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 16,
+          "down": 0
+        }
+      ],
+      "space": {
+        "type": "periodic",
+        "cell": "60-degree rhombic (triangular-lattice)",
+        "r_s": "30",
+        "twist": "Gamma"
+      },
+      "external": {
+        "type": "uniform background"
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "electron",
+      "preset": "heg"
+    }
   }
 ]
