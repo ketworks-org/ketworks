@@ -36,8 +36,19 @@ This needs Python 3.12 and Node.js 22. The build renders LaTeX with KaTeX and wr
 | `data/proposals/` | Results for instances not yet defined; never published |
 | `site/` | Page templates, styles and scripts |
 | `nqsbot/` | Validation, paper metadata from arXiv, and the site build |
-| `brand/` | The Ketworks mark, avatar and social-preview image |
+| `pages/` | Pages outside Ketbook, such as About |
+| `brand/` | The Ketworks mark, avatar and social-preview image; supporter logos in `brand/supporters/` |
 | `docs/maintainers.md` | Deployment and repository rules |
+
+## Support
+
+Ketworks is supported by the [Computational Quantum Science Laboratory (CQSL)](https://www.epfl.ch/labs/cqsl/) at [EPFL](https://www.epfl.ch/).
+
+<p>
+  <a href="https://www.epfl.ch/labs/cqsl/"><img src="brand/supporters/cqsl.svg" alt="CQSL" height="56"></a>
+  &nbsp;&nbsp;&nbsp;
+  <a href="https://www.epfl.ch/"><img src="brand/supporters/epfl-logo-red.svg" alt="EPFL" height="40"></a>
+</p>
 
 ## License
 
