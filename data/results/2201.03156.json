@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2201.03156v2",
+    "title": "$m^\\ast$ of two-dimensional electron gas: a neural canonical transformation study",
+    "authors": "Hao Xie, Linfeng Zhang, Lei Wang",
+    "published": "2022-01-10T04:14:40Z",
+    "updated": "2023-06-15T08:07:39Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2201.03156v2",
+  "source_sha256": null,
+  "extraction_model": "human",
+  "results": [
+    {
+      "benchmark_id": "heg2d-sq-n37-pol-rs5",
+      "system_description": "2D homogeneous electron gas, N = 37 (37 up, 0 down), r_s = 5, square cell, Gamma point",
+      "method": "FermiNet",
+      "variant": "neural canonical transformation (FermiNet-block normalizing-flow backflow), T->0",
+      "method_class": "backflow",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.28746",
+      "energy_token": "-0.28746(8)",
+      "normalization": "per_site",
+      "unit": "Ry",
+      "uncertainty": "0.00008",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Fig. 2(b) caption (zero-temperature limit)",
+      "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (neural canonical transformation (FermiNet-block normalizing-flow backflow), T->0) at this N, r_s and cell, without finite-size correction or twist averaging.",
+      "parameter_count": null,
+      "notes": "As printed (energy per electron, in Rydberg). The paper uses Rydberg units, so the printed energy and error bar are multiplied by convention_factor 0.5 to give Hartree. Madelung term: \"const.\" = neutralizing background / Madelung term (commented-out definition in source), Ewald. Boundary: zero-T benchmark: not stated (Gamma inferred: N=37 is closed shell at Gamma in a square box). Finite-T effective-mass runs use TABC via a single twist (pi/2,pi/2) = 2x2 Monkhorst-Pack.",
+      "convention_factor": "0.5"
+    }
+  ],
+  "issues": []
+}
