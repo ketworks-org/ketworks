@@ -96,7 +96,8 @@ export function instanceFromForm(values, existingIds = []) {
   if (lattice === 'chain' && bc === 'cyl') throw Error('A chain is periodic or open.');
   const geo = latticeText(lattice, Lx, Ly, bc);
   for (const [key] of model.couplings) if (!/^[+-]?\d+(\.\d+)?$/.test(v(key))) throw Error(`Enter ${key === 'j2' ? 'J₂/J₁' : key === 'u' ? 'U/t' : key === 'tp' ? "t′/t" : 'h/J'} as a decimal.`);
-  const latticeWord = lattice[0].toUpperCase() + lattice.slice(1);
+  // Models are named by lattice, not by cluster shape: a rectangular cluster is a cluster of the square lattice.
+  const latticeWord = lattice === 'rectangular' ? 'Square' : lattice[0].toUpperCase() + lattice.slice(1);
   const extents = lattice === 'chain' ? `${Lx}` : `${Lx}x${Ly}`;
   let entry;
   if (v('model') === 'custom') {
@@ -129,7 +130,7 @@ export function instanceFromForm(values, existingIds = []) {
                            : `H = -t sum_<ij>,s (c†_is c_js + h.c.) - t' sum_<<ij>>,s (c†_is c_js + h.c.) + U sum_i n_iup n_idown; t = 1; t' = ${tp}; U = ${u}; no chemical-potential term or constant shift`;
     const latex = tp === '0' ? 'H=-t\\!\\sum_{\\langle i,j\\rangle,\\sigma}\\!\\left(c^\\dagger_{i\\sigma}c_{j\\sigma}+\\mathrm{h.c.}\\right)+U\\sum_i n_{i\\uparrow}n_{i\\downarrow}'
                              : "H=-t\\!\\sum_{\\langle i,j\\rangle,\\sigma}\\!\\left(c^\\dagger_{i\\sigma}c_{j\\sigma}+\\mathrm{h.c.}\\right)-t'\\!\\sum_{\\langle\\!\\langle i,j\\rangle\\!\\rangle,\\sigma}\\!\\left(c^\\dagger_{i\\sigma}c_{j\\sigma}+\\mathrm{h.c.}\\right)+U\\sum_i n_{i\\uparrow}n_{i\\downarrow}";
-    const name = tp === '0' ? 'Hubbard' : 't–t′ Hubbard';
+    const name = `${latticeWord} ${tp === '0' ? 'Hubbard' : 't–t′ Hubbard'}`;
     entry = {id: `hubbard-${lattice}-${extents}-${bc}-u${slugNumber(u)}${tp === '0' ? '' : `-tp${slugNumber(tp)}`}${sectorKey}`, name, family: name, category: model.category, sites: geo.sites, geometry: `${geo.geometry.replace('; each nearest-neighbor bond counted once', '')}; ${hopping}`, hamiltonian: ham,
              sector: `Nup = ${nup}; Ndown = ${ndown}; ${n} electrons; ground-state variational calculation`, unit: 't', description: tp === '0' ? 'Interacting fermions hopping on a lattice.' : 'Interacting fermions with nearest- and next-nearest-neighbor hopping.',
              hamiltonian_latex: latex, instance_label: `${geo.label} · U/t = ${pretty(u)}${tp === '0' ? '' : ` · t′/t = ${pretty(tp)}`} · ${BOUNDARIES[bc]} · ${nup === ndown ? `N↑ = N↓ = ${nup}` : `N↑ = ${nup} · N↓ = ${ndown}`}`, lattice_size: geo.size, boundary_conditions: geo.bcLabel,
