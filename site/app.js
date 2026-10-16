@@ -59,53 +59,69 @@ function renderContents() {
     $('book-contents').append(column);
   });
 }
-function renderLedger() {
-  $('ledger').replaceChildren();
-  summarize(dataset.benchmarks, dataset.results).forEach(({benchmark, count, best}) => {
-    const tr = document.createElement('tr');
-    const system = text('td', ''); const name = text('a', '', 'ledger-system'); name.href = '#benchmarks?system=' + encodeURIComponent(benchmark.id); name.append(lattice(benchmark.family.includes('Triangular')), text('span', benchmark.family)); system.append(name);
-    const key = text('td', ''); key.append(text('code', benchmark.id, 'key'));
-    const shown = best ? withErrorBar(best.energy_per_site, best.uncertainty_per_site, best.uncertainty_type) : {text: '—'}; const energy = text('td', shown.text, 'num energy'); if (best) energy.append(text('small', `${best.method} · arXiv:${best.paper.id}${shown.missing ? ' · no error bar printed' : ''}`));
-    tr.append(system, text('td', benchmark.instance_label || benchmark.geometry), key, text('td', count ? formatCount(count) : '0', 'num mono'), energy);
-    $('ledger').append(tr);
-  });
-}
+function renderLedger() { $('home-board').replaceChildren(); modelIndex($('home-board')); }
 
-// Ketboard without a selected instance: instances grouped by class of system, then by model, each with its lowest
-// reported energy. A family or a class in the address narrows the overview to it.
-function renderBoardOverview(onlyFamily, onlyCategory) {
-  const container = $('board-overview'); container.replaceChildren();
-  const summary = summarize(dataset.benchmarks, dataset.results);
-  const count = (benchmarks, what) => {
-    const ids = new Set(benchmarks.map(b => b.id)), rows = dataset.results.filter(r => ids.has(r.benchmark_id));
-    return `${plural(benchmarks.length, 'instance')}, ${plural(rows.length, 'result')} from ${plural(new Set(rows.map(r => r.paper.id.replace(/v\d+$/, ''))).size, 'paper')}`;
-  };
-  if (onlyFamily || onlyCategory) { const back = text('a', '← All of Ketboard', 'text-link board-back'); back.href = '#benchmarks'; container.append(back); }
-  Object.entries(dataset.categories || {}).forEach(([category, title]) => {
+// Ketboard without a selected instance. The index lists the classes of systems and, in each, one row per model;
+// a model opens its own page with every instance and its lowest reported energy. A class narrows the index to it.
+function boardCounts(benchmarks) {
+  const ids = new Set(benchmarks.map(b => b.id)), rows = dataset.results.filter(r => ids.has(r.benchmark_id));
+  const papers = new Map(rows.map(r => [r.paper.id.replace(/v\d+$/, ''), r.paper]));
+  const latest = [...papers.values()].sort((a, b) => b.published.localeCompare(a.published))[0];
+  return {instances: benchmarks.length, results: rows.length, papers: papers.size, latest};
+}
+function categoryHead(category, title, meta) {
+  const head = text('div', '', 'category-head'); const heading = text('h2', ''); const anchor = text('a', title); anchor.href = '#benchmarks?category=' + encodeURIComponent(category); heading.append(anchor);
+  head.append(heading); if (meta) head.append(text('p', meta, 'family-meta')); return head;
+}
+function familyBlock(family, summary) {
+  const entries = summary.filter(s => s.benchmark.family === family), counts = boardCounts(entries.map(s => s.benchmark));
+  const group = text('section', '', 'board-family');
+  const head = text('div', '', 'family-head'); const title = text('h3', ''); title.append(lattice(family.includes('Triangular')), text('span', family));
+  head.append(title, text('p', `${plural(counts.instances, 'instance')}, ${plural(counts.results, 'result')} from ${plural(counts.papers, 'paper')}`, 'family-meta'));
+  const wiki = entries[0].benchmark.wiki; if (wiki) { const link = text('a', 'Benchmark page', 'text-link'); link.href = `wiki/${wiki}/`; head.append(link); }
+  const wrap = text('div', '', 'table-scroll'); const table = text('table', '', 'ledger'); const body = document.createElement('tbody');
+  table.innerHTML = '<thead><tr><th scope="col">Instance</th><th scope="col" class="num">Sites</th><th scope="col" class="num">Results</th><th scope="col" class="num">Lowest energy / site</th></tr></thead>';
+  entries.forEach(({benchmark, count, best}) => {
+    const tr = document.createElement('tr'); const cell = text('td', ''); const link = text('a', benchmark.instance_label || benchmark.id, 'instance-link'); link.href = '#benchmarks?system=' + encodeURIComponent(benchmark.id); cell.append(link);
+    const shown = best ? withErrorBar(best.energy_per_site, best.uncertainty_per_site, best.uncertainty_type) : {text: '—'}; const energy = text('td', shown.text, 'num energy'); if (best) energy.append(text('small', `${best.method} · ${classLabel(best.method_class)} · arXiv:${best.paper.id}${shown.missing ? ' · no error bar printed' : ''}`));
+    tr.append(cell, text('td', String(benchmark.sites), 'num mono'), text('td', count ? formatCount(count) : '0', 'num mono'), energy); body.append(tr);
+  });
+  table.append(body); wrap.append(table); group.append(head, wrap); return group;
+}
+function modelIndex(container, onlyCategory) {
+  const categories = dataset.categories || {};
+  Object.entries(categories).forEach(([category, title]) => {
     if (onlyCategory && category !== onlyCategory) return;
     const inCategory = dataset.benchmarks.filter(b => b.category === category);
-    const families = [...new Set(inCategory.map(b => b.family))].filter(family => !onlyFamily || family === onlyFamily);
-    if (!families.length) return;
-    const section = text('section', '', 'board-category'); const head = text('div', '', 'category-head');
-    const heading = text('h2', ''); const anchor = text('a', title); anchor.href = '#benchmarks?category=' + encodeURIComponent(category); heading.append(anchor);
-    head.append(heading, text('p', `${plural(new Set(inCategory.map(b => b.family)).size, 'model')} · ${count(inCategory)}`, 'family-meta')); section.append(head);
-    families.forEach(family => {
-      const entries = summary.filter(s => s.benchmark.family === family);
-      const group = text('section', '', 'board-family');
-      const fhead = text('div', '', 'family-head'); const title = text('h3', ''); const name = text('a', family); name.href = '#benchmarks?family=' + encodeURIComponent(family); title.append(lattice(family.includes('Triangular')), name);
-      const wiki = entries[0].benchmark.wiki;
-      fhead.append(title, text('p', count(entries.map(s => s.benchmark)), 'family-meta')); if (wiki) { const link = text('a', 'Benchmark page', 'text-link'); link.href = `wiki/${wiki}/`; fhead.append(link); }
-      const wrap = text('div', '', 'table-scroll'); const table = text('table', '', 'ledger'); const body = document.createElement('tbody');
-      table.innerHTML = '<thead><tr><th scope="col">Instance</th><th scope="col" class="num">Sites</th><th scope="col" class="num">Results</th><th scope="col" class="num">Lowest energy / site</th></tr></thead>';
-      entries.forEach(({benchmark, count, best}) => {
-        const tr = document.createElement('tr'); const cell = text('td', ''); const link = text('a', benchmark.instance_label || benchmark.id, 'instance-link'); link.href = '#benchmarks?system=' + encodeURIComponent(benchmark.id); cell.append(link);
-        const shown = best ? withErrorBar(best.energy_per_site, best.uncertainty_per_site, best.uncertainty_type) : {text: '—'}; const energy = text('td', shown.text, 'num energy'); if (best) energy.append(text('small', `${best.method} · ${classLabel(best.method_class)} · arXiv:${best.paper.id}${shown.missing ? ' · no error bar printed' : ''}`));
-        tr.append(cell, text('td', String(benchmark.sites), 'num mono'), text('td', count ? formatCount(count) : '0', 'num mono'), energy); body.append(tr);
+    const families = [...new Set(inCategory.map(b => b.family))];
+    if (!families.length && !onlyCategory) return;
+    const section = text('section', '', 'board-category');
+    section.append(categoryHead(category, title, families.length ? `${plural(families.length, 'model')} · ${plural(inCategory.length, 'instance')}` : 'No instances yet'));
+    if (families.length) {
+      const wrap = text('div', '', 'table-scroll'); const table = text('table', '', 'ledger model-index'); const body = document.createElement('tbody');
+      table.innerHTML = '<thead><tr><th scope="col">Model</th><th scope="col" class="num">Instances</th><th scope="col" class="num">Results</th><th scope="col" class="num">Papers</th><th scope="col">Latest paper</th></tr></thead>';
+      families.forEach(family => {
+        const counts = boardCounts(inCategory.filter(b => b.family === family));
+        const tr = document.createElement('tr'); const cell = text('td', ''); const name = text('a', '', 'model-link'); name.href = '#benchmarks?family=' + encodeURIComponent(family); name.append(lattice(family.includes('Triangular')), text('span', family)); cell.append(name);
+        const latest = text('td', counts.latest ? counts.latest.published.slice(0, 7) : '—', 'mono latest'); if (counts.latest) latest.append(text('small', `arXiv:${counts.latest.id}`));
+        tr.append(cell, text('td', String(counts.instances), 'num mono'), text('td', formatCount(counts.results), 'num mono'), text('td', String(counts.papers), 'num mono'), latest); body.append(tr);
       });
-      table.append(body); wrap.append(table); group.append(fhead, wrap); section.append(group);
-    });
+      table.append(body); wrap.append(table); section.append(wrap);
+    }
     container.append(section);
   });
+}
+function renderBoardOverview(onlyFamily, onlyCategory) {
+  const container = $('board-overview'); container.replaceChildren();
+  const categories = dataset.categories || {};
+  if (onlyFamily || onlyCategory) { const back = text('a', '← All of Ketboard', 'text-link board-back'); back.href = '#benchmarks'; container.append(back); }
+  if (onlyFamily) {
+    const first = dataset.benchmarks.find(b => b.family === onlyFamily);
+    if (!first) { container.append(text('p', 'This model is not on Ketboard.', 'empty')); return; }
+    const section = text('section', '', 'board-category'); section.append(categoryHead(first.category, categories[first.category] || first.category), familyBlock(onlyFamily, summarize(dataset.benchmarks, dataset.results)));
+    container.append(section); return;
+  }
+  modelIndex(container, onlyCategory);
 }
 // Sidebar: highlight the model being viewed and open its class.
 function markFamily(family) {
