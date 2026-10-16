@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2101.08787v2",
+    "title": "Broken-Symmetry Ground States of the Heisenberg model on the Pyrochlore Lattice",
+    "authors": "Nikita Astrakhantsev, Tom Westerhout, Apoorv Tiwari, Kenny Choo, Ao Chen, Mark H. Fischer, Giuseppe Carleo, Titus Neupert",
+    "published": "2021-01-21T19:00:01Z",
+    "updated": "2021-11-15T10:53:37Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2101.08787v2",
+  "source_sha256": null,
+  "extraction_model": "human",
+  "results": [
+    {
+      "benchmark_id": "heisenberg-pyrochlore-2x2x2-pbc-sz0",
+      "system_description": "Spin-1/2 Heisenberg model on the pyrochlore lattice, Eq. (1) at lambda = 1, j2 = 0 (H = j1 sum S_i · S_j with spin operators), j1 = 1, periodic 4 x 2^3 cluster.",
+      "method": "NQS CNN",
+      "variant": "symmetry-projected convolutional network",
+      "method_class": "convolutional",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.5128",
+      "energy_token": "-0.5128(1)",
+      "normalization": "per_site",
+      "unit": "J",
+      "uncertainty": "0.0001",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Appendix, table of energies and singlet-triplet gaps, row 4 x 2^3, column NQS CNN",
+      "eligibility_evidence": "Appendix table of ground-state energies (Table V, label tab:energies_spingaps), column 'NQS CNN': energy per site of the convolutional neural-network state with symmetry projections, optimized and evaluated by VMC in this work. The table lists DMRG and ED separately.",
+      "parameter_count": null,
+      "notes": "Energy per site in spin units (S = sigma/2), as printed. The paper states that the mVMC error bars are statistical; the meaning of the NQS error bar is not stated."
+    },
+    {
+      "benchmark_id": "heisenberg-pyrochlore-3x3x3-pbc-sz0",
+      "system_description": "Spin-1/2 Heisenberg model on the pyrochlore lattice, Eq. (1) at lambda = 1, j2 = 0 (H = j1 sum S_i · S_j with spin operators), j1 = 1, periodic 4 x 3^3 cluster.",
+      "method": "NQS CNN",
+      "variant": "symmetry-projected convolutional network",
+      "method_class": "convolutional",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.4826",
+      "energy_token": "-0.4826(2)",
+      "normalization": "per_site",
+      "unit": "J",
+      "uncertainty": "0.0002",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Appendix, table of energies and singlet-triplet gaps, row 4 x 3^3, column NQS CNN",
+      "eligibility_evidence": "Appendix table of ground-state energies (Table V, label tab:energies_spingaps), column 'NQS CNN': energy per site of the convolutional neural-network state with symmetry projections, optimized and evaluated by VMC in this work. The table lists DMRG and ED separately.",
+      "parameter_count": null,
+      "notes": "Energy per site in spin units (S = sigma/2), as printed. The paper states that the mVMC error bars are statistical; the meaning of the NQS error bar is not stated. Varbench lists the same energy (pyrochlore-3x3x3_108_P, -208.48(4) in the Pauli convention)."
+    }
+  ],
+  "issues": [
+    "The table also gives NQS CNN energies for the 4 x 2^2 x 4 (64 sites) and 4 x 2^2 x 6 (96 sites) clusters, -0.4908(2) and -0.490(1); they are not added here because those clusters are not yet Ketboard instances."
+  ]
+}
