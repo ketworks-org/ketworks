@@ -132,6 +132,7 @@ class EligibilityTests(unittest.TestCase):
             self.assertEqual(payload["papers"]["2601.00001"]["paper"]["id"], "2601.00001v1")
             self.assertNotIn("results", payload["papers"]["2601.00001"])
             self.assertIn("<loc>https://ketworks.org/</loc>", (root / "dist/sitemap.xml").read_text())
+            self.assertIn("<loc>https://ketworks.org/about/</loc>", (root / "dist/sitemap.xml").read_text())
 
     def test_preview_summary_links_changed_instances_entries_and_pages(self):
         registry = json.dumps(list(REGISTRY.values()))
