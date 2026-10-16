@@ -20,7 +20,7 @@ Each instance has a key such as `j1j2-square-10x10-pbc-j2-0p5-sz0` that appears 
 - The variational energy $E_\theta=\langle\Psi_\theta|H|\Psi_\theta\rangle/\langle\Psi_\theta|\Psi_\theta\rangle$, evaluated on the final fixed state with its own Monte Carlo run. Not the last value of the optimization trace.
 - The statistical uncertainty, with its meaning: one standard error of the mean from a [binning analysis](../variational-monte-carlo/), a standard deviation, a confidence interval, or an unspecified reported uncertainty. Every entry must have one; an energy printed without an error bar is not accepted. A bound stated in the text, such as a caption saying that statistical errors are below the last printed digit, counts and is recorded as an upper bound.
 - The energy variance $\operatorname{Var}_\theta(H)$, optional, recorded in the same normalization as the energy ($\operatorname{Var}_\theta(H)/N$ for a per-site energy) when the paper prints it. It is the only intrinsic accuracy measure when $E_0$ is unknown, and with a reference energy $E_\infty$ it gives the V-score $N\operatorname{Var}_\theta(H)/(E-E_\infty)^2$ of Wu et al. (arXiv:2302.04919).
-- The printed digits exactly as they appear, as a decimal string, with the parenthesized uncertainty preserved in the original token. Only the conversion from total to per-site energy is done by the site.
+- The printed digits exactly as they appear, as a decimal string, with the parenthesized uncertainty preserved in the original token. The site converts total energies to energies per site. When the source uses another operator convention than the instance, for example Pauli matrices for a spin-$\tfrac12$ Heisenberg instance defined with $\mathbf S=\boldsymbol\sigma/2$, the entry records the printed value and a conversion factor ($\tfrac14$ in that example; the variance takes its square), and the board shows the converted value.
 - The number of parameters, the architecture class, the symmetry treatment and the sampling budget, when available.
 
 ## Eligibility
@@ -37,7 +37,7 @@ Two caveats specific to this field. The sample mean of the local energy can lie 
 
 ## Provenance and review
 
-Every entry links to a specific arXiv version and to a table, figure or equation in it. Bot-proposed entries carry a checksum of the source file; human entries carry the exact versioned source URL. A curator checks eligibility, instance matching and transcription before merging. Review confirms that the number is what the paper says for the problem the instance defines; it is not an independent reproduction.
+Every entry links to a specific arXiv version and to a table, figure or equation in it, or to the data release published with that paper version: the Varbench energies (arXiv:2302.04919) are recorded from the files of its data repository, with the file and commit named in the entry. Bot-proposed entries carry a checksum of the source file; human entries carry the exact versioned source URL. A curator checks eligibility, instance matching and transcription before merging. Review confirms that the number is what the paper says for the problem the instance defines; it is not an independent reproduction.
 
 ## Adding an instance
 
