@@ -1,5 +1,5 @@
-import {makeSubmission, mergeSubmission, makeProposal, instanceFromForm, METHOD_CLASSES, MODELS} from './submission.mjs';
-import {PRESETS, CELLS, continuumInstanceFromForm} from './continuum.mjs';
+import {makeSubmission, mergeSubmission, makeProposal, instanceFromForm, newInstanceValues, METHOD_CLASSES, MODELS} from './submission.mjs';
+import {PRESETS, CELLS, continuumInstanceFromForm, continuumFormValues} from './continuum.mjs';
 // How an instance's energies are compared: per site, per electron or particle, or the total energy of the system.
 const perSuffix = per => per === 'system' ? '' : ` / ${per}`;
 const countHeader = b => b.category !== 'continuous-space' ? 'Sites' : (b.system?.particles?.[0]?.name === 'electrons' ? 'Electrons' : 'Particles');
@@ -64,6 +64,9 @@ function route() {
   $('board-overview').hidden = name !== 'benchmarks' || Boolean(benchmark);
   if (dataset && name === 'benchmarks' && !benchmark) { renderBoardOverview(params.get('family'), params.get('category')); markFamily(params.get('family')); }
   $('board-detail').hidden = !benchmark;
+  const like = dataset?.benchmarks.find(b => b.id === params.get('like'));
+  if (name === 'submit' && like && prefilled !== location.hash) { prefilled = location.hash; prefillFrom(like); }
+  if (name === 'submit' && !params.get('like')) { prefilled = null; $('prefill-note').hidden = true; }
   if (benchmark) {
     $('model-select').value = benchmark.family;
     renderInstances('model-select', 'system-select', benchmark.id);
@@ -107,6 +110,9 @@ function familyBlock(family, summary) {
   const head = text('div', '', 'family-head'); const title = text('h3', ''); title.append(lattice(latticeKind(family)), text('span', family));
   head.append(title, text('p', `${plural(counts.instances, 'instance')}, ${plural(counts.results, 'result')} from ${plural(counts.papers, 'paper')}`, 'family-meta'));
   const wiki = entries[0].benchmark.wiki; if (wiki) { const link = text('a', 'Benchmark page', 'text-link'); link.href = `wiki/${wiki}/`; head.append(link); }
+  // A new instance of this model starts from its smallest instance that a template rebuilds (or, if none does, from its smallest instance as a proposal).
+  const bySize = entries.map(s => s.benchmark).sort((a, b) => a.sites - b.sites), start = bySize.find(startValues) || bySize[0];
+  const add = text('a', 'Add an instance of this model', 'text-link'); add.href = '#submit?like=' + encodeURIComponent(start.id); head.append(add);
   group.append(head);
   // One table per section, each with its own heading when a model has more than one, so that problems of
   // different kinds are not read as one series. Lattice instances are sectioned by boundary class (periodic,
@@ -225,6 +231,7 @@ function renderResults() {
   const b = dataset.benchmarks.find(b => b.id === $('system-select').value); if (!b) return;
   $('system-name').textContent = b.family; $('instance-label').textContent = b.instance_label || ''; $('system-key').textContent = b.id;
   $('system-wiki').hidden = !b.wiki; if (b.wiki) $('system-wiki').href = `wiki/${b.wiki}/`;
+  $('add-like').href = '#submit?like=' + encodeURIComponent(b.id);
   if (location.hash.startsWith('#benchmarks')) markFamily(b.family);
   $('system-definition').replaceChildren(); const dl = document.createElement('dl');
   const h = text('dd', ''); if (b.hamiltonian_html) h.innerHTML = b.hamiltonian_html; else h.textContent = b.hamiltonian;
@@ -255,6 +262,24 @@ function renderResults() {
 }
 
 function download(value, filename) { const url = URL.createObjectURL(new Blob([JSON.stringify(value, null, 2) + '\n'], {type: 'application/json'})); const a = document.createElement('a'); a.href = url; a.download = filename; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
+// Starting a new instance from an existing one: the form is filled with the values that rebuild it, so that only
+// what differs is changed. An instance that no template rebuilds is started as a proposal for a curator.
+let prefilled = null;
+function startValues(b) { return b.system ? continuumFormValues(b.system) : newInstanceValues(b); }
+function prefillFrom(b) {
+  const form = $('submission-form'), values = startValues(b);
+  form.category.value = b.category; renderSubmitModels(); renderInstances('submit-model', 'submit-system');
+  if (values) {
+    for (const [name, value] of Object.entries(values)) { const field = form.elements.namedItem(name); if (field && !(field instanceof RadioNodeList)) field.value = value; }
+    $('prefill-note').textContent = `Started from ${b.instance_label || b.id} (${b.id}). Change what differs: ${b.system ? 'particle numbers, density, cell or external potential' : 'size, boundaries, couplings or sector'}. The key below updates as you type.`;
+  } else {
+    form.instance_mode.value = 'proposal';
+    form.system_description.value = `${b.family}, like ${b.id} but with: …\nDefinition of ${b.id}: ${b.geometry}; ${b.hamiltonian}; ${b.sector}.`;
+    $('proposal-fields').querySelector('[name=unit]').value = b.unit;
+    $('prefill-note').textContent = `The form has no template for ${b.family}. Describe the new instance, starting from the definition of ${b.id} below; a curator adds it to the board.`;
+  }
+  $('prefill-note').hidden = false; syncInstanceForm();
+}
 function instanceMode() { return $('instance-mode').value; }
 function syncInstanceForm() {
   const mode = instanceMode(), continuum = $('submit-category').value === 'continuous-space';
@@ -266,7 +291,7 @@ function syncInstanceForm() {
   document.querySelectorAll('[data-coupling]').forEach(el => el.hidden = !model.couplings.some(([key]) => key === el.dataset.coupling));
   document.querySelectorAll('[data-sector]').forEach(el => el.hidden = model.spin === null || model.nosector || (el.dataset.sector === 'spin') !== model.spin);
   document.querySelectorAll('[data-custom]').forEach(el => el.hidden = model !== MODELS.custom);
-  try { $('new-key').textContent = instanceFromForm(formValues()).id; } catch (error) { $('new-key').textContent = error.message; }
+  try { $('new-key').textContent = keyPreview(instanceFromForm(formValues()).id); } catch (error) { $('new-key').textContent = error.message; }
 }
 // The continuum form shows the fields that the chosen kind of system needs: a preset fixes space, external
 // potential and interaction; "other" asks for each of them.
@@ -277,8 +302,9 @@ function syncContinuumForm() {
     'ext-choice': other, 'trap': external === 'harmonic trap', 'nuclei': external === 'fixed nuclei', 'ext-other': external === 'other', 'int-choice': other, 'int-other': other && form.cint.value === 'other', 'unit': other};
   document.querySelectorAll('[data-c]').forEach(el => { el.hidden = !show[el.dataset.c]; });
   if (!form.cspecies.value && preset.species) form.cspecies.placeholder = preset.species;
-  try { $('cont-key').textContent = continuumInstanceFromForm(formValues()).id; } catch (error) { $('cont-key').textContent = error.message; }
+  try { $('cont-key').textContent = keyPreview(continuumInstanceFromForm(formValues()).id); } catch (error) { $('cont-key').textContent = error.message; }
 }
+const keyPreview = id => dataset?.benchmarks.some(b => b.id === id) ? `${id} (already on the board: change what differs)` : id;
 function formValues() { const values = Object.fromEntries(new FormData($('submission-form'))); if (values.unit_custom) values.unit = values.unit_custom; values.category_label = dataset?.categories?.[values.category] || ''; return values; }
 function prepareSubmission(event) {
   event.preventDefault(); $('submission-error').textContent = ''; if (!dataset) return;

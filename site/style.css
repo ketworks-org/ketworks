@@ -114,7 +114,7 @@ input,select,textarea{border:1px solid var(--ink);background:var(--white);paddin
 .definition-head{display:flex;justify-content:space-between;align-items:start;gap:24px;border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:22px}.definition-head .eyebrow{margin-bottom:8px}.definition-head h2{font-size:30px;margin-bottom:6px}.instance-label{font:500 15px/1.4 var(--display);color:var(--muted);margin:0}
 .definition dl{display:grid;grid-template-columns:110px minmax(0,1fr);gap:13px 15px;font-size:15px;margin:0}.definition dt{font:700 10px/1.6 var(--display);text-transform:uppercase;letter-spacing:.12em}.definition dd{margin:0;overflow:auto}.definition .katex-display{margin:0;text-align:left}.definition .katex-display>.katex{text-align:left}
 .instance-conventions{border-top:1px solid var(--line);margin-top:22px;padding-top:15px;font-size:14px}.instance-conventions summary{font:700 11px/1.5 var(--display);cursor:pointer}.instance-conventions p{margin:14px 0 0;color:var(--muted)}
-#system-wiki{display:inline-block;margin-top:18px}
+#system-wiki,#add-like{display:inline-block;margin-top:18px;margin-right:24px}
 
 /* Wiki index */
 .wiki-search{max-width:470px;margin:35px 0 40px}.wiki-list{border-top:2px solid var(--ink)}

@@ -71,6 +71,21 @@ export function systemFromForm(values) {
   return {dimension, particles, space, external, interaction, unit, per, preset: v('cpreset'), name: v('cname')};
 }
 
+// The form values that rebuild a stored system (the inverse of systemFromForm), used to start a new instance
+// from an existing one.
+export function continuumFormValues(system) {
+  const {dimension, particles: [p], space, external, interaction, unit, per, preset} = system;
+  const cell = space.type === 'periodic' ? (Object.keys(CELLS).find(k => CELLS[k] === space.cell) || 'other') : '';
+  const values = {category: 'continuous-space', instance_mode: 'new', cpreset: preset, cdim: String(dimension), cname: system.name || '', cspecies: p.name,
+    cup: p.count === undefined ? String(p.up) : '', cdown: p.count === undefined ? String(p.down) : '', ccount: p.count === undefined ? '' : String(p.count),
+    cspace: space.type, ccell: cell, ccell_text: cell === 'other' ? space.cell : '', crs: space.r_s ?? '', csize: space.size ?? '', ctwist: space.type === 'periodic' && space.twist !== 'Gamma' ? space.twist : '',
+    cext: external.type, comega: external.omega ?? '', cext_text: external.type === 'other' ? external.description : '',
+    cnuclei: external.type === 'fixed nuclei' ? external.nuclei.map(n => [ELEMENTS[n.Z - 1] || n.Z, ...n.position].join(' ')).join('\n') : '',
+    ccoord_units: external.coordinate_units || 'bohr', cgeometry: external.geometry || '',
+    cint: interaction.type, cint_text: interaction.type === 'other' ? interaction.description : '', cunit: unit, cper: per};
+  return values;
+}
+
 const spins = p => p.count !== undefined ? `N = ${p.count}` : `N↑ = ${p.up}, N↓ = ${p.down}`;
 const twist = s => s.twist === 'Gamma' ? 'Γ' : s.twist;
 
