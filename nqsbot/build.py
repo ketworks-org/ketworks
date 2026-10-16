@@ -31,7 +31,19 @@ def nav_html(index, registry, prefix="", current=None):
                   f'<a href="{prefix}#submit" data-nav="submit">Submit a result</a>'
                   '<a href="https://github.com/ketworks-org/ketworks/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Contribution guide ↗</a>'
                   '<a href="https://github.com/ketworks-org/ketworks" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>')
-    return group("Ketbook", prefix + "#wiki", "wiki", wiki_sections, "wiki") + group("Ketboard", prefix + "#benchmarks", "benchmarks", board_sections, "board") + contribute
+    about = f'<div class="nav-group" data-area="home"><p class="nav-title"><a href="{prefix}about/" data-nav="about"' + (' aria-current="page"' if current == "about" else "") + '>About</a></p></div>'
+    return group("Ketbook", prefix + "#wiki", "wiki", wiki_sections, "wiki") + group("Ketboard", prefix + "#benchmarks", "benchmarks", board_sections, "board") + contribute + about
+
+
+SUPPORTERS = (("https://www.epfl.ch/labs/cqsl/", "logo-cqsl.svg", "CQSL", "Computational Quantum Science Laboratory"),
+              ("https://www.epfl.ch/", "logo-epfl.svg", "EPFL", None))
+
+
+def supporters_html(prefix=""):
+    """The "Supported by" strip shown above the footer of every page."""
+    logos = "".join(f'<a class="supporter supporter-{alt.lower()}" href="{url}" target="_blank" rel="noopener noreferrer"><img src="{prefix}{src}" alt="{alt}">'
+                    + (f'<span>{html.escape(name)}</span>' if name else "") + "</a>" for url, src, alt, name in SUPPORTERS)
+    return f'<section class="supporters" aria-label="Support"><p>Supported by</p><div class="supporter-logos">{logos}</div></section>'
 
 
 def render_content(root, destination, registry):
@@ -44,6 +56,11 @@ def render_content(root, destination, registry):
             raise ValueError("Wiki slugs must be unique, lowercase, and path-safe")
         seen.add(page["slug"])
     articles = [{**page, "markdown": (root / "wiki" / (page["slug"] + ".md")).read_text()} for page in index]
+    if "about" in seen:
+        raise ValueError("The slug 'about' is reserved for the About page")
+    about = root / "pages/about.md"
+    if about.exists():
+        articles.append({"slug": "about", "title": "About", "section": "", "summary": "Ketworks: what it is, how to contribute, and who supports it.", "markdown": about.read_text()})
     equations = {"hero": r"E_\theta = \frac{\langle\Psi_\theta|H|\Psi_\theta\rangle}{\langle\Psi_\theta|\Psi_\theta\rangle} \geq E_0"}
     equations.update({key: value["hamiltonian_latex"] for key, value in registry.items() if "hamiltonian_latex" in value})
     equations.update({key + ":parameters": value["parameters_latex"] for key, value in registry.items() if "parameters_latex" in value})
@@ -54,6 +71,12 @@ def render_content(root, destination, registry):
     sections = list(dict.fromkeys(page["section"] for page in index))
     for article in rendered["articles"]:
         slug = article["slug"]
+        if slug == "about":
+            values = {"TITLE": "About", "DESCRIPTION": html.escape(article["summary"], quote=True), "SLUG": "about", "NAV": nav_html(index, registry, "../", "about"), "CONTENT": article["html"]}
+            page_html = re.sub(r"\{\{([A-Z_]+)\}\}", lambda match: values[match[1]], (root / "site/page.template.html").read_text())
+            (destination / "about").mkdir(parents=True, exist_ok=True)
+            (destination / "about/index.html").write_text(page_html.replace("<!--SUPPORTERS_LARGE-->", supporters_html("../").replace('class="supporters"', 'class="supporters supporters-large"')).replace("<!--SUPPORT-->", ""))
+            continue
         toc = "".join(f'<a href="#{h["id"]}" class="toc-{h["level"]}">{html.escape(h["text"])}</a>' for h in article["headings"] if h["level"] == 2)
         status = article.get("status", "draft")
         if status not in ("draft", "reviewed"):
@@ -61,7 +84,7 @@ def render_content(root, destination, registry):
         status_html = '<span class="status status-reviewed">Reviewed</span>' if status == "reviewed" else '<span class="status status-draft">Draft · not yet reviewed by a curator</span>'
         values = {"TITLE": html.escape(article["title"]), "DESCRIPTION": html.escape(article["summary"], quote=True), "SECTION": html.escape(article["section"]), "NAV": nav_html(index, registry, "../../", slug), "TOC": toc, "STATUS": status_html,
                   "SLUG": slug, "EDIT_URL": f"https://github.com/ketworks-org/ketworks/edit/{source_ref}/wiki/{slug}.md", "HISTORY_URL": f"https://github.com/ketworks-org/ketworks/commits/{source_ref}/wiki/{slug}.md", "CONTENT": article["html"]}
-        page_html = re.sub(r"\{\{([A-Z_]+)\}\}", lambda match: values[match[1]], template)
+        page_html = re.sub(r"\{\{([A-Z_]+)\}\}", lambda match: values[match[1]], template).replace("<!--SUPPORT-->", supporters_html("../../"))
         page_dir = destination / "wiki" / slug
         page_dir.mkdir(parents=True, exist_ok=True)
         (page_dir / "index.html").write_text(page_html)
@@ -79,7 +102,7 @@ SITE_URL = os.getenv("KETWORKS_SITE_URL", "https://ketworks.org").rstrip("/")
 
 def sitemap(wiki):
     """The landing page and every Ketbook page; Ketboard views are part of the landing page."""
-    urls = [SITE_URL + "/"] + [f"{SITE_URL}/wiki/{page['slug']}/" for page in wiki]
+    urls = [SITE_URL + "/", SITE_URL + "/about/"] + [f"{SITE_URL}/wiki/{page['slug']}/" for page in wiki]
     entries = "".join(f"  <url><loc>{html.escape(url)}</loc></url>\n" for url in urls)
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{entries}</urlset>\n'
 
@@ -116,7 +139,7 @@ def build(root=ROOT, destination=None):
     source_ref = os.getenv("KETWORKS_SOURCE_REF", "main")
     home = destination / "index.html"
     if home.exists():
-        home_html = home.read_text().replace("<!--HERO_MATH-->", equations.get("hero", "")).replace("<!--NAV-->", nav_html(registry=registry, index=wiki))
+        home_html = home.read_text().replace("<!--HERO_MATH-->", equations.get("hero", "")).replace("<!--NAV-->", nav_html(registry=registry, index=wiki)).replace("<!--SUPPORT-->", supporters_html())
         for action in ("new", "edit", "blob"):
             home_html = home_html.replace(f"https://github.com/ketworks-org/ketworks/{action}/main/", f"https://github.com/ketworks-org/ketworks/{action}/{quote(source_ref, safe='/')}/")
             home_html = home_html.replace(f"https://github.com/ketworks-org/ketworks/{action}/main?", f"https://github.com/ketworks-org/ketworks/{action}/{quote(source_ref, safe='/')}?")

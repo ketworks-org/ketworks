@@ -132,6 +132,7 @@ class EligibilityTests(unittest.TestCase):
             self.assertEqual(payload["papers"]["2601.00001"]["paper"]["id"], "2601.00001v1")
             self.assertNotIn("results", payload["papers"]["2601.00001"])
             self.assertIn("<loc>https://ketworks.org/</loc>", (root / "dist/sitemap.xml").read_text())
+            self.assertIn("<loc>https://ketworks.org/about/</loc>", (root / "dist/sitemap.xml").read_text())
 
     def test_preview_summary_links_changed_instances_entries_and_pages(self):
         registry = json.dumps(list(REGISTRY.values()))
@@ -144,6 +145,7 @@ class EligibilityTests(unittest.TestCase):
         self.assertIn("1 added, 1 changed (arXiv:2601.00001v1)", text)
         self.assertIn("[new-page]({PREVIEW}/wiki/new-page/)", text)
         self.assertIn("No pages, instances or entries change", describe(["README.md"], {}, {}))
+        self.assertIn("[about]({PREVIEW}/about/)", describe(["pages/about.md", "brand/logo.png"], {}, {"pages/about.md": "# About"}))
 
     def test_preview_build_is_not_indexed_and_carries_a_banner(self):
         with tempfile.TemporaryDirectory() as tmp:

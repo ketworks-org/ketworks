@@ -73,6 +73,11 @@ def describe(paths, before, after):
             slug = Path(path).stem
             lines.append(f"- [{slug}]({{PREVIEW}}/wiki/{slug}/)" if after.get(path) is not None else f"- removed: `{path}`")
         lines.append("")
+    standalone = [p for p in paths if p.startswith("pages/") and p.endswith(".md")]
+    if standalone:
+        lines.append("**Other pages**")
+        lines += [f"- [{Path(p).stem}]({{PREVIEW}}/{Path(p).stem}/)" if after.get(p) is not None else f"- removed: `{p}`" for p in standalone]
+        lines.append("")
     other = [p for p in paths if p.startswith(("site/", "nqsbot/build.py", "scripts/render-content.mjs"))]
     if other:
         lines.append(f"**Site code** changed in {len(other)} file(s); start from the [landing page]({{PREVIEW}}/).")
@@ -82,8 +87,10 @@ def describe(paths, before, after):
 
 def main(base, root=ROOT):
     paths = changed_paths(root, base)
-    before = {p: git_show(root, base, p) for p in paths + ["data/benchmarks.json"]}
-    after = {p: (root / p).read_text() if (root / p).exists() else None for p in paths + ["data/benchmarks.json"]}
+    # Only data files and pages are read; other changes (images, code) are listed by path alone.
+    read = [p for p in paths if p.startswith(("data/", "wiki/", "pages/")) and p.endswith((".json", ".md"))] + ["data/benchmarks.json"]
+    before = {p: git_show(root, base, p) for p in read}
+    after = {p: (root / p).read_text() if (root / p).exists() else None for p in read}
     print(describe(paths, before, after))
 
 
