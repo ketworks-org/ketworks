@@ -61,3 +61,14 @@ export function withErrorBar(energy, uncertainty, type = null) {
   if (!/[eE]/.test(energy) && digits > 0 && Math.abs(scaled - digits) < 1e-6 * Math.max(1, scaled)) return {text: `${energy}(${digits})`, missing: false};
   return {text: `${energy} ± ${uncertainty}`, missing: false};
 }
+
+// Boundary class of an instance, used to group instances on a model page. The instance's own
+// boundary text stays the definition; this only decides the section it is listed in.
+export const BOUNDARY_CLASSES = ['Periodic', 'Periodic × antiperiodic', 'Cylinder', 'Open'];
+export function boundaryClass(benchmark) {
+  const text = (benchmark.boundary_conditions || '').toLowerCase();
+  if (text.includes('antiperiodic')) return 'Periodic × antiperiodic';
+  if (text.includes('open') && text.includes('periodic')) return 'Cylinder';
+  if (text.includes('open')) return 'Open';
+  return 'Periodic';
+}

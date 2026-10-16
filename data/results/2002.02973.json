@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2002.02973v4",
+    "title": "Recurrent Neural Network Wave Functions",
+    "authors": "Mohamed Hibat-Allah, Martin Ganahl, Lauren E. Hayward, Roger G. Melko, Juan Carrasquilla",
+    "published": "2020-02-07T19:00:03Z",
+    "updated": "2020-06-20T15:03:20Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2002.02973v4",
+  "source_sha256": null,
+  "extraction_model": "human",
+  "results": [
+    {
+      "benchmark_id": "tfim-square-12x12-obc-h3",
+      "system_description": "Two-dimensional transverse-field Ising model, Eq. (14), H = -sum sigma^z_i sigma^z_j - h sum sigma^x_i with Pauli matrices, 12 x 12 square lattice, open boundaries, h = 3",
+      "method": "2D RNN",
+      "variant": "positive 2D vanilla RNN, one layer, 100 memory units",
+      "method_class": "autoregressive",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-3.1739018",
+      "energy_token": "-3.1739018(2)",
+      "normalization": "per_site",
+      "unit": "J",
+      "uncertainty": "0.0000002",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Appendix F, Table II, row h = 3, column 2DRNN (bold); also Fig. 5(c)",
+      "eligibility_evidence": "Variational energy per site of the two-dimensional recurrent neural network wave function, estimated with 2 x 10^6 samples (Table II caption); the table lists DMRG separately.",
+      "parameter_count": null,
+      "notes": "Energy per site as printed; the Hamiltonian is this instance's. The meaning of the parenthesized error is not stated. The table's DMRG value is -3.17389966, slightly above this energy. Varbench lists the same energy (TFIsing/square_144_O_3, -457.041866(27))."
+    }
+  ],
+  "issues": []
+}
