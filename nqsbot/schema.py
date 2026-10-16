@@ -196,15 +196,15 @@ def plain(value):
 
 
 def variance_per_site(row, registry):
-    """Var(H)/N to the significant digits of the printed variance, or None when none is recorded."""
+    """Var(H)/N to the significant digits of the printed variance (at most six), or None when none is recorded."""
     if row["variance"] is None:
         return None
     divisor = registry[row["benchmark_id"]]["sites"] if row["normalization"] == "total" else 1
     factor = convention_factor(row)
     value = decimal(row["variance"])
-    if divisor == 1 and factor == 1:
+    if divisor == 1 and factor == 1 and significant_digits(row["variance"]) <= 6:
         return plain(value)
-    return plain(round_significant(value * factor * factor / divisor, significant_digits(row["variance"])))
+    return plain(round_significant(value * factor * factor / divisor, min(6, significant_digits(row["variance"]))))
 
 
 def convention_factor(row):
