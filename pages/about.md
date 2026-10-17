@@ -10,3 +10,7 @@ Anyone can contribute. Ketbook pages and Ketboard entries are added and correcte
 ## Support
 
 Ketworks is supported by the Computational Quantum Science Laboratory (CQSL) at EPFL: [www.epfl.ch/labs/cqsl](https://www.epfl.ch/labs/cqsl/).
+
+## Visitor statistics
+
+The site counts visits with Cloudflare Web Analytics, which sets no cookies and does not record personal data. It records the pages viewed, the referring site, and the country, browser and device type, in aggregate.
