@@ -4,7 +4,7 @@ if (toggle && nav) toggle.addEventListener('click', () => { const open = nav.cla
 
 // Visitor counts: Cloudflare Web Analytics, which sets no cookies and stores no personal data. Loaded only on
 // the published domain, so pull-request previews and local builds are not counted.
-const CLOUDFLARE_ANALYTICS_TOKEN = '';
+const CLOUDFLARE_ANALYTICS_TOKEN = '4b08837939df4850b02c613d1f0d81ea';
 if (CLOUDFLARE_ANALYTICS_TOKEN && location.hostname === 'ketworks.org') {
   const beacon = document.createElement('script');
   beacon.defer = true; beacon.src = 'https://static.cloudflareinsights.com/beacon.min.js';
