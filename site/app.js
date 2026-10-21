@@ -1,5 +1,5 @@
 import {makeSubmission, mergeSubmission, makeProposal, instanceFromForm, newInstanceValues, METHOD_CLASSES, MODELS} from './submission.mjs';
-import {PRESETS, CELLS, continuumInstanceFromForm, continuumFormValues} from './continuum.mjs';
+import {PRESETS, CELLS, ELEMENTS, continuumInstanceFromForm, continuumFormValues} from './continuum.mjs';
 // How an instance's energies are compared: per site, per electron or particle, or the total energy of the system.
 const perSuffix = per => per === 'system' ? '' : ` / ${per}`;
 const countHeader = b => b.category !== 'continuous-space' ? 'Sites' : (b.system?.particles?.[0]?.name === 'electrons' ? 'Electrons' : 'Particles');
@@ -15,11 +15,15 @@ const shortAuthors = authors => { const list = authors.split(/,\s*/); return lis
 
 // Small lattice sketch next to a model: a square grid, a triangular lattice (rows offset by half a spacing,
 // bonds along (1,0), (0,1) and (-1,1)), a chain, or a kagome patch of corner-sharing triangles.
-function latticeKind(family) { return /electron gas|continuum/i.test(family) ? 'continuum' : /triangular/i.test(family) ? 'triangular' : /kagome/i.test(family) ? 'kagome' : /pyrochlore/i.test(family) ? 'pyrochlore' : /chain/i.test(family) ? 'chain' : 'square'; }
+function latticeKind(family) { return /molecule/i.test(family) ? 'molecule' : /electron gas|continuum/i.test(family) ? 'continuum' : /triangular/i.test(family) ? 'triangular' : /kagome/i.test(family) ? 'kagome' : /pyrochlore/i.test(family) ? 'pyrochlore' : /chain/i.test(family) ? 'chain' : 'square'; }
 function lattice(kind = 'square') {
   const ns = 'http://www.w3.org/2000/svg', svg = document.createElementNS(ns, 'svg'); svg.setAttribute('viewBox', '0 0 76 66'); svg.setAttribute('aria-hidden', 'true');
   const line = (p, q) => { const l = document.createElementNS(ns, 'line'); Object.entries({x1: p[0], y1: p[1], x2: q[0], y2: q[1]}).forEach(([k, v]) => l.setAttribute(k, v)); svg.append(l); };
   const dot = ([cx, cy]) => { const c = document.createElementNS(ns, 'circle'); Object.entries({cx, cy, r: 3}).forEach(([k, v]) => c.setAttribute(k, v)); svg.append(c); };
+  if (kind === 'molecule') {
+    const ring = [0, 1, 2, 3, 4, 5].map(k => [38 + 20 * Math.sin(k * Math.PI / 3), 33 - 20 * Math.cos(k * Math.PI / 3)]);
+    ring.forEach((p, k) => line(p, ring[(k + 1) % 6])); ring.forEach(dot); return svg;
+  }
   if (kind === 'chain') {
     const points = [0, 1, 2, 3].map(i => [8 + i * 20, 33]);
     points.slice(1).forEach((p, i) => line(points[i], p)); points.forEach(dot); return svg;
@@ -238,6 +242,8 @@ function renderResults() {
   dl.append(text('dt', 'Hamiltonian'), h);
   const parameters = text('dd', ''); if (b.parameters_html) parameters.innerHTML = b.parameters_html; else parameters.textContent = b.sector;
   dl.append(text('dt', 'Parameters'), parameters);
+  const external = b.system?.external;
+  if (external?.type === 'fixed nuclei') dl.append(text('dt', 'Geometry'), geometryBlock(b, external));
   const per = b.per || 'site'; document.querySelectorAll('.per-suffix').forEach(el => el.textContent = perSuffix(per));
   [[per === 'site' ? 'Lattice size' : 'Size', b.lattice_size || `${b.sites} sites`], ['Boundaries', b.boundary_conditions || b.geometry], ['Sector', b.sector], ['Units', per === 'system' ? `${b.unit}, total energy of the system` : `${b.unit} per ${per}`]].forEach(([k, v]) => dl.append(text('dt', k), text('dd', v)));
   const conventions = document.createElement('details'); conventions.className = 'instance-conventions'; conventions.append(text('summary', 'Full geometry and conventions'), text('p', b.geometry), text('p', b.hamiltonian));
@@ -261,6 +267,24 @@ function renderResults() {
   $('empty-results').querySelector('p').textContent = any ? 'Change the class filter or the search text.' : 'Results appear after their pull request is reviewed and merged.';
 }
 
+// Molecules: the nuclei are the definition of the instance, so they are shown in full, with an XYZ file to download.
+const BOHR_IN_ANGSTROM = 0.529177210903;
+function geometryBlock(b, external) {
+  const dd = text('dd', ''), units = external.coordinate_units === 'angstrom' ? 'Å' : 'bohr';
+  dd.append(text('p', `${external.geometry} · coordinates in ${units} · charge ${external.charge}`, 'geometry-name'));
+  const table = text('table', '', 'geometry-table'), body = document.createElement('tbody');
+  table.innerHTML = `<thead><tr><th scope="col">Atom</th><th scope="col" class="num">x</th><th scope="col" class="num">y</th><th scope="col" class="num">z</th></tr></thead>`;
+  const symbol = n => ELEMENTS[n.Z - 1] || `Z=${n.Z}`;
+  const decimals = Math.max(...external.nuclei.flatMap(n => n.position.map(x => (String(x).split('.')[1] || '').length)));
+  external.nuclei.forEach(n => { const tr = document.createElement('tr'); tr.append(text('td', symbol(n)), ...n.position.map(x => text('td', x.toFixed(decimals), 'num mono'))); body.append(tr); });
+  table.append(body);
+  const details = document.createElement('details'); details.className = 'geometry-details';
+  details.append(text('summary', `Show coordinates (${external.nuclei.length} nuclei)`), table);
+  const toAngstrom = units === 'bohr' ? BOHR_IN_ANGSTROM : 1;
+  const xyz = `${external.nuclei.length}\n${b.id}: ${external.geometry}; converted from ${units} (1 bohr = ${BOHR_IN_ANGSTROM} Å)\n` + external.nuclei.map(n => [symbol(n), ...n.position.map(x => (x * toAngstrom).toFixed(8))].join(' ')).join('\n') + '\n';
+  const link = text('a', 'Download XYZ (Å) ↓', 'text-link'); link.href = URL.createObjectURL(new Blob([xyz], {type: 'chemical/x-xyz'})); link.download = `${b.id}.xyz`;
+  details.append(link); dd.append(details); return dd;
+}
 function download(value, filename) { const url = URL.createObjectURL(new Blob([JSON.stringify(value, null, 2) + '\n'], {type: 'application/json'})); const a = document.createElement('a'); a.href = url; a.download = filename; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
 // Starting a new instance from an existing one: the form is filled with the values that rebuild it, so that only
 // what differs is changed. An instance that no template rebuilds is started as a proposal for a curator.

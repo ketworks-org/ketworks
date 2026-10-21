@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "references": [
+    {
+      "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+      "method": "Gutzwiller-projected fermionic state with Jastrow factor",
+      "kind": "upper_bound",
+      "energy_token": "-0.49521(1)",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Hu et al., arXiv:1304.2630, Table I",
+      "notes": ""
+    },
+    {
+      "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+      "method": "Same state with one Lanczos step",
+      "kind": "upper_bound",
+      "energy_token": "-0.49718(1)",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Hu et al., arXiv:1304.2630, Table I",
+      "notes": ""
+    },
+    {
+      "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+      "method": "Same state with two Lanczos steps",
+      "kind": "upper_bound",
+      "energy_token": "-0.49755(1)",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Hu et al., arXiv:1304.2630, Table I",
+      "notes": ""
+    },
+    {
+      "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+      "method": "Zero-variance extrapolation of the Lanczos sequence",
+      "kind": "estimate",
+      "energy_token": "-0.49781(2)",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Hu et al., arXiv:1304.2630, Table I",
+      "notes": "Extrapolated, not variational."
+    },
+    {
+      "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+      "method": "SU(2) DMRG on the torus",
+      "kind": "upper_bound",
+      "energy_token": "-0.495530",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Gong et al., arXiv:1311.5962, as tabulated in Choo et al., arXiv:1903.06713, Table I",
+      "notes": ""
+    }
+  ]
+}

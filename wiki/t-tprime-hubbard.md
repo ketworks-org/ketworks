@@ -36,40 +36,27 @@ $$
 
 ## Known energies
 
-Energies per site in units of $t$, with the source of each number. Ketboard entries carry the arXiv version and the exact printed token; no uncertainty means none was printed or the table states that it is below the last digit.
+Energies per site in units of $t$. The tables are generated when the site is built from every reviewed Ketboard entry for each torus, highest first; they change when an entry is added. "Symmetry" in a method's label is the projection applied after optimization: none, translations ($T$), or translations and rotations ($T+R$).
 
-**$8\times8$ torus, 28+28 electrons.**
-
-| Method | Symmetry | $e$ | Source |
-| --- | --- | --- | --- |
-| Tensor backflow, $p=0$ | none | $-0.7374(4)$ | Liang, arXiv:2609.22618, Table II |
-| Tensor backflow, $p=0$ | $T+R$ | $-0.7395(4)$ | Liang, arXiv:2609.22618, Table II |
-| Tensor backflow, one Lanczos step | none | $-0.7424(3)$ | Liang, arXiv:2609.22618, Table II |
-| Tensor backflow, one Lanczos step | $T+R$ | $-0.7441(8)$ | Liang, arXiv:2609.22618, Table II |
-| Transformer backflow, Slater determinant | none / $T$ / $T+R$ | $-0.74512(1)$ / $-0.74834(1)$ / $-0.74993(1)$ | Viteritti et al., arXiv:2604.21978, Table I |
-| Transformer backflow, particle-hole determinant | none / $T$ / $T+R$ | $-0.74649(1)$ / $-0.74934(1)$ / $-0.75026(1)$ | Viteritti et al., arXiv:2604.21978, Table I |
-| Transformer backflow, Pfaffian | none / $T$ / $T+R$ | $-0.74705(1)$ / $-0.74952(1)$ / $-0.75058(1)$ | Viteritti et al., arXiv:2604.21978, Table I |
+```ketboard
+entries
+instances: hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0 hubbard-square-16x16-pbc-u8-tp-0p2-n224-sz0
+row: label
+```
 
 **$12\times12$ to $24\times24$ tori.**
 
-| $L$ | Method | $e$ | Source |
-| --- | --- | --- | --- |
-| 12 | Symmetry-preserving backflow pairing | $-0.74425(1)$ | Rende, Viteritti, Georges, arXiv:2608.12465, Table I |
-| 16 | Hidden-fermion Pfaffian, filled stripe | $-0.7261(1)$ | Roth et al., arXiv:2511.07566, Table V |
-| 16 | Hidden-fermion Pfaffian, half-filled stripe with pairing | $-0.7360(1)$ | Roth et al., arXiv:2511.07566, Table V |
-| 16 | Tensor backflow, pinning field, $p=0$ | $-0.7360(7)$ | Liang, arXiv:2609.22618, Table III |
-| 16 | Sparse convolutional backflow (SCALE) | $-0.7373$ | Gu et al., arXiv:2604.25775, Table I |
-| 16 | Tensor backflow, pinning field, one Lanczos step | $-0.7408(1)$ | Liang, arXiv:2609.22618, Table III |
-| 16 | Deep convolutional backflow (ACE) | $-0.7430$ | Gu et al., arXiv:2604.25775, Table I |
-| 16 | Symmetry-preserving backflow pairing | $-0.74411(1)$ | Rende, Viteritti, Georges, arXiv:2608.12465, Table I |
-| 20 | Symmetry-preserving backflow pairing | $-0.74382(1)$ | Rende, Viteritti, Georges, arXiv:2608.12465, Table I |
-| 24 | Symmetry-preserving backflow pairing | $-0.74397(1)$ | Rende, Viteritti, Georges, arXiv:2608.12465, Table I |
+```ketboard
+summary
+instances: hubbard-square-12x12-pbc-u8-tp-0p2-n126-sz0 hubbard-square-16x16-pbc-u8-tp-0p2-n224-sz0 hubbard-square-20x20-pbc-u8-tp-0p2-n350-sz0 hubbard-square-24x24-pbc-u8-tp-0p2-n504-sz0
+row: size
+```
 
-On $16\times16$ the spread between ansätze is $1.8\times10^{-2}t$ per site, two orders of magnitude above the error bars.
+At the time of writing the spread between ansätze on $16\times16$ is about $1.8\times10^{-2}t$ per site, two orders of magnitude above the error bars.
 
-The $8\times8$ torus lies far from the larger clusters ($-0.7506$ against $-0.744$) because of its shell structure. The $12\times12$ to $24\times24$ energies of the symmetry-preserving state agree within $5\times10^{-4}t$, so the energy per site at this point is about $-0.744\,t$, with a variational error that cannot yet be separated from the finite-size trend.
+The $8\times8$ torus lies far from the larger clusters (about $-0.7506$ against $-0.744$ for the transformer backflow of Viteritti et al. and the symmetry-preserving pairing state of Rende et al.) because of its shell structure. The $12\times12$ to $24\times24$ energies of the symmetry-preserving state agree within $5\times10^{-4}t$, so the energy per site at this point is about $-0.744\,t$, with a variational error that cannot yet be separated from the finite-size trend.
 
-The lowest energies on the large tori come from the state that keeps translation symmetry, not from states with a stripe built in. This is what the variational-bias argument above predicts.
+At the time of writing the lowest energies on the large tori come from the state that keeps translation symmetry, not from states with a stripe built in. This is what the variational-bias argument above predicts.
 
 ## Reporting a result for this instance
 

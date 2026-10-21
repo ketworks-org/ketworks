@@ -294,8 +294,62 @@ def fingerprint(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
 
 
+# Energies of other methods (DMC, FCIQMC, CCSD(T), DMRG, exact diagonalization) for Ketboard instances. They are
+# shown only in the generated tables of Ketbook pages, never on Ketboard. kind: exact (or an estimate of the exact
+# energy with a stated error), upper_bound (a variational energy of another method), estimate (not variational:
+# extrapolations, coupled cluster, transcorrelated or constrained-path results).
+REFERENCE_KINDS = ["exact", "upper_bound", "estimate"]
+REFERENCE = obj({"benchmark_id": string(), "method": string(), "kind": string(REFERENCE_KINDS), "energy_token": string(),
+                 "normalization": string(["total", "per_site"]), "unit": string(), "source": string(), "notes": string()})
+# Like an entry, a reference printed in another unit (Rydberg) carries the factor that converts it.
+REFERENCE["properties"] = {**REFERENCE["properties"], "convention_factor": string()}
+REFERENCE_FILE = obj({"schema_version": {"const": 1}, "references": {"type": "array", "items": REFERENCE, "minItems": 1}})
+TOKEN = re.compile(r"([+-]?\d+(?:\.\d+)?)(?:\((\d+)\))?")
+
+
+def reference_row(reference):
+    """A reference as a row that per_site() understands: energy and uncertainty from the printed token."""
+    match = TOKEN.fullmatch(reference["energy_token"])
+    if not match:
+        raise ValueError(f"{reference['benchmark_id']}: reference token {reference['energy_token']!r} must look like -1.2345(6)")
+    value, digits = match[1], match[2]
+    decimals = len(value.split(".")[1]) if "." in value else 0
+    row = {"benchmark_id": reference["benchmark_id"], "energy": value, "normalization": reference["normalization"],
+           "uncertainty": plain(Decimal(digits).scaleb(-decimals)) if digits else None}
+    if "convention_factor" in reference:
+        row["convention_factor"] = reference["convention_factor"]
+    return row
+
+
+def validate_references(root, registry):
+    seen = set()
+    for path in sorted((root / "data/references").glob("*.json")):
+        record = json.loads(path.read_text())
+        validate(record, REFERENCE_FILE)
+        for reference in record["references"]:
+            benchmark = registry.get(reference["benchmark_id"])
+            if benchmark is None:
+                raise ValueError(f"{path.name}: unknown instance {reference['benchmark_id']}")
+            reference_row(reference)
+            if "convention_factor" in reference:
+                factor = decimal(reference["convention_factor"])
+                if factor <= 0 or factor == 1:
+                    raise ValueError(f"{path.name}: convention_factor must be positive and differ from 1")
+            elif reference["unit"] != benchmark["unit"]:
+                raise ValueError(f"{path.name}: {reference['benchmark_id']} is in {benchmark['unit']}; a reference in {reference['unit']} needs a convention_factor")
+            if benchmark.get("per") == "system" and reference["normalization"] != "total":
+                raise ValueError(f"{path.name}: {reference['benchmark_id']} is compared by total energy")
+            if not reference["source"].strip() or not reference["method"].strip():
+                raise ValueError(f"{path.name}: a reference needs a method and a source")
+            key = (reference["benchmark_id"], reference["method"].casefold(), reference["source"].casefold())
+            if key in seen:
+                raise ValueError(f"{path.name}: duplicate reference {key}")
+            seen.add(key)
+
+
 def validate_tree(root=ROOT):
     registry = benchmarks(root)
+    validate_references(root, registry)
     for folder, unmatched in (("results", False), ("proposals", True)):
         for path in sorted((root / "data" / folder).glob("*.json")):
             record = json.loads(path.read_text())

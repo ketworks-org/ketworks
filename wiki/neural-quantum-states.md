@@ -44,7 +44,7 @@ at a cost of $|G|$ evaluations per amplitude, with $\chi_\Gamma$ the character. 
 - **Feed-forward and convolutional networks.** Dense layers (Cai and Liu, arXiv:1704.05148; Saito, arXiv:1707.09723) and convolutional layers with translation-invariant pooling (Choo, Neupert, Carleo, arXiv:1903.06713; Liang et al., arXiv:1807.09422). Group-convolutional networks extend the weight sharing to the full space group and are among the most accurate ansätze on frustrated lattices (Roth, Szabó, MacDonald, arXiv:2211.07749).
 - **Autoregressive models.** Factorize $\Psi_\theta(\boldsymbol{\sigma})=\prod_i\psi_i(\sigma_i|\sigma_{<i})$ with normalized conditionals, so that $|\Psi_\theta|^2$ can be sampled exactly without a Markov chain: PixelCNN-style networks (Sharir et al., arXiv:1902.04057) and recurrent networks (Hibat-Allah et al., arXiv:2002.02973).
 - **Transformers.** Attention over site embeddings, with or without the autoregressive constraint (Viteritti, Rende, Becca, arXiv:2211.05504); currently competitive with group-convolutional networks on the J₁–J₂ model.
-- **Fermionic states.** A Slater or Pfaffian determinant supplies antisymmetry, and the network supplies either a multiplicative correlator, a backflow transformation of the orbitals (Luo and Clark, arXiv:1807.10770), or hidden degrees of freedom that enlarge the determinant (Moreno et al., arXiv:2111.10420). In continuous space the same idea gives FermiNet (Pfau et al., arXiv:1909.02487) and PauliNet (Hermann, Schätzle, Noé, arXiv:1909.08423).
+- **Fermionic states.** A Slater or Pfaffian determinant supplies antisymmetry, and the network supplies either a multiplicative correlator, a backflow transformation of the orbitals (Luo and Clark, arXiv:1807.10770), or hidden degrees of freedom that enlarge the determinant (Moreno et al., arXiv:2111.10420). In continuous space the same idea gives FermiNet (Pfau et al., arXiv:1909.02487) and PauliNet (Hermann, Schätzle, Noé, arXiv:1909.08423), with permutation-equivariant networks acting on particle coordinates; see the [continuous-space page](../continuous-space/).
 
 ## Expressivity versus trainability
 
@@ -52,7 +52,7 @@ Representation theorems establish that RBMs with polynomially many hidden units 
 
 ## In this book
 
-The [variational Monte Carlo page](../variational-monte-carlo/) covers estimators and error bars, the [optimization page](../optimization/) covers stochastic reconfiguration and its kernel formulation, the architecture pages cover specific ansätze, and the benchmark pages fix the instances on which Ketboard compares energies. The [conventions page](../benchmark-conventions/) states what makes a result eligible.
+The [variational Monte Carlo page](../variational-monte-carlo/) covers estimators and error bars, the [optimization page](../optimization/) covers stochastic reconfiguration and its kernel formulation, the [continuous-space page](../continuous-space/) covers wavefunctions of particle coordinates, the architecture pages cover specific ansätze, and the benchmark pages fix the instances on which Ketboard compares energies. The [conventions page](../benchmark-conventions/) states what makes a result eligible.
 
 ## References
 

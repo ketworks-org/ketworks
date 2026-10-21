@@ -27,7 +27,7 @@
       "uncertainty": "0.00002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=1, E' (no basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -48,7 +48,7 @@
       "uncertainty": "0.00006",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=1, E (Gaussian basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -69,7 +69,7 @@
       "uncertainty": "0.00005",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=4, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -90,7 +90,7 @@
       "uncertainty": "0.00007",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=4, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -111,7 +111,7 @@
       "uncertainty": "0.00002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=16, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -132,7 +132,7 @@
       "uncertainty": "0.00002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=16, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -153,7 +153,7 @@
       "uncertainty": "0.000006",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=1, E' (no basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -174,7 +174,7 @@
       "uncertainty": "0.00001",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=1, E (Gaussian basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -195,7 +195,7 @@
       "uncertainty": "0.000006",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=4, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -216,7 +216,7 @@
       "uncertainty": "0.00002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=4, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -237,7 +237,7 @@
       "uncertainty": "0.000005",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=16, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -258,7 +258,7 @@
       "uncertainty": "0.00001",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=16, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -279,7 +279,7 @@
       "uncertainty": "0.000009",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=1, E' (no basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -300,7 +300,7 @@
       "uncertainty": "0.000006",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=1, E (Gaussian basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -321,7 +321,7 @@
       "uncertainty": "0.000004",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=4, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -342,7 +342,7 @@
       "uncertainty": "0.000005",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=4, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -363,7 +363,7 @@
       "uncertainty": "0.000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=16, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -384,7 +384,7 @@
       "uncertainty": "0.000003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=16, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -405,7 +405,7 @@
       "uncertainty": "0.000003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=1, E' (no basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -426,7 +426,7 @@
       "uncertainty": "0.000003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=1, E (Gaussian basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -447,7 +447,7 @@
       "uncertainty": "0.000004",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=4, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -468,7 +468,7 @@
       "uncertainty": "0.000004",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=4, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -489,7 +489,7 @@
       "uncertainty": "0.000003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=16, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -510,7 +510,7 @@
       "uncertainty": "0.000003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=16, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -531,7 +531,7 @@
       "uncertainty": "0.00005",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=1, E' (no basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -552,7 +552,7 @@
       "uncertainty": "0.00002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=1, E (Gaussian basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -573,7 +573,7 @@
       "uncertainty": "0.000008",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=4, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -594,7 +594,7 @@
       "uncertainty": "0.000009",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=4, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -615,7 +615,7 @@
       "uncertainty": "0.000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=16, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -636,7 +636,7 @@
       "uncertainty": "0.000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=16, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -657,7 +657,7 @@
       "uncertainty": "0.00002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=1, E' (no basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -678,7 +678,7 @@
       "uncertainty": "0.00001",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=1, E (Gaussian basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -699,7 +699,7 @@
       "uncertainty": "0.000008",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=4, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -720,7 +720,7 @@
       "uncertainty": "0.000003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=4, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -741,7 +741,7 @@
       "uncertainty": "0.00001",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=16, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -762,7 +762,7 @@
       "uncertainty": "0.00004",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_fn)",
+      "source_location": "Supplemental Material, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (FermiNet n_det=16, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -783,7 +783,7 @@
       "uncertainty": "0.00003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 1 iteration, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -804,7 +804,7 @@
       "uncertainty": "0.00004",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 1 iteration, E (basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -825,7 +825,7 @@
       "uncertainty": "0.00001",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 iterations, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -846,7 +846,7 @@
       "uncertainty": "0.00002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 iterations, E (basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -867,7 +867,7 @@
       "uncertainty": "0.000008",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 1 iteration, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -888,7 +888,7 @@
       "uncertainty": "0.000009",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 1 iteration, E (basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -909,7 +909,7 @@
       "uncertainty": "0.000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 iterations, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -930,7 +930,7 @@
       "uncertainty": "0.000004",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 iterations, E (basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -951,7 +951,7 @@
       "uncertainty": "0.000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 1 iteration, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -972,7 +972,7 @@
       "uncertainty": "0.000003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 1 iteration, E (basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -993,7 +993,7 @@
       "uncertainty": "0.0000004",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 iterations, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1014,7 +1014,7 @@
       "uncertainty": "0.0000007",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 iterations, E (basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1035,7 +1035,7 @@
       "uncertainty": "0.0000008",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 1 iteration, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1056,7 +1056,7 @@
       "uncertainty": "0.000001",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 1 iteration, E (basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1077,7 +1077,7 @@
       "uncertainty": "0.0000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 iterations, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1098,7 +1098,7 @@
       "uncertainty": "0.0000008",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 iterations, E (basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1119,7 +1119,7 @@
       "uncertainty": "0.0000003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 1 iteration, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1140,7 +1140,7 @@
       "uncertainty": "0.0000009",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 1 iteration, E (basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1161,7 +1161,7 @@
       "uncertainty": "0.0000006",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 iterations, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1182,7 +1182,7 @@
       "uncertainty": "0.0000006",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 iterations, E (basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1203,7 +1203,7 @@
       "uncertainty": "0.0000003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 1 iteration, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1224,7 +1224,7 @@
       "uncertainty": "0.0000006",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 1 iteration, E (basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1245,7 +1245,7 @@
       "uncertainty": "0.0000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 iterations, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1266,7 +1266,7 @@
       "uncertainty": "0.0000004",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn)",
+      "source_location": "Supplemental Material, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 iterations, E (basis transf.)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1287,7 +1287,7 @@
       "uncertainty": "0.0000005",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., PW reference, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1308,7 +1308,7 @@
       "uncertainty": "0.0000007",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., PW reference, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1329,7 +1329,7 @@
       "uncertainty": "0.0000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., Gaussian-orbital reference, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1350,7 +1350,7 @@
       "uncertainty": "0.0000003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., Gaussian-orbital reference, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1371,7 +1371,7 @@
       "uncertainty": "0.0000004",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., PW reference, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1392,7 +1392,7 @@
       "uncertainty": "0.0000005",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., PW reference, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1413,7 +1413,7 @@
       "uncertainty": "0.0000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., Gaussian-orbital reference, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1434,7 +1434,7 @@
       "uncertainty": "0.0000003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., Gaussian-orbital reference, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1455,7 +1455,7 @@
       "uncertainty": "0.0000004",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., PW reference, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1476,7 +1476,7 @@
       "uncertainty": "0.0000005",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., PW reference, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1497,7 +1497,7 @@
       "uncertainty": "0.0000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., Gaussian-orbital reference, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1518,7 +1518,7 @@
       "uncertainty": "0.0000003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., Gaussian-orbital reference, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1539,7 +1539,7 @@
       "uncertainty": "0.0000003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., PW reference, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1560,7 +1560,7 @@
       "uncertainty": "0.0000005",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., PW reference, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1581,7 +1581,7 @@
       "uncertainty": "0.0000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., Gaussian-orbital reference, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1602,7 +1602,7 @@
       "uncertainty": "0.0000003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., Gaussian-orbital reference, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1623,7 +1623,7 @@
       "uncertainty": "0.0000004",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., PW reference, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1644,7 +1644,7 @@
       "uncertainty": "0.0000004",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., PW reference, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1665,7 +1665,7 @@
       "uncertainty": "0.0000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., Gaussian-orbital reference, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1686,7 +1686,7 @@
       "uncertainty": "0.0000003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., Gaussian-orbital reference, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1707,7 +1707,7 @@
       "uncertainty": "0.0000005",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., PW reference, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1728,7 +1728,7 @@
       "uncertainty": "0.0000007",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., PW reference, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1749,7 +1749,7 @@
       "uncertainty": "0.0000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., Gaussian-orbital reference, E') at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."
@@ -1770,7 +1770,7 @@
       "uncertainty": "0.0000003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supp. Table (tab:supp_energy_table_mpnn_scan)",
+      "source_location": "Supplemental Material, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MPNN 2 it., Gaussian-orbital reference, E) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (total energy per simulation cell, in Hartree). Madelung term: Ewald, \"+ b.g.\" neutralizing background; N=14 values/14 agree with Pescia/Wilson to ~1e-4 relative -> same convention (Madelung included). Boundary: periodic; twist not mentioned (Gamma presumed)."

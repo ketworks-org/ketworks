@@ -216,6 +216,50 @@ class EligibilityTests(unittest.TestCase):
             self.assertEqual(filled["title"], "Filled title"); self.assertEqual(filled["authors"], "A. Author, B. Author"); self.assertEqual(filled["published"], "2026-01-02T00:00:00Z")
             session.get.assert_called_once()
 
+    def test_generated_tables_compare_neural_entries_with_other_methods(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            for folder in ("data/results", "data/references"):
+                (root / folder).mkdir(parents=True)
+            (root / "data/benchmarks.json").write_text(json.dumps(list(REGISTRY.values())))
+            (root / "data/results/2601.00001.json").write_text(json.dumps(record()))
+            reference = {"benchmark_id": BENCHMARK, "method": "Fixture DMRG", "kind": "upper_bound", "energy_token": "-0.49000(1)", "normalization": "per_site", "unit": "J1", "source": "Fixture source, Table 1", "notes": ""}
+            exact = dict(reference, method="Fixture exact", kind="exact", energy_token="-0.51")
+            (root / "data/references/fixture.json").write_text(json.dumps({"schema_version": 1, "references": [reference, exact]}))
+            registry = schema.validate_tree(root)
+            from nqsbot.energies import Tables
+            tables = Tables(root, registry)
+            summary = tables.expand(f"```ketboard\nsummary\ninstances: {BENCHMARK}\nrow: size\n```\n")
+            self.assertIn("$-0.50000(20)$ Test NQS, fixture (Author, arXiv:2601.00001v1)", summary)
+            self.assertIn("neural lower", summary)
+            self.assertIn("Fixture exact, exact", summary)
+            self.assertIn("a neural state is lower on 1", summary)
+            entries = tables.expand(f"```ketboard\nentries\ninstances: {BENCHMARK}\n```\n")
+            self.assertLess(entries.index("Fixture DMRG"), entries.index("Test NQS"))
+            self.assertIn("lies 0.010 $J_1$ above the exact energy", entries)
+            # Within twice the combined error bars the two are not ranked.
+            (root / "data/references/fixture.json").write_text(json.dumps({"schema_version": 1, "references": [dict(reference, energy_token="-0.4997(1)")]}))
+            self.assertIn("within error bars", Tables(root, schema.validate_tree(root)).expand(f"```ketboard\nsummary\ninstances: {BENCHMARK}\n```\n"))
+            # References are checked like entries: a known instance, its unit or a conversion, and a parsable token.
+            for broken in (dict(reference, benchmark_id="no-such-instance"), dict(reference, unit="Ry"), dict(reference, energy_token="about -0.49")):
+                (root / "data/references/fixture.json").write_text(json.dumps({"schema_version": 1, "references": [broken]}))
+                with self.assertRaises(Exception):
+                    schema.validate_tree(root)
+            with self.assertRaises(ValueError):
+                tables.expand("```ketboard\nsummary\ninstances: no-such-*\n```\n")
+
+    def test_reference_energies_stay_off_ketboard(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            for folder in ("site", "data/results", "data/references"):
+                (root / folder).mkdir(parents=True)
+            (root / "site/index.html").write_text("<html></html>")
+            (root / "data/benchmarks.json").write_text(json.dumps(list(REGISTRY.values())))
+            reference = {"benchmark_id": BENCHMARK, "method": "Fixture DMRG", "kind": "upper_bound", "energy_token": "-0.49000(1)", "normalization": "per_site", "unit": "J1", "source": "Fixture source", "notes": ""}
+            (root / "data/references/fixture.json").write_text(json.dumps({"schema_version": 1, "references": [reference]}))
+            build(root)
+            self.assertNotIn("Fixture DMRG", (root / "dist/data.json").read_text())
+
 
 if __name__ == '__main__':
     unittest.main()

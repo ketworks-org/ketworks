@@ -8,6 +8,7 @@ import shutil
 import subprocess
 from urllib.parse import quote
 
+from .energies import Tables
 from .schema import CATEGORIES, ROOT, per_site, validate_tree, variance_per_site
 
 
@@ -57,7 +58,9 @@ def render_content(root, destination, registry):
         if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", page["slug"]) or page["slug"] in seen:
             raise ValueError("Wiki slugs must be unique, lowercase, and path-safe")
         seen.add(page["slug"])
-    articles = [{**page, "markdown": (root / "wiki" / (page["slug"] + ".md")).read_text()} for page in index]
+    # Energy tables are generated from the current Ketboard entries and reference energies (nqsbot/energies.py).
+    tables = Tables(root, registry)
+    articles = [{**page, "markdown": tables.expand((root / "wiki" / (page["slug"] + ".md")).read_text())} for page in index]
     if "about" in seen:
         raise ValueError("The slug 'about' is reserved for the About page")
     about = root / "pages/about.md"

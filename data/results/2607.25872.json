@@ -27,7 +27,7 @@
       "uncertainty": "0.000000012",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab:ueg)",
+      "source_location": "Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (Fermi Sets NQS, N_d=4, N_p=2.5e4 (VMC)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: included: \"const\" = Madelung energy of the periodic cell; 2D Ewald. Boundary: periodic, Gamma (twist averaging named as future work)."
@@ -48,7 +48,7 @@
       "uncertainty": "0.000000006",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab:ueg)",
+      "source_location": "Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (Fermi Sets NQS, N_d=4, N_p=3.7e4 (VMC)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: included: \"const\" = Madelung energy of the periodic cell; 2D Ewald. Boundary: periodic, Gamma (twist averaging named as future work)."
@@ -69,7 +69,7 @@
       "uncertainty": "0.000000003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab:ueg)",
+      "source_location": "Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (Fermi Sets NQS, N_d=4, N_p=5.0e4 (VMC)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: included: \"const\" = Madelung energy of the periodic cell; 2D Ewald. Boundary: periodic, Gamma (twist averaging named as future work)."

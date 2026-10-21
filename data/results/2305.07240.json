@@ -27,7 +27,7 @@
       "uncertainty": "0.000006",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized14)",
+      "source_location": "Appendix G, Table I",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -48,7 +48,7 @@
       "uncertainty": "0.000001",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized14)",
+      "source_location": "Appendix G, Table I",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -69,7 +69,7 @@
       "uncertainty": "0.0000004",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized14)",
+      "source_location": "Appendix G, Table I",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -90,7 +90,7 @@
       "uncertainty": "0.0000006",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized14)",
+      "source_location": "Appendix G, Table I",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -111,7 +111,7 @@
       "uncertainty": "0.0000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized14)",
+      "source_location": "Appendix G, Table I",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -132,7 +132,7 @@
       "uncertainty": "0.00000006",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized14)",
+      "source_location": "Appendix G, Table I",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -153,7 +153,7 @@
       "uncertainty": "0.00000003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized14)",
+      "source_location": "Appendix G, Table I",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -174,7 +174,7 @@
       "uncertainty": "0.00001",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized54)",
+      "source_location": "Appendix G, Table II",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS (plane waves)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -195,7 +195,7 @@
       "uncertainty": "0.000008",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized54)",
+      "source_location": "Appendix G, Table II",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS (plane waves)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -216,7 +216,7 @@
       "uncertainty": "0.00001",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized54)",
+      "source_location": "Appendix G, Table II",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS (Gaussian/bcc orbitals)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -237,7 +237,7 @@
       "uncertainty": "0.000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized54)",
+      "source_location": "Appendix G, Table II",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS (plane waves)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -258,7 +258,7 @@
       "uncertainty": "0.000004",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized54)",
+      "source_location": "Appendix G, Table II",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS (Gaussian/bcc orbitals)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -279,7 +279,7 @@
       "uncertainty": "0.000001",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized54)",
+      "source_location": "Appendix G, Table II",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS (plane waves)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -300,7 +300,7 @@
       "uncertainty": "0.000001",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized54)",
+      "source_location": "Appendix G, Table II",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS (Gaussian/bcc orbitals)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -321,7 +321,7 @@
       "uncertainty": "0.0000005",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized54)",
+      "source_location": "Appendix G, Table II",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS (plane waves)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -342,7 +342,7 @@
       "uncertainty": "0.0000006",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized54)",
+      "source_location": "Appendix G, Table II",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS (Gaussian/bcc orbitals)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -363,7 +363,7 @@
       "uncertainty": "0.0000001",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized54)",
+      "source_location": "Appendix G, Table II",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS (plane waves)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -384,7 +384,7 @@
       "uncertainty": "0.0000001",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized54)",
+      "source_location": "Appendix G, Table II",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS (Gaussian/bcc orbitals)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -405,7 +405,7 @@
       "uncertainty": "0.0000001",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized54)",
+      "source_location": "Appendix G, Table II",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS (plane waves)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -426,7 +426,7 @@
       "uncertainty": "0.00000005",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized54)",
+      "source_location": "Appendix G, Table II",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS (Gaussian/bcc orbitals)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -447,7 +447,7 @@
       "uncertainty": "0.0000001",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized128)",
+      "source_location": "Appendix G, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS (plane waves)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist). The paper prints this value as -0.0070203(1)(1), with two error brackets; the first is used."
@@ -468,7 +468,7 @@
       "uncertainty": "0.0000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized128)",
+      "source_location": "Appendix G, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS (Gaussian/bcc orbitals)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -489,7 +489,7 @@
       "uncertainty": "0.0000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized128)",
+      "source_location": "Appendix G, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS (plane waves)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -510,7 +510,7 @@
       "uncertainty": "0.0000001",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::unpolarized128)",
+      "source_location": "Appendix G, Table III",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS (Gaussian/bcc orbitals)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -531,7 +531,7 @@
       "uncertainty": "0.000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::polarized19)",
+      "source_location": "Appendix G, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -552,7 +552,7 @@
       "uncertainty": "0.000001",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::polarized19)",
+      "source_location": "Appendix G, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -573,7 +573,7 @@
       "uncertainty": "0.0000003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::polarized19)",
+      "source_location": "Appendix G, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -594,7 +594,7 @@
       "uncertainty": "0.0000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::polarized19)",
+      "source_location": "Appendix G, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -615,7 +615,7 @@
       "uncertainty": "0.0000001",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::polarized19)",
+      "source_location": "Appendix G, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -636,7 +636,7 @@
       "uncertainty": "0.00000003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::polarized19)",
+      "source_location": "Appendix G, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -657,7 +657,7 @@
       "uncertainty": "0.00000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::polarized19)",
+      "source_location": "Appendix G, Table IV",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -678,7 +678,7 @@
       "uncertainty": "0.000004",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::polarized27)",
+      "source_location": "Appendix G, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -699,7 +699,7 @@
       "uncertainty": "0.000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::polarized27)",
+      "source_location": "Appendix G, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -720,7 +720,7 @@
       "uncertainty": "0.0000006",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::polarized27)",
+      "source_location": "Appendix G, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -741,7 +741,7 @@
       "uncertainty": "0.0000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::polarized27)",
+      "source_location": "Appendix G, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -762,7 +762,7 @@
       "uncertainty": "0.0000001",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::polarized27)",
+      "source_location": "Appendix G, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -783,7 +783,7 @@
       "uncertainty": "0.00000005",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::polarized27)",
+      "source_location": "Appendix G, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -804,7 +804,7 @@
       "uncertainty": "0.00000003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::polarized27)",
+      "source_location": "Appendix G, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."
@@ -825,7 +825,7 @@
       "uncertainty": "0.00000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table (tab::polarized27)",
+      "source_location": "Appendix G, Table V",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (MP-NQS) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: \"const.\" from electron-background interaction + Ewald; consistent with Wilson (Madelung included) as WAP values agree after Ry->Ha. Boundary: periodic, Gamma (k=2pi n/L, fixed total momentum; no twist)."

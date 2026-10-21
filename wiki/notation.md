@@ -1,6 +1,6 @@
 # Notation and conventions
 
-Every article in Ketbook uses the symbols below. A page that needs something else defines it where it first appears.
+Every article in Ketbook uses the symbols below; the [continuous-space page](../continuous-space/) explains the first-quantized ones. A page that needs something else defines it where it first appears.
 
 ## States and configurations
 
@@ -13,6 +13,17 @@ Every article in Ketbook uses the symbols below. A page that needs something els
 | $p_\theta(\boldsymbol{\sigma})\propto\lvert\Psi_\theta(\boldsymbol{\sigma})\rvert^2$ | the normalized sampling distribution |
 | $E_0,E_1$ | exact ground-state and first-excited energies of $H$ in the sector considered |
 | $e=E/N$ | energy per site |
+
+## Continuous space
+
+| Symbol | Meaning |
+| --- | --- |
+| $d$ | spatial dimension |
+| $\mathbf R=(\mathbf r_1,\dots,\mathbf r_N)$ | a configuration of particle positions, the continuum counterpart of $\boldsymbol{\sigma}$ |
+| $N_\uparrow,N_\downarrow$ | numbers of spin-up and spin-down electrons; the first $N_\uparrow$ positions are the spin-up ones |
+| $r_s$ | density parameter of the electron gas: the radius, in bohr, of a sphere (a disk in two dimensions) holding one electron on average |
+| Ha, Ry | Hartree and Rydberg, $1\,\mathrm{Ha}=2\,\mathrm{Ry}$; continuum energies are in Hartree atomic units |
+| $e=E/N$ | energy per electron for an extended system; finite systems report the total $E$ |
 
 ## Estimators
 
