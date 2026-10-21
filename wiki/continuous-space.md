@@ -37,7 +37,7 @@ The determinant fixes the cost: $O(N^3)$ per evaluation, and every orbital chang
 
 ## Cusps
 
-The Coulomb potential diverges when two particles meet. The local energy stays finite only if the wavefunction has a cusp there that cancels the divergence (Kato, Commun. Pure Appl. Math. 10, 151 (1957)). For two electrons of opposite spin in three dimensions the spherically averaged wavefunction behaves as $\Psi\propto1+\tfrac12 r_{ij}$ at small separation $r_{ij}$; for parallel spins, where $\Psi$ vanishes linearly, the coefficient is $\tfrac14$. Networks with smooth activations do not produce a cusp by themselves. FermiNet supplies distances $|\mathbf r_i-\mathbf r_j|$ as inputs, from which the network can build an approximate cusp; PauliNet and many later ansätze multiply by a Jastrow factor that satisfies the cusp conditions exactly. A violated cusp does not bias the variational energy, but it makes the local energy heavy-tailed near coalescence, which inflates the variance and the error bar.
+The Coulomb potential diverges when two particles meet. The local energy stays finite only if the wavefunction has a cusp there that cancels the divergence (Kato, Commun. Pure Appl. Math. 10, 151 (1957)). For two electrons of opposite spin in three dimensions the spherically averaged wavefunction behaves as $\Psi\propto1+\tfrac12 r_{ij}$ at small separation $r_{ij}$; for parallel spins, where $\Psi$ vanishes linearly, the coefficient is $\tfrac14$. In two dimensions the two coefficients are $1$ and $\tfrac13$; in general they are $1/(d-1)$ and $1/(d+1)$ (Needs et al., arXiv:2003.06506, Eq. 9). Networks with smooth activations do not produce a cusp by themselves. FermiNet supplies distances $|\mathbf r_i-\mathbf r_j|$ as inputs, from which the network can build an approximate cusp; PauliNet and many later ansätze multiply by a Jastrow factor that satisfies the cusp conditions exactly. A violated cusp does not bias the variational energy, but it makes the local energy heavy-tailed near coalescence, which inflates the variance and the error bar.
 
 ## The local energy
 
@@ -88,6 +88,7 @@ Neural states in continuous space are also used for ultracold Fermi gases (Kim e
 - I. von Glehn, J. S. Spencer, D. Pfau, *A self-attention ansatz for ab-initio quantum chemistry*, arXiv:2211.13672 (2022). Psiformer.
 - R. Li et al., *Forward Laplacian: a new computational framework for neural network-based variational Monte Carlo*, arXiv:2307.08214 (2023).
 - T. Kato, *On the eigenfunctions of many-particle systems in quantum mechanics*, Commun. Pure Appl. Math. 10, 151 (1957). Cusp conditions.
+- R. J. Needs, M. D. Towler, N. D. Drummond, P. López Ríos, J. R. Trail, *Variational and diffusion quantum Monte Carlo calculations with the CASINO code*, arXiv:2003.06506 (2020). Cusp conditions in $d$ dimensions.
 - J. Martens, R. Grosse, *Optimizing neural networks with Kronecker-factored approximate curvature*, arXiv:1503.05671 (2015).
 - A. Chen, M. Heyl, *Empowering deep neural quantum states through efficient optimization*, arXiv:2302.01941 (2023). minSR.
 - G. Goldshlager, N. Abrahamsen, L. Lin, *A Kaczmarz-inspired approach to accelerate the optimization of neural network wavefunctions*, arXiv:2401.10190 (2024). SPRING.
