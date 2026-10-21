@@ -140,8 +140,9 @@ export function continuumInstance(system, existingIds = []) {
   if (system.preset === 'heg') {
     if (p.name !== 'electrons' || space.type !== 'periodic' || external.type !== 'uniform background' || interaction.type !== 'coulomb') throw Error('The electron gas is electrons in a periodic cell with a uniform background and Coulomb interactions.');
     if (space.r_s === undefined) throw Error('Give the density r_s.');
-    id = `heg${d}d-${cellKey}-${spinKey}-rs${slug(space.r_s)}`; family = `${d}D electron gas`;
-    group = `${spins(p)} · ${space.cell}`; label = `${spins(p)} · rₛ = ${space.r_s} · ${space.cell} · ${twist(space)}`;
+    // One model for the gas in two and three dimensions; the dimension heads each section and label.
+    id = `heg${d}d-${cellKey}-${spinKey}-rs${slug(space.r_s)}`; family = 'Electron gas';
+    group = `${d}D · ${spins(p)} · ${space.cell}`; label = `${d}D · ${spins(p)} · rₛ = ${space.r_s} · ${space.cell} · ${twist(space)}`;
     hamiltonian = `H = -1/2 sum_i nabla_i^2 + ${coulombText} + uniform neutralizing background${ewald}; Hartree atomic units`;
     hamLatex = 'H=-\\tfrac12\\sum_i\\nabla_i^2+\\sum_{i<j}\\frac{1}{|\\mathbf r_i-\\mathbf r_j|}+\\text{background}';
     params = `N_\\uparrow=${p.up},\\qquad N_\\downarrow=${p.down},\\qquad r_s=${space.r_s}`; size = `N = ${N} electrons (${spins(p)}) · rₛ = ${space.r_s}`;

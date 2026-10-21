@@ -2,7 +2,7 @@ import {makeSubmission, mergeSubmission, makeProposal, instanceFromForm, newInst
 import {PRESETS, CELLS, ELEMENTS, continuumInstanceFromForm, continuumFormValues} from './continuum.mjs';
 // How an instance's energies are compared: per site, per electron or particle, or the total energy of the system.
 // Links made before a category was renamed keep working.
-const RENAMED_CATEGORIES = {'continuous-space': 'continuum-electrons'};
+const RENAMED_CATEGORIES = {'continuous-space': 'continuum-electrons'}, RENAMED_FAMILIES = {'3D electron gas': 'Electron gas', '2D electron gas': 'Electron gas'};
 const PER_WORD = {cell: 'primitive cell'}, perWord = per => PER_WORD[per] || per;
 const perSuffix = per => per === 'system' ? '' : ` / ${perWord(per)}`;
 const countHeader = b => b.category === 'continuum-electrons' ? 'Electrons' : 'Sites';
@@ -69,7 +69,7 @@ function route() {
   const params = new URLSearchParams(location.hash.split('?')[1] || '');
   const benchmark = dataset?.benchmarks.find(b => b.id === params.get('system'));
   $('board-overview').hidden = name !== 'benchmarks' || Boolean(benchmark);
-  if (dataset && name === 'benchmarks' && !benchmark) { renderBoardOverview(params.get('family'), RENAMED_CATEGORIES[params.get('category')] || params.get('category')); markFamily(params.get('family')); }
+  if (dataset && name === 'benchmarks' && !benchmark) { const family = RENAMED_FAMILIES[params.get('family')] || params.get('family'); renderBoardOverview(family, RENAMED_CATEGORIES[params.get('category')] || params.get('category')); markFamily(family); }
   $('board-detail').hidden = !benchmark;
   const like = dataset?.benchmarks.find(b => b.id === params.get('like'));
   if (name === 'submit' && like && prefilled !== location.hash) { prefilled = location.hash; prefillFrom(like); }
@@ -128,7 +128,9 @@ function familyBlock(family, summary) {
   const sectionOf = b => b.group || boundaryClass(b);
   const boundaryTitle = c => ({Cylinder: 'Cylinders (periodic along one direction, open along the other)', Open: 'Open boundaries', Periodic: 'Periodic boundaries', 'Periodic × antiperiodic': 'Periodic × antiperiodic boundaries'})[c] || c;
   const smallest = c => Math.min(...entries.filter(s => sectionOf(s.benchmark) === c).map(s => s.benchmark.sites));
-  const classes = [...new Set([...BOUNDARY_CLASSES, ...entries.map(s => sectionOf(s.benchmark)).sort((x, y) => smallest(x) - smallest(y))])].filter(c => entries.some(s => sectionOf(s.benchmark) === c));
+  // Sections in order of dimension (3D before 2D), then of size.
+  const dimension = c => entries.find(s => sectionOf(s.benchmark) === c).benchmark.system?.dimension || 0;
+  const classes = [...new Set([...BOUNDARY_CLASSES, ...entries.map(s => sectionOf(s.benchmark)).sort((x, y) => dimension(y) - dimension(x) || smallest(x) - smallest(y))])].filter(c => entries.some(s => sectionOf(s.benchmark) === c));
   classes.forEach(boundary => {
     // Units per section: one model can mix energies per atom and per primitive cell (solids).
     const first = entries.find(s => sectionOf(s.benchmark) === boundary).benchmark, per = first.per || 'site', counted = countHeader(first);
