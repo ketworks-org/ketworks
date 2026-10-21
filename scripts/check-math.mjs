@@ -112,7 +112,7 @@ assert.equal(continuumInstanceFromForm({cpreset:'molecule',cdim:'3',cup:'1',cdow
 // A crystal: lattice vectors and nuclei of the simulation cell, the twist, and the energy per primitive cell or per atom.
 const crystal = {cpreset:'solid',cdim:'3',cup:'2',cdown:'2',cname:'Lithium hydride',cstructure:'rock salt',cgeometry:'L = 4.0 Å',ccoord_units:'angstrom',csupercell:'1×1×1 primitive cell',cnorm:'cell',cprim:'1',clattice:'0 2 2\n2 0 2\n2 2 0',cnuclei:'Li 0 0 0\nH 2 2 2',cnuclear:'clamped'};
 const lih = continuumInstanceFromForm(crystal);
-assert.equal(lih.id, 'solid-lithium-hydride-rock-salt-l-4p0-a-1x1x1-primitive-cell-gamma'); assert.equal(lih.per, 'cell'); assert.equal(lih.per_count, 1); assert.equal(lih.wiki, 'solids');
+assert.equal(lih.id, 'solid-lithium-hydride-rock-salt-l-4p0-a-1x1x1-primitive-cell-gamma'); assert.equal(lih.family, 'Solids'); assert.equal(lih.group, 'Lithium hydride, rock salt'); assert.equal(lih.per, 'cell'); assert.equal(lih.per_count, 1); assert.equal(lih.wiki, 'solids');
 assert.equal(continuumInstanceFromForm({...crystal, ctwist_text:'(1/2, 0, 0)'}).id, 'solid-lithium-hydride-rock-salt-l-4p0-a-1x1x1-primitive-cell-k1o2-0-0');
 assert.equal(continuumInstanceFromForm({...crystal, ctwist_text:'Γ'}).id, lih.id);
 assert.throws(() => continuumInstanceFromForm({...crystal, cup:'1'}), /neutral/);

@@ -164,8 +164,10 @@ export function continuumInstance(system, existingIds = []) {
     if (!system.name) throw Error('Name the material (for example "Lithium hydride").');
     const quantum = external.type === 'quantum nuclei', pp = external.pseudopotential, cellText = space.cell.replace(/×/g, 'x');
     id = `solid-${slug(system.name)}-${slug(external.structure)}-${slug(external.geometry)}-${slug(cellText)}-${twistKey(space.twist)}${pp ? '-' + slug(pp) : ''}${quantum ? '-quantum-nuclei' : ''}${p.up !== p.down ? `-s${p.up - p.down}` : ''}`;
-    family = system.name; group = [external.structure, space.cell, quantum ? 'quantum nuclei' : null, pp].filter(Boolean).join(' · ');
-    label = [`${external.structure}, ${external.geometry}`, space.cell, twist(space), quantum ? 'quantum nuclei' : null, pp].filter(Boolean).join(' · ');
+    // One model for all crystals, sectioned by material and structure (and by quantum nuclei or a pseudopotential,
+    // which change the Hamiltonian); the rows of a section are its cells, lattice parameters and twists.
+    family = 'Solids'; group = [`${system.name}, ${external.structure}`, quantum ? 'quantum nuclei' : null, pp].filter(Boolean).join(', ');
+    label = [`${system.name}, ${external.structure}, ${external.geometry}`, space.cell, twist(space), quantum ? 'quantum nuclei' : null, pp].filter(Boolean).join(' · ');
     const nuclearKinetic = quantum ? ` - sum_A 1/(2 M) nabla_A^2 (M = ${external.mass} m_e)` : '';
     hamiltonian = `H = sum_i (-1/2 nabla_i^2 - sum_A Z_A/|r_i - R_A|)${nuclearKinetic} + ${coulombText} + sum_{A<B} Z_A Z_B/|R_A - R_B|${ewald}; ${quantum ? 'nuclei as distinguishable quantum particles (no nuclear exchange)' : 'nuclei fixed (Born-Oppenheimer)'}, ${pp ? `${pp} pseudopotential` : 'all electrons'}, nonrelativistic; Hartree atomic units`;
     hamLatex = `H=\\sum_i\\Big(-\\tfrac12\\nabla_i^2-\\sum_A\\frac{Z_A}{|\\mathbf r_i-\\mathbf R_A|}\\Big)${quantum ? '-\\sum_A\\frac{\\nabla_A^2}{2M}' : ''}+\\sum_{i<j}\\frac{1}{|\\mathbf r_i-\\mathbf r_j|}+\\sum_{A<B}\\frac{Z_AZ_B}{|\\mathbf R_A-\\mathbf R_B|}`;

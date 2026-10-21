@@ -13,7 +13,7 @@
   "issues": [],
   "results": [
     {
-      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-2x2x2-conventional-cells-gamma",
+      "benchmark_id": "solid-hydrogen-bcc-rs-1p31-2x2x2-conventional-cells-gamma",
       "system_description": "Static hydrogen: 16 protons pinned to a BCC lattice at r_s = 1.31, cubic cell of 2x2x2 conventional cells, PBC (Gamma), 8 up and 8 down electrons, Ewald sums including the proton-proton term",
       "method": "Message-passing NQS",
       "variant": "MPNN backflow with Gaussian Bloch orbitals (static protons)",
@@ -34,7 +34,7 @@
       "notes": "Energy per atom, Hartree, as printed in v3. Cell volume 4 pi N r_s^3 / 3 (Method); protons on a perfect BCC lattice; the proton coordinates are not printed and follow from the BCC lattice in the cubic cell. Electron spin sector not stated; the reference calculations it is compared with are unpolarized."
     },
     {
-      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-3x3x3-conventional-cells-gamma",
+      "benchmark_id": "solid-hydrogen-bcc-rs-1p31-3x3x3-conventional-cells-gamma",
       "system_description": "Static hydrogen: 54 protons pinned to a BCC lattice at r_s = 1.31, cubic cell of 3x3x3 conventional cells, PBC (Gamma), 27 up and 27 down electrons, Ewald sums including the proton-proton term",
       "method": "Message-passing NQS",
       "variant": "MPNN backflow with Gaussian Bloch orbitals (static protons)",
@@ -55,7 +55,7 @@
       "notes": "Energy per atom, Hartree, as printed in v3. Cell volume 4 pi N r_s^3 / 3 (Method); protons on a perfect BCC lattice; the proton coordinates are not printed and follow from the BCC lattice in the cubic cell. Electron spin sector not stated; the reference calculations it is compared with are unpolarized. v1 printed -0.54007(2)."
     },
     {
-      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-4x4x4-conventional-cells-gamma",
+      "benchmark_id": "solid-hydrogen-bcc-rs-1p31-4x4x4-conventional-cells-gamma",
       "system_description": "Static hydrogen: 128 protons pinned to a BCC lattice at r_s = 1.31, cubic cell of 4x4x4 conventional cells, PBC (Gamma), 64 up and 64 down electrons, Ewald sums including the proton-proton term",
       "method": "Message-passing NQS",
       "variant": "MPNN backflow with Gaussian Bloch orbitals (static protons)",
@@ -76,7 +76,7 @@
       "notes": "Energy per atom, Hartree, as printed in v3. Cell volume 4 pi N r_s^3 / 3 (Method); protons on a perfect BCC lattice; the proton coordinates are not printed and follow from the BCC lattice in the cubic cell. Electron spin sector not stated; the reference calculations it is compared with are unpolarized. v1 printed -0.49991(7)."
     },
     {
-      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-2x2x2-conventional-cells-gamma-quantum-nuclei",
+      "benchmark_id": "solid-hydrogen-bcc-rs-1p31-2x2x2-conventional-cells-gamma-quantum-nuclei",
       "system_description": "Dynamic hydrogen: 16 electrons and 16 quantum protons at r_s = 1.31, cubic cell of 2x2x2 conventional cells, PBC (Gamma), nuclear wave function localized around BCC sites, no proton exchange",
       "method": "Message-passing NQS",
       "variant": "MPNN backflow with Gaussian Bloch orbitals and a proton MPNN (quantum protons)",
@@ -97,7 +97,7 @@
       "notes": "Energy per atom, Hartree. Hamiltonian Eq. (1): kinetic energy of electrons and protons and all Coulomb terms by Ewald summation; the nuclear factor is Gaussians localized around BCC lattice sites (Table II caption) and proton statistics are neglected. The proton mass is not printed (m_p/m_e = 1836 to the precision that matters here)."
     },
     {
-      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-3x3x3-conventional-cells-gamma-quantum-nuclei",
+      "benchmark_id": "solid-hydrogen-bcc-rs-1p31-3x3x3-conventional-cells-gamma-quantum-nuclei",
       "system_description": "Dynamic hydrogen: 54 electrons and 54 quantum protons at r_s = 1.31, cubic cell of 3x3x3 conventional cells, PBC (Gamma), nuclear wave function localized around BCC sites, no proton exchange",
       "method": "Message-passing NQS",
       "variant": "MPNN backflow with Gaussian Bloch orbitals and a proton MPNN (quantum protons)",

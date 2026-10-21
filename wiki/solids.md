@@ -8,7 +8,7 @@
 >
 > The tables below are generated from Ketboard and from the diffusion and reptation Monte Carlo energies recorded with it. They always show the current lowest neural energy in each cell and whether another method is lower.
 
-Notation follows the [conventions page](../notation/). The [continuous-space page](../continuous-space/) explains the ansätze, periodic boundary conditions with a twist, and Ewald sums. Reviewed entries live in [Ketboard](../../#benchmarks?category=continuous-space), not here.
+Notation follows the [conventions page](../notation/). The [continuous-space page](../continuous-space/) explains the ansätze, periodic boundary conditions with a twist, and Ewald sums. Reviewed entries live in [Ketboard](../../#benchmarks?family=Solids), not here.
 
 ## Hamiltonian and instances
 
@@ -64,7 +64,7 @@ The tables in this section are generated when the site is built, from the review
 
 ```ketboard
 summary
-instances: solid-dense-hydrogen-bcc-rs-1p31-2x2x2-conventional-cells-gamma solid-dense-hydrogen-bcc-rs-1p31-3x3x3-conventional-cells-gamma solid-dense-hydrogen-bcc-rs-1p31-4x4x4-conventional-cells-gamma
+instances: solid-hydrogen-bcc-rs-1p31-2x2x2-conventional-cells-gamma solid-hydrogen-bcc-rs-1p31-3x3x3-conventional-cells-gamma solid-hydrogen-bcc-rs-1p31-4x4x4-conventional-cells-gamma
 row: cell
 ```
 
@@ -72,7 +72,7 @@ Every entry and reference for the 16-atom cell, where two neural states are on t
 
 ```ketboard
 entries
-instances: solid-dense-hydrogen-bcc-rs-1p31-2x2x2-conventional-cells-gamma
+instances: solid-hydrogen-bcc-rs-1p31-2x2x2-conventional-cells-gamma
 ```
 
 Fu trained one network on four geometries at once; the other entries were optimized for the lattice alone.
@@ -81,13 +81,13 @@ Fu trained one network on four geometries at once; the other entries were optimi
 
 ```ketboard
 summary
-instances: solid-dense-hydrogen-bcc-rs-1p31-2x2x2-conventional-cells-gamma-quantum-nuclei solid-dense-hydrogen-bcc-rs-1p31-3x3x3-conventional-cells-gamma-quantum-nuclei
+instances: solid-hydrogen-bcc-rs-1p31-2x2x2-conventional-cells-gamma-quantum-nuclei solid-hydrogen-bcc-rs-1p31-3x3x3-conventional-cells-gamma-quantum-nuclei
 row: cell
 ```
 
 ```ketboard
 entries
-instances: solid-dense-hydrogen-bcc-rs-1p31-3x3x3-conventional-cells-gamma-quantum-nuclei
+instances: solid-hydrogen-bcc-rs-1p31-3x3x3-conventional-cells-gamma-quantum-nuclei
 ```
 
 Chai et al. print the standard error of their energy without the autocorrelation correction; their Supplemental Material gives the corrected value, $6.9\times10^{-6}$ Ha per atom.
@@ -96,7 +96,7 @@ Chai et al. print the standard error of their energy without the autocorrelation
 
 ```ketboard
 summary
-instances: solid-hydrogen-chain-linear-chain-r-1p8-bohr-10x1x1-primitive-cells-gamma solid-hydrogen-chain-linear-chain-r-1p8-bohr-18x1x1-primitive-cells-gamma solid-hydrogen-chain-linear-chain-r-1p8-bohr-30x1x1-primitive-cells-gamma solid-hydrogen-chain-linear-chain-r-1p8-bohr-50x1x1-primitive-cells-gamma
+instances: solid-hydrogen-linear-chain-r-1p8-bohr-10x1x1-primitive-cells-gamma solid-hydrogen-linear-chain-r-1p8-bohr-18x1x1-primitive-cells-gamma solid-hydrogen-linear-chain-r-1p8-bohr-30x1x1-primitive-cells-gamma solid-hydrogen-linear-chain-r-1p8-bohr-50x1x1-primitive-cells-gamma
 row: cell
 ```
 

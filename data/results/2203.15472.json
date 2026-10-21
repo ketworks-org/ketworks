@@ -390,7 +390,7 @@
       "notes": "Energy per primitive cell (one LiH), Hartree, as printed; the Hartree-Fock correction (0.0069) is not included. The twist is not stated in the paper; DeepSolid's code defaults to the Gamma point."
     },
     {
-      "benchmark_id": "solid-hydrogen-chain-linear-chain-r-1p8-bohr-10x1x1-primitive-cells-gamma",
+      "benchmark_id": "solid-hydrogen-linear-chain-r-1p8-bohr-10x1x1-primitive-cells-gamma",
       "system_description": "Periodic hydrogen chain, 10 atoms, bond length 1.8 bohr, all-electron, Gamma point",
       "method": "DeepSolid",
       "variant": "DeepSolid (FermiNet-type) \"Net\"",
@@ -411,7 +411,7 @@
       "notes": "Energy per atom, Hartree, as printed. Bond length 1.8 bohr (caption). The paper does not state the twist or the transverse cell; DeepSolid's config/hydrogen_chain.py uses the Gamma point and a 100-bohr square cross-section, which the instance takes."
     },
     {
-      "benchmark_id": "solid-hydrogen-chain-linear-chain-r-1p8-bohr-18x1x1-primitive-cells-gamma",
+      "benchmark_id": "solid-hydrogen-linear-chain-r-1p8-bohr-18x1x1-primitive-cells-gamma",
       "system_description": "Periodic hydrogen chain, 18 atoms, bond length 1.8 bohr, all-electron, Gamma point",
       "method": "DeepSolid",
       "variant": "DeepSolid (FermiNet-type) \"Net\"",
@@ -432,7 +432,7 @@
       "notes": "Energy per atom, Hartree, as printed. Bond length 1.8 bohr (caption). The paper does not state the twist or the transverse cell; DeepSolid's config/hydrogen_chain.py uses the Gamma point and a 100-bohr square cross-section, which the instance takes."
     },
     {
-      "benchmark_id": "solid-hydrogen-chain-linear-chain-r-1p8-bohr-30x1x1-primitive-cells-gamma",
+      "benchmark_id": "solid-hydrogen-linear-chain-r-1p8-bohr-30x1x1-primitive-cells-gamma",
       "system_description": "Periodic hydrogen chain, 30 atoms, bond length 1.8 bohr, all-electron, Gamma point",
       "method": "DeepSolid",
       "variant": "DeepSolid (FermiNet-type) \"Net\"",
@@ -453,7 +453,7 @@
       "notes": "Energy per atom, Hartree, as printed. Bond length 1.8 bohr (caption). The paper does not state the twist or the transverse cell; DeepSolid's config/hydrogen_chain.py uses the Gamma point and a 100-bohr square cross-section, which the instance takes."
     },
     {
-      "benchmark_id": "solid-hydrogen-chain-linear-chain-r-1p8-bohr-50x1x1-primitive-cells-gamma",
+      "benchmark_id": "solid-hydrogen-linear-chain-r-1p8-bohr-50x1x1-primitive-cells-gamma",
       "system_description": "Periodic hydrogen chain, 50 atoms, bond length 1.8 bohr, all-electron, Gamma point",
       "method": "DeepSolid",
       "variant": "DeepSolid (FermiNet-type) \"Net\"",

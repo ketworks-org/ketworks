@@ -185,7 +185,7 @@ class EligibilityTests(unittest.TestCase):
         row = dict(ROW, benchmark_id=lih["id"], unit="Ha", energy="-65.20768", energy_token="-65.20768(8)", uncertainty="0.00008")
         schema.validate_row(row, registry)
         self.assertEqual(schema.per_site(row, registry), ("-8.15096", "0.00001"))
-        hydrogen = registry["solid-dense-hydrogen-bcc-rs-1p31-2x2x2-conventional-cells-gamma-quantum-nuclei"]
+        hydrogen = registry["solid-hydrogen-bcc-rs-1p31-2x2x2-conventional-cells-gamma-quantum-nuclei"]
         self.assertEqual((hydrogen["per"], hydrogen["per_count"], hydrogen["system"]["external"]["type"]), ("atom", 16, "quantum nuclei"))
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp); (root / "data").mkdir()

@@ -13,9 +13,9 @@
   "issues": [],
   "results": [
     {
-      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-3x3x3-conventional-cells-gamma-quantum-nuclei",
+      "benchmark_id": "solid-hydrogen-bcc-rs-1p31-3x3x3-conventional-cells-gamma-quantum-nuclei",
       "system_description": "54 hydrogen atoms in a BCC lattice at r_s = 1.31, electrons and protons both quantum (proton mass M = 1836), fixed volume, periodic boundary conditions, no proton exchange",
-      "method": "Neural-network VMC (DeepSolid-based, quantum protons)",
+      "method": "NNVMC (DeepSolid-based)",
       "variant": "DeepSolid-type electronic network with a nuclear network, 16 determinants",
       "method_class": "backflow",
       "method_type": "nqs",

@@ -127,8 +127,9 @@ function familyBlock(family, summary) {
   const boundaryTitle = c => ({Cylinder: 'Cylinders (periodic along one direction, open along the other)', Open: 'Open boundaries', Periodic: 'Periodic boundaries', 'Periodic × antiperiodic': 'Periodic × antiperiodic boundaries'})[c] || c;
   const smallest = c => Math.min(...entries.filter(s => sectionOf(s.benchmark) === c).map(s => s.benchmark.sites));
   const classes = [...new Set([...BOUNDARY_CLASSES, ...entries.map(s => sectionOf(s.benchmark)).sort((x, y) => smallest(x) - smallest(y))])].filter(c => entries.some(s => sectionOf(s.benchmark) === c));
-  const per = entries[0].benchmark.per || 'site', counted = countHeader(entries[0].benchmark);
   classes.forEach(boundary => {
+    // Units per section: one model can mix energies per atom and per primitive cell (solids).
+    const first = entries.find(s => sectionOf(s.benchmark) === boundary).benchmark, per = first.per || 'site', counted = countHeader(first);
     if (classes.length > 1) group.append(text('h4', boundaryTitle(boundary), 'boundary-head'));
     const wrap = text('div', '', 'table-scroll'); const table = text('table', '', 'ledger'); const body = document.createElement('tbody');
     table.innerHTML = `<thead><tr><th scope="col">Instance</th><th scope="col" class="num">${counted}</th><th scope="col" class="num">Results</th><th scope="col" class="num">${per === 'system' ? 'Lowest total energy' : 'Lowest energy' + perSuffix(per)}</th></tr></thead>`;

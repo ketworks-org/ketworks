@@ -89,7 +89,7 @@ table{border-collapse:collapse;width:100%;font-size:14.5px;text-align:left}
 th{background:var(--ink);color:var(--paper);font:700 10px/1.4 var(--display);text-transform:uppercase;letter-spacing:.12em;padding:13px 12px;vertical-align:bottom}th .katex{text-transform:none;letter-spacing:0;font-size:1.6em}
 td{border-bottom:1px solid var(--line);padding:16px 12px;vertical-align:top}td small{display:block;color:var(--muted);margin-top:4px;font:13px/1.45 var(--serif)}
 td a{text-decoration:underline;text-underline-offset:3px}.num{text-align:right}th.num .sort{justify-content:flex-end}
-.energy{font-size:15px;white-space:nowrap}.rank{color:var(--muted);width:40px}
+.energy{font-size:15px;white-space:nowrap}.energy small{white-space:normal}.rank{color:var(--muted);width:40px}
 .ledger{min-width:820px}.ledger-system{display:flex;align-items:center;gap:14px;font:700 18px/1.15 var(--display);letter-spacing:-.02em}.ledger-system svg{width:40px;height:40px;stroke:var(--ink);fill:var(--paper);flex:none}.ledger-system:hover{color:var(--blue)}
 .board{min-width:1040px}
 .sort{display:inline-flex;align-items:center;gap:6px;background:none;border:0;color:inherit;padding:0;cursor:pointer;font:inherit;text-transform:inherit;letter-spacing:inherit}

@@ -13,7 +13,7 @@
   "issues": [],
   "results": [
     {
-      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-2x2x2-conventional-cells-gamma",
+      "benchmark_id": "solid-hydrogen-bcc-rs-1p31-2x2x2-conventional-cells-gamma",
       "system_description": "Static BCC hydrogen, N = 16, r_s = 1.31 bohr, 2x2x2 BCC supercell, PBC, Born-Oppenheimer, proton-proton Ewald energy",
       "method": "Fermi Sets",
       "variant": "K = 8 determinants, 238,024 parameters; one model trained on four geometries",
