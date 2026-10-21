@@ -19,22 +19,7 @@ where $v_E$ is the Ewald-summed Coulomb interaction of one electron with another
 - **Sector.** $N_\uparrow$ and $N_\downarrow$ are fixed. "Polarized" means $N_\downarrow=0$, "unpolarized" $N_\uparrow=N_\downarrow$.
 - **Cell.** The cell shape is part of the instance. At $N=27$ and $r_s=1$ the fully polarized gas has $e=1.26$ Ha in a body-centred cubic cell (Cassella et al., arXiv:2202.05183, Supplementary Table IV) and $1.05$ Ha in a simple cubic one (Pescia et al., arXiv:2305.07240, Table V).
 
-The instances on Ketboard:
-
-| Dimension | Cell | $N_\uparrow+N_\downarrow$ | $r_s$ | Sources |
-| --- | --- | --- | --- | --- |
-| 3 | simple cubic | 7 + 0 | 1–100 | Wilson et al. |
-| 3 | simple cubic | 7 + 7 | 1–100 | Wilson et al.; Pescia et al.; Liu, Qian, Wang |
-| 3 | simple cubic | 19 + 0 | 1–100 | Wilson et al.; Pescia et al. |
-| 3 | simple cubic | 27 + 0 | 1–90 | Pescia et al. |
-| 3 | simple cubic | 27 + 27 | 0.5–100 | Li, Li, Chen; Pescia et al. |
-| 3 | simple cubic | 64 + 64 | 110, 200 | Pescia et al. |
-| 3 | body-centred cubic | 27 + 0 | 0.2–90 | Cassella et al. |
-| 3 | rectangular, sides 3 : 3 : 2 | 18 + 18 | 5–100 | Liu, Qian, Wang |
-| 2 | square | 37 + 0 | 5 | Xie, Zhang, Wang |
-| 2 | rectangular, commensurate with a triangular lattice | 28 + 28 | 20–50 | Smith et al. |
-| 2 | triangular (60° rhombus) | 16 + 0 | 30 | Li et al. |
-| 2 | triangular (60° rhombus) | 91 + 0, 169 + 0 | 30, 40 | Gaggioli, Azadi, Fu |
+The cells, electron numbers and densities that have entries are listed on [Ketboard](../../#benchmarks?category=continuous-space); the next section explains how the cells are chosen.
 
 ## Shells and crystals
 

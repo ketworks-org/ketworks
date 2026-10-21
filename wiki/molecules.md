@@ -15,18 +15,9 @@ $$
 - **Energy.** The total energy, including the repulsion between nuclei, in Hartree, not divided by the number of electrons.
 - **Hamiltonian.** All electrons, no pseudopotential or effective core potential, no relativistic terms. A calculation with a pseudopotential, or in a finite basis set (second quantization), solves another problem and is not an entry.
 - **Geometry.** The positions of the nuclei are part of the instance. Two bond lengths, or two sources for "the equilibrium geometry", are two instances.
-- **Spin.** $N_\uparrow$ and $N_\downarrow$ are fixed; all instances below are closed-shell singlets with $N_\uparrow=N_\downarrow$.
+- **Spin.** $N_\uparrow$ and $N_\downarrow$ are fixed; the molecules on this page are closed-shell singlets with $N_\uparrow=N_\downarrow$.
 
-| Molecule | Geometry | Coordinates | $N_\uparrow+N_\downarrow$ | Key |
-| --- | --- | --- | --- | --- |
-| N₂ | $R=2.068$ bohr | Pfau et al., arXiv:1909.02487, Table II | 7 + 7 | `mol-n2-r-2p068-bohr-s0` |
-| Ozone | G3 | Pfau et al., Table XI | 12 + 12 | `mol-ozone-g3-s0` |
-| Bicyclobutane | G3 | Pfau et al., Table XIII | 15 + 15 | `mol-bicyclobutane-g3-s0` |
-| Benzene | G3 | von Glehn, Spencer, Pfau, arXiv:2211.13672, Table VIII | 21 + 21 | `mol-benzene-g3-s0` |
-| Cyclobutadiene | rectangle ($D_{2h}$ minimum) | FermiNet code, `configs/organic.py` | 14 + 14 | `mol-cyclobutadiene-rectangle-s0` |
-| Cyclobutadiene | square ($D_{4h}$ transition state) | FermiNet code, `configs/organic.py` | 14 + 14 | `mol-cyclobutadiene-square-s0` |
-
-The coordinates, in bohr, are in each Ketboard instance. Later papers state that they use the geometries of Pfau et al. or of von Glehn et al.; each entry records that statement. None of the papers with entries prints the cyclobutadiene coordinates. The FermiNet code distributes them with a comment attributing them to MR-BWCCSD(T) optimizations of Bhaskaran-Nair et al. and identifying them with those of PauliNet (Hermann, Schätzle, Noé, arXiv:1909.08423), and Ren et al. state that they used that code's cyclobutadiene setup (arXiv:2204.13903, Supplementary Note 9). That the cyclobutadiene entries share one geometry is therefore an inference, and the entries say so.
+**Geometries.** N₂ at $R=2.068$ bohr, as in Pfau et al. (arXiv:1909.02487, Table II); ozone and bicyclobutane at the G3 geometries printed by Pfau et al. (Tables XI and XIII); benzene at the G3 geometry printed by von Glehn, Spencer and Pfau (arXiv:2211.13672, Table VIII); cyclobutadiene at the rectangular $D_{2h}$ minimum and the square $D_{4h}$ transition state distributed with the FermiNet code (`configs/organic.py`). The coordinates, in bohr, are stored with each Ketboard instance. Later papers state that they use the geometries of Pfau et al. or of von Glehn et al.; each entry records that statement. None of the papers with entries prints the cyclobutadiene coordinates. The FermiNet code distributes them with a comment attributing them to MR-BWCCSD(T) optimizations of Bhaskaran-Nair et al. and identifying them with those of PauliNet (Hermann, Schätzle, Noé, arXiv:1909.08423), and Ren et al. state that they used that code's cyclobutadiene setup (arXiv:2204.13903, Supplementary Note 9). That the cyclobutadiene entries share one geometry is therefore an inference, and the entries say so.
 
 ## Why these molecules
 
