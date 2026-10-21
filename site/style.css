@@ -86,7 +86,7 @@ main{max-width:1240px;margin:auto;padding:0 56px}.view{padding-bottom:80px}.inte
 /* Tables: ledger on the landing page, board on Ketboard */
 .table-scroll{overflow:auto}
 table{border-collapse:collapse;width:100%;font-size:14.5px;text-align:left}
-th{background:var(--ink);color:var(--paper);font:700 10px/1.4 var(--display);text-transform:uppercase;letter-spacing:.12em;padding:13px 12px;vertical-align:bottom}
+th{background:var(--ink);color:var(--paper);font:700 10px/1.4 var(--display);text-transform:uppercase;letter-spacing:.12em;padding:13px 12px;vertical-align:bottom}th .katex{text-transform:none;letter-spacing:0;font-size:1.6em}
 td{border-bottom:1px solid var(--line);padding:16px 12px;vertical-align:top}td small{display:block;color:var(--muted);margin-top:4px;font:13px/1.45 var(--serif)}
 td a{text-decoration:underline;text-underline-offset:3px}.num{text-align:right}th.num .sort{justify-content:flex-end}
 .energy{font-size:15px;white-space:nowrap}.rank{color:var(--muted);width:40px}

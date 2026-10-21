@@ -27,7 +27,7 @@
       "uncertainty": "0.000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supplementary Table 11 (tab:electron_gas)",
+      "source_location": "Supplementary Table 11",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (DeepSolid (FermiNet-type) \"Net\") at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: Ewald summation for lattice sums (text); Madelung inclusion not stated explicitly, but BF-DMC column equals Lopez Rios 2006 values and Pescia et al. compare directly -> consistent convention. Boundary: periodic; HEG at a single (Gamma) point - closed-shell configuration, TABC used only for graphene (Gamma not stated explicitly for HEG)."
@@ -48,7 +48,7 @@
       "uncertainty": "0.000001",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supplementary Table 11 (tab:electron_gas)",
+      "source_location": "Supplementary Table 11",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (DeepSolid (FermiNet-type) \"Net\") at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: Ewald summation for lattice sums (text); Madelung inclusion not stated explicitly, but BF-DMC column equals Lopez Rios 2006 values and Pescia et al. compare directly -> consistent convention. Boundary: periodic; HEG at a single (Gamma) point - closed-shell configuration, TABC used only for graphene (Gamma not stated explicitly for HEG)."
@@ -69,7 +69,7 @@
       "uncertainty": "0.000001",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supplementary Table 11 (tab:electron_gas)",
+      "source_location": "Supplementary Table 11",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (DeepSolid (FermiNet-type) \"Net\") at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: Ewald summation for lattice sums (text); Madelung inclusion not stated explicitly, but BF-DMC column equals Lopez Rios 2006 values and Pescia et al. compare directly -> consistent convention. Boundary: periodic; HEG at a single (Gamma) point - closed-shell configuration, TABC used only for graphene (Gamma not stated explicitly for HEG)."
@@ -90,7 +90,7 @@
       "uncertainty": "0.0000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supplementary Table 11 (tab:electron_gas)",
+      "source_location": "Supplementary Table 11",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (DeepSolid (FermiNet-type) \"Net\") at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: Ewald summation for lattice sums (text); Madelung inclusion not stated explicitly, but BF-DMC column equals Lopez Rios 2006 values and Pescia et al. compare directly -> consistent convention. Boundary: periodic; HEG at a single (Gamma) point - closed-shell configuration, TABC used only for graphene (Gamma not stated explicitly for HEG)."
@@ -111,7 +111,7 @@
       "uncertainty": "0.0000001",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supplementary Table 11 (tab:electron_gas)",
+      "source_location": "Supplementary Table 11",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (DeepSolid (FermiNet-type) \"Net\") at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: Ewald summation for lattice sums (text); Madelung inclusion not stated explicitly, but BF-DMC column equals Lopez Rios 2006 values and Pescia et al. compare directly -> consistent convention. Boundary: periodic; HEG at a single (Gamma) point - closed-shell configuration, TABC used only for graphene (Gamma not stated explicitly for HEG)."
@@ -132,7 +132,7 @@
       "uncertainty": "0.0000001",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Supplementary Table 11 (tab:electron_gas)",
+      "source_location": "Supplementary Table 11",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (DeepSolid (FermiNet-type) \"Net\") at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: Ewald summation for lattice sums (text); Madelung inclusion not stated explicitly, but BF-DMC column equals Lopez Rios 2006 values and Pescia et al. compare directly -> consistent convention. Boundary: periodic; HEG at a single (Gamma) point - closed-shell configuration, TABC used only for graphene (Gamma not stated explicitly for HEG)."

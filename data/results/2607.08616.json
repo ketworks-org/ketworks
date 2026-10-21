@@ -27,7 +27,7 @@
       "uncertainty": "0.00000003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table I (tab:energies)",
+      "source_location": "Table I",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (NN-VMC: Psiformer-type self-attention + SWPA (~800K params)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: Ewald following CASINO manual (Madelung presumably included; not stated separately). Boundary: periodic, Gamma point (explicit; DMC references also at Gamma, no TABC)."
@@ -48,7 +48,7 @@
       "uncertainty": "0.00000002",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table I (tab:energies)",
+      "source_location": "Table I",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (NN-VMC: Psiformer-type self-attention + SWPA (~800K params)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: Ewald following CASINO manual (Madelung presumably included; not stated separately). Boundary: periodic, Gamma point (explicit; DMC references also at Gamma, no TABC)."
@@ -69,7 +69,7 @@
       "uncertainty": "0.00000003",
       "uncertainty_type": "unspecified",
       "variance": null,
-      "source_location": "Table I (tab:energies)",
+      "source_location": "Table I",
       "eligibility_evidence": "Variational Monte Carlo energy of the neural-network wave function (NN-VMC: Psiformer-type self-attention + SWPA (~800K params)) at this N, r_s and cell, without finite-size correction or twist averaging.",
       "parameter_count": null,
       "notes": "As printed (energy per electron, in Hartree). Madelung term: Ewald following CASINO manual (Madelung presumably included; not stated separately). Boundary: periodic, Gamma point (explicit; DMC references also at Gamma, no TABC)."
