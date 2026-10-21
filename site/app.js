@@ -277,11 +277,13 @@ function geometryBlock(b, external) {
   const symbol = n => ELEMENTS[n.Z - 1] || `Z=${n.Z}`;
   const decimals = Math.max(...external.nuclei.flatMap(n => n.position.map(x => (String(x).split('.')[1] || '').length)));
   external.nuclei.forEach(n => { const tr = document.createElement('tr'); tr.append(text('td', symbol(n)), ...n.position.map(x => text('td', x.toFixed(decimals), 'num mono'))); body.append(tr); });
-  table.append(body); dd.append(table);
+  table.append(body);
+  const details = document.createElement('details'); details.className = 'geometry-details';
+  details.append(text('summary', `Show coordinates (${external.nuclei.length} nuclei)`), table);
   const toAngstrom = units === 'bohr' ? BOHR_IN_ANGSTROM : 1;
   const xyz = `${external.nuclei.length}\n${b.id}: ${external.geometry}; converted from ${units} (1 bohr = ${BOHR_IN_ANGSTROM} Å)\n` + external.nuclei.map(n => [symbol(n), ...n.position.map(x => (x * toAngstrom).toFixed(8))].join(' ')).join('\n') + '\n';
   const link = text('a', 'Download XYZ (Å) ↓', 'text-link'); link.href = URL.createObjectURL(new Blob([xyz], {type: 'chemical/x-xyz'})); link.download = `${b.id}.xyz`;
-  dd.append(link); return dd;
+  details.append(link); dd.append(details); return dd;
 }
 function download(value, filename) { const url = URL.createObjectURL(new Blob([JSON.stringify(value, null, 2) + '\n'], {type: 'application/json'})); const a = document.createElement('a'); a.href = url; a.download = filename; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
 // Starting a new instance from an existing one: the form is filled with the values that rebuild it, so that only
