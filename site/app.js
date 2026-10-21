@@ -1,7 +1,8 @@
 import {makeSubmission, mergeSubmission, makeProposal, instanceFromForm, newInstanceValues, METHOD_CLASSES, MODELS} from './submission.mjs';
 import {PRESETS, CELLS, ELEMENTS, continuumInstanceFromForm, continuumFormValues} from './continuum.mjs';
 // How an instance's energies are compared: per site, per electron or particle, or the total energy of the system.
-const perSuffix = per => per === 'system' ? '' : ` / ${per}`;
+const PER_WORD = {cell: 'primitive cell'}, perWord = per => PER_WORD[per] || per;
+const perSuffix = per => per === 'system' ? '' : ` / ${perWord(per)}`;
 const countHeader = b => b.category !== 'continuous-space' ? 'Sites' : (b.system?.particles?.[0]?.name === 'electrons' ? 'Electrons' : 'Particles');
 import {filterRows, sortRows, rankByEnergy, summarize, withErrorBar, boundaryClass, BOUNDARY_CLASSES} from './leaderboard.mjs';
 let dataset, submission, sort = {key: 'energy', direction: 'asc'};
@@ -15,7 +16,7 @@ const shortAuthors = authors => { const list = authors.split(/,\s*/); return lis
 
 // Small lattice sketch next to a model: a square grid, a triangular lattice (rows offset by half a spacing,
 // bonds along (1,0), (0,1) and (-1,1)), a chain, or a kagome patch of corner-sharing triangles.
-function latticeKind(family) { return /molecule/i.test(family) ? 'molecule' : /electron gas|continuum/i.test(family) ? 'continuum' : /triangular/i.test(family) ? 'triangular' : /kagome/i.test(family) ? 'kagome' : /pyrochlore/i.test(family) ? 'pyrochlore' : /chain/i.test(family) ? 'chain' : 'square'; }
+function latticeKind(family) { return /molecule|graphene/i.test(family) ? 'molecule' : /electron gas|continuum/i.test(family) ? 'continuum' : /triangular/i.test(family) ? 'triangular' : /kagome/i.test(family) ? 'kagome' : /pyrochlore/i.test(family) ? 'pyrochlore' : /chain/i.test(family) ? 'chain' : 'square'; }
 function lattice(kind = 'square') {
   const ns = 'http://www.w3.org/2000/svg', svg = document.createElementNS(ns, 'svg'); svg.setAttribute('viewBox', '0 0 76 66'); svg.setAttribute('aria-hidden', 'true');
   const line = (p, q) => { const l = document.createElementNS(ns, 'line'); Object.entries({x1: p[0], y1: p[1], x2: q[0], y2: q[1]}).forEach(([k, v]) => l.setAttribute(k, v)); svg.append(l); };
@@ -243,9 +244,9 @@ function renderResults() {
   const parameters = text('dd', ''); if (b.parameters_html) parameters.innerHTML = b.parameters_html; else parameters.textContent = b.sector;
   dl.append(text('dt', 'Parameters'), parameters);
   const external = b.system?.external;
-  if (external?.type === 'fixed nuclei') dl.append(text('dt', 'Geometry'), geometryBlock(b, external));
+  if (external?.nuclei) dl.append(text('dt', 'Geometry'), geometryBlock(b, external));
   const per = b.per || 'site'; document.querySelectorAll('.per-suffix').forEach(el => el.textContent = perSuffix(per));
-  [[per === 'site' ? 'Lattice size' : 'Size', b.lattice_size || `${b.sites} sites`], ['Boundaries', b.boundary_conditions || b.geometry], ['Sector', b.sector], ['Units', per === 'system' ? `${b.unit}, total energy of the system` : `${b.unit} per ${per}`]].forEach(([k, v]) => dl.append(text('dt', k), text('dd', v)));
+  [[per === 'site' ? 'Lattice size' : 'Size', b.lattice_size || `${b.sites} sites`], ['Boundaries', b.boundary_conditions || b.geometry], ['Sector', b.sector], ['Units', per === 'system' ? `${b.unit}, total energy of the system` : `${b.unit} per ${perWord(per)}`]].forEach(([k, v]) => dl.append(text('dt', k), text('dd', v)));
   const conventions = document.createElement('details'); conventions.className = 'instance-conventions'; conventions.append(text('summary', 'Full geometry and conventions'), text('p', b.geometry), text('p', b.hamiltonian));
   $('system-definition').append(dl, conventions);
   const rows = currentRows(), ranks = rankByEnergy(rows); $('results').replaceChildren();
@@ -267,22 +268,27 @@ function renderResults() {
   $('empty-results').querySelector('p').textContent = any ? 'Change the class filter or the search text.' : 'Results appear after their pull request is reviewed and merged.';
 }
 
-// Molecules: the nuclei are the definition of the instance, so they are shown in full, with an XYZ file to download.
+// Molecules and crystals: the nuclei (and for a crystal the lattice vectors of the simulation cell) are the
+// definition of the instance, so they are shown in full, with an XYZ file to download (extended XYZ for a crystal).
 const BOHR_IN_ANGSTROM = 0.529177210903;
 function geometryBlock(b, external) {
-  const dd = text('dd', ''), units = external.coordinate_units === 'angstrom' ? 'Å' : 'bohr';
-  dd.append(text('p', `${external.geometry} · coordinates in ${units} · charge ${external.charge}`, 'geometry-name'));
+  const dd = text('dd', ''), units = external.coordinate_units === 'angstrom' ? 'Å' : 'bohr', lattice = b.system.space.lattice_vectors;
+  const name = lattice ? `${external.structure}, ${external.geometry} · ${b.system.space.cell}` : external.geometry;
+  const nuclei = external.type === 'quantum nuclei' ? `quantum nuclei of mass ${external.mass} mₑ, localized on the sites below` : `charge ${external.charge}`;
+  dd.append(text('p', `${name} · coordinates in ${units} · ${nuclei}${external.pseudopotential ? ` · ${external.pseudopotential} pseudopotential` : ''}`, 'geometry-name'));
   const table = text('table', '', 'geometry-table'), body = document.createElement('tbody');
-  table.innerHTML = `<thead><tr><th scope="col">Atom</th><th scope="col" class="num">x</th><th scope="col" class="num">y</th><th scope="col" class="num">z</th></tr></thead>`;
+  table.innerHTML = `<thead><tr><th scope="col">${lattice ? 'Vector or atom' : 'Atom'}</th><th scope="col" class="num">x</th><th scope="col" class="num">y</th><th scope="col" class="num">z</th></tr></thead>`;
   const symbol = n => ELEMENTS[n.Z - 1] || `Z=${n.Z}`;
-  const decimals = Math.max(...external.nuclei.flatMap(n => n.position.map(x => (String(x).split('.')[1] || '').length)));
-  external.nuclei.forEach(n => { const tr = document.createElement('tr'); tr.append(text('td', symbol(n)), ...n.position.map(x => text('td', x.toFixed(decimals), 'num mono'))); body.append(tr); });
+  const rows = [...(lattice || []).map((a, i) => [`a${'₁₂₃'[i]}`, a]), ...external.nuclei.map(n => [symbol(n), n.position])];
+  const decimals = Math.max(...rows.flatMap(([, xs]) => xs.map(x => (String(x).split('.')[1] || '').length)));
+  rows.forEach(([label, xs], i) => { const tr = document.createElement('tr'); if (lattice && i === lattice.length - 1) tr.className = 'cell-edge'; tr.append(text('td', label), ...xs.map(x => text('td', x.toFixed(decimals), 'num mono'))); body.append(tr); });
   table.append(body);
   const details = document.createElement('details'); details.className = 'geometry-details';
-  details.append(text('summary', `Show coordinates (${external.nuclei.length} nuclei)`), table);
-  const toAngstrom = units === 'bohr' ? BOHR_IN_ANGSTROM : 1;
-  const xyz = `${external.nuclei.length}\n${b.id}: ${external.geometry}; converted from ${units} (1 bohr = ${BOHR_IN_ANGSTROM} Å)\n` + external.nuclei.map(n => [symbol(n), ...n.position.map(x => (x * toAngstrom).toFixed(8))].join(' ')).join('\n') + '\n';
-  const link = text('a', 'Download XYZ (Å) ↓', 'text-link'); link.href = URL.createObjectURL(new Blob([xyz], {type: 'chemical/x-xyz'})); link.download = `${b.id}.xyz`;
+  details.append(text('summary', lattice ? `Show cell and coordinates (${external.nuclei.length} nuclei)` : `Show coordinates (${external.nuclei.length} nuclei)`), table);
+  const toAngstrom = units === 'bohr' ? BOHR_IN_ANGSTROM : 1, angstrom = xs => xs.map(x => (x * toAngstrom).toFixed(8));
+  const comment = lattice ? `Lattice="${lattice.map(a => angstrom(a).join(' ')).join(' ')}" Properties=species:S:1:pos:R:3 pbc="T T T" comment="${b.id}; converted from ${units} (1 bohr = ${BOHR_IN_ANGSTROM} Å)"` : `${b.id}: ${external.geometry}; converted from ${units} (1 bohr = ${BOHR_IN_ANGSTROM} Å)`;
+  const xyz = `${external.nuclei.length}\n${comment}\n` + external.nuclei.map(n => [symbol(n), ...angstrom(n.position)].join(' ')).join('\n') + '\n';
+  const link = text('a', `Download ${lattice ? 'extended XYZ' : 'XYZ'} (Å) ↓`, 'text-link'); link.href = URL.createObjectURL(new Blob([xyz], {type: 'chemical/x-xyz'})); link.download = `${b.id}.xyz`;
   details.append(link); dd.append(details); return dd;
 }
 function download(value, filename) { const url = URL.createObjectURL(new Blob([JSON.stringify(value, null, 2) + '\n'], {type: 'application/json'})); const a = document.createElement('a'); a.href = url; a.download = filename; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
@@ -295,7 +301,7 @@ function prefillFrom(b) {
   form.category.value = b.category; renderSubmitModels(); renderInstances('submit-model', 'submit-system');
   if (values) {
     for (const [name, value] of Object.entries(values)) { const field = form.elements.namedItem(name); if (field && !(field instanceof RadioNodeList)) field.value = value; }
-    $('prefill-note').textContent = `Started from ${b.instance_label || b.id} (${b.id}). Change what differs: ${b.system ? 'particle numbers, density, cell or external potential' : 'size, boundaries, couplings or sector'}. The key below updates as you type.`;
+    $('prefill-note').textContent = `Started from ${b.instance_label || b.id} (${b.id}). Change what differs: ${b.system?.preset === 'solid' ? 'lattice parameter, lattice vectors and nuclei, simulation cell or twist' : b.system ? 'particle numbers, density, cell or external potential' : 'size, boundaries, couplings or sector'}. The key below updates as you type.`;
   } else {
     form.instance_mode.value = 'proposal';
     form.system_description.value = `${b.family}, like ${b.id} but with: …\nDefinition of ${b.id}: ${b.geometry}; ${b.hamiltonian}; ${b.sector}.`;
@@ -322,8 +328,10 @@ function syncInstanceForm() {
 function syncContinuumForm() {
   const preset = PRESETS[$('cont-preset').value] || PRESETS.other, other = preset === PRESETS.other, form = $('submission-form');
   const space = preset.space || form.cspace.value, external = preset.external || form.cext.value;
-  const show = {'name': other || $('cont-preset').value === 'molecule', 'name-optional': !other, 'count': other, 'space-choice': other, 'periodic': space === 'periodic', 'periodic-other': space === 'periodic' && form.ccell.value === 'other',
-    'ext-choice': other, 'trap': external === 'harmonic trap', 'nuclei': external === 'fixed nuclei', 'ext-other': external === 'other', 'int-choice': other, 'int-other': other && form.cint.value === 'other', 'unit': other};
+  const solid = $('cont-preset').value === 'solid';
+  const show = {'name': other || solid || $('cont-preset').value === 'molecule', 'name-optional': !other && !solid, 'count': other, 'space-choice': other, 'periodic': space === 'periodic' && !solid, 'periodic-other': space === 'periodic' && !solid && form.ccell.value === 'other',
+    'ext-choice': other, 'trap': external === 'harmonic trap', 'nuclei': external === 'fixed nuclei', 'ext-other': external === 'other', 'int-choice': other, 'int-other': other && form.cint.value === 'other', 'unit': other,
+    'solid': solid, 'solid-cells': solid && form.cnorm.value === 'cell', 'quantum': solid && form.cnuclear.value === 'quantum'};
   document.querySelectorAll('[data-c]').forEach(el => { el.hidden = !show[el.dataset.c]; });
   if (!form.cspecies.value && preset.species) form.cspecies.placeholder = preset.species;
   try { $('cont-key').textContent = keyPreview(continuumInstanceFromForm(formValues()).id); } catch (error) { $('cont-key').textContent = error.message; }

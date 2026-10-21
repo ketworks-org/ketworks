@@ -1,0 +1,265 @@
+{
+  "schema_version": 1,
+  "references": [
+    {
+      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-2x2x2-conventional-cells-gamma",
+      "method": "Fixed-node DMC, Slater–Jastrow, plane-wave orbitals (SJ-PW)",
+      "kind": "upper_bound",
+      "energy_token": "-0.4857(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Holzmann, Ceperley, Pierleoni, Esler, arXiv:cond-mat/0304165, as tabulated in Linteau et al., arXiv:2504.07062v3, Table I",
+      "notes": "Fixed-node diffusion Monte Carlo of the Born–Oppenheimer electrons on the static BCC lattice, periodic boundary conditions. Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-2x2x2-conventional-cells-gamma",
+      "method": "Fixed-node DMC, Slater–Jastrow, LDA orbitals (SJ-LDA)",
+      "kind": "upper_bound",
+      "energy_token": "-0.4890(5)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Natoli, Martin, Ceperley, Phys. Rev. Lett. 74, 1601 (1995), as tabulated in Linteau et al., arXiv:2504.07062v3, Table I",
+      "notes": "Fixed-node diffusion Monte Carlo with LDA orbitals; Linteau et al. cite Natoli et al. (1995), Fu (arXiv:2601.02508v2) attributes the N = 16 value to Holzmann et al. (2003). Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-2x2x2-conventional-cells-gamma",
+      "method": "Fixed-node DMC, backflow, plane-wave orbitals (BF-PW)",
+      "kind": "upper_bound",
+      "energy_token": "-0.4905(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Holzmann, Ceperley, Pierleoni, Esler, arXiv:cond-mat/0304165, as tabulated in Linteau et al., arXiv:2504.07062v3, Table I",
+      "notes": "Fixed-node diffusion Monte Carlo with a backflow trial function, static BCC lattice, periodic boundary conditions. Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-3x3x3-conventional-cells-gamma",
+      "method": "Fixed-node DMC, Slater–Jastrow, plane-wave orbitals (SJ-PW)",
+      "kind": "upper_bound",
+      "energy_token": "-0.5329(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Holzmann, Ceperley, Pierleoni, Esler, arXiv:cond-mat/0304165, as tabulated in Linteau et al., arXiv:2504.07062v3, Table I",
+      "notes": "Fixed-node diffusion Monte Carlo of the Born–Oppenheimer electrons on the static BCC lattice, periodic boundary conditions. Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-3x3x3-conventional-cells-gamma",
+      "method": "Fixed-node DMC, backflow, plane-wave orbitals (BF-PW)",
+      "kind": "upper_bound",
+      "energy_token": "-0.5382(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Holzmann, Ceperley, Pierleoni, Esler, arXiv:cond-mat/0304165, as tabulated in Linteau et al., arXiv:2504.07062v3, Table I",
+      "notes": "Fixed-node diffusion Monte Carlo with a backflow trial function, static BCC lattice, periodic boundary conditions. Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-3x3x3-conventional-cells-gamma",
+      "method": "Fixed-node DMC, Slater–Jastrow, LDA orbitals (SJ-LDA)",
+      "kind": "upper_bound",
+      "energy_token": "-0.5390(5)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Natoli, Martin, Ceperley, Phys. Rev. Lett. 74, 1601 (1995), as tabulated in Linteau et al., arXiv:2504.07062v3, Table I",
+      "notes": "Fixed-node diffusion Monte Carlo with LDA orbitals; Linteau et al. cite Natoli et al. (1995), Fu (arXiv:2601.02508v2) attributes the N = 16 value to Holzmann et al. (2003). Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-3x3x3-conventional-cells-gamma",
+      "method": "Fixed-node RMC, backflow, PBE orbitals (BF-PBE)",
+      "kind": "upper_bound",
+      "energy_token": "-0.54009(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "C. Pierleoni, with the BF-PBE trial functions of Morales et al., Entropy 16, 287 (2014), as tabulated in Linteau et al., arXiv:2504.07062v3, Table I",
+      "notes": "Reptation Monte Carlo with backflow-augmented PBE orbitals; the values were provided to Linteau et al. by C. Pierleoni (Acknowledgments). Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-4x4x4-conventional-cells-gamma",
+      "method": "Fixed-node DMC, Slater–Jastrow, plane-wave orbitals (SJ-PW)",
+      "kind": "upper_bound",
+      "energy_token": "-0.4900(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Holzmann, Ceperley, Pierleoni, Esler, arXiv:cond-mat/0304165, as tabulated in Linteau et al., arXiv:2504.07062v3, Table I",
+      "notes": "Fixed-node diffusion Monte Carlo of the Born–Oppenheimer electrons on the static BCC lattice, periodic boundary conditions. Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-4x4x4-conventional-cells-gamma",
+      "method": "Fixed-node DMC, backflow, plane-wave orbitals (BF-PW)",
+      "kind": "upper_bound",
+      "energy_token": "-0.4978(4)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Holzmann, Ceperley, Pierleoni, Esler, arXiv:cond-mat/0304165, as tabulated in Linteau et al., arXiv:2504.07062v3, Table I",
+      "notes": "Fixed-node diffusion Monte Carlo with a backflow trial function, static BCC lattice, periodic boundary conditions. Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-4x4x4-conventional-cells-gamma",
+      "method": "Fixed-node DMC, Slater–Jastrow, LDA orbitals (SJ-LDA)",
+      "kind": "upper_bound",
+      "energy_token": "-0.4978(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Natoli, Martin, Ceperley, Phys. Rev. Lett. 74, 1601 (1995), as tabulated in Linteau et al., arXiv:2504.07062v3, Table I",
+      "notes": "Fixed-node diffusion Monte Carlo with LDA orbitals; Linteau et al. cite Natoli et al. (1995), Fu (arXiv:2601.02508v2) attributes the N = 16 value to Holzmann et al. (2003). Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-4x4x4-conventional-cells-gamma",
+      "method": "Fixed-node RMC, backflow, PBE orbitals (BF-PBE)",
+      "kind": "upper_bound",
+      "energy_token": "-0.49922(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "C. Pierleoni, with the BF-PBE trial functions of Morales et al., Entropy 16, 287 (2014), as tabulated in Linteau et al., arXiv:2504.07062v3, Table I",
+      "notes": "Reptation Monte Carlo with backflow-augmented PBE orbitals; the values were provided to Linteau et al. by C. Pierleoni (Acknowledgments). Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-2x2x2-conventional-cells-gamma-quantum-nuclei",
+      "method": "VMC, Slater–Jastrow, LDA orbitals (SJ-LDA)",
+      "kind": "upper_bound",
+      "energy_token": "-0.46785(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Holzmann, Pierleoni, Ceperley, arXiv:cond-mat/0410530, as tabulated in Linteau et al., arXiv:2504.07062v3, Table II",
+      "notes": "Electrons and protons both quantum, with a nuclear factor of Gaussians localized on the BCC sites and no proton exchange; periodic boundary conditions. Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-2x2x2-conventional-cells-gamma-quantum-nuclei",
+      "method": "VMC, backflow, plane-wave orbitals (BF-PW)",
+      "kind": "upper_bound",
+      "energy_token": "-0.4724(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Holzmann, Pierleoni, Ceperley, arXiv:cond-mat/0410530, as tabulated in Linteau et al., arXiv:2504.07062v3, Table II",
+      "notes": "Electrons and protons both quantum, with a nuclear factor of Gaussians localized on the BCC sites and no proton exchange; periodic boundary conditions. Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-2x2x2-conventional-cells-gamma-quantum-nuclei",
+      "method": "Fixed-node DMC, backflow, plane-wave orbitals (BF-PW)",
+      "kind": "upper_bound",
+      "energy_token": "-0.4792(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Holzmann, Pierleoni, Ceperley, arXiv:cond-mat/0410530, as tabulated in Linteau et al., arXiv:2504.07062v3, Table II",
+      "notes": "Electrons and protons both quantum, with a nuclear factor of Gaussians localized on the BCC sites and no proton exchange; periodic boundary conditions. Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-3x3x3-conventional-cells-gamma-quantum-nuclei",
+      "method": "VMC, Slater–Jastrow, LDA orbitals (SJ-LDA)",
+      "kind": "upper_bound",
+      "energy_token": "-0.5195(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Holzmann, Pierleoni, Ceperley, arXiv:cond-mat/0410530, as tabulated in Linteau et al., arXiv:2504.07062v3, Table II (also in Chai et al., arXiv:2512.17703v3, Table I)",
+      "notes": "Electrons and protons both quantum, with a nuclear factor of Gaussians localized on the BCC sites and no proton exchange; periodic boundary conditions. Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-3x3x3-conventional-cells-gamma-quantum-nuclei",
+      "method": "Fixed-node DMC, Slater–Jastrow, LDA orbitals (SJ-LDA)",
+      "kind": "upper_bound",
+      "energy_token": "-0.52415(5)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Holzmann, Pierleoni, Ceperley, arXiv:cond-mat/0410530, as tabulated in Linteau et al., arXiv:2504.07062v3, Table II (also in Chai et al., arXiv:2512.17703v3, Table I)",
+      "notes": "Electrons and protons both quantum, with a nuclear factor of Gaussians localized on the BCC sites and no proton exchange; periodic boundary conditions. Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-3x3x3-conventional-cells-gamma-quantum-nuclei",
+      "method": "VMC, backflow, plane-wave orbitals (BF-PW)",
+      "kind": "upper_bound",
+      "energy_token": "-0.52194(5)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Holzmann, Pierleoni, Ceperley, arXiv:cond-mat/0410530, as tabulated in Linteau et al., arXiv:2504.07062v3, Table II (also in Chai et al., arXiv:2512.17703v3, Table I)",
+      "notes": "Electrons and protons both quantum, with a nuclear factor of Gaussians localized on the BCC sites and no proton exchange; periodic boundary conditions. Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-dense-hydrogen-bcc-rs-1p31-3x3x3-conventional-cells-gamma-quantum-nuclei",
+      "method": "Fixed-node DMC, backflow, plane-wave orbitals (BF-PW)",
+      "kind": "upper_bound",
+      "energy_token": "-0.52610(7)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Holzmann, Pierleoni, Ceperley, arXiv:cond-mat/0410530, as tabulated in Linteau et al., arXiv:2504.07062v3, Table II (also in Chai et al., arXiv:2512.17703v3, Table I)",
+      "notes": "Electrons and protons both quantum, with a nuclear factor of Gaussians localized on the BCC sites and no proton exchange; periodic boundary conditions. Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-hydrogen-chain-linear-chain-r-1p8-bohr-10x1x1-primitive-cells-gamma",
+      "method": "Lattice-regularized DMC, LDA trial function (LR-DMC)",
+      "kind": "upper_bound",
+      "energy_token": "-0.57304(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Motta et al., arXiv:1705.01608, as tabulated in Li et al., arXiv:2203.15472v2, Supplementary Table 4",
+      "notes": "Periodic chain at R = 1.8 bohr. Motta et al. used a 40-bohr cross-section and state that the interaction between periodic images is below 0.1 mHa per atom; the instance has 100 bohr. Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-hydrogen-chain-linear-chain-r-1p8-bohr-10x1x1-primitive-cells-gamma",
+      "method": "VMC, Jastrow and LDA determinant",
+      "kind": "upper_bound",
+      "energy_token": "-0.57172(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Motta et al., arXiv:1705.01608, as tabulated in Li et al., arXiv:2203.15472v2, Supplementary Table 4",
+      "notes": "Periodic chain at R = 1.8 bohr. Motta et al. used a 40-bohr cross-section and state that the interaction between periodic images is below 0.1 mHa per atom; the instance has 100 bohr. Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-hydrogen-chain-linear-chain-r-1p8-bohr-18x1x1-primitive-cells-gamma",
+      "method": "Lattice-regularized DMC, LDA trial function (LR-DMC)",
+      "kind": "upper_bound",
+      "energy_token": "-0.56796(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Motta et al., arXiv:1705.01608, as tabulated in Li et al., arXiv:2203.15472v2, Supplementary Table 4",
+      "notes": "Periodic chain at R = 1.8 bohr. Motta et al. used a 40-bohr cross-section and state that the interaction between periodic images is below 0.1 mHa per atom; the instance has 100 bohr. Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-hydrogen-chain-linear-chain-r-1p8-bohr-18x1x1-primitive-cells-gamma",
+      "method": "VMC, Jastrow and LDA determinant",
+      "kind": "upper_bound",
+      "energy_token": "-0.56644(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Motta et al., arXiv:1705.01608, as tabulated in Li et al., arXiv:2203.15472v2, Supplementary Table 4",
+      "notes": "Periodic chain at R = 1.8 bohr. Motta et al. used a 40-bohr cross-section and state that the interaction between periodic images is below 0.1 mHa per atom; the instance has 100 bohr. Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-hydrogen-chain-linear-chain-r-1p8-bohr-30x1x1-primitive-cells-gamma",
+      "method": "Lattice-regularized DMC, LDA trial function (LR-DMC)",
+      "kind": "upper_bound",
+      "energy_token": "-0.56627(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Motta et al., arXiv:1705.01608, as tabulated in Li et al., arXiv:2203.15472v2, Supplementary Table 4",
+      "notes": "Periodic chain at R = 1.8 bohr. Motta et al. used a 40-bohr cross-section and state that the interaction between periodic images is below 0.1 mHa per atom; the instance has 100 bohr. Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-hydrogen-chain-linear-chain-r-1p8-bohr-30x1x1-primitive-cells-gamma",
+      "method": "VMC, Jastrow and LDA determinant",
+      "kind": "upper_bound",
+      "energy_token": "-0.56478(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Motta et al., arXiv:1705.01608, as tabulated in Li et al., arXiv:2203.15472v2, Supplementary Table 4",
+      "notes": "Periodic chain at R = 1.8 bohr. Motta et al. used a 40-bohr cross-section and state that the interaction between periodic images is below 0.1 mHa per atom; the instance has 100 bohr. Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-hydrogen-chain-linear-chain-r-1p8-bohr-50x1x1-primitive-cells-gamma",
+      "method": "Lattice-regularized DMC, LDA trial function (LR-DMC)",
+      "kind": "upper_bound",
+      "energy_token": "-0.56560(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Motta et al., arXiv:1705.01608, as tabulated in Li et al., arXiv:2203.15472v2, Supplementary Table 4",
+      "notes": "Periodic chain at R = 1.8 bohr. Motta et al. used a 40-bohr cross-section and state that the interaction between periodic images is below 0.1 mHa per atom; the instance has 100 bohr. Energy per atom."
+    },
+    {
+      "benchmark_id": "solid-hydrogen-chain-linear-chain-r-1p8-bohr-50x1x1-primitive-cells-gamma",
+      "method": "VMC, Jastrow and LDA determinant",
+      "kind": "upper_bound",
+      "energy_token": "-0.56409(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Motta et al., arXiv:1705.01608, as tabulated in Li et al., arXiv:2203.15472v2, Supplementary Table 4",
+      "notes": "Periodic chain at R = 1.8 bohr. Motta et al. used a 40-bohr cross-section and state that the interaction between periodic images is below 0.1 mHa per atom; the instance has 100 bohr. Energy per atom."
+    }
+  ]
+}

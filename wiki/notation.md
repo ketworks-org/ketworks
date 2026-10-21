@@ -23,7 +23,10 @@ Every article in Ketbook uses the symbols below; the [continuous-space page](../
 | $N_\uparrow,N_\downarrow$ | numbers of spin-up and spin-down electrons; the first $N_\uparrow$ positions are the spin-up ones |
 | $r_s$ | density parameter of the electron gas: the radius, in bohr, of a sphere (a disk in two dimensions) holding one electron on average |
 | Ha, Ry | Hartree and Rydberg, $1\,\mathrm{Ha}=2\,\mathrm{Ry}$; continuum energies are in Hartree atomic units |
-| $e=E/N$ | energy per electron for an extended system; finite systems report the total $E$ |
+| $\mathbf L_a$, $\mathbf b_a$ | lattice vectors of a periodic simulation cell and its reciprocal vectors, $\mathbf L_a\cdot\mathbf b_b=2\pi\delta_{ab}$ |
+| $\mathbf k_s$ | twist: the phase $e^{i\mathbf k_s\cdot\mathbf L_a}$ the wavefunction takes when one electron moves by $\mathbf L_a$; written as fractions of the $\mathbf b_a$; $\Gamma$ is $\mathbf k_s=0$ |
+| $Z_A$, $\mathbf R_A$, $M$ | charge and position of nucleus $A$; $M$ the nuclear mass when nuclei are quantum particles |
+| $e=E/N$ | energy per electron for the electron gas; a crystal reports the energy per atom or per primitive cell, a finite system the total $E$ |
 
 ## Estimators
 

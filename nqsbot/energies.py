@@ -17,7 +17,8 @@ references  the energies of other methods for the instances, as recorded in data
 difference  for two instances, the difference of the energies of the same state (same paper and variant),
             e.g. a reaction barrier; "scale" and "unit" convert it (627.509 kcal/mol per Hartree).
 
-"instances" takes instance keys or shell patterns; "row" labels the rows by r_s, label, size or molecule.
+"instances" takes instance keys or shell patterns; "row" labels the rows by r_s, label, size or molecule, and for
+crystals by the simulation cell (cell), the twist (twist) or the lattice parameter (lattice).
 """
 import fnmatch
 import json
@@ -144,6 +145,13 @@ class Tables:
             text = benchmark["lattice_size"]
         elif row == "molecule":
             text = f"{benchmark.get('group', benchmark['name'])}, {system.get('external', {}).get('geometry', '')}".rstrip(", ")
+        elif row == "cell":
+            text = f"{system['space']['cell']}, {len(system['external']['nuclei'])} atoms"
+        elif row == "twist":
+            twist = system["space"]["twist"]
+            text = "Γ" if twist == "Gamma" else f"k = {twist}" if twist.startswith("(") else twist
+        elif row == "lattice":
+            text = f"{system['external']['geometry']}, {system['space']['cell']}"
         else:
             text = benchmark["instance_label"]
         return f"[{cell(text)}](../../#benchmarks?system={benchmark['id']})"
@@ -159,7 +167,7 @@ class Tables:
     def summary(self, options):
         benchmarks = self.instances(options["instances"])
         row = options.get("row", "label")
-        heading = {"r_s": "$r_s$", "size": "Cluster", "molecule": "Molecule"}.get(row, "Instance")
+        heading = {"r_s": "$r_s$", "size": "Cluster", "molecule": "Molecule", "cell": "Simulation cell", "twist": "Twist", "lattice": "Lattice parameter"}.get(row, "Instance")
         rows, tally = [], {"neural lower": 0, "other lower": 0, "within error bars": 0, "no other method": 0}
         exact_column = any(r["kind"] != "upper_bound" for b in benchmarks for r in self.references.get(b["id"], []))
         for benchmark in benchmarks:
@@ -188,6 +196,10 @@ class Tables:
                     cells.append("—")
             rows.append(cells)
         header = [heading, "Lowest neural energy", "Lowest upper bound from another method", "Neural − other"] + (["Exact or best estimate"] if exact_column else [])
+        # With no upper bound from another method for any of the instances, the two comparison columns stay empty.
+        if not any(r["kind"] == "upper_bound" for b in benchmarks for r in self.references.get(b["id"], [])):
+            header = header[:2] + header[4:]
+            rows = [r[:2] + r[4:] for r in rows]
         table = "\n".join(["| " + " | ".join(header) + " |", "|" + " --- |" * len(header)] + ["| " + " | ".join(r) + " |" for r in rows])
         compared = tally["neural lower"] + tally["other lower"] + tally["within error bars"]
         parts = []
@@ -195,7 +207,7 @@ class Tables:
             parts.append(f"Of the {compared} instance{'s' if compared != 1 else ''} with an upper bound from another method, a neural state is lower on {tally['neural lower']}, another method on {tally['other lower']}, and the two agree within error bars on {tally['within error bars']}")
         if tally["no other method"]:
             parts.append(f"{tally['no other method']} instance{'s have' if tally['no other method'] != 1 else ' has'} neural entries but no upper bound from another method here")
-        note = ("; ".join(parts) + ". \"Within error bars\" means within twice the combined error bars.") if parts else ""
+        note = ("; ".join(parts) + "." + (" \"Within error bars\" means within twice the combined error bars." if compared else "")) if parts else ""
         return table + ("\n\n" + note if note else "")
 
     def entries_table(self, options):

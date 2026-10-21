@@ -109,6 +109,17 @@ assert.equal(dot.id, 'trap2d-electrons-n6-unpol-w0p28'); assert.equal(dot.family
 const n2 = continuumInstanceFromForm({cpreset:'molecule',cdim:'3',cup:'7',cdown:'7',cgeometry:'R = 2.068 bohr',cnuclei:'N 0 0 0\n7 0 0 2.068'});
 assert.equal(n2.id, 'mol-n2-r-2p068-bohr-s0'); assert.equal(n2.system.external.charge, 0); assert.equal(n2.family, 'Atoms and molecules');
 assert.equal(continuumInstanceFromForm({cpreset:'molecule',cdim:'3',cup:'1',cdown:'0',cgeometry:'atom',cnuclei:'He 0 0 0'}).system.external.charge, 1);
+// A crystal: lattice vectors and nuclei of the simulation cell, the twist, and the energy per primitive cell or per atom.
+const crystal = {cpreset:'solid',cdim:'3',cup:'2',cdown:'2',cname:'Lithium hydride',cstructure:'rock salt',cgeometry:'L = 4.0 Å',ccoord_units:'angstrom',csupercell:'1×1×1 primitive cell',cnorm:'cell',cprim:'1',clattice:'0 2 2\n2 0 2\n2 2 0',cnuclei:'Li 0 0 0\nH 2 2 2',cnuclear:'clamped'};
+const lih = continuumInstanceFromForm(crystal);
+assert.equal(lih.id, 'solid-lithium-hydride-rock-salt-l-4p0-a-1x1x1-primitive-cell-gamma'); assert.equal(lih.per, 'cell'); assert.equal(lih.per_count, 1); assert.equal(lih.wiki, 'solids');
+assert.equal(continuumInstanceFromForm({...crystal, ctwist_text:'(1/2, 0, 0)'}).id, 'solid-lithium-hydride-rock-salt-l-4p0-a-1x1x1-primitive-cell-k1o2-0-0');
+assert.equal(continuumInstanceFromForm({...crystal, ctwist_text:'Γ'}).id, lih.id);
+assert.throws(() => continuumInstanceFromForm({...crystal, cup:'1'}), /neutral/);
+assert.throws(() => continuumInstanceFromForm({...crystal, clattice:'0 2 2\n2 0 2'}), /lattice vectors/);
+assert.throws(() => continuumInstanceFromForm({...crystal, cnuclear:'quantum'}), /mass/);
+const quantum = continuumInstanceFromForm({...crystal, cname:'Hydrogen', cstructure:'cubic', cup:'1', cdown:'1', cnuclei:'H 0 0 0\nH 2 2 2', cnuclear:'quantum', cmass:'1836', cnorm:'atom'});
+assert.equal(quantum.system.external.type, 'quantum nuclei'); assert.equal(quantum.per_count, 2); assert.match(quantum.hamiltonian, /M = 1836/);
 assert.throws(() => continuumInstanceFromForm({cpreset:'molecule',cdim:'3',cup:'1',cdown:'1',cgeometry:'R = 1.4 bohr',cnuclei:'H 0 0'}), /coordinates/);
 assert.throws(() => continuumInstanceFromForm({cpreset:'molecule',cdim:'3',cup:'1',cdown:'1',cgeometry:'R = 1.4 bohr',cnuclei:'Xx 0 0 0'}), /Unknown nucleus/);
 assert.throws(() => continuumInstanceFromForm({cpreset:'trap',cdim:'2',cup:'3',cdown:'3'}), /trap frequency/);
