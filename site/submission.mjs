@@ -71,6 +71,7 @@ export const MODELS = {
   tfim: {label: 'Transverse-field Ising', couplings: [['h', 'h/J']], unit: 'J', spin: true, nosector: true, category: 'lattice-spins'},
   hubbard: {label: 'Hubbard', couplings: [['u', 'U/t']], unit: 't', spin: false, category: 'lattice-fermions'},
   ttphubbard: {label: 't–t′ Hubbard', couplings: [['u', 'U/t'], ['tp', 't′/t']], unit: 't', spin: false, category: 'lattice-fermions'},
+  bosehubbard: {label: 'Bose–Hubbard', couplings: [['ub', 'U/J']], unit: 'J', spin: false, boson: true, category: 'lattice-bosons'},
   custom: {label: 'Other (describe it)', couplings: [], unit: null, spin: null, category: null},
 };
 export const LATTICES = {square: 'square', rectangular: 'rectangular', triangular: 'triangular', honeycomb: 'honeycomb', chain: 'chain'};
@@ -95,7 +96,7 @@ export function instanceFromForm(values, existingIds = []) {
   if (lattice === 'square' && Lx !== Ly) throw Error('A square cluster has equal extents; choose "rectangular" otherwise.');
   if (lattice === 'chain' && bc === 'cyl') throw Error('A chain is periodic or open.');
   const geo = latticeText(lattice, Lx, Ly, bc);
-  for (const [key] of model.couplings) if (!/^[+-]?\d+(\.\d+)?$/.test(v(key))) throw Error(`Enter ${key === 'j2' ? 'J₂/J₁' : key === 'u' ? 'U/t' : key === 'tp' ? "t′/t" : 'h/J'} as a decimal.`);
+  for (const [key] of model.couplings) if (!/^[+-]?\d+(\.\d+)?$/.test(v(key))) throw Error(`Enter ${{j2: 'J₂/J₁', u: 'U/t', tp: 't′/t', ub: 'U/J'}[key] || 'h/J'} as a decimal.`);
   // Models are named by their Hamiltonian; the lattice is the part of the model the instance belongs to, named by
   // lattice, not by cluster shape: a rectangular cluster is a cluster of the square lattice.
   const latticeWord = lattice === 'rectangular' ? 'Square' : lattice[0].toUpperCase() + lattice.slice(1);
@@ -121,6 +122,20 @@ export function instanceFromForm(values, existingIds = []) {
     }[v('model')];
     entry = {id: `${v('model')}-${lattice}-${extents}-${bc}${defs.key}${sectorKey}`, name: names[v('model')], family: names[v('model')], part: latticeWord, category: model.category, sites: geo.sites, geometry: geo.geometry, hamiltonian: defs.ham, sector: sectorText, unit: model.unit,
              description: defs.desc, hamiltonian_latex: defs.latex, instance_label: `${geo.label} · ${defs.label} · ${BOUNDARIES[bc]}${model.nosector ? '' : ` · Sz = ${pretty(sz)}`}`, lattice_size: geo.size, boundary_conditions: geo.bcLabel, parameters_latex: defs.params};
+  } else if (model.boson) {
+    // Bose–Hubbard at fixed particle number. A cutoff on the occupation per site changes the Hamiltonian, so it is
+    // part of the instance; without one, the occupation is not truncated.
+    const nb = Number(v('nb')), nmax = v('nmax'), u = num(v('ub'));
+    if (!Number.isInteger(nb) || nb < 1) throw Error('Enter the number of bosons.');
+    if (nmax !== '' && !(Number.isInteger(Number(nmax)) && Number(nmax) >= 1)) throw Error('The maximum occupation per site is a whole number, or empty for no cutoff.');
+    if (nmax !== '' && nb > Number(nmax) * geo.sites) throw Error('More bosons than the cutoff allows on this lattice.');
+    const filling = nb === geo.sites ? 'unit filling' : `filling N/sites = ${nb}/${geo.sites}`;
+    entry = {id: `bosehubbard-${lattice}-${extents}-${bc}-u${slugNumber(u)}-n${nb}${nmax ? `-nmax${nmax}` : ''}`, name: 'Bose–Hubbard', family: 'Bose–Hubbard', part: latticeWord, category: model.category, sites: geo.sites, geometry: geo.geometry,
+             hamiltonian: `H = -J sum_<ij> (b†_i b_j + h.c.) + (U/2) sum_i n_i (n_i - 1); J = 1; U = ${u}; ${nmax ? `occupation per site truncated at n_max = ${nmax}` : 'no truncation of the occupation per site'}; no chemical-potential term or constant shift`,
+             sector: `N = ${nb} bosons (${filling}); ground-state variational calculation`, unit: 'J', description: 'Interacting bosons hopping on a lattice.',
+             hamiltonian_latex: 'H=-J\\!\\sum_{\\langle i,j\\rangle}\\!\\left(b^\\dagger_i b_j+\\mathrm{h.c.}\\right)+\\frac{U}{2}\\sum_i n_i(n_i-1)',
+             instance_label: `${geo.label} · U/J = ${pretty(u)} · ${BOUNDARIES[bc]} · N = ${nb}${nmax ? ` · n_max = ${nmax}` : ''}`, lattice_size: geo.size, boundary_conditions: geo.bcLabel,
+             parameters_latex: `J=1,\\qquad U/J=${u},\\qquad N=${nb}${nmax ? `,\\qquad n_{\\max}=${nmax}` : ''}`};
   } else {
     const nup = Number(v('nup')), ndown = Number(v('ndown'));
     if (!Number.isInteger(nup) || !Number.isInteger(ndown) || nup < 0 || ndown < 0 || nup > geo.sites || ndown > geo.sites) throw Error('Enter the numbers of up and down electrons (each between 0 and the number of sites).');
@@ -146,7 +161,7 @@ export function instanceFromForm(values, existingIds = []) {
 // by a curator, such as the kagome or t–V instances); those are proposed for a curator instead.
 export function newInstanceValues(b) {
   const unslug = s => s.replace('p', '.');
-  const m = /^(heisenberg|j1j2|tfim|hubbard)-(square|rectangular|triangular|honeycomb|chain)-(\d+)(?:x(\d+))?-(pbc|obc|cyl)(.*)$/.exec(b.id);
+  const m = /^(heisenberg|j1j2|tfim|hubbard|bosehubbard)-(square|rectangular|triangular|honeycomb|chain)-(\d+)(?:x(\d+))?-(pbc|obc|cyl)(.*)$/.exec(b.id);
   if (!m) return null;
   const [, model, lattice, lx, ly, boundaries, rest] = m;
   const values = {category: b.category, instance_mode: 'new', lattice, lx, ly: ly || '', boundaries};
@@ -157,7 +172,8 @@ export function newInstanceValues(b) {
   else if (model === 'hubbard' && (p = /^-u([\dp]+)(?:-tp(-?[\dp]+))?-(?:n(\d+)-sz0|nup(\d+)-ndown(\d+))$/.exec(rest))) {
     const [, u, tp, n, nup, ndown] = p;
     Object.assign(values, {model: tp ? 'ttphubbard' : 'hubbard', u: unslug(u), ...(tp ? {tp: unslug(tp)} : {}), nup: n ? String(n / 2) : nup, ndown: n ? String(n / 2) : ndown});
-  } else return null;
+  } else if (model === 'bosehubbard' && (p = /^-u([\dp]+)-n(\d+)(?:-nmax(\d+))?$/.exec(rest))) Object.assign(values, {model, ub: unslug(p[1]), nb: p[2], nmax: p[3] || ''});
+  else return null;
   try { const rebuilt = instanceFromForm(values); return rebuilt.id === b.id && rebuilt.family === b.family && rebuilt.part === b.part ? values : null; } catch { return null; }
 }
 

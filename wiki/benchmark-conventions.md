@@ -10,7 +10,7 @@ A benchmark instance fixes everything that changes the number:
 
 1. **Hamiltonian and operator convention.** The operators ($\mathbf S$ versus $\boldsymbol\sigma$, fermionic sign conventions), every coupling with its value and sign, and any constant offset. For spin-$\tfrac12$ bilinear terms the Pauli convention gives energies four times larger than the spin convention.
 2. **Lattice, cluster and boundaries.** Primitive vectors or an explicit bond list, the number of sites, and periodic, open, cylindrical or twisted boundaries. A $10\times10$ torus and a $10\times10$ cylinder are different instances. Bond counting must be stated: each undirected bond once.
-3. **Sector.** Total $S^z$, particle numbers, momentum and point-group representation when the calculation is restricted to one. A projected state is reported as the energy of the projected state, with the group named.
+3. **Sector.** Total $S^z$, particle numbers, momentum and point-group representation when the calculation is restricted to one. For bosons, also the cutoff on the occupation of a site, if any, since it changes the Hamiltonian. A projected state is reported as the energy of the projected state, with the group named.
 4. **Normalization and units.** Energy per site or total, and the coupling that sets the unit.
 
 Each instance has a key such as `j1j2-square-10x10-pbc-j2-0p5-sz0` that appears on the board and in the data files. Instances of the same model with different sizes or couplings share the system name and are listed separately.
