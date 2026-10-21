@@ -40,6 +40,8 @@ $$
 
 where $\boldsymbol{\sigma}^{(ij)}$ is $\boldsymbol{\sigma}$ with spins $i$ and $j$ exchanged. The off-diagonal term contributes only on antiparallel bonds. After the Marshall sublattice rotation on a bipartite lattice the off-diagonal coefficient becomes $-\tfrac12$ and the ground state has positive amplitudes; for frustrated couplings no such rotation exists and the ratio carries a nontrivial sign, see the [J₁–J₂ benchmark page](../j1j2-square-lattice/).
 
+In continuous space the sum over connected configurations becomes a differential operator: the kinetic energy turns the local energy into $-\tfrac12\sum_i[\nabla_i^2\log\Psi_\theta+(\nabla_i\log\Psi_\theta)^2]+V$, so each evaluation needs the gradient and Laplacian of the network with respect to the particle coordinates; see the [continuous-space page](../continuous-space/).
+
 $E_{\mathrm{loc}}$ is complex in general. Its mean is real because $H$ is Hermitian; the imaginary part of the sample mean is pure noise and a useful sanity check.
 
 ## Sampling
@@ -50,7 +52,7 @@ $$
 A(\boldsymbol{\sigma}\to\boldsymbol{\sigma}')=\min\!\left[1,\ \frac{q(\boldsymbol{\sigma}|\boldsymbol{\sigma}')}{q(\boldsymbol{\sigma}'|\boldsymbol{\sigma})}\left|\frac{\Psi_\theta(\boldsymbol{\sigma}')}{\Psi_\theta(\boldsymbol{\sigma})}\right|^2\right]
 $$
 
-for a proposal $q$. Single-spin flips are the generic choice; exchange moves on nearest-neighbour pairs conserve $S^z_{\mathrm{tot}}$ and restrict the chain to one magnetization sector, which is how the $S^z=0$ sector of a Ketboard instance is enforced in practice. Autoregressive architectures bypass the chain entirely and draw exact, independent samples from $p_\theta$ (Sharir et al., arXiv:1902.04057; Hibat-Allah et al., arXiv:2002.02973), at the price of constraining the functional form.
+for a proposal $q$. Single-spin flips are the generic choice; exchange moves on nearest-neighbour pairs conserve $S^z_{\mathrm{tot}}$ and restrict the chain to one magnetization sector, which is how the $S^z=0$ sector of a Ketboard instance is enforced in practice. Autoregressive architectures bypass the chain entirely and draw exact, independent samples from $p_\theta$ (Sharir et al., arXiv:1902.04057; Hibat-Allah et al., arXiv:2002.02973), at the price of constraining the functional form. For particles in continuous space the proposal is a continuous displacement, usually a Gaussian move of all particles with a width tuned to the acceptance rate.
 
 Sampling $|\Psi_\theta|^2$ is always a positive distribution, so VMC has no sign problem in the Monte Carlo sense. The sign problem reappears as a *representation* problem: the ansatz must encode the sign or phase structure of the ground state, and for frustrated or fermionic Hamiltonians this is where the difficulty lives.
 

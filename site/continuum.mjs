@@ -15,6 +15,8 @@ export const CELLS = {
   sc: 'simple cubic', bcc: 'body-centred cubic', fcc: 'face-centred cubic', rect332: 'rectangular with sides in the ratio 3:3:2',
   sq: 'square', rect: 'rectangular commensurate with a triangular lattice', rhombus: '60-degree rhombic (triangular-lattice)',
 };
+// Ketbook page that explains a kind of system and its instances; Ketboard links its models to it.
+const WIKI = {heg: 'homogeneous-electron-gas'};
 export const EXTERNAL = ['none', 'uniform background', 'harmonic trap', 'fixed nuclei', 'other'];
 const ELEMENTS = ['H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne', 'Na', 'Mg', 'Al', 'Si', 'P', 'S', 'Cl', 'Ar', 'K', 'Ca'];
 
@@ -146,6 +148,7 @@ export function continuumInstance(system, existingIds = []) {
     boundary_conditions: space.type === 'periodic' ? `Periodic, ${space.twist === 'Gamma' ? 'Gamma point (no twist)' : space.twist}` : 'Free space (open)',
     parameters_latex: params,
     system: {dimension: d, particles, space, external, interaction, unit, per, preset: system.preset, ...(system.name ? {name: system.name} : {})},
+    ...(WIKI[system.preset] ? {wiki: WIKI[system.preset]} : {}),
   };
 }
 
