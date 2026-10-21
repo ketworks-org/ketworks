@@ -48,7 +48,7 @@
       "energy_token": "-0.495530",
       "normalization": "per_site",
       "unit": "J1",
-      "source": "as tabulated in Choo et al., arXiv:1903.06713, Table I",
+      "source": "Gong et al., arXiv:1311.5962, as tabulated in Choo et al., arXiv:1903.06713, Table I",
       "notes": ""
     }
   ]

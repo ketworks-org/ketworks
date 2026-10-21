@@ -8,7 +8,7 @@
       "energy_token": "-0.5603734",
       "normalization": "per_site",
       "unit": "J",
-      "source": "Bernu, Lecheminant, Lhuillier, Pierre (1994), as tabulated in Roth and MacDonald, arXiv:2104.05085, Table I",
+      "source": "Bernu, Lecheminant, Lhuillier, Pierre, arXiv:cond-mat/9407028, as tabulated in Roth and MacDonald, arXiv:2104.05085, Table I",
       "notes": ""
     },
     {
@@ -18,7 +18,7 @@
       "energy_token": "-0.560375",
       "normalization": "per_site",
       "unit": "J",
-      "source": "Iqbal et al. (2016), as tabulated in Roth and MacDonald, arXiv:2104.05085, Table I",
+      "source": "Iqbal et al., arXiv:1601.06018, as tabulated in Roth and MacDonald, arXiv:2104.05085, Table I",
       "notes": "Lies below the exact energy in the last digits, so it is treated as an estimate."
     },
     {
@@ -28,7 +28,7 @@
       "energy_token": "-0.548025",
       "normalization": "per_site",
       "unit": "J",
-      "source": "Iqbal et al. (2016), as tabulated in Roth and MacDonald, arXiv:2104.05085, Table I",
+      "source": "Iqbal et al., arXiv:1601.06018, as tabulated in Roth and MacDonald, arXiv:2104.05085, Table I",
       "notes": ""
     },
     {
@@ -38,7 +38,7 @@
       "energy_token": "-0.55420(5)",
       "normalization": "per_site",
       "unit": "J",
-      "source": "Mezzacapo and Cirac (2010), as tabulated in Moss et al., arXiv:2505.20406, Table V",
+      "source": "Mezzacapo and Cirac, arXiv:1006.4480, as tabulated in Moss et al., arXiv:2505.20406, Table V",
       "notes": ""
     },
     {
@@ -58,7 +58,7 @@
       "energy_token": "-0.53570(1)",
       "normalization": "per_site",
       "unit": "J",
-      "source": "Yunoki and Sorella (2006), as tabulated in Viteritti et al., arXiv:2602.02665, Table I",
+      "source": "Yunoki and Sorella, arXiv:cond-mat/0602180, as tabulated in Viteritti et al., arXiv:2602.02665, Table I",
       "notes": ""
     },
     {
@@ -68,7 +68,7 @@
       "energy_token": "-0.54542(1)",
       "normalization": "per_site",
       "unit": "J",
-      "source": "Ghorbani, Tocchio, Becca (2016), as tabulated in Viteritti et al., arXiv:2602.02665, Table I",
+      "source": "Ghorbani, Tocchio, Becca, arXiv:1512.03356, as tabulated in Viteritti et al., arXiv:2602.02665, Table I",
       "notes": ""
     },
     {
@@ -78,7 +78,7 @@
       "energy_token": "-0.5459(1)",
       "normalization": "per_site",
       "unit": "J",
-      "source": "Mezzacapo and Cirac (2010), as tabulated in Viteritti et al., arXiv:2602.02665, Table I",
+      "source": "Mezzacapo and Cirac, arXiv:1006.4480, as tabulated in Viteritti et al., arXiv:2602.02665, Table I",
       "notes": ""
     },
     {
@@ -88,7 +88,7 @@
       "energy_token": "-0.54716(3)",
       "normalization": "per_site",
       "unit": "J",
-      "source": "Heidarian, Sorella, Becca (2009), as tabulated in Viteritti et al., arXiv:2602.02665, Table I",
+      "source": "Heidarian, Sorella, Becca, arXiv:0902.2338, as tabulated in Viteritti et al., arXiv:2602.02665, Table I",
       "notes": ""
     },
     {
@@ -98,7 +98,7 @@
       "energy_token": "-0.545348",
       "normalization": "per_site",
       "unit": "J",
-      "source": "Ghorbani, Tocchio, Becca (2016), as tabulated in Viteritti et al., arXiv:2602.02665, Table I",
+      "source": "Ghorbani, Tocchio, Becca, arXiv:1512.03356, as tabulated in Viteritti et al., arXiv:2602.02665, Table I",
       "notes": ""
     }
   ]

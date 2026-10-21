@@ -58,7 +58,7 @@ unit: kcal/mol
 
 Jiang et al. extrapolate their energies in the network size to a barrier of $9.2$ kcal/mol; an extrapolated energy is not an entry.
 
-**Not recorded.** Totals printed without an error bar (Gerard et al., arXiv:2205.09438; the larger networks of Jiang et al., Supplementary Table 7); scaling-law extrapolations; diffusion Monte Carlo energies with a neural trial function, which are projector energies (Ren et al.); values quoted from other papers, such as the FermiNet cyclobutadiene energies of Spencer et al. reproduced by Ren et al.; energies at other geometries, such as N₂ at $2.016$ bohr (Goldshlager, Abrahamsen, Lin, arXiv:2401.10190) or benzene at unstated or different geometries; and calculations with pseudopotentials.
+**Not recorded.** Totals printed without an error bar (Gerard et al., arXiv:2205.09438; the larger networks of Jiang et al., Supplementary Table 7); scaling-law extrapolations; diffusion Monte Carlo energies with a neural trial function, which are projector energies (Ren et al.); values quoted from other papers, such as the FermiNet cyclobutadiene energies of Spencer et al. (arXiv:2011.07125) reproduced by Ren et al.; energies at other geometries, such as N₂ at $2.016$ bohr (Goldshlager, Abrahamsen, Lin, arXiv:2401.10190) or benzene at unstated or different geometries; and calculations with pseudopotentials.
 
 ## Candidates not yet on Ketboard
 
@@ -80,6 +80,7 @@ Jiang et al. extrapolate their energies in the network size to a barrier of $9.2
 - M. Motta et al., *Towards the solution of the many-electron problem in real materials: equation of state of the hydrogen chain with state-of-the-art many-body methods*, arXiv:1705.01608 (2017).
 - D. Pfau, J. S. Spencer, A. G. D. G. Matthews, W. M. C. Foulkes, *Ab initio solution of the many-electron Schrödinger equation with deep neural networks*, arXiv:1909.02487 (2019). FermiNet; Table II and the G3 coordinates of Appendix G.
 - J. Hermann, Z. Schätzle, F. Noé, *Deep neural network solution of the electronic Schrödinger equation*, arXiv:1909.08423 (2019). PauliNet.
+- J. S. Spencer, D. Pfau, A. Botev, W. M. C. Foulkes, *Better, faster fermionic neural networks*, arXiv:2011.07125 (2020). FermiNet in JAX; cyclobutadiene automerization.
 - J. Lin, G. Goldshlager, L. Lin, *Explicitly antisymmetrized neural network layers for variational Monte Carlo simulation*, arXiv:2112.03491 (2021).
 - W. Ren, W. Fu, X. Wu, J. Chen, *Towards the ground state of molecules via diffusion Monte Carlo on neural networks*, arXiv:2204.13903 (2022).
 - E. Monino, M. Boggio-Pasqua, A. Scemama, D. Jacquemin, P.-F. Loos, *Reference energies for cyclobutadiene: automerization and excited states*, arXiv:2204.05098 (2022).
