@@ -16,7 +16,7 @@ export const CELLS = {
   sq: 'square', rect: 'rectangular commensurate with a triangular lattice', rhombus: '60-degree rhombic (triangular-lattice)',
 };
 // Ketbook page that explains a kind of system and its instances; Ketboard links its models to it.
-const WIKI = {heg: 'homogeneous-electron-gas'};
+const WIKI = {heg: 'homogeneous-electron-gas', molecule: 'molecules'};
 export const EXTERNAL = ['none', 'uniform background', 'harmonic trap', 'fixed nuclei', 'other'];
 const ELEMENTS = ['H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne', 'Na', 'Mg', 'Al', 'Si', 'P', 'S', 'Cl', 'Ar', 'K', 'Ca'];
 

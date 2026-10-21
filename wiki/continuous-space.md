@@ -76,7 +76,8 @@ The [optimizers](../optimization/) are the same as on the lattice. FermiNet intr
 ## Systems on Ketboard
 
 - **The homogeneous electron gas** in two and three dimensions, in finite periodic cells at the $\Gamma$ point, compared per electron: see its [benchmark page](../homogeneous-electron-gas/).
-- **Atoms and molecules** with fixed nuclei, and **quantum dots** (electrons in a harmonic trap), compared as total energies. The [submission form](../../#submit) describes these from the particles, the space, the external potential and the interaction; no instance is on the board yet.
+- **Molecules** with fixed nuclei, compared as all-electron total energies at fixed geometries: see the [molecules page](../molecules/).
+- **Quantum dots** (electrons in a harmonic trap), compared as total energies. The [submission form](../../#submit) describes these from the particles, the space, the external potential and the interaction; no instance is on the board yet.
 
 Neural states in continuous space are also used for ultracold Fermi gases (Kim et al., arXiv:2305.08831) and, at finite temperature, for the electron gas (Xie, Zhang, Wang, arXiv:2105.08644). Results computed in a finite basis set (second quantization) solve a different problem and are not compared with first-quantized ones.
 

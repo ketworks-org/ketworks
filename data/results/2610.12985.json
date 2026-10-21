@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2610.12985v1",
+    "title": "NucleoNet: A Nuclear-Aware Determinant Ansatz for Multi-Geometry Neural Variational Monte Carlo",
+    "authors": "Qiao Gao, Yang Huang, Enze Hou, Yuzhi Liu, Jingrun Chen, Han Wang",
+    "published": "2026-10-09T04:36:03Z",
+    "updated": "2026-10-09T04:36:03Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2610.12985v1",
+  "source_sha256": null,
+  "extraction_model": "human",
+  "issues": [],
+  "results": [
+    {
+      "benchmark_id": "mol-n2-r-2p068-bohr-s0",
+      "system_description": "N2 at bond length 2.068 bohr, all electrons, singlet (7 up, 7 down), clamped nuclei",
+      "method": "NucleoNet",
+      "variant": "NucleoNet, (h1, h2) = (64, 16)",
+      "method_class": "backflow",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-109.54195",
+      "energy_token": "-109.54195(3)",
+      "normalization": "total",
+      "unit": "Ha",
+      "uncertainty": "0.00003",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Supplementary Material, Table S3",
+      "eligibility_evidence": "VMC energy of the trained single-geometry network as printed; the paper does not describe a separate evaluation run.",
+      "parameter_count": null,
+      "notes": "Geometry 'taken from the FermiNet benchmark protocol' (Sec. III of the Supplementary Material), i.e. 2.068 bohr. Parameter count printed as 0.14M. The other columns of Table S3 re-quote earlier papers. The multi-geometry runs (Table S5, e.g. 2.0645 bohr) are other geometries."
+    }
+  ]
+}

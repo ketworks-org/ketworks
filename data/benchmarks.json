@@ -5089,5 +5089,637 @@
       "preset": "heg"
     },
     "wiki": "homogeneous-electron-gas"
+  },
+  {
+    "id": "mol-n2-r-2p068-bohr-s0",
+    "name": "Atoms and molecules",
+    "family": "Atoms and molecules",
+    "category": "continuous-space",
+    "sites": 14,
+    "per": "system",
+    "group": "N₂",
+    "geometry": "3D electrons, N = 14, in free space; nuclei (bohr): N (0, 0, 0); N (0, 0, 2.068)",
+    "hamiltonian": "H = sum_i (-1/2 nabla_i^2 - sum_A Z_A/|r_i - R_A|) + sum_{i<j} 1/|r_i - r_j| + sum_{A<B} Z_A Z_B/|R_A - R_B|; nuclei fixed (Born-Oppenheimer), all electrons, nonrelativistic; Hartree atomic units",
+    "sector": "N↑ = 7, N↓ = 7 (unpolarized); ground-state variational calculation",
+    "unit": "Ha",
+    "description": "N₂, R = 2.068 bohr.",
+    "hamiltonian_latex": "H=\\sum_i\\Big(-\\tfrac12\\nabla_i^2-\\sum_A\\frac{Z_A}{|\\mathbf r_i-\\mathbf R_A|}\\Big)+\\sum_{i<j}\\frac{1}{|\\mathbf r_i-\\mathbf r_j|}+\\sum_{A<B}\\frac{Z_AZ_B}{|\\mathbf R_A-\\mathbf R_B|}",
+    "instance_label": "N₂ · R = 2.068 bohr · charge 0 · N↑ = 7, N↓ = 7",
+    "lattice_size": "14 electrons, 2 nuclei (N2)",
+    "boundary_conditions": "Free space (open)",
+    "parameters_latex": "N_\\uparrow=7,\\qquad N_\\downarrow=7",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 7,
+          "down": 7
+        }
+      ],
+      "space": {
+        "type": "free"
+      },
+      "external": {
+        "type": "fixed nuclei",
+        "coordinate_units": "bohr",
+        "geometry": "R = 2.068 bohr",
+        "nuclei": [
+          {
+            "Z": 7,
+            "position": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "Z": 7,
+            "position": [
+              0,
+              0,
+              2.068
+            ]
+          }
+        ],
+        "charge": 0
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "system",
+      "preset": "molecule",
+      "name": "N₂"
+    },
+    "wiki": "molecules"
+  },
+  {
+    "id": "mol-ozone-g3-s0",
+    "name": "Atoms and molecules",
+    "family": "Atoms and molecules",
+    "category": "continuous-space",
+    "sites": 24,
+    "per": "system",
+    "group": "Ozone",
+    "geometry": "3D electrons, N = 24, in free space; nuclei (bohr): O (0, 2.0859, -0.4319); O (0, 0, 0.8638); O (0, -2.0859, -0.4319)",
+    "hamiltonian": "H = sum_i (-1/2 nabla_i^2 - sum_A Z_A/|r_i - R_A|) + sum_{i<j} 1/|r_i - r_j| + sum_{A<B} Z_A Z_B/|R_A - R_B|; nuclei fixed (Born-Oppenheimer), all electrons, nonrelativistic; Hartree atomic units",
+    "sector": "N↑ = 12, N↓ = 12 (unpolarized); ground-state variational calculation",
+    "unit": "Ha",
+    "description": "Ozone, G3.",
+    "hamiltonian_latex": "H=\\sum_i\\Big(-\\tfrac12\\nabla_i^2-\\sum_A\\frac{Z_A}{|\\mathbf r_i-\\mathbf R_A|}\\Big)+\\sum_{i<j}\\frac{1}{|\\mathbf r_i-\\mathbf r_j|}+\\sum_{A<B}\\frac{Z_AZ_B}{|\\mathbf R_A-\\mathbf R_B|}",
+    "instance_label": "Ozone · G3 · charge 0 · N↑ = 12, N↓ = 12",
+    "lattice_size": "24 electrons, 3 nuclei (O3)",
+    "boundary_conditions": "Free space (open)",
+    "parameters_latex": "N_\\uparrow=12,\\qquad N_\\downarrow=12",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 12,
+          "down": 12
+        }
+      ],
+      "space": {
+        "type": "free"
+      },
+      "external": {
+        "type": "fixed nuclei",
+        "coordinate_units": "bohr",
+        "geometry": "G3",
+        "nuclei": [
+          {
+            "Z": 8,
+            "position": [
+              0,
+              2.0859,
+              -0.4319
+            ]
+          },
+          {
+            "Z": 8,
+            "position": [
+              0,
+              0,
+              0.8638
+            ]
+          },
+          {
+            "Z": 8,
+            "position": [
+              0,
+              -2.0859,
+              -0.4319
+            ]
+          }
+        ],
+        "charge": 0
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "system",
+      "preset": "molecule",
+      "name": "Ozone"
+    },
+    "wiki": "molecules"
+  },
+  {
+    "id": "mol-bicyclobutane-g3-s0",
+    "name": "Atoms and molecules",
+    "family": "Atoms and molecules",
+    "category": "continuous-space",
+    "sites": 30,
+    "per": "system",
+    "group": "Bicyclobutane",
+    "geometry": "3D electrons, N = 30, in free space; nuclei (bohr): C (0, 2.13792, 0.58661); C (0, -2.13792, 0.58661); C (1.41342, 0, -0.58924); C (-1.41342, 0, -0.58924); H (0, 2.33765, 2.6411); H (0, 3.92566, -0.43023); H (0, -2.33765, 2.6411); H (0, -3.92566, -0.43023); H (2.67285, 0, -2.19514); H (-2.67285, 0, -2.19514)",
+    "hamiltonian": "H = sum_i (-1/2 nabla_i^2 - sum_A Z_A/|r_i - R_A|) + sum_{i<j} 1/|r_i - r_j| + sum_{A<B} Z_A Z_B/|R_A - R_B|; nuclei fixed (Born-Oppenheimer), all electrons, nonrelativistic; Hartree atomic units",
+    "sector": "N↑ = 15, N↓ = 15 (unpolarized); ground-state variational calculation",
+    "unit": "Ha",
+    "description": "Bicyclobutane, G3.",
+    "hamiltonian_latex": "H=\\sum_i\\Big(-\\tfrac12\\nabla_i^2-\\sum_A\\frac{Z_A}{|\\mathbf r_i-\\mathbf R_A|}\\Big)+\\sum_{i<j}\\frac{1}{|\\mathbf r_i-\\mathbf r_j|}+\\sum_{A<B}\\frac{Z_AZ_B}{|\\mathbf R_A-\\mathbf R_B|}",
+    "instance_label": "Bicyclobutane · G3 · charge 0 · N↑ = 15, N↓ = 15",
+    "lattice_size": "30 electrons, 10 nuclei (C4H6)",
+    "boundary_conditions": "Free space (open)",
+    "parameters_latex": "N_\\uparrow=15,\\qquad N_\\downarrow=15",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 15,
+          "down": 15
+        }
+      ],
+      "space": {
+        "type": "free"
+      },
+      "external": {
+        "type": "fixed nuclei",
+        "coordinate_units": "bohr",
+        "geometry": "G3",
+        "nuclei": [
+          {
+            "Z": 6,
+            "position": [
+              0,
+              2.13792,
+              0.58661
+            ]
+          },
+          {
+            "Z": 6,
+            "position": [
+              0,
+              -2.13792,
+              0.58661
+            ]
+          },
+          {
+            "Z": 6,
+            "position": [
+              1.41342,
+              0,
+              -0.58924
+            ]
+          },
+          {
+            "Z": 6,
+            "position": [
+              -1.41342,
+              0,
+              -0.58924
+            ]
+          },
+          {
+            "Z": 1,
+            "position": [
+              0,
+              2.33765,
+              2.6411
+            ]
+          },
+          {
+            "Z": 1,
+            "position": [
+              0,
+              3.92566,
+              -0.43023
+            ]
+          },
+          {
+            "Z": 1,
+            "position": [
+              0,
+              -2.33765,
+              2.6411
+            ]
+          },
+          {
+            "Z": 1,
+            "position": [
+              0,
+              -3.92566,
+              -0.43023
+            ]
+          },
+          {
+            "Z": 1,
+            "position": [
+              2.67285,
+              0,
+              -2.19514
+            ]
+          },
+          {
+            "Z": 1,
+            "position": [
+              -2.67285,
+              0,
+              -2.19514
+            ]
+          }
+        ],
+        "charge": 0
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "system",
+      "preset": "molecule",
+      "name": "Bicyclobutane"
+    },
+    "wiki": "molecules"
+  },
+  {
+    "id": "mol-benzene-g3-s0",
+    "name": "Atoms and molecules",
+    "family": "Atoms and molecules",
+    "category": "continuous-space",
+    "sites": 42,
+    "per": "system",
+    "group": "Benzene",
+    "geometry": "3D electrons, N = 42, in free space; nuclei (bohr): C (0, 2.63664, 0); C (2.28339, 1.31832, 0); C (2.28339, -1.31832, 0); C (0, -2.63664, 0); C (-2.28339, -1.31832, 0); C (-2.28339, 1.31832, 0); H (0, 4.69096, 0); H (4.0625, 2.34549, 0); H (4.0625, -2.34549, 0); H (0, -4.69096, 0); H (-4.0625, -2.34549, 0); H (-4.0625, 2.34549, 0)",
+    "hamiltonian": "H = sum_i (-1/2 nabla_i^2 - sum_A Z_A/|r_i - R_A|) + sum_{i<j} 1/|r_i - r_j| + sum_{A<B} Z_A Z_B/|R_A - R_B|; nuclei fixed (Born-Oppenheimer), all electrons, nonrelativistic; Hartree atomic units",
+    "sector": "N↑ = 21, N↓ = 21 (unpolarized); ground-state variational calculation",
+    "unit": "Ha",
+    "description": "Benzene, G3.",
+    "hamiltonian_latex": "H=\\sum_i\\Big(-\\tfrac12\\nabla_i^2-\\sum_A\\frac{Z_A}{|\\mathbf r_i-\\mathbf R_A|}\\Big)+\\sum_{i<j}\\frac{1}{|\\mathbf r_i-\\mathbf r_j|}+\\sum_{A<B}\\frac{Z_AZ_B}{|\\mathbf R_A-\\mathbf R_B|}",
+    "instance_label": "Benzene · G3 · charge 0 · N↑ = 21, N↓ = 21",
+    "lattice_size": "42 electrons, 12 nuclei (C6H6)",
+    "boundary_conditions": "Free space (open)",
+    "parameters_latex": "N_\\uparrow=21,\\qquad N_\\downarrow=21",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 21,
+          "down": 21
+        }
+      ],
+      "space": {
+        "type": "free"
+      },
+      "external": {
+        "type": "fixed nuclei",
+        "coordinate_units": "bohr",
+        "geometry": "G3",
+        "nuclei": [
+          {
+            "Z": 6,
+            "position": [
+              0,
+              2.63664,
+              0
+            ]
+          },
+          {
+            "Z": 6,
+            "position": [
+              2.28339,
+              1.31832,
+              0
+            ]
+          },
+          {
+            "Z": 6,
+            "position": [
+              2.28339,
+              -1.31832,
+              0
+            ]
+          },
+          {
+            "Z": 6,
+            "position": [
+              0,
+              -2.63664,
+              0
+            ]
+          },
+          {
+            "Z": 6,
+            "position": [
+              -2.28339,
+              -1.31832,
+              0
+            ]
+          },
+          {
+            "Z": 6,
+            "position": [
+              -2.28339,
+              1.31832,
+              0
+            ]
+          },
+          {
+            "Z": 1,
+            "position": [
+              0,
+              4.69096,
+              0
+            ]
+          },
+          {
+            "Z": 1,
+            "position": [
+              4.0625,
+              2.34549,
+              0
+            ]
+          },
+          {
+            "Z": 1,
+            "position": [
+              4.0625,
+              -2.34549,
+              0
+            ]
+          },
+          {
+            "Z": 1,
+            "position": [
+              0,
+              -4.69096,
+              0
+            ]
+          },
+          {
+            "Z": 1,
+            "position": [
+              -4.0625,
+              -2.34549,
+              0
+            ]
+          },
+          {
+            "Z": 1,
+            "position": [
+              -4.0625,
+              2.34549,
+              0
+            ]
+          }
+        ],
+        "charge": 0
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "system",
+      "preset": "molecule",
+      "name": "Benzene"
+    },
+    "wiki": "molecules"
+  },
+  {
+    "id": "mol-cyclobutadiene-rectangle-s0",
+    "name": "Atoms and molecules",
+    "family": "Atoms and molecules",
+    "category": "continuous-space",
+    "sites": 28,
+    "per": "system",
+    "group": "Cyclobutadiene",
+    "geometry": "3D electrons, N = 28, in free space; nuclei (bohr): C (0, 0, 0); C (2.9555318, 0, 0); C (2.9555318, 2.5586891, 0); C (0, 2.5586891, 0); H (-1.4402903, -1.44331, 0); H (4.395822, -1.44331, 0); H (4.395822, 4.0019994, 0); H (-1.4402903, 4.0019994, 0)",
+    "hamiltonian": "H = sum_i (-1/2 nabla_i^2 - sum_A Z_A/|r_i - R_A|) + sum_{i<j} 1/|r_i - r_j| + sum_{A<B} Z_A Z_B/|R_A - R_B|; nuclei fixed (Born-Oppenheimer), all electrons, nonrelativistic; Hartree atomic units",
+    "sector": "N↑ = 14, N↓ = 14 (unpolarized); ground-state variational calculation",
+    "unit": "Ha",
+    "description": "Cyclobutadiene, rectangle.",
+    "hamiltonian_latex": "H=\\sum_i\\Big(-\\tfrac12\\nabla_i^2-\\sum_A\\frac{Z_A}{|\\mathbf r_i-\\mathbf R_A|}\\Big)+\\sum_{i<j}\\frac{1}{|\\mathbf r_i-\\mathbf r_j|}+\\sum_{A<B}\\frac{Z_AZ_B}{|\\mathbf R_A-\\mathbf R_B|}",
+    "instance_label": "Cyclobutadiene · rectangle · charge 0 · N↑ = 14, N↓ = 14",
+    "lattice_size": "28 electrons, 8 nuclei (C4H4)",
+    "boundary_conditions": "Free space (open)",
+    "parameters_latex": "N_\\uparrow=14,\\qquad N_\\downarrow=14",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 14,
+          "down": 14
+        }
+      ],
+      "space": {
+        "type": "free"
+      },
+      "external": {
+        "type": "fixed nuclei",
+        "coordinate_units": "bohr",
+        "geometry": "rectangle",
+        "nuclei": [
+          {
+            "Z": 6,
+            "position": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "Z": 6,
+            "position": [
+              2.9555318,
+              0,
+              0
+            ]
+          },
+          {
+            "Z": 6,
+            "position": [
+              2.9555318,
+              2.5586891,
+              0
+            ]
+          },
+          {
+            "Z": 6,
+            "position": [
+              0,
+              2.5586891,
+              0
+            ]
+          },
+          {
+            "Z": 1,
+            "position": [
+              -1.4402903,
+              -1.44331,
+              0
+            ]
+          },
+          {
+            "Z": 1,
+            "position": [
+              4.395822,
+              -1.44331,
+              0
+            ]
+          },
+          {
+            "Z": 1,
+            "position": [
+              4.395822,
+              4.0019994,
+              0
+            ]
+          },
+          {
+            "Z": 1,
+            "position": [
+              -1.4402903,
+              4.0019994,
+              0
+            ]
+          }
+        ],
+        "charge": 0
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "system",
+      "preset": "molecule",
+      "name": "Cyclobutadiene"
+    },
+    "wiki": "molecules"
+  },
+  {
+    "id": "mol-cyclobutadiene-square-s0",
+    "name": "Atoms and molecules",
+    "family": "Atoms and molecules",
+    "category": "continuous-space",
+    "sites": 28,
+    "per": "system",
+    "group": "Cyclobutadiene",
+    "geometry": "3D electrons, N = 28, in free space; nuclei (bohr): C (0, 0, 0); C (2.7419927, 0, 0); C (2.7419927, 2.7419927, 0); C (0, 2.7419927, 0); H (-1.4404647, -1.4404647, 0); H (4.1824574, -1.4404647, 0); H (4.1824574, 4.1824574, 0); H (-1.4404647, 4.1824574, 0)",
+    "hamiltonian": "H = sum_i (-1/2 nabla_i^2 - sum_A Z_A/|r_i - R_A|) + sum_{i<j} 1/|r_i - r_j| + sum_{A<B} Z_A Z_B/|R_A - R_B|; nuclei fixed (Born-Oppenheimer), all electrons, nonrelativistic; Hartree atomic units",
+    "sector": "N↑ = 14, N↓ = 14 (unpolarized); ground-state variational calculation",
+    "unit": "Ha",
+    "description": "Cyclobutadiene, square.",
+    "hamiltonian_latex": "H=\\sum_i\\Big(-\\tfrac12\\nabla_i^2-\\sum_A\\frac{Z_A}{|\\mathbf r_i-\\mathbf R_A|}\\Big)+\\sum_{i<j}\\frac{1}{|\\mathbf r_i-\\mathbf r_j|}+\\sum_{A<B}\\frac{Z_AZ_B}{|\\mathbf R_A-\\mathbf R_B|}",
+    "instance_label": "Cyclobutadiene · square · charge 0 · N↑ = 14, N↓ = 14",
+    "lattice_size": "28 electrons, 8 nuclei (C4H4)",
+    "boundary_conditions": "Free space (open)",
+    "parameters_latex": "N_\\uparrow=14,\\qquad N_\\downarrow=14",
+    "system": {
+      "dimension": 3,
+      "particles": [
+        {
+          "name": "electrons",
+          "up": 14,
+          "down": 14
+        }
+      ],
+      "space": {
+        "type": "free"
+      },
+      "external": {
+        "type": "fixed nuclei",
+        "coordinate_units": "bohr",
+        "geometry": "square",
+        "nuclei": [
+          {
+            "Z": 6,
+            "position": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "Z": 6,
+            "position": [
+              2.7419927,
+              0,
+              0
+            ]
+          },
+          {
+            "Z": 6,
+            "position": [
+              2.7419927,
+              2.7419927,
+              0
+            ]
+          },
+          {
+            "Z": 6,
+            "position": [
+              0,
+              2.7419927,
+              0
+            ]
+          },
+          {
+            "Z": 1,
+            "position": [
+              -1.4404647,
+              -1.4404647,
+              0
+            ]
+          },
+          {
+            "Z": 1,
+            "position": [
+              4.1824574,
+              -1.4404647,
+              0
+            ]
+          },
+          {
+            "Z": 1,
+            "position": [
+              4.1824574,
+              4.1824574,
+              0
+            ]
+          },
+          {
+            "Z": 1,
+            "position": [
+              -1.4404647,
+              4.1824574,
+              0
+            ]
+          }
+        ],
+        "charge": 0
+      },
+      "interaction": {
+        "type": "coulomb"
+      },
+      "unit": "Ha",
+      "per": "system",
+      "preset": "molecule",
+      "name": "Cyclobutadiene"
+    },
+    "wiki": "molecules"
   }
 ]

@@ -15,11 +15,15 @@ const shortAuthors = authors => { const list = authors.split(/,\s*/); return lis
 
 // Small lattice sketch next to a model: a square grid, a triangular lattice (rows offset by half a spacing,
 // bonds along (1,0), (0,1) and (-1,1)), a chain, or a kagome patch of corner-sharing triangles.
-function latticeKind(family) { return /electron gas|continuum/i.test(family) ? 'continuum' : /triangular/i.test(family) ? 'triangular' : /kagome/i.test(family) ? 'kagome' : /pyrochlore/i.test(family) ? 'pyrochlore' : /chain/i.test(family) ? 'chain' : 'square'; }
+function latticeKind(family) { return /molecule/i.test(family) ? 'molecule' : /electron gas|continuum/i.test(family) ? 'continuum' : /triangular/i.test(family) ? 'triangular' : /kagome/i.test(family) ? 'kagome' : /pyrochlore/i.test(family) ? 'pyrochlore' : /chain/i.test(family) ? 'chain' : 'square'; }
 function lattice(kind = 'square') {
   const ns = 'http://www.w3.org/2000/svg', svg = document.createElementNS(ns, 'svg'); svg.setAttribute('viewBox', '0 0 76 66'); svg.setAttribute('aria-hidden', 'true');
   const line = (p, q) => { const l = document.createElementNS(ns, 'line'); Object.entries({x1: p[0], y1: p[1], x2: q[0], y2: q[1]}).forEach(([k, v]) => l.setAttribute(k, v)); svg.append(l); };
   const dot = ([cx, cy]) => { const c = document.createElementNS(ns, 'circle'); Object.entries({cx, cy, r: 3}).forEach(([k, v]) => c.setAttribute(k, v)); svg.append(c); };
+  if (kind === 'molecule') {
+    const ring = [0, 1, 2, 3, 4, 5].map(k => [38 + 20 * Math.sin(k * Math.PI / 3), 33 - 20 * Math.cos(k * Math.PI / 3)]);
+    ring.forEach((p, k) => line(p, ring[(k + 1) % 6])); ring.forEach(dot); return svg;
+  }
   if (kind === 'chain') {
     const points = [0, 1, 2, 3].map(i => [8 + i * 20, 33]);
     points.slice(1).forEach((p, i) => line(points[i], p)); points.forEach(dot); return svg;
