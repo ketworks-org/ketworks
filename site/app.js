@@ -362,7 +362,8 @@ function syncInstanceForm() {
   const model = MODELS[$('new-model').value] || MODELS.heisenberg, lattice = $('new-lattice').value;
   $('ly-label').hidden = lattice === 'chain';
   document.querySelectorAll('[data-coupling]').forEach(el => el.hidden = !model.couplings.some(([key]) => key === el.dataset.coupling));
-  document.querySelectorAll('[data-sector]').forEach(el => el.hidden = model.spin === null || model.nosector || (el.dataset.sector === 'spin') !== model.spin);
+  const sector = model.boson ? 'boson' : model.spin ? 'spin' : 'fermion';
+  document.querySelectorAll('[data-sector]').forEach(el => el.hidden = model.spin === null || model.nosector || el.dataset.sector !== sector);
   document.querySelectorAll('[data-custom]').forEach(el => el.hidden = model !== MODELS.custom);
   try { $('new-key').textContent = keyPreview(instanceFromForm(formValues()).id); } catch (error) { $('new-key').textContent = error.message; }
 }

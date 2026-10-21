@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "references": [
+    {
+      "benchmark_id": "bosehubbard-square-8x8-pbc-u8p5-n64",
+      "method": "Green-function Monte Carlo (GFMC)",
+      "kind": "exact",
+      "energy_token": "-1.544669(8)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "F. Becca, as printed in Denis and Carleo, arXiv:2404.07869v2, Table 1",
+      "notes": "GFMC for the bosonic ground state, which has no sign problem; exact up to a controllable systematic bias (Denis and Carleo). Private communication of F. Becca (2023), printed in Table 1. Energy per site in units of J."
+    },
+    {
+      "benchmark_id": "bosehubbard-square-8x8-pbc-u17-n64",
+      "method": "Green-function Monte Carlo (GFMC)",
+      "kind": "exact",
+      "energy_token": "-0.5375(4)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "F. Becca, as printed in Denis and Carleo, arXiv:2404.07869v2, Table 1",
+      "notes": "GFMC for the bosonic ground state, which has no sign problem; exact up to a controllable systematic bias (Denis and Carleo). Private communication of F. Becca (2023), printed in Table 1. Energy per site in units of J."
+    }
+  ]
+}

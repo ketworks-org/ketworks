@@ -57,6 +57,7 @@ Every article in Ketbook uses the symbols below; the [continuous-space page](../
 - $\langle i,j\rangle$ runs over nearest-neighbour bonds, $\langle\!\langle i,j\rangle\!\rangle$ over next-nearest-neighbour bonds, each undirected bond counted once.
 - Lattice sizes are written $L\times L$ with $N=L^2$; periodic boundary conditions in all directions unless stated.
 - Fermionic operators $c^\dagger_{i\sigma}$, $n_{i\sigma}=c^\dagger_{i\sigma}c_{i\sigma}$; the Hubbard hopping is $-t$ with $t>0$.
+- Bosonic operators $b^\dagger_i$, $n_i=b^\dagger_ib_i$; the Bose–Hubbard hopping is $-J$ with $J>0$, on each bond counted once, and the on-site term $\tfrac U2 n_i(n_i-1)$ (see the [Bose–Hubbard page](../bose-hubbard/) for other conventions in use).
 
 ## Citations
 

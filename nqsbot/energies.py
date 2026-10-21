@@ -168,7 +168,7 @@ class Tables:
         benchmarks = self.instances(options["instances"])
         row = options.get("row", "label")
         heading = {"r_s": "$r_s$", "size": "Cluster", "molecule": "Molecule", "cell": "Simulation cell", "twist": "Twist", "lattice": "Lattice parameter"}.get(row, "Instance")
-        rows, tally = [], {"neural lower": 0, "other lower": 0, "within error bars": 0, "no other method": 0}
+        rows, tally = [], {"neural lower": 0, "other lower": 0, "within error bars": 0, "no other method": 0, "exact only": 0}
         exact_column = any(r["kind"] != "upper_bound" for b in benchmarks for r in self.references.get(b["id"], []))
         for benchmark in benchmarks:
             unit = benchmark["unit"]
@@ -186,7 +186,7 @@ class Tables:
                 cells.append(f"{difference(diff, unit)}, {outcome}")
             else:
                 if neural:
-                    tally["no other method"] += 1
+                    tally["exact only" if target else "no other method"] += 1
                 cells.append("—")
             if exact_column:
                 if target:
@@ -205,6 +205,8 @@ class Tables:
         parts = []
         if compared:
             parts.append(f"Of the {compared} instance{'s' if compared != 1 else ''} with an upper bound from another method, a neural state is lower on {tally['neural lower']}, another method on {tally['other lower']}, and the two agree within error bars on {tally['within error bars']}")
+        if tally["exact only"]:
+            parts.append(f"{tally['exact only']} instance{'s are' if tally['exact only'] != 1 else ' is'} compared with an exact energy or a best estimate only, with no upper bound from another method")
         if tally["no other method"]:
             parts.append(f"{tally['no other method']} instance{'s have' if tally['no other method'] != 1 else ' has'} neural entries but no upper bound from another method here")
         note = ("; ".join(parts) + "." + (" \"Within error bars\" means within twice the combined error bars." if compared else "")) if parts else ""

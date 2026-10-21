@@ -102,11 +102,18 @@ for (const b of registry.filter(b => !b.system)) { const v = newInstanceValues(b
 // parts that no template rebuilds are started as proposals.
 const templated = new Set(registry.filter(b => b.system || newInstanceValues(b)).map(b => `${b.family} / ${b.part}`));
 assert.deepEqual([...new Set(registry.map(b => `${b.family} / ${b.part}`))].filter(f => !templated.has(f)).sort(), ['Heisenberg / Kagome', 'Heisenberg / Pyrochlore', 't–V / Square']);
-assert.deepEqual([...new Set(registry.filter(b => b.category.startsWith('lattice')).map(b => b.family))].sort(), ['Heisenberg', 'Hubbard', 'J₁–J₂ Heisenberg', 'Transverse-field Ising', 't–V', 't–t′ Hubbard']);
+assert.deepEqual([...new Set(registry.filter(b => b.category.startsWith('lattice')).map(b => b.family))].sort(), ['Bose–Hubbard', 'Heisenberg', 'Hubbard', 'J₁–J₂ Heisenberg', 'Transverse-field Ising', 't–V', 't–t′ Hubbard']);
 assert.ok(registry.every(b => typeof b.part === 'string' && b.part));
 const triangular = instanceFromForm({model:'heisenberg',lattice:'triangular',lx:'6',ly:'6',boundaries:'pbc',sz:'0',category:'lattice-spins'});
 assert.equal(triangular.family, 'Heisenberg'); assert.equal(triangular.part, 'Triangular');
 assert.equal(instanceFromForm({model:'hubbard',lattice:'rectangular',lx:'16',ly:'4',boundaries:'pbc',u:'8',nup:'28',ndown:'28',category:'lattice-fermions'}).part, 'Square');
+// Bose–Hubbard: fixed N, the occupation cutoff (if any) in the key, and the round trip from a stored instance.
+const bh = instanceFromForm({model:'bosehubbard',lattice:'square',lx:'8',ly:'8',boundaries:'pbc',ub:'16.8',nb:'64',category:'lattice-bosons'});
+assert.equal(bh.id, 'bosehubbard-square-8x8-pbc-u16p8-n64'); assert.equal(bh.family, 'Bose–Hubbard'); assert.equal(bh.part, 'Square'); assert.equal(bh.category, 'lattice-bosons'); assert.equal(bh.unit, 'J');
+assert.equal(instanceFromForm({model:'bosehubbard',lattice:'square',lx:'8',ly:'8',boundaries:'pbc',ub:'16.8',nb:'64',nmax:'4'}).id, 'bosehubbard-square-8x8-pbc-u16p8-n64-nmax4');
+assert.throws(() => instanceFromForm({model:'bosehubbard',lattice:'square',lx:'2',ly:'2',boundaries:'pbc',ub:'1',nb:'9',nmax:'2'}), /cutoff/);
+assert.throws(() => instanceFromForm({model:'bosehubbard',lattice:'square',lx:'2',ly:'2',boundaries:'pbc',ub:'1'}), /number of bosons/);
+assert.deepEqual(newInstanceValues(registry.find(b => b.id === 'bosehubbard-square-20x20-pbc-u16p8-n400')), {category:'lattice-bosons',instance_mode:'new',lattice:'square',lx:'20',ly:'20',boundaries:'pbc',model:'bosehubbard',ub:'16.8',nb:'400',nmax:''});
 assert.equal(newInstanceValues(registry.find(b => b.id === 'hubbard-square-16x16-pa-u8-n214-sz0')), null);
 assert.deepEqual(newInstanceValues(registry.find(b => b.id === 'hubbard-square-8x8-pbc-u8-tp-0p2-n56-sz0')), {category:'lattice-fermions',instance_mode:'new',lattice:'square',lx:'8',ly:'8',boundaries:'pbc',model:'ttphubbard',u:'8',tp:'-0.2',nup:'28',ndown:'28'});
 assert.equal(continuumInstanceFromForm({cpreset:'heg',cdim:'3',cup:'7',cdown:'7',ccell:'sc',crs:'1',ctwist:'Gamma'}).id, 'heg3d-sc-n14-unpol-rs1');
