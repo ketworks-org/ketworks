@@ -18,7 +18,7 @@ export const CELLS = {
 // Ketbook page that explains a kind of system and its instances; Ketboard links its models to it.
 const WIKI = {heg: 'homogeneous-electron-gas', molecule: 'molecules'};
 export const EXTERNAL = ['none', 'uniform background', 'harmonic trap', 'fixed nuclei', 'other'];
-const ELEMENTS = ['H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne', 'Na', 'Mg', 'Al', 'Si', 'P', 'S', 'Cl', 'Ar', 'K', 'Ca'];
+export const ELEMENTS = ['H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne', 'Na', 'Mg', 'Al', 'Si', 'P', 'S', 'Cl', 'Ar', 'K', 'Ca'];
 
 const num = s => String(s ?? '').trim().replace(/^\+/, '');
 const slug = s => num(s).toLowerCase().normalize('NFKD').replace(/\./g, 'p').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');

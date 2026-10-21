@@ -218,3 +218,5 @@ pre{white-space:pre;overflow:auto;font-size:12.5px;background:var(--sand);paddin
 .model-index{table-layout:fixed;width:100%}.model-index th:nth-child(1){width:44%}.model-index th:nth-child(2),.model-index th:nth-child(3){width:12%}.model-index th:nth-child(4){width:10%}.model-index th:nth-child(5){width:22%;padding-left:28px}.model-index td.latest{padding-left:28px}
 @media(max-width:760px){.model-index th:nth-child(1){width:auto}.model-index th:nth-child(2),.model-index th:nth-child(3){width:90px}}
 .boundary-head{margin:26px 0 10px;font:700 11px/1.4 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+.geometry-name{margin:0 0 8px}.geometry-table{width:auto;font-size:13.5px;margin:0 0 10px}.geometry-table th{padding:6px 14px 6px 0;background:none;color:var(--muted);font-size:9.5px}.geometry-table td{padding:4px 14px 4px 0;border-bottom:1px solid var(--line);white-space:nowrap}.geometry-table td:first-child{font-weight:700}
