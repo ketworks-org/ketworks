@@ -89,7 +89,7 @@ table{border-collapse:collapse;width:100%;font-size:14.5px;text-align:left}
 th{background:var(--ink);color:var(--paper);font:700 10px/1.4 var(--display);text-transform:uppercase;letter-spacing:.12em;padding:13px 12px;vertical-align:bottom}th .katex{text-transform:none;letter-spacing:0;font-size:1.6em}
 td{border-bottom:1px solid var(--line);padding:16px 12px;vertical-align:top}td small{display:block;color:var(--muted);margin-top:4px;font:13px/1.45 var(--serif)}
 td a{text-decoration:underline;text-underline-offset:3px}.num{text-align:right}th.num .sort{justify-content:flex-end}
-.energy{font-size:15px;white-space:nowrap}.rank{color:var(--muted);width:40px}
+.energy{font-size:15px;white-space:nowrap}.energy small{white-space:normal}.rank{color:var(--muted);width:40px}
 .ledger{min-width:820px}.ledger-system{display:flex;align-items:center;gap:14px;font:700 18px/1.15 var(--display);letter-spacing:-.02em}.ledger-system svg{width:40px;height:40px;stroke:var(--ink);fill:var(--paper);flex:none}.ledger-system:hover{color:var(--blue)}
 .board{min-width:1040px}
 .sort{display:inline-flex;align-items:center;gap:6px;background:none;border:0;color:inherit;padding:0;cursor:pointer;font:inherit;text-transform:inherit;letter-spacing:inherit}
@@ -208,6 +208,10 @@ pre{white-space:pre;overflow:auto;font-size:12.5px;background:var(--sand);paddin
 .board-category .board-family{margin-top:30px}
 .board-back{display:inline-block;margin-top:28px}
 .nav-body .nav-sub a.active{border-left-color:var(--area);font-weight:800}
+.nav-parts{display:none}.nav-parts.open{display:block}.nav-body .nav-parts a:not(.nav-title a){margin-left:26px;padding:4px 0 4px 10px;font-size:12px;color:var(--muted)}.nav-body .nav-parts a.active,.nav-body .nav-parts a:hover{color:var(--ink)}
+.part-menu{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 4px}.part-chip{display:inline-flex;align-items:baseline;gap:7px;padding:6px 11px;border:1.5px solid var(--ink);font:700 12px/1.2 var(--display);color:var(--ink)}.part-chip:hover{background:var(--white)}.part-chip[aria-current]{background:var(--ink);color:var(--paper)}.part-count{font:500 11px/1 var(--mono);opacity:.65}
+.part-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 20px;margin:32px 0 8px;padding-top:12px;border-top:1px solid var(--line);font:800 19px/1.2 var(--display);letter-spacing:-.02em}.part-head .text-link{font-size:12px;letter-spacing:0}
+.model-parts{display:block;margin:5px 0 0 54px;font:13px/1.45 var(--serif);color:var(--muted)}.model-parts a{color:inherit}.model-parts a:hover{color:var(--blue)}
 .model-index{min-width:560px}.model-index td{vertical-align:middle}
 .model-link{display:inline-flex;align-items:center;gap:14px;font:800 18px/1.25 var(--display);letter-spacing:-.02em}.model-link:hover span{color:var(--blue);text-decoration:underline;text-underline-offset:4px}
 .model-link svg{width:30px;height:30px;stroke:var(--ink);fill:var(--paper);flex:none}
@@ -219,4 +223,4 @@ pre{white-space:pre;overflow:auto;font-size:12.5px;background:var(--sand);paddin
 @media(max-width:760px){.model-index th:nth-child(1){width:auto}.model-index th:nth-child(2),.model-index th:nth-child(3){width:90px}}
 .boundary-head{margin:26px 0 10px;font:700 11px/1.4 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 
-.geometry-name{margin:0 0 6px}.geometry-details summary{font:700 11px/1.5 var(--display);cursor:pointer}.geometry-details[open] summary{margin-bottom:8px}.geometry-table{width:auto;font-size:13.5px;margin:0 0 10px}.geometry-table th{padding:6px 14px 6px 0;background:none;color:var(--muted);font-size:9.5px}.geometry-table td{padding:4px 14px 4px 0;border-bottom:1px solid var(--line);white-space:nowrap}.geometry-table td:first-child{font-weight:700}
+.geometry-name{margin:0 0 6px}.geometry-details summary{font:700 11px/1.5 var(--display);cursor:pointer}.geometry-details[open] summary{margin-bottom:8px}.geometry-table{width:auto;font-size:13.5px;margin:0 0 10px}.geometry-table th{padding:6px 14px 6px 0;background:none;color:var(--muted);font-size:9.5px}.geometry-table td{padding:4px 14px 4px 0;border-bottom:1px solid var(--line);white-space:nowrap}.geometry-table td:first-child{font-weight:700}.geometry-table tr.cell-edge td{border-bottom:2px solid var(--line)}

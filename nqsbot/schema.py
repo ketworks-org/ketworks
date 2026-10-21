@@ -68,19 +68,21 @@ CATEGORIES = {
     "lattice-spins": "Lattice spins",
     "lattice-fermions": "Lattice fermions",
     "lattice-bosons": "Lattice bosons",
-    "continuous-space": "Continuous space",
+    "continuum-electrons": "Continuum electrons",
 }
 
 
 # Continuous-space instances (first quantization) carry a structured `system`: dimension, particles, space
 # (a periodic cell or free space), external potential, interaction, unit and normalization. The readable fields
 # are generated from it by site/continuum.mjs; these checks keep the stored structure complete.
-EXTERNAL_POTENTIALS = ("none", "uniform background", "harmonic trap", "fixed nuclei", "other")
+# A crystal lists its nuclei in the simulation cell, clamped ("fixed nuclei") or as distinguishable quantum particles
+# ("quantum nuclei", whose listed positions are the crystal sites the nuclear state is localized on).
+EXTERNAL_POTENTIALS = ("none", "uniform background", "harmonic trap", "fixed nuclei", "quantum nuclei", "other")
 
 
 def validate_system(row):
     s, where = row.get("system"), row["id"]
-    assert isinstance(s, dict), f"{where}: a continuous-space instance needs a structured system"
+    assert isinstance(s, dict), f"{where}: a continuum instance needs a structured system"
     assert s.get("dimension") in (1, 2, 3), f"{where}: dimension must be 1, 2 or 3"
     particles = s.get("particles")
     assert isinstance(particles, list) and particles, f"{where}: list the particles"
@@ -98,17 +100,29 @@ def validate_system(row):
     assert space.get("type") in ("periodic", "free"), f"{where}: space must be a periodic cell or free space"
     if space["type"] == "periodic":
         assert str(space.get("cell", "")).strip() and str(space.get("twist", "")).strip(), f"{where}: a periodic cell needs its shape and twist"
-        assert "r_s" in space or str(space.get("size", "")).strip(), f"{where}: a periodic cell needs the density r_s or its size"
+        vectors = space.get("lattice_vectors")
+        if vectors is not None:
+            assert isinstance(vectors, list) and len(vectors) == s["dimension"] and all(isinstance(a, list) and len(a) == s["dimension"] for a in vectors), f"{where}: give {s['dimension']} lattice vectors of {s['dimension']} coordinates"
+        assert "r_s" in space or str(space.get("size", "")).strip() or vectors, f"{where}: a periodic cell needs the density r_s, its size or its lattice vectors"
     external = s.get("external") or {}
     assert external.get("type") in EXTERNAL_POTENTIALS, f"{where}: external potential must be one of {', '.join(EXTERNAL_POTENTIALS)}"
     if external["type"] == "harmonic trap":
         decimal(external.get("omega"))
-    if external["type"] == "fixed nuclei":
+    if external["type"] in ("fixed nuclei", "quantum nuclei"):
         nuclei = external.get("nuclei")
         assert isinstance(nuclei, list) and nuclei, f"{where}: list the nuclei"
         assert all(isinstance(n.get("Z"), int) and n["Z"] > 0 and len(n.get("position", [])) == s["dimension"] for n in nuclei), f"{where}: each nucleus needs Z and {s['dimension']} coordinates"
         assert external.get("coordinate_units") in ("bohr", "angstrom") and str(external.get("geometry", "")).strip(), f"{where}: give the coordinate units and name the geometry"
         assert external.get("charge") == sum(n["Z"] for n in nuclei) - total, f"{where}: charge must equal the nuclear charge minus the number of electrons"
+        if space["type"] == "periodic":
+            assert space.get("lattice_vectors") and external["charge"] == 0, f"{where}: a crystal needs the lattice vectors of its simulation cell and a neutral cell"
+        if external["type"] == "quantum nuclei":
+            decimal(external.get("mass"))
+            assert external.get("statistics") == "distinguishable", f"{where}: quantum nuclei are recorded as distinguishable particles"
+    if row.get("per") == "atom":
+        assert row.get("per_count") == len(external.get("nuclei") or []), f"{where}: per_count must be the number of atoms"
+    if row.get("per") == "cell":
+        assert row.get("per_count") == space.get("primitive_cells"), f"{where}: per_count must be the number of primitive cells"
     if external["type"] == "other":
         assert str(external.get("description", "")).strip(), f"{where}: describe the external potential"
     interaction = s.get("interaction") or {}
@@ -125,9 +139,15 @@ def benchmarks(root=ROOT):
         assert row.get("category") in CATEGORIES, f"{row['id']}: category must be one of {', '.join(CATEGORIES)}"
         # Optional: what the energy is normalized by on the board (default "site"), and a section name used to
         # group the instances of a model on its page (default: the boundary class).
-        assert row.get("per", "site") in ("site", "electron", "particle", "system"), f"{row['id']}: per must be site, electron, particle or system"
-        if row["category"] == "continuous-space":
+        # "atom" and "cell" (primitive cell) divide a total by per_count instead of the number of sites.
+        assert row.get("per", "site") in ("site", "electron", "particle", "system", "atom", "cell"), f"{row['id']}: per must be site, electron, particle, system, atom or cell"
+        if row.get("per") in ("atom", "cell"):
+            assert isinstance(row.get("per_count"), int) and row["per_count"] > 0, f"{row['id']}: per {row['per']} needs a positive integer per_count"
+        if row["category"] == "continuum-electrons":
             validate_system(row)
+        # The part of its model an instance belongs to (a lattice, a dimension, a molecule, a material); Ketboard
+        # navigates a model by part.
+        assert isinstance(row.get("part"), str) and row["part"].strip(), f"{row['id']}: name the part of the model (for example the lattice)"
         assert isinstance(row.get("group", ""), str), f"{row['id']}: group must be a string"
     return {x["id"]: x for x in rows}
 
@@ -261,12 +281,13 @@ def variance_per_site(row, registry):
 
 
 def per_divisor(row, registry):
-    """What a printed total is divided by: the number of sites or particles, or 1 for an instance whose
-    board value is the total energy of the system (per = "system", e.g. a molecule)."""
+    """What a printed total is divided by: the number of sites or particles, the number of atoms or primitive
+    cells (per_count), or 1 for an instance whose board value is the total energy of the system (per = "system",
+    e.g. a molecule)."""
     benchmark = registry[row["benchmark_id"]]
     if benchmark.get("per") == "system":
         return 1
-    return benchmark["sites"] if row["normalization"] == "total" else 1
+    return benchmark.get("per_count", benchmark["sites"]) if row["normalization"] == "total" else 1
 
 
 def convention_factor(row):

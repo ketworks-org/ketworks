@@ -96,7 +96,8 @@ export function instanceFromForm(values, existingIds = []) {
   if (lattice === 'chain' && bc === 'cyl') throw Error('A chain is periodic or open.');
   const geo = latticeText(lattice, Lx, Ly, bc);
   for (const [key] of model.couplings) if (!/^[+-]?\d+(\.\d+)?$/.test(v(key))) throw Error(`Enter ${key === 'j2' ? 'J₂/J₁' : key === 'u' ? 'U/t' : key === 'tp' ? "t′/t" : 'h/J'} as a decimal.`);
-  // Models are named by lattice, not by cluster shape: a rectangular cluster is a cluster of the square lattice.
+  // Models are named by their Hamiltonian; the lattice is the part of the model the instance belongs to, named by
+  // lattice, not by cluster shape: a rectangular cluster is a cluster of the square lattice.
   const latticeWord = lattice === 'rectangular' ? 'Square' : lattice[0].toUpperCase() + lattice.slice(1);
   const extents = lattice === 'chain' ? `${Lx}` : `${Lx}x${Ly}`;
   let entry;
@@ -105,20 +106,20 @@ export function instanceFromForm(values, existingIds = []) {
     if (!name || !ham || !unit) throw Error('A custom model needs a system name, a plain-text Hamiltonian with its conventions, and an energy unit.');
     if (!v('category')) throw Error('Choose the class of system (for example lattice spins or lattice fermions).');
     const slug = name.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-    entry = {id: `${slug}-${lattice}-${extents}-${bc}${v('sector_text') ? '-' + v('sector_text').toLowerCase().replace(/[^a-z0-9]+/g, '') : ''}`, name, family: name, category: v('category'), sites: geo.sites, geometry: geo.geometry, hamiltonian: ham,
+    entry = {id: `${slug}-${lattice}-${extents}-${bc}${v('sector_text') ? '-' + v('sector_text').toLowerCase().replace(/[^a-z0-9]+/g, '') : ''}`, name, family: name, part: latticeWord, category: v('category'), sites: geo.sites, geometry: geo.geometry, hamiltonian: ham,
              sector: v('sector_text') || 'Full Hilbert space; ground-state variational calculation', unit, description: v('description') || `${name} on the ${lattice} lattice.`,
              hamiltonian_latex: v('hamiltonian_latex') || '', instance_label: `${geo.label} · ${v('parameters_text') || 'see definition'} · ${BOUNDARIES[bc]}`, lattice_size: geo.size, boundary_conditions: geo.bcLabel, parameters_latex: v('parameters_latex') || ''};
   } else if (model.spin) {
     const sz = v('sz') === '' ? '0' : num(v('sz'));
     if (!model.nosector && !/^-?\d+(\.5)?$/.test(sz)) throw Error('Total Sz must be an integer or half-integer.');
     const sectorKey = model.nosector ? '' : `-sz${slugNumber(sz)}`, sectorText = model.nosector ? 'Full Hilbert space; ground-state variational calculation' : `Total Sz = ${pretty(sz)}; ground-state variational calculation`;
-    const names = {heisenberg: `${latticeWord} Heisenberg`, j1j2: `${latticeWord} J₁–J₂`, tfim: `${latticeWord} transverse-field Ising`};
+    const names = {heisenberg: 'Heisenberg', j1j2: 'J₁–J₂ Heisenberg', tfim: 'Transverse-field Ising'};
     const defs = {
       heisenberg: {key: '', ham: 'H = J sum_<ij> S_i · S_j; spin-1/2 operators S = sigma/2; J = 1; no constant shift', latex: 'H=J\\sum_{\\langle i,j\\rangle}\\mathbf{S}_i\\cdot\\mathbf{S}_j', params: 'J=1,\\qquad S=\\tfrac12', label: 'J = 1', desc: 'Nearest-neighbor exchange.'},
       j1j2: {key: `-j2-${slugNumber(v('j2'))}`, ham: `H = J1 sum_<ij> S_i · S_j + J2 sum_<<ij>> S_i · S_j; spin-1/2 operators S = sigma/2; J1 = 1; J2 = ${num(v('j2'))}; no constant shift`, latex: 'H=J_1\\!\\sum_{\\langle i,j\\rangle}\\!\\mathbf{S}_i\\!\\cdot\\!\\mathbf{S}_j+J_2\\!\\sum_{\\langle\\!\\langle i,j\\rangle\\!\\rangle}\\!\\mathbf{S}_i\\!\\cdot\\!\\mathbf{S}_j', params: `J_1=1,\\qquad J_2/J_1=${num(v('j2'))},\\qquad S=\\tfrac12`, label: `J₂/J₁ = ${pretty(v('j2'))}`, desc: 'Competing nearest- and next-nearest-neighbor exchange.'},
       tfim: {key: `-h${slugNumber(v('h'))}`, ham: `H = -J sum_<ij> sigma^z_i sigma^z_j - h sum_i sigma^x_i; Pauli matrices; J = 1; h = ${num(v('h'))}; no constant shift`, latex: 'H=-J\\sum_{\\langle i,j\\rangle}\\sigma^z_i\\sigma^z_j-h\\sum_i\\sigma^x_i', params: `J=1,\\qquad h/J=${num(v('h'))}`, label: `h/J = ${pretty(v('h'))}`, desc: 'Ising coupling in a transverse field.'},
     }[v('model')];
-    entry = {id: `${v('model')}-${lattice}-${extents}-${bc}${defs.key}${sectorKey}`, name: names[v('model')], family: names[v('model')], category: model.category, sites: geo.sites, geometry: geo.geometry, hamiltonian: defs.ham, sector: sectorText, unit: model.unit,
+    entry = {id: `${v('model')}-${lattice}-${extents}-${bc}${defs.key}${sectorKey}`, name: names[v('model')], family: names[v('model')], part: latticeWord, category: model.category, sites: geo.sites, geometry: geo.geometry, hamiltonian: defs.ham, sector: sectorText, unit: model.unit,
              description: defs.desc, hamiltonian_latex: defs.latex, instance_label: `${geo.label} · ${defs.label} · ${BOUNDARIES[bc]}${model.nosector ? '' : ` · Sz = ${pretty(sz)}`}`, lattice_size: geo.size, boundary_conditions: geo.bcLabel, parameters_latex: defs.params};
   } else {
     const nup = Number(v('nup')), ndown = Number(v('ndown'));
@@ -130,8 +131,8 @@ export function instanceFromForm(values, existingIds = []) {
                            : `H = -t sum_<ij>,s (c†_is c_js + h.c.) - t' sum_<<ij>>,s (c†_is c_js + h.c.) + U sum_i n_iup n_idown; t = 1; t' = ${tp}; U = ${u}; no chemical-potential term or constant shift`;
     const latex = tp === '0' ? 'H=-t\\!\\sum_{\\langle i,j\\rangle,\\sigma}\\!\\left(c^\\dagger_{i\\sigma}c_{j\\sigma}+\\mathrm{h.c.}\\right)+U\\sum_i n_{i\\uparrow}n_{i\\downarrow}'
                              : "H=-t\\!\\sum_{\\langle i,j\\rangle,\\sigma}\\!\\left(c^\\dagger_{i\\sigma}c_{j\\sigma}+\\mathrm{h.c.}\\right)-t'\\!\\sum_{\\langle\\!\\langle i,j\\rangle\\!\\rangle,\\sigma}\\!\\left(c^\\dagger_{i\\sigma}c_{j\\sigma}+\\mathrm{h.c.}\\right)+U\\sum_i n_{i\\uparrow}n_{i\\downarrow}";
-    const name = `${latticeWord} ${tp === '0' ? 'Hubbard' : 't–t′ Hubbard'}`;
-    entry = {id: `hubbard-${lattice}-${extents}-${bc}-u${slugNumber(u)}${tp === '0' ? '' : `-tp${slugNumber(tp)}`}${sectorKey}`, name, family: name, category: model.category, sites: geo.sites, geometry: `${geo.geometry.replace('; each nearest-neighbor bond counted once', '')}; ${hopping}`, hamiltonian: ham,
+    const name = tp === '0' ? 'Hubbard' : 't–t′ Hubbard';
+    entry = {id: `hubbard-${lattice}-${extents}-${bc}-u${slugNumber(u)}${tp === '0' ? '' : `-tp${slugNumber(tp)}`}${sectorKey}`, name, family: name, part: latticeWord, category: model.category, sites: geo.sites, geometry: `${geo.geometry.replace('; each nearest-neighbor bond counted once', '')}; ${hopping}`, hamiltonian: ham,
              sector: `Nup = ${nup}; Ndown = ${ndown}; ${n} electrons; ground-state variational calculation`, unit: 't', description: tp === '0' ? 'Interacting fermions hopping on a lattice.' : 'Interacting fermions with nearest- and next-nearest-neighbor hopping.',
              hamiltonian_latex: latex, instance_label: `${geo.label} · U/t = ${pretty(u)}${tp === '0' ? '' : ` · t′/t = ${pretty(tp)}`} · ${BOUNDARIES[bc]} · ${nup === ndown ? `N↑ = N↓ = ${nup}` : `N↑ = ${nup} · N↓ = ${ndown}`}`, lattice_size: geo.size, boundary_conditions: geo.bcLabel,
              parameters_latex: tp === '0' ? `t=1,\\qquad U/t=${u},\\qquad t^{\\prime}=0` : `t=1,\\qquad t'/t=${tp},\\qquad U/t=${u}`};
@@ -157,7 +158,7 @@ export function newInstanceValues(b) {
     const [, u, tp, n, nup, ndown] = p;
     Object.assign(values, {model: tp ? 'ttphubbard' : 'hubbard', u: unslug(u), ...(tp ? {tp: unslug(tp)} : {}), nup: n ? String(n / 2) : nup, ndown: n ? String(n / 2) : ndown});
   } else return null;
-  try { const rebuilt = instanceFromForm(values); return rebuilt.id === b.id && rebuilt.family === b.family ? values : null; } catch { return null; }
+  try { const rebuilt = instanceFromForm(values); return rebuilt.id === b.id && rebuilt.family === b.family && rebuilt.part === b.part ? values : null; } catch { return null; }
 }
 
 // A result whose instance is not defined yet: stored under data/proposals/, never published,

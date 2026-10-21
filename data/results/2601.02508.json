@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2601.02508v2",
+    "title": "Fermi Sets: Universal and interpretable neural architectures for fermions",
+    "authors": "Liang Fu",
+    "published": "2026-01-05T19:23:39Z",
+    "updated": "2026-04-19T19:54:17Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2601.02508v2",
+  "source_sha256": null,
+  "extraction_model": "human",
+  "issues": [],
+  "results": [
+    {
+      "benchmark_id": "solid-hydrogen-bcc-rs-1p31-2x2x2-conventional-cells-gamma",
+      "system_description": "Static BCC hydrogen, N = 16, r_s = 1.31 bohr, 2x2x2 BCC supercell, PBC, Born-Oppenheimer, proton-proton Ewald energy",
+      "method": "Fermi Sets",
+      "variant": "K = 8 determinants, 238,024 parameters; one model trained on four geometries",
+      "method_class": "backflow",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.49062",
+      "energy_token": "-0.49062(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "uncertainty": "0.00001",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Supplementary Material, Table \"Variational energy per atom for BCC solid hydrogen\", Equilibrium BCC",
+      "eligibility_evidence": "Variational energy per atom of the Fermi Sets wave function at the equilibrium BCC geometry, evaluated from 21,000 independent Monte Carlo blocks.",
+      "parameter_count": 238024,
+      "notes": "Energy per atom, Hartree. The hydrogen benchmark appears only in v2. A single set of parameters was trained on the equilibrium geometry and three randomly displaced ones; only the equilibrium geometry is a Ketboard instance (the displaced geometries list displacement vectors per atom index, but not the site of each index beyond corners 0-7 and body centres 8-15). The text gives the statistical errors as about 0.1 mHa/atom; the table prints (1) in the fifth decimal, recorded here."
+    }
+  ]
+}

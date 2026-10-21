@@ -67,7 +67,7 @@ for every particle and lattice vector, with the twist $\mathbf k_s$. At the $\Ga
 
 The Coulomb energy of a periodic array of charges is conditionally convergent and is computed by Ewald summation. Two conventions must be fixed: a uniform neutralizing background cancels the $\mathbf G=0$ term, and the interaction of each charge with its own periodic images (the Madelung term) is included. Leaving out the Madelung term shifts the energy per particle by a constant of order $1/L$, which on a small cell exceeds the differences between ansätze.
 
-A finite cell has finite-size errors: the kinetic energy depends on which plane waves are occupied, so the energy per particle oscillates with $N$, and the exchange-correlation hole is truncated by the cell. Twist averaging, extrapolation in $N$ and analytic corrections remove most of this for an estimate of the thermodynamic limit, but each changes the problem. Ketboard compares the finite cell at the stated twist as it is.
+A finite cell has finite-size errors: the kinetic energy depends on which plane waves are occupied, so the energy per particle oscillates with $N$, and the exchange-correlation hole is truncated by the cell. Twist averaging, extrapolation in $N$ and analytic corrections remove most of this for an estimate of the thermodynamic limit, but each changes the problem. Ketboard compares the finite cell at the stated twist as it is; the [solids page](../solids/) gives the conventions for crystals.
 
 ## Optimization and pretraining
 
@@ -77,6 +77,7 @@ The [optimizers](../optimization/) are the same as on the lattice. FermiNet intr
 
 - **The homogeneous electron gas** in two and three dimensions, in finite periodic cells at the $\Gamma$ point, compared per electron: see its [benchmark page](../homogeneous-electron-gas/).
 - **Molecules** with fixed nuclei, compared as all-electron total energies at fixed geometries: see the [molecules page](../molecules/).
+- **Solids**: electrons and nuclei in a periodic simulation cell at a stated twist, compared per atom or per primitive cell, with clamped or quantum nuclei: see the [solids page](../solids/).
 - **Quantum dots** (electrons in a harmonic trap), compared as total energies. The [submission form](../../#submit) describes these from the particles, the space, the external potential and the interaction; no instance is on the board yet.
 
 Neural states in continuous space are also used for ultracold Fermi gases (Kim et al., arXiv:2305.08831) and, at finite temperature, for the electron gas (Xie, Zhang, Wang, arXiv:2105.08644). Results computed in a finite basis set (second quantization) solve a different problem and are not compared with first-quantized ones.

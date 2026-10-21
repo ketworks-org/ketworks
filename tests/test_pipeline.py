@@ -178,6 +178,23 @@ class EligibilityTests(unittest.TestCase):
         self.assertEqual(schema.per_site(row, registry), ("-1.17447", "0.00001"))
         with self.assertRaises(ValueError): schema.validate_row(dict(row, normalization="per_site"), registry)
 
+    def test_crystal_totals_are_divided_by_primitive_cells_or_atoms(self):
+        registry = schema.benchmarks()
+        lih = registry["solid-lithium-hydride-rock-salt-l-4p0-a-2x2x2-primitive-cells-gamma"]
+        self.assertEqual((lih["sites"], lih["per"], lih["per_count"]), (32, "cell", 8))
+        row = dict(ROW, benchmark_id=lih["id"], unit="Ha", energy="-65.20768", energy_token="-65.20768(8)", uncertainty="0.00008")
+        schema.validate_row(row, registry)
+        self.assertEqual(schema.per_site(row, registry), ("-8.15096", "0.00001"))
+        hydrogen = registry["solid-hydrogen-bcc-rs-1p31-2x2x2-conventional-cells-gamma-quantum-nuclei"]
+        self.assertEqual((hydrogen["per"], hydrogen["per_count"], hydrogen["system"]["external"]["type"]), ("atom", 16, "quantum nuclei"))
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); (root / "data").mkdir()
+            space, external = lih["system"]["space"], lih["system"]["external"]
+            for broken in (dict(lih, per_count=4), dict(lih, system=dict(lih["system"], space={k: v for k, v in space.items() if k != "lattice_vectors"})),
+                           dict(lih, system=dict(lih["system"], external=dict(external, charge=1)))):
+                (root / "data/benchmarks.json").write_text(json.dumps(list(REGISTRY.values()) + [broken]))
+                with self.assertRaises(AssertionError): schema.benchmarks(root)
+
     def test_every_instance_has_a_known_category(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp); (root / "data").mkdir()

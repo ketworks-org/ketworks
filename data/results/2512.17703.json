@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2512.17703v3",
+    "title": "Revisiting the Broken Symmetry Phase of Solid Hydrogen: A Neural Network Variational Monte Carlo Study",
+    "authors": "Shengdu Chai, Chen Lin, Xinyang Dong, Yuqiang Li, Wanli Ouyang, Lei Wang, X. C. Xie",
+    "published": "2025-12-19T15:36:27Z",
+    "updated": "2026-10-05T09:32:48Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2512.17703v3",
+  "source_sha256": null,
+  "extraction_model": "human",
+  "issues": [],
+  "results": [
+    {
+      "benchmark_id": "solid-hydrogen-bcc-rs-1p31-3x3x3-conventional-cells-gamma-quantum-nuclei",
+      "system_description": "54 hydrogen atoms in a BCC lattice at r_s = 1.31, electrons and protons both quantum (proton mass M = 1836), fixed volume, periodic boundary conditions, no proton exchange",
+      "method": "NNVMC (DeepSolid-based)",
+      "variant": "DeepSolid-type electronic network with a nuclear network, 16 determinants",
+      "method_class": "backflow",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.529674",
+      "energy_token": "-0.529674(5)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "uncertainty": "0.000005",
+      "uncertainty_type": "standard_error",
+      "variance": "0.01575",
+      "source_location": "Table I, \"Present work\"",
+      "eligibility_evidence": "Variational energy of the electron-proton neural-network wave function from an inference run after training (Supplemental Material, Sec. IV); the other rows of Table I are other methods.",
+      "parameter_count": null,
+      "notes": "Energy per atom, Hartree. Table I and its caption are the same in v1, v2 and v3. The printed error is the standard error over saved records without autocorrelation; Supplemental Sec. IV gives 6.9e-6 Ha/atom after correction. Proton exchange neglected."
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 > **In brief.** The homogeneous electron gas (jellium) is electrons in a uniform neutralizing background. It has one parameter, the density $r_s$. At high density it is close to a Slater determinant of plane waves; at low density it crystallizes, at $r_s=86.6(7)$ in three dimensions and $r_s\approx31$–$37$ in two according to the most recent estimates. Ketboard compares finite periodic cells at the $\Gamma$ point, energy per electron in Hartree, with the cell shape and $N_\uparrow$, $N_\downarrow$ fixed. The energies of other methods on these cells are mostly fixed-node diffusion Monte Carlo (DMC) computed for the same cell and, for 14 electrons at high density, transcorrelated FCIQMC. The tables on this page are generated from Ketboard and those energies, so they always show, cell by cell, whether a neural state or another method holds the lowest variational energy.
 
-Notation follows the [conventions page](../notation/). The [continuous-space page](../continuous-space/) explains the ansätze, the local energy and the periodic boundary conditions used here. This page fixes the conventions of the electron-gas instances on Ketboard and summarizes what is known about their energies. Reviewed entries live in [Ketboard](../../#benchmarks?category=continuous-space), not here.
+Notation follows the [conventions page](../notation/). The [continuous-space page](../continuous-space/) explains the ansätze, the local energy and the periodic boundary conditions used here. This page fixes the conventions of the electron-gas instances on Ketboard and summarizes what is known about their energies. Reviewed entries live in [Ketboard](../../#benchmarks?category=continuum-electrons), not here.
 
 ## Hamiltonian and instances
 
@@ -19,7 +19,7 @@ where $v_E$ is the Ewald-summed Coulomb interaction of one electron with another
 - **Sector.** $N_\uparrow$ and $N_\downarrow$ are fixed. "Polarized" means $N_\downarrow=0$, "unpolarized" $N_\uparrow=N_\downarrow$.
 - **Cell.** The cell shape is part of the instance. At $N=27$ and $r_s=1$ the fully polarized gas has $e=1.26$ Ha in a body-centred cubic cell (Cassella et al., arXiv:2202.05183, Supplementary Table IV) and $1.05$ Ha in a simple cubic one (Pescia et al., arXiv:2305.07240, Table V).
 
-The cells, electron numbers and densities that have entries are listed on [Ketboard](../../#benchmarks?category=continuous-space); the next section explains how the cells are chosen.
+The cells, electron numbers and densities that have entries are listed on [Ketboard](../../#benchmarks?category=continuum-electrons); the next section explains how the cells are chosen.
 
 ## Shells and crystals
 
