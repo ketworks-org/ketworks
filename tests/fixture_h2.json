@@ -2,6 +2,7 @@
  "id": "mol-h2-r-1p4-bohr-s0",
  "name": "Atoms and molecules",
  "family": "Atoms and molecules",
+ "part": "H2",
  "category": "continuum-electrons",
  "sites": 2,
  "per": "system",

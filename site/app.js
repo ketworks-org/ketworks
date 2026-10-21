@@ -2,7 +2,16 @@ import {makeSubmission, mergeSubmission, makeProposal, instanceFromForm, newInst
 import {PRESETS, CELLS, ELEMENTS, continuumInstanceFromForm, continuumFormValues} from './continuum.mjs';
 // How an instance's energies are compared: per site, per electron or particle, or the total energy of the system.
 // Links made before a category was renamed keep working.
-const RENAMED_CATEGORIES = {'continuous-space': 'continuum-electrons'}, RENAMED_FAMILIES = {'3D electron gas': 'Electron gas', '2D electron gas': 'Electron gas'};
+const RENAMED_CATEGORIES = {'continuous-space': 'continuum-electrons'};
+const RENAMED_FAMILIES = {'3D electron gas': ['Electron gas', '3D'], '2D electron gas': ['Electron gas', '2D'], 'Square J₁–J₂': ['J₁–J₂ Heisenberg', 'Square'],
+  'Chain Heisenberg': ['Heisenberg', 'Chain'], 'Square Heisenberg': ['Heisenberg', 'Square'], 'Triangular Heisenberg': ['Heisenberg', 'Triangular'], 'Kagome Heisenberg': ['Heisenberg', 'Kagome'],
+  'Pyrochlore Heisenberg': ['Heisenberg', 'Pyrochlore'], 'Chain transverse-field Ising': ['Transverse-field Ising', 'Chain'], 'Square transverse-field Ising': ['Transverse-field Ising', 'Square'],
+  'Square Hubbard': ['Hubbard', 'Square'], 'Square t–t′ Hubbard': ['t–t′ Hubbard', 'Square'], 'Square t–V': ['t–V', 'Square']};
+// The parts of a model (its lattices, dimensions, molecules or materials): lattices and dimensions in a fixed
+// order, other parts in the order of the registry. nqsbot/build.py orders the sidebar the same way.
+const PART_ORDER = ['Chain', 'Square', 'Triangular', 'Honeycomb', 'Kagome', 'Pyrochlore', '3D', '2D', '1D'];
+const partsOf = benchmarks => { const seen = [...new Set(benchmarks.map(b => b.part))], rank = p => PART_ORDER.includes(p) ? PART_ORDER.indexOf(p) : PART_ORDER.length + seen.indexOf(p); return seen.sort((x, y) => rank(x) - rank(y)); };
+const partLink = (family, part) => '#benchmarks?family=' + encodeURIComponent(family) + (part ? '&part=' + encodeURIComponent(part) : '');
 const PER_WORD = {cell: 'primitive cell'}, perWord = per => PER_WORD[per] || per;
 const perSuffix = per => per === 'system' ? '' : ` / ${perWord(per)}`;
 const countHeader = b => b.category === 'continuum-electrons' ? 'Electrons' : 'Sites';
@@ -69,7 +78,10 @@ function route() {
   const params = new URLSearchParams(location.hash.split('?')[1] || '');
   const benchmark = dataset?.benchmarks.find(b => b.id === params.get('system'));
   $('board-overview').hidden = name !== 'benchmarks' || Boolean(benchmark);
-  if (dataset && name === 'benchmarks' && !benchmark) { const family = RENAMED_FAMILIES[params.get('family')] || params.get('family'); renderBoardOverview(family, RENAMED_CATEGORIES[params.get('category')] || params.get('category')); markFamily(family); }
+  if (dataset && name === 'benchmarks' && !benchmark) {
+    const [family, part] = RENAMED_FAMILIES[params.get('family')] || [params.get('family'), params.get('part')];
+    renderBoardOverview(family, RENAMED_CATEGORIES[params.get('category')] || params.get('category'), part); markFamily(family, part);
+  }
   $('board-detail').hidden = !benchmark;
   const like = dataset?.benchmarks.find(b => b.id === params.get('like'));
   if (name === 'submit' && like && prefilled !== location.hash) { prefilled = location.hash; prefillFrom(like); }
@@ -111,38 +123,56 @@ function categoryHead(category, title, meta) {
   const head = text('div', '', 'category-head'); const heading = text('h2', ''); const anchor = text('a', title); anchor.href = '#benchmarks?category=' + encodeURIComponent(category); heading.append(anchor);
   head.append(heading); if (meta) head.append(text('p', meta, 'family-meta')); return head;
 }
-function familyBlock(family, summary) {
-  const entries = summary.filter(s => s.benchmark.family === family), counts = boardCounts(entries.map(s => s.benchmark));
+function familyBlock(family, summary, onlyPart) {
+  const all = summary.filter(s => s.benchmark.family === family), parts = partsOf(all.map(s => s.benchmark));
+  const part = parts.includes(onlyPart) ? onlyPart : null, entries = part ? all.filter(s => s.benchmark.part === part) : all, counts = boardCounts(entries.map(s => s.benchmark));
   const group = text('section', '', 'board-family');
   const head = text('div', '', 'family-head'); const title = text('h3', ''); title.append(lattice(latticeKind(family)), text('span', family));
   head.append(title, text('p', `${plural(counts.instances, 'instance')}, ${plural(counts.results, 'result')} from ${plural(counts.papers, 'paper')}`, 'family-meta'));
-  const wiki = entries[0].benchmark.wiki; if (wiki) { const link = text('a', 'Benchmark page', 'text-link'); link.href = `wiki/${wiki}/`; head.append(link); }
-  // A new instance of this model starts from its smallest instance that a template rebuilds (or, if none does, from its smallest instance as a proposal).
+  // The benchmark page: in the head when the whole model has one, otherwise in the heading of each part that has one.
+  const wikis = new Set(all.map(s => s.benchmark.wiki)), shared = wikis.size === 1 ? all[0].benchmark.wiki : null;
+  const pageLink = wiki => { const link = text('a', 'Benchmark page', 'text-link'); link.href = `wiki/${wiki}/`; return link; };
+  if (shared) head.append(pageLink(shared));
+  // A new instance starts from the smallest instance shown that a template rebuilds (or, if none does, from the smallest as a proposal).
   const bySize = entries.map(s => s.benchmark).sort((a, b) => a.sites - b.sites), start = bySize.find(startValues) || bySize[0];
   const add = text('a', 'Add an instance of this model', 'text-link'); add.href = '#submit?like=' + encodeURIComponent(start.id); head.append(add);
   group.append(head);
-  // One table per section, each with its own heading when a model has more than one, so that problems of
-  // different kinds are not read as one series. Lattice instances are sectioned by boundary class (periodic,
-  // periodic × antiperiodic, cylinder, open); an instance can name its own section instead (continuum instances
-  // are sectioned by particle number, polarization and cell).
+  // A model with several parts gets a menu: all of them, or one part (a lattice, a dimension, a molecule, a material).
+  if (parts.length > 1) {
+    const menu = text('nav', '', 'part-menu'); menu.setAttribute('aria-label', `Parts of ${family}`);
+    [[null, all.length], ...parts.map(p => [p, all.filter(s => s.benchmark.part === p).length])].forEach(([p, n]) => {
+      const a = text('a', p || 'All', 'part-chip'); a.href = partLink(family, p); a.append(text('span', String(n), 'part-count'));
+      if (p === part) a.setAttribute('aria-current', 'true'); menu.append(a);
+    });
+    group.append(menu);
+  }
+  // Within a part, one table per section, each with its own heading when the part has more than one, so that
+  // problems of different kinds are not read as one series. Lattice instances are sectioned by boundary class
+  // (periodic, periodic × antiperiodic, cylinder, open); an instance can name its own section instead (continuum
+  // instances are sectioned by particle number and cell, or by structure).
   const sectionOf = b => b.group || boundaryClass(b);
   const boundaryTitle = c => ({Cylinder: 'Cylinders (periodic along one direction, open along the other)', Open: 'Open boundaries', Periodic: 'Periodic boundaries', 'Periodic × antiperiodic': 'Periodic × antiperiodic boundaries'})[c] || c;
-  const smallest = c => Math.min(...entries.filter(s => sectionOf(s.benchmark) === c).map(s => s.benchmark.sites));
-  // Sections in order of dimension (3D before 2D), then of size.
-  const dimension = c => entries.find(s => sectionOf(s.benchmark) === c).benchmark.system?.dimension || 0;
-  const classes = [...new Set([...BOUNDARY_CLASSES, ...entries.map(s => sectionOf(s.benchmark)).sort((x, y) => dimension(y) - dimension(x) || smallest(x) - smallest(y))])].filter(c => entries.some(s => sectionOf(s.benchmark) === c));
-  classes.forEach(boundary => {
-    // Units per section: one model can mix energies per atom and per primitive cell (solids).
-    const first = entries.find(s => sectionOf(s.benchmark) === boundary).benchmark, per = first.per || 'site', counted = countHeader(first);
-    if (classes.length > 1) group.append(text('h4', boundaryTitle(boundary), 'boundary-head'));
-    const wrap = text('div', '', 'table-scroll'); const table = text('table', '', 'ledger'); const body = document.createElement('tbody');
-    table.innerHTML = `<thead><tr><th scope="col">Instance</th><th scope="col" class="num">${counted}</th><th scope="col" class="num">Results</th><th scope="col" class="num">${per === 'system' ? 'Lowest total energy' : 'Lowest energy' + perSuffix(per)}</th></tr></thead>`;
-    entries.filter(s => sectionOf(s.benchmark) === boundary).forEach(({benchmark, count, best}) => {
-      const tr = document.createElement('tr'); const cell = text('td', ''); const link = text('a', benchmark.instance_label || benchmark.id, 'instance-link'); link.href = '#benchmarks?system=' + encodeURIComponent(benchmark.id); cell.append(link);
-      const shown = best ? withErrorBar(best.energy_per_site, best.uncertainty_per_site, best.uncertainty_type) : {text: '—'}; const energy = text('td', shown.text, 'num energy'); if (best) energy.append(text('small', `${best.method} · ${classLabel(best.method_class)} · arXiv:${best.paper.id}${shown.missing ? ' · no error bar printed' : ''}`));
-      tr.append(cell, text('td', String(benchmark.sites), 'num mono'), text('td', count ? formatCount(count) : '0', 'num mono'), energy); body.append(tr);
+  (part ? [part] : parts).forEach(p => {
+    const inPart = entries.filter(s => s.benchmark.part === p);
+    const partHead = text('h4', '', 'part-head'); partHead.append(text('span', p));
+    const partWikis = new Set(inPart.map(s => s.benchmark.wiki));
+    if (!shared && partWikis.size === 1 && inPart[0].benchmark.wiki) partHead.append(pageLink(inPart[0].benchmark.wiki));
+    group.append(partHead);
+    const smallest = c => Math.min(...inPart.filter(s => sectionOf(s.benchmark) === c).map(s => s.benchmark.sites));
+    const classes = [...new Set([...BOUNDARY_CLASSES, ...inPart.map(s => sectionOf(s.benchmark)).sort((x, y) => smallest(x) - smallest(y))])].filter(c => inPart.some(s => sectionOf(s.benchmark) === c));
+    classes.forEach(boundary => {
+      // Units per section: one model can mix energies per atom and per primitive cell (solids).
+      const first = inPart.find(s => sectionOf(s.benchmark) === boundary).benchmark, per = first.per || 'site', counted = countHeader(first);
+      if (classes.length > 1) group.append(text('h5', boundaryTitle(boundary), 'boundary-head'));
+      const wrap = text('div', '', 'table-scroll'); const table = text('table', '', 'ledger'); const body = document.createElement('tbody');
+      table.innerHTML = `<thead><tr><th scope="col">Instance</th><th scope="col" class="num">${counted}</th><th scope="col" class="num">Results</th><th scope="col" class="num">${per === 'system' ? 'Lowest total energy' : 'Lowest energy' + perSuffix(per)}</th></tr></thead>`;
+      inPart.filter(s => sectionOf(s.benchmark) === boundary).forEach(({benchmark, count, best}) => {
+        const tr = document.createElement('tr'); const cell = text('td', ''); const link = text('a', benchmark.instance_label || benchmark.id, 'instance-link'); link.href = '#benchmarks?system=' + encodeURIComponent(benchmark.id); cell.append(link);
+        const shown = best ? withErrorBar(best.energy_per_site, best.uncertainty_per_site, best.uncertainty_type) : {text: '—'}; const energy = text('td', shown.text, 'num energy'); if (best) energy.append(text('small', `${best.method} · ${classLabel(best.method_class)} · arXiv:${best.paper.id}${shown.missing ? ' · no error bar printed' : ''}`));
+        tr.append(cell, text('td', String(benchmark.sites), 'num mono'), text('td', count ? formatCount(count) : '0', 'num mono'), energy); body.append(tr);
+      });
+      table.append(body); wrap.append(table); group.append(wrap);
     });
-    table.append(body); wrap.append(table); group.append(wrap);
   });
   return group;
 }
@@ -160,7 +190,9 @@ function modelIndex(container, onlyCategory) {
       table.innerHTML = '<thead><tr><th scope="col">Model</th><th scope="col" class="num">Instances</th><th scope="col" class="num">Results</th><th scope="col" class="num">Papers</th><th scope="col">Latest paper</th></tr></thead>';
       families.forEach(family => {
         const counts = boardCounts(inCategory.filter(b => b.family === family));
-        const tr = document.createElement('tr'); const cell = text('td', ''); const name = text('a', '', 'model-link'); name.href = '#benchmarks?family=' + encodeURIComponent(family); name.append(lattice(latticeKind(family)), text('span', family)); cell.append(name);
+        const tr = document.createElement('tr'); const cell = text('td', ''); const name = text('a', '', 'model-link'); name.href = partLink(family); name.append(lattice(latticeKind(family)), text('span', family)); cell.append(name);
+        const parts = partsOf(inCategory.filter(b => b.family === family));
+        if (parts.length > 1) { const list = text('small', '', 'model-parts'); parts.forEach((p, i) => { if (i) list.append(' · '); const a = text('a', p); a.href = partLink(family, p); list.append(a); }); cell.append(list); }
         const latest = text('td', counts.latest ? counts.latest.published.slice(0, 7) : '—', 'mono latest'); if (counts.latest) latest.append(text('small', `arXiv:${counts.latest.id}`));
         tr.append(cell, text('td', String(counts.instances), 'num mono'), text('td', formatCount(counts.results), 'num mono'), text('td', String(counts.papers), 'num mono'), latest); body.append(tr);
       });
@@ -169,21 +201,23 @@ function modelIndex(container, onlyCategory) {
     container.append(section);
   });
 }
-function renderBoardOverview(onlyFamily, onlyCategory) {
+function renderBoardOverview(onlyFamily, onlyCategory, onlyPart) {
   const container = $('board-overview'); container.replaceChildren();
   const categories = dataset.categories || {};
   if (onlyFamily || onlyCategory) { const back = text('a', '← All of Ketboard', 'text-link board-back'); back.href = '#benchmarks'; container.append(back); }
   if (onlyFamily) {
     const first = dataset.benchmarks.find(b => b.family === onlyFamily);
     if (!first) { container.append(text('p', 'This model is not on Ketboard.', 'empty')); return; }
-    const section = text('section', '', 'board-category'); section.append(categoryHead(first.category, categories[first.category] || first.category), familyBlock(onlyFamily, summarize(dataset.benchmarks, dataset.results)));
+    const section = text('section', '', 'board-category'); section.append(categoryHead(first.category, categories[first.category] || first.category), familyBlock(onlyFamily, summarize(dataset.benchmarks, dataset.results), onlyPart));
     container.append(section); return;
   }
   modelIndex(container, onlyCategory);
 }
-// Sidebar: highlight the model being viewed and open its class.
-function markFamily(family) {
+// Sidebar: highlight the model being viewed, open its class, and show its parts with the current one marked.
+function markFamily(family, part) {
   document.querySelectorAll('[data-family]').forEach(a => { const active = a.dataset.family === family; a.classList.toggle('active', active); if (active) a.closest('details')?.setAttribute('open', ''); });
+  document.querySelectorAll('[data-parts-of]').forEach(list => list.classList.toggle('open', list.dataset.partsOf === family));
+  document.querySelectorAll('[data-part]').forEach(a => a.classList.toggle('active', a.closest('[data-parts-of]').dataset.partsOf === family && a.dataset.part === part));
 }
 
 function renderSelects() {
@@ -212,9 +246,12 @@ function renderSubmitModels() {
 }
 function renderInstances(modelId, instanceId, selectedId) {
   const select = $(instanceId), previous = selectedId || select.value;
-  const instances = dataset.benchmarks.filter(b => b.family === $(modelId).value);
+  const instances = dataset.benchmarks.filter(b => b.family === $(modelId).value), parts = partsOf(instances);
   select.replaceChildren();
-  instances.forEach(b => { const option = text('option', b.instance_label || `${b.sites} sites · ${b.geometry} · ${b.hamiltonian} · ${b.sector}`); option.value = b.id; select.append(option); });
+  parts.forEach(p => {
+    const target = parts.length > 1 ? document.createElement('optgroup') : select; if (parts.length > 1) { target.label = p; select.append(target); }
+    instances.filter(b => b.part === p).forEach(b => { const option = text('option', b.instance_label || `${b.sites} sites · ${b.geometry} · ${b.hamiltonian} · ${b.sector}`); option.value = b.id; target.append(option); });
+  });
   if (instances.some(b => b.id === previous)) select.value = previous;
 }
 
@@ -239,10 +276,11 @@ function currentRows() {
 }
 function renderResults() {
   const b = dataset.benchmarks.find(b => b.id === $('system-select').value); if (!b) return;
-  $('system-name').textContent = b.family; $('instance-label').textContent = b.instance_label || ''; $('system-key').textContent = b.id;
+  $('system-name').textContent = `${b.family} · ${b.part}`; const back = document.querySelector('#board-detail .back-link'); if (back) { back.href = partLink(b.family, b.part); back.textContent = `All instances: ${b.family} · ${b.part}`; }
+  $('instance-label').textContent = b.instance_label || ''; $('system-key').textContent = b.id;
   $('system-wiki').hidden = !b.wiki; if (b.wiki) $('system-wiki').href = `wiki/${b.wiki}/`;
   $('add-like').href = '#submit?like=' + encodeURIComponent(b.id);
-  if (location.hash.startsWith('#benchmarks')) markFamily(b.family);
+  if (location.hash.startsWith('#benchmarks')) markFamily(b.family, b.part);
   $('system-definition').replaceChildren(); const dl = document.createElement('dl');
   const h = text('dd', ''); if (b.hamiltonian_html) h.innerHTML = b.hamiltonian_html; else h.textContent = b.hamiltonian;
   dl.append(text('dt', 'Hamiltonian'), h);

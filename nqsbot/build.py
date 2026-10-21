@@ -12,6 +12,16 @@ from .energies import Tables
 from .schema import CATEGORIES, ROOT, per_site, validate_tree, variance_per_site
 
 
+# The parts of a Ketboard model (its lattices, dimensions, molecules or materials): lattices and dimensions in a
+# fixed order, other parts in the order of the registry, as site/app.js orders them.
+PART_ORDER = ["Chain", "Square", "Triangular", "Honeycomb", "Kagome", "Pyrochlore", "3D", "2D", "1D"]
+
+
+def parts_of(benchmarks):
+    seen = list(dict.fromkeys(b["part"] for b in benchmarks))
+    return sorted(seen, key=lambda p: PART_ORDER.index(p) if p in PART_ORDER else len(PART_ORDER) + seen.index(p))
+
+
 def nav_html(index, registry, prefix="", current=None):
     """Site-wide left navigation: collapsed sections of wiki pages and Ketboard instances, open only where the reader is."""
     def group(title, href, key, sections, area):
@@ -27,7 +37,14 @@ def nav_html(index, registry, prefix="", current=None):
     board_sections = []
     for key, title in CATEGORIES.items():
         families = list(dict.fromkeys(b["family"] for b in registry.values() if b["category"] == key))
-        links = [f'<a href="{prefix}#benchmarks?family={quote(family)}" data-family="{html.escape(family)}">{html.escape(family)}</a>' for family in families]
+        links = []
+        for family in families:
+            links.append(f'<a href="{prefix}#benchmarks?family={quote(family)}" data-family="{html.escape(family)}">{html.escape(family)}</a>')
+            # A model with several parts lists them under its link; the list opens while the model is viewed.
+            parts = parts_of([b for b in registry.values() if b["family"] == family])
+            if len(parts) > 1:
+                links.append(f'<span class="nav-parts" data-parts-of="{html.escape(family)}">' + "".join(
+                    f'<a href="{prefix}#benchmarks?family={quote(family)}&amp;part={quote(part)}" data-part="{html.escape(part)}">{html.escape(part)}</a>' for part in parts) + "</span>")
         if links:
             board_sections.append((title, links, False))
     contribute = (f'<div class="nav-group" data-area="contribute"><p class="nav-title"><a href="{prefix}#contribute" data-nav="contribute">Contribute</a></p>'

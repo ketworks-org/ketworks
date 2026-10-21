@@ -135,14 +135,14 @@ export function continuumInstance(system, existingIds = []) {
   const spinKey = p.count !== undefined ? `n${N}` : p.down === 0 ? `n${N}-pol` : p.up === p.down ? `n${N}-unpol` : `nup${p.up}-ndown${p.down}`;
   const coulombText = 'sum_{i<j} 1/|r_i - r_j|';
   const ewald = space.type === 'periodic' ? '; Coulomb sums by Ewald summation with the Madelung self-image term included' : '';
-  let id, family, group, label, hamiltonian, hamLatex, params, size, description, per = system.per;
+  let id, family, part, group, label, hamiltonian, hamLatex, params, size, description, per = system.per;
   const interactionText = interaction.type === 'coulomb' ? coulombText : interaction.description;
   if (system.preset === 'heg') {
     if (p.name !== 'electrons' || space.type !== 'periodic' || external.type !== 'uniform background' || interaction.type !== 'coulomb') throw Error('The electron gas is electrons in a periodic cell with a uniform background and Coulomb interactions.');
     if (space.r_s === undefined) throw Error('Give the density r_s.');
-    // One model for the gas in two and three dimensions; the dimension heads each section and label.
+    // One model for the gas in two and three dimensions; the dimension is the part, and starts each label.
     id = `heg${d}d-${cellKey}-${spinKey}-rs${slug(space.r_s)}`; family = 'Electron gas';
-    group = `${d}D · ${spins(p)} · ${space.cell}`; label = `${d}D · ${spins(p)} · rₛ = ${space.r_s} · ${space.cell} · ${twist(space)}`;
+    part = `${d}D`; group = `${spins(p)} · ${space.cell}`; label = `${d}D · ${spins(p)} · rₛ = ${space.r_s} · ${space.cell} · ${twist(space)}`;
     hamiltonian = `H = -1/2 sum_i nabla_i^2 + ${coulombText} + uniform neutralizing background${ewald}; Hartree atomic units`;
     hamLatex = 'H=-\\tfrac12\\sum_i\\nabla_i^2+\\sum_{i<j}\\frac{1}{|\\mathbf r_i-\\mathbf r_j|}+\\text{background}';
     params = `N_\\uparrow=${p.up},\\qquad N_\\downarrow=${p.down},\\qquad r_s=${space.r_s}`; size = `N = ${N} electrons (${spins(p)}) · rₛ = ${space.r_s}`;
@@ -150,7 +150,7 @@ export function continuumInstance(system, existingIds = []) {
   } else if (system.preset === 'trap') {
     if (space.type !== 'free' || external.type !== 'harmonic trap') throw Error('Particles in a trap are in free space with a harmonic external potential.');
     const kind = p.name === 'electrons' && interaction.type === 'coulomb' ? 'quantum dot' : `trapped ${p.name}`;
-    id = `trap${d}d-${slug(p.name)}-${spinKey}-w${slug(external.omega)}${interaction.type === 'coulomb' ? '' : '-' + slug(system.name || 'other')}`; family = `${d}D ${kind}`;
+    part = `${d}D`; id = `trap${d}d-${slug(p.name)}-${spinKey}-w${slug(external.omega)}${interaction.type === 'coulomb' ? '' : '-' + slug(system.name || 'other')}`; family = `${d}D ${kind}`;
     group = spins(p); label = `${spins(p)} · ω = ${external.omega}`;
     hamiltonian = `H = sum_i (-1/2 nabla_i^2 + 1/2 omega^2 r_i^2) + ${interactionText}; omega = ${external.omega}; ${unit === 'Ha' ? 'Hartree (effective) atomic units' : unit}`;
     hamLatex = interaction.type === 'coulomb' ? 'H=\\sum_i\\left(-\\tfrac12\\nabla_i^2+\\tfrac12\\omega^2 r_i^2\\right)+\\sum_{i<j}\\frac{1}{|\\mathbf r_i-\\mathbf r_j|}' : 'H=\\sum_i\\left(-\\tfrac12\\nabla_i^2+\\tfrac12\\omega^2 r_i^2\\right)+V_{\\mathrm{int}}';
@@ -160,7 +160,7 @@ export function continuumInstance(system, existingIds = []) {
     if (space.type !== 'free' || external.type !== 'fixed nuclei') throw Error('An atom or molecule is electrons in free space with fixed nuclei.');
     const name = system.name || formula(external.nuclei);
     id = `mol-${slug(name)}-${slug(external.geometry)}${external.charge ? `-q${external.charge}` : ''}${p.down === undefined ? '' : `-s${p.up - p.down}`}`; family = 'Atoms and molecules';
-    group = name; label = `${name} · ${external.geometry} · charge ${external.charge} · ${spins(p)}`;
+    part = name; group = name; label = `${name} · ${external.geometry} · charge ${external.charge} · ${spins(p)}`;
     hamiltonian = `H = sum_i (-1/2 nabla_i^2 - sum_A Z_A/|r_i - R_A|) + ${coulombText} + sum_{A<B} Z_A Z_B/|R_A - R_B|; nuclei fixed (Born-Oppenheimer), all electrons, nonrelativistic; Hartree atomic units`;
     hamLatex = 'H=\\sum_i\\Big(-\\tfrac12\\nabla_i^2-\\sum_A\\frac{Z_A}{|\\mathbf r_i-\\mathbf R_A|}\\Big)+\\sum_{i<j}\\frac{1}{|\\mathbf r_i-\\mathbf r_j|}+\\sum_{A<B}\\frac{Z_AZ_B}{|\\mathbf R_A-\\mathbf R_B|}';
     params = `N_\\uparrow=${p.up},\\qquad N_\\downarrow=${p.down}`; size = `${N} electrons, ${external.nuclei.length} nuclei (${formula(external.nuclei)})`;
@@ -170,9 +170,9 @@ export function continuumInstance(system, existingIds = []) {
     if (!system.name) throw Error('Name the material (for example "Lithium hydride").');
     const quantum = external.type === 'quantum nuclei', pp = external.pseudopotential, cellText = space.cell.replace(/×/g, 'x');
     id = `solid-${slug(system.name)}-${slug(external.structure)}-${slug(external.geometry)}-${slug(cellText)}-${twistKey(space.twist)}${pp ? '-' + slug(pp) : ''}${quantum ? '-quantum-nuclei' : ''}${p.up !== p.down ? `-s${p.up - p.down}` : ''}`;
-    // One model for all crystals, sectioned by material and structure (and by quantum nuclei or a pseudopotential,
-    // which change the Hamiltonian); the rows of a section are its cells, lattice parameters and twists.
-    family = 'Solids'; group = [`${system.name}, ${external.structure}`, quantum ? 'quantum nuclei' : null, pp].filter(Boolean).join(', ');
+    // One model for all crystals: a part per material, a section per structure (and per quantum nuclei or a
+    // pseudopotential, which change the Hamiltonian); the rows of a section are its cells, lattice parameters, twists.
+    family = 'Solids'; part = system.name; group = [external.structure, quantum ? 'quantum nuclei' : null, pp].filter(Boolean).join(', ');
     label = [`${system.name}, ${external.structure}, ${external.geometry}`, space.cell, twist(space), quantum ? 'quantum nuclei' : null, pp].filter(Boolean).join(' · ');
     const nuclearKinetic = quantum ? ` - sum_A 1/(2 M) nabla_A^2 (M = ${external.mass} m_e)` : '';
     hamiltonian = `H = sum_i (-1/2 nabla_i^2 - sum_A Z_A/|r_i - R_A|)${nuclearKinetic} + ${coulombText} + sum_{A<B} Z_A Z_B/|R_A - R_B|${ewald}; ${quantum ? 'nuclei as distinguishable quantum particles (no nuclear exchange)' : 'nuclei fixed (Born-Oppenheimer)'}, ${pp ? `${pp} pseudopotential` : 'all electrons'}, nonrelativistic; Hartree atomic units`;
@@ -183,7 +183,7 @@ export function continuumInstance(system, existingIds = []) {
   } else {
     if (!system.name) throw Error('Give the system a name (for example "Liquid helium-4").');
     id = `${slug(system.name)}-${d}d-${spinKey}${space.type === 'periodic' ? `-${cellKey}${space.r_s !== undefined ? '-rs' + slug(space.r_s) : ''}` : ''}${external.type === 'harmonic trap' ? '-w' + slug(external.omega) : ''}`;
-    family = system.name; group = `${spins(p)}${space.type === 'periodic' ? ' · ' + space.cell : ''}`;
+    family = system.name; part = `${d}D`; group = `${spins(p)}${space.type === 'periodic' ? ' · ' + space.cell : ''}`;
     label = [spins(p), space.r_s !== undefined ? `rₛ = ${space.r_s}` : space.size, space.type === 'periodic' ? space.cell : 'free space', external.type === 'harmonic trap' ? `ω = ${external.omega}` : null, space.type === 'periodic' ? twist(space) : null].filter(Boolean).join(' · ');
     hamiltonian = `H = -sum_i hbar^2/(2m) nabla_i^2 + ${external.type === 'none' ? '' : (external.description || external.type) + ' + '}${interactionText}${interaction.type === 'coulomb' ? ewald : ''}; energy unit ${unit}`;
     hamLatex = ''; params = ''; size = `N = ${N} ${p.name}`; description = system.name;
@@ -199,7 +199,7 @@ export function continuumInstance(system, existingIds = []) {
   // Energies per atom or per primitive cell are a total divided by per_count.
   const perCount = per === 'atom' ? external.nuclei.length : per === 'cell' ? space.primitive_cells : null;
   return {
-    id, name: family, family, category: CATEGORY[particles[0].name], sites: N, per, ...(perCount ? {per_count: perCount} : {}), group, geometry, hamiltonian,
+    id, name: family, family, part, category: CATEGORY[particles[0].name], sites: N, per, ...(perCount ? {per_count: perCount} : {}), group, geometry, hamiltonian,
     sector: `${spins(p)}${polarization}; ground-state variational calculation${external.type === 'quantum nuclei' ? '; nuclear state localized on the listed crystal sites' : ''}`, unit, description,
     hamiltonian_latex: hamLatex, instance_label: label, lattice_size: size,
     boundary_conditions: space.lattice_vectors ? `Periodic, ${twistText(space)}` : space.type === 'periodic' ? `Periodic, ${space.twist === 'Gamma' ? 'Gamma point (no twist)' : space.twist}` : 'Free space (open)',

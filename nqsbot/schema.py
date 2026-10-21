@@ -145,6 +145,9 @@ def benchmarks(root=ROOT):
             assert isinstance(row.get("per_count"), int) and row["per_count"] > 0, f"{row['id']}: per {row['per']} needs a positive integer per_count"
         if row["category"] == "continuum-electrons":
             validate_system(row)
+        # The part of its model an instance belongs to (a lattice, a dimension, a molecule, a material); Ketboard
+        # navigates a model by part.
+        assert isinstance(row.get("part"), str) and row["part"].strip(), f"{row['id']}: name the part of the model (for example the lattice)"
         assert isinstance(row.get("group", ""), str), f"{row['id']}: group must be a string"
     return {x["id"]: x for x in rows}
 
