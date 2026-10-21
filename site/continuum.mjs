@@ -16,6 +16,9 @@ export const CELLS = {
   sc: 'simple cubic', bcc: 'body-centred cubic', fcc: 'face-centred cubic', rect332: 'rectangular with sides in the ratio 3:3:2',
   sq: 'square', rect: 'rectangular commensurate with a triangular lattice', rhombus: '60-degree rhombic (triangular-lattice)',
 };
+// The Ketboard category of a system, by its particles: only electrons so far. Nuclear matter and quantum gases
+// will add their own categories here.
+const CATEGORY = {electrons: 'continuum-electrons'};
 // Ketbook page that explains a kind of system and its instances; Ketboard links its models to it.
 const WIKI = {heg: 'homogeneous-electron-gas', molecule: 'molecules', solid: 'solids'};
 export const EXTERNAL = ['none', 'uniform background', 'harmonic trap', 'fixed nuclei', 'quantum nuclei', 'other'];
@@ -55,8 +58,10 @@ export function systemFromForm(values) {
   const v = name => num(values[name]);
   const preset = PRESETS[v('cpreset')]; if (!preset) throw Error('Choose a kind of continuum system.');
   const dimension = Number(v('cdim')); if (![1, 2, 3].includes(dimension)) throw Error('Choose the dimension.');
-  const species = v('cspecies') || preset.species; if (!species) throw Error('Name the particles (for example electrons, helium-4 atoms, neutrons).');
-  const particles = v('cup') !== '' || v('cdown') !== '' ? [{name: species, up: count(v('cup')), down: count(v('cdown'))}] : [{name: species, count: count(v('ccount'))}];
+  const species = v('cspecies') || preset.species || 'electrons';
+  if (!CATEGORY[species]) throw Error('Continuum electrons is for electrons. Nuclear matter, quantum gases and other particles will get categories of their own; until then, describe such a system as an instance you cannot define.');
+  if (v('cup') === '' && v('cdown') === '') throw Error('Give the numbers of spin-up and spin-down electrons, N↑ and N↓.');
+  const particles = [{name: species, up: count(v('cup')), down: count(v('cdown'))}];
   const total = particles.reduce((n, p) => n + (p.count ?? p.up + p.down), 0); if (!total) throw Error('Give the number of particles.');
   const spaceType = preset.space || v('cspace');
   let space;
@@ -102,7 +107,7 @@ export function systemFromForm(values) {
 export function continuumFormValues(system) {
   const {dimension, particles: [p], space, external, interaction, unit, per, preset} = system;
   const cell = space.type === 'periodic' ? (Object.keys(CELLS).find(k => CELLS[k] === space.cell) || 'other') : '';
-  const values = {category: 'continuous-space', instance_mode: 'new', cpreset: preset, cdim: String(dimension), cname: system.name || '', cspecies: p.name,
+  const values = {category: 'continuum-electrons', instance_mode: 'new', cpreset: preset, cdim: String(dimension), cname: system.name || '', cspecies: p.name,
     cup: p.count === undefined ? String(p.up) : '', cdown: p.count === undefined ? String(p.down) : '', ccount: p.count === undefined ? '' : String(p.count),
     cspace: space.type, ccell: cell, ccell_text: cell === 'other' ? space.cell : '', crs: space.r_s ?? '', csize: space.size ?? '', ctwist: space.type === 'periodic' && space.twist !== 'Gamma' ? space.twist : '',
     cext: external.type, comega: external.omega ?? '', cext_text: external.type === 'other' ? external.description : '',
@@ -193,7 +198,7 @@ export function continuumInstance(system, existingIds = []) {
   // Energies per atom or per primitive cell are a total divided by per_count.
   const perCount = per === 'atom' ? external.nuclei.length : per === 'cell' ? space.primitive_cells : null;
   return {
-    id, name: family, family, category: 'continuous-space', sites: N, per, ...(perCount ? {per_count: perCount} : {}), group, geometry, hamiltonian,
+    id, name: family, family, category: CATEGORY[particles[0].name], sites: N, per, ...(perCount ? {per_count: perCount} : {}), group, geometry, hamiltonian,
     sector: `${spins(p)}${polarization}; ground-state variational calculation${external.type === 'quantum nuclei' ? '; nuclear state localized on the listed crystal sites' : ''}`, unit, description,
     hamiltonian_latex: hamLatex, instance_label: label, lattice_size: size,
     boundary_conditions: space.lattice_vectors ? `Periodic, ${twistText(space)}` : space.type === 'periodic' ? `Periodic, ${space.twist === 'Gamma' ? 'Gamma point (no twist)' : space.twist}` : 'Free space (open)',

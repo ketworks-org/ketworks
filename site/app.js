@@ -1,9 +1,11 @@
 import {makeSubmission, mergeSubmission, makeProposal, instanceFromForm, newInstanceValues, METHOD_CLASSES, MODELS} from './submission.mjs';
 import {PRESETS, CELLS, ELEMENTS, continuumInstanceFromForm, continuumFormValues} from './continuum.mjs';
 // How an instance's energies are compared: per site, per electron or particle, or the total energy of the system.
+// Links made before a category was renamed keep working.
+const RENAMED_CATEGORIES = {'continuous-space': 'continuum-electrons'};
 const PER_WORD = {cell: 'primitive cell'}, perWord = per => PER_WORD[per] || per;
 const perSuffix = per => per === 'system' ? '' : ` / ${perWord(per)}`;
-const countHeader = b => b.category !== 'continuous-space' ? 'Sites' : (b.system?.particles?.[0]?.name === 'electrons' ? 'Electrons' : 'Particles');
+const countHeader = b => b.category === 'continuum-electrons' ? 'Electrons' : 'Sites';
 import {filterRows, sortRows, rankByEnergy, summarize, withErrorBar, boundaryClass, BOUNDARY_CLASSES} from './leaderboard.mjs';
 let dataset, submission, sort = {key: 'energy', direction: 'asc'};
 const $ = id => document.getElementById(id);
@@ -67,7 +69,7 @@ function route() {
   const params = new URLSearchParams(location.hash.split('?')[1] || '');
   const benchmark = dataset?.benchmarks.find(b => b.id === params.get('system'));
   $('board-overview').hidden = name !== 'benchmarks' || Boolean(benchmark);
-  if (dataset && name === 'benchmarks' && !benchmark) { renderBoardOverview(params.get('family'), params.get('category')); markFamily(params.get('family')); }
+  if (dataset && name === 'benchmarks' && !benchmark) { renderBoardOverview(params.get('family'), RENAMED_CATEGORIES[params.get('category')] || params.get('category')); markFamily(params.get('family')); }
   $('board-detail').hidden = !benchmark;
   const like = dataset?.benchmarks.find(b => b.id === params.get('like'));
   if (name === 'submit' && like && prefilled !== location.hash) { prefilled = location.hash; prefillFrom(like); }
@@ -313,7 +315,7 @@ function prefillFrom(b) {
 }
 function instanceMode() { return $('instance-mode').value; }
 function syncInstanceForm() {
-  const mode = instanceMode(), continuum = $('submit-category').value === 'continuous-space';
+  const mode = instanceMode(), continuum = $('submit-category').value === 'continuum-electrons';
   for (const [id, on] of [['existing-fields', mode === 'existing'], ['new-fields', mode === 'new' && !continuum], ['continuum-fields', mode === 'new' && continuum], ['proposal-fields', mode === 'proposal']]) { $(id).hidden = !on; $(id).disabled = !on; }
   if (mode === 'new' && continuum) return syncContinuumForm();
   if (mode !== 'new') return;
@@ -330,7 +332,7 @@ function syncContinuumForm() {
   const preset = PRESETS[$('cont-preset').value] || PRESETS.other, other = preset === PRESETS.other, form = $('submission-form');
   const space = preset.space || form.cspace.value, external = preset.external || form.cext.value;
   const solid = $('cont-preset').value === 'solid';
-  const show = {'name': other || solid || $('cont-preset').value === 'molecule', 'name-optional': !other && !solid, 'count': other, 'space-choice': other, 'periodic': space === 'periodic' && !solid, 'periodic-other': space === 'periodic' && !solid && form.ccell.value === 'other',
+  const show = {'name': other || solid || $('cont-preset').value === 'molecule', 'name-optional': !other && !solid, 'count': false, 'species': false, 'space-choice': other, 'periodic': space === 'periodic' && !solid, 'periodic-other': space === 'periodic' && !solid && form.ccell.value === 'other',
     'ext-choice': other, 'trap': external === 'harmonic trap', 'nuclei': external === 'fixed nuclei', 'ext-other': external === 'other', 'int-choice': other, 'int-other': other && form.cint.value === 'other', 'unit': other,
     'solid': solid, 'solid-cells': solid && form.cnorm.value === 'cell', 'quantum': solid && form.cnuclear.value === 'quantum'};
   document.querySelectorAll('[data-c]').forEach(el => { el.hidden = !show[el.dataset.c]; });
@@ -346,7 +348,7 @@ function prepareSubmission(event) {
   try {
     if (mode === 'proposal') { record = makeProposal(values); folder = 'proposals'; }
     else {
-      const b = mode === 'new' ? (entry = (values.category === 'continuous-space' ? continuumInstanceFromForm : instanceFromForm)(values, dataset.benchmarks.map(x => x.id))) : dataset.benchmarks.find(b => b.id === values.benchmark_id);
+      const b = mode === 'new' ? (entry = (values.category === 'continuum-electrons' ? continuumInstanceFromForm : instanceFromForm)(values, dataset.benchmarks.map(x => x.id))) : dataset.benchmarks.find(b => b.id === values.benchmark_id);
       record = makeSubmission({...values, benchmark_id: b?.id}, b);
     }
   } catch (error) { $('submission-error').textContent = error.message; return; }

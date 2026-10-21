@@ -68,7 +68,7 @@ CATEGORIES = {
     "lattice-spins": "Lattice spins",
     "lattice-fermions": "Lattice fermions",
     "lattice-bosons": "Lattice bosons",
-    "continuous-space": "Continuous space",
+    "continuum-electrons": "Continuum electrons",
 }
 
 
@@ -82,7 +82,7 @@ EXTERNAL_POTENTIALS = ("none", "uniform background", "harmonic trap", "fixed nuc
 
 def validate_system(row):
     s, where = row.get("system"), row["id"]
-    assert isinstance(s, dict), f"{where}: a continuous-space instance needs a structured system"
+    assert isinstance(s, dict), f"{where}: a continuum instance needs a structured system"
     assert s.get("dimension") in (1, 2, 3), f"{where}: dimension must be 1, 2 or 3"
     particles = s.get("particles")
     assert isinstance(particles, list) and particles, f"{where}: list the particles"
@@ -143,7 +143,7 @@ def benchmarks(root=ROOT):
         assert row.get("per", "site") in ("site", "electron", "particle", "system", "atom", "cell"), f"{row['id']}: per must be site, electron, particle, system, atom or cell"
         if row.get("per") in ("atom", "cell"):
             assert isinstance(row.get("per_count"), int) and row["per_count"] > 0, f"{row['id']}: per {row['per']} needs a positive integer per_count"
-        if row["category"] == "continuous-space":
+        if row["category"] == "continuum-electrons":
             validate_system(row)
         assert isinstance(row.get("group", ""), str), f"{row['id']}: group must be a string"
     return {x["id"]: x for x in rows}

@@ -90,13 +90,13 @@ const proposal = makeProposal({...fields, system_description:'Shuriken lattice H
 assert.equal(makeProposal({...fields, system_description:'Shuriken lattice Heisenberg', unit:'J', category:'lattice-spins', category_label:'Lattice spins'}).results[0].system_description, 'Lattice spins. Shuriken lattice Heisenberg');
 assert.equal(proposal.results[0].benchmark_id, null); assert.equal(proposal.results[0].unit, 'J'); assert.equal(proposal.results[0].energy, '-50.000');
 assert.throws(() => makeProposal({...fields, unit:'J'}), /Describe the system/);
-// Continuous space: every stored instance is reproduced from its structured system, and the presets give stable keys.
+// Continuum electrons: every stored instance is reproduced from its structured system, and the presets give stable keys.
 const {continuumInstance, continuumInstanceFromForm, continuumFormValues} = await import('../site/continuum.mjs');
-for (const b of registry.filter(b => b.category === 'continuous-space')) assert.deepEqual(continuumInstance(b.system), b, `${b.id}: stored instance differs from its generated form`);
+for (const b of registry.filter(b => b.category === 'continuum-electrons')) assert.deepEqual(continuumInstance(b.system), b, `${b.id}: stored instance differs from its generated form`);
 // "Add an instance like this one" fills the form with values that rebuild the instance: exactly for continuum
 // instances, by key and model for template-built lattice instances; every model has a starting point or is proposed.
 const {newInstanceValues} = await import('../site/submission.mjs');
-for (const b of registry.filter(b => b.category === 'continuous-space')) { const v = continuumFormValues(b.system); assert.equal(v.category, 'continuous-space'); assert.deepEqual(continuumInstanceFromForm(v), b, `${b.id}: form values do not rebuild it`); }
+for (const b of registry.filter(b => b.category === 'continuum-electrons')) { const v = continuumFormValues(b.system); assert.equal(v.category, 'continuum-electrons'); assert.deepEqual(continuumInstanceFromForm(v), b, `${b.id}: form values do not rebuild it`); }
 for (const b of registry.filter(b => !b.system)) { const v = newInstanceValues(b); if (v) { const r = instanceFromForm(v); assert.equal(r.id, b.id); assert.equal(r.family, b.family); assert.equal(v.category, b.category); } }
 const templated = new Set(registry.filter(b => b.system || newInstanceValues(b)).map(b => b.family));
 assert.deepEqual([...new Set(registry.map(b => b.family))].filter(f => !templated.has(f)).sort(), ['Kagome Heisenberg', 'Pyrochlore Heisenberg', 'Square t–V']);
@@ -123,9 +123,12 @@ assert.equal(quantum.system.external.type, 'quantum nuclei'); assert.equal(quant
 assert.throws(() => continuumInstanceFromForm({cpreset:'molecule',cdim:'3',cup:'1',cdown:'1',cgeometry:'R = 1.4 bohr',cnuclei:'H 0 0'}), /coordinates/);
 assert.throws(() => continuumInstanceFromForm({cpreset:'molecule',cdim:'3',cup:'1',cdown:'1',cgeometry:'R = 1.4 bohr',cnuclei:'Xx 0 0 0'}), /Unknown nucleus/);
 assert.throws(() => continuumInstanceFromForm({cpreset:'trap',cdim:'2',cup:'3',cdown:'3'}), /trap frequency/);
-const he = continuumInstanceFromForm({cpreset:'other',cdim:'3',cspecies:'helium-4 atoms',ccount:'64',cname:'Liquid helium-4',cspace:'periodic',ccell:'sc',csize:'L = 15.4 angstrom',cext:'none',cint:'other',cint_text:'Aziz HFDHE2',cunit:'K',cper:'particle'});
-assert.equal(he.id, 'liquid-helium-4-3d-n64-sc'); assert.equal(he.unit, 'K'); assert.equal(he.per, 'particle');
-assert.throws(() => continuumInstanceFromForm({cpreset:'other',cdim:'3',cspecies:'atoms',ccount:'4',cname:'X',cspace:'free',cext:'none',cint:'other',cunit:'K'}), /interaction/);
+// Other particles (helium, nucleons, cold atoms) are not continuum electrons; they wait for a category of their own.
+assert.throws(() => continuumInstanceFromForm({cpreset:'other',cdim:'3',cspecies:'helium-4 atoms',ccount:'64',cname:'Liquid helium-4',cspace:'periodic',ccell:'sc',csize:'L = 15.4 angstrom',cext:'none',cint:'other',cint_text:'Aziz HFDHE2',cunit:'K',cper:'particle'}), /electrons/);
+assert.throws(() => continuumInstanceFromForm({cpreset:'other',cdim:'3',ccount:'4',cname:'X',cspace:'free',cext:'none',cint:'coulomb',cunit:'Ha'}), /N↑ and N↓/);
+const ring = continuumInstanceFromForm({cpreset:'other',cdim:'1',cup:'2',cdown:'2',cname:'Electrons on a ring',cspace:'periodic',ccell:'other',ccell_text:'ring',csize:'L = 10 bohr',cext:'none',cint:'coulomb',cunit:'Ha',cper:'electron'});
+assert.equal(ring.category, 'continuum-electrons'); assert.equal(ring.system.particles[0].name, 'electrons');
+assert.throws(() => continuumInstanceFromForm({cpreset:'other',cdim:'3',cup:'2',cdown:'2',cname:'X',cspace:'free',cext:'none',cint:'other',cunit:'Ha'}), /interaction/);
 console.log('Human contribution generation, new-instance keys, proposals and invalid-input checks pass.');
 const {filterRows,sortRows,rankByEnergy,summarize}=await import('../site/leaderboard.mjs');
 const paper=id=>({id,title:'T',authors:'A. Author',published:id==='2601.00003v1'?'2026-03-01T00:00:00Z':'2026-01-01T00:00:00Z'});
