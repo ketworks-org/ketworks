@@ -23,6 +23,20 @@ KaTeX renders equations into HTML and accessible MathML during the build. Its CS
 - **References.** One entry per line: authors, *title*, arXiv identifier with year in parentheses, then a short note saying what the reference is for. Journal references are given only for works without an arXiv version.
 - **Status.** Each entry in `wiki/index.json` carries `"status": "draft"` or `"reviewed"`. A curator flips a page to reviewed after checking its claims against the sources; the page shows the status next to its section. New and substantially rewritten pages are drafts.
 
+## Energies of other methods and generated tables
+
+Ketboard holds only neural-network results. Energies of other methods for a Ketboard instance (diffusion Monte Carlo, DMRG, CCSD(T), FCIQMC, exact diagonalization) go in `data/references/<page>.json` and appear only on Ketbook benchmark pages. Each reference names the instance, the method, its `kind` (`exact`; `upper_bound` for a variational energy of another method; `estimate` for anything that is not a bound, such as an extrapolation, coupled cluster or a transcorrelated result), the printed token, the normalization and unit (with a `convention_factor` for another unit, as for entries), and the source with its table. It must be for exactly the same finite system as the instance; a value for another cell, twist, geometry or basis is not a reference. The checks validate every reference.
+
+Energy tables on benchmark pages are not written by hand. A page asks for one with a fenced block:
+
+    ```ketboard
+    summary
+    instances: heg3d-sc-n14-unpol-rs*
+    row: r_s
+    ```
+
+and the build replaces it with a table made from the current Ketboard entries and references. `summary` gives, for each instance, the lowest neural energy, the lowest upper bound from another method, which of the two is lower (or that they agree within twice the combined error bars), and the distance to the exact energy or the best estimate. `entries` lists every entry and reference of an instance, highest first. `difference` gives the difference between two instances for the same state, such as a reaction barrier (`scale` and `unit` convert it). `instances` takes keys or patterns; `row` labels rows by `r_s`, `size`, `molecule` or the instance label. Text on a page should not repeat numbers that the tables already show, since text does not update when an entry is added.
+
 ## Add a Ketboard result
 
 1. Open **Ketboard → Submit a result**. Choose the class of system (lattice spins, lattice fermions, …), then the system and the exact instance, type the versioned arXiv identifier, the method, the variant, the architecture class, the energy **exactly as printed** (for example `-0.497634(1)`; the decimal value and the uncertainty are derived from it), whether that printed value is per site or total, the error bar and what it means, the energy variance if the paper prints it, the table or page, and one sentence on why the result is a directly evaluated NQS variational energy. Title and authors can be left empty; they are filled from arXiv on the pull request.

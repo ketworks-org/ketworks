@@ -34,65 +34,19 @@ Cylinders (periodic along $y$, open along $x$), used by DMRG, are different inst
 
 ## Known energies
 
-Energies per site in units of $t$, with the source of each number. Ketboard entries carry the arXiv version and the exact printed token; no uncertainty means none was printed.
+Energies per site in units of $t$. The tables are generated when the site is built from every reviewed Ketboard entry for each torus, highest first; they change when an entry is added. Energies printed without an error bar are not Ketboard entries: the tensor-backflow energies of Zhou, Zhou and Liang (arXiv:2308.11823, Table III) and of Liang (arXiv:2507.01856, Table I), the transformer backflow of Gu et al. (arXiv:2507.02644, p. 31) and the low-rank multi-determinant backflow of Huang, Ou and Ozolins (arXiv:2609.26544, p. 6). For the $16\times4$ torus, the DMRG energy of the $\infty\times4$ cylinder, $-0.7659$, quoted by Luo and Clark (arXiv:1807.10770, Fig. 2), is for another system and is not a reference here.
 
-**$16\times4$ torus, 28+28 electrons.** The DMRG reference for the $\infty\times4$ cylinder, $-0.7659(4\times10^{-5})$, is quoted by Luo and Clark (arXiv:1807.10770, Fig. 2) and is not a torus energy.
-
-| Method | $e$ | Source |
-| --- | --- | --- |
-| Hidden-fermion determinant state, 16 hidden fermions | $-0.753(2)$ | Moreno et al., arXiv:2111.10420, Table IV |
-| Tensor backflow, one Lanczos step | $-0.7597$, $-0.7618$ | Zhou, Zhou, Liang, arXiv:2308.11823, Table III, two backflow forms |
-| Deep neural backflow with low-rank multi-determinant updates | $-0.7598$; $-0.7622$ with one Lanczos step | Huang, Ou, Ozolins, arXiv:2609.26544, p. 6 |
-| MLP neural backflow, single determinant, 8192 hidden units | $-0.76258(1)$ | Loehr and Clark, arXiv:2510.26906, p. 3 |
-| Transformer neural backflow | $-0.76298$ | Gu et al., arXiv:2507.02644, p. 31 |
-| MLP neural backflow, four determinants from optimized symmetries | $-0.76340(2)$ | Loehr and Clark, arXiv:2510.26906, p. 5 |
-| Hidden-fermion Pfaffian state, group-convolutional backbone | $-0.76413(3)$ | Chen, Wan, Sengupta, Georges, Roth, arXiv:2507.10705, Table IV |
-| MLP neural backflow, 32 determinants from optimized symmetries | $-0.76486(2)$ | Loehr and Clark, arXiv:2510.26906, p. 5 |
-| Same state projected onto the fully symmetric sector | $-0.76560(1)$ | Loehr and Clark, arXiv:2510.26906, p. 5 |
-
-**$8\times4$ torus, 14+14 electrons.**
-
-| Method | $e$ | Source |
-| --- | --- | --- |
-| Tensor backflow, one Lanczos step | $-0.7591$, $-0.7633$ | Zhou, Zhou, Liang, arXiv:2308.11823, Table III, two backflow forms |
-| Hidden-fermion determinant state | $-0.7633(7)$ | Moreno et al., arXiv:2111.10420, Table IV |
-| Deep neural backflow | $-0.7659$; $-0.7671$ with one Lanczos step | Huang, Ou, Ozolins, arXiv:2609.26544, p. 6 |
-| Hidden-fermion Pfaffian state | $-0.76690(1)$ | Chen et al., arXiv:2507.10705, Table IV |
-| MLP neural backflow, fully symmetrized, 128 determinants | $-0.768337(2)$ | Loehr and Clark, arXiv:2510.26906, p. 6 |
-
-**$12\times4$ torus, 21+21 electrons.**
-
-| Method | $e$ | Source |
-| --- | --- | --- |
-| Tensor backflow, one Lanczos step | $-0.7608$, $-0.7636$ | Zhou, Zhou, Liang, arXiv:2308.11823, Table III, two backflow forms |
-| Deep neural backflow | $-0.7640$; $-0.7662$ with one Lanczos step | Huang, Ou, Ozolins, arXiv:2609.26544, p. 6 |
-| Hidden-fermion Pfaffian state | $-0.76608(1)$ | Chen et al., arXiv:2507.10705, Table IV |
-
-**$8\times8$ torus, 28+28 electrons.** All from Sharma et al., arXiv:2510.11710, Appendix E, Table I.
-
-| Method | $e$ |
-| --- | --- |
-| Hidden-fermion determinant state, ViT backbone | $-0.736(1)$ |
-| Jastrow–backflow determinant, ViT backbone | $-0.7422(3)$ |
-| Hidden-fermion determinant state | $-0.7454(9)$ |
-| Jastrow–backflow determinant | $-0.7458(6)$ |
-
-**$16\times16$ torus, 112+112 electrons.**
-
-| Method | $e$ | Source |
-| --- | --- | --- |
-| Hidden-fermion Pfaffian, half-filled stripe with pairing | $-0.7401(1)$ | Roth et al., arXiv:2511.07566, Table V |
-| Tensor backflow, $p=0$ | $-0.7509$ | Liang, arXiv:2507.01856, Table I |
-| Hidden-fermion Pfaffian, filled stripe | $-0.7515(1)$ | Roth et al., arXiv:2511.07566, Table V |
-| Sparse convolutional backflow (SCALE) | $-0.7529$ | Gu et al., arXiv:2604.25775, Table I |
-| Tensor backflow, one Lanczos step | $-0.7552$ | Liang, arXiv:2507.01856, Table I |
-| Deep convolutional backflow (ACE) | $-0.7573$ | Gu et al., arXiv:2604.25775, Table I |
+```ketboard
+entries
+instances: hubbard-rectangular-16x4-pbc-u8-n56-sz0 hubbard-rectangular-8x4-pbc-u8-n28-sz0 hubbard-rectangular-12x4-pbc-u8-n42-sz0 hubbard-square-8x8-pbc-u8-n56-sz0 hubbard-square-16x16-pbc-u8-n224-sz0
+row: label
+```
 
 On a fixed cluster the ansätze differ by up to $10^{-2}t$ per site while the printed error bars are $10^{-4}t$ or smaller, so the ranking is informative here in a way it is not for the [J₁–J₂ instance](../j1j2-square-lattice/).
 
 For the hidden-fermion Pfaffian and the deep backflow state the energy rises from $8\times4$ to $12\times4$ to $16\times4$. Tensor backflow does not follow that order ($-0.7633$, $-0.7636$, $-0.7618$ for BW2), so the trend with $L$ reflects how well each ansatz converged on each cluster as well as the clusters themselves. The Loehr–Clark $8\times4$ state lies $8\times10^{-5}$ above their own variance-extrapolated estimate.
 
-The best $16\times16$ energy is $0.01\,t$ above the thermodynamic-limit range. The finite-size correction and the variational error are of the same order, and a size series at fixed ansatz is needed to separate them.
+At the time of writing the lowest $16\times16$ energy lies about $0.01\,t$ above the thermodynamic-limit range. The finite-size correction and the variational error are of the same order, and a size series at fixed ansatz is needed to separate them.
 
 ## Reporting a result for this instance
 

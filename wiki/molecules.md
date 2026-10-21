@@ -1,6 +1,6 @@
 # Molecules
 
-> **In brief.** For molecules Ketboard compares the total energy of the all-electron, nonrelativistic Hamiltonian with clamped nuclei, at a fixed geometry. The instances are a small set chosen because several neural-network papers report energies at exactly the same geometry: N₂ at its equilibrium bond length, ozone, bicyclobutane and benzene at the G3 geometries, and cyclobutadiene at its rectangular minimum and its square transition state. The best neural energies are within $0.4$ mHa of the exact energy of N₂, $1.5$ mHa above CCSD(T) for ozone and $9$ mHa above it for bicyclobutane. For cyclobutadiene no reliable conventional total energy exists; the neural barriers between the two geometries span $9.2$ to $10.4$ kcal/mol.
+> **In brief.** For molecules Ketboard compares the total energy of the all-electron, nonrelativistic Hamiltonian with clamped nuclei, at a fixed geometry. The instances are a small set chosen because several neural-network papers report energies at exactly the same geometry: N₂ at its equilibrium bond length, ozone, bicyclobutane and benzene at the G3 geometries, and cyclobutadiene at its rectangular minimum and its square transition state. The tables below are generated from Ketboard and from the energies of other methods recorded with it, so they always show the current lowest neural energy, how it compares with the exact energy or the CCSD(T) estimate where one exists, and the cyclobutadiene barrier of each state.
 
 Notation follows the [conventions page](../notation/). The [continuous-space page](../continuous-space/) explains the ansätze, cusps, the Laplacian in the local energy and pretraining. Reviewed entries live in [Ketboard](../../#benchmarks?family=Atoms%20and%20molecules), not here.
 
@@ -31,63 +31,32 @@ $$
 
 ## Known energies
 
-Total energies in Hartree, as printed. Pfau et al. used the original FermiNet with 16 block-diagonal determinants; von Glehn et al. reran FermiNet with dense determinants in a small and a large configuration and introduced the Psiformer. Values that later papers quote from earlier ones are listed only under their source.
+The tables in this section are generated when the site is built, from the reviewed Ketboard entries and from the energies of other methods stored with them; they change when an entry is added. Total energies are in Hartree. Pfau et al. used the original FermiNet with 16 block-diagonal determinants; von Glehn et al. reran FermiNet with dense determinants in a small and a large configuration and introduced the Psiformer. CCSD(T) extrapolated to the complete basis is not an upper bound, and for ozone its own error is not small, so a distance to it is not an error.
 
-**N₂, $R=2.068$ bohr.** Exact: $-109.542347$; CCSD(T)/CBS: $-109.5425$ (Pfau et al., Table II).
+```ketboard
+summary
+instances: mol-n2-r-2p068-bohr-s0 mol-ozone-g3-s0 mol-bicyclobutane-g3-s0 mol-benzene-g3-s0 mol-cyclobutadiene-rectangle-s0 mol-cyclobutadiene-square-s0
+row: molecule
+```
 
-| Method | $E$ | $E-E_{\mathrm{exact}}$ (mHa) | Source |
-| --- | --- | --- | --- |
-| FermiNet | $-109.5388(1)$ | $3.55$ | Pfau et al., arXiv:1909.02487, Table II |
-| FermiNet (small), dense determinants | $-109.54046(6)$ | $1.89$ | von Glehn et al., arXiv:2211.13672, Table VII |
-| LapNet | $-109.54128(4)$ | $1.07$ | Li et al., arXiv:2307.08214, Supplementary Table 6 |
-| Psiformer (small) | $-109.54137(4)$ | $0.98$ | von Glehn et al., Table VII |
-| FermiNet (large), dense determinants | $-109.54148(6)$ | $0.87$ | von Glehn et al., Table VII |
-| Psiformer (large) | $-109.54179(4)$ | $0.56$ | von Glehn et al., Table VII |
-| NucleoNet | $-109.54195(3)$ | $0.40$ | Gao et al., arXiv:2610.12985, Table S3 |
+**N₂, $R=2.068$ bohr**, every entry against the estimated exact energy:
 
-**Ozone, G3 geometry.** CCSD(T)/CBS: $-225.4338$ (Pfau et al., Table II).
+```ketboard
+entries
+instances: mol-n2-r-2p068-bohr-s0
+```
 
-| Method | $E$ | $E-E_{\mathrm{CCSD(T)}}$ (mHa) | Source |
-| --- | --- | --- | --- |
-| FermiNet | $-225.4145(3)$ | $19.3$ | Pfau et al., Table II |
-| FermiNet (small) | $-225.4226(2)$ | $11.2$ | von Glehn et al., Table VII |
-| FermiNet (large) | $-225.4268(1)$ | $7.0$ | von Glehn et al., Table VII |
-| LapNet | $-225.4293(1)$ | $4.5$ | Li et al., Supplementary Table 6 |
-| Psiformer (small) | $-225.43061(9)$ | $3.2$ | von Glehn et al., Table VII |
-| Psiformer (large) | $-225.43231(8)$ | $1.5$ | von Glehn et al., Table VII |
+**Cyclobutadiene.** The barrier is the difference between the two instances for the same state, i.e. the same paper and variant. Errors largely cancel between the two geometries, so the barriers of different entries are much closer than their total energies.
 
-**Bicyclobutane, G3 geometry.** CCSD(T)/CBS: $-155.9575$ (Pfau et al., Table II).
+```ketboard
+difference
+instances: mol-cyclobutadiene-square-s0 mol-cyclobutadiene-rectangle-s0
+row: molecule
+scale: 627.509
+unit: kcal/mol
+```
 
-| Method | $E$ | $E-E_{\mathrm{CCSD(T)}}$ (mHa) | Source |
-| --- | --- | --- | --- |
-| FermiNet | $-155.9263(6)$ | $31.2$ | Pfau et al., Table II |
-| FermiNet (small) | $-155.9388(1)$ | $18.7$ | von Glehn et al., Table VII |
-| FermiNet (large) | $-155.9432(1)$ | $14.3$ | von Glehn et al., Table VII |
-| LapNet | $-155.94528(4)$ | $12.2$ | Li et al., Supplementary Table 6 |
-| Psiformer (small) | $-155.94619(8)$ | $11.3$ | von Glehn et al., Table VII |
-| Psiformer (large) | $-155.94836(7)$ | $9.1$ | von Glehn et al., Table VII |
-
-CCSD(T)/CBS is not an upper bound, and for ozone its own error is not small; the differences above are distances to a reference, not errors.
-
-**Benzene, G3 geometry.** No conventional total energy at this geometry is printed in these papers.
-
-| Method | $E$ | Source |
-| --- | --- | --- |
-| FermiNet (small), dense determinants | $-232.2205(2)$ | von Glehn et al., Table II |
-| LapNet | $-232.2389(1)$ | Li et al., Supplementary Table 6 |
-| Psiformer (small), LayerNorm | $-232.2393(1)$ | von Glehn et al., Table II |
-| Psiformer (small), no LayerNorm | $-232.2400(1)$ | von Glehn et al., Table II |
-
-**Cyclobutadiene.** The barrier is the difference between the two instances for the same ansatz and training.
-
-| Method | Rectangle | Square | Barrier (kcal/mol) | Source |
-| --- | --- | --- | --- | --- |
-| FermiNet, $10^5$ training steps | $-154.6577(1)$ | $-154.6430(1)$ | $9.22$ | Ren et al., arXiv:2204.13903, Supplementary Table 6 |
-| FermiNet, $5\times10^5$ training steps | $-154.6655(1)$ | $-154.6505(1)$ | $9.41$ | Ren et al., Supplementary Table 6 |
-| LapNet, standard optimization | $-154.68413(4)$ | $-154.66797(5)$ | $10.14$ | Jiang et al., arXiv:2508.02570, Supplementary Table 2 |
-| LapNet, LAVA optimization | $-154.68606(3)$ | $-154.66953(3)$ | $10.37$ | Jiang et al., Supplementary Table 2 |
-
-The total energies of one geometry differ by up to $28$ mHa between these entries, while the barriers differ by $1.2$ kcal/mol ($1.8$ mHa): much of the error cancels between the two geometries. Jiang et al. extrapolate their energies in the network size to a barrier of $9.2$ kcal/mol; an extrapolated energy is not an entry.
+Jiang et al. extrapolate their energies in the network size to a barrier of $9.2$ kcal/mol; an extrapolated energy is not an entry.
 
 **Not recorded.** Totals printed without an error bar (Gerard et al., arXiv:2205.09438; the larger networks of Jiang et al., Supplementary Table 7); scaling-law extrapolations; diffusion Monte Carlo energies with a neural trial function, which are projector energies (Ren et al.); values quoted from other papers, such as the FermiNet cyclobutadiene energies of Spencer et al. reproduced by Ren et al.; energies at other geometries, such as N₂ at $2.016$ bohr (Goldshlager, Abrahamsen, Lin, arXiv:2401.10190) or benzene at unstated or different geometries; and calculations with pseudopotentials.
 

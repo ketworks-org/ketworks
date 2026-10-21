@@ -47,38 +47,22 @@ Adding a next-nearest-neighbour coupling $J_2$ suppresses the order and opens a 
 
 ## Known energies
 
-Energies per site in units of $J$, with the source of each number. Ketboard entries carry the arXiv version and the exact printed token.
+Energies per site in units of $J$. The tables are generated when the site is built from the reviewed Ketboard entries and from the energies of other methods recorded with them; they change when an entry is added.
 
-**$6\times6$, 36 sites.** The exact value is $e_0=-0.5603734$ (Bernu, Lecheminant, Lhuillier, Pierre, 1994; as tabulated in Roth and MacDonald, arXiv:2104.05085, Table I, and in varbench).
+**$6\times6$, 36 sites.** The exact energy is from exact diagonalization (Bernu, Lecheminant, Lhuillier, Pierre, 1994).
 
-| Method | $e$ | Source |
-| --- | --- | --- |
-| DMRG | $-0.560375$ | Iqbal et al. (2016), as tabulated in arXiv:2104.05085, Table I |
-| Gutzwiller-projected fermionic state | $-0.548025$ | Iqbal et al. (2016), as tabulated in arXiv:2104.05085, Table I |
-| Entangled-plaquette state | $-0.55420(5)$ | Mezzacapo and Cirac (2010), as tabulated in arXiv:2505.20406, Table V |
-| Projected mean-field state | $-0.55519(4)$ | Kaneko, Morita, Imada, arXiv:1407.0318, as tabulated in arXiv:2505.20406, Table V |
-| Neural Gutzwiller-projected state | $-0.553$ | Ferrari, Becca, Carrasquilla, arXiv:1906.00463, as tabulated in arXiv:2104.05085, Table I |
-| Group-convolutional network, local filters | $-0.55922$ | Roth and MacDonald, arXiv:2104.05085, Table I |
-| Recurrent neural network with annealing | $-0.5562(2)$ | Moss et al., arXiv:2505.20406, Table V |
-| Lattice convolutional network | $-0.5601(4)$ | Fu et al., arXiv:2206.07370, Table on p. 8 |
-| Group-convolutional network, 4 layers of 6 feature maps | $-0.560313(3)$ | Roth, Szabó, MacDonald, arXiv:2211.07749, Table III |
+```ketboard
+entries
+instances: heisenberg-triangular-6x6-pbc-sz0
+```
 
-**Larger tori.** All values as tabulated in Viteritti et al., arXiv:2602.02665, Table I, except where noted.
+**Larger tori.** The lowest neural energy on each torus against the lowest energy of another variational method. Viteritti et al. also tabulate recurrent-network energies of Moss et al. for $L=18$, $24$ and $30$, $-0.54861(1)$, $-0.54810(1)$ and $-0.54793(1)$ (arXiv:2602.02665, Table I); Moss et al. show these sizes only in figures, so they are not Ketboard entries.
 
-| $L$ | Method | $e$ | Source |
-| --- | --- | --- | --- |
-| 18 | Projected BCS state | $-0.53570(1)$ | Yunoki and Sorella (2006) |
-| 18 | Jastrow–Gutzwiller state | $-0.54542(1)$ | Ghorbani, Tocchio, Becca (2016) |
-| 18 | Entangled-plaquette state | $-0.5459(1)$ | Mezzacapo and Cirac (2010) |
-| 18 | Resonating-valence-bond state | $-0.54716(3)$ | Heidarian, Sorella, Becca (2009) |
-| 18 | RNN wavefunction | $-0.54861(1)$ | Moss et al., arXiv:2505.20406 |
-| 18 | Vision transformer, translations and $C_{6v}$ | $-0.551703(1)$ | arXiv:2602.02665 |
-| 24 | RNN wavefunction | $-0.54810(1)$ | Moss et al., arXiv:2505.20406 |
-| 24 | Vision transformer, translations and $C_{6v}$ | $-0.551602(1)$ | arXiv:2602.02665 |
-| 30 | Jastrow–Gutzwiller state | $-0.545348$ | Ghorbani, Tocchio, Becca (2016) |
-| 30 | RNN wavefunction | $-0.54793(1)$ | Moss et al., arXiv:2505.20406 |
-| 30 | Vision transformer, translations and $C_{6v}$ | $-0.551528(1)$ | arXiv:2602.02665 |
-| 42 | Vision transformer, translations and $C_{6v}$ | $-0.551429(1)$ | arXiv:2602.02665 |
+```ketboard
+summary
+instances: heisenberg-triangular-12x12-pbc-sz0 heisenberg-triangular-18x18-pbc-sz0 heisenberg-triangular-24x24-pbc-sz0 heisenberg-triangular-30x30-pbc-sz0 heisenberg-triangular-42x42-pbc-sz0
+row: size
+```
 
 **Thermodynamic limit.** These are extrapolations, not variational energies, and are excluded from Ketboard; they are the yardstick for the series above.
 
@@ -91,11 +75,11 @@ Energies per site in units of $J$, with the source of each number. Ketboard entr
 | RNN, zero-variance extrapolation of tori up to $30\times30$ | $-0.5517569(9)$ | Moss et al., arXiv:2505.20406 |
 | Transformer, zero-variance extrapolation of tori up to $42\times42$ | $-0.55168(2)$ | Viteritti et al., arXiv:2602.02665 |
 
-On the $6\times6$ torus the best network energy is within $1.1\times10^{-4}$ relative of the exact value, so that instance mainly tests the symmetry construction.
+On the $6\times6$ torus the best network energies are close to the exact value, so that instance mainly tests the symmetry construction.
 
-The large tori separate the ansätze. At $L=18$ the transformer lies $3.1\times10^{-3}$ below the RNN and at $L=30$ the gap is $3.6\times10^{-3}$, so the two states diverge with size.
+The large tori separate the ansätze. In the comparison of Viteritti et al., their transformer lies $3.1\times10^{-3}$ below the recurrent network of Moss et al. at $L=18$ and $3.6\times10^{-3}$ below it at $L=30$, so the two states diverge with size.
 
-Finite-size energies lie below the thermodynamic value, as the $-c/L^3$ correction requires, so on a large torus a variational energy above $e_\infty$ measures a variational error at least as large as the distance. The $42\times42$ transformer energy is $2.5\times10^{-4}$ above the extrapolated $e_\infty$, consistent with the relative error of about $5\times10^{-4}$ from its own variance extrapolation.
+Finite-size energies lie below the thermodynamic value, as the $-c/L^3$ correction requires, so on a large torus a variational energy above $e_\infty$ measures a variational error at least as large as the distance. The $42\times42$ transformer energy of Viteritti et al. is $2.5\times10^{-4}$ above the extrapolated $e_\infty$, consistent with the relative error of about $5\times10^{-4}$ from their own variance extrapolation.
 
 ## Reporting a result for this instance
 

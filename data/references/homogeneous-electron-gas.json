@@ -1,0 +1,916 @@
+{
+  "schema_version": 1,
+  "references": [
+    {
+      "benchmark_id": "heg3d-sc-n7-pol-rs1",
+      "method": "Fixed-node DMC, iterative-backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "2.24080(1)",
+      "normalization": "per_site",
+      "unit": "Ry",
+      "source": "Wilson et al., arXiv:2202.04622v3, Table III",
+      "notes": "Printed in Rydberg per electron; computed by Wilson et al. for the same cell at the Gamma point.",
+      "convention_factor": "0.5"
+    },
+    {
+      "benchmark_id": "heg3d-sc-n7-pol-rs2",
+      "method": "Fixed-node DMC, iterative-backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "0.221758(4)",
+      "normalization": "per_site",
+      "unit": "Ry",
+      "source": "Wilson et al., arXiv:2202.04622v3, Table III",
+      "notes": "Printed in Rydberg per electron; computed by Wilson et al. for the same cell at the Gamma point.",
+      "convention_factor": "0.5"
+    },
+    {
+      "benchmark_id": "heg3d-sc-n7-pol-rs5",
+      "method": "Fixed-node DMC, iterative-backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.132811(1)",
+      "normalization": "per_site",
+      "unit": "Ry",
+      "source": "Wilson et al., arXiv:2202.04622v3, Table III",
+      "notes": "Printed in Rydberg per electron; computed by Wilson et al. for the same cell at the Gamma point.",
+      "convention_factor": "0.5"
+    },
+    {
+      "benchmark_id": "heg3d-sc-n7-pol-rs10",
+      "method": "Fixed-node DMC, iterative-backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.106276(1)",
+      "normalization": "per_site",
+      "unit": "Ry",
+      "source": "Wilson et al., arXiv:2202.04622v3, Table III",
+      "notes": "Printed in Rydberg per electron; computed by Wilson et al. for the same cell at the Gamma point.",
+      "convention_factor": "0.5"
+    },
+    {
+      "benchmark_id": "heg3d-sc-n7-pol-rs20",
+      "method": "Fixed-node DMC, iterative-backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.064533(4)",
+      "normalization": "per_site",
+      "unit": "Ry",
+      "source": "Wilson et al., arXiv:2202.04622v3, Table III",
+      "notes": "Printed in Rydberg per electron; computed by Wilson et al. for the same cell at the Gamma point.",
+      "convention_factor": "0.5"
+    },
+    {
+      "benchmark_id": "heg3d-sc-n7-pol-rs50",
+      "method": "Fixed-node DMC, iterative-backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.0293208(2)",
+      "normalization": "per_site",
+      "unit": "Ry",
+      "source": "Wilson et al., arXiv:2202.04622v3, Table III",
+      "notes": "Printed in Rydberg per electron; computed by Wilson et al. for the same cell at the Gamma point.",
+      "convention_factor": "0.5"
+    },
+    {
+      "benchmark_id": "heg3d-sc-n7-pol-rs100",
+      "method": "Fixed-node DMC, iterative-backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.0154925(1)",
+      "normalization": "per_site",
+      "unit": "Ry",
+      "source": "Wilson et al., arXiv:2202.04622v3, Table III",
+      "notes": "Printed in Rydberg per electron; computed by Wilson et al. for the same cell at the Gamma point.",
+      "convention_factor": "0.5"
+    },
+    {
+      "benchmark_id": "heg3d-sc-n14-unpol-rs1",
+      "method": "Fixed-node DMC, iterative-backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "1.13795(1)",
+      "normalization": "per_site",
+      "unit": "Ry",
+      "source": "Wilson et al., arXiv:2202.04622v3, Table III",
+      "notes": "Printed in Rydberg per electron; computed by Wilson et al. for the same cell at the Gamma point.",
+      "convention_factor": "0.5"
+    },
+    {
+      "benchmark_id": "heg3d-sc-n14-unpol-rs2",
+      "method": "Fixed-node DMC, iterative-backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.01665(1)",
+      "normalization": "per_site",
+      "unit": "Ry",
+      "source": "Wilson et al., arXiv:2202.04622v3, Table III",
+      "notes": "Printed in Rydberg per electron; computed by Wilson et al. for the same cell at the Gamma point.",
+      "convention_factor": "0.5"
+    },
+    {
+      "benchmark_id": "heg3d-sc-n14-unpol-rs5",
+      "method": "Fixed-node DMC, iterative-backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.159684(3)",
+      "normalization": "per_site",
+      "unit": "Ry",
+      "source": "Wilson et al., arXiv:2202.04622v3, Table III",
+      "notes": "Printed in Rydberg per electron; computed by Wilson et al. for the same cell at the Gamma point.",
+      "convention_factor": "0.5"
+    },
+    {
+      "benchmark_id": "heg3d-sc-n14-unpol-rs10",
+      "method": "Fixed-node DMC, iterative-backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.110436(1)",
+      "normalization": "per_site",
+      "unit": "Ry",
+      "source": "Wilson et al., arXiv:2202.04622v3, Table III",
+      "notes": "Printed in Rydberg per electron; computed by Wilson et al. for the same cell at the Gamma point.",
+      "convention_factor": "0.5"
+    },
+    {
+      "benchmark_id": "heg3d-sc-n14-unpol-rs20",
+      "method": "Fixed-node DMC, iterative-backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.0649157(5)",
+      "normalization": "per_site",
+      "unit": "Ry",
+      "source": "Wilson et al., arXiv:2202.04622v3, Table III",
+      "notes": "Printed in Rydberg per electron; computed by Wilson et al. for the same cell at the Gamma point.",
+      "convention_factor": "0.5"
+    },
+    {
+      "benchmark_id": "heg3d-sc-n14-unpol-rs50",
+      "method": "Fixed-node DMC, iterative-backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.0292573(2)",
+      "normalization": "per_site",
+      "unit": "Ry",
+      "source": "Wilson et al., arXiv:2202.04622v3, Table III",
+      "notes": "Printed in Rydberg per electron; computed by Wilson et al. for the same cell at the Gamma point.",
+      "convention_factor": "0.5"
+    },
+    {
+      "benchmark_id": "heg3d-sc-n14-unpol-rs100",
+      "method": "Fixed-node DMC, iterative-backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.01546859(5)",
+      "normalization": "per_site",
+      "unit": "Ry",
+      "source": "Wilson et al., arXiv:2202.04622v3, Table III",
+      "notes": "Printed in Rydberg per electron; computed by Wilson et al. for the same cell at the Gamma point.",
+      "convention_factor": "0.5"
+    },
+    {
+      "benchmark_id": "heg3d-sc-n19-pol-rs1",
+      "method": "Fixed-node DMC, iterative-backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "2.092450(1)",
+      "normalization": "per_site",
+      "unit": "Ry",
+      "source": "Wilson et al., arXiv:2202.04622v3, Table III",
+      "notes": "Printed in Rydberg per electron; computed by Wilson et al. for the same cell at the Gamma point.",
+      "convention_factor": "0.5"
+    },
+    {
+      "benchmark_id": "heg3d-sc-n19-pol-rs2",
+      "method": "Fixed-node DMC, iterative-backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "0.192605(3)",
+      "normalization": "per_site",
+      "unit": "Ry",
+      "source": "Wilson et al., arXiv:2202.04622v3, Table III",
+      "notes": "Printed in Rydberg per electron; computed by Wilson et al. for the same cell at the Gamma point.",
+      "convention_factor": "0.5"
+    },
+    {
+      "benchmark_id": "heg3d-sc-n19-pol-rs5",
+      "method": "Fixed-node DMC, iterative-backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.134508(1)",
+      "normalization": "per_site",
+      "unit": "Ry",
+      "source": "Wilson et al., arXiv:2202.04622v3, Table III",
+      "notes": "Printed in Rydberg per electron; computed by Wilson et al. for the same cell at the Gamma point.",
+      "convention_factor": "0.5"
+    },
+    {
+      "benchmark_id": "heg3d-sc-n19-pol-rs10",
+      "method": "Fixed-node DMC, iterative-backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.1057304(6)",
+      "normalization": "per_site",
+      "unit": "Ry",
+      "source": "Wilson et al., arXiv:2202.04622v3, Table III",
+      "notes": "Printed in Rydberg per electron; computed by Wilson et al. for the same cell at the Gamma point.",
+      "convention_factor": "0.5"
+    },
+    {
+      "benchmark_id": "heg3d-sc-n19-pol-rs20",
+      "method": "Fixed-node DMC, iterative-backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.0640333(2)",
+      "normalization": "per_site",
+      "unit": "Ry",
+      "source": "Wilson et al., arXiv:2202.04622v3, Table III",
+      "notes": "Printed in Rydberg per electron; computed by Wilson et al. for the same cell at the Gamma point.",
+      "convention_factor": "0.5"
+    },
+    {
+      "benchmark_id": "heg3d-sc-n19-pol-rs50",
+      "method": "Fixed-node DMC, iterative-backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.02913839(8)",
+      "normalization": "per_site",
+      "unit": "Ry",
+      "source": "Wilson et al., arXiv:2202.04622v3, Table III",
+      "notes": "Printed in Rydberg per electron; computed by Wilson et al. for the same cell at the Gamma point.",
+      "convention_factor": "0.5"
+    },
+    {
+      "benchmark_id": "heg3d-sc-n19-pol-rs100",
+      "method": "Fixed-node DMC, iterative-backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.01544285(2)",
+      "normalization": "per_site",
+      "unit": "Ry",
+      "source": "Wilson et al., arXiv:2202.04622v3, Table III",
+      "notes": "Printed in Rydberg per electron; computed by Wilson et al. for the same cell at the Gamma point.",
+      "convention_factor": "0.5"
+    },
+    {
+      "benchmark_id": "heg3d-sc-n14-unpol-rs1",
+      "method": "Transcorrelated FCIQMC, complete-basis limit",
+      "kind": "estimate",
+      "energy_token": "0.56861(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Liao et al., arXiv:2103.03176, Table I (TC-FCIQMC of Luo and Alavi, arXiv:1712.07524)",
+      "notes": "Non-Hermitian similarity-transformed Hamiltonian, extrapolated in the basis; not a variational bound."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n14-unpol-rs2",
+      "method": "Transcorrelated FCIQMC, complete-basis limit",
+      "kind": "estimate",
+      "energy_token": "-0.00868(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Liao et al., arXiv:2103.03176, Table I (TC-FCIQMC of Luo and Alavi, arXiv:1712.07524)",
+      "notes": "Non-Hermitian similarity-transformed Hamiltonian, extrapolated in the basis; not a variational bound."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n14-unpol-rs5",
+      "method": "Transcorrelated FCIQMC, complete-basis limit",
+      "kind": "estimate",
+      "energy_token": "-0.08002(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Liao et al., arXiv:2103.03176, Table I (TC-FCIQMC of Luo and Alavi, arXiv:1712.07524)",
+      "notes": "Non-Hermitian similarity-transformed Hamiltonian, extrapolated in the basis; not a variational bound."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n54-unpol-rs0p5",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "3.22112(4)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "López Ríos et al., arXiv:0801.0518, Table I",
+      "notes": "54 electrons in a simple cubic cell with periodic boundary conditions."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n54-unpol-rs1",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "0.52989(4)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "López Ríos et al., arXiv:0801.0518, Table I",
+      "notes": "54 electrons in a simple cubic cell with periodic boundary conditions."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n54-unpol-rs2",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.013966(9)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "López Ríos et al., arXiv:0801.0518, Table I",
+      "notes": "54 electrons in a simple cubic cell with periodic boundary conditions."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n54-unpol-rs5",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow trial function with a three-electron term",
+      "kind": "upper_bound",
+      "energy_token": "-0.079036(3)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "López Ríos et al., arXiv:0801.0518, Table I",
+      "notes": "54 electrons in a simple cubic cell with periodic boundary conditions."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n54-unpol-rs10",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow trial function with a three-electron term",
+      "kind": "upper_bound",
+      "energy_token": "-0.054443(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "López Ríos et al., arXiv:0801.0518, Table I",
+      "notes": "54 electrons in a simple cubic cell with periodic boundary conditions."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n54-unpol-rs20",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow trial function with a three-electron term",
+      "kind": "upper_bound",
+      "energy_token": "-0.032047(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "López Ríos et al., arXiv:0801.0518, Table I",
+      "notes": "54 electrons in a simple cubic cell with periodic boundary conditions."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n54-unpol-rs1",
+      "method": "Fixed-node DMC, Slater–Jastrow trial function",
+      "kind": "upper_bound",
+      "energy_token": "0.53094(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Pescia et al., arXiv:2305.07240v3, Appendix G, Table II",
+      "notes": "Computed by Pescia et al. (Appendix F)."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n54-unpol-rs2",
+      "method": "Fixed-node DMC, Slater–Jastrow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.01326(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Pescia et al., arXiv:2305.07240v3, Appendix G, Table II",
+      "notes": "Computed by Pescia et al. (Appendix F)."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n54-unpol-rs5",
+      "method": "Fixed-node DMC, Slater–Jastrow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.07867(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Pescia et al., arXiv:2305.07240v3, Appendix G, Table II",
+      "notes": "Computed by Pescia et al. (Appendix F)."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n54-unpol-rs10",
+      "method": "Fixed-node DMC, Slater–Jastrow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.054269(8)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Pescia et al., arXiv:2305.07240v3, Appendix G, Table II",
+      "notes": "Computed by Pescia et al. (Appendix F)."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n54-unpol-rs20",
+      "method": "Fixed-node DMC, Slater–Jastrow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.031976(8)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Pescia et al., arXiv:2305.07240v3, Appendix G, Table II",
+      "notes": "Computed by Pescia et al. (Appendix F)."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n54-unpol-rs50",
+      "method": "Fixed-node DMC, Slater–Jastrow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.01387(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Pescia et al., arXiv:2305.07240v3, Appendix G, Table II",
+      "notes": "Computed by Pescia et al. (Appendix F). The r_s = 50 value is as printed; it lies out of trend with the neighbouring densities."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n54-unpol-rs100",
+      "method": "Fixed-node DMC, Slater–Jastrow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.007674(3)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Pescia et al., arXiv:2305.07240v3, Appendix G, Table II",
+      "notes": "Computed by Pescia et al. (Appendix F)."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n54-unpol-rs1",
+      "method": "Transcorrelated FCIQMC, complete-basis limit",
+      "kind": "estimate",
+      "energy_token": "0.52973(3)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Liao et al., arXiv:2103.03176, Table II",
+      "notes": "Not a variational bound."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n27-pol-rs1",
+      "method": "Fixed-node DMC, Slater–Jastrow trial function",
+      "kind": "upper_bound",
+      "energy_token": "1.05200(3)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Pescia et al., arXiv:2305.07240v3, Appendix G, Table V",
+      "notes": "Computed by Pescia et al. (Appendix F)."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n27-pol-rs2",
+      "method": "Fixed-node DMC, Slater–Jastrow trial function",
+      "kind": "upper_bound",
+      "energy_token": "0.09866(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Pescia et al., arXiv:2305.07240v3, Appendix G, Table V",
+      "notes": "Computed by Pescia et al. (Appendix F)."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n27-pol-rs5",
+      "method": "Fixed-node DMC, Slater–Jastrow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.066429(4)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Pescia et al., arXiv:2305.07240v3, Appendix G, Table V",
+      "notes": "Computed by Pescia et al. (Appendix F)."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n27-pol-rs10",
+      "method": "Fixed-node DMC, Slater–Jastrow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.052540(6)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Pescia et al., arXiv:2305.07240v3, Appendix G, Table V",
+      "notes": "Computed by Pescia et al. (Appendix F)."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n27-pol-rs30",
+      "method": "Fixed-node DMC, Slater–Jastrow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.0228080(8)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Pescia et al., arXiv:2305.07240v3, Appendix G, Table V",
+      "notes": "Computed by Pescia et al. (Appendix F)."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n27-pol-rs50",
+      "method": "Fixed-node DMC, Slater–Jastrow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.0145752(6)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Pescia et al., arXiv:2305.07240v3, Appendix G, Table V",
+      "notes": "Computed by Pescia et al. (Appendix F)."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n27-pol-rs70",
+      "method": "Fixed-node DMC, Slater–Jastrow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.010749(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Pescia et al., arXiv:2305.07240v3, Appendix G, Table V",
+      "notes": "Computed by Pescia et al. (Appendix F)."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n27-pol-rs90",
+      "method": "Fixed-node DMC, Slater–Jastrow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.0085314(5)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Pescia et al., arXiv:2305.07240v3, Appendix G, Table V",
+      "notes": "Computed by Pescia et al. (Appendix F)."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n128-unpol-rs110",
+      "method": "Fixed-node DMC, Slater–Jastrow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.007009518(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Pescia et al., arXiv:2305.07240v3, Appendix G, Table III",
+      "notes": "Computed by Pescia et al. (Appendix F)."
+    },
+    {
+      "benchmark_id": "heg3d-sc-n128-unpol-rs200",
+      "method": "Fixed-node DMC, Slater–Jastrow trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.0039923(7)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Pescia et al., arXiv:2305.07240v3, Appendix G, Table III",
+      "notes": "Computed by Pescia et al. (Appendix F)."
+    },
+    {
+      "benchmark_id": "heg3d-bcc-n27-pol-rs0p2",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, plane-wave (fluid) determinant",
+      "kind": "upper_bound",
+      "energy_token": "44.18224(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Cassella et al., arXiv:2202.05183v3, Supplementary Material, Table IV",
+      "notes": "Computed by Cassella et al. with CASINO for the same cell."
+    },
+    {
+      "benchmark_id": "heg3d-bcc-n27-pol-rs0p2",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, Gaussian (crystal) determinant",
+      "kind": "upper_bound",
+      "energy_token": "44.18468(3)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Cassella et al., arXiv:2202.05183v3, Supplementary Material, Table IV",
+      "notes": "Computed by Cassella et al. with CASINO for the same cell."
+    },
+    {
+      "benchmark_id": "heg3d-bcc-n27-pol-rs0p5",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, plane-wave (fluid) determinant",
+      "kind": "upper_bound",
+      "energy_token": "6.319754(7)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Cassella et al., arXiv:2202.05183v3, Supplementary Material, Table IV",
+      "notes": "Computed by Cassella et al. with CASINO for the same cell."
+    },
+    {
+      "benchmark_id": "heg3d-bcc-n27-pol-rs0p5",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, Gaussian (crystal) determinant",
+      "kind": "upper_bound",
+      "energy_token": "6.32130(6)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Cassella et al., arXiv:2202.05183v3, Supplementary Material, Table IV",
+      "notes": "Computed by Cassella et al. with CASINO for the same cell."
+    },
+    {
+      "benchmark_id": "heg3d-bcc-n27-pol-rs1",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, plane-wave (fluid) determinant",
+      "kind": "upper_bound",
+      "energy_token": "1.261975(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Cassella et al., arXiv:2202.05183v3, Supplementary Material, Table IV",
+      "notes": "Computed by Cassella et al. with CASINO for the same cell."
+    },
+    {
+      "benchmark_id": "heg3d-bcc-n27-pol-rs1",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, Gaussian (crystal) determinant",
+      "kind": "upper_bound",
+      "energy_token": "1.26254(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Cassella et al., arXiv:2202.05183v3, Supplementary Material, Table IV",
+      "notes": "Computed by Cassella et al. with CASINO for the same cell."
+    },
+    {
+      "benchmark_id": "heg3d-bcc-n27-pol-rs2",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, plane-wave (fluid) determinant",
+      "kind": "upper_bound",
+      "energy_token": "0.152344(3)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Cassella et al., arXiv:2202.05183v3, Supplementary Material, Table IV",
+      "notes": "Computed by Cassella et al. with CASINO for the same cell."
+    },
+    {
+      "benchmark_id": "heg3d-bcc-n27-pol-rs2",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, Gaussian (crystal) determinant",
+      "kind": "upper_bound",
+      "energy_token": "0.152077(4)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Cassella et al., arXiv:2202.05183v3, Supplementary Material, Table IV",
+      "notes": "Computed by Cassella et al. with CASINO for the same cell."
+    },
+    {
+      "benchmark_id": "heg3d-bcc-n27-pol-rs3",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, plane-wave (fluid) determinant",
+      "kind": "upper_bound",
+      "energy_token": "-0.0067419(7)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Cassella et al., arXiv:2202.05183v3, Supplementary Material, Table IV",
+      "notes": "Computed by Cassella et al. with CASINO for the same cell."
+    },
+    {
+      "benchmark_id": "heg3d-bcc-n27-pol-rs3",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, Gaussian (crystal) determinant",
+      "kind": "upper_bound",
+      "energy_token": "-0.006966(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Cassella et al., arXiv:2202.05183v3, Supplementary Material, Table IV",
+      "notes": "Computed by Cassella et al. with CASINO for the same cell."
+    },
+    {
+      "benchmark_id": "heg3d-bcc-n27-pol-rs5",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, plane-wave (fluid) determinant",
+      "kind": "upper_bound",
+      "energy_token": "-0.0575023(4)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Cassella et al., arXiv:2202.05183v3, Supplementary Material, Table IV",
+      "notes": "Computed by Cassella et al. with CASINO for the same cell."
+    },
+    {
+      "benchmark_id": "heg3d-bcc-n27-pol-rs5",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, Gaussian (crystal) determinant",
+      "kind": "upper_bound",
+      "energy_token": "-0.057702(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Cassella et al., arXiv:2202.05183v3, Supplementary Material, Table IV",
+      "notes": "Computed by Cassella et al. with CASINO for the same cell."
+    },
+    {
+      "benchmark_id": "heg3d-bcc-n27-pol-rs10",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, plane-wave (fluid) determinant",
+      "kind": "upper_bound",
+      "energy_token": "-0.0502038(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Cassella et al., arXiv:2202.05183v3, Supplementary Material, Table IV",
+      "notes": "Computed by Cassella et al. with CASINO for the same cell."
+    },
+    {
+      "benchmark_id": "heg3d-bcc-n27-pol-rs10",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, Gaussian (crystal) determinant",
+      "kind": "upper_bound",
+      "energy_token": "-0.0503349(8)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Cassella et al., arXiv:2202.05183v3, Supplementary Material, Table IV",
+      "notes": "Computed by Cassella et al. with CASINO for the same cell."
+    },
+    {
+      "benchmark_id": "heg3d-bcc-n27-pol-rs30",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, plane-wave (fluid) determinant",
+      "kind": "upper_bound",
+      "energy_token": "-0.02249870(5)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Cassella et al., arXiv:2202.05183v3, Supplementary Material, Table IV",
+      "notes": "Computed by Cassella et al. with CASINO for the same cell."
+    },
+    {
+      "benchmark_id": "heg3d-bcc-n27-pol-rs30",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, Gaussian (crystal) determinant",
+      "kind": "upper_bound",
+      "energy_token": "-0.0225620(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Cassella et al., arXiv:2202.05183v3, Supplementary Material, Table IV",
+      "notes": "Computed by Cassella et al. with CASINO for the same cell."
+    },
+    {
+      "benchmark_id": "heg3d-bcc-n27-pol-rs50",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, plane-wave (fluid) determinant",
+      "kind": "upper_bound",
+      "energy_token": "-0.01444409(5)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Cassella et al., arXiv:2202.05183v3, Supplementary Material, Table IV",
+      "notes": "Computed by Cassella et al. with CASINO for the same cell."
+    },
+    {
+      "benchmark_id": "heg3d-bcc-n27-pol-rs50",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, Gaussian (crystal) determinant",
+      "kind": "upper_bound",
+      "energy_token": "-0.0144918(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Cassella et al., arXiv:2202.05183v3, Supplementary Material, Table IV",
+      "notes": "Computed by Cassella et al. with CASINO for the same cell."
+    },
+    {
+      "benchmark_id": "heg3d-bcc-n27-pol-rs70",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, plane-wave (fluid) determinant",
+      "kind": "upper_bound",
+      "energy_token": "-0.0106735(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Cassella et al., arXiv:2202.05183v3, Supplementary Material, Table IV",
+      "notes": "Computed by Cassella et al. with CASINO for the same cell."
+    },
+    {
+      "benchmark_id": "heg3d-bcc-n27-pol-rs70",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, Gaussian (crystal) determinant",
+      "kind": "upper_bound",
+      "energy_token": "-0.0107118(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Cassella et al., arXiv:2202.05183v3, Supplementary Material, Table IV",
+      "notes": "Computed by Cassella et al. with CASINO for the same cell."
+    },
+    {
+      "benchmark_id": "heg3d-bcc-n27-pol-rs90",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, plane-wave (fluid) determinant",
+      "kind": "upper_bound",
+      "energy_token": "-0.0084862(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Cassella et al., arXiv:2202.05183v3, Supplementary Material, Table IV",
+      "notes": "Computed by Cassella et al. with CASINO for the same cell."
+    },
+    {
+      "benchmark_id": "heg3d-bcc-n27-pol-rs90",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, Gaussian (crystal) determinant",
+      "kind": "upper_bound",
+      "energy_token": "-0.0085137(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Cassella et al., arXiv:2202.05183v3, Supplementary Material, Table IV",
+      "notes": "Computed by Cassella et al. with CASINO for the same cell."
+    },
+    {
+      "benchmark_id": "heg2d-rect-n56-unpol-rs20",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, fluid trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.046342(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Smith et al., arXiv:2405.19397v1, Supplemental Material, Table I",
+      "notes": "Computed for the identical system with QMCPACK."
+    },
+    {
+      "benchmark_id": "heg2d-rect-n56-unpol-rs25",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, fluid trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.0378001(8)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Smith et al., arXiv:2405.19397v1, Supplemental Material, Table I",
+      "notes": "Computed for the identical system with QMCPACK."
+    },
+    {
+      "benchmark_id": "heg2d-rect-n56-unpol-rs30",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, fluid trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.0319493(6)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Smith et al., arXiv:2405.19397v1, Supplemental Material, Table I",
+      "notes": "Computed for the identical system with QMCPACK."
+    },
+    {
+      "benchmark_id": "heg2d-rect-n56-unpol-rs35",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, fluid trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.0276854(8)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Smith et al., arXiv:2405.19397v1, Supplemental Material, Table I",
+      "notes": "Computed for the identical system with QMCPACK."
+    },
+    {
+      "benchmark_id": "heg2d-rect-n56-unpol-rs40",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, fluid trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.0244356(7)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Smith et al., arXiv:2405.19397v1, Supplemental Material, Table I",
+      "notes": "Computed for the identical system with QMCPACK."
+    },
+    {
+      "benchmark_id": "heg2d-rect-n56-unpol-rs45",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, fluid trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.0218769(7)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Smith et al., arXiv:2405.19397v1, Supplemental Material, Table I",
+      "notes": "Computed for the identical system with QMCPACK."
+    },
+    {
+      "benchmark_id": "heg2d-rect-n56-unpol-rs20",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, crystal trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.0462847(9)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Smith et al., arXiv:2405.19397v1, Supplemental Material, Table I",
+      "notes": "Computed for the identical system with QMCPACK."
+    },
+    {
+      "benchmark_id": "heg2d-rect-n56-unpol-rs25",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, crystal trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.0377824(7)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Smith et al., arXiv:2405.19397v1, Supplemental Material, Table I",
+      "notes": "Computed for the identical system with QMCPACK."
+    },
+    {
+      "benchmark_id": "heg2d-rect-n56-unpol-rs30",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, crystal trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.031949(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Smith et al., arXiv:2405.19397v1, Supplemental Material, Table I",
+      "notes": "Computed for the identical system with QMCPACK."
+    },
+    {
+      "benchmark_id": "heg2d-rect-n56-unpol-rs35",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, crystal trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.0276936(5)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Smith et al., arXiv:2405.19397v1, Supplemental Material, Table I",
+      "notes": "Computed for the identical system with QMCPACK."
+    },
+    {
+      "benchmark_id": "heg2d-rect-n56-unpol-rs40",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, crystal trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.0244496(4)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Smith et al., arXiv:2405.19397v1, Supplemental Material, Table I",
+      "notes": "Computed for the identical system with QMCPACK."
+    },
+    {
+      "benchmark_id": "heg2d-rect-n56-unpol-rs45",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, crystal trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.0218940(3)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Smith et al., arXiv:2405.19397v1, Supplemental Material, Table I",
+      "notes": "Computed for the identical system with QMCPACK."
+    },
+    {
+      "benchmark_id": "heg2d-rect-n56-unpol-rs50",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, crystal trial function",
+      "kind": "upper_bound",
+      "energy_token": "-0.0198283(3)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Smith et al., arXiv:2405.19397v1, Supplemental Material, Table I",
+      "notes": "Computed for the identical system with QMCPACK."
+    },
+    {
+      "benchmark_id": "heg2d-rhombus-n91-pol-rs30",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, zero time step",
+      "kind": "upper_bound",
+      "energy_token": "-0.0319370(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Gaggioli, Azadi, Fu, arXiv:2607.08616v2, Table I",
+      "notes": "Computed for the same cell at the Gamma point; the v2 values differ from v1 in the last digit."
+    },
+    {
+      "benchmark_id": "heg2d-rhombus-n91-pol-rs30",
+      "method": "VMC, Slater–Jastrow–backflow",
+      "kind": "upper_bound",
+      "energy_token": "-0.0318792(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Gaggioli, Azadi, Fu, arXiv:2607.08616v2, Table I",
+      "notes": ""
+    },
+    {
+      "benchmark_id": "heg2d-rhombus-n91-pol-rs40",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, zero time step",
+      "kind": "upper_bound",
+      "energy_token": "-0.0244377(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Gaggioli, Azadi, Fu, arXiv:2607.08616v2, Table I",
+      "notes": "Computed for the same cell at the Gamma point; the v2 values differ from v1 in the last digit."
+    },
+    {
+      "benchmark_id": "heg2d-rhombus-n91-pol-rs40",
+      "method": "VMC, Slater–Jastrow–backflow",
+      "kind": "upper_bound",
+      "energy_token": "-0.0243832(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Gaggioli, Azadi, Fu, arXiv:2607.08616v2, Table I",
+      "notes": ""
+    },
+    {
+      "benchmark_id": "heg2d-rhombus-n169-pol-rs30",
+      "method": "Fixed-node DMC, Slater–Jastrow–backflow, zero time step",
+      "kind": "upper_bound",
+      "energy_token": "-0.0319197(1)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Gaggioli, Azadi, Fu, arXiv:2607.08616v2, Table I",
+      "notes": "Computed for the same cell at the Gamma point; the v2 values differ from v1 in the last digit."
+    },
+    {
+      "benchmark_id": "heg2d-rhombus-n169-pol-rs30",
+      "method": "VMC, Slater–Jastrow–backflow",
+      "kind": "upper_bound",
+      "energy_token": "-0.0318548(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "source": "Gaggioli, Azadi, Fu, arXiv:2607.08616v2, Table I",
+      "notes": ""
+    }
+  ]
+}

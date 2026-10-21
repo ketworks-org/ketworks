@@ -46,21 +46,14 @@ For the benchmark the conclusion is the relevant one: at $J_2/J_1=0.5$ the groun
 
 ## Known energies for $10\times10$
 
-Energies per site in units of $J_1$, with the source of each number. These are context; the Ketboard entries carry the arXiv version and the exact printed token.
+Energies per site in units of $J_1$. The table is generated when the site is built from every reviewed Ketboard entry for this instance and from the energies of other methods recorded with them, highest first; it changes when an entry is added.
 
-| Method | $e$ | Source |
-| --- | --- | --- |
-| Gutzwiller-projected fermionic state with Jastrow factor, $p=0$ | $-0.49521(1)$ | Hu et al., arXiv:1304.2630, Table I |
-| Same state with one and two Lanczos steps, $p=1,2$ | $-0.49718(1)$, $-0.49755(1)$ | arXiv:1304.2630, Table I |
-| Zero-variance extrapolation of the Lanczos sequence (not variational) | $-0.49781(2)$ | arXiv:1304.2630, Table I |
-| SU(2) DMRG on the torus | $-0.495530$ | as tabulated in Choo et al., arXiv:1903.06713, Table I |
-| Convolutional NQS with Marshall-sign prior | $-0.49516(1)$ | arXiv:1903.06713, Table I |
-| Group-convolutional NQS | $-0.497437(7)$ | Roth, Szabó, MacDonald, arXiv:2211.07749, Table I |
-| RBM + pair-product with quantum-number projection | $-0.497629(1)$ | Nomura and Imada, arXiv:2005.14142, as tabulated in arXiv:2211.07749, Table I |
-| Deep convolutional NQS with minSR | $-0.497627(1)$ | Chen and Heyl, arXiv:2302.01941, as tabulated in Rende et al., arXiv:2310.05715, Table 1 |
-| Vision transformer with minSR | $-0.497634(1)$ | Rende et al., arXiv:2310.05715, Table 1 |
+```ketboard
+entries
+instances: j1j2-square-10x10-pbc-j2-0p5-sz0
+```
 
-The DMRG energy on the torus lies above every modern NQS result, a consequence of the entanglement across a cut of length $2L$ on a torus (Gong et al. note truncation errors two orders of magnitude larger on the $10\times10$ torus than on a width-10 cylinder, arXiv:1311.5962, note 65). The best NQS energies agree among themselves and with the two-step Lanczos state to within $2\times10^{-4}$, and lie about $1.5\times10^{-4}$ above the variance-extrapolated estimate. The exact diagonalization value for $6\times6$, $e_0=-0.503810$ (arXiv:1903.06713, Table I), remains the only exact number for this coupling on a finite torus.
+The DMRG energy on the torus lies above every modern NQS result, a consequence of the entanglement across a cut of length $2L$ on a torus (Gong et al. note truncation errors two orders of magnitude larger on the $10\times10$ torus than on a width-10 cylinder, arXiv:1311.5962, note 65). The exact diagonalization value for $6\times6$, $e_0=-0.503810$ (arXiv:1903.06713, Table I), remains the only exact number for this coupling on a finite torus.
 
 At this level the ranking of methods changes with the number of parameters, the symmetry projection, the number of samples in the final evaluation, and the convention used to quote the uncertainty. Differences within one standard error do not establish a better ansatz; see the [benchmark conventions](../benchmark-conventions/).
 

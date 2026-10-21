@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "references": [
+    {
+      "benchmark_id": "mol-n2-r-2p068-bohr-s0",
+      "method": "Estimated exact nonrelativistic energy",
+      "kind": "exact",
+      "energy_token": "-109.542347",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table II (from Filippi and Umrigar, J. Chem. Phys. 105, 213 (1996))",
+      "notes": ""
+    },
+    {
+      "benchmark_id": "mol-n2-r-2p068-bohr-s0",
+      "method": "CCSD(T), complete-basis extrapolation",
+      "kind": "estimate",
+      "energy_token": "-109.5425",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table II",
+      "notes": "All-electron aug-cc-pCVXZ basis sets, extrapolated; not a variational bound."
+    },
+    {
+      "benchmark_id": "mol-ozone-g3-s0",
+      "method": "CCSD(T), complete-basis extrapolation",
+      "kind": "estimate",
+      "energy_token": "-225.4338",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table II",
+      "notes": "All-electron aug-cc-pCVXZ basis sets, extrapolated; not a variational bound."
+    },
+    {
+      "benchmark_id": "mol-bicyclobutane-g3-s0",
+      "method": "CCSD(T), complete-basis extrapolation",
+      "kind": "estimate",
+      "energy_token": "-155.9575",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table II",
+      "notes": "All-electron aug-cc-pCVXZ basis sets, extrapolated; not a variational bound."
+    }
+  ]
+}

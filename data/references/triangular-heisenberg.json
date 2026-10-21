@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "references": [
+    {
+      "benchmark_id": "heisenberg-triangular-6x6-pbc-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-0.5603734",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Bernu, Lecheminant, Lhuillier, Pierre (1994), as tabulated in Roth and MacDonald, arXiv:2104.05085, Table I",
+      "notes": ""
+    },
+    {
+      "benchmark_id": "heisenberg-triangular-6x6-pbc-sz0",
+      "method": "DMRG",
+      "kind": "estimate",
+      "energy_token": "-0.560375",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Iqbal et al. (2016), as tabulated in Roth and MacDonald, arXiv:2104.05085, Table I",
+      "notes": "Lies below the exact energy in the last digits, so it is treated as an estimate."
+    },
+    {
+      "benchmark_id": "heisenberg-triangular-6x6-pbc-sz0",
+      "method": "Gutzwiller-projected fermionic state",
+      "kind": "upper_bound",
+      "energy_token": "-0.548025",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Iqbal et al. (2016), as tabulated in Roth and MacDonald, arXiv:2104.05085, Table I",
+      "notes": ""
+    },
+    {
+      "benchmark_id": "heisenberg-triangular-6x6-pbc-sz0",
+      "method": "Entangled-plaquette state",
+      "kind": "upper_bound",
+      "energy_token": "-0.55420(5)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Mezzacapo and Cirac (2010), as tabulated in Moss et al., arXiv:2505.20406, Table V",
+      "notes": ""
+    },
+    {
+      "benchmark_id": "heisenberg-triangular-6x6-pbc-sz0",
+      "method": "Projected mean-field state",
+      "kind": "upper_bound",
+      "energy_token": "-0.55519(4)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Kaneko, Morita, Imada, arXiv:1407.0318, as tabulated in Moss et al., arXiv:2505.20406, Table V",
+      "notes": ""
+    },
+    {
+      "benchmark_id": "heisenberg-triangular-18x18-pbc-sz0",
+      "method": "Projected BCS state",
+      "kind": "upper_bound",
+      "energy_token": "-0.53570(1)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Yunoki and Sorella (2006), as tabulated in Viteritti et al., arXiv:2602.02665, Table I",
+      "notes": ""
+    },
+    {
+      "benchmark_id": "heisenberg-triangular-18x18-pbc-sz0",
+      "method": "Jastrow–Gutzwiller state",
+      "kind": "upper_bound",
+      "energy_token": "-0.54542(1)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Ghorbani, Tocchio, Becca (2016), as tabulated in Viteritti et al., arXiv:2602.02665, Table I",
+      "notes": ""
+    },
+    {
+      "benchmark_id": "heisenberg-triangular-18x18-pbc-sz0",
+      "method": "Entangled-plaquette state",
+      "kind": "upper_bound",
+      "energy_token": "-0.5459(1)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Mezzacapo and Cirac (2010), as tabulated in Viteritti et al., arXiv:2602.02665, Table I",
+      "notes": ""
+    },
+    {
+      "benchmark_id": "heisenberg-triangular-18x18-pbc-sz0",
+      "method": "Resonating-valence-bond state",
+      "kind": "upper_bound",
+      "energy_token": "-0.54716(3)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Heidarian, Sorella, Becca (2009), as tabulated in Viteritti et al., arXiv:2602.02665, Table I",
+      "notes": ""
+    },
+    {
+      "benchmark_id": "heisenberg-triangular-30x30-pbc-sz0",
+      "method": "Jastrow–Gutzwiller state",
+      "kind": "upper_bound",
+      "energy_token": "-0.545348",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Ghorbani, Tocchio, Becca (2016), as tabulated in Viteritti et al., arXiv:2602.02665, Table I",
+      "notes": ""
+    }
+  ]
+}

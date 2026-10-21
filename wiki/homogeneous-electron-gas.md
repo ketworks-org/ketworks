@@ -1,6 +1,6 @@
 # Homogeneous electron gas
 
-> **In brief.** The homogeneous electron gas (jellium) is electrons in a uniform neutralizing background. It has one parameter, the density $r_s$. At high density it is close to a Slater determinant of plane waves; at low density it crystallizes, at $r_s=86.6(7)$ in three dimensions and $r_s\approx31$–$37$ in two according to the most recent estimates. Ketboard compares finite periodic cells at the $\Gamma$ point, energy per electron in Hartree, with the cell shape and $N_\uparrow$, $N_\downarrow$ fixed. The references on these cells are fixed-node diffusion Monte Carlo (DMC) energies computed for the same cell and, for 14 electrons at high density, transcorrelated FCIQMC. Neural states are below Slater–Jastrow DMC on most cells, and on several also below backflow DMC; iterative-backflow DMC remains below every neural energy for 19 polarized electrons, and for 14 electrons at $r_s\ge10$.
+> **In brief.** The homogeneous electron gas (jellium) is electrons in a uniform neutralizing background. It has one parameter, the density $r_s$. At high density it is close to a Slater determinant of plane waves; at low density it crystallizes, at $r_s=86.6(7)$ in three dimensions and $r_s\approx31$–$37$ in two according to the most recent estimates. Ketboard compares finite periodic cells at the $\Gamma$ point, energy per electron in Hartree, with the cell shape and $N_\uparrow$, $N_\downarrow$ fixed. The energies of other methods on these cells are mostly fixed-node diffusion Monte Carlo (DMC) computed for the same cell and, for 14 electrons at high density, transcorrelated FCIQMC. The tables on this page are generated from Ketboard and those energies, so they always show, cell by cell, whether a neural state or another method holds the lowest variational energy.
 
 Notation follows the [conventions page](../notation/). The [continuous-space page](../continuous-space/) explains the ansätze, the local energy and the periodic boundary conditions used here. This page fixes the conventions of the electron-gas instances on Ketboard and summarizes what is known about their energies. Reviewed entries live in [Ketboard](../../#benchmarks?category=continuous-space), not here.
 
@@ -29,13 +29,13 @@ The other cells are chosen to hold a Wigner crystal. A body-centred cubic cell w
 
 ## Why the electron gas is a benchmark
 
-**Two energy scales.** The kinetic energy per electron scales as $r_s^{-2}$ and the Coulomb energy as $r_s^{-1}$. In three dimensions the plane-wave Hartree–Fock energy of the unpolarized gas in the thermodynamic limit is $e_{\mathrm{HF}}=1.105/r_s^2-0.458/r_s$ Ha (Loos and Gill, arXiv:1601.03544). At high density the correlation energy is a small part of the total, about 7 per cent for 54 electrons at $r_s=1$, where the Hartree–Fock and backflow DMC energies are $0.5689(4)$ and $0.52989(4)$ Ha (López Ríos et al., arXiv:0801.0518, Table I). At low density the total energy is small and the competing states differ by microhartrees: on the triangular cell with 91 electrons at $r_s=30$ the neural energy and the backflow DMC energy differ by $6\times10^{-7}$ Ha per electron (Gaggioli, Azadi, Fu, arXiv:2607.08616, Table I). Relative accuracies of $10^{-5}$ are needed to rank ansätze, and the printed error bars are of that order.
+**Two energy scales.** The kinetic energy per electron scales as $r_s^{-2}$ and the Coulomb energy as $r_s^{-1}$. In three dimensions the plane-wave Hartree–Fock energy of the unpolarized gas in the thermodynamic limit is $e_{\mathrm{HF}}=1.105/r_s^2-0.458/r_s$ Ha (Loos and Gill, arXiv:1601.03544). At high density the correlation energy is a small part of the total, about 7 per cent for 54 electrons at $r_s=1$, where the Hartree–Fock and backflow DMC energies are $0.5689(4)$ and $0.52989(4)$ Ha (López Ríos et al., arXiv:0801.0518, Table I). At low density the total energy is small and the competing states differ by microhartrees: on the triangular cell with 91 electrons at $r_s=30$, the self-attention state of Gaggioli, Azadi and Fu and their backflow DMC differ by $6\times10^{-7}$ Ha per electron (arXiv:2607.08616, Table I). Relative accuracies of $10^{-5}$ are needed to rank ansätze, and the printed error bars are of that order.
 
 **Fluid and crystal.** A plane-wave determinant describes the fluid. At low density the electrons localize, and an ansatz must either break translation symmetry or learn the crystal from correlations. Pescia et al. use either plane waves or Gaussian orbitals centred on body-centred cubic sites under the same message-passing backflow; the Gaussian orbitals give the lower energy at $r_s=100$ for 54 electrons and at $r_s=110$ and $200$ for 128 electrons (arXiv:2305.07240, Tables II and III). Liu, Qian and Wang locate the crossing of the two for 36 electrons between $r_s=86.8$ and $87.0$ (arXiv:2604.15888, Supplemental Table V). In a small cell the transition can move far from its thermodynamic-limit value: for 27 polarized electrons in a body-centred cubic cell, the crystalline order parameter of FermiNet "rises sharply to a finite value at $r_s=2$" (Cassella et al., arXiv:2202.05183, Fig. 1), and the paper attributes this to finite-size effects. Optimizations near the transition get stuck in local minima (arXiv:2202.05183, p. 5), so the energy reported for one cell depends on the starting point.
 
 **References are not exact.** Fixed-node DMC is exact only if the nodes of the trial function are; its energy is an upper bound and its error is the fixed-node error. The DMC references on these cells use Slater–Jastrow, Slater–Jastrow–backflow or iterative-backflow trial functions, and neural VMC energies below them are not a contradiction. The most accurate references at high density are transcorrelated FCIQMC energies for 14 electrons, extrapolated to the complete basis (Luo and Alavi, arXiv:1712.07524; tabulated by Liao et al., arXiv:2103.03176, Table I). They come from a non-Hermitian similarity-transformed Hamiltonian and an extrapolation in the basis, so they are estimates of the exact energy, not variational bounds.
 
-**One cell, one instance.** Energies per electron at fixed $r_s$ change between cells of different size and shape by more than between ansätze on one cell: at $r_s=1$ the unpolarized gas has $0.569$ Ha per electron with 14 electrons and $0.530$ with 54, while the neural states on either cell agree within $0.3$ mHa. Twist averaging and extrapolation in $N$ remove most of the finite-size error but change the problem, which is why Ketboard keeps each cell separate and compares only within it.
+**One cell, one instance.** Energies per electron at fixed $r_s$ change between cells of different size and shape by more than between ansätze on one cell: at $r_s=1$ the unpolarized gas has $0.569$ Ha per electron with 14 electrons and $0.530$ with 54, tens of millihartree apart, while the neural states on one cell differ by fractions of a millihartree. Twist averaging and extrapolation in $N$ remove most of the finite-size error but change the problem, which is why Ketboard keeps each cell separate and compares only within it.
 
 ## What is known in the thermodynamic limit
 
@@ -45,93 +45,85 @@ The other cells are chosen to hold a Wigner crystal. A body-centred cubic cell w
 
 ## Known energies
 
-Energies per electron in Hartree. The neural entries are the best of each paper on each cell; Ketboard lists all variants with the arXiv version and the printed token. Values converted from Rydberg or from totals per cell are exact conversions of the printed digits. The reference columns are for the same finite cell at $\Gamma$ unless stated.
+The tables in this section are generated when the site is built, from the reviewed Ketboard entries and from the energies of other methods recorded with them, so they change when an entry is added. Energies are per electron in Hartree, for the same finite cell at $\Gamma$. For each density they give the lowest neural energy on Ketboard; the lowest upper bound from another method computed for the same cell, which is fixed-node DMC or VMC, and whether it lies below or above the neural energy; and, where available, an estimate of the exact energy. Values printed in Rydberg or as totals per cell are converted from the printed digits. Each row links to the Ketboard instance with every entry.
 
-**Simple cubic, 7 + 7 electrons.** WAP-net: Wilson et al., arXiv:2202.04622, Table III. MP-NQS: Pescia et al., arXiv:2305.07240, Table I. FermiNet with basis transformation: Liu, Qian, Wang, arXiv:2604.15888, Supplemental Table III ($r_s=15$ is only in this source, $-0.04086193(14)$). Iterative-backflow DMC, with the trial functions of Taddei et al. (arXiv:1501.02199): Wilson et al., Table III. TC-FCIQMC: Liao et al., arXiv:2103.03176, Table I, complete-basis limit.
+**Simple cubic, 7 + 7 electrons.** The iterative-backflow DMC of Wilson et al. uses the trial functions of Taddei et al. (arXiv:1501.02199); the transcorrelated FCIQMC energies of Luo and Alavi are extrapolated to the complete basis and are estimates, not bounds.
 
-| $r_s$ | WAP-net | MP-NQS | FermiNet + basis transf. | Iterative-backflow DMC | TC-FCIQMC |
-| --- | --- | --- | --- | --- | --- |
-| 1 | $0.5689560(45)$ | $0.568967(6)$ | $0.5688507(14)$ | $0.568975(5)$ | $0.56861(1)$ |
-| 2 | $-0.0083330(25)$ | $-0.008391(1)$ | $-0.00841643(71)$ | $-0.008325(5)$ | $-0.00868(2)$ |
-| 5 | $-0.0798360(5)$ | $-0.0798544(4)$ | $-0.07986300(21)$ | $-0.0798420(15)$ | $-0.08002(2)$ |
-| 10 | $-0.0552038(3)$ | $-0.0552126(6)$ | $-0.05517993(21)$ | $-0.0552180(5)$ | |
-| 20 | $-0.03244415(15)$ | $-0.0324553(2)$ | $-0.0323600(29)$ | $-0.03245785(25)$ | |
-| 50 | $-0.014622225(30)$ | $-0.01462631(6)$ | | $-0.01462865(10)$ | |
-| 100 | $-0.007730240(15)$ | $-0.00773018(3)$ | | $-0.007734295(25)$ | |
+```ketboard
+summary
+instances: heg3d-sc-n14-unpol-rs*
+row: r_s
+```
 
-Up to $r_s=5$ the basis-transformed FermiNet is the lowest variational energy, and TC-FCIQMC lies $0.16$ to $0.26$ mHa below it. From $r_s=10$ the iterative-backflow DMC energy is below every neural entry.
+**Simple cubic, 19 + 0 electrons.**
 
-**Simple cubic, 19 + 0 and 7 + 0 electrons.** Same sources as above (MP-NQS: Table IV); IB-DMC is the iterative-backflow DMC of Wilson et al. For 19 polarized electrons the iterative-backflow DMC energy is below both neural states at every density, at $r_s=2$ by less than the error bars; for 7 polarized electrons WAP-net is below it at every density.
+```ketboard
+summary
+instances: heg3d-sc-n19-pol-rs*
+row: r_s
+```
 
-| $r_s$ | 19 + 0: WAP-net | 19 + 0: MP-NQS | 19 + 0: IB-DMC | 7 + 0: WAP-net | 7 + 0: IB-DMC |
-| --- | --- | --- | --- | --- | --- |
-| 1 | $1.0462415(25)$ | $1.046262(2)$ | $1.0462250(5)$ | $1.1203575(35)$ | $1.120400(5)$ |
-| 2 | $0.096303(1)$ | $0.096307(1)$ | $0.0963025(15)$ | $0.110850(1)$ | $0.110879(2)$ |
-| 5 | $-0.06725105(25)$ | $-0.0672489(3)$ | $-0.0672540(5)$ | $-0.0664225(5)$ | $-0.0664055(5)$ |
-| 10 | $-0.05286035(10)$ | $-0.0528624(2)$ | $-0.0528652(3)$ | $-0.05314360(25)$ | $-0.0531380(5)$ |
-| 20 | $-0.03201095(5)$ | $-0.0320101(1)$ | $-0.03201665(10)$ | $-0.03226895(15)$ | $-0.0322665(20)$ |
-| 50 | $-0.01456571(2)$ | $-0.01456685(3)$ | $-0.014569195(40)$ | $-0.014660890(15)$ | $-0.0146604(1)$ |
-| 100 | $-0.007717605(10)$ | $-0.00771832(2)$ | $-0.007721425(10)$ | $-0.007746545(10)$ | $-0.00774625(5)$ |
+**Simple cubic, 7 + 0 electrons.**
 
-**Simple cubic, 27 + 27 electrons.** DeepSolid: Li, Li, Chen, arXiv:2203.15472, Supplementary Table 11. MP-NQS with plane-wave or body-centred cubic Gaussian orbitals: Pescia et al., Table II. Backflow DMC: López Ríos et al., arXiv:0801.0518, Table I (with a three-body Jastrow factor from $r_s=5$). Slater–Jastrow DMC: Pescia et al., Table II. TC-FCIQMC: Liao et al., Table II.
+```ketboard
+summary
+instances: heg3d-sc-n7-pol-rs*
+row: r_s
+```
 
-| $r_s$ | DeepSolid | MP-NQS, plane waves | MP-NQS, Gaussians | Backflow DMC | Slater–Jastrow DMC |
-| --- | --- | --- | --- | --- | --- |
-| 0.5 | $3.221226(2)$ | | | $3.22112(4)$ | |
-| 1 | $0.530019(1)$ | $0.52973(1)$ | | $0.52989(4)$ | $0.53094(2)$ |
-| 2 | $-0.013840(1)$ | $-0.014046(8)$ | $-0.01390(1)$ | $-0.013966(9)$ | $-0.01326(2)$ |
-| 5 | $-0.0788354(2)$ | $-0.079090(2)$ | $-0.079064(4)$ | $-0.079036(3)$ | $-0.07867(1)$ |
-| 10 | $-0.0542785(1)$ | $-0.054448(1)$ | $-0.054445(1)$ | $-0.054443(2)$ | $-0.054269(8)$ |
-| 20 | $-0.0316886(1)$ | $-0.0320524(5)$ | $-0.0320480(6)$ | $-0.032047(2)$ | $-0.031976(8)$ |
-| 50 | | $-0.0145015(1)$ | $-0.0144999(1)$ | | $-0.01387(2)$ |
-| 100 | | $-0.0076793(1)$ | $-0.00769203(5)$ | | $-0.007674(3)$ |
+**Simple cubic, 27 + 27 electrons.** The backflow DMC energies of López Ríos et al. include a three-electron Jastrow term from $r_s=5$. Pescia et al. also print a backflow DMC energy at $r_s=50$, $-0.0144877(1)$; it is the twist-averaged energy of 54 electrons in a face-centred cubic cell (Azadi and Drummond, arXiv:2201.08743, Table X), a different system, and is not used here.
 
-The TC-FCIQMC energy at $r_s=1$ is $0.52973(3)$, equal to MP-NQS. At $r_s=50$, Pescia et al. also print a backflow DMC energy, $-0.0144877(1)$; it is the twist-averaged energy of 54 electrons in a face-centred cubic cell (Azadi and Drummond, arXiv:2201.08743, Table X), a different system, and is not listed here.
+```ketboard
+summary
+instances: heg3d-sc-n54-unpol-rs*
+row: r_s
+```
 
-**Simple cubic, 27 + 0 and 64 + 64 electrons.** MP-NQS against Slater–Jastrow DMC computed by Pescia et al. (Tables III and V). The neural state is lower at every density.
+**Simple cubic, 27 + 0 and 64 + 64 electrons.**
 
-| Electrons | $r_s$ | MP-NQS | Slater–Jastrow DMC |
-| --- | --- | --- | --- |
-| 27 + 0 | 1 | $1.051771(4)$ | $1.05200(3)$ |
-| 27 + 0 | 5 | $-0.0665523(6)$ | $-0.066429(4)$ |
-| 27 + 0 | 30 | $-0.0228184(1)$ | $-0.0228080(8)$ |
-| 27 + 0 | 90 | $-0.00853156(2)$ | $-0.0085314(5)$ |
-| 64 + 64 | 110 | $-0.0071121(2)$, Gaussians | $-0.007009518(1)$ |
-| 64 + 64 | 200 | $-0.0040615(1)$, Gaussians | $-0.0039923(7)$ |
+```ketboard
+summary
+instances: heg3d-sc-n27-pol-rs*
+row: r_s
+```
 
-**Body-centred cubic, 27 + 0 electrons.** FermiNet with 16 dense determinants, complex for $r_s\le1$, against Slater–Jastrow–backflow DMC with a plane-wave (gas) or a Gaussian (crystal) determinant, all from Cassella et al., arXiv:2202.05183, Supplementary Table IV. FermiNet is lowest for $r_s\le1$; from $r_s=2$ the crystal DMC energy is lower by 5 to 21 μHa.
+```ketboard
+summary
+instances: heg3d-sc-n128-unpol-rs*
+row: r_s
+```
 
-| $r_s$ | FermiNet | DMC, gas | DMC, crystal |
-| --- | --- | --- | --- |
-| 0.2 | $44.18067(2)$ | $44.18224(1)$ | $44.18468(3)$ |
-| 0.5 | $6.318704(2)$ | $6.319754(7)$ | $6.32130(6)$ |
-| 1 | $1.261547(1)$ | $1.261975(2)$ | $1.26254(2)$ |
-| 2 | $0.152086(1)$ | $0.152344(3)$ | $0.152077(4)$ |
-| 3 | $-0.006961(2)$ | $-0.0067419(7)$ | $-0.006966(2)$ |
-| 5 | $-0.057691(4)$ | $-0.0575023(4)$ | $-0.057702(1)$ |
-| 10 | $-0.050320(5)$ | $-0.0502038(1)$ | $-0.0503349(8)$ |
-| 30 | $-0.022541(5)$ | $-0.02249870(5)$ | $-0.0225620(2)$ |
-| 50 | $-0.014478(4)$ | $-0.01444409(5)$ | $-0.0144918(1)$ |
-| 70 | $-0.010693(3)$ | $-0.0106735(1)$ | $-0.0107118(1)$ |
-| 90 | $-0.008496(1)$ | $-0.0084862(1)$ | $-0.0085137(2)$ |
+**Body-centred cubic, 27 + 0 electrons.** Cassella et al. computed DMC with a plane-wave (fluid) and a Gaussian (crystal) determinant; the table takes the lower of the two.
 
-**Rectangular $3:3:2$, 18 + 18 electrons.** Only Liu, Qian and Wang (arXiv:2604.15888, Supplemental Tables IV and V), with no reference energy; their best energies run from $-0.07562667(56)$ at $r_s=5$ to $-0.007692872(11)$ at $r_s=100$, and the scan between $r_s=86.6$ and $87.1$ compares plane-wave and Gaussian reference orbitals across the transition.
+```ketboard
+summary
+instances: heg3d-bcc-n27-pol-rs*
+row: r_s
+```
 
-**Two dimensions.** Smith et al. compare their (MP)²NQS state with fixed-node DMC of the fluid and of the crystal, with Slater–Jastrow–backflow trial functions, computed for the same 56-electron cell (arXiv:2405.19397, Supplemental Table I). Gaggioli, Azadi and Fu compare a self-attention state with Slater–Jastrow–backflow VMC and DMC, the DMC extrapolated to zero time step, for the same triangular cells at $\Gamma$ (arXiv:2607.08616v2, Table I; the DMC values differ in the last digit from v1).
+**Rectangular $3:3:2$, 18 + 18 electrons.** The scan between $r_s=86.6$ and $87.1$ compares plane-wave and Gaussian reference orbitals across the transition (Liu, Qian, Wang, arXiv:2604.15888, Supplemental Table V).
 
-| Cell | $r_s$ | Neural state | DMC, fluid | DMC, crystal |
-| --- | --- | --- | --- | --- |
-| rectangle, 28 + 28 | 20 | $-0.04637(2)$ | $-0.046342(1)$ | $-0.0462847(9)$ |
-| rectangle, 28 + 28 | 30 | $-0.03197(1)$ | $-0.0319493(6)$ | $-0.031949(1)$ |
-| rectangle, 28 + 28 | 40 | $-0.024451(2)$ | $-0.0244356(7)$ | $-0.0244496(4)$ |
-| rectangle, 28 + 28 | 50 | $-0.019829(1)$ | | $-0.0198283(3)$ |
-| triangle, 91 + 0 | 30 | $-0.03193763(3)$ | $-0.0319370(1)$ | |
-| triangle, 91 + 0 | 40 | $-0.02443814(2)$ | $-0.0244377(2)$ | |
-| triangle, 169 + 0 | 30 | $-0.03192077(3)$ | $-0.0319197(1)$ | |
+```ketboard
+summary
+instances: heg3d-rect332-n36-unpol-rs*
+row: r_s
+```
 
-Smith et al. report energies below DMC at all densities, by about $2\times10^{-5}$ Ha in the fluid and by about one neural error bar or less from $r_s=35$. Gaggioli et al. are below DMC by $0.4$ to $1.1$ μHa. For 91 electrons the state at $r_s=30$ is a fluid and the one at $r_s=40$ a triangular crystal (arXiv:2607.08616, Fig. 2).
+**Two dimensions.** Smith et al. computed fixed-node DMC of the fluid and of the crystal for their 56-electron cell, and Gaggioli, Azadi and Fu Slater–Jastrow–backflow VMC and zero-time-step DMC for their triangular cells (the DMC values of arXiv:2607.08616v2 differ in the last digit from v1). With 91 electrons their state is a fluid at $r_s=30$ and a triangular crystal at $r_s=40$ (arXiv:2607.08616, Fig. 2).
 
-Two further cells have one neural entry each. For 16 polarized electrons in a triangular cell at $r_s=30$, the Fermi Sets state of Li et al. reaches $-0.031990687(3)$ (arXiv:2607.25872, Table III); fixed-phase DMC with that state as guiding function gives $-0.03199636(7)$, which is a projector energy and not an entry. For 37 polarized electrons in a square cell at $r_s=5$, the neural canonical transformation of Xie, Zhang and Wang gives $-0.28746(8)$ Ry, i.e. $-0.14373(4)$ Ha (arXiv:2201.03156, Fig. 2b). Both papers compare with values of Tanatar and Ceperley (Phys. Rev. B 39, 5005 (1989)) without stating that these are for the same finite cell, so they are not listed as references.
+```ketboard
+summary
+instances: heg2d-rect-n56-unpol-rs*
+row: r_s
+```
+
+```ketboard
+summary
+instances: heg2d-rhombus-* heg2d-sq-*
+row: label
+```
+
+For 16 polarized electrons in the triangular cell, fixed-phase DMC with the Fermi Sets state of Li et al. as guiding function gives $-0.03199636(7)$ Ha (arXiv:2607.25872, Table III); it is a projector energy and not an entry. Li et al. and Xie, Zhang and Wang compare with values of Tanatar and Ceperley (Phys. Rev. B 39, 5005 (1989)) without stating that these are for the same finite cell, so those values are not used.
 
 ## Reporting a result for these instances
 
@@ -148,9 +140,9 @@ Two further cells have one neural entry each. For 16 polarized electrons in a tr
 - S. H. Vosko, L. Wilk, M. Nusair, *Accurate spin-dependent electron liquid correlation energies for local spin density calculations: a critical analysis*, Can. J. Phys. 58, 1200 (1980).
 - J. P. Perdew, A. Zunger, *Self-interaction correction to density-functional approximations for many-electron systems*, Phys. Rev. B 23, 5048 (1981).
 - B. Tanatar, D. M. Ceperley, *Ground state of the two-dimensional electron gas*, Phys. Rev. B 39, 5005 (1989).
-- N. D. Drummond, Z. Radnai, J. R. Trail, M. D. Towler, R. J. Needs, *Diffusion quantum Monte Carlo study of three-dimensional Wigner crystals*, arXiv:0801.0377; Phys. Rev. B 69, 085116 (2004).
-- P. López Ríos, A. Ma, N. D. Drummond, M. D. Towler, R. J. Needs, *Inhomogeneous backflow transformations in quantum Monte Carlo calculations*, arXiv:0801.0518; Phys. Rev. E 74, 066701 (2006). Backflow DMC for 54 electrons in a simple cubic cell.
-- N. D. Drummond, R. J. Needs, *Phase diagram of the low-density two-dimensional homogeneous electron gas*, arXiv:1002.2101; Phys. Rev. Lett. 102, 126402 (2009).
+- N. D. Drummond, Z. Radnai, J. R. Trail, M. D. Towler, R. J. Needs, *Diffusion quantum Monte Carlo study of three-dimensional Wigner crystals*, arXiv:0801.0377 (2004).
+- P. López Ríos, A. Ma, N. D. Drummond, M. D. Towler, R. J. Needs, *Inhomogeneous backflow transformations in quantum Monte Carlo calculations*, arXiv:0801.0518 (2006). Backflow DMC for 54 electrons in a simple cubic cell.
+- N. D. Drummond, R. J. Needs, *Phase diagram of the low-density two-dimensional homogeneous electron gas*, arXiv:1002.2101 (2009).
 - J. J. Shepherd, G. Booth, A. Grüneis, A. Alavi, *Full configuration interaction perspective on the homogeneous electron gas*, arXiv:1109.2635 (2012).
 - J. J. Shepherd, G. H. Booth, A. Alavi, *Investigation of the full configuration interaction quantum Monte Carlo method using homogeneous electron gas models*, arXiv:1201.4691 (2012).
 - M. Taddei, M. Ruggeri, S. Moroni, M. Holzmann, *Iterative backflow renormalization procedure for many-body ground-state wave functions of strongly interacting normal Fermi liquids*, arXiv:1501.02199 (2015).
