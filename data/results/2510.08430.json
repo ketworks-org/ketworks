@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2510.08430v2",
+    "title": "When Less is More: Approximating the Quantum Geometric Tensor with Block Structures",
+    "authors": "Ahmedeo Shokry, Alessandro Santini, Filippo Vicentini",
+    "published": "2025-10-09T16:44:30Z",
+    "updated": "2025-11-04T10:31:05Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2510.08430v2",
+  "source_sha256": null,
+  "extraction_model": "human",
+  "results": [
+    {
+      "benchmark_id": "heisenberg-chain-16-pbc-sz0",
+      "system_description": "Heisenberg, 16 sites · J = 1 · periodic · Sz = 0. H = J sum_<ij> S_i · S_j; spin-1/2 operators S = sigma/2; J = 1; no constant shift",
+      "method": "Vision transformer",
+      "variant": "two-layer encoder, block-layer QGT natural gradient",
+      "method_class": "transformer",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-28.5685",
+      "energy_token": "-28.5685(3)",
+      "normalization": "total",
+      "unit": "J",
+      "uncertainty": "0.0003",
+      "uncertainty_type": "unspecified",
+      "variance": "0.008",
+      "source_location": "Table \"Summary of measurements for the chain L = 16 Heisenberg model\" (tab:measurements), row \"Block-layer QGT\"",
+      "eligibility_evidence": "Energy of the optimized ViT state with its Monte Carlo error, from the summary table of the chain benchmark; the variance is printed in the same table.",
+      "parameter_count": null,
+      "notes": "Spin-1/2 Heisenberg chain of L = 16 sites with periodic boundaries (Sec. Heisenberg Chain), total energy. The text defines S = sigma/2, but the printed totals are on the Pauli scale (convention): -28.5685 lies below the lowest energy any S = 1/2 state of 16 bonds can have (-0.75 per bond, -12), and the exact S = 1/2 ground-state energy of the 16-site ring, -7.142296, is a quarter of -28.569185. Ketboard multiplies the energy by 0.25 and the variance by 0.0625. Two-layer ViT encoder. The magnetization sector is not stated.",
+      "convention_factor": "0.25"
+    },
+    {
+      "benchmark_id": "heisenberg-chain-16-pbc-sz0",
+      "system_description": "Heisenberg, 16 sites · J = 1 · periodic · Sz = 0. H = J sum_<ij> S_i · S_j; spin-1/2 operators S = sigma/2; J = 1; no constant shift",
+      "method": "Vision transformer",
+      "variant": "two-layer encoder, full QGT natural gradient",
+      "method_class": "transformer",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-28.5674",
+      "energy_token": "-28.5674(6)",
+      "normalization": "total",
+      "unit": "J",
+      "uncertainty": "0.0006",
+      "uncertainty_type": "unspecified",
+      "variance": "0.026",
+      "source_location": "Table \"Summary of measurements for the chain L = 16 Heisenberg model\" (tab:measurements), row \"Full QGT\"",
+      "eligibility_evidence": "Energy of the optimized ViT state with its Monte Carlo error, from the summary table of the chain benchmark; the variance is printed in the same table.",
+      "parameter_count": null,
+      "notes": "Spin-1/2 Heisenberg chain of L = 16 sites with periodic boundaries (Sec. Heisenberg Chain), total energy. The text defines S = sigma/2, but the printed totals are on the Pauli scale (convention): -28.5685 lies below the lowest energy any S = 1/2 state of 16 bonds can have (-0.75 per bond, -12), and the exact S = 1/2 ground-state energy of the 16-site ring, -7.142296, is a quarter of -28.569185. Ketboard multiplies the energy by 0.25 and the variance by 0.0625. Two-layer ViT encoder. The magnetization sector is not stated.",
+      "convention_factor": "0.25"
+    }
+  ],
+  "issues": []
+}

@@ -100,6 +100,16 @@
       "unit": "J",
       "source": "Ghorbani, Tocchio, Becca, arXiv:1512.03356, as tabulated in Viteritti et al., arXiv:2602.02665, Table I",
       "notes": ""
+    },
+    {
+      "benchmark_id": "j1j2-triangular-6x6-pbc-j2-0p125-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-0.515564",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Iqbal et al., arXiv:1601.06018, as tabulated in Kochkov et al., arXiv:2110.06390v1, table:lowest_energy_states_apx, and in Roth, Szabó, MacDonald, arXiv:2211.07749v2, Table III",
+      "notes": "Ground-state energy of the 36-site (6 x 6) triangular torus at J2/J1 = 1/8. Energy per site in units of J1."
     }
   ]
 }
