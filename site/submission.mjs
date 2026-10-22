@@ -169,7 +169,7 @@ export function newInstanceValues(b) {
   if (model === 'heisenberg' && (p = /^-sz(-?[\dp]+)$/.exec(rest))) Object.assign(values, {model, sz: unslug(p[1])});
   else if (model === 'j1j2' && (p = /^-j2-(-?[\dp]+)-sz(-?[\dp]+)$/.exec(rest))) Object.assign(values, {model, j2: unslug(p[1]), sz: unslug(p[2])});
   else if (model === 'tfim' && (p = /^-h(-?[\dp]+)$/.exec(rest))) Object.assign(values, {model, h: unslug(p[1])});
-  else if (model === 'hubbard' && (p = /^-u([\dp]+)(?:-tp(-?[\dp]+))?-(?:n(\d+)-sz0|nup(\d+)-ndown(\d+))$/.exec(rest))) {
+  else if (model === 'hubbard' && (p = /^-u(-?[\dp]+)(?:-tp(-?[\dp]+))?-(?:n(\d+)-sz0|nup(\d+)-ndown(\d+))$/.exec(rest))) {
     const [, u, tp, n, nup, ndown] = p;
     Object.assign(values, {model: tp ? 'ttphubbard' : 'hubbard', u: unslug(u), ...(tp ? {tp: unslug(tp)} : {}), nup: n ? String(n / 2) : nup, ndown: n ? String(n / 2) : ndown});
   } else if (model === 'bosehubbard' && (p = /^-u([\dp]+)-n(\d+)(?:-nmax(\d+))?$/.exec(rest))) Object.assign(values, {model, ub: unslug(p[1]), nb: p[2], nmax: p[3] || ''});

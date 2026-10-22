@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "references": [
+    {
+      "benchmark_id": "holstein-chain-4-apbc-w1-g1p5-n2",
+      "method": "Green-function Monte Carlo (GFMC)",
+      "kind": "exact",
+      "energy_token": "-0.895(1)",
+      "normalization": "per_site",
+      "unit": "t",
+      "source": "McKenzie, Hamer, Murray (1996), as printed in Mahajan et al., arXiv:2405.08701v2, Table tab:holstein_n, row N_sites = 4, column GFMC",
+      "notes": "Described as numerically exact by Mahajan et al.; energy per site in units of t."
+    },
+    {
+      "benchmark_id": "holstein-chain-6-pbc-w1-g1p5-n3",
+      "method": "Green-function Monte Carlo (GFMC)",
+      "kind": "exact",
+      "energy_token": "-0.868(1)",
+      "normalization": "per_site",
+      "unit": "t",
+      "source": "McKenzie, Hamer, Murray (1996), as printed in Mahajan et al., arXiv:2405.08701v2, Table tab:holstein_n, row N_sites = 6, column GFMC",
+      "notes": "Described as numerically exact by Mahajan et al.; energy per site in units of t."
+    },
+    {
+      "benchmark_id": "holstein-chain-8-apbc-w1-g1p5-n4",
+      "method": "Green-function Monte Carlo (GFMC)",
+      "kind": "exact",
+      "energy_token": "-0.861(2)",
+      "normalization": "per_site",
+      "unit": "t",
+      "source": "McKenzie, Hamer, Murray (1996), as printed in Mahajan et al., arXiv:2405.08701v2, Table tab:holstein_n, row N_sites = 8, column GFMC",
+      "notes": "Described as numerically exact by Mahajan et al.; energy per site in units of t."
+    },
+    {
+      "benchmark_id": "holstein-chain-16-apbc-w1-g1p5-n8",
+      "method": "Green-function Monte Carlo (GFMC)",
+      "kind": "exact",
+      "energy_token": "-0.854(1)",
+      "normalization": "per_site",
+      "unit": "t",
+      "source": "McKenzie, Hamer, Murray (1996), as printed in Mahajan et al., arXiv:2405.08701v2, Table tab:holstein_n, row N_sites = 16, column GFMC",
+      "notes": "Described as numerically exact by Mahajan et al.; energy per site in units of t."
+    }
+  ]
+}
