@@ -7,6 +7,8 @@ const RENAMED_FAMILIES = {'3D electron gas': ['Electron gas', '3D'], '2D electro
   'Chain Heisenberg': ['Heisenberg', 'Chain'], 'Square Heisenberg': ['Heisenberg', 'Square'], 'Triangular Heisenberg': ['Heisenberg', 'Triangular'], 'Kagome Heisenberg': ['Heisenberg', 'Kagome'],
   'Pyrochlore Heisenberg': ['Heisenberg', 'Pyrochlore'], 'Chain transverse-field Ising': ['Transverse-field Ising', 'Chain'], 'Square transverse-field Ising': ['Transverse-field Ising', 'Square'],
   'Square Hubbard': ['Hubbard', 'Square'], 'Square t–t′ Hubbard': ['t–t′ Hubbard', 'Square'], 'Square t–V': ['t–V', 'Square']};
+// Instances whose key changed when their definition was corrected (U = 10^(5/9), not 3.5981).
+const RENAMED_INSTANCES = {'hubbard-square-4x4-pbc-u3p5981-n8-sz0': 'hubbard-square-4x4-pbc-u3p59381-n8-sz0', 'hubbard-square-4x4-pbc-u3p5981-n10-sz0': 'hubbard-square-4x4-pbc-u3p59381-n10-sz0'};
 // The parts of a model (its lattices, dimensions, molecules or materials): lattices and dimensions in a fixed
 // order, other parts in the order of the registry. nqsbot/build.py orders the sidebar the same way.
 const PART_ORDER = ['Chain', 'Square', 'Triangular', 'Honeycomb', 'Kagome', 'Pyrochlore', '3D', '2D', '1D'];
@@ -76,7 +78,8 @@ function route() {
   document.querySelectorAll('.view').forEach(el => el.hidden = el.id !== name);
   document.querySelectorAll('[data-nav]').forEach(el => { if (el.dataset.nav === name) el.setAttribute('aria-current', 'page'); else el.removeAttribute('aria-current'); });
   const params = new URLSearchParams(location.hash.split('?')[1] || '');
-  const benchmark = dataset?.benchmarks.find(b => b.id === params.get('system'));
+  const system = RENAMED_INSTANCES[params.get('system')] || params.get('system');
+  const benchmark = dataset?.benchmarks.find(b => b.id === system);
   $('board-overview').hidden = name !== 'benchmarks' || Boolean(benchmark);
   if (dataset && name === 'benchmarks' && !benchmark) {
     const [family, part] = RENAMED_FAMILIES[params.get('family')] || [params.get('family'), params.get('part')];

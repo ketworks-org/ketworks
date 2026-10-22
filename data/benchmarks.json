@@ -1259,22 +1259,22 @@
     "parameters_latex": "t=1,\\qquad U/t=10,\\qquad t^{\\prime}=0"
   },
   {
-    "id": "hubbard-square-4x4-pbc-u3p5981-n8-sz0",
+    "id": "hubbard-square-4x4-pbc-u3p59381-n8-sz0",
     "name": "Hubbard",
     "family": "Hubbard",
     "part": "Square",
     "category": "lattice-fermions",
     "sites": 16,
     "geometry": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only",
-    "hamiltonian": "H = -t sum_<ij>,s (c†_is c_js + h.c.) + U sum_i n_iup n_idown; t = 1; U = 3.5981; tprime = 0; no chemical-potential term or constant shift",
+    "hamiltonian": "H = -t sum_<ij>,s (c†_is c_js + h.c.) + U sum_i n_iup n_idown; t = 1; U = 10^(5/9) = 3.593813664; tprime = 0; no chemical-potential term or constant shift",
     "sector": "Nup = 4; Ndown = 4; 8 electrons; ground-state variational calculation",
     "unit": "t",
     "description": "Interacting fermions hopping on a lattice.",
     "hamiltonian_latex": "H=-t\\!\\sum_{\\langle i,j\\rangle,\\sigma}\\!\\left(c^\\dagger_{i\\sigma}c_{j\\sigma}+\\mathrm{h.c.}\\right)+U\\sum_i n_{i\\uparrow}n_{i\\downarrow}",
-    "instance_label": "4 × 4 · U/t = 3.5981 · periodic · N↑ = N↓ = 4",
+    "instance_label": "4 × 4 · U/t = 3.59381 · periodic · N↑ = N↓ = 4",
     "lattice_size": "4 × 4 · 16 sites",
     "boundary_conditions": "Periodic in both directions",
-    "parameters_latex": "t=1,\\qquad U/t=3.5981,\\qquad t^{\\prime}=0"
+    "parameters_latex": "t=1,\\qquad U/t=10^{5/9}\\approx 3.59381,\\qquad t^{\\prime}=0"
   },
   {
     "id": "hubbard-square-4x4-pbc-u7p74264-n8-sz0",
@@ -1284,7 +1284,7 @@
     "category": "lattice-fermions",
     "sites": 16,
     "geometry": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only",
-    "hamiltonian": "H = -t sum_<ij>,s (c†_is c_js + h.c.) + U sum_i n_iup n_idown; t = 1; U = 7.74264; tprime = 0; no chemical-potential term or constant shift",
+    "hamiltonian": "H = -t sum_<ij>,s (c†_is c_js + h.c.) + U sum_i n_iup n_idown; t = 1; U = 10^(8/9) = 7.742636787; tprime = 0; no chemical-potential term or constant shift",
     "sector": "Nup = 4; Ndown = 4; 8 electrons; ground-state variational calculation",
     "unit": "t",
     "description": "Interacting fermions hopping on a lattice.",
@@ -1292,7 +1292,7 @@
     "instance_label": "4 × 4 · U/t = 7.74264 · periodic · N↑ = N↓ = 4",
     "lattice_size": "4 × 4 · 16 sites",
     "boundary_conditions": "Periodic in both directions",
-    "parameters_latex": "t=1,\\qquad U/t=7.74264,\\qquad t^{\\prime}=0"
+    "parameters_latex": "t=1,\\qquad U/t=10^{8/9}\\approx 7.74264,\\qquad t^{\\prime}=0"
   },
   {
     "id": "hubbard-square-4x4-pbc-u10-n10-sz0",
@@ -1320,33 +1320,33 @@
     "category": "lattice-fermions",
     "sites": 16,
     "geometry": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only",
-    "hamiltonian": "H = -t sum_<ij>,s (c†_is c_js + h.c.) + U sum_i n_iup n_idown; t = 1; U = 2.1544; tprime = 0; no chemical-potential term or constant shift",
+    "hamiltonian": "H = -t sum_<ij>,s (c†_is c_js + h.c.) + U sum_i n_iup n_idown; t = 1; U = 10^(1/3) = 2.154434690; tprime = 0; no chemical-potential term or constant shift",
     "sector": "Nup = 5; Ndown = 5; 10 electrons; ground-state variational calculation",
     "unit": "t",
     "description": "Interacting fermions hopping on a lattice.",
     "hamiltonian_latex": "H=-t\\!\\sum_{\\langle i,j\\rangle,\\sigma}\\!\\left(c^\\dagger_{i\\sigma}c_{j\\sigma}+\\mathrm{h.c.}\\right)+U\\sum_i n_{i\\uparrow}n_{i\\downarrow}",
-    "instance_label": "4 × 4 · U/t = 2.1544 · periodic · N↑ = N↓ = 5",
+    "instance_label": "4 × 4 · U/t = 2.15443 · periodic · N↑ = N↓ = 5",
     "lattice_size": "4 × 4 · 16 sites",
     "boundary_conditions": "Periodic in both directions",
-    "parameters_latex": "t=1,\\qquad U/t=2.1544,\\qquad t^{\\prime}=0"
+    "parameters_latex": "t=1,\\qquad U/t=10^{1/3}\\approx 2.15443,\\qquad t^{\\prime}=0"
   },
   {
-    "id": "hubbard-square-4x4-pbc-u3p5981-n10-sz0",
+    "id": "hubbard-square-4x4-pbc-u3p59381-n10-sz0",
     "name": "Hubbard",
     "family": "Hubbard",
     "part": "Square",
     "category": "lattice-fermions",
     "sites": 16,
     "geometry": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only",
-    "hamiltonian": "H = -t sum_<ij>,s (c†_is c_js + h.c.) + U sum_i n_iup n_idown; t = 1; U = 3.5981; tprime = 0; no chemical-potential term or constant shift",
+    "hamiltonian": "H = -t sum_<ij>,s (c†_is c_js + h.c.) + U sum_i n_iup n_idown; t = 1; U = 10^(5/9) = 3.593813664; tprime = 0; no chemical-potential term or constant shift",
     "sector": "Nup = 5; Ndown = 5; 10 electrons; ground-state variational calculation",
     "unit": "t",
     "description": "Interacting fermions hopping on a lattice.",
     "hamiltonian_latex": "H=-t\\!\\sum_{\\langle i,j\\rangle,\\sigma}\\!\\left(c^\\dagger_{i\\sigma}c_{j\\sigma}+\\mathrm{h.c.}\\right)+U\\sum_i n_{i\\uparrow}n_{i\\downarrow}",
-    "instance_label": "4 × 4 · U/t = 3.5981 · periodic · N↑ = N↓ = 5",
+    "instance_label": "4 × 4 · U/t = 3.59381 · periodic · N↑ = N↓ = 5",
     "lattice_size": "4 × 4 · 16 sites",
     "boundary_conditions": "Periodic in both directions",
-    "parameters_latex": "t=1,\\qquad U/t=3.5981,\\qquad t^{\\prime}=0"
+    "parameters_latex": "t=1,\\qquad U/t=10^{5/9}\\approx 3.59381,\\qquad t^{\\prime}=0"
   },
   {
     "id": "hubbard-square-4x4-pbc-u7p74264-n10-sz0",
@@ -1356,7 +1356,7 @@
     "category": "lattice-fermions",
     "sites": 16,
     "geometry": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only",
-    "hamiltonian": "H = -t sum_<ij>,s (c†_is c_js + h.c.) + U sum_i n_iup n_idown; t = 1; U = 7.74264; tprime = 0; no chemical-potential term or constant shift",
+    "hamiltonian": "H = -t sum_<ij>,s (c†_is c_js + h.c.) + U sum_i n_iup n_idown; t = 1; U = 10^(8/9) = 7.742636787; tprime = 0; no chemical-potential term or constant shift",
     "sector": "Nup = 5; Ndown = 5; 10 electrons; ground-state variational calculation",
     "unit": "t",
     "description": "Interacting fermions hopping on a lattice.",
@@ -1364,7 +1364,7 @@
     "instance_label": "4 × 4 · U/t = 7.74264 · periodic · N↑ = N↓ = 5",
     "lattice_size": "4 × 4 · 16 sites",
     "boundary_conditions": "Periodic in both directions",
-    "parameters_latex": "t=1,\\qquad U/t=7.74264,\\qquad t^{\\prime}=0"
+    "parameters_latex": "t=1,\\qquad U/t=10^{8/9}\\approx 7.74264,\\qquad t^{\\prime}=0"
   },
   {
     "id": "hubbard-rectangular-4x16-cyl-u8-n56-sz0",

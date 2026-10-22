@@ -75,8 +75,8 @@
       "notes": "Transcribed from the cited location of arXiv:2111.10420v2 (Supporting Information, Appendix H). The meaning of the parenthesized error is not stated. No variance is printed (SI Fig. 3 plots only the relative variance)."
     },
     {
-      "benchmark_id": "hubbard-square-4x4-pbc-u3p5981-n8-sz0",
-      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 3.5981; 8 electrons (4 up, 4 down)",
+      "benchmark_id": "hubbard-square-4x4-pbc-u3p59381-n8-sz0",
+      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(5/9) = 3.593813664 (printed as 3.6); 8 electrons (4 up, 4 down)",
       "method": "Hidden-fermion determinant state",
       "variant": "HFDS, 8 hidden fermions, single hidden layer with alpha = 32",
       "method_class": "backflow",
@@ -93,11 +93,11 @@
       "source_location": "SI Appendix H, subsection \"4x4 Hubbard model with n = 1/2\", Table I (tab01), row U = 3.6, column \"HFDS (alpha = 32)\"",
       "eligibility_evidence": "Variational energy of the hidden-fermion determinant state (determinant over physical and neural-network-generated hidden fermion orbitals), from the converged-energy tables of the Supporting Information.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of arXiv:2111.10420v2 (Supporting Information, Appendix H). The meaning of the parenthesized error is not stated. No variance is printed (SI Fig. 3 plots only the relative variance). The paper prints U = 3.6; the calculation was done at U = 3.5981, the value in the Varbench file of the same calculation (Hubbard/square_16_P_4_3.5981.md), whose exact energy at U = 3.5981 lies just below this one."
+      "notes": "Transcribed from the cited location of arXiv:2111.10420v2 (Supporting Information, Appendix H). The meaning of the parenthesized error is not stated. No variance is printed (SI Fig. 3 plots only the relative variance). The paper prints U = 3.6, a rounding of 10^(5/9) = 3.593813664 on its grid U = 10^(k/9) (0.1, 0.6, 1, 2.15, 3.6, 7.75, 10). Exact diagonalization at U = 3.593813664 reproduces the exact energies printed in Tables I-III (-17.698030017 for 4 + 4 electrons, -19.891637197 for 5 + 5), while U = 3.5981, the value in the Varbench file names, gives -17.696235050 and -19.888229194: the HFDS energy -19.890443(6) of Table III would lie below the ground state at U = 3.5981."
     },
     {
       "benchmark_id": "hubbard-square-4x4-pbc-u7p74264-n8-sz0",
-      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 7.74264; 8 electrons (4 up, 4 down)",
+      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636787 (printed as 7.75); 8 electrons (4 up, 4 down)",
       "method": "Hidden-fermion determinant state",
       "variant": "HFDS, 8 hidden fermions, single hidden layer with alpha = 32",
       "method_class": "backflow",
@@ -114,7 +114,7 @@
       "source_location": "SI Appendix H, subsection \"4x4 Hubbard model with n = 1/2\", Table I (tab01), row U = 7.75, column \"HFDS (alpha = 32)\"",
       "eligibility_evidence": "Variational energy of the hidden-fermion determinant state (determinant over physical and neural-network-generated hidden fermion orbitals), from the converged-energy tables of the Supporting Information.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of arXiv:2111.10420v2 (Supporting Information, Appendix H). The meaning of the parenthesized error is not stated. No variance is printed (SI Fig. 3 plots only the relative variance). The paper prints U = 7.75; the calculation was done at U = 7.74264, the value in the Varbench file of the same calculation (Hubbard/square_16_P_4_7.74264.md), whose exact energy at U = 7.74264 lies just below this one."
+      "notes": "Transcribed from the cited location of arXiv:2111.10420v2 (Supporting Information, Appendix H). The meaning of the parenthesized error is not stated. No variance is printed (SI Fig. 3 plots only the relative variance). The paper prints U = 7.75, a rounding of 10^(8/9) = 7.742636787 on its grid U = 10^(k/9). Exact diagonalization at U = 7.742636787 reproduces the exact energy printed in Table I for 4 + 4 electrons (-16.509154834 against -16.5091548(2)); U = 7.74264, the value in the key and the Varbench file name, gives -16.509154215."
     },
     {
       "benchmark_id": "hubbard-square-4x4-pbc-u10-n10-sz0",
@@ -139,7 +139,7 @@
     },
     {
       "benchmark_id": "hubbard-square-4x4-pbc-u2p1544-n10-sz0",
-      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 2.1544; 10 electrons (5 up, 5 down)",
+      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(1/3) = 2.154434690 (printed as 2.15); 10 electrons (5 up, 5 down)",
       "method": "Hidden-fermion determinant state",
       "variant": "HFDS, 10 hidden fermions, alpha = 64, C4 and K = 0 projections",
       "method_class": "backflow",
@@ -156,11 +156,11 @@
       "source_location": "SI Appendix H, subsection \"4x4 Hubbard model with n = 5/8\", Table III (tab03), row \"HFSD (alpha = 64) + (C4 ∩ K = 0)\", column U = 2.15",
       "eligibility_evidence": "Variational energy of the hidden-fermion determinant state (determinant over physical and neural-network-generated hidden fermion orbitals), from the converged-energy tables of the Supporting Information.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of arXiv:2111.10420v2 (Supporting Information, Appendix H). The meaning of the parenthesized error is not stated. No variance is printed (SI Fig. 3 plots only the relative variance). The paper prints U = 2.15; the calculation was done at U = 2.1544, the value in the Varbench file of the same calculation (Hubbard/square_16_P_5_2.1544.md), whose exact energy at U = 2.1544 lies just below this one."
+      "notes": "Transcribed from the cited location of arXiv:2111.10420v2 (Supporting Information, Appendix H). The meaning of the parenthesized error is not stated. No variance is printed (SI Fig. 3 plots only the relative variance). The paper prints U = 2.15, a rounding of 10^(1/3) = 2.154434690 on its grid U = 10^(k/9). Exact diagonalization at U = 2.154434690 reproduces the exact energy printed in Table II for 4 + 4 electrons (-18.405320883 against -18.4053208(8)), while U = 2.1544, the value in the Varbench file name, gives -18.405340776."
     },
     {
-      "benchmark_id": "hubbard-square-4x4-pbc-u3p5981-n10-sz0",
-      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 3.5981; 10 electrons (5 up, 5 down)",
+      "benchmark_id": "hubbard-square-4x4-pbc-u3p59381-n10-sz0",
+      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(5/9) = 3.593813664 (printed as 3.6); 10 electrons (5 up, 5 down)",
       "method": "Hidden-fermion determinant state",
       "variant": "HFDS, 10 hidden fermions, alpha = 64, C4 and K = 0 projections",
       "method_class": "backflow",
@@ -177,11 +177,11 @@
       "source_location": "SI Appendix H, subsection \"4x4 Hubbard model with n = 5/8\", Table III (tab03), row \"HFSD (alpha = 64) + (C4 ∩ K = 0)\", column U = 3.6",
       "eligibility_evidence": "Variational energy of the hidden-fermion determinant state (determinant over physical and neural-network-generated hidden fermion orbitals), from the converged-energy tables of the Supporting Information.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of arXiv:2111.10420v2 (Supporting Information, Appendix H). The meaning of the parenthesized error is not stated. No variance is printed (SI Fig. 3 plots only the relative variance). The paper prints U = 3.6; the calculation was done at U = 3.5981, the value in the Varbench file of the same calculation (Hubbard/square_16_P_5_3.5981.md), whose exact energy at U = 3.5981 lies just below this one."
+      "notes": "Transcribed from the cited location of arXiv:2111.10420v2 (Supporting Information, Appendix H). The meaning of the parenthesized error is not stated. No variance is printed (SI Fig. 3 plots only the relative variance). The paper prints U = 3.6, a rounding of 10^(5/9) = 3.593813664 on its grid U = 10^(k/9) (0.1, 0.6, 1, 2.15, 3.6, 7.75, 10). Exact diagonalization at U = 3.593813664 reproduces the exact energies printed in Tables I-III (-17.698030017 for 4 + 4 electrons, -19.891637197 for 5 + 5), while U = 3.5981, the value in the Varbench file names, gives -17.696235050 and -19.888229194: the HFDS energy -19.890443(6) of Table III would lie below the ground state at U = 3.5981."
     },
     {
       "benchmark_id": "hubbard-square-4x4-pbc-u7p74264-n10-sz0",
-      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 7.74264; 10 electrons (5 up, 5 down)",
+      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636787 (printed as 7.75); 10 electrons (5 up, 5 down)",
       "method": "Hidden-fermion determinant state",
       "variant": "HFDS, 10 hidden fermions, alpha = 64, C4 and K = 0 projections",
       "method_class": "backflow",
@@ -198,7 +198,7 @@
       "source_location": "SI Appendix H, subsection \"4x4 Hubbard model with n = 5/8\", Table III (tab03), row \"HFSD (alpha = 64) + (C4 ∩ K = 0)\", column U = 7.75",
       "eligibility_evidence": "Variational energy of the hidden-fermion determinant state (determinant over physical and neural-network-generated hidden fermion orbitals), from the converged-energy tables of the Supporting Information.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of arXiv:2111.10420v2 (Supporting Information, Appendix H). The meaning of the parenthesized error is not stated. No variance is printed (SI Fig. 3 plots only the relative variance). The paper prints U = 7.75; the calculation was done at U = 7.74264, the value in the Varbench file of the same calculation (Hubbard/square_16_P_5_7.74264.md), whose exact energy at U = 7.74264 lies just below this one."
+      "notes": "Transcribed from the cited location of arXiv:2111.10420v2 (Supporting Information, Appendix H). The meaning of the parenthesized error is not stated. No variance is printed (SI Fig. 3 plots only the relative variance). The paper prints U = 7.75, a rounding of 10^(8/9) = 7.742636787 on its grid U = 10^(k/9). Exact diagonalization at U = 7.742636787 reproduces the exact energy printed in Table I for 4 + 4 electrons (-16.509154834 against -16.5091548(2)); U = 7.74264, the value in the key and the Varbench file name, gives -16.509154215."
     },
     {
       "benchmark_id": "hubbard-rectangular-4x16-cyl-u8-n56-sz0",

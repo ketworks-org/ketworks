@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "references": [
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u10-n8-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-16.1432081(7)",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Moreno, Carleo, Georges, Stokes, arXiv:2111.10420v2, SI Table I (tab01), row U = 10, column ED energy",
+      "notes": "Total energy in units of t, 4 + 4 electrons on the periodic 4 x 4 lattice. The paper's U is 10^(k/9); see the instance."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u3p59381-n8-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-17.6980300(1)",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Moreno, Carleo, Georges, Stokes, arXiv:2111.10420v2, SI Table I (tab01), row U = 3.6, column ED energy",
+      "notes": "Total energy in units of t, 4 + 4 electrons on the periodic 4 x 4 lattice. The paper's U is 10^(k/9); see the instance."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u7p74264-n8-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-16.5091548(2)",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Moreno, Carleo, Georges, Stokes, arXiv:2111.10420v2, SI Table I (tab01), row U = 7.75, column ED energy",
+      "notes": "Total energy in units of t, 4 + 4 electrons on the periodic 4 x 4 lattice. The paper's U is 10^(k/9); see the instance."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u2p1544-n10-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-21.2122357(7)",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Moreno, Carleo, Georges, Stokes, arXiv:2111.10420v2, SI Table III (tab03), row ED, column U = 2.15",
+      "notes": "Total energy in units of t, 5 + 5 electrons on the periodic 4 x 4 lattice. The paper's U is 10^(k/9); see the instance."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u3p59381-n10-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-19.8916371(9)",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Moreno, Carleo, Georges, Stokes, arXiv:2111.10420v2, SI Table III (tab03), row ED, column U = 3.6",
+      "notes": "Total energy in units of t, 5 + 5 electrons on the periodic 4 x 4 lattice. The paper's U is 10^(k/9); see the instance."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u7p74264-n10-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-17.6037315(5)",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Moreno, Carleo, Georges, Stokes, arXiv:2111.10420v2, SI Table III (tab03), row ED, column U = 7.75",
+      "notes": "Total energy in units of t, 5 + 5 electrons on the periodic 4 x 4 lattice. The paper's U is 10^(k/9); see the instance."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u10-n10-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-16.9035599(8)",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Moreno, Carleo, Georges, Stokes, arXiv:2111.10420v2, SI Table III (tab03), row ED, column U = 10",
+      "notes": "Total energy in units of t, 5 + 5 electrons on the periodic 4 x 4 lattice. The paper's U is 10^(k/9); see the instance."
+    }
+  ]
+}
