@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "references": [
+    {
+      "benchmark_id": "tv-square-6x6-pbc-v0p1-n13",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-27.340544159534836",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Varbench data release (arXiv:2302.04919), file tV/square_36_P_13_0.1.md, row Exact diagonalization (commit 390a21e)",
+      "notes": "Total energy in units of t, periodic boundaries."
+    },
+    {
+      "benchmark_id": "tv-square-6x6-pbc-v1-n9",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-21.747707",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Humeniuk, Wan, Wang, arXiv:2210.05871v4, Table tab:arSJ_vs_ED, row (9, 1.0), column exact",
+      "notes": "Total energy in units of t, periodic boundaries."
+    },
+    {
+      "benchmark_id": "tv-square-6x6-pbc-v3-n9",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-18.510441",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Humeniuk, Wan, Wang, arXiv:2210.05871v4, Table tab:arSJ_vs_ED, row (9, 3.0), column exact",
+      "notes": "Total energy in units of t, periodic boundaries."
+    },
+    {
+      "benchmark_id": "tv-square-6x6-pbc-v6-n9",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-15.820226",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Humeniuk, Wan, Wang, arXiv:2210.05871v4, Table tab:arSJ_vs_ED, row (9, 6.0), column exact",
+      "notes": "Total energy in units of t, periodic boundaries."
+    },
+    {
+      "benchmark_id": "tv-square-6x6-pbc-v1-n12",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-22.171946",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Humeniuk, Wan, Wang, arXiv:2210.05871v4, Table tab:arSJ_vs_ED, row (12, 1.0), column exact",
+      "notes": "Total energy in units of t, periodic boundaries."
+    },
+    {
+      "benchmark_id": "tv-square-6x6-pbc-v3-n12",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-16.023298",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Humeniuk, Wan, Wang, arXiv:2210.05871v4, Table tab:arSJ_vs_ED, row (12, 3.0), column exact",
+      "notes": "Total energy in units of t, periodic boundaries."
+    },
+    {
+      "benchmark_id": "tv-square-6x6-pbc-v6-n12",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-12.45152",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Humeniuk, Wan, Wang, arXiv:2210.05871v4, Table tab:arSJ_vs_ED, row (12, 6.0), column exact",
+      "notes": "Total energy in units of t, periodic boundaries."
+    },
+    {
+      "benchmark_id": "tv-square-8x8-pbc-v1-n32",
+      "method": "DMRG (bond dimension 4096)",
+      "kind": "upper_bound",
+      "energy_token": "-29.380064",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Humeniuk, Wan, Wang, arXiv:2210.05871v4, Table tab:L8Np32, row DMRG, column V/t = 1",
+      "notes": "Total energy in units of t at half filling, periodic boundaries; a variational DMRG energy. The CTQMC values of the same table are not used: at V/t = 4 the CTQMC energy -9.8(2) lies above this DMRG bound."
+    },
+    {
+      "benchmark_id": "tv-square-8x8-pbc-v2-n32",
+      "method": "DMRG (bond dimension 4096)",
+      "kind": "upper_bound",
+      "energy_token": "-18.633949",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Humeniuk, Wan, Wang, arXiv:2210.05871v4, Table tab:L8Np32, row DMRG, column V/t = 2",
+      "notes": "Total energy in units of t at half filling, periodic boundaries; a variational DMRG energy. The CTQMC values of the same table are not used: at V/t = 4 the CTQMC energy -9.8(2) lies above this DMRG bound."
+    },
+    {
+      "benchmark_id": "tv-square-8x8-pbc-v4-n32",
+      "method": "DMRG (bond dimension 4096)",
+      "kind": "upper_bound",
+      "energy_token": "-10.248601",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Humeniuk, Wan, Wang, arXiv:2210.05871v4, Table tab:L8Np32, row DMRG, column V/t = 4",
+      "notes": "Total energy in units of t at half filling, periodic boundaries; a variational DMRG energy. The CTQMC values of the same table are not used: at V/t = 4 the CTQMC energy -9.8(2) lies above this DMRG bound."
+    }
+  ]
+}
