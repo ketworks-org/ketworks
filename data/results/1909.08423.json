@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "1909.08423v5",
+    "title": "Deep neural network solution of the electronic Schrödinger equation",
+    "authors": "Jan Hermann, Zeno Schätzle, Frank Noé",
+    "published": "2019-09-16T21:52:50Z",
+    "updated": "2020-09-23T22:12:25Z"
+  },
+  "source_url": "https://arxiv.org/pdf/1909.08423v5",
+  "source_sha256": null,
+  "extraction_model": "human",
+  "issues": [],
+  "results": [
+    {
+      "benchmark_id": "mol-be-isolated-atom-s0",
+      "system_description": "Be atom, all electrons, clamped point nucleus, 2 up and 2 down electrons",
+      "method": "PauliNet",
+      "variant": "PauliNet",
+      "method_class": "backflow",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-14.6674",
+      "energy_token": "-14.6674(3)",
+      "normalization": "total",
+      "unit": "Ha",
+      "uncertainty": "0.0003",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Table 1, 'PauliNet' column",
+      "eligibility_evidence": "VMC energy of the trained PauliNet as printed in Table 1.",
+      "parameter_count": null,
+      "notes": "N_up = 2, N_down = 2: not printed, but the 1S ground term of Be lies only in this sector (up to the mirror N_up <-> N_down). The digits that agree with the exact energy are printed in bold. The LiH and H2 rows of the same table give no geometry and are not recorded."
+    },
+    {
+      "benchmark_id": "mol-b-isolated-atom-s1",
+      "system_description": "B atom, all electrons, clamped point nucleus, 3 up and 2 down electrons",
+      "method": "PauliNet",
+      "variant": "PauliNet",
+      "method_class": "backflow",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-24.6506",
+      "energy_token": "-24.6506(11)",
+      "normalization": "total",
+      "unit": "Ha",
+      "uncertainty": "0.0011",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Table 1, 'PauliNet' column",
+      "eligibility_evidence": "VMC energy of the trained PauliNet as printed in Table 1.",
+      "parameter_count": null,
+      "notes": "N_up = 3, N_down = 2: not printed, but the 2P ground term of B lies only in this sector (up to the mirror N_up <-> N_down). The digits that agree with the exact energy are printed in bold. The LiH and H2 rows of the same table give no geometry and are not recorded."
+    }
+  ]
+}

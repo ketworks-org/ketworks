@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2601.06939v1",
+    "title": "Essentially No Energy Barrier Between Independent Fermionic Neural Quantum State Minima",
+    "authors": "David D. Dai, Marin Soljačić",
+    "published": "2026-01-11T14:58:08Z",
+    "updated": "2026-01-11T14:58:08Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2601.06939v1",
+  "source_sha256": null,
+  "extraction_model": "human",
+  "issues": [],
+  "results": [
+    {
+      "benchmark_id": "trap2d-electrons-n6-pol-w0p0625",
+      "system_description": "2D quantum dot: 6 electrons (6 up, 0 down) in a harmonic trap, omega = 0.0625 (Hartree units), Coulomb repulsion",
+      "method": "Psiformer",
+      "variant": "Psiformer, minimum 1",
+      "method_class": "transformer",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "40.81703",
+      "energy_token": "40.81703(16)",
+      "normalization": "total",
+      "unit": "hbar omega",
+      "uncertainty": "0.00016",
+      "uncertainty_type": "unspecified",
+      "variance": "0.000210",
+      "source_location": "Table I (tab:minima), <H> row",
+      "eligibility_evidence": "Energy of the trained network 'inferred using fresh test walkers never seen during training' (caption).",
+      "parameter_count": 1586182,
+      "notes": "The paper's Hamiltonian H = -1/2 sum nabla^2 + sum C/r_ij + 1/2 sum r^2 with C = 4, spin-polarized, six electrons in 2D, is in oscillator units. Scaling lengths by 1/sqrt(omega) maps the Hartree-unit dot at omega = 1/C^2 = 0.0625 onto it, with E(Hartree) = omega E(oscillator units); the convention_factor 0.0625 converts the printed energy. The variance var(H) is printed as 0.000210(28) Ha^2 in the same units. Two independent minima of the same network; 1,586,182 parameters.",
+      "convention_factor": "0.0625"
+    },
+    {
+      "benchmark_id": "trap2d-electrons-n6-pol-w0p0625",
+      "system_description": "2D quantum dot: 6 electrons (6 up, 0 down) in a harmonic trap, omega = 0.0625 (Hartree units), Coulomb repulsion",
+      "method": "Psiformer",
+      "variant": "Psiformer, minimum 2",
+      "method_class": "transformer",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "40.81687",
+      "energy_token": "40.81687(19)",
+      "normalization": "total",
+      "unit": "hbar omega",
+      "uncertainty": "0.00019",
+      "uncertainty_type": "unspecified",
+      "variance": "0.000296",
+      "source_location": "Table I (tab:minima), <H> row",
+      "eligibility_evidence": "Energy of the trained network 'inferred using fresh test walkers never seen during training' (caption).",
+      "parameter_count": 1586182,
+      "notes": "The paper's Hamiltonian H = -1/2 sum nabla^2 + sum C/r_ij + 1/2 sum r^2 with C = 4, spin-polarized, six electrons in 2D, is in oscillator units. Scaling lengths by 1/sqrt(omega) maps the Hartree-unit dot at omega = 1/C^2 = 0.0625 onto it, with E(Hartree) = omega E(oscillator units); the convention_factor 0.0625 converts the printed energy. The variance var(H) is printed as 0.000296(72) Ha^2 in the same units. Two independent minima of the same network; 1,586,182 parameters.",
+      "convention_factor": "0.0625"
+    }
+  ]
+}
