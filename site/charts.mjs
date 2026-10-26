@@ -73,7 +73,7 @@ const node = (tag, attributes = {}, parent = null) => {
 };
 const html = (tag, className, value = '') => { const el = document.createElement(tag); if (className) el.className = className; el.textContent = value; return el; };
 
-let VIEW = (() => { try { return localStorage.getItem('ketboard-chart') || 'time'; } catch { return 'time'; } })();
+let VIEW = (() => { try { return localStorage.getItem('ketboard-chart') || 'rank'; } catch { return 'rank'; } })();
 let LAST = null;
 if (typeof window !== 'undefined') {
   let timer = null;
@@ -89,7 +89,7 @@ export function renderEnergyChart(container, rows, options) {
   if (container.hidden) return;
   const head = html('div', 'chart-head'), toggle = html('div', 'chart-switch');
   toggle.setAttribute('role', 'group'); toggle.setAttribute('aria-label', 'Chart view');
-  [['time', 'Over time'], ['rank', 'Ranked']].forEach(([key, name]) => {
+  [['rank', 'Ranked'], ['time', 'Over time']].forEach(([key, name]) => {
     const button = html('button', '', name); button.type = 'button'; button.setAttribute('aria-pressed', String(VIEW === key));
     button.addEventListener('click', () => { VIEW = key; try { localStorage.setItem('ketboard-chart', key); } catch { /* storage unavailable */ } renderEnergyChart(container, rows, options); });
     toggle.append(button);
