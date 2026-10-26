@@ -53,7 +53,7 @@ entries
 instances: j1j2-square-10x10-pbc-j2-0p5-sz0
 ```
 
-The DMRG energy on the torus lies above every modern NQS result, a consequence of the entanglement across a cut of length $2L$ on a torus (Gong et al. note truncation errors two orders of magnitude larger on the $10\times10$ torus than on a width-10 cylinder, arXiv:1311.5962, note 65). The exact diagonalization value for $6\times6$, $e_0=-0.503810$ (arXiv:1903.06713, Table I), remains the only exact number for this coupling on a finite torus.
+The DMRG energy on the torus lies above most of the NQS entries, a consequence of the entanglement across a cut of length $2L$ on a torus (Gong et al. note truncation errors two orders of magnitude larger on the $10\times10$ torus than on a width-10 cylinder, arXiv:1311.5962, note 65). The exact diagonalization value for $6\times6$, $e_0=-0.503810$ (arXiv:1903.06713, Table I), remains the only exact number for this coupling on a finite torus.
 
 At this level the ranking of methods changes with the number of parameters, the symmetry projection, the number of samples in the final evaluation, and the convention used to quote the uncertainty. Differences within one standard error do not establish a better ansatz; see the [benchmark conventions](../benchmark-conventions/).
 

@@ -31,6 +31,27 @@
       "eligibility_evidence": "Variational energy of the authors' CNN ansatz; comparison rows (GWF, GWF+RBM, CNN of Ref. 4) are excluded.",
       "parameter_count": null,
       "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+    },
+    {
+      "benchmark_id": "heisenberg-square-10x10-pbc-sz0",
+      "system_description": "Heisenberg, 10 × 10 · J = 1 · periodic · Sz = 0. H = J sum_<ij> S_i · S_j; spin-1/2 operators S = sigma/2; J = 1; no constant shift",
+      "method": "Convolutional neural network",
+      "variant": "separate amplitude and phase CNNs",
+      "method_class": "convolutional",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.671275",
+      "energy_token": "-0.671275(5)",
+      "normalization": "per_site",
+      "unit": "J",
+      "uncertainty": "0.000005",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Table I, p. 3 (row 'our work', column J2 = 0)",
+      "eligibility_evidence": "Variational energy of the authors' CNN ansatz; comparison rows (GWF, GWF+RBM, CNN of Ref. 4) are excluded.",
+      "parameter_count": null,
+      "notes": "Square-lattice Heisenberg model at J2 = 0, 10 x 10 with periodic boundaries."
     }
   ],
   "issues": []
