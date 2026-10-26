@@ -101,8 +101,8 @@ for (const b of registry.filter(b => !b.system)) { const v = newInstanceValues(b
 // Models are named by their Hamiltonian and navigated by part (lattice, dimension, molecule, material); the
 // parts that no template rebuilds are started as proposals.
 const templated = new Set(registry.filter(b => b.system || newInstanceValues(b)).map(b => `${b.family} / ${b.part}`));
-assert.deepEqual([...new Set(registry.map(b => `${b.family} / ${b.part}`))].filter(f => !templated.has(f)).sort(), ['Heisenberg / Kagome', 'Heisenberg / Pyrochlore', 'Holstein / Chain', 'Kondo–Heisenberg / Square', 'SU(2) lattice gauge theory / Square', 'Shastry–Sutherland / Square', 't–V / Square']);
-assert.deepEqual([...new Set(registry.filter(b => b.category.startsWith('lattice')).map(b => b.family))].sort(), ['Bose–Hubbard', 'Heisenberg', 'Holstein', 'Hubbard', 'J₁–J₂ Heisenberg', 'Kondo–Heisenberg', 'SU(2) lattice gauge theory', 'Shastry–Sutherland', 'Transverse-field Ising', 't–V', 't–t′ Hubbard']);
+assert.deepEqual([...new Set(registry.map(b => `${b.family} / ${b.part}`))].filter(f => !templated.has(f)).sort(), ['Heisenberg / Kagome', 'Heisenberg / Pyrochlore', 'Holstein / Chain', 'Kondo–Heisenberg / Square', 'SU(2) lattice gauge theory / Square', 'Shastry–Sutherland / Square', 'Z₂ lattice gauge theory / Square', 't–V / Square']);
+assert.deepEqual([...new Set(registry.filter(b => b.category.startsWith('lattice')).map(b => b.family))].sort(), ['Bose–Hubbard', 'Heisenberg', 'Holstein', 'Hubbard', 'J₁–J₂ Heisenberg', 'Kondo–Heisenberg', 'SU(2) lattice gauge theory', 'Shastry–Sutherland', 'Transverse-field Ising', 'Z₂ lattice gauge theory', 't–V', 't–t′ Hubbard']);
 assert.ok(registry.every(b => typeof b.part === 'string' && b.part));
 const triangular = instanceFromForm({model:'heisenberg',lattice:'triangular',lx:'6',ly:'6',boundaries:'pbc',sz:'0',category:'lattice-spins'});
 assert.equal(triangular.family, 'Heisenberg'); assert.equal(triangular.part, 'Triangular');
