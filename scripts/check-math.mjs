@@ -145,6 +145,17 @@ assert.equal(ring.category, 'continuum-electrons'); assert.equal(ring.system.par
 assert.throws(() => continuumInstanceFromForm({cpreset:'other',cdim:'3',cup:'2',cdown:'2',cname:'X',cspace:'free',cext:'none',cint:'other',cunit:'Ha'}), /interaction/);
 console.log('Human contribution generation, new-instance keys, proposals and invalid-input checks pass.');
 const {filterRows,sortRows,rankByEnergy,summarize}=await import('../site/leaderboard.mjs');
+// Instances of a model are listed by size, then filling, then parameters (numbers as numbers), never in file order.
+const {naturalCompare,compareInstances,orderInstances}=await import('../site/leaderboard.mjs');
+assert.ok(naturalCompare('U/t = 2.15443', 'U/t = 4') < 0 && naturalCompare('U/t = 4', 'U/t = 10') < 0 && naturalCompare('U/t = −8', 'U/t = 2') < 0);
+assert.ok(naturalCompare('2×2×1 cells · Γ', '2×2×1 cells · k = (1/3, 1/3, 0)') < 0 && naturalCompare('t–t′ Hubbard', 't–t′ Hubbard') === 0);
+const hub=(id,sites,label)=>({id,family:'Hubbard',part:'Square',sites,instance_label:label});
+const mixed=[hub('h8',64,'8 × 8 · U/t = 8 · periodic · N↑ = N↓ = 28'),hub('h4u10',16,'4 × 4 · U/t = 10 · periodic · N↑ = N↓ = 4'),{id:'tv',family:'t–V',part:'Square',sites:16,instance_label:'4 × 4 · V/t = 1 · periodic · N = 5'},hub('h8b',64,'8 × 8 · U/t = 4 · periodic · N↑ = N↓ = 25'),hub('h4n10',16,'4 × 4 · U/t = 2 · periodic · N↑ = N↓ = 5'),hub('h4u2',16,'4 × 4 · U/t = 2.15443 · periodic · N↑ = N↓ = 4')];
+assert.deepEqual(orderInstances(mixed).map(b=>b.id),['h4u2','h4u10','h4n10','h8b','h8','tv']);
+const ordered=orderInstances(registry);
+assert.equal(ordered.length,registry.length);
+assert.deepEqual([...new Set(ordered.map(b=>`${b.family} / ${b.part}`))],[...new Set(registry.map(b=>`${b.family} / ${b.part}`))]);
+for (let i=1;i<ordered.length;i++) if (ordered[i].family===ordered[i-1].family&&ordered[i].part===ordered[i-1].part) assert.ok(compareInstances(ordered[i-1],ordered[i])<=0&&ordered[i-1].sites<=ordered[i].sites,`${ordered[i].id} is listed before a smaller instance`);
 const paper=id=>({id,title:'T',authors:'A. Author',published:id==='2601.00003v1'?'2026-03-01T00:00:00Z':'2026-01-01T00:00:00Z'});
 const rows=[
   {benchmark_id:'b',method:'RBM',variant:'a=4',method_class:'rbm',energy_per_site:'-0.4950',uncertainty_per_site:'0.0002',parameter_count:400,paper:paper('2601.00001v1')},

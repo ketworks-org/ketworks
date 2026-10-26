@@ -35,6 +35,43 @@ export function sortRows(rows, key = 'energy', direction = 'asc') {
   }).map(x => x.row);
 }
 
+// Instances of a model in a meaningful order: by size (sites, or particles of a continuum system), then by the
+// particle number a lattice label states (filling), then by the parameters as the label writes them, numbers
+// compared as numbers (U/t = 2.15443 before 4 before 10, −8 before 2), then by key. The Γ point comes before other twists.
+function labelChunks(label) {
+  const chunks = []; let last = 0;
+  for (const m of label.matchAll(/([−-]?)(\d+(?:\.\d+)?)/g)) {
+    const signed = m[1] === '−' || (m[1] === '-' && /(^|[\s=(])$/.test(label.slice(0, m.index)));
+    const start = signed ? m.index : m.index + m[1].length;
+    if (start > last) chunks.push(label.slice(last, start).replaceAll('Γ', '\u0001'));
+    chunks.push((signed ? -1 : 1) * Number(m[2])); last = m.index + m[0].length;
+  }
+  if (last < label.length) chunks.push(label.slice(last).replaceAll('Γ', '\u0001'));
+  return chunks;
+}
+export function naturalCompare(a, b) {
+  const x = labelChunks(a), y = labelChunks(b);
+  for (let i = 0; i < Math.min(x.length, y.length); i++) {
+    if (typeof x[i] !== typeof y[i]) return typeof x[i] === 'number' ? -1 : 1;
+    if (x[i] !== y[i]) return typeof x[i] === 'number' ? x[i] - y[i] : x[i] < y[i] ? -1 : 1;
+  }
+  return x.length - y.length;
+}
+const particles = label => {
+  const m = /N↑ = N↓ = (\d+)|N↑ = (\d+), N↓ = (\d+)|\bN(?:_e|_f)? = (\d+)/.exec(label);
+  return !m ? 0 : m[1] ? 2 * Number(m[1]) : m[2] ? Number(m[2]) + Number(m[3]) : Number(m[4]);
+};
+export function compareInstances(a, b) {
+  const la = a.instance_label || a.id, lb = b.instance_label || b.id;
+  return a.sites - b.sites || particles(la) - particles(lb) || naturalCompare(la, lb) || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
+}
+// The registry reordered within each part of each model; models and parts keep the order in which they first appear.
+export function orderInstances(benchmarks) {
+  const group = b => `${b.family}\u0000${b.part}`, first = new Map();
+  benchmarks.forEach((b, i) => { if (!first.has(group(b))) first.set(group(b), i); });
+  return [...benchmarks].sort((a, b) => first.get(group(a)) - first.get(group(b)) || compareInstances(a, b));
+}
+
 // Rank by energy regardless of the displayed order, so the rank column stays meaningful.
 export function rankByEnergy(rows) {
   const ranks = new Map();
