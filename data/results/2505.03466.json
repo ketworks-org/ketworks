@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2505.03466v2",
+    "title": "Design principles of deep translationally-symmetric neural quantum states for frustrated magnets",
+    "authors": "Rajah P. Nutakki, Ahmedeo Shokry, Filippo Vicentini",
+    "published": "2025-05-06T12:08:59Z",
+    "updated": "2025-10-27T09:18:28Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2505.03466v2",
+  "source_sha256": null,
+  "extraction_model": "human",
+  "results": [
+    {
+      "benchmark_id": "j1j2-square-10x10-pbc-j2-0p5-sz0",
+      "system_description": "J₁–J₂ Heisenberg, 10 × 10 · J₂/J₁ = 0.5 · periodic · Sz = 0. H = J1 sum_<ij> S_i · S_j + J2 sum_<<ij>> S_i · S_j; spin-1/2 operators S = sigma/2; J1 = 1; J2 = 0.5; no constant shift",
+      "method": "ConvNext network",
+      "variant": "translationally symmetric deep CNN (ConvNext blocks), L = 10",
+      "method_class": "convolutional",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.497583",
+      "energy_token": "-0.497583(6)",
+      "normalization": "per_site",
+      "unit": "J1",
+      "uncertainty": "0.000006",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Table \"Benchmark variational energies for the Shastry-Sutherland and J1-J2 models\" (tab:benchmark), row J1-J2 (J1 = 1, J2 = 0.5), network ConvNext",
+      "eligibility_evidence": "Variational energy per site of the optimized ConvNext state, with the Monte Carlo error of the final evaluation in parentheses (caption of the design-summary figure); the fViT and ResNet rows of the table are quoted.",
+      "parameter_count": null,
+      "notes": "Spin-1/2 operators S = sigma/2 (Eq. 1), L x L square lattice with periodic boundaries (Sec. 2). The number of parameters is printed as 2.6 x 10^5. The magnetization sector is not stated."
+    },
+    {
+      "benchmark_id": "shastry-sutherland-square-10x10-pbc-j0p8-sz0",
+      "system_description": "Shastry–Sutherland, 10 × 10 · J/J′ = 0.8 · periodic · Sz = 0. H = J sum_<ij> S_i · S_j + J' sum_dimers S_i · S_j; spin-1/2 operators S = sigma/2; J' = 1; J = 0.8; no constant shift",
+      "method": "ConvNext network",
+      "variant": "translationally symmetric deep CNN (ConvNext blocks), L = 10",
+      "method_class": "convolutional",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.449342",
+      "energy_token": "-0.449342(4)",
+      "normalization": "per_site",
+      "unit": "J'",
+      "uncertainty": "0.000004",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Table \"Benchmark variational energies for the Shastry-Sutherland and J1-J2 models\" (tab:benchmark), row Shastry-Sutherland (J1 = 0.8, J2 = 1), network ConvNext",
+      "eligibility_evidence": "Variational energy per site of the optimized ConvNext state, with the Monte Carlo error of the final evaluation in parentheses (caption of the design-summary figure); the fViT and ResNet rows of the table are quoted.",
+      "parameter_count": null,
+      "notes": "Spin-1/2 operators S = sigma/2 (Eq. 1), L x L square lattice with periodic boundaries (Sec. 2). The number of parameters is printed as 2.6 x 10^5. The magnetization sector is not stated. The table gives the couplings as J1 = 0.8 (nearest neighbors) and J2 = 1 (dimers), i.e. J/J' = 0.8 in units of J', while the text of Sec. 2 says J1 = 1, J2 = 0.8. The table's convention is the one of the instance: the same table compares with the factored ViT of Viteritti et al., -0.449329(1), which is their L = 10 energy at J/J' = 0.8 in units of J' (arXiv:2311.16889), and the two energies agree to 1.3 x 10^-5. The dimer pattern is that of Fig. 1."
+    }
+  ],
+  "issues": []
+}
