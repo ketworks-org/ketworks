@@ -479,7 +479,7 @@
     "unit": "J",
     "description": "Nearest-neighbor exchange.",
     "hamiltonian_latex": "H=J\\sum_{\\langle i,j\\rangle}\\mathbf{S}_i\\cdot\\mathbf{S}_j",
-    "instance_label": "20 sites · J = 1 · open · Sz = 0",
+    "instance_label": "L = 20 · J = 1 · open · Sz = 0",
     "lattice_size": "20 sites",
     "boundary_conditions": "Open in all directions",
     "parameters_latex": "J=1,\\qquad S=\\tfrac12"
@@ -497,7 +497,7 @@
     "unit": "J",
     "description": "Nearest-neighbor exchange.",
     "hamiltonian_latex": "H=J\\sum_{\\langle i,j\\rangle}\\mathbf{S}_i\\cdot\\mathbf{S}_j",
-    "instance_label": "20 sites · J = 1 · periodic · Sz = 0",
+    "instance_label": "L = 20 · J = 1 · periodic · Sz = 0",
     "lattice_size": "20 sites",
     "boundary_conditions": "Periodic",
     "parameters_latex": "J=1,\\qquad S=\\tfrac12"
@@ -515,7 +515,7 @@
     "unit": "J",
     "description": "Nearest-neighbor exchange.",
     "hamiltonian_latex": "H=J\\sum_{\\langle i,j\\rangle}\\mathbf{S}_i\\cdot\\mathbf{S}_j",
-    "instance_label": "200 sites · J = 1 · open · Sz = 0",
+    "instance_label": "L = 200 · J = 1 · open · Sz = 0",
     "lattice_size": "200 sites",
     "boundary_conditions": "Open in all directions",
     "parameters_latex": "J=1,\\qquad S=\\tfrac12"
@@ -533,7 +533,7 @@
     "unit": "J",
     "description": "Nearest-neighbor exchange.",
     "hamiltonian_latex": "H=J\\sum_{\\langle i,j\\rangle}\\mathbf{S}_i\\cdot\\mathbf{S}_j",
-    "instance_label": "200 sites · J = 1 · periodic · Sz = 0",
+    "instance_label": "L = 200 · J = 1 · periodic · Sz = 0",
     "lattice_size": "200 sites",
     "boundary_conditions": "Periodic",
     "parameters_latex": "J=1,\\qquad S=\\tfrac12"
@@ -551,7 +551,7 @@
     "unit": "J",
     "description": "Ising coupling in a transverse field.",
     "hamiltonian_latex": "H=-J\\sum_{\\langle i,j\\rangle}\\sigma^z_i\\sigma^z_j-h\\sum_i\\sigma^x_i",
-    "instance_label": "32 sites · h/J = 1 · periodic",
+    "instance_label": "L = 32 · h/J = 1 · periodic",
     "lattice_size": "32 sites",
     "boundary_conditions": "Periodic",
     "parameters_latex": "J=1,\\qquad h/J=1"
@@ -569,7 +569,7 @@
     "unit": "J",
     "description": "Ising coupling in a transverse field.",
     "hamiltonian_latex": "H=-J\\sum_{\\langle i,j\\rangle}\\sigma^z_i\\sigma^z_j-h\\sum_i\\sigma^x_i",
-    "instance_label": "32 sites · h/J = 0.5 · periodic",
+    "instance_label": "L = 32 · h/J = 0.5 · periodic",
     "lattice_size": "32 sites",
     "boundary_conditions": "Periodic",
     "parameters_latex": "J=1,\\qquad h/J=0.5"
@@ -587,7 +587,7 @@
     "unit": "J",
     "description": "Nearest-neighbor exchange on the kagome lattice.",
     "hamiltonian_latex": "H=J\\sum_{\\langle i,j\\rangle}\\mathbf{S}_i\\cdot\\mathbf{S}_j",
-    "instance_label": "2 × 3 cells · 18 sites · J = 1 · periodic · Sz = 0",
+    "instance_label": "2 × 3 cells · J = 1 · periodic · Sz = 0",
     "lattice_size": "2 × 3 unit cells · 18 sites",
     "boundary_conditions": "Periodic along both Bravais vectors",
     "parameters_latex": "J=1,\\qquad S=\\tfrac12"
@@ -606,7 +606,7 @@
     "id": "heisenberg-pyrochlore-2x2x2-pbc-sz0",
     "sites": 32,
     "geometry": "pyrochlore lattice: face-centered cubic Bravais vectors e1 = (1, 1, 0), e2 = (0, 1, 1), e3 = (1, 0, 1), with four sites per cell at 0 and e_alpha/2 (alpha = 1, 2, 3), forming a tetrahedron; 2 by 2 by 2 cells along e1, e2, e3 (32 sites); periodic along e1, e2 and e3; each nearest-neighbor bond counted once (12 bonds per cell). Cluster 4 x 2^3 of arXiv:2101.08787 and pyrochlore-2x2x2_32_P of Varbench.",
-    "instance_label": "2 × 2 × 2 primitive cells · 32 sites · J = 1 · periodic · Sz = 0",
+    "instance_label": "2 × 2 × 2 primitive cells · J = 1 · periodic · Sz = 0",
     "lattice_size": "2 × 2 × 2 primitive cells · 32 sites",
     "boundary_conditions": "Periodic along the three FCC primitive vectors"
   },
@@ -624,7 +624,7 @@
     "id": "heisenberg-pyrochlore-3x3x3-pbc-sz0",
     "sites": 108,
     "geometry": "pyrochlore lattice: face-centered cubic Bravais vectors e1 = (1, 1, 0), e2 = (0, 1, 1), e3 = (1, 0, 1), with four sites per cell at 0 and e_alpha/2 (alpha = 1, 2, 3), forming a tetrahedron; 3 by 3 by 3 cells along e1, e2, e3 (108 sites); periodic along e1, e2 and e3; each nearest-neighbor bond counted once (12 bonds per cell). Cluster 4 x 3^3 of arXiv:2101.08787 and pyrochlore-3x3x3_108_P of Varbench.",
-    "instance_label": "3 × 3 × 3 primitive cells · 108 sites · J = 1 · periodic · Sz = 0",
+    "instance_label": "3 × 3 × 3 primitive cells · J = 1 · periodic · Sz = 0",
     "lattice_size": "3 × 3 × 3 primitive cells · 108 sites",
     "boundary_conditions": "Periodic along the three FCC primitive vectors"
   },
@@ -642,7 +642,7 @@
     "id": "heisenberg-pyrochlore-cubic-2x2x2-pbc-sz0",
     "sites": 128,
     "geometry": "pyrochlore lattice in its conventional cubic cell of edge 2 (in units where the FCC primitive vectors are (1, 1, 0), (0, 1, 1), (1, 0, 1)), 16 sites per cubic cell; 2 by 2 by 2 cubic cells (128 sites); periodic along the three cubic axes; each nearest-neighbor bond counted once. The L = 2, N_s = 128 cubic cluster of arXiv:2311.11561 and pyrochlore-2x2x2_128_P of Varbench.",
-    "instance_label": "2 × 2 × 2 cubic cells · 128 sites · J = 1 · periodic · Sz = 0",
+    "instance_label": "2 × 2 × 2 cubic cells · J = 1 · periodic · Sz = 0",
     "lattice_size": "2 × 2 × 2 cubic cells · 128 sites",
     "boundary_conditions": "Periodic along the three cubic axes"
   },
@@ -1109,7 +1109,7 @@
     "unit": "J",
     "description": "Nearest-neighbor exchange.",
     "hamiltonian_latex": "H=J\\sum_{\\langle i,j\\rangle}\\mathbf{S}_i\\cdot\\mathbf{S}_j",
-    "instance_label": "16 sites · J = 1 · periodic · Sz = 0",
+    "instance_label": "L = 16 · J = 1 · periodic · Sz = 0",
     "lattice_size": "16 sites",
     "boundary_conditions": "Periodic",
     "parameters_latex": "J=1,\\qquad S=\\tfrac12"
@@ -1127,7 +1127,7 @@
     "unit": "J",
     "description": "Nearest-neighbor exchange.",
     "hamiltonian_latex": "H=J\\sum_{\\langle i,j\\rangle}\\mathbf{S}_i\\cdot\\mathbf{S}_j",
-    "instance_label": "100 sites · J = 1 · open · Sz = 0",
+    "instance_label": "L = 100 · J = 1 · open · Sz = 0",
     "lattice_size": "100 sites",
     "boundary_conditions": "Open in all directions",
     "parameters_latex": "J=1,\\qquad S=\\tfrac12"
@@ -1164,7 +1164,7 @@
     "geometry": "triangular Bravais lattice with primitive vectors a1 = (1, 0) and a2 = (1/2, sqrt(3)/2); the 108-site cluster periodic along T1 = 6 a1 + 6 a2 = (9, 3 sqrt(3)) and T2 = 12 a1 - 6 a2 = (9, -3 sqrt(3)), which is not an L by L rhombus; nearest-neighbor displacements a1, a2 and a2 - a1, each undirected bond counted once. This is the 108-site cluster of Kochkov et al. (arXiv:2110.06390, appendix table of cluster vectors, table:lattices_apx), also used by Fu et al. (arXiv:2206.07370).",
     "sector": "Total Sz = 0; ground-state variational calculation",
     "description": "Nearest-neighbor exchange on a triangular lattice.",
-    "instance_label": "108 sites · J = 1 · periodic · Sz = 0",
+    "instance_label": "6√3 × 6√3 (tilted) · J = 1 · periodic · Sz = 0",
     "lattice_size": "108 sites · periodic vectors 6a₁ + 6a₂ and 12a₁ − 6a₂",
     "boundary_conditions": "Periodic along T1 = 6a1 + 6a2 and T2 = 12a1 - 6a2"
   },
@@ -1182,7 +1182,7 @@
     "geometry": "kagome lattice of 4 by 4 unit cells with three sites each (48 sites); Bravais vectors a1 = (1, 0) and a2 = (1/2, sqrt(3)/2), sites at 0, a1/2 and a2/2 in each cell; periodic along 4 a1 and 4 a2 (rhombic torus); each nearest-neighbor bond counted once",
     "sector": "Total Sz = 0; ground-state variational calculation",
     "description": "Nearest-neighbor exchange on the kagome lattice.",
-    "instance_label": "4 × 4 cells · 48 sites · J = 1 · periodic · Sz = 0",
+    "instance_label": "4 × 4 cells · J = 1 · periodic · Sz = 0",
     "lattice_size": "4 × 4 unit cells · 48 sites",
     "boundary_conditions": "Periodic along both Bravais vectors"
   },
@@ -1200,7 +1200,7 @@
     "geometry": "kagome lattice of 6 by 6 unit cells with three sites each (108 sites); Bravais vectors a1 = (1, 0) and a2 = (1/2, sqrt(3)/2), sites at 0, a1/2 and a2/2 in each cell; periodic along 6 a1 and 6 a2 (rhombic torus); each nearest-neighbor bond counted once",
     "sector": "Total Sz = 0; ground-state variational calculation",
     "description": "Nearest-neighbor exchange on the kagome lattice.",
-    "instance_label": "6 × 6 cells · 108 sites · J = 1 · periodic · Sz = 0",
+    "instance_label": "6 × 6 cells · J = 1 · periodic · Sz = 0",
     "lattice_size": "6 × 6 unit cells · 108 sites",
     "boundary_conditions": "Periodic along both Bravais vectors"
   },
@@ -1218,7 +1218,7 @@
     "geometry": "kagome lattice of 6 by 6 unit cells with three sites each (108 sites); Bravais vectors a1 = (1, 0) and a2 = (1/2, sqrt(3)/2), sites at 0, a1/2 and a2/2 in each cell; periodic along 6 a1 and 6 a2 (rhombic torus); each nearest-neighbor bond counted once",
     "sector": "Total Sz = 6 (magnetization m = 2 Sz / N = 1/9); lowest state of this sector at zero field; ground-state variational calculation",
     "description": "Nearest-neighbor exchange on the kagome lattice.",
-    "instance_label": "6 × 6 cells · 108 sites · J = 1 · periodic · Sz = 6",
+    "instance_label": "6 × 6 cells · J = 1 · periodic · Sz = 6",
     "lattice_size": "6 × 6 unit cells · 108 sites",
     "boundary_conditions": "Periodic along both Bravais vectors"
   },
@@ -1236,7 +1236,7 @@
     "geometry": "kagome lattice of 6 by 6 unit cells with three sites each (108 sites); Bravais vectors a1 = (1, 0) and a2 = (1/2, sqrt(3)/2), sites at 0, a1/2 and a2/2 in each cell; periodic along 6 a1 and 6 a2 (rhombic torus); each nearest-neighbor bond counted once",
     "sector": "Total Sz = 18 (magnetization m = 2 Sz / N = 1/3); lowest state of this sector at zero field; ground-state variational calculation",
     "description": "Nearest-neighbor exchange on the kagome lattice.",
-    "instance_label": "6 × 6 cells · 108 sites · J = 1 · periodic · Sz = 18",
+    "instance_label": "6 × 6 cells · J = 1 · periodic · Sz = 18",
     "lattice_size": "6 × 6 unit cells · 108 sites",
     "boundary_conditions": "Periodic along both Bravais vectors"
   },
@@ -1254,7 +1254,7 @@
     "geometry": "kagome lattice of 6 by 6 unit cells with three sites each (108 sites); Bravais vectors a1 = (1, 0) and a2 = (1/2, sqrt(3)/2), sites at 0, a1/2 and a2/2 in each cell; periodic along 6 a1 and 6 a2 (rhombic torus); each nearest-neighbor bond counted once",
     "sector": "Total Sz = 30 (magnetization m = 2 Sz / N = 5/9); lowest state of this sector at zero field; ground-state variational calculation",
     "description": "Nearest-neighbor exchange on the kagome lattice.",
-    "instance_label": "6 × 6 cells · 108 sites · J = 1 · periodic · Sz = 30",
+    "instance_label": "6 × 6 cells · J = 1 · periodic · Sz = 30",
     "lattice_size": "6 × 6 unit cells · 108 sites",
     "boundary_conditions": "Periodic along both Bravais vectors"
   },
@@ -1272,7 +1272,7 @@
     "geometry": "kagome lattice of 9 by 9 unit cells with three sites each (243 sites); Bravais vectors a1 = (1, 0) and a2 = (1/2, sqrt(3)/2), sites at 0, a1/2 and a2/2 in each cell; periodic along 9 a1 and 9 a2 (rhombic torus); each nearest-neighbor bond counted once",
     "sector": "Total Sz = 13.5 (magnetization m = 2 Sz / N = 1/9); lowest state of this sector at zero field; ground-state variational calculation",
     "description": "Nearest-neighbor exchange on the kagome lattice.",
-    "instance_label": "9 × 9 cells · 243 sites · J = 1 · periodic · Sz = 13.5",
+    "instance_label": "9 × 9 cells · J = 1 · periodic · Sz = 13.5",
     "lattice_size": "9 × 9 unit cells · 243 sites",
     "boundary_conditions": "Periodic along both Bravais vectors"
   },
@@ -1290,7 +1290,7 @@
     "geometry": "kagome lattice of 9 by 9 unit cells with three sites each (243 sites); Bravais vectors a1 = (1, 0) and a2 = (1/2, sqrt(3)/2), sites at 0, a1/2 and a2/2 in each cell; periodic along 9 a1 and 9 a2 (rhombic torus); each nearest-neighbor bond counted once",
     "sector": "Total Sz = 40.5 (magnetization m = 2 Sz / N = 1/3); lowest state of this sector at zero field; ground-state variational calculation",
     "description": "Nearest-neighbor exchange on the kagome lattice.",
-    "instance_label": "9 × 9 cells · 243 sites · J = 1 · periodic · Sz = 40.5",
+    "instance_label": "9 × 9 cells · J = 1 · periodic · Sz = 40.5",
     "lattice_size": "9 × 9 unit cells · 243 sites",
     "boundary_conditions": "Periodic along both Bravais vectors"
   },
@@ -1308,7 +1308,7 @@
     "geometry": "kagome lattice of 9 by 9 unit cells with three sites each (243 sites); Bravais vectors a1 = (1, 0) and a2 = (1/2, sqrt(3)/2), sites at 0, a1/2 and a2/2 in each cell; periodic along 9 a1 and 9 a2 (rhombic torus); each nearest-neighbor bond counted once",
     "sector": "Total Sz = 67.5 (magnetization m = 2 Sz / N = 5/9); lowest state of this sector at zero field; ground-state variational calculation",
     "description": "Nearest-neighbor exchange on the kagome lattice.",
-    "instance_label": "9 × 9 cells · 243 sites · J = 1 · periodic · Sz = 67.5",
+    "instance_label": "9 × 9 cells · J = 1 · periodic · Sz = 67.5",
     "lattice_size": "9 × 9 unit cells · 243 sites",
     "boundary_conditions": "Periodic along both Bravais vectors"
   },
@@ -1326,7 +1326,7 @@
     "geometry": "pyrochlore lattice: face-centered cubic Bravais vectors e1 = (1, 1, 0), e2 = (0, 1, 1), e3 = (1, 0, 1), with four sites per cell at 0 and e_alpha/2 (alpha = 1, 2, 3), forming a tetrahedron; 2 by 2 by 4 cells along e1, e2, e3 (64 sites); periodic along e1, e2 and e3; each nearest-neighbor bond counted once (12 bonds per cell). Cluster 4 x 2^2 x 4 of arXiv:2101.08787.",
     "sector": "Total Sz = 0; ground-state variational calculation",
     "description": "Nearest-neighbor exchange on the pyrochlore lattice of corner-sharing tetrahedra.",
-    "instance_label": "2 × 2 × 4 primitive cells · 64 sites · J = 1 · periodic · Sz = 0",
+    "instance_label": "2 × 2 × 4 primitive cells · J = 1 · periodic · Sz = 0",
     "lattice_size": "2 × 2 × 4 primitive cells · 64 sites",
     "boundary_conditions": "Periodic along the three FCC primitive vectors"
   },
@@ -1344,7 +1344,7 @@
     "geometry": "pyrochlore lattice: face-centered cubic Bravais vectors e1 = (1, 1, 0), e2 = (0, 1, 1), e3 = (1, 0, 1), with four sites per cell at 0 and e_alpha/2 (alpha = 1, 2, 3), forming a tetrahedron; 2 by 2 by 6 cells along e1, e2, e3 (96 sites); periodic along e1, e2 and e3; each nearest-neighbor bond counted once (12 bonds per cell). Cluster 4 x 2^2 x 6 of arXiv:2101.08787.",
     "sector": "Total Sz = 0; ground-state variational calculation",
     "description": "Nearest-neighbor exchange on the pyrochlore lattice of corner-sharing tetrahedra.",
-    "instance_label": "2 × 2 × 6 primitive cells · 96 sites · J = 1 · periodic · Sz = 0",
+    "instance_label": "2 × 2 × 6 primitive cells · J = 1 · periodic · Sz = 0",
     "lattice_size": "2 × 2 × 6 primitive cells · 96 sites",
     "boundary_conditions": "Periodic along the three FCC primitive vectors"
   },
@@ -2477,7 +2477,7 @@
     "unit": "J1",
     "description": "Competing nearest- and next-nearest-neighbor exchange.",
     "hamiltonian_latex": "H=J_1\\!\\sum_{\\langle i,j\\rangle}\\!\\mathbf{S}_i\\!\\cdot\\!\\mathbf{S}_j+J_2\\!\\sum_{\\langle\\!\\langle i,j\\rangle\\!\\rangle}\\!\\mathbf{S}_i\\!\\cdot\\!\\mathbf{S}_j",
-    "instance_label": "100 sites · J₂/J₁ = 0.2 · open · Sz = 0",
+    "instance_label": "L = 100 · J₂/J₁ = 0.2 · open · Sz = 0",
     "lattice_size": "100 sites",
     "boundary_conditions": "Open in all directions",
     "parameters_latex": "J_1=1,\\qquad J_2/J_1=0.2,\\qquad S=\\tfrac12"
@@ -2495,7 +2495,7 @@
     "unit": "J1",
     "description": "Competing nearest- and next-nearest-neighbor exchange.",
     "hamiltonian_latex": "H=J_1\\!\\sum_{\\langle i,j\\rangle}\\!\\mathbf{S}_i\\!\\cdot\\!\\mathbf{S}_j+J_2\\!\\sum_{\\langle\\!\\langle i,j\\rangle\\!\\rangle}\\!\\mathbf{S}_i\\!\\cdot\\!\\mathbf{S}_j",
-    "instance_label": "100 sites · J₂/J₁ = 0.5 · open · Sz = 0",
+    "instance_label": "L = 100 · J₂/J₁ = 0.5 · open · Sz = 0",
     "lattice_size": "100 sites",
     "boundary_conditions": "Open in all directions",
     "parameters_latex": "J_1=1,\\qquad J_2/J_1=0.5,\\qquad S=\\tfrac12"
@@ -2513,7 +2513,7 @@
     "unit": "J1",
     "description": "Competing nearest- and next-nearest-neighbor exchange.",
     "hamiltonian_latex": "H=J_1\\!\\sum_{\\langle i,j\\rangle}\\!\\mathbf{S}_i\\!\\cdot\\!\\mathbf{S}_j+J_2\\!\\sum_{\\langle\\!\\langle i,j\\rangle\\!\\rangle}\\!\\mathbf{S}_i\\!\\cdot\\!\\mathbf{S}_j",
-    "instance_label": "100 sites · J₂/J₁ = 0.8 · open · Sz = 0",
+    "instance_label": "L = 100 · J₂/J₁ = 0.8 · open · Sz = 0",
     "lattice_size": "100 sites",
     "boundary_conditions": "Open in all directions",
     "parameters_latex": "J_1=1,\\qquad J_2/J_1=0.8,\\qquad S=\\tfrac12"
@@ -2585,7 +2585,7 @@
     "geometry": "triangular Bravais lattice with primitive vectors a1 = (1, 0) and a2 = (1/2, sqrt(3)/2); the 108-site cluster periodic along T1 = 6 a1 + 6 a2 = (9, 3 sqrt(3)) and T2 = 12 a1 - 6 a2 = (9, -3 sqrt(3)), which is not an L by L rhombus; nearest-neighbor displacements a1, a2 and a2 - a1; next-nearest neighbors at distance sqrt(3) (displacements a1 + a2, 2 a2 - a1 and a2 - 2 a1); each undirected bond counted once. This is the 108-site cluster of Kochkov et al. (arXiv:2110.06390, appendix table of cluster vectors, table:lattices_apx), also used by Fu et al. (arXiv:2206.07370).",
     "hamiltonian": "H = J1 sum_<ij> S_i · S_j + J2 sum_<<ij>> S_i · S_j; spin-1/2 operators S = sigma/2; J1 = 1; J2 = 0.125; no constant shift",
     "sector": "Total Sz = 0; ground-state variational calculation",
-    "instance_label": "108 sites · J₂/J₁ = 0.125 · periodic · Sz = 0",
+    "instance_label": "6√3 × 6√3 (tilted) · J₂/J₁ = 0.125 · periodic · Sz = 0",
     "lattice_size": "108 sites · periodic vectors 6a₁ + 6a₂ and 12a₁ − 6a₂",
     "boundary_conditions": "Periodic along T1 = 6a1 + 6a2 and T2 = 12a1 - 6a2",
     "parameters_latex": "J_1=1,\\qquad J_2/J_1=0.125,\\qquad S=\\tfrac12"
@@ -2711,7 +2711,7 @@
     "unit": "J",
     "description": "Ising coupling in a transverse field.",
     "hamiltonian_latex": "H=-J\\sum_{\\langle i,j\\rangle}\\sigma^z_i\\sigma^z_j-h\\sum_i\\sigma^x_i",
-    "instance_label": "200 sites · h/J = 1 · open",
+    "instance_label": "L = 200 · h/J = 1 · open",
     "lattice_size": "200 sites",
     "boundary_conditions": "Open in all directions",
     "parameters_latex": "J=1,\\qquad h/J=1"
@@ -3431,7 +3431,7 @@
     "unit": "t",
     "description": "Interacting fermions hopping on a lattice.",
     "hamiltonian_latex": "H=-t\\!\\sum_{\\langle i,j\\rangle,\\sigma}\\!\\left(c^\\dagger_{i\\sigma}c_{j\\sigma}+\\mathrm{h.c.}\\right)+U\\sum_i n_{i\\uparrow}n_{i\\downarrow}",
-    "instance_label": "24 sites · U/t = 8 · open · N↑ = N↓ = 10",
+    "instance_label": "L = 24 · U/t = 8 · open · N↑ = N↓ = 10",
     "lattice_size": "24 sites",
     "boundary_conditions": "Open in all directions",
     "parameters_latex": "t=1,\\qquad U/t=8,\\qquad t^{\\prime}=0"
@@ -3917,7 +3917,7 @@
     "unit": "t",
     "description": "Spinless fermions coupled to dispersionless local phonons.",
     "hamiltonian_latex": "H=-t\\sum_i\\left(c^\\dagger_i c_{i+1}+\\mathrm{h.c.}\\right)+\\omega_0\\sum_i b^\\dagger_i b_i+g\\sum_i\\left(c^\\dagger_i c_i-\\tfrac12\\right)\\left(b^\\dagger_i+b_i\\right)",
-    "instance_label": "4 sites · ω₀/t = 1 · g/t = 1.5 · antiperiodic · N = 2",
+    "instance_label": "L = 4 · ω₀/t = 1 · g/t = 1.5 · antiperiodic · N = 2",
     "lattice_size": "4 sites",
     "boundary_conditions": "Antiperiodic",
     "parameters_latex": "t=1,\\qquad \\omega_0/t=1,\\qquad g/t=1.5"
@@ -3935,7 +3935,7 @@
     "unit": "t",
     "description": "Spinless fermions coupled to dispersionless local phonons.",
     "hamiltonian_latex": "H=-t\\sum_i\\left(c^\\dagger_i c_{i+1}+\\mathrm{h.c.}\\right)+\\omega_0\\sum_i b^\\dagger_i b_i+g\\sum_i\\left(c^\\dagger_i c_i-\\tfrac12\\right)\\left(b^\\dagger_i+b_i\\right)",
-    "instance_label": "6 sites · ω₀/t = 1 · g/t = 1.5 · periodic · N = 3",
+    "instance_label": "L = 6 · ω₀/t = 1 · g/t = 1.5 · periodic · N = 3",
     "lattice_size": "6 sites",
     "boundary_conditions": "Periodic",
     "parameters_latex": "t=1,\\qquad \\omega_0/t=1,\\qquad g/t=1.5"
@@ -3953,7 +3953,7 @@
     "unit": "t",
     "description": "Spinless fermions coupled to dispersionless local phonons.",
     "hamiltonian_latex": "H=-t\\sum_i\\left(c^\\dagger_i c_{i+1}+\\mathrm{h.c.}\\right)+\\omega_0\\sum_i b^\\dagger_i b_i+g\\sum_i\\left(c^\\dagger_i c_i-\\tfrac12\\right)\\left(b^\\dagger_i+b_i\\right)",
-    "instance_label": "8 sites · ω₀/t = 1 · g/t = 1.5 · antiperiodic · N = 4",
+    "instance_label": "L = 8 · ω₀/t = 1 · g/t = 1.5 · antiperiodic · N = 4",
     "lattice_size": "8 sites",
     "boundary_conditions": "Antiperiodic",
     "parameters_latex": "t=1,\\qquad \\omega_0/t=1,\\qquad g/t=1.5"
@@ -3971,7 +3971,7 @@
     "unit": "t",
     "description": "Spinless fermions coupled to dispersionless local phonons.",
     "hamiltonian_latex": "H=-t\\sum_i\\left(c^\\dagger_i c_{i+1}+\\mathrm{h.c.}\\right)+\\omega_0\\sum_i b^\\dagger_i b_i+g\\sum_i\\left(c^\\dagger_i c_i-\\tfrac12\\right)\\left(b^\\dagger_i+b_i\\right)",
-    "instance_label": "16 sites · ω₀/t = 1 · g/t = 1.5 · antiperiodic · N = 8",
+    "instance_label": "L = 16 · ω₀/t = 1 · g/t = 1.5 · antiperiodic · N = 8",
     "lattice_size": "16 sites",
     "boundary_conditions": "Antiperiodic",
     "parameters_latex": "t=1,\\qquad \\omega_0/t=1,\\qquad g/t=1.5"
