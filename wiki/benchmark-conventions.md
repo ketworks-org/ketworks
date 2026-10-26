@@ -45,7 +45,7 @@ Two caveats specific to this field. The sample mean of the local energy can lie 
 
 ## Provenance and review
 
-Every entry links to a specific arXiv version and to a table, figure or equation in it, or to the data release published with that paper version: the Varbench energies (arXiv:2302.04919) are recorded from the files of its data repository, with the file and commit named in the entry. Bot-proposed entries carry a checksum of the source file; human entries carry the exact versioned source URL. A curator checks eligibility, instance matching and transcription before merging. Review confirms that the number is what the paper says for the problem the instance defines; it is not an independent reproduction.
+Every entry links to a specific arXiv version and to a table, figure or equation in it, or to the data release published with that paper version: the Varbench energies (arXiv:2302.04919), and the recurrent-network energies that Moss et al. only plot (arXiv:2502.17144, arXiv:2505.20406), are recorded from the files of their data repositories, with the file and commit named in the entry. Bot-proposed entries carry a checksum of the source file; human entries carry the exact versioned source URL. A curator checks eligibility, instance matching and transcription before merging. Review confirms that the number is what the paper says for the problem the instance defines; it is not an independent reproduction.
 
 ## Adding an instance
 

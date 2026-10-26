@@ -115,6 +115,27 @@
       "eligibility_evidence": "Variational energy on the 4 × 8 periodic lattice at U = 8 and 1/8 doping; the paper's variance-extrapolated estimate -0.768416 is not entered.",
       "parameter_count": null,
       "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+    },
+    {
+      "benchmark_id": "hubbard-rectangular-16x4-pbc-u8-n56-sz0",
+      "system_description": "16x4 rectangular lattice (Lx = 16, Ly = 4), periodic in both directions; U/t = 8, t' = 0; 56 electrons (28 up, 28 down), 1/8 hole doping",
+      "method": "Neural-network backflow (MLP)",
+      "variant": "base NNBF with n_h = 128 hidden neurons",
+      "method_class": "backflow",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.75066",
+      "energy_token": "-0.75066(2)",
+      "normalization": "per_site",
+      "unit": "t",
+      "uncertainty": "0.00002",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Appendix 'High Energy Observables' (sec:HighEnergyObservables), text and caption of the figure on the n_h = 128 observables ('energy per site of -0.75066(2)')",
+      "eligibility_evidence": "Variational energy of the base neural-network backflow state with n_h = 128 on the 4 × 16 lattice studied throughout the paper.",
+      "parameter_count": null,
+      "notes": "Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     }
   ],
   "issues": []
