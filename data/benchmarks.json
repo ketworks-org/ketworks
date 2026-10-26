@@ -359,24 +359,6 @@
     "parameters_latex": "t=1,\\qquad t'/t=-0.3,\\qquad U/t=8"
   },
   {
-    "id": "hubbard-square-16x16-obc-u8-tp-0p2-n224-sz0",
-    "name": "t–t′ Hubbard",
-    "family": "t–t′ Hubbard",
-    "part": "Square",
-    "category": "lattice-fermions",
-    "sites": 256,
-    "geometry": "16 by 16 square lattice; open in all directions; nearest-neighbor hopping t and next-nearest-neighbor (diagonal) hopping t'",
-    "hamiltonian": "H = -t sum_<ij>,s (c†_is c_js + h.c.) - t' sum_<<ij>>,s (c†_is c_js + h.c.) + U sum_i n_iup n_idown; t = 1; t' = -0.2; U = 8; no chemical-potential term or constant shift",
-    "sector": "Nup = 112; Ndown = 112; 224 electrons (1/8 hole doping); ground-state variational calculation",
-    "unit": "t",
-    "description": "Interacting fermions on a square lattice with nearest- and next-nearest-neighbor hopping.",
-    "hamiltonian_latex": "H=-t\\!\\sum_{\\langle i,j\\rangle,\\sigma}\\!\\left(c^\\dagger_{i\\sigma}c_{j\\sigma}+\\mathrm{h.c.}\\right)-t'\\!\\sum_{\\langle\\!\\langle i,j\\rangle\\!\\rangle,\\sigma}\\!\\left(c^\\dagger_{i\\sigma}c_{j\\sigma}+\\mathrm{h.c.}\\right)+U\\sum_i n_{i\\uparrow}n_{i\\downarrow}",
-    "instance_label": "16 × 16 · U/t = 8 · t′/t = −0.2 · open · N↑ = N↓ = 112",
-    "lattice_size": "16 × 16 · 256 sites",
-    "boundary_conditions": "Open in all directions",
-    "parameters_latex": "t=1,\\qquad t'/t=-0.2,\\qquad U/t=8"
-  },
-  {
     "id": "hubbard-square-16x16-pa-u8-tp-0p25-n214-sz0",
     "name": "t–t′ Hubbard",
     "family": "t–t′ Hubbard",
@@ -2841,24 +2823,6 @@
     "lattice_size": "4 × 4 · 16 sites",
     "boundary_conditions": "Periodic in both directions",
     "parameters_latex": "t=1,\\qquad U/t=8,\\qquad t^{\\prime}=0"
-  },
-  {
-    "id": "hubbard-square-4x4-pbc-u2-n10-sz0",
-    "name": "Hubbard",
-    "family": "Hubbard",
-    "part": "Square",
-    "category": "lattice-fermions",
-    "sites": 16,
-    "geometry": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only",
-    "hamiltonian": "H = -t sum_<ij>,s (c†_is c_js + h.c.) + U sum_i n_iup n_idown; t = 1; U = 2; tprime = 0; no chemical-potential term or constant shift",
-    "sector": "Nup = 5; Ndown = 5; 10 electrons; ground-state variational calculation",
-    "unit": "t",
-    "description": "Interacting fermions hopping on a lattice.",
-    "hamiltonian_latex": "H=-t\\!\\sum_{\\langle i,j\\rangle,\\sigma}\\!\\left(c^\\dagger_{i\\sigma}c_{j\\sigma}+\\mathrm{h.c.}\\right)+U\\sum_i n_{i\\uparrow}n_{i\\downarrow}",
-    "instance_label": "4 × 4 · U/t = 2 · periodic · N↑ = N↓ = 5",
-    "lattice_size": "4 × 4 · 16 sites",
-    "boundary_conditions": "Periodic in both directions",
-    "parameters_latex": "t=1,\\qquad U/t=2,\\qquad t^{\\prime}=0"
   },
   {
     "id": "hubbard-square-4x4-pbc-u4-n10-sz0",

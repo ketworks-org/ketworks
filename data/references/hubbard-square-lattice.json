@@ -142,16 +142,6 @@
       "notes": "Energy per site in units of t, 5 + 5 electrons on the periodic 4 x 4 lattice."
     },
     {
-      "benchmark_id": "hubbard-square-4x4-pbc-u2-n10-sz0",
-      "method": "Exact diagonalization",
-      "kind": "exact",
-      "energy_token": "-21.37695098445833608",
-      "normalization": "total",
-      "unit": "t",
-      "source": "Varbench data release (arXiv:2302.04919), file Hubbard/square_16_P_5_2.md, row Exact diagonalization (commit 390a21e)",
-      "notes": "Total energy in units of t, 5 + 5 electrons on the periodic 4 x 4 lattice."
-    },
-    {
       "benchmark_id": "hubbard-square-4x4-pbc-u8-n14-sz0",
       "method": "Exact diagonalization",
       "kind": "exact",
