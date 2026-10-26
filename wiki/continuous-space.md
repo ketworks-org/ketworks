@@ -76,9 +76,9 @@ The [optimizers](../optimization/) are the same as on the lattice. FermiNet intr
 ## Systems on Ketboard
 
 - **The homogeneous electron gas** in two and three dimensions, in finite periodic cells at the $\Gamma$ point, compared per electron: see its [benchmark page](../homogeneous-electron-gas/).
-- **Molecules** with fixed nuclei, compared as all-electron total energies at fixed geometries: see the [molecules page](../molecules/).
+- **Atoms and molecules** with fixed nuclei, compared as all-electron total energies at fixed geometries and spin sectors: see the [molecules page](../molecules/).
 - **Solids**: electrons and nuclei in a periodic simulation cell at a stated twist, compared per atom or per primitive cell, with clamped or quantum nuclei: see the [solids page](../solids/).
-- **Quantum dots** (electrons in a harmonic trap), compared as total energies. The [submission form](../../#submit) describes these from the particles, the space, the external potential and the interaction; no instance is on the board yet.
+- **Quantum dots**: electrons in a two-dimensional harmonic trap of frequency $\omega$ with Coulomb repulsion, $H=\sum_i\big(-\tfrac12\nabla_i^2+\tfrac12\omega^2r_i^2\big)+\sum_{i<j}1/r_{ij}$ in (effective) Hartree units, compared as total energies; closed shells with $N_\uparrow=N_\downarrow$ and spin-polarized dots. Papers that work in oscillator units, $\sum_i\big(-\tfrac12\nabla_i^2+\tfrac12r_i^2\big)+\lambda\sum_{i<j}1/r_{ij}$, solve the same problem at $\omega=1/\lambda^2$: the energy in Hartree is $\omega$ times the energy in oscillator units, and their entries carry that factor. The [submission form](../../#submit) describes a dot from the particles, the space, the external potential and the interaction.
 
 Neural states in continuous space are also used for ultracold Fermi gases (Kim et al., arXiv:2305.08831) and, at finite temperature, for the electron gas (Xie, Zhang, Wang, arXiv:2105.08644). Results computed in a finite basis set (second quantization) solve a different problem and are not compared with first-quantized ones.
 

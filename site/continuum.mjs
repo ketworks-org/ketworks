@@ -22,7 +22,8 @@ const CATEGORY = {electrons: 'continuum-electrons'};
 // Ketbook page that explains a kind of system and its instances; Ketboard links its models to it.
 const WIKI = {heg: 'homogeneous-electron-gas', molecule: 'molecules', solid: 'solids'};
 export const EXTERNAL = ['none', 'uniform background', 'harmonic trap', 'fixed nuclei', 'quantum nuclei', 'other'];
-export const ELEMENTS = ['H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne', 'Na', 'Mg', 'Al', 'Si', 'P', 'S', 'Cl', 'Ar', 'K', 'Ca'];
+export const ELEMENTS = ['H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne', 'Na', 'Mg', 'Al', 'Si', 'P', 'S', 'Cl', 'Ar', 'K', 'Ca',
+  'Sc', 'Ti', 'V', 'Cr', 'Mn', 'Fe', 'Co', 'Ni', 'Cu', 'Zn', 'Ga', 'Ge', 'As', 'Se', 'Br', 'Kr'];
 
 const num = s => String(s ?? '').trim().replace(/^\+/, '');
 const slug = s => num(s).toLowerCase().normalize('NFKD').replace(/\./g, 'p').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');

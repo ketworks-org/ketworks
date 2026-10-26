@@ -40,6 +40,296 @@
       "unit": "Ha",
       "source": "Pfau et al., arXiv:1909.02487v3, Table II",
       "notes": "All-electron aug-cc-pCVXZ basis sets, extrapolated; not a variational bound."
+    },
+    {
+      "benchmark_id": "mol-li-isolated-atom-s1",
+      "method": "Estimated exact nonrelativistic energy (Chakravorty et al., Phys. Rev. A 47, 3649 (1993))",
+      "kind": "estimate",
+      "energy_token": "-7.47806032",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table I ('Exact' column)",
+      "notes": "Estimate of the exact nonrelativistic energy from experiment and calculations, not a bound; variational energies can lie below it for the heavier atoms."
+    },
+    {
+      "benchmark_id": "mol-be-isolated-atom-s0",
+      "method": "Estimated exact nonrelativistic energy (Chakravorty et al., Phys. Rev. A 47, 3649 (1993))",
+      "kind": "estimate",
+      "energy_token": "-14.66736",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table I ('Exact' column)",
+      "notes": "Estimate of the exact nonrelativistic energy from experiment and calculations, not a bound; variational energies can lie below it for the heavier atoms."
+    },
+    {
+      "benchmark_id": "mol-b-isolated-atom-s1",
+      "method": "Estimated exact nonrelativistic energy (Chakravorty et al., Phys. Rev. A 47, 3649 (1993))",
+      "kind": "estimate",
+      "energy_token": "-24.65391",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table I ('Exact' column)",
+      "notes": "Estimate of the exact nonrelativistic energy from experiment and calculations, not a bound; variational energies can lie below it for the heavier atoms."
+    },
+    {
+      "benchmark_id": "mol-c-isolated-atom-s2",
+      "method": "Estimated exact nonrelativistic energy (Chakravorty et al., Phys. Rev. A 47, 3649 (1993))",
+      "kind": "estimate",
+      "energy_token": "-37.8450",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table I ('Exact' column)",
+      "notes": "Estimate of the exact nonrelativistic energy from experiment and calculations, not a bound; variational energies can lie below it for the heavier atoms."
+    },
+    {
+      "benchmark_id": "mol-n-isolated-atom-s3",
+      "method": "Estimated exact nonrelativistic energy (Chakravorty et al., Phys. Rev. A 47, 3649 (1993))",
+      "kind": "estimate",
+      "energy_token": "-54.5892",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table I ('Exact' column)",
+      "notes": "Estimate of the exact nonrelativistic energy from experiment and calculations, not a bound; variational energies can lie below it for the heavier atoms."
+    },
+    {
+      "benchmark_id": "mol-o-isolated-atom-s2",
+      "method": "Estimated exact nonrelativistic energy (Chakravorty et al., Phys. Rev. A 47, 3649 (1993))",
+      "kind": "estimate",
+      "energy_token": "-75.0673",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table I ('Exact' column)",
+      "notes": "Estimate of the exact nonrelativistic energy from experiment and calculations, not a bound; variational energies can lie below it for the heavier atoms."
+    },
+    {
+      "benchmark_id": "mol-f-isolated-atom-s1",
+      "method": "Estimated exact nonrelativistic energy (Chakravorty et al., Phys. Rev. A 47, 3649 (1993))",
+      "kind": "estimate",
+      "energy_token": "-99.7339",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table I ('Exact' column)",
+      "notes": "Estimate of the exact nonrelativistic energy from experiment and calculations, not a bound; variational energies can lie below it for the heavier atoms."
+    },
+    {
+      "benchmark_id": "mol-ne-isolated-atom-s0",
+      "method": "Estimated exact nonrelativistic energy (Chakravorty et al., Phys. Rev. A 47, 3649 (1993))",
+      "kind": "estimate",
+      "energy_token": "-128.9376",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table I ('Exact' column)",
+      "notes": "Estimate of the exact nonrelativistic energy from experiment and calculations, not a bound; variational energies can lie below it for the heavier atoms."
+    },
+    {
+      "benchmark_id": "mol-na-isolated-atom-s1",
+      "method": "Estimated exact nonrelativistic energy (Chakravorty et al., Phys. Rev. A 47, 3649 (1993))",
+      "kind": "estimate",
+      "energy_token": "-162.2546",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Jiang et al., arXiv:2508.02570v2, Supplementary Table 4 ('Expt. Derived' column)",
+      "notes": "Estimate of the exact nonrelativistic energy from experiment and calculations, not a bound; variational energies can lie below it for the heavier atoms."
+    },
+    {
+      "benchmark_id": "mol-mg-isolated-atom-s0",
+      "method": "Estimated exact nonrelativistic energy (Chakravorty et al., Phys. Rev. A 47, 3649 (1993))",
+      "kind": "estimate",
+      "energy_token": "-200.0530",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Jiang et al., arXiv:2508.02570v2, Supplementary Table 4 ('Expt. Derived' column)",
+      "notes": "Estimate of the exact nonrelativistic energy from experiment and calculations, not a bound; variational energies can lie below it for the heavier atoms."
+    },
+    {
+      "benchmark_id": "mol-al-isolated-atom-s1",
+      "method": "Estimated exact nonrelativistic energy (Chakravorty et al., Phys. Rev. A 47, 3649 (1993))",
+      "kind": "estimate",
+      "energy_token": "-242.3460",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Jiang et al., arXiv:2508.02570v2, Supplementary Table 4 ('Expt. Derived' column)",
+      "notes": "Estimate of the exact nonrelativistic energy from experiment and calculations, not a bound; variational energies can lie below it for the heavier atoms."
+    },
+    {
+      "benchmark_id": "mol-si-isolated-atom-s2",
+      "method": "Estimated exact nonrelativistic energy (Chakravorty et al., Phys. Rev. A 47, 3649 (1993))",
+      "kind": "estimate",
+      "energy_token": "-289.3590",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Jiang et al., arXiv:2508.02570v2, Supplementary Table 4 ('Expt. Derived' column)",
+      "notes": "Estimate of the exact nonrelativistic energy from experiment and calculations, not a bound; variational energies can lie below it for the heavier atoms."
+    },
+    {
+      "benchmark_id": "mol-p-isolated-atom-s3",
+      "method": "Estimated exact nonrelativistic energy (Chakravorty et al., Phys. Rev. A 47, 3649 (1993))",
+      "kind": "estimate",
+      "energy_token": "-341.2590",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Jiang et al., arXiv:2508.02570v2, Supplementary Table 4 ('Expt. Derived' column)",
+      "notes": "Estimate of the exact nonrelativistic energy from experiment and calculations, not a bound; variational energies can lie below it for the heavier atoms."
+    },
+    {
+      "benchmark_id": "mol-s-isolated-atom-s2",
+      "method": "Estimated exact nonrelativistic energy (Chakravorty et al., Phys. Rev. A 47, 3649 (1993))",
+      "kind": "estimate",
+      "energy_token": "-398.1100",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Jiang et al., arXiv:2508.02570v2, Supplementary Table 4 ('Expt. Derived' column)",
+      "notes": "Estimate of the exact nonrelativistic energy from experiment and calculations, not a bound; variational energies can lie below it for the heavier atoms."
+    },
+    {
+      "benchmark_id": "mol-cl-isolated-atom-s1",
+      "method": "Estimated exact nonrelativistic energy (Chakravorty et al., Phys. Rev. A 47, 3649 (1993))",
+      "kind": "estimate",
+      "energy_token": "-460.1480",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Jiang et al., arXiv:2508.02570v2, Supplementary Table 4 ('Expt. Derived' column)",
+      "notes": "Estimate of the exact nonrelativistic energy from experiment and calculations, not a bound; variational energies can lie below it for the heavier atoms."
+    },
+    {
+      "benchmark_id": "mol-ar-isolated-atom-s0",
+      "method": "Estimated exact nonrelativistic energy (Chakravorty et al., Phys. Rev. A 47, 3649 (1993))",
+      "kind": "estimate",
+      "energy_token": "-527.5400",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Jiang et al., arXiv:2508.02570v2, Supplementary Table 4 ('Expt. Derived' column)",
+      "notes": "Estimate of the exact nonrelativistic energy from experiment and calculations, not a bound; variational energies can lie below it for the heavier atoms."
+    },
+    {
+      "benchmark_id": "mol-c-isolated-atom-q1-s1",
+      "method": "Estimated exact nonrelativistic energy (Chakravorty et al., Phys. Rev. A 47, 3649 (1993))",
+      "kind": "estimate",
+      "energy_token": "-37.43088",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Wilson et al., arXiv:2103.12570v2, Table II ('Exact' column)",
+      "notes": "Estimate of the exact nonrelativistic energy from experiment and calculations, not a bound; variational energies can lie below it for the heavier atoms."
+    },
+    {
+      "benchmark_id": "mol-lih-r-3p015-bohr-s0",
+      "method": "Explicitly correlated Gaussians (Cencek and Rychlewski)",
+      "kind": "exact",
+      "energy_token": "-8.070548",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table II (from Cencek and Rychlewski, Chem. Phys. Lett. 320, 549 (2000))",
+      "notes": ""
+    },
+    {
+      "benchmark_id": "mol-li2-r-5p051-bohr-s0",
+      "method": "Estimated exact nonrelativistic energy",
+      "kind": "exact",
+      "energy_token": "-14.9954",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table II (from Filippi and Umrigar, J. Chem. Phys. 105, 213 (1996))",
+      "notes": ""
+    },
+    {
+      "benchmark_id": "mol-lih-r-3p015-bohr-s0",
+      "method": "CCSD(T), complete-basis extrapolation",
+      "kind": "estimate",
+      "energy_token": "-8.070696",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table II",
+      "notes": "All-electron aug-cc-pCVXZ basis sets, extrapolated; not a variational bound. It lies below the exact energy here."
+    },
+    {
+      "benchmark_id": "mol-li2-r-5p051-bohr-s0",
+      "method": "CCSD(T), complete-basis extrapolation",
+      "kind": "estimate",
+      "energy_token": "-14.99507",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table II",
+      "notes": "All-electron aug-cc-pCVXZ basis sets, extrapolated; not a variational bound."
+    },
+    {
+      "benchmark_id": "mol-nh3-g3-s0",
+      "method": "CCSD(T), complete-basis extrapolation",
+      "kind": "estimate",
+      "energy_token": "-56.5644",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table II",
+      "notes": "All-electron aug-cc-pCVXZ basis sets, extrapolated; not a variational bound."
+    },
+    {
+      "benchmark_id": "mol-ch4-g3-s0",
+      "method": "CCSD(T), complete-basis extrapolation",
+      "kind": "estimate",
+      "energy_token": "-40.5150",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table II",
+      "notes": "All-electron aug-cc-pCVXZ basis sets, extrapolated; not a variational bound."
+    },
+    {
+      "benchmark_id": "mol-co-r-2p173-bohr-s0",
+      "method": "CCSD(T), complete-basis extrapolation",
+      "kind": "estimate",
+      "energy_token": "-113.3255",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table II",
+      "notes": "All-electron aug-cc-pCVXZ basis sets, extrapolated; not a variational bound."
+    },
+    {
+      "benchmark_id": "mol-ethene-g3-s0",
+      "method": "CCSD(T), complete-basis extrapolation",
+      "kind": "estimate",
+      "energy_token": "-78.5888",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table II",
+      "notes": "All-electron aug-cc-pCVXZ basis sets, extrapolated; not a variational bound."
+    },
+    {
+      "benchmark_id": "mol-methylamine-g3-s0",
+      "method": "CCSD(T), complete-basis extrapolation",
+      "kind": "estimate",
+      "energy_token": "-95.8653",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table II",
+      "notes": "All-electron aug-cc-pCVXZ basis sets, extrapolated; not a variational bound."
+    },
+    {
+      "benchmark_id": "mol-h2-r-1p4-bohr-s0",
+      "method": "Exact (Kolos and Wolniewicz)",
+      "kind": "exact",
+      "energy_token": "-1.1744748",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Schaetzle, Hermann, Noe, arXiv:2010.05316v2, Table I",
+      "notes": ""
+    },
+    {
+      "benchmark_id": "mol-h4-square-a-1p0-bohr-s0",
+      "method": "FCI, complete-basis extrapolation",
+      "kind": "estimate",
+      "energy_token": "-1.4390",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Lin, Goldshlager, Lin, arXiv:2112.03491v1, Table II",
+      "notes": "Extrapolated to the complete basis (Appendix on the basis-set extrapolation); not a bound."
+    },
+    {
+      "benchmark_id": "mol-h4-square-a-4p0-bohr-s0",
+      "method": "FCI, complete-basis extrapolation",
+      "kind": "estimate",
+      "energy_token": "-2.0342",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Lin, Goldshlager, Lin, arXiv:2112.03491v1, Table II",
+      "notes": "Extrapolated to the complete basis (Appendix on the basis-set extrapolation); not a bound."
     }
   ]
 }
