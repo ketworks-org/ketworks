@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "references": [
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u10-n8-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-16.1432081(7)",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Moreno, Carleo, Georges, Stokes, arXiv:2111.10420v2, SI Table I (tab01), row U = 10, column ED energy",
+      "notes": "Total energy in units of t, 4 + 4 electrons on the periodic 4 x 4 lattice. The paper's U is 10^(k/9); see the instance."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u3p59381-n8-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-17.6980300(1)",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Moreno, Carleo, Georges, Stokes, arXiv:2111.10420v2, SI Table I (tab01), row U = 3.6, column ED energy",
+      "notes": "Total energy in units of t, 4 + 4 electrons on the periodic 4 x 4 lattice. The paper's U is 10^(k/9); see the instance."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u7p74264-n8-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-16.5091548(2)",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Moreno, Carleo, Georges, Stokes, arXiv:2111.10420v2, SI Table I (tab01), row U = 7.75, column ED energy",
+      "notes": "Total energy in units of t, 4 + 4 electrons on the periodic 4 x 4 lattice. The paper's U is 10^(k/9); see the instance."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u2p1544-n10-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-21.2122357(7)",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Moreno, Carleo, Georges, Stokes, arXiv:2111.10420v2, SI Table III (tab03), row ED, column U = 2.15",
+      "notes": "Total energy in units of t, 5 + 5 electrons on the periodic 4 x 4 lattice. The paper's U is 10^(k/9); see the instance."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u3p59381-n10-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-19.8916371(9)",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Moreno, Carleo, Georges, Stokes, arXiv:2111.10420v2, SI Table III (tab03), row ED, column U = 3.6",
+      "notes": "Total energy in units of t, 5 + 5 electrons on the periodic 4 x 4 lattice. The paper's U is 10^(k/9); see the instance."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u7p74264-n10-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-17.6037315(5)",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Moreno, Carleo, Georges, Stokes, arXiv:2111.10420v2, SI Table III (tab03), row ED, column U = 7.75",
+      "notes": "Total energy in units of t, 5 + 5 electrons on the periodic 4 x 4 lattice. The paper's U is 10^(k/9); see the instance."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u10-n10-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-16.9035599(8)",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Moreno, Carleo, Georges, Stokes, arXiv:2111.10420v2, SI Table III (tab03), row ED, column U = 10",
+      "notes": "Total energy in units of t, 5 + 5 electrons on the periodic 4 x 4 lattice. The paper's U is 10^(k/9); see the instance."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u0p1-n8-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-19.9073095(9)",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Moreno, Carleo, Georges, Stokes, arXiv:2111.10420v2, SI Table II (tab02), row ED, column U = 0.1",
+      "notes": "Total energy in units of t, 4 + 4 electrons on the periodic 4 x 4 lattice. The paper's U is 10^(k/9); see the instance."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u0p599484-n8-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-19.4747633(2)",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Moreno, Carleo, Georges, Stokes, arXiv:2111.10420v2, SI Table II (tab02), row ED, column U = 0.6",
+      "notes": "Total energy in units of t, 4 + 4 electrons on the periodic 4 x 4 lattice. The paper's U is 10^(k/9); see the instance."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u1-n8-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-19.161986(3)",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Moreno, Carleo, Georges, Stokes, arXiv:2111.10420v2, SI Table II (tab02), row ED, column U = 1",
+      "notes": "Total energy in units of t, 4 + 4 electrons on the periodic 4 x 4 lattice. The paper's U is 10^(k/9); see the instance."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u2p1544-n8-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-18.4053208(8)",
+      "normalization": "total",
+      "unit": "t",
+      "source": "Moreno, Carleo, Georges, Stokes, arXiv:2111.10420v2, SI Table II (tab02), row ED, column U = 2.15",
+      "notes": "Total energy in units of t, 4 + 4 electrons on the periodic 4 x 4 lattice. The paper's U is 10^(k/9); see the instance."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u4-n10-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-1.223808595",
+      "normalization": "per_site",
+      "unit": "t",
+      "source": "Chen, Wan, Sengupta, Georges, Roth, arXiv:2507.10705v1, Table II (tab: small scale), row U = 4, column E_ED/N_site",
+      "notes": "Energy per site in units of t, 5 + 5 electrons on the periodic 4 x 4 lattice."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u6-n10-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-1.147397817",
+      "normalization": "per_site",
+      "unit": "t",
+      "source": "Chen, Wan, Sengupta, Georges, Roth, arXiv:2507.10705v1, Table II (tab: small scale), row U = 6, column E_ED/N_site",
+      "notes": "Energy per site in units of t, 5 + 5 electrons on the periodic 4 x 4 lattice."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u8-n10-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-1.094397918",
+      "normalization": "per_site",
+      "unit": "t",
+      "source": "Chen, Wan, Sengupta, Georges, Roth, arXiv:2507.10705v1, Table II (tab: small scale), row U = 8, column E_ED/N_site",
+      "notes": "Energy per site in units of t, 5 + 5 electrons on the periodic 4 x 4 lattice."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u8-n14-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-11.86884",
+      "normalization": "total",
+      "unit": "t",
+      "source": "arXiv:2607.14875v1, Sec. on the training diagnostics (reference energy E_ref for the 4 x 4 doped PBC benchmark at U = 8 and N_e = 14)",
+      "notes": "Total energy in units of t, 7 + 7 electrons on the periodic 4 x 4 lattice, \"from exact diagonalization\"."
+    },
+    {
+      "benchmark_id": "hubbard-rectangular-4x8-cyl-u8-n28-sz0",
+      "method": "DMRG",
+      "kind": "estimate",
+      "energy_token": "-0.736329(9)",
+      "normalization": "per_site",
+      "unit": "t",
+      "source": "Sharma et al., arXiv:2510.11710v2, Table I (Appendix E), row DMRG (8 × 4)",
+      "notes": "Energy per site in units of t on the 8 x 4 cylinder (open along 8, periodic along 4). Printed with an error, so treated as an estimate rather than a variational bound."
+    },
+    {
+      "benchmark_id": "hubbard-square-16x16-obc-u8-n224-sz0",
+      "method": "fermionic PEPS (D = 16)",
+      "kind": "upper_bound",
+      "energy_token": "-0.7260(2)",
+      "normalization": "per_site",
+      "unit": "t",
+      "source": "Liu et al. (2025), as printed in Gu et al., arXiv:2604.25775v1, Table I, row PEPS, column t' = 0, OBC",
+      "notes": "Energy per site in units of t; a variational tensor-network energy."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-obc-u8-n16-sz0",
+      "method": "DMRG",
+      "kind": "upper_bound",
+      "energy_token": "-0.42552590",
+      "normalization": "per_site",
+      "unit": "t",
+      "source": "Liu et al. (2025), as printed in Du, Chen, Chan, arXiv:2506.08329v3, SM Table tab:4x4_half_energy caption",
+      "notes": "Energy per site in units of t with open boundaries; a variational DMRG energy."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-obc-u8-n14-sz0",
+      "method": "DMRG",
+      "kind": "upper_bound",
+      "energy_token": "-0.63261830",
+      "normalization": "per_site",
+      "unit": "t",
+      "source": "Liu et al. (2025), as printed in Du, Chen, Chan, arXiv:2506.08329v3, SM Table tab:4x4_doped_energy caption",
+      "notes": "Energy per site in units of t with open boundaries; a variational DMRG energy."
+    },
+    {
+      "benchmark_id": "hubbard-square-6x6-obc-u8-n32-sz0",
+      "method": "DMRG",
+      "kind": "upper_bound",
+      "energy_token": "-0.6573063",
+      "normalization": "per_site",
+      "unit": "t",
+      "source": "Liu et al. (2025), as printed in Du, Chen, Chan, arXiv:2506.08329v3, SM Table tab:6x6_energy caption",
+      "notes": "Energy per site in units of t with open boundaries; a variational DMRG energy."
+    },
+    {
+      "benchmark_id": "hubbard-chain-24-obc-u8-n20-sz0",
+      "method": "DMRG",
+      "kind": "upper_bound",
+      "energy_token": "-0.56309964",
+      "normalization": "per_site",
+      "unit": "t",
+      "source": "Du, Chen, Chan, arXiv:2506.08329v3, SM Table tab:L=24_energy caption",
+      "notes": "pyBlock2 DMRG with bond dimension 1000 and truncated weight 1.6e-10; energy per site in units of t."
+    },
+    {
+      "benchmark_id": "hubbard-square-8x8-pbc-u-8-n56-sz0",
+      "method": "Determinant quantum Monte Carlo (DQMC)",
+      "kind": "exact",
+      "energy_token": "-4.017(1)",
+      "normalization": "per_site",
+      "unit": "t",
+      "source": "Gu et al., arXiv:2604.25775v1, appendix table tab:app1, row DQMC, column 8 × 8, U = -8",
+      "notes": "Sign-free DQMC for the attractive model; energy per site in units of t. Viteritti et al. (arXiv:2604.21978v1) print -4.017 for the same system."
+    }
+  ]
+}

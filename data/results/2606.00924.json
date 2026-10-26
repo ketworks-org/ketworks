@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2606.00924v1",
+    "title": "Locality-Induced Hierarchical Backflow Wavefunctions for Correlated Fermions",
+    "authors": "Yu-Tong Zhou, Zheng-Wei Zhou, Wen-Yuan Liu",
+    "published": "2026-05-30T23:18:37Z",
+    "updated": "2026-05-30T23:18:37Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2606.00924v1",
+  "source_sha256": null,
+  "extraction_model": "human",
+  "results": [
+    {
+      "benchmark_id": "hubbard-square-16x16-pbc-u8-n224-sz0",
+      "system_description": "16x16 square lattice, periodic in both directions; U/t = 8, t' = 0; 224 electrons (112 up, 112 down), n_h = 0.125",
+      "method": "Residual hierarchical backflow (RHB)",
+      "variant": "HB K = 2 backbone times a feed-forward network factor, N_det = 5, N_neuron = 100",
+      "method_class": "backflow",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.7543",
+      "energy_token": "-0.7543(2)",
+      "normalization": "per_site",
+      "unit": "t",
+      "uncertainty": "0.0002",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Main text, paragraph introducing the residual hierarchical backflow (RHB)",
+      "eligibility_evidence": "Variational energy of the RHB state, a hierarchical backflow multiplied by a feed-forward neural network, on the 16 × 16 PBC lattice at n_h = 0.125 and U = 8.",
+      "parameter_count": null,
+      "notes": "The same sentence quotes the VAFQMC energy -0.7544 for comparison; it is not an entry. N_det = 5 and N_neuron = 100 are the settings the End Matter adopts for all large-scale simulations. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+    }
+  ],
+  "issues": []
+}
