@@ -143,6 +143,15 @@ def mark_preview(destination):
         page.write_text(text.replace('<meta name="viewport"', '<meta name="robots" content="noindex"><meta name="viewport"', 1).replace("<body>", "<body>" + PREVIEW_BANNER, 1))
 
 
+def board_stats(rows):
+    """The size of Ketboard in one line (results, the instances they are for, papers), rewritten at every build."""
+    def count(n, word):
+        return f"{n:,} {word}{'' if n == 1 else 's'}"
+    instances = {row["benchmark_id"] for row in rows}
+    papers = {row["paper"]["id"] for row in rows}
+    return f"{count(len(rows), 'result')} on {count(len(instances), 'instance')}, from {count(len(papers), 'paper')}"
+
+
 def build(root=ROOT, destination=None):
     registry = validate_tree(root)
     destination = destination or root / "dist"
@@ -158,14 +167,6 @@ def build(root=ROOT, destination=None):
     for benchmark in registry.values():
         if wiki and benchmark.get("wiki") and benchmark["wiki"] not in slugs:
             raise ValueError(f"{benchmark['id']}: wiki page {benchmark['wiki']!r} does not exist")
-    source_ref = os.getenv("KETWORKS_SOURCE_REF", "main")
-    home = destination / "index.html"
-    if home.exists():
-        home_html = home.read_text().replace("<!--HERO_MATH-->", equations.get("hero", "")).replace("<!--NAV-->", nav_html(registry=registry, index=wiki)).replace("<!--SUPPORT-->", supporters_html())
-        for action in ("new", "edit", "blob"):
-            home_html = home_html.replace(f"https://github.com/ketworks-org/ketworks/{action}/main/", f"https://github.com/ketworks-org/ketworks/{action}/{quote(source_ref, safe='/')}/")
-            home_html = home_html.replace(f"https://github.com/ketworks-org/ketworks/{action}/main?", f"https://github.com/ketworks-org/ketworks/{action}/{quote(source_ref, safe='/')}?")
-        home.write_text(home_html)
     rows, papers, records = [], set(), {}
     for path in sorted((root / "data/results").glob("*.json")):
         record = json.loads(path.read_text())
@@ -174,6 +175,14 @@ def build(root=ROOT, destination=None):
         for row in record["results"]:
             energy, error = per_site(row, registry)
             rows.append({**row, "energy_per_site": energy, "uncertainty_per_site": error, "variance_per_site": variance_per_site(row, registry), "paper": record["paper"], "source_url": record["source_url"]})
+    source_ref = os.getenv("KETWORKS_SOURCE_REF", "main")
+    home = destination / "index.html"
+    if home.exists():
+        home_html = home.read_text().replace("<!--HERO_MATH-->", equations.get("hero", "")).replace("<!--NAV-->", nav_html(registry=registry, index=wiki)).replace("<!--SUPPORT-->", supporters_html()).replace("<!--BOARD_STATS-->", html.escape(board_stats(rows)))
+        for action in ("new", "edit", "blob"):
+            home_html = home_html.replace(f"https://github.com/ketworks-org/ketworks/{action}/main/", f"https://github.com/ketworks-org/ketworks/{action}/{quote(source_ref, safe='/')}/")
+            home_html = home_html.replace(f"https://github.com/ketworks-org/ketworks/{action}/main?", f"https://github.com/ketworks-org/ketworks/{action}/{quote(source_ref, safe='/')}?")
+        home.write_text(home_html)
     # Proposal files and extraction artifacts never enter the public payload.
     payload = {"source_ref": source_ref, "benchmarks": [{**b, "hamiltonian_html": equations.get(b["id"]), "parameters_html": equations.get(b["id"] + ":parameters")} for b in registry.values()], "wiki": wiki, "results": rows, "papers": records, "paper_count": len(papers), "categories": CATEGORIES}
     (destination / "data.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
