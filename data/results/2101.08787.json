@@ -52,9 +52,49 @@
       "eligibility_evidence": "Appendix table of ground-state energies (Table V, label tab:energies_spingaps), column 'NQS CNN': energy per site of the convolutional neural-network state with symmetry projections, optimized and evaluated by VMC in this work. The table lists DMRG and ED separately.",
       "parameter_count": null,
       "notes": "Energy per site in spin units (S = sigma/2), as printed. The paper states that the mVMC error bars are statistical; the meaning of the NQS error bar is not stated. Varbench lists the same energy (pyrochlore-3x3x3_108_P, -208.48(4) in the Pauli convention)."
+    },
+    {
+      "benchmark_id": "heisenberg-pyrochlore-2x2x4-pbc-sz0",
+      "system_description": "Heisenberg, 2 × 2 × 4 primitive cells · 64 sites · J = 1 · periodic · Sz = 0. H = J sum_<ij> S_i · S_j; spin-1/2 operators S = sigma/2; J = 1; no constant shift",
+      "method": "NQS CNN",
+      "variant": "symmetry-projected convolutional network",
+      "method_class": "convolutional",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.4908",
+      "energy_token": "-0.4908(2)",
+      "normalization": "per_site",
+      "unit": "J",
+      "uncertainty": "0.0002",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Appendix, table of energies and singlet-triplet gaps, row 4 x 2^2 x 4, column NQS CNN",
+      "eligibility_evidence": "Appendix table of ground-state energies (Table V, label tab:energies_spingaps), column 'NQS CNN': energy per site of the convolutional neural-network state with symmetry projections, optimized and evaluated by VMC in this work. The table lists mVMC and DMRG separately.",
+      "parameter_count": null,
+      "notes": "Energy per site in spin units (S = sigma/2), as printed. The meaning of the NQS error bar is not stated."
+    },
+    {
+      "benchmark_id": "heisenberg-pyrochlore-2x2x6-pbc-sz0",
+      "system_description": "Heisenberg, 2 × 2 × 6 primitive cells · 96 sites · J = 1 · periodic · Sz = 0. H = J sum_<ij> S_i · S_j; spin-1/2 operators S = sigma/2; J = 1; no constant shift",
+      "method": "NQS CNN",
+      "variant": "symmetry-projected convolutional network",
+      "method_class": "convolutional",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.490",
+      "energy_token": "-0.490(1)",
+      "normalization": "per_site",
+      "unit": "J",
+      "uncertainty": "0.001",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Appendix, table of energies and singlet-triplet gaps, row 4 x 2^2 x 6, column NQS CNN",
+      "eligibility_evidence": "Appendix table of ground-state energies (Table V, label tab:energies_spingaps), column 'NQS CNN': energy per site of the convolutional neural-network state with symmetry projections, optimized and evaluated by VMC in this work. The table lists mVMC and DMRG separately.",
+      "parameter_count": null,
+      "notes": "Energy per site in spin units (S = sigma/2), as printed. The meaning of the NQS error bar is not stated."
     }
   ],
-  "issues": [
-    "The table also gives NQS CNN energies for the 4 x 2^2 x 4 (64 sites) and 4 x 2^2 x 6 (96 sites) clusters, -0.4908(2) and -0.490(1); they are not added here because those clusters are not yet Ketboard instances."
-  ]
+  "issues": []
 }

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2608.18065v1",
+    "title": "Quantum Geometric Tensor Preconditioning for Stable Training of Recurrent Neural Quantum States",
+    "authors": "Adil Attar, Amine M. Aboussalah, Mohamed Hibat-Allah",
+    "published": "2026-08-18T17:54:08Z",
+    "updated": "2026-08-18T17:54:08Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2608.18065v1",
+  "source_sha256": null,
+  "extraction_model": "human",
+  "results": [
+    {
+      "benchmark_id": "tfim-chain-200-obc-h1",
+      "system_description": "Transverse-field Ising, 200 sites · h/J = 1 · open. H = -J sum_<ij> sigma^z_i sigma^z_j - h sum_i sigma^x_i; Pauli matrices; J = 1; h = 1; no constant shift",
+      "method": "Positive recurrent neural network (pRNN)",
+      "variant": "GRU, d_h = 32, minSR optimizer",
+      "method_class": "autoregressive",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-1.2714254",
+      "energy_token": "-1.2714254(3)",
+      "normalization": "per_site",
+      "unit": "J",
+      "uncertainty": "0.0000003",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Table \"Final variational energy results\" (tab:energies), row \"1D TFIM\", column E_minSR/N",
+      "eligibility_evidence": "Final variational energy per site of the trained positive RNN, with the Monte Carlo error in parentheses; the reference column is the exact solution.",
+      "parameter_count": null,
+      "notes": "H = -J sum_{i=1}^{N-1} sigma^z_i sigma^z_{i+1} - h sum_i sigma^x_i with Pauli matrices, open chain of N = 200 spins, J = h = 1 (Sec. 1D Transverse-Field Ising Model, Fig. 2 caption). GRU cells with d_h = 32 hidden units and 100 samples per step (hyperparameter table)."
+    },
+    {
+      "benchmark_id": "tfim-chain-200-obc-h1",
+      "system_description": "Transverse-field Ising, 200 sites · h/J = 1 · open. H = -J sum_<ij> sigma^z_i sigma^z_j - h sum_i sigma^x_i; Pauli matrices; J = 1; h = 1; no constant shift",
+      "method": "Positive recurrent neural network (pRNN)",
+      "variant": "GRU, d_h = 32, Adam optimizer",
+      "method_class": "autoregressive",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-1.271208",
+      "energy_token": "-1.271208(7)",
+      "normalization": "per_site",
+      "unit": "J",
+      "uncertainty": "0.000007",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Table \"Final variational energy results\" (tab:energies), row \"1D TFIM\", column E_Adam/N",
+      "eligibility_evidence": "Final variational energy per site of the trained positive RNN, with the Monte Carlo error in parentheses; the reference column is the exact solution.",
+      "parameter_count": null,
+      "notes": "H = -J sum_{i=1}^{N-1} sigma^z_i sigma^z_{i+1} - h sum_i sigma^x_i with Pauli matrices, open chain of N = 200 spins, J = h = 1 (Sec. 1D Transverse-Field Ising Model, Fig. 2 caption). GRU cells with d_h = 32 hidden units and 100 samples per step (hyperparameter table)."
+    }
+  ],
+  "issues": []
+}

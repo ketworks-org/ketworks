@@ -50,6 +50,270 @@
       "unit": "J1",
       "source": "Gong et al., arXiv:1311.5962, as tabulated in Choo et al., arXiv:1903.06713, Table I",
       "notes": ""
+    },
+    {
+      "benchmark_id": "j1j2-square-6x6-pbc-j2-0p2-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-0.599046",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Schulz, Ziman, Poilblanc (1996), as tabulated in Choo et al., arXiv:1903.06713v1, Table I",
+      "notes": "Ground-state energy of the 6 x 6 torus. Energy per site in units of J1."
+    },
+    {
+      "benchmark_id": "j1j2-square-6x6-pbc-j2-0p45-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-0.51565739",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Schulz, Ziman, Poilblanc (1996), as tabulated in Chen et al., arXiv:2206.14307v1, table tab:otherj2",
+      "notes": "Ground-state energy of the 6 x 6 torus. Energy per site in units of J1."
+    },
+    {
+      "benchmark_id": "j1j2-square-6x6-pbc-j2-0p55-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-0.495178",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Schulz, Ziman, Poilblanc (1996), as tabulated in Choo et al., arXiv:1903.06713v1, Table I",
+      "notes": "Ground-state energy of the 6 x 6 torus. Energy per site in units of J1."
+    },
+    {
+      "benchmark_id": "j1j2-square-6x6-pbc-j2-1p2-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-0.848364",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Schulz, Ziman, Poilblanc (1996), as tabulated in Chen et al., arXiv:2206.14307v1, table tab:otherj2",
+      "notes": "Ground-state energy of the 6 x 6 torus. Energy per site in units of J1."
+    },
+    {
+      "benchmark_id": "j1j2-square-6x6-pbc-j2-1p5-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-1.05268",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Schulz, Ziman, Poilblanc (1996), as tabulated in Chen et al., arXiv:2206.14307v1, table tab:otherj2",
+      "notes": "Ground-state energy of the 6 x 6 torus. Energy per site in units of J1."
+    },
+    {
+      "benchmark_id": "j1j2-square-10x10-pbc-j2-0p45-sz0",
+      "method": "SU(2) DMRG on the torus",
+      "kind": "upper_bound",
+      "energy_token": "-0.507976",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Gong et al., arXiv:1311.5962, as tabulated in Choo et al., arXiv:1903.06713v1, Table I",
+      "notes": "DMRG with 8192 SU(2) states (32000 U(1) states) on the 10 x 10 torus, not extrapolated. Energy per site in units of J1."
+    },
+    {
+      "benchmark_id": "j1j2-square-10x10-pbc-j2-0p55-sz0",
+      "method": "SU(2) DMRG on the torus",
+      "kind": "upper_bound",
+      "energy_token": "-0.485434",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Gong et al., arXiv:1311.5962, as tabulated in Choo et al., arXiv:1903.06713v1, Table I",
+      "notes": "DMRG with 8192 SU(2) states (32000 U(1) states) on the 10 x 10 torus, not extrapolated. Energy per site in units of J1."
+    },
+    {
+      "benchmark_id": "heisenberg-square-8x8-pbc-sz0",
+      "method": "Stochastic series expansion QMC",
+      "kind": "exact",
+      "energy_token": "-0.673487(4)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Sandvik (1997), as tabulated in Chen et al., arXiv:2206.14307v1, table tab:2dj1only",
+      "notes": "Unbiased QMC for the 8 x 8 torus; energy per site in units of J."
+    },
+    {
+      "benchmark_id": "heisenberg-square-16x16-pbc-sz0",
+      "method": "Quantum Monte Carlo",
+      "kind": "exact",
+      "energy_token": "-0.66997664(3)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Anders (unpublished), as tabulated in Moss et al., arXiv:2502.17144v3, table tab:qmc_energies",
+      "notes": "Unbiased QMC for the 16 x 16 torus; energy per site in units of J."
+    },
+    {
+      "benchmark_id": "heisenberg-square-24x24-pbc-sz0",
+      "method": "Quantum Monte Carlo",
+      "kind": "exact",
+      "energy_token": "-0.66960443(4)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Anders (unpublished), as tabulated in Moss et al., arXiv:2502.17144v3, table tab:qmc_energies",
+      "notes": "Unbiased QMC for the 24 x 24 torus; energy per site in units of J."
+    },
+    {
+      "benchmark_id": "heisenberg-square-16x16-obc-sz0",
+      "method": "Quantum Monte Carlo",
+      "kind": "exact",
+      "energy_token": "-0.643531(2)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Liu et al. (2017), as tabulated in Sharir et al., arXiv:1902.04057v3, table:heisenberg",
+      "notes": "Unbiased QMC for the open 16 x 16 lattice; energy per site in units of J."
+    },
+    {
+      "benchmark_id": "j1j2-square-10x10-obc-j2-0p2-sz0",
+      "method": "DMRG (MPS, bond dimension 1024)",
+      "kind": "upper_bound",
+      "energy_token": "-2.255633",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Chen et al., arXiv:2304.01996v3, table:performance (10 x 10 block, row MPS (1024))",
+      "notes": "Variational DMRG energy of a matrix product state with bond dimension 1024, open boundaries. Printed per site in the Pauli convention of the paper (H = J1 sum sigma.sigma + J2 sum sigma.sigma); the convention factor 0.25 converts it to S = sigma/2.",
+      "convention_factor": "0.25"
+    },
+    {
+      "benchmark_id": "j1j2-square-10x10-obc-j2-0p3-sz0",
+      "method": "DMRG (MPS, bond dimension 1024)",
+      "kind": "upper_bound",
+      "energy_token": "-2.138591",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Chen et al., arXiv:2304.01996v3, table:performance (10 x 10 block, row MPS (1024))",
+      "notes": "Variational DMRG energy of a matrix product state with bond dimension 1024, open boundaries. Printed per site in the Pauli convention of the paper (H = J1 sum sigma.sigma + J2 sum sigma.sigma); the convention factor 0.25 converts it to S = sigma/2.",
+      "convention_factor": "0.25"
+    },
+    {
+      "benchmark_id": "j1j2-square-10x10-obc-j2-0p4-sz0",
+      "method": "DMRG (MPS, bond dimension 1024)",
+      "kind": "upper_bound",
+      "energy_token": "-2.031681",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Chen et al., arXiv:2304.01996v3, table:performance (10 x 10 block, row MPS (1024))",
+      "notes": "Variational DMRG energy of a matrix product state with bond dimension 1024, open boundaries. Printed per site in the Pauli convention of the paper (H = J1 sum sigma.sigma + J2 sum sigma.sigma); the convention factor 0.25 converts it to S = sigma/2.",
+      "convention_factor": "0.25"
+    },
+    {
+      "benchmark_id": "j1j2-square-10x10-obc-j2-0p5-sz0",
+      "method": "DMRG (MPS, bond dimension 1024)",
+      "kind": "upper_bound",
+      "energy_token": "-1.938770",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Chen et al., arXiv:2304.01996v3, table:performance (10 x 10 block, row MPS (1024))",
+      "notes": "Variational DMRG energy of a matrix product state with bond dimension 1024, open boundaries. Printed per site in the Pauli convention of the paper (H = J1 sum sigma.sigma + J2 sum sigma.sigma); the convention factor 0.25 converts it to S = sigma/2.",
+      "convention_factor": "0.25"
+    },
+    {
+      "benchmark_id": "j1j2-square-10x10-obc-j2-0p6-sz0",
+      "method": "DMRG (MPS, bond dimension 1024)",
+      "kind": "upper_bound",
+      "energy_token": "-1.865561",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Chen et al., arXiv:2304.01996v3, table:performance (10 x 10 block, row MPS (1024))",
+      "notes": "Variational DMRG energy of a matrix product state with bond dimension 1024, open boundaries. Printed per site in the Pauli convention of the paper (H = J1 sum sigma.sigma + J2 sum sigma.sigma); the convention factor 0.25 converts it to S = sigma/2.",
+      "convention_factor": "0.25"
+    },
+    {
+      "benchmark_id": "j1j2-square-10x10-obc-j2-0p7-sz0",
+      "method": "DMRG (MPS, bond dimension 1024)",
+      "kind": "upper_bound",
+      "energy_token": "-1.894371",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Chen et al., arXiv:2304.01996v3, table:performance (10 x 10 block, row MPS (1024))",
+      "notes": "Variational DMRG energy of a matrix product state with bond dimension 1024, open boundaries. Printed per site in the Pauli convention of the paper (H = J1 sum sigma.sigma + J2 sum sigma.sigma); the convention factor 0.25 converts it to S = sigma/2.",
+      "convention_factor": "0.25"
+    },
+    {
+      "benchmark_id": "j1j2-square-10x10-obc-j2-0p8-sz0",
+      "method": "DMRG (MPS, bond dimension 1024)",
+      "kind": "upper_bound",
+      "energy_token": "-2.062730",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Chen et al., arXiv:2304.01996v3, table:performance (10 x 10 block, row MPS (1024))",
+      "notes": "Variational DMRG energy of a matrix product state with bond dimension 1024, open boundaries. Printed per site in the Pauli convention of the paper (H = J1 sum sigma.sigma + J2 sum sigma.sigma); the convention factor 0.25 converts it to S = sigma/2.",
+      "convention_factor": "0.25"
+    },
+    {
+      "benchmark_id": "j1j2-square-12x12-obc-j2-0p2-sz0",
+      "method": "DMRG (MPS, bond dimension 1024)",
+      "kind": "upper_bound",
+      "energy_token": "-2.264084",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Chen et al., arXiv:2304.01996v3, table:performance (12 x 12 block, row MPS (1024))",
+      "notes": "Variational DMRG energy of a matrix product state with bond dimension 1024, open boundaries. Printed per site in the Pauli convention of the paper (H = J1 sum sigma.sigma + J2 sum sigma.sigma); the convention factor 0.25 converts it to S = sigma/2.",
+      "convention_factor": "0.25"
+    },
+    {
+      "benchmark_id": "j1j2-square-12x12-obc-j2-0p3-sz0",
+      "method": "DMRG (MPS, bond dimension 1024)",
+      "kind": "upper_bound",
+      "energy_token": "-2.141043",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Chen et al., arXiv:2304.01996v3, table:performance (12 x 12 block, row MPS (1024))",
+      "notes": "Variational DMRG energy of a matrix product state with bond dimension 1024, open boundaries. Printed per site in the Pauli convention of the paper (H = J1 sum sigma.sigma + J2 sum sigma.sigma); the convention factor 0.25 converts it to S = sigma/2.",
+      "convention_factor": "0.25"
+    },
+    {
+      "benchmark_id": "j1j2-square-12x12-obc-j2-0p4-sz0",
+      "method": "DMRG (MPS, bond dimension 1024)",
+      "kind": "upper_bound",
+      "energy_token": "-2.027736",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Chen et al., arXiv:2304.01996v3, table:performance (12 x 12 block, row MPS (1024))",
+      "notes": "Variational DMRG energy of a matrix product state with bond dimension 1024, open boundaries. Printed per site in the Pauli convention of the paper (H = J1 sum sigma.sigma + J2 sum sigma.sigma); the convention factor 0.25 converts it to S = sigma/2.",
+      "convention_factor": "0.25"
+    },
+    {
+      "benchmark_id": "j1j2-square-12x12-obc-j2-0p5-sz0",
+      "method": "DMRG (MPS, bond dimension 1024)",
+      "kind": "upper_bound",
+      "energy_token": "-1.931243",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Chen et al., arXiv:2304.01996v3, table:performance (12 x 12 block, row MPS (1024))",
+      "notes": "Variational DMRG energy of a matrix product state with bond dimension 1024, open boundaries. Printed per site in the Pauli convention of the paper (H = J1 sum sigma.sigma + J2 sum sigma.sigma); the convention factor 0.25 converts it to S = sigma/2.",
+      "convention_factor": "0.25"
+    },
+    {
+      "benchmark_id": "j1j2-square-12x12-obc-j2-0p6-sz0",
+      "method": "DMRG (MPS, bond dimension 1024)",
+      "kind": "upper_bound",
+      "energy_token": "-1.858846",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Chen et al., arXiv:2304.01996v3, table:performance (12 x 12 block, row MPS (1024))",
+      "notes": "Variational DMRG energy of a matrix product state with bond dimension 1024, open boundaries. Printed per site in the Pauli convention of the paper (H = J1 sum sigma.sigma + J2 sum sigma.sigma); the convention factor 0.25 converts it to S = sigma/2.",
+      "convention_factor": "0.25"
+    },
+    {
+      "benchmark_id": "j1j2-square-12x12-obc-j2-0p7-sz0",
+      "method": "DMRG (MPS, bond dimension 1024)",
+      "kind": "upper_bound",
+      "energy_token": "-1.913483",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Chen et al., arXiv:2304.01996v3, table:performance (12 x 12 block, row MPS (1024))",
+      "notes": "Variational DMRG energy of a matrix product state with bond dimension 1024, open boundaries. Printed per site in the Pauli convention of the paper (H = J1 sum sigma.sigma + J2 sum sigma.sigma); the convention factor 0.25 converts it to S = sigma/2.",
+      "convention_factor": "0.25"
+    },
+    {
+      "benchmark_id": "j1j2-square-12x12-obc-j2-0p8-sz0",
+      "method": "DMRG (MPS, bond dimension 1024)",
+      "kind": "upper_bound",
+      "energy_token": "-2.093013",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Chen et al., arXiv:2304.01996v3, table:performance (12 x 12 block, row MPS (1024))",
+      "notes": "Variational DMRG energy of a matrix product state with bond dimension 1024, open boundaries. Printed per site in the Pauli convention of the paper (H = J1 sum sigma.sigma + J2 sum sigma.sigma); the convention factor 0.25 converts it to S = sigma/2.",
+      "convention_factor": "0.25"
     }
   ]
 }
