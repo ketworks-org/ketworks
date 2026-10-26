@@ -18,6 +18,7 @@ const PER_WORD = {cell: 'primitive cell'}, perWord = per => PER_WORD[per] || per
 const perSuffix = per => per === 'system' ? '' : ` / ${perWord(per)}`;
 const countHeader = b => b.category === 'continuum-electrons' ? 'Electrons' : 'Sites';
 import {filterRows, sortRows, rankByEnergy, summarize, withErrorBar, boundaryClass, BOUNDARY_CLASSES} from './leaderboard.mjs';
+import {renderEnergyChart} from './charts.mjs';
 let dataset, submission, sort = {key: 'energy', direction: 'asc'};
 const $ = id => document.getElementById(id);
 const text = (tag, value, className) => { const el = document.createElement(tag); el.textContent = value; if (className) el.className = className; return el; };
@@ -296,6 +297,11 @@ function renderResults() {
   const conventions = document.createElement('details'); conventions.className = 'instance-conventions'; conventions.append(text('summary', 'Full geometry and conventions'), text('p', b.geometry), text('p', b.hamiltonian));
   $('system-definition').append(dl, conventions);
   const rows = currentRows(), ranks = rankByEnergy(rows); $('results').replaceChildren();
+  renderEnergyChart($('energy-chart'), rows, {
+    label: per === 'system' ? `Energy (${b.unit})` : `Energy per ${perWord(per)} (${b.unit})`,
+    energyText: row => `${withErrorBar(row.energy_per_site, row.uncertainty_per_site, row.uncertainty_type).text} ${b.unit}`,
+    describe: row => [`${row.method} · ${row.variant}`, `${classLabel(row.method_class)} · arXiv:${row.paper.id} · ${row.paper.published.slice(0, 10)}`],
+  });
   rows.forEach(row => {
     const tr = document.createElement('tr');
     const method = text('td', row.method); method.append(text('small', row.variant));

@@ -177,7 +177,20 @@ assert.equal(withErrorBar('-0.7454','0.0009').text,'-0.7454(9)');
 assert.equal(withErrorBar('-0.5','0.00002').text,'-0.5 ± 0.00002');
 assert.deepEqual(withErrorBar('-0.7598',null),{text:'-0.7598',missing:true});
 assert.equal(withErrorBar('-0.7430','0.0001','upper_bound').text,'-0.7430 ± <0.0001');
-console.log('Ketboard filtering, sorting, ranking, summary and error-bar checks pass.');
+// Instance charts: the lowest energy so far steps down in time, ties are within twice the combined error bar of the
+// lowest energy, and a poor baseline does not set the plotted range.
+const {chartPoints, lowestSoFar, tiedWithLowest, niceTicks, focusRange} = await import('../site/charts.mjs');
+const chartRow = (e, err, date) => ({energy_per_site: e, uncertainty_per_site: err, paper: {id: '2601.00001v1', published: date}});
+const plotted = chartPoints([chartRow('-0.4950', '0.0001', '2019-03-01'), chartRow('-0.4976', '0.0001', '2020-06-01'), chartRow('-0.4970', '0.0002', '2021-01-01'), chartRow('-0.4977', '0.0001', '2023-02-01'), chartRow('-0.4880', '0.0070', '2021-10-01'), chartRow(null, null, '2022-01-01')]);
+assert.equal(plotted.length, 5);
+assert.deepEqual(lowestSoFar(plotted).map(p => p.energy), [-0.495, -0.4976, -0.4977]);
+assert.deepEqual([...tiedWithLowest(plotted)].map(p => p.energy).sort((a, b) => a - b), [-0.4977, -0.4976, -0.488]);
+const range = focusRange(plotted);
+assert.deepEqual(range.outside.map(p => p.energy), [-0.488]); assert.ok(range.hi < -0.494 && range.lo < -0.4977);
+assert.equal(focusRange(plotted.slice(0, 3)).outside.length, 0);
+assert.deepEqual(niceTicks(-0.4978, -0.4949, 5), {ticks: [-0.497, -0.496, -0.495], decimals: 3});
+assert.deepEqual(niceTicks(-1.2, -0.5, 4), {ticks: [-1.2, -1, -0.8, -0.6], decimals: 1});
+console.log('Ketboard filtering, sorting, ranking, summary, error-bar and chart checks pass.');
 // A stray closing tag silently ends <main>, so the structure of the shipped HTML is checked here.
 for (const file of ['site/index.html', 'site/wiki.template.html']) {
   const html = fs.readFileSync(file, 'utf8');
