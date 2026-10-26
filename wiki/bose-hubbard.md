@@ -74,7 +74,7 @@ instances: bosehubbard-square-10x10-pbc-u16-n100 bosehubbard-square-10x10-pbc-u2
 
 - **One-dimensional chains** at unit filling. Exact diagonalization and DMRG references are available, but the neural energies so far are shown in figures.
 - **Bosons in a gauge field.** The Hofstadter–Bose–Hubbard model with soft-core or hard-core bosons (Döschl et al., arXiv:2405.04472; Ledinauskas and Anisimovas, arXiv:2405.01981) has neural energies in figures, compared with exact diagonalization and DMRG.
-- **Z₂ lattice gauge theory with hard-core bosons** (Kebrič et al., arXiv:2602.13192). The Supplementary Material tabulates DMRG and neural energies on a $5\times4$ cylinder, and two neural architectures on a $6\times6$ torus. These are hard-core bosons coupled to gauge fields, a model of its own.
+- **Z₂ lattice gauge theory with hard-core bosons** (Kebrič et al., arXiv:2602.13192). Hard-core bosons coupled to a Z₂ gauge field are a model of their own; the energies of two neural architectures on a $6\times6$ torus are on [Ketboard](../../#benchmarks?family=Z%E2%82%82%20lattice%20gauge%20theory). The DMRG and neural energies on a $5\times4$ cylinder in the Supplementary Material are not: the paper does not state which boundary links its cylinder Hamiltonian contains.
 
 ## Reporting a result for these instances
 
