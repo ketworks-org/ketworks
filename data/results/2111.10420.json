@@ -97,7 +97,7 @@
     },
     {
       "benchmark_id": "hubbard-square-4x4-pbc-u7p74264-n8-sz0",
-      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636787 (printed as 7.75); 8 electrons (4 up, 4 down)",
+      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636827 (printed as 7.75); 8 electrons (4 up, 4 down)",
       "method": "Hidden-fermion determinant state",
       "variant": "HFDS, 8 hidden fermions, single hidden layer with alpha = 32",
       "method_class": "backflow",
@@ -114,7 +114,7 @@
       "source_location": "SI Appendix H, subsection \"4x4 Hubbard model with n = 1/2\", Table I (tab01), row U = 7.75, column \"HFDS (alpha = 32)\"",
       "eligibility_evidence": "Variational energy of the hidden-fermion determinant state (determinant over physical and neural-network-generated hidden fermion orbitals), from the converged-energy tables of the Supporting Information.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of arXiv:2111.10420v2 (Supporting Information, Appendix H). The meaning of the parenthesized error is not stated. No variance is printed (SI Fig. 3 plots only the relative variance). The paper prints U = 7.75, a rounding of 10^(8/9) = 7.742636787 on its grid U = 10^(k/9). Exact diagonalization at U = 7.742636787 reproduces the exact energy printed in Table I for 4 + 4 electrons (-16.509154834 against -16.5091548(2)); U = 7.74264, the value in the key and the Varbench file name, gives -16.509154215."
+      "notes": "Transcribed from the cited location of arXiv:2111.10420v2 (Supporting Information, Appendix H). The meaning of the parenthesized error is not stated. No variance is printed (SI Fig. 3 plots only the relative variance). The paper prints U = 7.75, a rounding of 10^(8/9) = 7.742636827 on its grid U = 10^(k/9). Exact diagonalization at U = 7.742636827 reproduces the exact energy printed in Table I for 4 + 4 electrons (-16.509154834 against -16.5091548(2)); U = 7.74264, the value in the key and the Varbench file name, gives -16.509154215."
     },
     {
       "benchmark_id": "hubbard-square-4x4-pbc-u10-n10-sz0",
@@ -181,7 +181,7 @@
     },
     {
       "benchmark_id": "hubbard-square-4x4-pbc-u7p74264-n10-sz0",
-      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636787 (printed as 7.75); 10 electrons (5 up, 5 down)",
+      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636827 (printed as 7.75); 10 electrons (5 up, 5 down)",
       "method": "Hidden-fermion determinant state",
       "variant": "HFDS, 10 hidden fermions, alpha = 64, C4 and K = 0 projections",
       "method_class": "backflow",
@@ -198,7 +198,7 @@
       "source_location": "SI Appendix H, subsection \"4x4 Hubbard model with n = 5/8\", Table III (tab03), row \"HFSD (alpha = 64) + (C4 ∩ K = 0)\", column U = 7.75",
       "eligibility_evidence": "Variational energy of the hidden-fermion determinant state (determinant over physical and neural-network-generated hidden fermion orbitals), from the converged-energy tables of the Supporting Information.",
       "parameter_count": null,
-      "notes": "Transcribed from the cited location of arXiv:2111.10420v2 (Supporting Information, Appendix H). The meaning of the parenthesized error is not stated. No variance is printed (SI Fig. 3 plots only the relative variance). The paper prints U = 7.75, a rounding of 10^(8/9) = 7.742636787 on its grid U = 10^(k/9). Exact diagonalization at U = 7.742636787 reproduces the exact energy printed in Table I for 4 + 4 electrons (-16.509154834 against -16.5091548(2)); U = 7.74264, the value in the key and the Varbench file name, gives -16.509154215."
+      "notes": "Transcribed from the cited location of arXiv:2111.10420v2 (Supporting Information, Appendix H). The meaning of the parenthesized error is not stated. No variance is printed (SI Fig. 3 plots only the relative variance). The paper prints U = 7.75, a rounding of 10^(8/9) = 7.742636827 on its grid U = 10^(k/9). Exact diagonalization at U = 7.742636827 reproduces the exact energy printed in Table I for 4 + 4 electrons (-16.509154834 against -16.5091548(2)); U = 7.74264, the value in the key and the Varbench file name, gives -16.509154215."
     },
     {
       "benchmark_id": "hubbard-rectangular-4x16-cyl-u8-n56-sz0",
@@ -538,7 +538,7 @@
     },
     {
       "benchmark_id": "hubbard-square-4x4-pbc-u7p74264-n8-sz0",
-      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636787 (printed as 7.75); 8 electrons (4 up, 4 down)",
+      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636827 (printed as 7.75); 8 electrons (4 up, 4 down)",
       "method": "Hidden-fermion determinant state",
       "variant": "HFDS, 8 hidden fermions, single hidden layer with alpha = 0.5",
       "method_class": "backflow",
@@ -559,7 +559,7 @@
     },
     {
       "benchmark_id": "hubbard-square-4x4-pbc-u7p74264-n8-sz0",
-      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636787 (printed as 7.75); 8 electrons (4 up, 4 down)",
+      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636827 (printed as 7.75); 8 electrons (4 up, 4 down)",
       "method": "Hidden-fermion determinant state",
       "variant": "HFDS, 8 hidden fermions, single hidden layer with alpha = 1",
       "method_class": "backflow",
@@ -580,7 +580,7 @@
     },
     {
       "benchmark_id": "hubbard-square-4x4-pbc-u7p74264-n8-sz0",
-      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636787 (printed as 7.75); 8 electrons (4 up, 4 down)",
+      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636827 (printed as 7.75); 8 electrons (4 up, 4 down)",
       "method": "Hidden-fermion determinant state",
       "variant": "HFDS, 8 hidden fermions, single hidden layer with alpha = 2",
       "method_class": "backflow",
@@ -601,7 +601,7 @@
     },
     {
       "benchmark_id": "hubbard-square-4x4-pbc-u7p74264-n8-sz0",
-      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636787 (printed as 7.75); 8 electrons (4 up, 4 down)",
+      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636827 (printed as 7.75); 8 electrons (4 up, 4 down)",
       "method": "Hidden-fermion determinant state",
       "variant": "HFDS, 8 hidden fermions, single hidden layer with alpha = 4",
       "method_class": "backflow",
@@ -622,7 +622,7 @@
     },
     {
       "benchmark_id": "hubbard-square-4x4-pbc-u7p74264-n8-sz0",
-      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636787 (printed as 7.75); 8 electrons (4 up, 4 down)",
+      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636827 (printed as 7.75); 8 electrons (4 up, 4 down)",
       "method": "Hidden-fermion determinant state",
       "variant": "HFDS, 8 hidden fermions, single hidden layer with alpha = 8",
       "method_class": "backflow",
@@ -643,7 +643,7 @@
     },
     {
       "benchmark_id": "hubbard-square-4x4-pbc-u7p74264-n8-sz0",
-      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636787 (printed as 7.75); 8 electrons (4 up, 4 down)",
+      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636827 (printed as 7.75); 8 electrons (4 up, 4 down)",
       "method": "Hidden-fermion determinant state",
       "variant": "HFDS, 8 hidden fermions, single hidden layer with alpha = 16",
       "method_class": "backflow",
@@ -916,7 +916,7 @@
     },
     {
       "benchmark_id": "hubbard-square-4x4-pbc-u7p74264-n10-sz0",
-      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636787 (printed as 7.75); 10 electrons (5 up, 5 down)",
+      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636827 (printed as 7.75); 10 electrons (5 up, 5 down)",
       "method": "Hidden-fermion determinant state",
       "variant": "HFDS, 10 hidden fermions, alpha = 64, no symmetry projection",
       "method_class": "backflow",
@@ -937,7 +937,7 @@
     },
     {
       "benchmark_id": "hubbard-square-4x4-pbc-u7p74264-n10-sz0",
-      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636787 (printed as 7.75); 10 electrons (5 up, 5 down)",
+      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636827 (printed as 7.75); 10 electrons (5 up, 5 down)",
       "method": "Hidden-fermion determinant state",
       "variant": "HFDS, 10 hidden fermions, alpha = 64, C4 projection",
       "method_class": "backflow",
@@ -958,7 +958,7 @@
     },
     {
       "benchmark_id": "hubbard-square-4x4-pbc-u7p74264-n10-sz0",
-      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636787 (printed as 7.75); 10 electrons (5 up, 5 down)",
+      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636827 (printed as 7.75); 10 electrons (5 up, 5 down)",
       "method": "Hidden-fermion determinant state",
       "variant": "HFDS, 10 hidden fermions, alpha = 64, K = 0 projection",
       "method_class": "backflow",
@@ -1252,7 +1252,7 @@
     },
     {
       "benchmark_id": "hubbard-square-4x4-pbc-u7p74264-n8-sz0",
-      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636787 (printed as 7.75); 8 electrons (4 up, 4 down)",
+      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636827 (printed as 7.75); 8 electrons (4 up, 4 down)",
       "method": "Unrestricted Slater determinant with RBM factor",
       "variant": "USD (RBM)",
       "method_class": "rbm",
@@ -1273,7 +1273,7 @@
     },
     {
       "benchmark_id": "hubbard-square-4x4-pbc-u7p74264-n8-sz0",
-      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636787 (printed as 7.75); 8 electrons (4 up, 4 down)",
+      "system_description": "4 by 4 square lattice; periodic in both directions; nearest-neighbor hopping only; U/t = 10^(8/9) = 7.742636827 (printed as 7.75); 8 electrons (4 up, 4 down)",
       "method": "Hidden-fermion determinant state with RBM factor",
       "variant": "unrestricted hidden-spin constraint function with an RBM factor in the augmented space",
       "method_class": "rbm",
