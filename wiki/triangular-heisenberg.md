@@ -56,7 +56,7 @@ entries
 instances: heisenberg-triangular-6x6-pbc-sz0
 ```
 
-**Larger tori.** The lowest neural energy on each torus against the lowest energy of another variational method. Viteritti et al. also tabulate recurrent-network energies of Moss et al. for $L=18$, $24$ and $30$, $-0.54861(1)$, $-0.54810(1)$ and $-0.54793(1)$ (arXiv:2602.02665, Table I); Moss et al. show these sizes only in figures, so they are not Ketboard entries.
+**Larger tori.** The lowest neural energy on each torus against the lowest energy of another variational method. Moss et al. show their recurrent-network energies for $L\ge12$ only in figures; the Ketboard entries for these sizes are taken from the authors' data release. Viteritti et al. tabulate the same energies for $L=18$, $24$ and $30$ with smaller error bars, $-0.54861(1)$, $-0.54810(1)$ and $-0.54793(1)$ (arXiv:2602.02665, Table I).
 
 ```ketboard
 summary

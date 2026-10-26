@@ -220,6 +220,26 @@
       "unit": "t",
       "source": "Gu et al., arXiv:2604.25775v1, appendix table tab:app1, row DQMC, column 8 × 8, U = -8",
       "notes": "Sign-free DQMC for the attractive model; energy per site in units of t. Viteritti et al. (arXiv:2604.21978v1) print -4.017 for the same system."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u4-n16-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-0.85137",
+      "normalization": "per_site",
+      "unit": "t",
+      "source": "Anderson et al., Comput. Theor. Chem. 1003, 22 (2013), as printed in Yamazaki et al., arXiv:2602.03031v1, Supplemental Material, Table tab:hubbard, row ED, column U/t = 4",
+      "notes": "Energy per site in units of t, half filling (8 + 8 electrons) on the periodic 4 x 4 lattice."
+    },
+    {
+      "benchmark_id": "hubbard-square-4x4-pbc-u8-n16-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-0.52931",
+      "normalization": "per_site",
+      "unit": "t",
+      "source": "Anderson et al., Comput. Theor. Chem. 1003, 22 (2013), as printed in Yamazaki et al., arXiv:2602.03031v1, Supplemental Material, Table tab:hubbard, row ED, column U/t = 8",
+      "notes": "Energy per site in units of t, half filling (8 + 8 electrons) on the periodic 4 x 4 lattice."
     }
   ]
 }
