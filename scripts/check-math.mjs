@@ -81,6 +81,10 @@ for (const [id, form] of generated) {
 assert.equal(instanceFromForm({model:'tfim',lattice:'square',lx:'12',ly:'12',boundaries:'pbc',h:'3.05'}).id, 'tfim-square-12x12-pbc-h3p05');
 assert.equal(instanceFromForm({model:'heisenberg',lattice:'honeycomb',lx:'6',ly:'6',boundaries:'cyl',sz:'0'}).sites, 72);
 assert.equal(instanceFromForm({model:'heisenberg',lattice:'chain',lx:'32',boundaries:'pbc'}).id, 'heisenberg-chain-32-pbc-sz0');
+// Labels give the size as the lattice is drawn (8 × 8, L = 32, 6 × 6 cells); the site count belongs to the size field.
+assert.equal(instanceFromForm({model:'heisenberg',lattice:'chain',lx:'32',boundaries:'pbc'}).instance_label, 'L = 32 · J = 1 · periodic · Sz = 0');
+assert.equal(instanceFromForm({model:'heisenberg',lattice:'honeycomb',lx:'6',ly:'6',boundaries:'cyl',sz:'0'}).instance_label.split(' · ')[0], '6 × 6 cells');
+for (const b of registry) assert.ok(!/\bsites?\b/.test(b.instance_label), `${b.id}: the label should not count sites`);
 assert.throws(() => instanceFromForm({model:'j1j2',lattice:'square',lx:'10',ly:'8',boundaries:'pbc',j2:'0.5'}), /equal extents/);
 assert.throws(() => instanceFromForm({model:'hubbard',lattice:'square',lx:'4',ly:'4',boundaries:'pbc',u:'8',nup:'20',ndown:'2'}), /electrons/);
 const custom = instanceFromForm({model:'custom',lattice:'square',lx:'6',ly:'6',boundaries:'pbc',system_name:'Kagome Heisenberg',hamiltonian_text:'H = ...',unit:'J',category:'lattice-spins'});
