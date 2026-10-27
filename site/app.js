@@ -75,8 +75,8 @@ function lattice(kind = 'square') {
 function route() {
   const requested = location.hash.slice(1).split('?')[0] || 'overview';
   // In-page anchors such as the skip link are not routes; leave the current view alone.
-  if (!['overview', 'benchmarks', 'wiki', 'contribute', 'submit', 'learn'].includes(requested) && document.getElementById(requested)) return;
-  const name = ['overview', 'benchmarks', 'wiki', 'contribute', 'submit'].includes(requested) ? requested : (requested === 'learn' ? 'wiki' : 'overview');
+  if (!['overview', 'benchmarks', 'wiki', 'contribute', 'submit', 'settings', 'learn'].includes(requested) && document.getElementById(requested)) return;
+  const name = ['overview', 'benchmarks', 'wiki', 'contribute', 'submit', 'settings'].includes(requested) ? requested : (requested === 'learn' ? 'wiki' : 'overview');
   document.querySelectorAll('.view').forEach(el => el.hidden = el.id !== name);
   document.querySelectorAll('[data-nav]').forEach(el => { if (el.dataset.nav === name) el.setAttribute('aria-current', 'page'); else el.removeAttribute('aria-current'); });
   const params = new URLSearchParams(location.hash.split('?')[1] || '');
@@ -468,7 +468,7 @@ function prepareSubmission(event) {
 }
 // Rows in data.json carry display fields (per-site values, paper, source URL) that are not part of the stored record.
 function stripRow(row) { const {energy_per_site, uncertainty_per_site, paper, source_url, ...stored} = row; return stored; }
-window.addEventListener('hashchange', () => { route(); document.getElementById('site-nav')?.classList.remove('open'); });
+window.addEventListener('hashchange', () => { route(); document.getElementById('site-nav')?.classList.remove('open'); $('nav-toggle')?.setAttribute('aria-expanded', 'false'); });
 $('model-select').addEventListener('change', () => { if (!dataset) return; renderInstances('model-select', 'system-select'); location.hash = '#benchmarks?system=' + encodeURIComponent($('system-select').value); });
 $('system-select').addEventListener('change', () => location.hash = '#benchmarks?system=' + encodeURIComponent($('system-select').value));
 $('submit-model').addEventListener('change', () => { if (dataset) renderInstances('submit-model', 'submit-system'); });
