@@ -143,11 +143,11 @@ function instanceTable(entries, sortId) {
   const render = () => {
     body.replaceChildren(...sortInstanceSummaries(entries, current.key, current.direction).map(entry => rows.get(entry)));
     headers.querySelectorAll('th').forEach(th => {
-      if (th.firstElementChild.dataset.sort === current.key) th.setAttribute('aria-sort', current.direction === 'asc' ? 'ascending' : 'descending');
+      if (th.firstElementChild?.dataset.sort === current.key) th.setAttribute('aria-sort', current.direction === 'asc' ? 'ascending' : 'descending');
       else th.removeAttribute('aria-sort');
     });
   };
-  [['instance', 'Instance'], ['sites', countHeader(first)], ['results', 'Results'], ['energy', per === 'system' ? 'Lowest total energy' : 'Lowest energy' + perSuffix(per)]].forEach(([key, label]) => {
+  [['instance', 'Instance'], ['sites', countHeader(first)], ['results', 'Results']].forEach(([key, label]) => {
     const th = text('th', '', key === 'instance' ? '' : 'num'), button = text('button', label, 'sort'); th.scope = 'col'; button.type = 'button'; button.dataset.sort = key;
     button.addEventListener('click', () => {
       current = {key, direction: key === current.key && current.direction === 'asc' ? 'desc' : 'asc'};
@@ -155,6 +155,8 @@ function instanceTable(entries, sortId) {
     });
     th.append(button); headers.append(th);
   });
+  // These energies describe different problems, so they are displayed without a sorting control.
+  const energyHeader = text('th', per === 'system' ? 'Lowest total energy' : 'Lowest energy' + perSuffix(per), 'num'); energyHeader.scope = 'col'; headers.append(energyHeader);
   head.append(headers); table.append(head, body); render(); return table;
 }
 function familyBlock(family, summary, onlyPart) {
