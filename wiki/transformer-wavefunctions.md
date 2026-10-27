@@ -1,4 +1,4 @@
-# Transformer wavefunctions
+# Lattice transformers
 
 > **In brief.** A transformer wavefunction embeds the sites, or patches of sites, of a configuration into vectors and mixes them with self-attention, so that every amplitude is computed from all-to-all interactions between patches in a fixed number of layers. The vision-transformer (ViT) variant with attention weights that depend only on the relative position of two patches is translation-invariant by construction, holds the best variational energies on the $10\times10$ J₁–J₂ torus and on triangular tori up to $42\times42$, and serves as the backbone of the leading fermionic backflow states. Its cost is quadratic in the number of patches, and it became trainable at $10^5$ to $10^6$ parameters only with the kernel formulation of stochastic reconfiguration.
 
@@ -55,6 +55,10 @@ Transformers with $10^5$ or more parameters cannot be optimized by stochastic re
 ## Autoregressive transformers
 
 A different family keeps the decoder structure of language models: the network outputs, site by site, a normalized conditional distribution and a phase, so that $\vert\Psi\vert^2$ can be sampled exactly without a Markov chain. The transformer quantum state of Zhang and Di Ventra conditions the network on the Hamiltonian parameters and learns a whole phase diagram with one model (arXiv:2208.01758); the large patched transformers of Sprague and Czischek take patches of Rydberg atoms as tokens and exceed the accuracy of recurrent networks and of quantum Monte Carlo reference data on two-dimensional arrays (arXiv:2306.03921). The autoregressive constraint fixes a site ordering and makes sampling sequential; see the [autoregressive page](../autoregressive-networks/). The ViT wavefunctions above are not autoregressive: they are unnormalized, symmetric, and sampled by Metropolis.
+
+## Attention for continuous particles
+
+In continuous space the tokens can represent electrons rather than lattice sites. The [attention in continuous space page](../attention-continuous-space/) develops Psiformer's electron attention and LapNet's separate individual and interacting streams, including the exchange-symmetry argument and the cost of coordinate derivatives. Their outputs form neural orbitals inside determinants; the [continuous-space introduction](../continuous-space/) supplies the Hamiltonian and sampling conventions.
 
 ## References
 

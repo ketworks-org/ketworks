@@ -26,14 +26,15 @@ $$
 
 where $\{\mathbf r_{/i}\}$ is the set of the other positions. The determinant stays antisymmetric as long as each orbital is symmetric under permutations of the other particles; the network has to be permutation-equivariant, mapping a permutation of its inputs to the same permutation of its outputs. This is the continuum form of the backflow idea on the [fermionic states page](../fermionic-neural-states/), and with enough determinants it represents any antisymmetric function (Pfau et al., arXiv:1909.02487, Appendix B).
 
-The architectures differ in how the equivariant features are built:
+The architecture pages develop the different constructions:
 
-- **FermiNet** runs a one-electron stream (positions relative to the nuclei and their norms) and a two-electron stream (relative positions $\mathbf r_i-\mathbf r_j$ and distances), and at each layer concatenates each electron's features with the means over the electrons of each spin (Pfau, Spencer, Matthews, Foulkes, arXiv:1909.02487, Sec. II A). Orbitals are multiplied by exponentially decaying envelopes so that the state is normalizable. A JAX implementation with a simplified network cut the training cost by an order of magnitude (Spencer, Pfau, Botev, Foulkes, arXiv:2011.07125).
-- **PauliNet** starts from a multireference Hartree–Fock expansion, adds a neural backflow and a neural Jastrow factor, and builds the cusp conditions in: the nuclear cusps through corrected molecular orbitals and the electronic cusps through a fixed cusp function, with cuspless networks on top (Hermann, Schätzle, Noé, arXiv:1909.08423).
-- **Psiformer** replaces the FermiNet layers by self-attention over the electrons (von Glehn, Spencer, Pfau, arXiv:2211.13672).
-- **Message passing.** For the electron gas, graph networks pass messages along all electron pairs and produce backflow coordinates for plane-wave orbitals (Pescia et al., arXiv:2305.07240).
+- [FermiNet and PauliNet](../neural-orbitals/): direct neural orbitals, molecular reference states, envelopes and cusp constraints.
+- [Attention in continuous space](../attention-continuous-space/): Psiformer, LapNet and the relation between feature mixing and coordinate derivatives.
+- [Periodic neural states](../periodic-neural-states/): bosonic Deep Sets, DeepSolid, cell-periodic features and twisted boundary conditions.
+- [Message-passing backflow and pairing](../message-passing-backflow/): particle graphs, MP-NQS, transformed coordinates and Pfaffian pair states.
+- [Electron–nuclear neural states](../electron-nuclear-neural-states/): solid-hydrogen architectures, coupled particle graphs and quantum nuclei beyond the Born–Oppenheimer approximation.
 
-The determinant fixes the cost: $O(N^3)$ per evaluation, and every orbital changes when one electron moves, so the low-rank updates of Slater–Jastrow codes do not apply and these ansätze are usually sampled with moves of all electrons at once.
+The network, determinant evaluations and coordinate derivatives all contribute to the cost. Every orbital can change when one electron moves, so the ordinary rank-one updates of fixed-orbital Slater–Jastrow states do not generally apply; these ansätze are often sampled with moves of all electrons at once.
 
 ## Cusps
 

@@ -101,15 +101,23 @@ function route() {
 
 // Landing page: the book's contents grouped by section, and a ledger of benchmark instances.
 function sections() { return [...new Set(dataset.wiki.map(page => page.section))]; }
+function topicGroups(pages) {
+  return [...new Set(pages.map(page => page.subsection || ''))].map(title => ({
+    title, pages: pages.filter(page => (page.subsection || '') === title)
+  }));
+}
 function renderContents() {
   $('book-contents').replaceChildren();
   sections().forEach((section, s) => {
     const column = text('div', '', 'contents-column');
     const head = text('p', '', 'contents-section'); head.append(text('span', '', 'section-mark'), text('span', section)); column.append(head);
-    dataset.wiki.filter(page => page.section === section).forEach(page => {
-      const a = text('a', '', 'contents-entry'); a.href = `wiki/${page.slug}/`;
-      a.append(text('span', String(dataset.wiki.indexOf(page) + 1).padStart(2, '0'), 'mono'), text('strong', page.title), text('span', page.summary, 'contents-summary'));
-      column.append(a);
+    topicGroups(dataset.wiki.filter(page => page.section === section)).forEach(topic => {
+      if (topic.title) column.append(text('h3', topic.title, 'contents-subsection'));
+      topic.pages.forEach(page => {
+        const a = text('a', '', 'contents-entry'); a.href = `wiki/${page.slug}/`;
+        a.append(text('span', String(dataset.wiki.indexOf(page) + 1).padStart(2, '0'), 'mono'), text('strong', page.title), text('span', page.summary, 'contents-summary'));
+        column.append(a);
+      });
     });
     $('book-contents').append(column);
   });
@@ -285,15 +293,20 @@ function renderInstances(modelId, instanceId, selectedId) {
 }
 
 function renderWiki() {
-  const query = $('wiki-search').value.toLowerCase(); $('wiki-list').replaceChildren();
+  const query = $('wiki-search').value.trim().toLowerCase(); $('wiki-list').replaceChildren();
   sections().forEach((section, s) => {
-    const pages = dataset.wiki.filter(page => page.section === section && `${page.title} ${page.section} ${page.summary}`.toLowerCase().includes(query));
+    const pages = dataset.wiki.filter(page => page.section === section && `${page.title} ${page.section} ${page.subsection || ''} ${page.summary}`.toLowerCase().includes(query));
     if (!pages.length) return;
     const group = text('div', '', 'wiki-group'); const head = text('h2', '', 'wiki-group-title'); head.append(text('span', '', 'section-mark'), text('span', section)); group.append(head);
-    pages.forEach(page => {
-      const a = text('a', '', 'wiki-row'); a.href = `wiki/${page.slug}/`; const content = text('div', ''); content.append(text('h3', page.title), text('p', page.summary));
-      a.append(text('span', String(dataset.wiki.indexOf(page) + 1).padStart(2, '0'), 'wiki-number'), content, text('span', '↗'));
-      group.append(a);
+    topicGroups(pages).forEach(topic => {
+      const topicGroup = text('div', '', 'wiki-topic');
+      if (topic.title) topicGroup.append(text('h3', topic.title, 'wiki-subsection-title'));
+      topic.pages.forEach(page => {
+        const a = text('a', '', 'wiki-row'); a.href = `wiki/${page.slug}/`; const content = text('div', ''); content.append(text(topic.title ? 'h4' : 'h3', page.title, 'wiki-page-title'), text('p', page.summary));
+        a.append(text('span', String(dataset.wiki.indexOf(page) + 1).padStart(2, '0'), 'wiki-number'), content, text('span', '↗'));
+        topicGroup.append(a);
+      });
+      group.append(topicGroup);
     });
     $('wiki-list').append(group);
   });
