@@ -22,33 +22,6 @@ In [continuous space](../continuous-space/), electronic wavefunctions are common
 
 The physical setting imposes further constraints. Molecular orbitals must have suitable decay far from the nuclei, whereas [periodic neural states](../periodic-neural-states/) must satisfy the boundary conditions of a simulation cell, including any twist. When nuclei are treated as quantum particles, their positions also become arguments of the wavefunction and their derivatives contribute to the kinetic energy. The [electron–nuclear architectures used for solid hydrogen](../electron-nuclear-neural-states/) describe this joint dependence on electron and proton coordinates.
 
-## Correlations, antisymmetry and sampling
-
-The role of a neural network in a fermionic wavefunction can be seen from a single-determinant ansatz. For $N$ identical fermions with the same spin, consider
-
-$$
-\Psi_\theta(\mathbf R)=
-e^{J_\theta(\mathbf R)}
-\det\Phi_\theta(\mathbf R),
-\qquad
-[\Phi_\theta(\mathbf R)]_{ia}=\phi_{\theta,a}(\mathbf r_i;\{\mathbf r_{j\ne i}\}),
-$$
-
-where $i$ labels particles, $a$ labels orbitals, and $J_\theta$ is a real function symmetric under particle exchange. Each orbital is symmetric in the coordinates of the other particles, denoted by $\{\mathbf r_{j\ne i}\}$. Exchanging two particles therefore exchanges two rows of $\Phi_\theta$ and leaves $J_\theta$ unchanged. The determinant changes sign, giving the required fermionic antisymmetry.
-
-The factor $e^{J_\theta}$ changes the relative magnitudes of amplitudes but, being positive, cannot change the zeros of the determinant. Correlations in the neural orbitals can change those zeros and hence the nodal surface. Attention and message passing provide different ways of constructing the orbitals while preserving their permutation properties; the determinant supplies antisymmetry in either case (Pfau et al., arXiv:1909.02487v3; von Glehn et al., arXiv:2211.13672v2; Pescia et al., arXiv:2305.07240v3).
-
-Evaluating this wavefunction at a given configuration does not by itself provide a way to draw independent configurations from $p_\theta(\mathbf R)\propto|\Psi_\theta(\mathbf R)|^2$. Such states are usually sampled by a Markov chain. An autoregressive lattice state instead parameterizes the normalized distribution as
-
-$$
-p_\theta(\boldsymbol\sigma)
-=\prod_{i=1}^{N}p_\theta(\sigma_i\mid\sigma_1,\ldots,\sigma_{i-1}),
-\qquad
-\sum_{\sigma_i}p_\theta(\sigma_i\mid\sigma_1,\ldots,\sigma_{i-1})=1.
-$$
-
-Sampling each conditional in order produces a configuration from the full distribution, without a Markov chain. Recurrent networks and suitably masked transformers can both parameterize these conditionals. Direct sampling follows from this normalized factorization; using attention to construct orbitals in a determinant does not confer the same property.
-
 ## References
 
 - D. Pfau, J. S. Spencer, A. G. D. G. Matthews, W. M. C. Foulkes, *Ab initio solution of the many-electron Schrödinger equation with deep neural networks*, arXiv:1909.02487v3 (2019). Equivariant neural orbitals and determinants.
