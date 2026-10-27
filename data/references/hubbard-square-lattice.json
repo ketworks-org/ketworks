@@ -240,6 +240,26 @@
       "unit": "t",
       "source": "Anderson et al., Comput. Theor. Chem. 1003, 22 (2013), as printed in Yamazaki et al., arXiv:2602.03031v1, Supplemental Material, Table tab:hubbard, row ED, column U/t = 8",
       "notes": "Energy per site in units of t, half filling (8 + 8 electrons) on the periodic 4 x 4 lattice."
+    },
+    {
+      "benchmark_id": "hubbard-square-16x16-pbc-u8-n224-sz0",
+      "method": "fermionic PEPS (D = 16), simple update",
+      "kind": "upper_bound",
+      "energy_token": "-0.7545(15)",
+      "normalization": "per_site",
+      "unit": "t",
+      "source": "Chen, Gray, Du, Chan, arXiv:2610.30321v1, Supplemental Material, Table tab:sm_energy, t' = 0 block, row 16x16 fPEPS (D = 16)",
+      "notes": "Energy per site in units of t with periodic boundaries; a variational tensor-network energy, evaluated by contracting finite clusters in a belief-propagation environment (SM Sec. VI)."
+    },
+    {
+      "benchmark_id": "hubbard-square-16x16-pbc-u8-n224-sz0",
+      "method": "fermionic PEPS, extrapolated to infinite bond dimension",
+      "kind": "estimate",
+      "energy_token": "-0.7602(14)",
+      "normalization": "per_site",
+      "unit": "t",
+      "source": "Chen, Gray, Du, Chan, arXiv:2610.30321v1, Supplemental Material, Table tab:sm_energy, t' = 0 block, row 16x16 fPEPS (extrapolated)",
+      "notes": "Energy per site in units of t with periodic boundaries; bootstrap extrapolation of simple-update fPEPS energies in the gauge weight (SM Sec. VI), so an estimate, not a bound."
     }
   ]
 }

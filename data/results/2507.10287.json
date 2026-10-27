@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2507.10287v1",
+    "title": "Grassmann Variational Monte Carlo with neural wave functions",
+    "authors": "Douglas Hendry, Alessandro Sinibaldi, Giuseppe Carleo",
+    "published": "2025-07-14T13:53:13Z",
+    "updated": "2025-07-14T13:53:13Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2507.10287v1",
+  "source_sha256": null,
+  "extraction_model": "human",
+  "issues": [],
+  "results": [
+    {
+      "benchmark_id": "heisenberg-square-10x10-pbc-sz0",
+      "system_description": "Heisenberg, 10 × 10 · J = 1 · periodic · Sz = 0. H = J sum_<ij> S_i · S_j; spin-1/2 operators S = sigma/2; J = 1; no constant shift",
+      "method": "Grassmann VMC, ConvNeXt CNN backflow with RBM heads",
+      "variant": "ground state |E_0> of a 6-state jointly optimized subspace, sector (q_x, q_y, q_sf) = (0, 0, 0)",
+      "method_class": "convolutional",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.671544",
+      "energy_token": "-0.671544(4)",
+      "normalization": "per_site",
+      "unit": "J",
+      "uncertainty": "0.000004",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Table tab:updated_energies (appendix), row (0, 0, 0), column |E_0>, E/N_s",
+      "eligibility_evidence": "Directly evaluated VMC energy of the authors' own neural wave functions (a CNN backflow with RBM heads), the ground state of a jointly optimized multi-state model; not an extrapolation, projector estimate or quoted value.",
+      "parameter_count": null,
+      "notes": "Printed V-score 1e-4; the paper's QMC reference for this state is shown in Fig. 10x10. The ansatz is the span of several neural wave functions phi_i(s) = f_theta_i(CNN_Theta(s)): a shared real-valued ConvNeXt-style CNN acting as a common backflow of the spin configuration, followed by one complex-valued RBM head per state, with the Marshall sign rule applied, translation and spin-flip symmetry enforced, and sampling restricted to zero total S^z (Sec. on the Heisenberg model). The states are optimized jointly with Grassmann VMC, and the printed E_0 is the lowest eigenvalue of the Hamiltonian projected on the optimized subspace, a Ritz upper bound on the ground-state energy. Ground states of jointly optimized multi-state models are eligible by the maintainer's decision of 2026-10-26. The (q_x, q_y, q_sf) = (0, 0, 0) sector holds the ground state for this even-L lattice (Marshall sign, N/2 even). The paper does not state the meaning of the parenthesized error, so it is recorded as unspecified."
+    },
+    {
+      "benchmark_id": "heisenberg-square-6x6-pbc-sz0",
+      "system_description": "Heisenberg, 6 × 6 · J = 1 · periodic · Sz = 0. H = J sum_<ij> S_i · S_j; spin-1/2 operators S = sigma/2; J = 1; no constant shift",
+      "method": "Grassmann VMC, ConvNeXt CNN backflow with RBM heads",
+      "variant": "ground state |E_0> of a 4-state jointly optimized subspace, sector (q_x, q_y, q_sf) = (0, 0, 0)",
+      "method_class": "convolutional",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.678871",
+      "energy_token": "-0.678871(3)",
+      "normalization": "per_site",
+      "unit": "J",
+      "uncertainty": "0.000003",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Table tab:energies_6x6 (appendix), row (0, 0, 0), column |E_0>, E/N_s",
+      "eligibility_evidence": "Directly evaluated VMC energy of the authors' own neural wave functions (a CNN backflow with RBM heads), the ground state of a jointly optimized multi-state model; not an extrapolation, projector estimate or quoted value.",
+      "parameter_count": null,
+      "notes": "The same row prints the ED value -0.67887215, which this energy lies above. The ansatz is the span of several neural wave functions phi_i(s) = f_theta_i(CNN_Theta(s)): a shared real-valued ConvNeXt-style CNN acting as a common backflow of the spin configuration, followed by one complex-valued RBM head per state, with the Marshall sign rule applied, translation and spin-flip symmetry enforced, and sampling restricted to zero total S^z (Sec. on the Heisenberg model). The states are optimized jointly with Grassmann VMC, and the printed E_0 is the lowest eigenvalue of the Hamiltonian projected on the optimized subspace, a Ritz upper bound on the ground-state energy. Ground states of jointly optimized multi-state models are eligible by the maintainer's decision of 2026-10-26. The (q_x, q_y, q_sf) = (0, 0, 0) sector holds the ground state for this even-L lattice (Marshall sign, N/2 even). The paper does not state the meaning of the parenthesized error, so it is recorded as unspecified."
+    }
+  ]
+}

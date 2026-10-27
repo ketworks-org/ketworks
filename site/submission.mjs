@@ -80,7 +80,7 @@ export const BOUNDARIES = {pbc: 'periodic', obc: 'open', cyl: 'cylinder'};
 function latticeText(lattice, Lx, Ly, bc) {
   const bcText = {pbc: lattice === 'chain' ? 'periodic' : (lattice === 'triangular' ? 'periodic along both primitive vectors' : 'periodic in both directions'), obc: 'open in all directions', cyl: 'periodic along x, open along y'}[bc];
   const Bc = bcText[0].toUpperCase() + bcText.slice(1);
-  if (lattice === 'chain') return {sites: Lx, geometry: `chain of ${Lx} sites; ${bcText}; each nearest-neighbor bond counted once`, label: `${Lx} sites`, size: `${Lx} sites`, bcLabel: Bc};
+  if (lattice === 'chain') return {sites: Lx, geometry: `chain of ${Lx} sites; ${bcText}; each nearest-neighbor bond counted once`, label: `L = ${Lx}`, size: `${Lx} sites`, bcLabel: Bc};
   if (lattice === 'honeycomb') return {sites: 2 * Lx * Ly, geometry: `${Lx} by ${Ly} honeycomb lattice (two sites per unit cell, ${2 * Lx * Ly} sites); ${bcText}; each nearest-neighbor bond counted once`, label: `${Lx} × ${Ly} cells`, size: `${Lx} × ${Ly} unit cells · ${2 * Lx * Ly} sites`, bcLabel: Bc};
   if (lattice === 'triangular') return {sites: Lx * Ly, geometry: `${Lx} by ${Ly} triangular Bravais lattice; ${bcText}; nearest-neighbor displacements (1,0), (0,1), (1,-1), each undirected bond counted once`, label: `${Lx} × ${Ly}`, size: `${Lx} × ${Ly} · ${Lx * Ly} sites`, bcLabel: Bc};
   return {sites: Lx * Ly, geometry: `${Lx} by ${Ly} ${lattice} lattice; ${bcText}; each nearest-neighbor bond counted once`, label: `${Lx} × ${Ly}`, size: `${Lx} × ${Ly} · ${Lx * Ly} sites`, bcLabel: Bc};

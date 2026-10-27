@@ -95,6 +95,22 @@ td a{text-decoration:underline;text-underline-offset:3px}.num{text-align:right}t
 .sort{display:inline-flex;align-items:center;gap:6px;background:none;border:0;color:inherit;padding:0;cursor:pointer;font:inherit;text-transform:inherit;letter-spacing:inherit}
 .sort:after{content:'↕';opacity:.45;font-family:var(--mono)}th[aria-sort=ascending] .sort:after{content:'↑';opacity:1}th[aria-sort=descending] .sort:after{content:'↓';opacity:1}th[aria-sort] .sort{color:#fff;text-decoration:underline;text-underline-offset:4px}
 .table-heading{display:flex;align-items:center;justify-content:space-between;margin-top:8px}.table-heading h2{font-size:29px}.mono{font-family:var(--mono);font-size:12px}
+/* Energy chart of an instance: one series in the Ketboard blue, error bars always drawn, recessive axes. */
+.energy-chart{position:relative;margin:0 0 34px}.chart-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:12px}
+.chart-title{font:500 12px/1.4 var(--mono);color:var(--muted);margin:0}.chart-switch{display:inline-flex;border:1.5px solid var(--ink)}
+.chart-switch button{background:transparent;border:0;padding:7px 12px;font:700 10.5px/1 var(--display);text-transform:uppercase;letter-spacing:.12em;color:var(--ink);cursor:pointer}.chart-switch button+button{border-left:1.5px solid var(--ink)}
+.chart-switch button[aria-pressed=true]{background:var(--ink);color:var(--paper)}.chart-body{min-height:60px}
+.chart-plot{display:block;max-width:100%;overflow:visible}.chart-plot text,.rank-axis text{font:11px var(--mono);fill:var(--muted)}
+.chart-grid line{stroke:#ddd6c7;stroke-width:1}.chart-grid .chart-tick,.chart-axis{stroke:var(--line);stroke-width:1}
+.chart-lowest{font:13px/1.4 var(--display);color:var(--muted);margin:2px 0 0}.chart-lowest strong{font:500 13px var(--mono);color:var(--ink)}.chart-best{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
+.chart-error line,.chart-error-key{stroke:var(--blue);stroke-width:1.5}.chart-dot{fill:var(--blue);stroke:var(--paper);stroke-width:2}.chart-dot.ring{fill:var(--paper);stroke:var(--blue);stroke-width:1.5}
+.chart-hit{fill:transparent;cursor:pointer}.chart-point:hover .chart-dot,.chart-point:focus .chart-dot{r:6}.chart-point:focus{outline:none}.chart-point:focus .chart-hit{stroke:var(--blue);stroke-width:1.5}
+.chart-legend{display:flex;flex-wrap:wrap;gap:6px 20px;align-items:center;font:12.5px/1.4 var(--display);color:var(--muted);margin-top:10px}.chart-key{display:inline-flex;align-items:center;gap:7px}.chart-note{font-style:italic;font-family:var(--serif)}
+.chart-tip{position:absolute;z-index:3;pointer-events:none;background:var(--white);border:1.5px solid var(--ink);padding:9px 11px;max-width:320px;font:12.5px/1.45 var(--display);color:var(--muted);box-shadow:4px 4px 0 rgba(22,21,19,.12)}.chart-tip strong{display:block;font:500 13px/1.4 var(--mono);color:var(--ink)}.chart-tip span{display:block}
+.rank-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}.rank-row{display:grid;grid-template-columns:30px var(--label-width) 1fr;align-items:center;gap:0 4px;border-bottom:1px solid #e3dccd;cursor:default}
+.rank-row:hover,.rank-row:focus{background:var(--white);outline:none}.rank-row:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}.rank-number{color:var(--muted);text-align:right;padding-right:8px}
+.rank-label{font:500 13px/1.25 var(--display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:4px 8px 4px 0}.rank-label small{display:block;font:12px/1.3 var(--serif);color:var(--muted);overflow:hidden;text-overflow:ellipsis}
+.rank-row:not(.tied) .chart-dot{fill:var(--paper);stroke:var(--blue);stroke-width:1.5}.rank-grid{stroke:#e3dccd;stroke-width:1}.rank-axis-row{padding-left:calc(38px + var(--label-width))}.chart-more{margin-top:10px;background:none;border:0;padding:0;cursor:pointer}
 .table-note{font-size:14px;color:var(--muted);max-width:850px;margin-top:20px;font-style:italic}
 .empty{padding:42px;border:1px solid var(--line);border-top:0;display:flex;gap:28px;align-items:center}.empty-mark{display:block;width:58px;height:58px;background:var(--yellow);flex:none}.empty h3{margin-bottom:12px}.empty p{font-size:15px;color:var(--muted);margin-bottom:15px}
 
