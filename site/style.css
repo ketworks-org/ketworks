@@ -44,6 +44,8 @@ p{margin-top:0}
 .nav-toggle{display:none;border:2px solid var(--ink);background:transparent;padding:8px 12px;font:700 11px/1 var(--display);text-transform:uppercase;letter-spacing:.1em;cursor:pointer}
 .nav-group+.nav-group{margin-top:26px}
 .nav-group{border-top:3px solid var(--area);padding-top:16px}.nav-title{margin:0 0 10px}.nav-title a{display:inline-flex;align-items:center;gap:10px;font:800 15px/1.2 var(--display);letter-spacing:-.02em}.nav-title a:before{content:"";width:13px;height:13px;flex:none;background:var(--area);border-radius:var(--mark-radius);clip-path:var(--mark-clip)}.nav-title a[aria-current=page]{box-shadow:0 3px var(--area)}
+.nav-title a[data-nav=settings]:before,#settings .eyebrow.mark:before{width:16px;height:16px;background:currentColor;mask:url('settings.svg') center/contain no-repeat;clip-path:none;border-radius:0;vertical-align:-3px}
+.nav-title a[data-nav=settings]{gap:7px}
 .nav-sub{margin:10px 0 0}.nav-sub summary{list-style:none;cursor:pointer;font:700 9.5px/1.4 var(--display);text-transform:uppercase;letter-spacing:.17em;color:var(--muted);padding:4px 0 4px 14px;position:relative}
 .nav-sub summary::-webkit-details-marker{display:none}.nav-sub summary:before{content:'';position:absolute;left:1px;top:9px;width:0;height:0;border-left:5px solid var(--area-ink);border-top:4px solid transparent;border-bottom:4px solid transparent}.nav-sub[open]>summary:before{transform:rotate(90deg)}.nav-sub summary:hover{color:var(--ink)}
 .nav-sub a{margin-left:14px}
