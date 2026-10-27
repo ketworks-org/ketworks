@@ -1,54 +1,53 @@
 # Architecture guide
 
-> **In brief.** Start with the representation of the wavefunction: lattice configurations or continuous particle coordinates. Within each group, the pages explain how networks encode correlations, respect symmetries and produce amplitudes. Network family, antisymmetric construction and sampling scheme are separate choices that can be combined in one state.
+> **In brief.** A neural quantum state represents the wavefunction by a parameterized function of a many-body configuration. On a lattice, the configuration consists of discrete spins or occupations; in continuous space, it consists of particle coordinates. The architecture must represent correlations while satisfying the exchange symmetries and boundary conditions of the physical system.
 
 Notation follows the [conventions page](../notation/).
 
-## Start with the configuration
+## Configuration space
 
-On a lattice the input is a discrete spin or occupation configuration, $\boldsymbol\sigma$ or $\mathbf n$. In continuous space it is a list of particle coordinates, $\mathbf R$. The architecture pages are grouped by the representation they develop; a network ingredient such as attention can occur in either group.
+For a spin system, a basis configuration $\boldsymbol\sigma=(\sigma_1,\ldots,\sigma_N)$ specifies the spin at each lattice site. The wavefunction assigns a complex amplitude $\Psi_\theta(\boldsymbol\sigma)$ to every such configuration, with $\theta$ denoting the variational parameters. For particles in an occupation basis, the input is instead a vector $\mathbf n$ of occupation numbers. In continuous space, the wavefunction depends on the particle positions $\mathbf R=(\mathbf r_1,\ldots,\mathbf r_N)$.
 
-For the common variational framework, begin with [neural quantum states](../neural-quantum-states/), [variational Monte Carlo](../variational-monte-carlo/) and [optimization](../optimization/). The [continuous-space introduction](../continuous-space/) adds coordinate derivatives, cusps and boundary conditions.
+This difference in configuration space has consequences for both the architecture and its evaluation. A lattice network can exploit the fixed arrangement of sites through shared convolutional filters. A network for identical particles in continuous space must account for permutations of its particle inputs, and its coordinate derivatives enter the kinetic energy. Both are [neural quantum states](../neural-quantum-states/) whose parameters can be [optimized](../optimization/) by minimizing the energy with [variational Monte Carlo](../variational-monte-carlo/).
 
 ## Lattice systems
 
-| Page | What it develops |
-| --- | --- |
-| [Restricted Boltzmann machine](../restricted-boltzmann-machine/) | An analytic log-amplitude and symmetry through shared weights. |
-| [Convolutional and group-convolutional networks](../convolutional-networks/) | Local filters, lattice translations and space-group symmetry. |
-| [Lattice transformers](../transformer-wavefunctions/) | Attention between sites or patches, with symmetry restoration. |
-| [Autoregressive and recurrent networks](../autoregressive-networks/) | Normalized conditional amplitudes and sequential direct sampling. |
-| [Lattice fermionic states](../fermionic-neural-states/) | Determinants, hidden fermions, backflow and pairing in an occupation basis. |
+The [restricted Boltzmann machine](../restricted-boltzmann-machine/) gives a simple example of a lattice wavefunction: summing over its hidden variables yields an explicit expression for the amplitude. More general [convolutional networks](../convolutional-networks/) apply local filters repeatedly across the lattice, allowing correlations to extend over larger distances as the depth increases. Weight sharing incorporates translation symmetry, and group convolutions extend this construction to other lattice symmetries. [Lattice transformers](../transformer-wavefunctions/) use attention to couple sites or patches, with weights that depend on the spin or occupation configuration.
 
-For spin systems, the RBM page supplies a concrete starting point before convolutional or attention-based states. For lattice fermions, start with the fermionic-state construction, then follow its links to the network used to build the correlated orbitals or pair functions. The autoregressive page addresses a sampling construction that can itself use recurrent, convolutional or transformer networks.
+These networks can parameterize the amplitude directly or form part of a more structured ansatz. In [lattice fermionic states](../fermionic-neural-states/), they can generate correlated orbitals or pair functions entering determinants and Pfaffians. In [autoregressive states](../autoregressive-networks/), they parameterize conditional probabilities for successive sites, which makes direct sampling possible. The same network family can therefore occur in wavefunctions with different algebraic forms and sampling procedures.
 
 ## Continuous space
 
-| Page | What it develops |
-| --- | --- |
-| [FermiNet and PauliNet](../neural-orbitals/) | Equivariant orbitals, molecular references and nodal changes. |
-| [Attention in continuous space](../attention-continuous-space/) | Psiformer, LapNet and the cost of coordinate derivatives. |
-| [Periodic neural states](../periodic-neural-states/) | Bosonic Deep Sets, DeepSolid, cell boundaries and twists. |
-| [Message-passing backflow and pairing](../message-passing-backflow/) | Particle graphs, correlated coordinates and Pfaffian states. |
-| [Electron–nuclear neural states](../electron-nuclear-neural-states/) | Coupled electron–proton architectures and quantum nuclei. |
+In [continuous space](../continuous-space/), electronic wavefunctions are commonly built from determinants of orbitals that depend on all electron positions. This dependence allows the orbitals to describe correlations beyond a fixed Slater determinant. [FermiNet and PauliNet](../neural-orbitals/) construct such orbitals using permutation-equivariant networks, while [Psiformer and LapNet](../attention-continuous-space/) use attention to couple the electrons. [Message-passing backflow and pairing](../message-passing-backflow/) use particle graphs to construct correlated coordinates or pair functions.
 
-For molecules, follow neural orbitals with electron attention. For the electron gas, begin with periodic states and then message-passing backflow. For solids with clamped nuclei, read the periodic-orbital construction; for solid hydrogen with quantum protons, continue to electron–nuclear states. These are reading paths, not rankings of methods.
+The physical setting imposes further constraints. Molecular orbitals must have suitable decay far from the nuclei, whereas [periodic neural states](../periodic-neural-states/) must satisfy the boundary conditions of a simulation cell, including any twist. When nuclei are treated as quantum particles, their positions also become arguments of the wavefunction and their derivatives contribute to the kinetic energy. The [electron–nuclear architectures used for solid hydrogen](../electron-nuclear-neural-states/) describe this joint dependence on electron and proton coordinates.
 
-## How the ingredients fit together
+## Correlations, antisymmetry and sampling
 
-A network's name does not fully specify a wavefunction. Distinguish the feature map, the object that produces the amplitude, and the sampling rule. For example,
+The role of a neural network in a fermionic wavefunction can be seen from a single-determinant ansatz. For $N$ identical fermions with the same spin, consider
 
 $$
 \Psi_\theta(\mathbf R)=
 e^{J_\theta(\mathbf R)}
-\det\Phi_\theta(\mathbf R)
+\det\Phi_\theta(\mathbf R),
+\qquad
+[\Phi_\theta(\mathbf R)]_{ia}=\phi_{\theta,a}(\mathbf r_i;\{\mathbf r_{j\ne i}\}),
 $$
 
-can use attention or message passing to construct $\Phi_\theta$. Its determinant supplies the electron exchange sign, while its learned entries carry correlations. Attention alone does not make this state autoregressive; normalized conditional probabilities require a separate construction.
+where $i$ labels particles, $a$ labels orbitals, and $J_\theta$ is a real function symmetric under particle exchange. Each orbital is symmetric in the coordinates of the other particles, denoted by $\{\mathbf r_{j\ne i}\}$. Exchanging two particles therefore exchanges two rows of $\Phi_\theta$ and leaves $J_\theta$ unchanged. The determinant changes sign, giving the required fermionic antisymmetry.
 
-Similarly, periodic boundaries constrain the features and orbital phases, while quantum nuclei enlarge the configuration and the kinetic estimator. These requirements can coexist with several network families. The linked articles separate those choices and identify their physical assumptions.
+The factor $e^{J_\theta}$ changes the relative magnitudes of amplitudes but, being positive, cannot change the zeros of the determinant. Correlations in the neural orbitals can change those zeros and hence the nodal surface. Attention and message passing provide different ways of constructing the orbitals while preserving their permutation properties; the determinant supplies antisymmetry in either case (Pfau et al., arXiv:1909.02487v3; von Glehn et al., arXiv:2211.13672v2; Pescia et al., arXiv:2305.07240v3).
 
-Benchmark pages answer a different question: which Hamiltonian, geometry, sector and energy convention define a comparable calculation. Use [benchmark conventions](../benchmark-conventions/) and the relevant system page when comparing reported results.
+Evaluating this wavefunction at a given configuration does not by itself provide a way to draw independent configurations from $p_\theta(\mathbf R)\propto|\Psi_\theta(\mathbf R)|^2$. Such states are usually sampled by a Markov chain. An autoregressive lattice state instead parameterizes the normalized distribution as
+
+$$
+p_\theta(\boldsymbol\sigma)
+=\prod_{i=1}^{N}p_\theta(\sigma_i\mid\sigma_1,\ldots,\sigma_{i-1}),
+\qquad
+\sum_{\sigma_i}p_\theta(\sigma_i\mid\sigma_1,\ldots,\sigma_{i-1})=1.
+$$
+
+Sampling each conditional in order produces a configuration from the full distribution, without a Markov chain. Recurrent networks and suitably masked transformers can both parameterize these conditionals. Direct sampling follows from this normalized factorization; using attention to construct orbitals in a determinant does not confer the same property.
 
 ## References
 
