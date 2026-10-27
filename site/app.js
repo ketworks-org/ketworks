@@ -17,9 +17,10 @@ const partLink = (family, part) => '#benchmarks?family=' + encodeURIComponent(fa
 const PER_WORD = {cell: 'primitive cell'}, perWord = per => PER_WORD[per] || per;
 const perSuffix = per => per === 'system' ? '' : ` / ${perWord(per)}`;
 const countHeader = b => b.category === 'continuum-electrons' ? 'Electrons' : 'Sites';
-import {filterRows, sortRows, rankByEnergy, summarize, withErrorBar, boundaryClass, BOUNDARY_CLASSES} from './leaderboard.mjs';
+import {filterRows, sortRows, rankByEnergy, summarize, withErrorBar, boundaryClass, BOUNDARY_CLASSES, orderInstances, sortInstanceSummaries} from './leaderboard.mjs';
 import {renderEnergyChart} from './charts.mjs';
 let dataset, submission, sort = {key: 'energy', direction: 'asc'};
+const instanceSorts = new Map();
 const $ = id => document.getElementById(id);
 const text = (tag, value, className) => { const el = document.createElement(tag); el.textContent = value; if (className) el.className = className; return el; };
 const link = (label, url, className) => { const a = text('a', label, className); a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer'; return a; };
@@ -127,6 +128,37 @@ function categoryHead(category, title, meta) {
   const head = text('div', '', 'category-head'); const heading = text('h2', ''); const anchor = text('a', title); anchor.href = '#benchmarks?category=' + encodeURIComponent(category); heading.append(anchor);
   head.append(heading); if (meta) head.append(text('p', meta, 'family-meta')); return head;
 }
+function instanceTable(entries, sortId) {
+  const first = entries[0].benchmark, per = first.per || 'site';
+  const table = text('table', '', 'ledger instance-table'), head = document.createElement('thead'), headers = document.createElement('tr'), body = document.createElement('tbody');
+  let current = instanceSorts.get(sortId) || {key: 'sites', direction: 'asc'};
+  const rows = new Map(entries.map(entry => {
+    const {benchmark, count, best} = entry;
+    const tr = document.createElement('tr'), cell = text('td', ''), link = text('a', benchmark.instance_label || benchmark.id, 'instance-link'); link.href = '#benchmarks?system=' + encodeURIComponent(benchmark.id); cell.append(link);
+    const shown = best ? withErrorBar(best.energy_per_site, best.uncertainty_per_site, best.uncertainty_type) : {text: '—'}, energy = text('td', shown.text, 'num energy');
+    if (best) energy.append(text('small', `${best.method} · ${classLabel(best.method_class)} · arXiv:${best.paper.id}${shown.missing ? ' · no error bar printed' : ''}`));
+    tr.append(cell, text('td', String(benchmark.sites), 'num mono'), text('td', formatCount(count), 'num mono'), energy);
+    return [entry, tr];
+  }));
+  const render = () => {
+    body.replaceChildren(...sortInstanceSummaries(entries, current.key, current.direction).map(entry => rows.get(entry)));
+    headers.querySelectorAll('th').forEach(th => {
+      if (th.firstElementChild?.dataset.sort === current.key) th.setAttribute('aria-sort', current.direction === 'asc' ? 'ascending' : 'descending');
+      else th.removeAttribute('aria-sort');
+    });
+  };
+  [['instance', 'Instance'], ['sites', countHeader(first)], ['results', 'Results']].forEach(([key, label]) => {
+    const th = text('th', '', key === 'instance' ? '' : 'num'), button = text('button', label, 'sort'); th.scope = 'col'; button.type = 'button'; button.dataset.sort = key;
+    button.addEventListener('click', () => {
+      current = {key, direction: key === current.key && current.direction === 'asc' ? 'desc' : 'asc'};
+      instanceSorts.set(sortId, current); render();
+    });
+    th.append(button); headers.append(th);
+  });
+  // These energies describe different problems, so they are displayed without a sorting control.
+  const energyHeader = text('th', per === 'system' ? 'Lowest total energy' : 'Lowest energy' + perSuffix(per), 'num'); energyHeader.scope = 'col'; headers.append(energyHeader);
+  head.append(headers); table.append(head, body); render(); return table;
+}
 function familyBlock(family, summary, onlyPart) {
   const all = summary.filter(s => s.benchmark.family === family), parts = partsOf(all.map(s => s.benchmark));
   const part = parts.includes(onlyPart) ? onlyPart : null, entries = part ? all.filter(s => s.benchmark.part === part) : all, counts = boardCounts(entries.map(s => s.benchmark));
@@ -166,16 +198,9 @@ function familyBlock(family, summary, onlyPart) {
     const classes = [...new Set([...BOUNDARY_CLASSES, ...inPart.map(s => sectionOf(s.benchmark)).sort((x, y) => smallest(x) - smallest(y))])].filter(c => inPart.some(s => sectionOf(s.benchmark) === c));
     classes.forEach(boundary => {
       // Units per section: one model can mix energies per atom and per primitive cell (solids).
-      const first = inPart.find(s => sectionOf(s.benchmark) === boundary).benchmark, per = first.per || 'site', counted = countHeader(first);
       if (classes.length > 1) group.append(text('h5', boundaryTitle(boundary), 'boundary-head'));
-      const wrap = text('div', '', 'table-scroll'); const table = text('table', '', 'ledger'); const body = document.createElement('tbody');
-      table.innerHTML = `<thead><tr><th scope="col">Instance</th><th scope="col" class="num">${counted}</th><th scope="col" class="num">Results</th><th scope="col" class="num">${per === 'system' ? 'Lowest total energy' : 'Lowest energy' + perSuffix(per)}</th></tr></thead>`;
-      inPart.filter(s => sectionOf(s.benchmark) === boundary).forEach(({benchmark, count, best}) => {
-        const tr = document.createElement('tr'); const cell = text('td', ''); const link = text('a', benchmark.instance_label || benchmark.id, 'instance-link'); link.href = '#benchmarks?system=' + encodeURIComponent(benchmark.id); cell.append(link);
-        const shown = best ? withErrorBar(best.energy_per_site, best.uncertainty_per_site, best.uncertainty_type) : {text: '—'}; const energy = text('td', shown.text, 'num energy'); if (best) energy.append(text('small', `${best.method} · ${classLabel(best.method_class)} · arXiv:${best.paper.id}${shown.missing ? ' · no error bar printed' : ''}`));
-        tr.append(cell, text('td', String(benchmark.sites), 'num mono'), text('td', count ? formatCount(count) : '0', 'num mono'), energy); body.append(tr);
-      });
-      table.append(body); wrap.append(table); group.append(wrap);
+      const wrap = text('div', '', 'table-scroll');
+      wrap.append(instanceTable(inPart.filter(s => sectionOf(s.benchmark) === boundary), JSON.stringify([family, p, boundary]))); group.append(wrap);
     });
   });
   return group;
@@ -447,4 +472,4 @@ $('submission-form').addEventListener('submit', prepareSubmission);
 $('instance-mode').addEventListener('change', syncInstanceForm); $('continuum-fields').addEventListener('input', syncInstanceForm); $('continuum-fields').addEventListener('change', syncInstanceForm); $('new-fields').addEventListener('input', syncInstanceForm); $('new-fields').addEventListener('change', syncInstanceForm);
 $('copy-instance').addEventListener('click', async () => { try { await navigator.clipboard.writeText($('instance-json').textContent); $('copy-instance').textContent = 'Copied'; setTimeout(() => $('copy-instance').textContent = 'Copy entry', 1500); } catch { $('submission-error').textContent = 'Copy failed; select the entry and copy it by hand.'; } });
 $('copy-result').addEventListener('click', async () => { if (!submission) return; try { await navigator.clipboard.writeText($('submission-json').textContent); $('copy-result').textContent = 'Copied'; setTimeout(() => $('copy-result').textContent = 'Copy JSON', 1500); } catch { $('submission-error').textContent = 'Copy failed; select the JSON below and copy it by hand.'; } }); $('download-result').addEventListener('click', () => { if (submission) download(submission, submission.paper.id.replace(/v\d+$/, '') + '.json'); });
-route(); fetch('data.json').then(r => { if (!r.ok) throw Error('Data unavailable'); return r.json(); }).then(data => { dataset = data; renderSelects(); syncInstanceForm(); renderContents(); renderLedger(); renderWiki(); route(); }).catch(() => { $('load-error').hidden = false; });
+route(); fetch('data.json').then(r => { if (!r.ok) throw Error('Data unavailable'); return r.json(); }).then(data => { dataset = {...data, benchmarks: orderInstances(data.benchmarks)}; renderSelects(); syncInstanceForm(); renderContents(); renderLedger(); renderWiki(); route(); }).catch(() => { $('load-error').hidden = false; });
