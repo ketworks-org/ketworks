@@ -8,7 +8,7 @@
 >
 > The tables below are generated from Ketboard and from the diffusion and reptation Monte Carlo energies recorded with it. They always show the current lowest neural energy in each cell and whether another method is lower.
 
-Notation follows the [conventions page](../notation/). The [continuous-space page](../continuous-space/) explains the ansätze, periodic boundary conditions with a twist, and Ewald sums. Reviewed entries live in [Ketboard](../../#benchmarks?family=Solids), not here.
+Notation follows the [conventions page](../notation/). The [continuous-space page](../continuous-space/) explains the Hamiltonian, sampling and Ewald sums; [periodic neural states](../periodic-neural-states/) develops cell-compatible orbitals, and [electron–nuclear neural states](../electron-nuclear-neural-states/) explains the solid-hydrogen architectures and quantum protons. Reviewed entries live in [Ketboard](../../#benchmarks?family=Solids), not here.
 
 ## Hamiltonian and instances
 

@@ -32,6 +32,7 @@ The architecture pages develop the different constructions:
 - [Attention in continuous space](../attention-continuous-space/): Psiformer, LapNet and the relation between feature mixing and coordinate derivatives.
 - [Periodic neural states](../periodic-neural-states/): bosonic Deep Sets, DeepSolid, cell-periodic features and twisted boundary conditions.
 - [Message-passing backflow and pairing](../message-passing-backflow/): particle graphs, MP-NQS, transformed coordinates and Pfaffian pair states.
+- [Electron–nuclear neural states](../electron-nuclear-neural-states/): solid-hydrogen architectures, coupled particle graphs and quantum nuclei beyond the Born–Oppenheimer approximation.
 
 The network, determinant evaluations and coordinate derivatives all contribute to the cost. Every orbital can change when one electron moves, so the ordinary rank-one updates of fixed-orbital Slater–Jastrow states do not generally apply; these ansätze are often sampled with moves of all electrons at once.
 

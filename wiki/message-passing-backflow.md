@@ -38,6 +38,8 @@ $$
 
 Determinants of these orbitals preserve the exchange sign. Relative inputs also let the displacement respect continuous translations without introducing a preferred origin. The [electron-gas page](../homogeneous-electron-gas/) gives the finite-system benchmark definitions.
 
+For a system with quantum nuclei, [electron–nuclear neural states](../electron-nuclear-neural-states/) develops coupled particle graphs and the solid-hydrogen constructions.
+
 ## What a coordinate transformation changes
 
 For a real, finite symmetric $J$ and an equivariant real coordinate map $\mathbf Y$, consider the simpler backflow state

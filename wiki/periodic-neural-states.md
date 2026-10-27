@@ -72,6 +72,8 @@ They can enforce continuous translation invariance of a correlator. A fermionic 
 
 [Message-passing backflow](../message-passing-backflow/) uses periodic relative features to correlate electron-gas orbitals. The [electron-gas](../homogeneous-electron-gas/) and [solid](../solids/) benchmark pages specify cell, twist, density and external potential. Correct network boundaries do not by themselves define the periodic interaction: the Hamiltonian's Coulomb summation and finite-cell convention must also agree.
 
+When nuclei are quantum particles, their positions also enter the variational state and its kinetic energy. The [electron–nuclear architecture page](../electron-nuclear-neural-states/) develops the solid-hydrogen constructions and distinguishes nuclear localization from a state without a prescribed lattice.
+
 ## References
 
 - G. Pescia, J. Han, A. Lovato, J. Lu, G. Carleo, *Neural-Network Quantum States for Periodic Systems in Continuous Space*, arXiv:2112.11957v1 (2021). Periodic Deep Sets for interacting bosons.
