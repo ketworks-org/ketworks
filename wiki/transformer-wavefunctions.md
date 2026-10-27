@@ -1,4 +1,4 @@
-# Transformer wavefunctions
+# Lattice transformers
 
 > **In brief.** A transformer wavefunction embeds the sites, or patches of sites, of a configuration into vectors and mixes them with self-attention, so that every amplitude is computed from all-to-all interactions between patches in a fixed number of layers. The vision-transformer (ViT) variant with attention weights that depend only on the relative position of two patches is translation-invariant by construction, holds the best variational energies on the $10\times10$ J₁–J₂ torus and on triangular tori up to $42\times42$, and serves as the backbone of the leading fermionic backflow states. Its cost is quadratic in the number of patches, and it became trainable at $10^5$ to $10^6$ parameters only with the kernel formulation of stochastic reconfiguration.
 

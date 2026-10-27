@@ -32,7 +32,16 @@ def nav_html(index, registry, prefix="", current=None):
     current_section = next((page["section"] for page in index if page["slug"] == current), None)
     wiki_sections = []
     for section in dict.fromkeys(page["section"] for page in index):
-        links = [f'<a href="{prefix}wiki/{page["slug"]}/"' + (' aria-current="page"' if page["slug"] == current else "") + f'>{html.escape(page["title"])}</a>' for page in index if page["section"] == section]
+        pages = [page for page in index if page["section"] == section]
+        links = []
+        for subsection in dict.fromkeys(page.get("subsection") for page in pages):
+            grouped = [page for page in pages if page.get("subsection") == subsection]
+            page_links = [f'<a href="{prefix}wiki/{page["slug"]}/"' + (' aria-current="page"' if page["slug"] == current else "") + f'>{html.escape(page["title"])}</a>' for page in grouped]
+            if subsection:
+                is_open = any(page["slug"] == current for page in grouped)
+                links.append(f'<details class="nav-topic"{" open" if is_open else ""}><summary>{html.escape(subsection)}</summary>{"".join(page_links)}</details>')
+            else:
+                links.extend(page_links)
         wiki_sections.append((section, links, section == current_section))
     board_sections = []
     for key, title in CATEGORIES.items():
@@ -104,7 +113,8 @@ def render_content(root, destination, registry):
         if status not in ("draft", "reviewed"):
             raise ValueError(f"{slug}: status must be draft or reviewed")
         status_html = '<span class="status status-reviewed">Reviewed</span>' if status == "reviewed" else '<span class="status status-draft">Draft · not yet reviewed by a curator</span>'
-        values = {"TITLE": html.escape(article["title"]), "DESCRIPTION": html.escape(article["summary"], quote=True), "SECTION": html.escape(article["section"]), "NAV": nav_html(index, registry, "../../", slug), "TOC": toc, "STATUS": status_html,
+        section_label = " · ".join(filter(None, (article["section"], article.get("subsection"))))
+        values = {"TITLE": html.escape(article["title"]), "DESCRIPTION": html.escape(article["summary"], quote=True), "SECTION": html.escape(section_label), "NAV": nav_html(index, registry, "../../", slug), "TOC": toc, "STATUS": status_html,
                   "SLUG": slug, "EDIT_URL": f"https://github.com/ketworks-org/ketworks/edit/{source_ref}/wiki/{slug}.md", "HISTORY_URL": f"https://github.com/ketworks-org/ketworks/commits/{source_ref}/wiki/{slug}.md", "CONTENT": article["html"]}
         page_html = re.sub(r"\{\{([A-Z_]+)\}\}", lambda match: values[match[1]], template).replace("<!--SUPPORT-->", supporters_html("../../"))
         page_dir = destination / "wiki" / slug

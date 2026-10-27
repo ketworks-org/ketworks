@@ -43,6 +43,7 @@ p{margin-top:0}
 .nav-sub{margin:10px 0 0}.nav-sub summary{list-style:none;cursor:pointer;font:700 9.5px/1.4 var(--display);text-transform:uppercase;letter-spacing:.17em;color:var(--muted);padding:4px 0 4px 14px;position:relative}
 .nav-sub summary::-webkit-details-marker{display:none}.nav-sub summary:before{content:'';position:absolute;left:1px;top:9px;width:0;height:0;border-left:5px solid var(--area-ink);border-top:4px solid transparent;border-bottom:4px solid transparent}.nav-sub[open]>summary:before{transform:rotate(90deg)}.nav-sub summary:hover{color:var(--ink)}
 .nav-sub a{margin-left:14px}
+.nav-topic{margin:8px 0 8px 14px}.nav-topic>summary{font-size:12px;letter-spacing:0;text-transform:none;color:var(--ink)}.nav-topic[open]>summary:before{transform:rotate(90deg)}
 .nav-body a:not(.nav-title a){display:block;padding:6px 0 6px 10px;border-left:2px solid transparent;font:500 13px/1.35 var(--display);color:var(--ink)}
 .nav-body a:not(.nav-title a):hover{border-left-color:var(--line)}
 .nav-body a[aria-current=page],.nav-body a.active{border-left-color:var(--area);font-weight:800}
@@ -79,6 +80,7 @@ main{max-width:1240px;margin:auto;padding:0 56px}.view{padding-bottom:80px}.inte
 .book-contents{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
 .contents-column{padding:26px 28px 18px}.contents-column+.contents-column{border-left:1px solid var(--line)}
 .contents-section{display:flex;align-items:center;font:700 11px/1 var(--display);text-transform:uppercase;letter-spacing:.17em;margin:0 0 18px}
+.contents-subsection{font:700 14px/1.4 var(--display);margin:22px 0 10px}
 .contents-entry{display:grid;grid-template-columns:32px 1fr;gap:4px 12px;padding:14px 0;border-top:1px solid var(--line)}
 .contents-entry .mono{font-size:12px;color:var(--muted);padding-top:5px}.contents-entry strong{font:700 20px/1.2 var(--display);letter-spacing:-.025em}
 .contents-summary{grid-column:2;font-size:14.5px;line-height:1.5;color:var(--muted)}.contents-entry:hover strong{color:#b32a1f}
@@ -136,8 +138,9 @@ input,select,textarea{border:1px solid var(--ink);background:var(--white);paddin
 /* Wiki index */
 .wiki-search{max-width:470px;margin:35px 0 40px}.wiki-list{border-top:2px solid var(--ink)}
 .wiki-group-title{display:flex;align-items:center;font:700 11px/1 var(--display);text-transform:uppercase;letter-spacing:.17em;margin:0;padding:22px 18px 8px}
+.wiki-subsection-title{font:700 18px/1.4 var(--display);letter-spacing:0;margin:0;padding:22px 18px 12px;background:var(--sand);border-bottom:1px solid var(--line)}
 .wiki-row{display:grid;grid-template-columns:65px 1fr 30px;align-items:center;gap:18px;padding:22px 18px;border-bottom:1px solid var(--line)}.wiki-row:hover{background:var(--white)}
-.wiki-row .wiki-number{font:500 26px/1 var(--mono);color:var(--muted)}.wiki-row h3{font-size:27px;letter-spacing:-.03em;margin-bottom:6px}.wiki-row p{font-size:15.5px;color:var(--muted);margin:0}.wiki-row:hover h3{color:var(--red-ink,#b32a1f)}
+.wiki-row .wiki-number{font:500 26px/1 var(--mono);color:var(--muted)}.wiki-row .wiki-page-title{font:700 27px/1.2 var(--display);letter-spacing:-.03em;margin:0 0 6px}.wiki-row p{font-size:15.5px;color:var(--muted);margin:0}.wiki-row:hover .wiki-page-title{color:var(--red-ink,#b32a1f)}
 .wiki-callout{padding:28px 30px;border-left:6px solid var(--red);margin-top:40px;background:var(--sand)}.wiki-callout b{font-family:var(--display)}.wiki-callout p{font-size:15px;margin:10px 0}
 
 /* Contribute and submit */
@@ -188,7 +191,7 @@ pre{white-space:pre;overflow:auto;font-size:12.5px;background:var(--sand);paddin
   .interior{padding-top:38px}.interior h1{font-size:56px}.page-heading{flex-wrap:wrap;gap:5px;margin-bottom:20px}.page-heading h1{margin-bottom:15px}
   .toolbar{grid-template-columns:1fr;gap:16px}.definition{padding:22px 18px}.definition-head{flex-direction:column;gap:12px}.definition dl{grid-template-columns:1fr;gap:7px}.definition dd{margin-bottom:15px}.definition .katex{font-size:1em}
   .empty{padding:28px 20px;gap:20px}.empty-mark{width:35px;height:35px}.empty h3{font-size:21px}.table-heading h2{font-size:25px}
-  .wiki-row{grid-template-columns:40px 1fr 20px;gap:12px;padding:20px 5px}.wiki-row h3{font-size:22px}.wiki-row p{font-size:14px}.wiki-row .wiki-number{font-size:20px}.wiki-group-title{padding-left:5px}
+  .wiki-row{grid-template-columns:40px 1fr 20px;gap:12px;padding:20px 5px}.wiki-row .wiki-page-title{font-size:22px}.wiki-row p{font-size:14px}.wiki-row .wiki-number{font-size:20px}.wiki-group-title,.wiki-subsection-title{padding-left:5px}
   .contribute-options{grid-template-columns:1fr}.contribute-options>a+a{border-left:0;border-top:2px solid var(--ink)}.contribute-options>a{padding:24px}
   .steps li{gap:18px}.steps h2{font-size:25px}.steps li>span{font-size:40px;width:30px}.submission-form fieldset{grid-template-columns:1fr}.submission-ready{padding:23px 18px}
   .article-layout{grid-template-columns:minmax(0,1fr);padding-top:30px;gap:32px}.article-top{flex-direction:column;gap:10px}
@@ -224,7 +227,7 @@ pre{white-space:pre;overflow:auto;font-size:12.5px;background:var(--sand);paddin
 .category-head h2 a:hover{text-decoration:underline;text-underline-offset:4px}
 .board-category .board-family{margin-top:30px}
 .board-back{display:inline-block;margin-top:28px}
-.nav-body .nav-sub a.active{border-left-color:var(--area);font-weight:800}
+.nav-body .nav-sub a.active,.nav-body .nav-sub a[aria-current=page]{border-left-color:var(--area);font-weight:800}
 .nav-parts{display:none}.nav-parts.open{display:block}.nav-body .nav-parts a:not(.nav-title a){margin-left:26px;padding:4px 0 4px 10px;font-size:12px;color:var(--muted)}.nav-body .nav-parts a.active,.nav-body .nav-parts a:hover{color:var(--ink)}
 .part-menu{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 4px}.part-chip{display:inline-flex;align-items:baseline;gap:7px;padding:6px 11px;border:1.5px solid var(--ink);font:700 12px/1.2 var(--display);color:var(--ink)}.part-chip:hover{background:var(--white)}.part-chip[aria-current]{background:var(--ink);color:var(--paper)}.part-count{font:500 11px/1 var(--mono);opacity:.65}
 .part-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 20px;margin:32px 0 8px;padding-top:12px;border-top:1px solid var(--line);font:800 19px/1.2 var(--display);letter-spacing:-.02em}.part-head .text-link{font-size:12px;letter-spacing:0}

@@ -1,4 +1,4 @@
-# Fermionic neural states: backflow, hidden fermions and Pfaffians
+# Lattice fermionic states
 
 > **In brief.** A fermionic wavefunction in the occupation-number basis is antisymmetric under particle exchange, and no positive network or local sign rule reproduces that structure at finite doping. Every competitive neural ansatz for lattice fermions therefore keeps a determinant or a Pfaffian and uses the network to make its orbitals depend on the whole configuration: backflow transformations, hidden fermions that enlarge the determinant, configuration-dependent pairing matrices, or tensor-shaped corrections, with a Jastrow factor on top. The choice of mean-field object (Slater determinant, its particle-hole transform, or a Pfaffian) decides which phases the ansatz represents at the mean-field level and biases what it converges to; the backbone (multilayer perceptron, group-convolutional network, transformer) decides the accuracy. These states hold every entry on the Hubbard instances of Ketboard.
 
