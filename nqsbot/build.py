@@ -60,7 +60,7 @@ def nav_html(index, registry, prefix="", current=None):
                   f'<a href="{prefix}#submit" data-nav="submit">Submit a result</a>'
                   '<a href="https://github.com/ketworks-org/ketworks/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Contribution guide ↗</a>'
                   '<a href="https://github.com/ketworks-org/ketworks" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>')
-    about = f'<div class="nav-group" data-area="home"><p class="nav-title"><a href="{prefix}about/" data-nav="about"' + (' aria-current="page"' if current == "about" else "") + '>About</a></p></div>'
+    about = f'<div class="nav-group" data-area="home"><p class="nav-title"><a href="{prefix}about/" data-nav="about"' + (' aria-current="page"' if current == "about" else "") + f'>About</a></p><p class="nav-title"><a href="{prefix}#settings" data-nav="settings">Settings</a></p></div>'
     return group("Ketbook", prefix + "#wiki", "wiki", wiki_sections, "wiki") + group("Ketboard", prefix + "#benchmarks", "benchmarks", board_sections, "board") + contribute + about
 
 
