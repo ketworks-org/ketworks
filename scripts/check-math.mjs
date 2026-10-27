@@ -160,6 +160,29 @@ const ordered=orderInstances(registry);
 assert.equal(ordered.length,registry.length);
 assert.deepEqual([...new Set(ordered.map(b=>`${b.family} / ${b.part}`))],[...new Set(registry.map(b=>`${b.family} / ${b.part}`))]);
 for (let i=1;i<ordered.length;i++) if (ordered[i].family===ordered[i-1].family&&ordered[i].part===ordered[i-1].part) assert.ok(compareInstances(ordered[i-1],ordered[i])<=0&&ordered[i-1].sites<=ordered[i].sites,`${ordered[i].id} is listed before a smaller instance`);
+// Clicking an instance-table column sorts its numeric value, with absent energies last
+// in both directions; ties retain the default instance order and the registry is untouched.
+const {sortInstanceSummaries} = await import('../site/leaderboard.mjs');
+const instanceSummary = (id, sites, label, count, energy) => ({benchmark: hub(id, sites, label), count, best: energy === null ? null : {energy_per_site: energy}});
+const instanceSummaries = [
+  instanceSummary('large', 100, '10 × 10 · U/t = 4', 2, '-2'),
+  instanceSummary('missing', 4, '2 × 2 · U/t = 1', 0, null),
+  instanceSummary('u10', 16, '4 × 4 · U/t = 10', 10, '-10'),
+  instanceSummary('u2', 16, '4 × 4 · U/t = 2', 10, '-1'),
+];
+const summaryOrder = (key, direction) => sortInstanceSummaries(instanceSummaries, key, direction).map(s => s.benchmark.id);
+assert.deepEqual(summaryOrder('sites', 'asc'), ['missing', 'u2', 'u10', 'large']);
+assert.deepEqual(summaryOrder('sites', 'desc'), ['large', 'u2', 'u10', 'missing']);
+assert.deepEqual(summaryOrder('instance', 'asc'), ['missing', 'u2', 'u10', 'large']);
+assert.deepEqual(summaryOrder('instance', 'desc'), ['large', 'u10', 'u2', 'missing']);
+assert.deepEqual(summaryOrder('results', 'asc'), ['missing', 'large', 'u2', 'u10']);
+assert.deepEqual(summaryOrder('results', 'desc'), ['u2', 'u10', 'large', 'missing']);
+assert.deepEqual(summaryOrder('energy', 'asc'), ['u10', 'large', 'u2', 'missing']);
+assert.deepEqual(summaryOrder('energy', 'desc'), ['u2', 'large', 'u10', 'missing']);
+assert.deepEqual(instanceSummaries.map(s => s.benchmark.id), ['large', 'missing', 'u10', 'u2']);
+assert.deepEqual(sortInstanceSummaries([]), []);
+const missingEnergies = [instanceSummary('large', 100, '10 × 10', 0, null), instanceSummary('small', 4, '2 × 2', 0, null)];
+for (const direction of ['asc', 'desc']) assert.deepEqual(sortInstanceSummaries(missingEnergies, 'energy', direction).map(s => s.benchmark.id), ['small', 'large']);
 const paper=id=>({id,title:'T',authors:'A. Author',published:id==='2601.00003v1'?'2026-03-01T00:00:00Z':'2026-01-01T00:00:00Z'});
 const rows=[
   {benchmark_id:'b',method:'RBM',variant:'a=4',method_class:'rbm',energy_per_site:'-0.4950',uncertainty_per_site:'0.0002',parameter_count:400,paper:paper('2601.00001v1')},

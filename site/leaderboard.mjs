@@ -72,6 +72,26 @@ export function orderInstances(benchmarks) {
   return [...benchmarks].sort((a, b) => first.get(group(a)) - first.get(group(b)) || compareInstances(a, b));
 }
 
+// Sort one instance table by its displayed columns. Missing energies stay last in either
+// direction, and ties keep the default size/filling/parameter order.
+export function sortInstanceSummaries(summaries, key = 'sites', direction = 'asc') {
+  const value = {
+    instance: s => s.benchmark.instance_label || s.benchmark.id,
+    sites: s => s.benchmark.sites,
+    results: s => s.count,
+    energy: s => number(s.best?.energy_per_site),
+  }[key] || (s => s.benchmark.sites);
+  const sign = direction === 'desc' ? -1 : 1;
+  return [...summaries].sort((a, b) => {
+    const x = value(a), y = value(b), tie = () => compareInstances(a.benchmark, b.benchmark);
+    if (x === null && y === null) return tie();
+    if (x === null) return 1;
+    if (y === null) return -1;
+    const order = typeof x === 'number' ? x - y : naturalCompare(x, y);
+    return order * sign || tie();
+  });
+}
+
 // Rank by energy regardless of the displayed order, so the rank column stays meaningful.
 export function rankByEnergy(rows) {
   const ranks = new Map();
