@@ -56,6 +56,10 @@ Transformers with $10^5$ or more parameters cannot be optimized by stochastic re
 
 A different family keeps the decoder structure of language models: the network outputs, site by site, a normalized conditional distribution and a phase, so that $\vert\Psi\vert^2$ can be sampled exactly without a Markov chain. The transformer quantum state of Zhang and Di Ventra conditions the network on the Hamiltonian parameters and learns a whole phase diagram with one model (arXiv:2208.01758); the large patched transformers of Sprague and Czischek take patches of Rydberg atoms as tokens and exceed the accuracy of recurrent networks and of quantum Monte Carlo reference data on two-dimensional arrays (arXiv:2306.03921). The autoregressive constraint fixes a site ordering and makes sampling sequential; see the [autoregressive page](../autoregressive-networks/). The ViT wavefunctions above are not autoregressive: they are unnormalized, symmetric, and sampled by Metropolis.
 
+## Attention for continuous particles
+
+In continuous space the tokens can represent electrons rather than lattice sites. The [attention in continuous space page](../attention-continuous-space/) develops Psiformer's electron attention and LapNet's separate individual and interacting streams, including the exchange-symmetry argument and the cost of coordinate derivatives. Their outputs form neural orbitals inside determinants; the [continuous-space introduction](../continuous-space/) supplies the Hamiltonian and sampling conventions.
+
 ## References
 
 - L. L. Viteritti, R. Rende, F. Becca, *Transformer variational wave functions for frustrated quantum spin systems*, arXiv:2211.05504 (2022). The ViT wavefunction with position-only attention; one-dimensional J₁–J₂ results; the deep-ViT curriculum.
