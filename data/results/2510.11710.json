@@ -198,7 +198,28 @@
       "source_location": "Table I (Appendix E), left table (row JBf (8×8 Cylinder))",
       "eligibility_evidence": "Variational energy of the JBf NQS at U/t = 8 and 1/8 hole doping on the 8 × 8 cylinder.",
       "parameter_count": null,
-      "notes": "Variance per site from the same Table I (Appendix E), column sigma^2/M. The 8 × 8 cylinder is not defined further in the text; it is taken to be open along one direction and periodic along the other, like the 8 × 4 cylinder. The HFDS row of the same cylinder has a printed error \"(0)\" and is not recorded. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+      "notes": "Variance per site from the same Table I (Appendix E), column sigma^2/M. The 8 × 8 cylinder is not defined further in the text; it is taken to be open along one direction and periodic along the other, like the 8 × 4 cylinder. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
+    },
+    {
+      "benchmark_id": "hubbard-square-8x8-cyl-u8-n56-sz0",
+      "system_description": "8x8 lattice, open along one direction and periodic along the other; U/t = 8, t' = 0; 56 electrons (28 up, 28 down), 1/8 hole doping",
+      "method": "Hidden-fermion determinant state",
+      "variant": "HFDS, 8 × 8 cylinder",
+      "method_class": "backflow",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.7259",
+      "energy_token": "-0.7259(0)",
+      "normalization": "per_site",
+      "unit": "t",
+      "uncertainty": "0.0001",
+      "uncertainty_type": "upper_bound",
+      "variance": "0.0422",
+      "source_location": "Table I (Appendix E), left table (row HFDS (8×8 Cylinder))",
+      "eligibility_evidence": "Variational energy of the HFDS NQS at U/t = 8 and 1/8 hole doping on the 8 × 8 cylinder.",
+      "parameter_count": null,
+      "notes": "The printed error bar is \"(0)\": the error rounds to zero in the last printed digit, so it is recorded as an upper bound of one unit in that digit. Variance per site from the same Table I (Appendix E), column sigma^2/M. The 8 × 8 cylinder is not defined further in the text; like the 8 × 4 cylinder (OBC-PBC, open along the first extent and periodic along the second), it is open along one direction and periodic along the other, which on a square cluster is the instance's geometry whichever axis is open. Transcribed from the cited location of the versioned arXiv source and checked against the printed token; curator review pending. Parenthesized uncertainties are recorded as reported, with their meaning left unspecified unless the paper states it."
     }
   ],
   "issues": []
