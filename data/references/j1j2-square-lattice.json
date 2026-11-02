@@ -314,6 +314,146 @@
       "source": "Chen et al., arXiv:2304.01996v3, table:performance (12 x 12 block, row MPS (1024))",
       "notes": "Variational DMRG energy of a matrix product state with bond dimension 1024, open boundaries. Printed per site in the Pauli convention of the paper (H = J1 sum sigma.sigma + J2 sum sigma.sigma); the convention factor 0.25 converts it to S = sigma/2.",
       "convention_factor": "0.25"
+    },
+    {
+      "benchmark_id": "heisenberg-square-6x6-obc-sz0",
+      "method": "Stochastic series expansion QMC",
+      "kind": "exact",
+      "energy_token": "-0.6035222(2)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Sandvik, arXiv:2601.20189, as tabulated in Merali et al., arXiv:2605.13807v1, table tab:energy_mingru_vs_qmc_obc",
+      "notes": "Unbiased QMC (SSE) for the open 6 x 6 lattice; energy per site in units of J."
+    },
+    {
+      "benchmark_id": "heisenberg-square-8x8-obc-sz0",
+      "method": "Stochastic series expansion QMC",
+      "kind": "exact",
+      "energy_token": "-0.6190371(2)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Sandvik, arXiv:2601.20189, as tabulated in Merali et al., arXiv:2605.13807v1, table tab:energy_mingru_vs_qmc_obc",
+      "notes": "Unbiased QMC (SSE) for the open 8 x 8 lattice; energy per site in units of J."
+    },
+    {
+      "benchmark_id": "heisenberg-square-10x10-obc-sz0",
+      "method": "Stochastic series expansion QMC",
+      "kind": "exact",
+      "energy_token": "-0.6286561(2)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Sandvik, arXiv:2601.20189, as tabulated in Merali et al., arXiv:2605.13807v1, table tab:energy_mingru_vs_qmc_obc",
+      "notes": "Unbiased QMC (SSE) for the open 10 x 10 lattice; energy per site in units of J."
+    },
+    {
+      "benchmark_id": "heisenberg-square-12x12-obc-sz0",
+      "method": "Stochastic series expansion QMC",
+      "kind": "exact",
+      "energy_token": "-0.6352007(2)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Sandvik, arXiv:2601.20189, as tabulated in Merali et al., arXiv:2605.13807v1, table tab:energy_mingru_vs_qmc_obc",
+      "notes": "Unbiased QMC (SSE) for the open 12 x 12 lattice; energy per site in units of J."
+    },
+    {
+      "benchmark_id": "heisenberg-square-14x14-obc-sz0",
+      "method": "Stochastic series expansion QMC",
+      "kind": "exact",
+      "energy_token": "-0.6399410(2)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Sandvik, arXiv:2601.20189, as tabulated in Merali et al., arXiv:2605.13807v1, table tab:energy_mingru_vs_qmc_obc",
+      "notes": "Unbiased QMC (SSE) for the open 14 x 14 lattice; energy per site in units of J."
+    },
+    {
+      "benchmark_id": "heisenberg-square-16x16-obc-sz0",
+      "method": "Stochastic series expansion QMC",
+      "kind": "exact",
+      "energy_token": "-0.6435317(2)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Sandvik, arXiv:2601.20189, as tabulated in Merali et al., arXiv:2605.13807v1, table tab:energy_mingru_vs_qmc_obc",
+      "notes": "Unbiased QMC (SSE) for the open 16 x 16 lattice; energy per site in units of J."
+    },
+    {
+      "benchmark_id": "heisenberg-square-18x18-obc-sz0",
+      "method": "Stochastic series expansion QMC",
+      "kind": "exact",
+      "energy_token": "-0.6463451(4)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Sandvik, arXiv:2601.20189, as tabulated in Merali et al., arXiv:2605.13807v1, table tab:energy_mingru_vs_qmc_obc",
+      "notes": "Unbiased QMC (SSE) for the open 18 x 18 lattice; energy per site in units of J."
+    },
+    {
+      "benchmark_id": "heisenberg-square-20x20-obc-sz0",
+      "method": "Stochastic series expansion QMC",
+      "kind": "exact",
+      "energy_token": "-0.6486091(4)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Sandvik, arXiv:2601.20189, as tabulated in Merali et al., arXiv:2605.13807v1, table tab:energy_mingru_vs_qmc_obc",
+      "notes": "Unbiased QMC (SSE) for the open 20 x 20 lattice; energy per site in units of J."
+    },
+    {
+      "benchmark_id": "heisenberg-square-22x22-obc-sz0",
+      "method": "Stochastic series expansion QMC",
+      "kind": "exact",
+      "energy_token": "-0.6504689(4)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Sandvik, arXiv:2601.20189, as tabulated in Merali et al., arXiv:2605.13807v1, table tab:energy_mingru_vs_qmc_obc",
+      "notes": "Unbiased QMC (SSE) for the open 22 x 22 lattice; energy per site in units of J."
+    },
+    {
+      "benchmark_id": "heisenberg-square-24x24-obc-sz0",
+      "method": "Stochastic series expansion QMC",
+      "kind": "exact",
+      "energy_token": "-0.6520251(4)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Sandvik, arXiv:2601.20189, as tabulated in Merali et al., arXiv:2605.13807v1, table tab:energy_mingru_vs_qmc_obc",
+      "notes": "Unbiased QMC (SSE) for the open 24 x 24 lattice; energy per site in units of J."
+    },
+    {
+      "benchmark_id": "heisenberg-square-26x26-obc-sz0",
+      "method": "Stochastic series expansion QMC",
+      "kind": "exact",
+      "energy_token": "-0.6533456(4)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Sandvik, arXiv:2601.20189, as tabulated in Merali et al., arXiv:2605.13807v1, table tab:energy_mingru_vs_qmc_obc",
+      "notes": "Unbiased QMC (SSE) for the open 26 x 26 lattice; energy per site in units of J."
+    },
+    {
+      "benchmark_id": "heisenberg-square-28x28-obc-sz0",
+      "method": "Stochastic series expansion QMC",
+      "kind": "exact",
+      "energy_token": "-0.6544806(4)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Sandvik, arXiv:2601.20189, as tabulated in Merali et al., arXiv:2605.13807v1, table tab:energy_mingru_vs_qmc_obc",
+      "notes": "Unbiased QMC (SSE) for the open 28 x 28 lattice; energy per site in units of J."
+    },
+    {
+      "benchmark_id": "heisenberg-square-32x32-obc-sz0",
+      "method": "Stochastic series expansion QMC",
+      "kind": "exact",
+      "energy_token": "-0.6563289(4)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Sandvik, arXiv:2601.20189, as tabulated in Merali et al., arXiv:2605.13807v1, table tab:energy_mingru_vs_qmc_obc",
+      "notes": "Unbiased QMC (SSE) for the open 32 x 32 lattice; energy per site in units of J."
+    },
+    {
+      "benchmark_id": "heisenberg-square-48x48-obc-sz0",
+      "method": "Stochastic series expansion QMC",
+      "kind": "exact",
+      "energy_token": "-0.6606690(4)",
+      "normalization": "per_site",
+      "unit": "J",
+      "source": "Sandvik, arXiv:2601.20189, as tabulated in Merali et al., arXiv:2605.13807v1, table tab:energy_mingru_vs_qmc_obc",
+      "notes": "Unbiased QMC (SSE) for the open 48 x 48 lattice; energy per site in units of J."
     }
   ]
 }
