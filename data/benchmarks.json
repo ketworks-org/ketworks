@@ -2754,6 +2754,24 @@
     "parameters_latex": "J'=1,\\qquad J/J'=0.8,\\qquad S=\\tfrac12"
   },
   {
+    "id": "shastry-sutherland-square-6x6-pbc-j0p8-sz0",
+    "name": "Shastry–Sutherland",
+    "family": "Shastry–Sutherland",
+    "part": "Square",
+    "category": "lattice-spins",
+    "sites": 36,
+    "geometry": "6 by 6 square lattice with sites (x, y); periodic in both directions; J on every nearest-neighbor bond, counted once; J' on one diagonal of every other plaquette in the orthogonal-dimer (Shastry-Sutherland) pattern: the plaquette with lower-left corner (x, y) carries the dimer (x, y)-(x+1, y+1) when x and y are both even and the dimer (x+1, y)-(x, y+1) when both are odd, so that every site belongs to exactly one dimer (18 dimers, one quarter of the next-nearest-neighbor pairs)",
+    "hamiltonian": "H = J sum_<ij> S_i · S_j + J' sum_dimers S_i · S_j; spin-1/2 operators S = sigma/2; J' = 1; J = 0.8; no constant shift",
+    "sector": "Total Sz = 0; ground-state variational calculation",
+    "unit": "J'",
+    "description": "Nearest-neighbor exchange with orthogonal dimer bonds on the square lattice.",
+    "hamiltonian_latex": "H=J\\!\\sum_{\\langle i,j\\rangle}\\!\\mathbf{S}_i\\!\\cdot\\!\\mathbf{S}_j+J'\\!\\sum_{\\text{dimers}}\\!\\mathbf{S}_i\\!\\cdot\\!\\mathbf{S}_j",
+    "instance_label": "6 × 6 · J/J′ = 0.8 · periodic · Sz = 0",
+    "lattice_size": "6 × 6 · 36 sites",
+    "boundary_conditions": "Periodic in both directions",
+    "parameters_latex": "J'=1,\\qquad J/J'=0.8,\\qquad S=\\tfrac12"
+  },
+  {
     "id": "hubbard-square-4x4-pbc-u10-n8-sz0",
     "name": "Hubbard",
     "family": "Hubbard",
