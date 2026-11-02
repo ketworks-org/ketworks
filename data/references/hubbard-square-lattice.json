@@ -222,6 +222,36 @@
       "notes": "Sign-free DQMC for the attractive model; energy per site in units of t. Viteritti et al. (arXiv:2604.21978v1) print -4.017 for the same system."
     },
     {
+      "benchmark_id": "hubbard-square-8x8-pbc-u-2-n56-sz0",
+      "method": "Determinant quantum Monte Carlo (DQMC)",
+      "kind": "exact",
+      "energy_token": "-2.0343",
+      "normalization": "per_site",
+      "unit": "t",
+      "source": "Gu et al., arXiv:2604.25775v1, appendix table tab:app1, row DQMC, column 8 × 8, U = -2",
+      "notes": "Sign-free DQMC for the attractive model; energy per site in units of t. Printed without an error bar."
+    },
+    {
+      "benchmark_id": "hubbard-square-12x12-pbc-u-2-n126-sz0",
+      "method": "Determinant quantum Monte Carlo (DQMC)",
+      "kind": "exact",
+      "energy_token": "-2.0416",
+      "normalization": "per_site",
+      "unit": "t",
+      "source": "Gu et al., arXiv:2604.25775v1, appendix table tab:app1, row DQMC, column 12 × 12, U = -2",
+      "notes": "Sign-free DQMC for the attractive model; energy per site in units of t. Printed without an error bar."
+    },
+    {
+      "benchmark_id": "hubbard-square-12x12-pbc-u-8-n126-sz0",
+      "method": "Determinant quantum Monte Carlo (DQMC)",
+      "kind": "exact",
+      "energy_token": "-4.016(1)",
+      "normalization": "per_site",
+      "unit": "t",
+      "source": "Gu et al., arXiv:2604.25775v1, appendix table tab:app1, row DQMC, column 12 × 12, U = -8",
+      "notes": "Sign-free DQMC for the attractive model; energy per site in units of t."
+    },
+    {
       "benchmark_id": "hubbard-square-4x4-pbc-u4-n16-sz0",
       "method": "Exact diagonalization",
       "kind": "exact",
