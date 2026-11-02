@@ -422,7 +422,7 @@ function syncContinuumForm() {
   const solid = $('cont-preset').value === 'solid';
   const show = {'name': other || solid || $('cont-preset').value === 'molecule', 'name-optional': !other && !solid, 'count': false, 'species': false, 'space-choice': other, 'periodic': space === 'periodic' && !solid, 'periodic-other': space === 'periodic' && !solid && form.ccell.value === 'other',
     'ext-choice': other, 'trap': external === 'harmonic trap', 'nuclei': external === 'fixed nuclei', 'ext-other': external === 'other', 'int-choice': other, 'int-other': other && form.cint.value === 'other', 'unit': other,
-    'solid': solid, 'solid-cells': solid && form.cnorm.value === 'cell', 'quantum': solid && form.cnuclear.value === 'quantum'};
+    'solid': solid, 'pp': solid || $('cont-preset').value === 'molecule', 'solid-cells': solid && form.cnorm.value === 'cell', 'quantum': solid && form.cnuclear.value === 'quantum'};
   document.querySelectorAll('[data-c]').forEach(el => { el.hidden = !show[el.dataset.c]; });
   if (!form.cspecies.value && preset.species) form.cspecies.placeholder = preset.species;
   try { $('cont-key').textContent = keyPreview(continuumInstanceFromForm(formValues()).id); } catch (error) { $('cont-key').textContent = error.message; }
@@ -467,7 +467,7 @@ function prepareSubmission(event) {
   $('submission-ready').hidden = false; $('submission-ready').scrollIntoView({behavior: 'smooth', block: 'start'});
 }
 // Rows in data.json carry display fields (per-site values, paper, source URL) that are not part of the stored record.
-function stripRow(row) { const {energy_per_site, uncertainty_per_site, paper, source_url, ...stored} = row; return stored; }
+function stripRow(row) { const {energy_per_site, uncertainty_per_site, variance_per_site, paper, source_url, ...stored} = row; return stored; }
 window.addEventListener('hashchange', () => { route(); document.getElementById('site-nav')?.classList.remove('open'); $('nav-toggle')?.setAttribute('aria-expanded', 'false'); });
 $('model-select').addEventListener('change', () => { if (!dataset) return; renderInstances('model-select', 'system-select'); location.hash = '#benchmarks?system=' + encodeURIComponent($('system-select').value); });
 $('system-select').addEventListener('change', () => location.hash = '#benchmarks?system=' + encodeURIComponent($('system-select').value));

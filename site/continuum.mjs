@@ -30,11 +30,13 @@ const slug = s => num(s).toLowerCase().normalize('NFKD').replace(/\./g, 'p').rep
 const isNumber = s => /^-?\d+(\.\d+)?([eE][+-]?\d+)?$/.test(num(s));
 const count = s => { const n = Number(num(s)); if (!Number.isInteger(n) || n < 0) throw Error('Particle numbers must be non-negative integers.'); return n; };
 
+const atomicNumber = head => /^\d+$/.test(head) ? Number(head) : ELEMENTS.indexOf(head[0].toUpperCase() + head.slice(1).toLowerCase()) + 1;
+
 // Nuclei: one per line, "Z x y z" or "symbol x y z" (coordinates in the chosen units).
 export function parseNuclei(text, dimension) {
   const nuclei = String(text || '').split('\n').map(line => line.trim()).filter(Boolean).map(line => {
     const [head, ...coords] = line.split(/[\s,]+/);
-    const Z = /^\d+$/.test(head) ? Number(head) : ELEMENTS.indexOf(head[0].toUpperCase() + head.slice(1).toLowerCase()) + 1;
+    const Z = atomicNumber(head);
     if (!(Z > 0)) throw Error(`Unknown nucleus "${head}": give the atomic number or the element symbol.`);
     if (coords.length !== dimension || !coords.every(isNumber)) throw Error(`Each nucleus needs ${dimension} coordinates: "${line}".`);
     return {Z, position: coords.map(Number)};
@@ -52,6 +54,22 @@ export function parseVectors(text, dimension) {
   if (vectors.length !== dimension) throw Error(`Give the ${dimension} lattice vectors of the simulation cell, one per line.`);
   return vectors;
 }
+// With a pseudopotential, the valence charge of each element, "C 4, O 6"; an element not listed keeps all its
+// electrons (valence Z). The electrons of the instance are then the valence electrons.
+export function withValence(nuclei, pseudopotential, text) {
+  const items = String(text || '').split(/[,;\n]+/).map(s => s.trim()).filter(Boolean);
+  if (!pseudopotential) { if (items.length) throw Error('Valence charges go with a pseudopotential: name it, or leave them empty.'); return nuclei; }
+  if (!items.length) throw Error('Give the valence charge of each element under the pseudopotential, for example "C 4, O 6".');
+  const valence = {};
+  for (const item of items) {
+    const [head, charge] = item.split(/\s+/), Z = atomicNumber(head);
+    if (!(Z > 0) || !/^\d+$/.test(charge || '') || !(Number(charge) > 0 && Number(charge) <= Z)) throw Error(`Give each valence charge as an element and a charge between 1 and Z, for example "C 4": "${item}".`);
+    valence[Z] = Number(charge);
+  }
+  return nuclei.map(n => ({...n, valence: valence[n.Z] ?? n.Z}));
+}
+const nuclearCharge = nuclei => nuclei.reduce((s, n) => s + (n.valence ?? n.Z), 0);
+const valenceText = nuclei => [...new Map(nuclei.filter(n => n.valence !== undefined).map(n => [n.Z, n.valence]))].map(([Z, q]) => `${ELEMENTS[Z - 1] || Z} ${q}`).join(', ');
 const formula = nuclei => { const c = {}; nuclei.forEach(({Z}) => { const s = ELEMENTS[Z - 1] || `Z${Z}`; c[s] = (c[s] || 0) + 1; }); return Object.entries(c).map(([s, n]) => s + (n > 1 ? n : '')).join(''); };
 
 // The structured system from the form values.
@@ -80,18 +98,18 @@ export function systemFromForm(values) {
   let external;
   if (externalType === 'harmonic trap') { if (!isNumber(v('comega'))) throw Error('Give the trap frequency ω.'); external = {type: 'harmonic trap', omega: num(v('comega'))}; }
   else if (externalType === 'fixed nuclei' && v('cpreset') === 'solid') {
-    const nuclei = parseNuclei(values.cnuclei, dimension), quantum = v('cnuclear') === 'quantum';
+    const nuclei = withValence(parseNuclei(values.cnuclei, dimension), v('cpp'), values.cvalence), quantum = v('cnuclear') === 'quantum';
     if (!v('cstructure')) throw Error('Name the crystal structure (for example "rock salt" or "BCC").');
     if (!v('cgeometry')) throw Error('Give the lattice parameter (for example "L = 4.0 Å" or "r_s = 1.31").');
     if (quantum && !isNumber(v('cmass'))) throw Error('Give the nuclear mass in electron masses.');
     if (quantum && new Set(nuclei.map(n => n.Z)).size > 1) throw Error('Quantum nuclei are supported for one element only.');
-    const charge = nuclei.reduce((s, n) => s + n.Z, 0) - total; if (charge !== 0) throw Error(`The simulation cell must be neutral: the nuclei carry ${charge} more charges than the electrons.`);
+    const charge = nuclearCharge(nuclei) - total; if (charge !== 0) throw Error(`The simulation cell must be neutral: the nuclei carry ${charge} more charges than the electrons.`);
     external = {type: quantum ? 'quantum nuclei' : 'fixed nuclei', coordinate_units: v('ccoord_units') || 'bohr', structure: v('cstructure'), geometry: v('cgeometry'), nuclei, charge,
       ...(quantum ? {mass: num(v('cmass')), statistics: 'distinguishable'} : {}), ...(v('cpp') ? {pseudopotential: v('cpp')} : {})};
   } else if (externalType === 'fixed nuclei') {
-    const nuclei = parseNuclei(values.cnuclei, dimension);
+    const nuclei = withValence(parseNuclei(values.cnuclei, dimension), v('cpp'), values.cvalence);
     if (!v('cgeometry')) throw Error('Name the geometry (for example "equilibrium, NIST CCCBDB" or "R = 2.068 bohr").');
-    external = {type: 'fixed nuclei', coordinate_units: v('ccoord_units') || 'bohr', geometry: v('cgeometry'), nuclei, charge: nuclei.reduce((s, n) => s + n.Z, 0) - total};
+    external = {type: 'fixed nuclei', coordinate_units: v('ccoord_units') || 'bohr', geometry: v('cgeometry'), nuclei, charge: nuclearCharge(nuclei) - total, ...(v('cpp') ? {pseudopotential: v('cpp')} : {})};
   } else if (externalType === 'other') { if (!v('cext_text')) throw Error('Describe the external potential.'); external = {type: 'other', description: v('cext_text')}; }
   else if (EXTERNAL.includes(externalType)) external = {type: externalType};
   else throw Error('Choose the external potential.');
@@ -113,11 +131,11 @@ export function continuumFormValues(system) {
     cspace: space.type, ccell: cell, ccell_text: cell === 'other' ? space.cell : '', crs: space.r_s ?? '', csize: space.size ?? '', ctwist: space.type === 'periodic' && space.twist !== 'Gamma' ? space.twist : '',
     cext: external.type, comega: external.omega ?? '', cext_text: external.type === 'other' ? external.description : '',
     cnuclei: external.nuclei ? external.nuclei.map(n => [ELEMENTS[n.Z - 1] || n.Z, ...n.position].join(' ')).join('\n') : '',
-    ccoord_units: external.coordinate_units || 'bohr', cgeometry: external.geometry || '',
+    ccoord_units: external.coordinate_units || 'bohr', cgeometry: external.geometry || '', cpp: external.pseudopotential || '', cvalence: external.nuclei ? valenceText(external.nuclei) : '',
     cint: interaction.type, cint_text: interaction.type === 'other' ? interaction.description : '', cunit: unit, cper: per};
   if (preset === 'solid') Object.assign(values, {ccell: '', crs: '', csize: '', ctwist: '', csupercell: space.cell, cprim: space.primitive_cells ? String(space.primitive_cells) : '',
     clattice: space.lattice_vectors.map(a => a.join(' ')).join('\n'), ctwist_text: space.twist === 'Gamma' ? '' : space.twist, cext: 'fixed nuclei', cstructure: external.structure,
-    cnuclear: external.type === 'quantum nuclei' ? 'quantum' : 'clamped', cmass: external.mass ?? '', cpp: external.pseudopotential || '', cnorm: per});
+    cnuclear: external.type === 'quantum nuclei' ? 'quantum' : 'clamped', cmass: external.mass ?? '', cnorm: per});
   return values;
 }
 
@@ -138,6 +156,9 @@ export function continuumInstance(system, existingIds = []) {
   const ewald = space.type === 'periodic' ? '; Coulomb sums by Ewald summation with the Madelung self-image term included' : '';
   let id, family, part, group, label, hamiltonian, hamLatex, params, size, description, per = system.per;
   const interactionText = interaction.type === 'coulomb' ? coulombText : interaction.description;
+  // A pseudopotential replaces the core electrons: Z_A are then the valence charges and V_A the pseudopotentials.
+  const pp = external.pseudopotential, ppTerm = pp ? ' + sum_A V_A(r_i)' : '', ppLatex = pp ? '+\\sum_A V_A(\\mathbf r_i)' : '';
+  const coreText = pp ? `${pp} pseudopotential (Z_A the valence charges)` : 'all electrons', electronText = pp ? 'valence electrons' : 'electrons';
   if (system.preset === 'heg') {
     if (p.name !== 'electrons' || space.type !== 'periodic' || external.type !== 'uniform background' || interaction.type !== 'coulomb') throw Error('The electron gas is electrons in a periodic cell with a uniform background and Coulomb interactions.');
     if (space.r_s === undefined) throw Error('Give the density r_s.');
@@ -160,26 +181,27 @@ export function continuumInstance(system, existingIds = []) {
   } else if (system.preset === 'molecule') {
     if (space.type !== 'free' || external.type !== 'fixed nuclei') throw Error('An atom or molecule is electrons in free space with fixed nuclei.');
     const name = system.name || formula(external.nuclei);
-    id = `mol-${slug(name)}-${slug(external.geometry)}${external.charge ? `-q${external.charge}` : ''}${p.down === undefined ? '' : `-s${p.up - p.down}`}`; family = 'Atoms and molecules';
-    part = name; group = name; label = `${name} · ${external.geometry} · charge ${external.charge} · ${spins(p)}`;
-    hamiltonian = `H = sum_i (-1/2 nabla_i^2 - sum_A Z_A/|r_i - R_A|) + ${coulombText} + sum_{A<B} Z_A Z_B/|R_A - R_B|; nuclei fixed (Born-Oppenheimer), all electrons, nonrelativistic; Hartree atomic units`;
-    hamLatex = 'H=\\sum_i\\Big(-\\tfrac12\\nabla_i^2-\\sum_A\\frac{Z_A}{|\\mathbf r_i-\\mathbf R_A|}\\Big)+\\sum_{i<j}\\frac{1}{|\\mathbf r_i-\\mathbf r_j|}+\\sum_{A<B}\\frac{Z_AZ_B}{|\\mathbf R_A-\\mathbf R_B|}';
-    params = `N_\\uparrow=${p.up},\\qquad N_\\downarrow=${p.down}`; size = `${N} electrons, ${external.nuclei.length} nuclei (${formula(external.nuclei)})`;
-    description = `${name}, ${external.geometry}.`;
+    id = `mol-${slug(name)}-${slug(external.geometry)}${pp ? '-' + slug(pp) : ''}${external.charge ? `-q${external.charge}` : ''}${p.down === undefined ? '' : `-s${p.up - p.down}`}`; family = 'Atoms and molecules';
+    // A pseudopotential instance is its own section of the molecule, never compared with the all-electron one.
+    part = name; group = [name, pp].filter(Boolean).join(', '); label = [name, external.geometry, pp, `charge ${external.charge}`, spins(p)].filter(Boolean).join(' · ');
+    hamiltonian = `H = sum_i (-1/2 nabla_i^2 - sum_A Z_A/|r_i - R_A|${ppTerm}) + ${coulombText} + sum_{A<B} Z_A Z_B/|R_A - R_B|; nuclei fixed (Born-Oppenheimer), ${coreText}, nonrelativistic; Hartree atomic units`;
+    hamLatex = `H=\\sum_i\\Big(-\\tfrac12\\nabla_i^2-\\sum_A\\frac{Z_A}{|\\mathbf r_i-\\mathbf R_A|}${ppLatex}\\Big)+\\sum_{i<j}\\frac{1}{|\\mathbf r_i-\\mathbf r_j|}+\\sum_{A<B}\\frac{Z_AZ_B}{|\\mathbf R_A-\\mathbf R_B|}`;
+    params = `N_\\uparrow=${p.up},\\qquad N_\\downarrow=${p.down}`; size = `${N} ${electronText}, ${external.nuclei.length} nuclei (${formula(external.nuclei)})`;
+    description = `${name}, ${external.geometry}${pp ? `, ${pp} pseudopotential` : ''}.`;
   } else if (system.preset === 'solid') {
     if (space.type !== 'periodic' || !space.lattice_vectors || !['fixed nuclei', 'quantum nuclei'].includes(external.type) || interaction.type !== 'coulomb') throw Error('A crystal is electrons and nuclei in a periodic cell with Coulomb interactions.');
     if (!system.name) throw Error('Name the material (for example "Lithium hydride").');
-    const quantum = external.type === 'quantum nuclei', pp = external.pseudopotential, cellText = space.cell.replace(/×/g, 'x');
+    const quantum = external.type === 'quantum nuclei', cellText = space.cell.replace(/×/g, 'x');
     id = `solid-${slug(system.name)}-${slug(external.structure)}-${slug(external.geometry)}-${slug(cellText)}-${twistKey(space.twist)}${pp ? '-' + slug(pp) : ''}${quantum ? '-quantum-nuclei' : ''}${p.up !== p.down ? `-s${p.up - p.down}` : ''}`;
     // One model for all crystals: a part per material, a section per structure (and per quantum nuclei or a
     // pseudopotential, which change the Hamiltonian); the rows of a section are its cells, lattice parameters, twists.
     family = 'Solids'; part = system.name; group = [external.structure, quantum ? 'quantum nuclei' : null, pp].filter(Boolean).join(', ');
     label = [`${system.name}, ${external.structure}, ${external.geometry}`, space.cell, twist(space), quantum ? 'quantum nuclei' : null, pp].filter(Boolean).join(' · ');
     const nuclearKinetic = quantum ? ` - sum_A 1/(2 M) nabla_A^2 (M = ${external.mass} m_e)` : '';
-    hamiltonian = `H = sum_i (-1/2 nabla_i^2 - sum_A Z_A/|r_i - R_A|)${nuclearKinetic} + ${coulombText} + sum_{A<B} Z_A Z_B/|R_A - R_B|${ewald}; ${quantum ? 'nuclei as distinguishable quantum particles (no nuclear exchange)' : 'nuclei fixed (Born-Oppenheimer)'}, ${pp ? `${pp} pseudopotential` : 'all electrons'}, nonrelativistic; Hartree atomic units`;
-    hamLatex = `H=\\sum_i\\Big(-\\tfrac12\\nabla_i^2-\\sum_A\\frac{Z_A}{|\\mathbf r_i-\\mathbf R_A|}\\Big)${quantum ? '-\\sum_A\\frac{\\nabla_A^2}{2M}' : ''}+\\sum_{i<j}\\frac{1}{|\\mathbf r_i-\\mathbf r_j|}+\\sum_{A<B}\\frac{Z_AZ_B}{|\\mathbf R_A-\\mathbf R_B|}`;
+    hamiltonian = `H = sum_i (-1/2 nabla_i^2 - sum_A Z_A/|r_i - R_A|${ppTerm})${nuclearKinetic} + ${coulombText} + sum_{A<B} Z_A Z_B/|R_A - R_B|${ewald}; ${quantum ? 'nuclei as distinguishable quantum particles (no nuclear exchange)' : 'nuclei fixed (Born-Oppenheimer)'}, ${coreText}, nonrelativistic; Hartree atomic units`;
+    hamLatex = `H=\\sum_i\\Big(-\\tfrac12\\nabla_i^2-\\sum_A\\frac{Z_A}{|\\mathbf r_i-\\mathbf R_A|}${ppLatex}\\Big)${quantum ? '-\\sum_A\\frac{\\nabla_A^2}{2M}' : ''}+\\sum_{i<j}\\frac{1}{|\\mathbf r_i-\\mathbf r_j|}+\\sum_{A<B}\\frac{Z_AZ_B}{|\\mathbf R_A-\\mathbf R_B|}`;
     params = `N_\\uparrow=${p.up},\\qquad N_\\downarrow=${p.down}${quantum ? `,\\qquad M=${external.mass}\\,m_e` : ''}`;
-    size = `${N} electrons, ${external.nuclei.length} nuclei (${formula(external.nuclei)}) · ${space.cell}`;
+    size = `${N} ${electronText}, ${external.nuclei.length} nuclei (${formula(external.nuclei)}) · ${space.cell}`;
     description = `${system.name}: ${external.structure}, ${external.geometry}.`;
   } else {
     if (!system.name) throw Error('Give the system a name (for example "Liquid helium-4").');

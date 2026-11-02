@@ -35,6 +35,8 @@ assert.deepEqual(parseToken('-50.000(20)'), {token:'-50.000(20)', energy:'-50.00
 assert.deepEqual(parseToken('-47.745(12)'), {token:'-47.745(12)', energy:'-47.745', uncertainty:'0.012'});
 assert.deepEqual(parseToken('-0.4976921(4)').uncertainty, '0.0000004');
 assert.throws(()=>parseToken('-0.49(1'));
+// A zero error bar, "(0)", is a bound of one unit in the last printed digit.
+assert.deepEqual(parseToken('-0.6708(0)'), {token:'-0.6708(0)', energy:'-0.6708', uncertainty:'0.0001', bound:true});
 const benchmark=JSON.parse(fs.readFileSync('data/benchmarks.json','utf8'))[0];
 const fields={paper_id:'2601.00001v1',benchmark_id:benchmark.id,title:'',authors:'',method:'Test NQS',variant:'Test',method_class:'rbm',energy_token:'-50.000(20)',normalization:'total',uncertainty_type:'standard_error',source_location:'Synthetic Table 1',eligibility_evidence:'Synthetic test only',parameter_count:'400',notes:''};
 const submission=makeSubmission(fields,benchmark);
@@ -49,6 +51,9 @@ assert.throws(()=>makeSubmission({...fields,energy_token:'-50.000'},benchmark), 
 assert.equal(makeSubmission({...fields,energy_token:'-50.000',uncertainty_value:'± 0.020'},benchmark).results[0].uncertainty,'0.020');
 assert.throws(()=>makeSubmission({...fields,uncertainty_value:'0.5'},benchmark), /disagrees/);
 assert.throws(()=>makeSubmission({...fields,uncertainty_type:'not_reported'},benchmark));
+assert.throws(()=>makeSubmission({...fields,energy_token:'-50.000(0)'},benchmark), /zero error bar/);
+assert.equal(makeSubmission({...fields,energy_token:'-50.000(0)',uncertainty_type:'upper_bound'},benchmark).results[0].uncertainty,'0.001');
+assert.throws(()=>makeSubmission({...fields,normalization:'per_atom'},benchmark), /per atom/);
 assert.equal(submission.results[0].variance,null,'the variance is optional');
 assert.equal(makeSubmission({...fields,variance:'1.25'},benchmark).results[0].variance,'1.25');
 assert.throws(()=>makeSubmission({...fields,variance:'-1'},benchmark), /variance/);
@@ -127,6 +132,19 @@ assert.equal(dot.id, 'trap2d-electrons-n6-unpol-w0p28'); assert.equal(dot.family
 const n2 = continuumInstanceFromForm({cpreset:'molecule',cdim:'3',cup:'7',cdown:'7',cgeometry:'R = 2.068 bohr',cnuclei:'N 0 0 0\n7 0 0 2.068'});
 assert.equal(n2.id, 'mol-n2-r-2p068-bohr-s0'); assert.equal(n2.system.external.charge, 0); assert.equal(n2.family, 'Atoms and molecules');
 assert.equal(continuumInstanceFromForm({cpreset:'molecule',cdim:'3',cup:'1',cdown:'0',cgeometry:'atom',cnuclei:'He 0 0 0'}).system.external.charge, 1);
+// An energy per atom is accepted for a molecule compared by its total, and converted on the board.
+const moleculeBenchmark = registry.find(b => b.system?.preset === 'molecule');
+assert.equal(makeSubmission({...fields,benchmark_id:moleculeBenchmark.id,normalization:'per_atom'},moleculeBenchmark).results[0].normalization,'per_atom');
+// A pseudopotential: the electrons are the valence electrons, each nucleus carries its valence charge, and the
+// instance is a section of its own, never compared with the all-electron one.
+const ch4ecp = {cpreset:'molecule',cdim:'3',cup:'4',cdown:'4',cgeometry:'equilibrium',cnuclei:'C 0 0 0\nH 1 1 1\nH -1 -1 1\nH 1 -1 -1\nH -1 1 -1',cpp:'ccECP',cvalence:'C 4'};
+const methaneEcp = continuumInstanceFromForm(ch4ecp);
+assert.equal(methaneEcp.id, 'mol-ch4-equilibrium-ccecp-s0'); assert.equal(methaneEcp.group, 'CH4, ccECP'); assert.equal(methaneEcp.system.external.charge, 0);
+assert.deepEqual(methaneEcp.system.external.nuclei.map(n => n.valence), [4, 1, 1, 1, 1]); assert.match(methaneEcp.hamiltonian, /ccECP pseudopotential/); assert.match(methaneEcp.lattice_size, /^8 valence electrons/);
+assert.deepEqual(continuumInstanceFromForm(continuumFormValues(methaneEcp.system)), methaneEcp);
+assert.throws(() => continuumInstanceFromForm({...ch4ecp, cvalence:''}), /valence charge/);
+assert.throws(() => continuumInstanceFromForm({...ch4ecp, cpp:''}), /pseudopotential/);
+assert.throws(() => continuumInstanceFromForm({...ch4ecp, cvalence:'C 7'}), /between 1 and Z/);
 // A crystal: lattice vectors and nuclei of the simulation cell, the twist, and the energy per primitive cell or per atom.
 const crystal = {cpreset:'solid',cdim:'3',cup:'2',cdown:'2',cname:'Lithium hydride',cstructure:'rock salt',cgeometry:'L = 4.0 Å',ccoord_units:'angstrom',csupercell:'1×1×1 primitive cell',cnorm:'cell',cprim:'1',clattice:'0 2 2\n2 0 2\n2 2 0',cnuclei:'Li 0 0 0\nH 2 2 2',cnuclear:'clamped'};
 const lih = continuumInstanceFromForm(crystal);
