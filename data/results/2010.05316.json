@@ -31,7 +31,7 @@
       "source_location": "Table I ('two-electron node-less systems'), 'deep Jastrow factor' column",
       "eligibility_evidence": "VMC energy of the trained deep Jastrow ansatz as printed.",
       "parameter_count": null,
-      "notes": "H2 at d = 1.4 (bohr: the exact energy -1.1744748 of Kolos and Wolniewicz printed in the same row is for 1.4 bohr). Singlet, N_up = N_down = 1. The He row of the same table is printed without its minus sign and is not recorded."
+      "notes": "H2 at d = 1.4 (bohr: the exact energy -1.1744748 of Kolos and Wolniewicz printed in the same row is for 1.4 bohr). Singlet, N_up = N_down = 1. The He row of the same table, printed without its minus sign, is recorded with the sign restored (decision P8, 2026-11-02)."
     },
     {
       "benchmark_id": "mol-h2o-r-0p9572-a-angle-104p5-s0",
@@ -137,6 +137,27 @@
       "eligibility_evidence": "VMC energy of the trained PauliNet instance as printed.",
       "parameter_count": null,
       "notes": "Geometry: Table 'Geometries of test systems' (angstrom): O (0, 0, 0), H (+-0.75695, 0.58588, 0), i.e. r = 0.9572 angstrom and angle 104.5 degrees. Singlet, N_up = N_down = 5. The other rows of Table III and IV are other methods."
+    },
+    {
+      "benchmark_id": "mol-he-isolated-atom-s0",
+      "system_description": "He atom, all electrons, clamped point nucleus, 1 up and 1 down electrons",
+      "method": "PauliNet",
+      "variant": "Deep Jastrow factor, nodeless (no determinant)",
+      "method_class": "other",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-2.90372",
+      "energy_token": "-2.90372(1)",
+      "normalization": "total",
+      "unit": "Ha",
+      "uncertainty": "0.00001",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Table I (two-electron_systems), row He, column 'deep Jastrow factor'",
+      "eligibility_evidence": "VMC energy of the trained deep Jastrow ansatz as printed.",
+      "parameter_count": null,
+      "notes": "Printed as '2.90372(1)', without the minus sign, which is restored (decision P8, 2026-11-02): the bound atom's total energy is negative, the exact energy in the same row is -2.9037247 and the row gives 99.98(2)% of the correlation energy. Singlet, N_up = N_down = 1 (two-electron closed-shell, node-less ground state; Results)."
     }
   ]
 }
