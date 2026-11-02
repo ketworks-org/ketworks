@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "references": [
+    {
+      "benchmark_id": "j1j2-chain-100-pbc-j2-0p1-sz0",
+      "method": "DMRG (bond dimension up to 1000)",
+      "kind": "upper_bound",
+      "energy_token": "-0.425417395",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Rende et al., arXiv:2403.07795v3, table tab:energies, column DMRG",
+      "notes": "Variational DMRG energy of the periodic 100-site chain with bond dimension up to chi = 10^3 (table caption). Energy per site in units of J1."
+    },
+    {
+      "benchmark_id": "j1j2-chain-100-pbc-j2-0p2-sz0",
+      "method": "DMRG (bond dimension up to 1000)",
+      "kind": "upper_bound",
+      "energy_token": "-0.408572967",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Rende et al., arXiv:2403.07795v3, table tab:energies, column DMRG",
+      "notes": "Variational DMRG energy of the periodic 100-site chain with bond dimension up to chi = 10^3 (table caption). Energy per site in units of J1."
+    },
+    {
+      "benchmark_id": "j1j2-chain-100-pbc-j2-0p3-sz0",
+      "method": "DMRG (bond dimension up to 1000)",
+      "kind": "upper_bound",
+      "energy_token": "-0.393126745",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Rende et al., arXiv:2403.07795v3, table tab:energies, column DMRG",
+      "notes": "Variational DMRG energy of the periodic 100-site chain with bond dimension up to chi = 10^3 (table caption). Energy per site in units of J1."
+    },
+    {
+      "benchmark_id": "j1j2-chain-100-pbc-j2-0p4-sz0",
+      "method": "DMRG (bond dimension up to 1000)",
+      "kind": "upper_bound",
+      "energy_token": "-0.380387370",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Rende et al., arXiv:2403.07795v3, table tab:energies, column DMRG",
+      "notes": "Variational DMRG energy of the periodic 100-site chain with bond dimension up to chi = 10^3 (table caption). Energy per site in units of J1."
+    },
+    {
+      "benchmark_id": "j1j2-chain-100-pbc-j2-0p6-sz0",
+      "method": "DMRG (bond dimension up to 1000)",
+      "kind": "upper_bound",
+      "energy_token": "-0.380804138",
+      "normalization": "per_site",
+      "unit": "J1",
+      "source": "Rende et al., arXiv:2403.07795v3, table tab:energies, column DMRG",
+      "notes": "Variational DMRG energy of the periodic 100-site chain with bond dimension up to chi = 10^3 (table caption). Energy per site in units of J1."
+    }
+  ]
+}

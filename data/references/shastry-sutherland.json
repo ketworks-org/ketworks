@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "references": [
+    {
+      "benchmark_id": "shastry-sutherland-square-6x6-pbc-j0p8-sz0",
+      "method": "Exact diagonalization",
+      "kind": "exact",
+      "energy_token": "-0.4517531",
+      "normalization": "per_site",
+      "unit": "J'",
+      "source": "Viteritti et al., arXiv:2311.16889v4, caption of table:energies",
+      "notes": "Ground-state energy of the 6 x 6 torus at J/J' = 0.8. Energy per site in units of J'."
+    }
+  ]
+}

@@ -140,6 +140,27 @@
     {
       "benchmark_id": "heisenberg-square-10x10-pbc-sz0",
       "system_description": "Heisenberg, 10 × 10 · J = 1 · periodic · Sz = 0. H = J sum_<ij> S_i · S_j; spin-1/2 operators S = sigma/2; J = 1; no constant shift",
+      "method": "Graph neural network",
+      "variant": "GNN, 6 message-passing steps, sublattice encoding",
+      "method_class": "other",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.6708",
+      "energy_token": "-0.6708(0)",
+      "normalization": "per_site",
+      "unit": "J",
+      "uncertainty": "0.0001",
+      "uncertainty_type": "upper_bound",
+      "variance": null,
+      "source_location": "Appendix, Table \"Numerical values of variational energies per spin\" (table:energies), row Square, J2 = 0, N = 100, column GNN (sections/appendix.tex l.198)",
+      "eligibility_evidence": "Variational energy per spin of the optimized state, estimated by Markov-chain Monte Carlo with 2 x 10^5 samples from equilibrated chains, with the stochastic error in parentheses (appendix, Model performance).",
+      "parameter_count": null,
+      "notes": "Hamiltonian H = sum_<ij> S_i S_j + J2 sum_<<ij>> S_i S_j with spin-1/2 operators and J1 = 1 (Sec. Methods); periodic clusters of the appendix table of cluster vectors (table:lattices_apx). Sampling uses spin-exchange moves, which conserve the total Sz; the Sz of the initial configurations is not stated. Optimized by imaginary-time supervised wave-function optimization (IT-SWO); the recorded value is a directly evaluated variational energy. The error is printed as (0): it rounds to zero in the last printed digit, and is recorded as an upper bound of one unit in that digit, 0.0001 (decision P9 of 2026-11-02). The GNN-2 entry of the same row, -0.5023(5), repeats the 36-site J2 = 0.5 value; it is a misprint and is not recorded."
+    },
+    {
+      "benchmark_id": "heisenberg-square-10x10-pbc-sz0",
+      "system_description": "Heisenberg, 10 × 10 · J = 1 · periodic · Sz = 0. H = J sum_<ij> S_i · S_j; spin-1/2 operators S = sigma/2; J = 1; no constant shift",
       "method": "Residual convolutional network",
       "variant": "ResNet baseline",
       "method_class": "convolutional",
@@ -156,7 +177,7 @@
       "source_location": "Appendix, Table \"Numerical values of variational energies per spin\" (table:energies), row Square, J2 = 0, N = 100, column ResNet",
       "eligibility_evidence": "Variational energy per spin of the optimized state, estimated by Markov-chain Monte Carlo with 2 x 10^5 samples from equilibrated chains, with the stochastic error in parentheses (appendix, Model performance).",
       "parameter_count": null,
-      "notes": "Hamiltonian H = sum_<ij> S_i S_j + J2 sum_<<ij>> S_i S_j with spin-1/2 operators and J1 = 1 (Sec. Methods); periodic clusters of the appendix table of cluster vectors (table:lattices_apx). Sampling uses spin-exchange moves, which conserve the total Sz; the Sz of the initial configurations is not stated. Optimized by imaginary-time supervised wave-function optimization (IT-SWO); the recorded value is a directly evaluated variational energy. The GNN entry of this row, -0.6708(0), has a zero error bar and the GNN-2 entry, -0.5023(5), repeats the 36-site J2 = 0.5 value; neither is recorded."
+      "notes": "Hamiltonian H = sum_<ij> S_i S_j + J2 sum_<<ij>> S_i S_j with spin-1/2 operators and J1 = 1 (Sec. Methods); periodic clusters of the appendix table of cluster vectors (table:lattices_apx). Sampling uses spin-exchange moves, which conserve the total Sz; the Sz of the initial configurations is not stated. Optimized by imaginary-time supervised wave-function optimization (IT-SWO); the recorded value is a directly evaluated variational energy. The GNN entry of this row, -0.6708(0), is recorded as an upper bound; the GNN-2 entry, -0.5023(5), repeats the 36-site J2 = 0.5 value and is not recorded."
     },
     {
       "benchmark_id": "j1j2-honeycomb-7x7-pbc-j2-0p2-sz0",
