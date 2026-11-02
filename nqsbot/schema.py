@@ -35,7 +35,8 @@ ROW = obj({
     "reported_here": {"type": "boolean"},
     "energy": string(),
     "energy_token": string(),
-    "normalization": string(["total", "per_site", "unknown"]),
+    # per_atom: an energy per atom printed for an atom or molecule whose instance compares total energies.
+    "normalization": string(["total", "per_site", "per_atom", "unknown"]),
     "unit": string(),
     "uncertainty": string(nullable=True),
     # upper_bound: the text states that the error is smaller than this value (for example "below the last digit").
@@ -53,7 +54,10 @@ EXTRACTION = obj({"results": {"type": "array", "items": ROW}, "issues": {"type":
 # convention than the instance, for example Pauli matrices for a spin-1/2 Heisenberg instance defined with
 # S = sigma/2 (factor 0.25). The printed energy, error bar and variance stay as printed; Ketboard shows the
 # energy and error bar multiplied by the factor and the variance by its square. It is not shown on the site.
-STORED_ROW = {**ROW, "properties": {**ROW["properties"], "convention_factor": string()}}
+# convention_offset, also set by a curator, is added after the factor, in the normalization of the board, when the
+# source prints an energy shifted by a constant that it subtracts, for example (E - E_Madelung) for the electron
+# gas. The error bar and the variance are not shifted.
+STORED_ROW = {**ROW, "properties": {**ROW["properties"], "convention_factor": string(), "convention_offset": string()}}
 PAPER = obj({k: string() for k in ("id", "title", "authors", "published", "updated")})
 RECORD = obj({
     "schema_version": {"const": 1}, "paper": PAPER,
@@ -113,7 +117,16 @@ def validate_system(row):
         assert isinstance(nuclei, list) and nuclei, f"{where}: list the nuclei"
         assert all(isinstance(n.get("Z"), int) and n["Z"] > 0 and len(n.get("position", [])) == s["dimension"] for n in nuclei), f"{where}: each nucleus needs Z and {s['dimension']} coordinates"
         assert external.get("coordinate_units") in ("bohr", "angstrom") and str(external.get("geometry", "")).strip(), f"{where}: give the coordinate units and name the geometry"
-        assert external.get("charge") == sum(n["Z"] for n in nuclei) - total, f"{where}: charge must equal the nuclear charge minus the number of electrons"
+        # With a pseudopotential the electrons are the valence electrons, and every nucleus carries its valence
+        # charge (equal to Z for a nucleus kept with all its electrons).
+        pseudopotential = external.get("pseudopotential")
+        if pseudopotential is not None:
+            assert isinstance(pseudopotential, str) and pseudopotential.strip(), f"{where}: name the pseudopotential"
+            assert all(isinstance(n.get("valence"), int) and 0 < n["valence"] <= n["Z"] for n in nuclei), f"{where}: with a pseudopotential every nucleus needs its valence charge, between 1 and Z"
+        else:
+            assert all("valence" not in n for n in nuclei), f"{where}: valence charges go with a pseudopotential"
+        charges = sum(n["valence"] if pseudopotential is not None else n["Z"] for n in nuclei)
+        assert external.get("charge") == charges - total, f"{where}: charge must equal the nuclear (valence) charge minus the number of electrons"
         if space["type"] == "periodic":
             assert space.get("lattice_vectors") and external["charge"] == 0, f"{where}: a crystal needs the lattice vectors of its simulation cell and a neutral cell"
         if external["type"] == "quantum nuclei":
@@ -183,6 +196,11 @@ def validate_row(row, registry, source_text=None, allow_unmatched=False):
             raise ValueError("convention_factor must be positive and different from 1")
         if "convention" not in row["notes"].lower():
             raise ValueError("Explain the convention_factor in the notes (which convention the source uses)")
+    if "convention_offset" in row:
+        if decimal(row["convention_offset"]) == 0:
+            raise ValueError("convention_offset must differ from 0")
+        if "convention" not in row["notes"].lower():
+            raise ValueError("Explain the convention_offset in the notes (what the source subtracts and how the offset is obtained)")
     if not eligible(row):
         raise ValueError("Only original NQS variational estimates are eligible")
     for field in ("method", "variant", "system_description", "source_location", "eligibility_evidence", "energy_token"):
@@ -197,6 +215,11 @@ def validate_row(row, registry, source_text=None, allow_unmatched=False):
         places = len(printed[1].split(".")[1]) if "." in printed[1] else 0
         exponent = int(printed[3][1:]) if printed[3] else 0
         implied_error = Decimal(printed[2]) * Decimal(10) ** (exponent - places)
+        if implied_error == 0:
+            # "(0)": the error rounds to zero in the last printed digit; it is recorded as a bound of one unit there.
+            implied_error = Decimal(10) ** (exponent - places)
+            if row["uncertainty_type"] != "upper_bound":
+                raise ValueError("A zero error bar such as (0) is recorded as an upper bound of one unit in the last printed digit")
         if row["uncertainty"] is None or decimal(row["uncertainty"]) != implied_error:
             raise ValueError("Uncertainty disagrees with the printed parentheses")
     # Every entry needs an error bar, printed or stated in the text; "not_reported" stays in the enum only
@@ -219,9 +242,12 @@ def validate_row(row, registry, source_text=None, allow_unmatched=False):
             return
         raise ValueError("Result needs an exact registered benchmark")
     # A unit other than the instance's is allowed only with a convention_factor that converts it (e.g. Ry to Ha).
-    if benchmark.get("per") == "system" and row["normalization"] != "total":
+    if row["normalization"] == "per_atom":
+        if benchmark.get("per") != "system" or not ((benchmark.get("system") or {}).get("external") or {}).get("nuclei"):
+            raise ValueError("A per-atom energy is converted only for an atom or molecule compared by total energy")
+    elif benchmark.get("per") == "system" and row["normalization"] != "total":
         raise ValueError("This instance is compared by total energy; record the printed total")
-    if row["normalization"] not in ("total", "per_site") or (row["unit"] != benchmark["unit"] and "convention_factor" not in row):
+    if row["normalization"] not in ("total", "per_site", "per_atom") or (row["unit"] != benchmark["unit"] and "convention_factor" not in row):
         raise ValueError("Unresolved normalization or mismatched units")
 
 
@@ -283,8 +309,10 @@ def variance_per_site(row, registry):
 def per_divisor(row, registry):
     """What a printed total is divided by: the number of sites or particles, the number of atoms or primitive
     cells (per_count), or 1 for an instance whose board value is the total energy of the system (per = "system",
-    e.g. a molecule)."""
+    e.g. a molecule). An energy per atom of such an instance is multiplied by the number of nuclei."""
     benchmark = registry[row["benchmark_id"]]
+    if row["normalization"] == "per_atom":
+        return 1 / Decimal(len(benchmark["system"]["external"]["nuclei"]))
     if benchmark.get("per") == "system":
         return 1
     return benchmark.get("per_count", benchmark["sites"]) if row["normalization"] == "total" else 1
@@ -294,20 +322,25 @@ def convention_factor(row):
     return decimal(row["convention_factor"]) if row.get("convention_factor") else Decimal(1)
 
 
+def convention_offset(row):
+    return decimal(row["convention_offset"]) if row.get("convention_offset") else Decimal(0)
+
+
 def per_site(row, registry):
     """Energy and error bar per site, as printed for per-site rows. A total energy is divided by the
-    number of sites (and a converted one multiplied by its convention_factor) and rounded back to the
-    printed precision: the error bar keeps its printed significant digits (at most two) and the energy
-    is cut at the error bar's last digit."""
+    number of sites (and a converted one multiplied by its convention_factor, then shifted by its
+    convention_offset) and rounded back to the printed precision: the error bar keeps its printed
+    significant digits (at most two) and the energy is cut at the error bar's last digit."""
     divisor = per_divisor(row, registry) / convention_factor(row)
+    offset = convention_offset(row)
     energy = decimal(row["energy"])
     error = decimal(row["uncertainty"]) if row["uncertainty"] is not None else None
-    if divisor == 1:
+    if divisor == 1 and not offset:
         return plain(energy), plain(error) if error is not None else None
     if error is None:
-        return plain(round_significant(energy / divisor, significant_digits(row["energy"]))), None
+        return plain(round_significant(energy / divisor + offset, significant_digits(row["energy"]))), None
     error = round_significant(error / divisor, min(2, significant_digits(row["uncertainty"])))
-    energy = (energy / divisor).quantize(Decimal(1).scaleb(error.as_tuple().exponent))
+    energy = (energy / divisor + offset).quantize(Decimal(1).scaleb(error.as_tuple().exponent))
     return plain(energy), plain(error)
 
 

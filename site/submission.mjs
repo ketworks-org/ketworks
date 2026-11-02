@@ -6,19 +6,21 @@ export const METHOD_CLASSES = {rbm:'Boltzmann machine', feed_forward:'Feed-forwa
 export const UNCERTAINTY_TYPES = ['standard_error','standard_deviation','confidence_interval','unspecified','upper_bound'];
 
 // Parse a printed energy such as "-0.497634(1)" or "-199.05174" into decimal strings.
-// The uncertainty follows from the parenthesized digits and the number of decimal places.
+// The uncertainty follows from the parenthesized digits and the number of decimal places. A zero error bar,
+// "(0)", rounds to zero in the last digit: it becomes a bound of one unit in that digit (bound: true).
 export function parseToken(raw) {
   const token = String(raw || '').trim().replaceAll('−', '-').replace(/\s+/g, '');
   const m = token.match(TOKEN);
   if (!m || !Number.isFinite(Number(m[1] + (m[3] || '')))) throw Error('Enter the energy exactly as printed, for example -0.497634(1) or -199.05174.');
   const energy = m[1] + (m[3] || '');
   let uncertainty = null;
+  const zero = m[2] !== undefined && /^0+$/.test(m[2]);
   if (m[2]) {
     const places = m[1].includes('.') ? m[1].split('.')[1].length : 0, exponent = (m[3] ? Number(m[3].slice(1)) : 0) - places;
-    const digits = m[2].replace(/^0+/, '') || '0';
+    const digits = zero ? '1' : m[2].replace(/^0+/, '');
     uncertainty = exponent >= 0 ? digits + '0'.repeat(exponent) : (digits.length > -exponent ? digits.slice(0, digits.length + exponent) + '.' + digits.slice(digits.length + exponent) : '0.' + '0'.repeat(-exponent - digits.length) + digits);
   }
-  return {token, energy, uncertainty};
+  return {token, energy, uncertainty, ...(zero ? {bound: true} : {})};
 }
 
 export function makeSubmission(values, benchmark) {
@@ -27,8 +29,9 @@ export function makeSubmission(values, benchmark) {
   for (const key of ['method','variant','source_location','eligibility_evidence']) if(!v(key)) throw Error('Complete the method, variant, source location and eligibility fields.');
   if (!benchmark || benchmark.id !== v('benchmark_id')) throw Error('Choose a registered benchmark.');
   if (!(v('method_class') in METHOD_CLASSES)) throw Error('Choose the architecture class of the neural state.');
-  if (!['total','per_site'].includes(v('normalization'))) throw Error('Choose total or per-site energy.');
-  const {token, energy, uncertainty: inParentheses} = parseToken(v('energy_token'));
+  if (!['total','per_site','per_atom'].includes(v('normalization'))) throw Error('Choose how the printed energy is normalized.');
+  if (v('normalization') === 'per_atom' && !(benchmark.per === 'system' && benchmark.system?.external?.nuclei)) throw Error('An energy per atom is accepted only for an atom or molecule compared by its total energy.');
+  const {token, energy, uncertainty: inParentheses, bound} = parseToken(v('energy_token'));
   // The error bar comes from the parentheses, or from its own field when the paper prints it as ±.
   const separate = v('uncertainty_value').replace(/^±\s*/, '');
   if (separate && (!DECIMAL.test(separate) || !(Number(separate) > 0))) throw Error('Enter the error bar as a positive number, for example 0.0004.');
@@ -37,6 +40,7 @@ export function makeSubmission(values, benchmark) {
   if (uncertainty === null) throw Error('Every entry needs an error bar: give it in parentheses, as in -0.4976(4), or in the error-bar field if the paper prints it as ±.');
   const uncertaintyType = v('uncertainty_type');
   if (!UNCERTAINTY_TYPES.includes(uncertaintyType)) throw Error('Choose what the error bar means.');
+  if (bound && uncertaintyType !== 'upper_bound') throw Error('A zero error bar, as in (0), is recorded as a bound of one unit in the last digit: choose "Upper bound stated in the text".');
   const variance = v('variance');
   if (variance && (!DECIMAL.test(variance) || Number(variance) < 0)) throw Error('The variance must be a non-negative number.');
   const count = v('parameter_count');

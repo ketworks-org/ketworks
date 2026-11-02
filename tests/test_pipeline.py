@@ -197,6 +197,47 @@ class EligibilityTests(unittest.TestCase):
                 (root / "data/benchmarks.json").write_text(json.dumps(list(REGISTRY.values()) + [broken]))
                 with self.assertRaises(AssertionError): schema.benchmarks(root)
 
+    def test_zero_error_bar_is_a_bound_of_one_unit_in_the_last_digit(self):
+        row = dict(ROW, energy_token="-50.000(0)", uncertainty="0.001", uncertainty_type="upper_bound")
+        schema.validate_row(row, REGISTRY)
+        self.assertEqual(schema.per_site(row, REGISTRY), ("-0.50000", "0.00001"))
+        for bad in (dict(row, uncertainty_type="standard_error"), dict(row, uncertainty="0"), dict(row, uncertainty="0.0005")):
+            with self.assertRaises(ValueError): schema.validate_row(bad, REGISTRY)
+
+    def test_convention_offset_shifts_the_energy_but_not_the_error_bar(self):
+        # A source printing 2 (E - E_0) per site: the factor 1/2 and the offset E_0 = -1.25 recover E.
+        row = dict(ROW, normalization="per_site", energy="0.80962", energy_token="0.80962(2)", uncertainty="0.00002", variance="0.0004",
+                   convention_factor="0.5", convention_offset="-1.25", notes="Source prints 2 (E - E_0); converted with the convention factor and offset")
+        schema.validate_row(row, REGISTRY)
+        self.assertEqual(schema.per_site(row, REGISTRY), ("-0.84519", "0.00001"))
+        self.assertEqual(schema.variance_per_site(row, REGISTRY), "0.0001")
+        with self.assertRaises(ValueError): schema.validate_row(dict(row, convention_offset="0"), REGISTRY)
+        with self.assertRaises(ValueError): schema.validate_row(dict(row, notes="no reason given"), REGISTRY)
+
+    def test_per_atom_energies_of_a_molecule_are_multiplied_by_the_number_of_nuclei(self):
+        h2 = json.loads((Path(__file__).parent / "fixture_h2.json").read_text())
+        registry = {**REGISTRY, h2["id"]: h2}
+        row = dict(ROW, benchmark_id=h2["id"], unit="Ha", normalization="per_atom", energy="-0.58724", energy_token="-0.58724(1)", uncertainty="0.00001", variance="0.0005")
+        schema.validate_row(row, registry)
+        self.assertEqual(schema.per_site(row, registry), ("-1.17448", "0.00002"))
+        self.assertEqual(schema.variance_per_site(row, registry), "0.001")
+        with self.assertRaises(ValueError): schema.validate_row(dict(ROW, normalization="per_atom"), REGISTRY)
+
+    def test_pseudopotential_instances_count_valence_charges(self):
+        h2 = json.loads((Path(__file__).parent / "fixture_h2.json").read_text())
+        external = h2["system"]["external"]
+        nuclei = [{"Z": 3, "valence": 1, "position": [0, 0, 0]}, {"Z": 1, "valence": 1, "position": [0, 0, 3.015]}]
+        lih = dict(h2, id="mol-lih-test-ccecp-s0", system=dict(h2["system"], external=dict(external, pseudopotential="ccECP", nuclei=nuclei)))
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); (root / "data").mkdir()
+            (root / "data/benchmarks.json").write_text(json.dumps(list(REGISTRY.values()) + [lih]))
+            self.assertIn(lih["id"], schema.benchmarks(root))
+            all_electron = dict(external, nuclei=[{k: v for k, v in n.items() if k != "valence"} for n in nuclei])
+            for broken in (dict(external, pseudopotential="ccECP", nuclei=all_electron["nuclei"]), dict(external, nuclei=nuclei), all_electron,
+                           dict(external, pseudopotential="ccECP", nuclei=[dict(nuclei[0], valence=4), nuclei[1]])):
+                (root / "data/benchmarks.json").write_text(json.dumps(list(REGISTRY.values()) + [dict(lih, system=dict(lih["system"], external=broken))]))
+                with self.assertRaises(AssertionError): schema.benchmarks(root)
+
     def test_every_instance_has_a_known_category(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp); (root / "data").mkdir()
