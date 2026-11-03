@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2609.10186v1",
+    "title": "Fast, Accurate, and Scalable Fermionic Neural Networks via Translation Equivariance",
+    "authors": "David D. Dai, Yen-Ting Lin, Marin Soljačić",
+    "published": "2026-09-09T13:54:23Z",
+    "updated": "2026-09-09T13:54:23Z"
+  },
+  "source_url": "https://arxiv.org/pdf/2609.10186v1",
+  "source_sha256": null,
+  "extraction_model": "human",
+  "issues": [],
+  "results": [
+    {
+      "benchmark_id": "heg2d-rhombus-n91-pol-rs30",
+      "system_description": "2D electron gas, N = 91 fully polarized electrons, r_s = 30, 60-degree rhombic (triangular-lattice) periodic cell, Gamma point",
+      "method": "TorFormer",
+      "variant": "TorFormer, translation-equivariant transformer (about 200K parameters), 8K training steps",
+      "method_class": "transformer",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "0.80962",
+      "energy_token": "0.80962(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "uncertainty": "0.00002",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Table (tab:n91_comparison), N = 91, r_s = 30, row TorFormer, column (E - E_Mad.) r_s^(3/2) / N [Ha.]",
+      "eligibility_evidence": "'Table compares final inference energies for TorFormer' (Results); inference energies are 'estimated from fresh Markov chains' (Fig. 1 caption). The paper's own NQS variational energy.",
+      "parameter_count": null,
+      "notes": "Convention: the paper prints (E - E_Mad) r_s^(3/2) / N, with E_Mad 'the trivial Madelung part' (the classical electrostatic energy of the triangular Wigner crystal in the cell) subtracted and not printed. The board value is token x convention_factor + convention_offset, with convention_factor = r_s^(-3/2) = 30^(-3/2) and convention_offset = E_Mad/N = M/r_s, M = -1.1061025867 Ha bohr the Ewald (Madelung) energy per electron x r_s of the commensurate triangular crystal with a neutralizing background (1/r interaction), computed for the 91-site 60-degree rhombic cell in all three orientations (m, n) = (5, 6), (6, 5), (1, 9) and for the 1- and 7-site cells, independent of the Ewald splitting to 1e-12 (Kuma job 4758253, 2026-11-02). Check: the same table quotes Psiformer+SWPA (Gaggioli et al.) as 0.810485(5), and Ketboard holds their -0.03193763(3) (arXiv:2607.08616v2) for this instance; together they imply E_Mad/N = -0.036870084634, 1.6e-9 from the Ewald value, within their uncertainty (about 3e-8); the implied M is the same at r_s = 30 and 40 (1/r_s scaling). The SJB+DMC row converts to the DMC reference of 2607.08616v2 on this instance. Simulation cell: lattice vectors of equal length at 60 degrees (Results), N = 91 = m^2 + mn + n^2 commensurate with the crystal, spin-polarized; the error bar's meaning is not stated. The SJB+DMC and PF+SWPA rows are quoted values and are not recorded.",
+      "convention_factor": "0.006085806194501846",
+      "convention_offset": "-0.036870086223863"
+    },
+    {
+      "benchmark_id": "heg2d-rhombus-n91-pol-rs40",
+      "system_description": "2D electron gas, N = 91 fully polarized electrons, r_s = 40, 60-degree rhombic (triangular-lattice) periodic cell, Gamma point",
+      "method": "TorFormer",
+      "variant": "TorFormer, translation-equivariant transformer (about 200K parameters), 8K training steps",
+      "method_class": "transformer",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "0.81221",
+      "energy_token": "0.81221(2)",
+      "normalization": "per_site",
+      "unit": "Ha",
+      "uncertainty": "0.00002",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Table (tab:n91_comparison), N = 91, r_s = 40, row TorFormer, column (E - E_Mad.) r_s^(3/2) / N [Ha.]",
+      "eligibility_evidence": "'Table compares final inference energies for TorFormer' (Results); inference energies are 'estimated from fresh Markov chains' (Fig. 1 caption). The paper's own NQS variational energy.",
+      "parameter_count": null,
+      "notes": "Convention: the paper prints (E - E_Mad) r_s^(3/2) / N, with E_Mad 'the trivial Madelung part' (the classical electrostatic energy of the triangular Wigner crystal in the cell) subtracted and not printed. The board value is token x convention_factor + convention_offset, with convention_factor = r_s^(-3/2) = 40^(-3/2) and convention_offset = E_Mad/N = M/r_s, M = -1.1061025867 Ha bohr the Ewald (Madelung) energy per electron x r_s of the commensurate triangular crystal with a neutralizing background (1/r interaction), computed for the 91-site 60-degree rhombic cell in all three orientations (m, n) = (5, 6), (6, 5), (1, 9) and for the 1- and 7-site cells, independent of the Ewald splitting to 1e-12 (Kuma job 4758253, 2026-11-02). Check: the same table quotes Psiformer+SWPA (Gaggioli et al.) as 0.813192(5), and Ketboard holds their -0.02443814(2) (arXiv:2607.08616v2) for this instance; together they imply E_Mad/N = -0.027652563619, 1.0e-9 from the Ewald value, within their uncertainty (about 3e-8); the implied M is the same at r_s = 30 and 40 (1/r_s scaling). The SJB+DMC row converts to the DMC reference of 2607.08616v2 on this instance. Simulation cell: lattice vectors of equal length at 60 degrees (Results), N = 91 = m^2 + mn + n^2 commensurate with the crystal, spin-polarized; the error bar's meaning is not stated. The SJB+DMC and PF+SWPA rows are quoted values and are not recorded.",
+      "convention_factor": "0.003952847075210474",
+      "convention_offset": "-0.027652564667897"
+    }
+  ]
+}

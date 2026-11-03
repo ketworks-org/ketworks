@@ -330,6 +330,206 @@
       "unit": "Ha",
       "source": "Lin, Goldshlager, Lin, arXiv:2112.03491v1, Table II",
       "notes": "Extrapolated to the complete basis (Appendix on the basis-set extrapolation); not a bound."
+    },
+    {
+      "benchmark_id": "mol-c-isolated-atom-s0",
+      "method": "Estimated exact nonrelativistic energy (Chakravorty et al., Phys. Rev. A 47, 3649 (1993))",
+      "kind": "estimate",
+      "energy_token": "-37.8450",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table I ('Exact' column)",
+      "notes": "Estimate of the exact nonrelativistic energy from experiment and calculations, not a bound; variational energies can lie below it for the heavier atoms. Copied from mol-c-isolated-atom-s2: the ground term has the same exact energy in every M_S sector."
+    },
+    {
+      "benchmark_id": "mol-n-isolated-atom-s1",
+      "method": "Estimated exact nonrelativistic energy (Chakravorty et al., Phys. Rev. A 47, 3649 (1993))",
+      "kind": "estimate",
+      "energy_token": "-54.5892",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table I ('Exact' column)",
+      "notes": "Estimate of the exact nonrelativistic energy from experiment and calculations, not a bound; variational energies can lie below it for the heavier atoms. Copied from mol-n-isolated-atom-s3: the ground term has the same exact energy in every M_S sector."
+    },
+    {
+      "benchmark_id": "mol-o-isolated-atom-s0",
+      "method": "Estimated exact nonrelativistic energy (Chakravorty et al., Phys. Rev. A 47, 3649 (1993))",
+      "kind": "estimate",
+      "energy_token": "-75.0673",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Pfau et al., arXiv:1909.02487v3, Table I ('Exact' column)",
+      "notes": "Estimate of the exact nonrelativistic energy from experiment and calculations, not a bound; variational energies can lie below it for the heavier atoms. Copied from mol-o-isolated-atom-s2: the ground term has the same exact energy in every M_S sector."
+    },
+    {
+      "benchmark_id": "mol-he-isolated-atom-s0",
+      "method": "Exact (Kinoshita)",
+      "kind": "exact",
+      "energy_token": "-2.9037247",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "Schaetzle, Hermann, Noe, arXiv:2010.05316v2, Table I",
+      "notes": ""
+    },
+    {
+      "benchmark_id": "mol-ga-isolated-atom-ccecp-s1",
+      "method": "CCSDT(Q), complete-basis extrapolation (ccECP)",
+      "kind": "estimate",
+      "energy_token": "-2.039915(13)",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "2108.11661v2, Table tab:ecp_energy_on_atoms, column 'CCSDT(Q) / CBS' (from Annaberdiyev et al., J. Chem. Theory Comput. 16, 1482 (2020), the paper's ecp_al)",
+      "notes": "Same ccECP Hamiltonian; basis-set extrapolated and not variational. Equals the 'Exact_Total' of recipes/Ga/ccECP/energies.txt in the pseudopotential library."
+    },
+    {
+      "benchmark_id": "mol-kr-isolated-atom-ccecp-s0",
+      "method": "CCSDT(Q), complete-basis extrapolation (ccECP)",
+      "kind": "estimate",
+      "energy_token": "-18.47259(27)",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "2108.11661v2, Table tab:ecp_energy_on_atoms, column 'CCSDT(Q) / CBS' (from Annaberdiyev et al., J. Chem. Theory Comput. 16, 1482 (2020), the paper's ecp_al)",
+      "notes": "Same ccECP Hamiltonian; basis-set extrapolated and not variational. Equals the 'Exact_Total' of recipes/Kr/ccECP/energies.txt in the pseudopotential library."
+    },
+    {
+      "benchmark_id": "mol-sc-isolated-atom-ccecp-s1",
+      "method": "CCSDT(Q), complete-basis extrapolation (ccECP)",
+      "kind": "estimate",
+      "energy_token": "-46.55704(81)",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "2108.11661v2, Table tab:ecp_energy_on_atoms, column 'CCSDT(Q) / CBS' (from Annaberdiyev et al., J. Chem. Theory Comput. 16, 1482 (2020), the paper's ecp_al)",
+      "notes": "Same ccECP Hamiltonian; basis-set extrapolated and not variational. Equals the 'Exact_Total' of recipes/Sc/ccECP/energies.txt in the pseudopotential library."
+    },
+    {
+      "benchmark_id": "mol-ti-isolated-atom-ccecp-s2",
+      "method": "CCSDT(Q), complete-basis extrapolation (ccECP)",
+      "kind": "estimate",
+      "energy_token": "-58.09263(76)",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "2108.11661v2, Table tab:ecp_energy_on_atoms, column 'CCSDT(Q) / CBS' (from Annaberdiyev et al., J. Chem. Theory Comput. 16, 1482 (2020), the paper's ecp_al)",
+      "notes": "Same ccECP Hamiltonian; basis-set extrapolated and not variational. Equals the 'Exact_Total' of recipes/Ti/ccECP/energies.txt in the pseudopotential library."
+    },
+    {
+      "benchmark_id": "mol-v-isolated-atom-ccecp-s3",
+      "method": "CCSDT(Q), complete-basis extrapolation (ccECP)",
+      "kind": "estimate",
+      "energy_token": "-71.44178(59)",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "2108.11661v2, Table tab:ecp_energy_on_atoms, column 'CCSDT(Q) / CBS' (from Annaberdiyev et al., J. Chem. Theory Comput. 16, 1482 (2020), the paper's ecp_al)",
+      "notes": "Same ccECP Hamiltonian; basis-set extrapolated and not variational. Equals the 'Exact_Total' of recipes/V/ccECP/energies.txt in the pseudopotential library."
+    },
+    {
+      "benchmark_id": "mol-cr-isolated-atom-ccecp-s6",
+      "method": "CCSDT(Q), complete-basis extrapolation (ccECP)",
+      "kind": "estimate",
+      "energy_token": "-86.64109(33)",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "2108.11661v2, Table tab:ecp_energy_on_atoms, column 'CCSDT(Q) / CBS' (from Annaberdiyev et al., J. Chem. Theory Comput. 16, 1482 (2020), the paper's ecp_al)",
+      "notes": "Same ccECP Hamiltonian; basis-set extrapolated and not variational. Equals the 'Exact_Total' of recipes/Cr/ccECP/energies.txt in the pseudopotential library."
+    },
+    {
+      "benchmark_id": "mol-mn-isolated-atom-ccecp-s5",
+      "method": "CCSDT(Q), complete-basis extrapolation (ccECP)",
+      "kind": "estimate",
+      "energy_token": "-103.8919(10)",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "2108.11661v2, Table tab:ecp_energy_on_atoms, column 'CCSDT(Q) / CBS' (from Annaberdiyev et al., J. Chem. Theory Comput. 16, 1482 (2020), the paper's ecp_al)",
+      "notes": "Same ccECP Hamiltonian; basis-set extrapolated and not variational. Equals the 'Exact_Total' of recipes/Mn/ccECP/energies.txt in the pseudopotential library."
+    },
+    {
+      "benchmark_id": "mol-fe-isolated-atom-ccecp-s4",
+      "method": "CCSDT(Q), complete-basis extrapolation (ccECP)",
+      "kind": "estimate",
+      "energy_token": "-123.38804(93)",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "2108.11661v2, Table tab:ecp_energy_on_atoms, column 'CCSDT(Q) / CBS' (from Annaberdiyev et al., J. Chem. Theory Comput. 16, 1482 (2020), the paper's ecp_al)",
+      "notes": "Same ccECP Hamiltonian; basis-set extrapolated and not variational. Equals the 'Exact_Total' of recipes/Fe/ccECP/energies.txt in the pseudopotential library."
+    },
+    {
+      "benchmark_id": "mol-co-isolated-atom-ccecp-s3",
+      "method": "CCSDT(Q), complete-basis extrapolation (ccECP)",
+      "kind": "estimate",
+      "energy_token": "-145.1541(10)",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "2108.11661v2, Table tab:ecp_energy_on_atoms, column 'CCSDT(Q) / CBS' (from Annaberdiyev et al., J. Chem. Theory Comput. 16, 1482 (2020), the paper's ecp_al)",
+      "notes": "Same ccECP Hamiltonian; basis-set extrapolated and not variational. Equals the 'Exact_Total' of recipes/Co/ccECP/energies.txt in the pseudopotential library."
+    },
+    {
+      "benchmark_id": "mol-ni-isolated-atom-ccecp-s2",
+      "method": "CCSDT(Q), complete-basis extrapolation (ccECP)",
+      "kind": "estimate",
+      "energy_token": "-169.3912(12)",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "2108.11661v2, Table tab:ecp_energy_on_atoms, column 'CCSDT(Q) / CBS' (from Annaberdiyev et al., J. Chem. Theory Comput. 16, 1482 (2020), the paper's ecp_al)",
+      "notes": "Same ccECP Hamiltonian; basis-set extrapolated and not variational. Equals the 'Exact_Total' of recipes/Ni/ccECP/energies.txt in the pseudopotential library."
+    },
+    {
+      "benchmark_id": "mol-cu-isolated-atom-ccecp-s1",
+      "method": "CCSDT(Q), complete-basis extrapolation (ccECP)",
+      "kind": "estimate",
+      "energy_token": "-196.4038(10)",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "2108.11661v2, Table tab:ecp_energy_on_atoms, column 'CCSDT(Q) / CBS' (from Annaberdiyev et al., J. Chem. Theory Comput. 16, 1482 (2020), the paper's ecp_al)",
+      "notes": "Same ccECP Hamiltonian; basis-set extrapolated and not variational. Equals the 'Exact_Total' of recipes/Cu/ccECP/energies.txt in the pseudopotential library."
+    },
+    {
+      "benchmark_id": "mol-zn-isolated-atom-ccecp-s0",
+      "method": "CCSDT(Q), complete-basis extrapolation (ccECP)",
+      "kind": "estimate",
+      "energy_token": "-226.3699(18)",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "2108.11661v2, Table tab:ecp_energy_on_atoms, column 'CCSDT(Q) / CBS' (from Annaberdiyev et al., J. Chem. Theory Comput. 16, 1482 (2020), the paper's ecp_al)",
+      "notes": "Same ccECP Hamiltonian; basis-set extrapolated and not variational. Equals the 'Exact_Total' of recipes/Zn/ccECP/energies.txt in the pseudopotential library."
+    },
+    {
+      "benchmark_id": "mol-ti-isolated-atom-ccecp-s2",
+      "method": "CCSD(T), complete-basis extrapolation (ccECP)",
+      "kind": "estimate",
+      "energy_token": "-58.09078(81)",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "2609.15898v1, Table tab:energy_bind, TiH block, column E_atom, row 'CCSD(T)-CBS' (results.tex line 172), typeset by macro \\Ticctcbs defined in data.tex",
+      "notes": "The paper's own MOLPRO/MRCC calculation with ccECP, CBS-extrapolated (eqs. hfextrap, cbs); Not variational. Attached to the 2108.11661 instance because the exact energy of the ground term is the same in every M_S sector; drop it if references are to be attached only together with an entry of the same paper (2609.15898's own NN-VMC rows are not entered, see not_entered)."
+    },
+    {
+      "benchmark_id": "mol-ti-isolated-atom-ccecp-s2",
+      "method": "CCSDT(Q), complete-basis extrapolation (ccECP)",
+      "kind": "estimate",
+      "energy_token": "-58.09241(80)",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "2609.15898v1, Table tab:energy_bind, TiH block, column E_atom, row 'CCSDT(Q)-CBS' (results.tex line 173), typeset by macro \\Ticcqcbs defined in data.tex",
+      "notes": "The paper's own MOLPRO/MRCC calculation with ccECP, CBS-extrapolated (eqs. hfextrap, cbs); CCSDT(Q) at QZ-5Z estimated by a ratio-based approach (methods.tex). Not variational. Attached to the 2108.11661 instance because the exact energy of the ground term is the same in every M_S sector; drop it if references are to be attached only together with an entry of the same paper (2609.15898's own NN-VMC rows are not entered, see not_entered)."
+    },
+    {
+      "benchmark_id": "mol-ni-isolated-atom-ccecp-s2",
+      "method": "CCSD(T), complete-basis extrapolation (ccECP)",
+      "kind": "estimate",
+      "energy_token": "-169.38885(63)",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "2609.15898v1, Table tab:energy_bind, NiH block, column E_atom, row 'CCSD(T)-CBS' (results.tex line 196), typeset by macro \\Nicctcbs defined in data.tex",
+      "notes": "The paper's own MOLPRO/MRCC calculation with ccECP, CBS-extrapolated (eqs. hfextrap, cbs); Not variational. Attached to the 2108.11661 instance because the exact energy of the ground term is the same in every M_S sector; drop it if references are to be attached only together with an entry of the same paper (2609.15898's own NN-VMC rows are not entered, see not_entered)."
+    },
+    {
+      "benchmark_id": "mol-ni-isolated-atom-ccecp-s2",
+      "method": "CCSDT(Q), complete-basis extrapolation (ccECP)",
+      "kind": "estimate",
+      "energy_token": "-169.38830(64)",
+      "normalization": "total",
+      "unit": "Ha",
+      "source": "2609.15898v1, Table tab:energy_bind, NiH block, column E_atom, row 'CCSDT(Q)-CBS' (results.tex line 197), typeset by macro \\Niccqcbs defined in data.tex",
+      "notes": "The paper's own MOLPRO/MRCC calculation with ccECP, CBS-extrapolated (eqs. hfextrap, cbs); CCSDT(Q) at QZ-5Z estimated by a ratio-based approach (methods.tex). Not variational. Attached to the 2108.11661 instance because the exact energy of the ground term is the same in every M_S sector; drop it if references are to be attached only together with an entry of the same paper (2609.15898's own NN-VMC rows are not entered, see not_entered). Differs from the 2108.11661/ecp_al CCSDT(Q)/CBS value -169.3912(12) by about 3 mHa."
     }
   ]
 }
