@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "2611.04333v1",
+    "title": "LaQX: A JAX Toolkit for Neural Quantum State Simulations of Lattice Quantum Many-Body Models",
+    "authors": "Yuntian Gu, Chaohui Fan, Ruichen Li, Haoxiang Chen, Weizhong Fu, Yixiao Chen, Dingshun Lv, Weiluo Ren, Tao Xiang, Liwei Wang, Mingpu Qin, Xiang Li",
+    "published": "2026-11-03T05:18:05Z",
+    "updated": "2026-11-03T05:18:05Z"
+  },
+  "source_url": "https://arxiv.org/html/2611.04333v1",
+  "source_sha256": "4dcb6f59f96724168f22ac0186be4677c387c241ba6f2b6258f0c7d1eb0c1f5c",
+  "extraction_model": "ChatGPT (automated source extraction)",
+  "results": [
+    {
+      "benchmark_id": "hubbard-rectangular-16x4-pbc-u8-n56-sz0",
+      "system_description": "Repulsive Hubbard model on 16x4 square-lattice torus, periodic in both directions; H=-t sum_<ij>,s(cdag_i,s c_j,s+h.c.)+U sum_i n_i,up n_i,down; each nearest-neighbor bond once; t=1, U=8, tprime=0; Nup=Ndown=28, total N=56; 1/8 hole doping. No final pinning field, chemical-potential term or constant shift.",
+      "method": "ACE",
+      "variant": "12 convolutional layers, width 128; 30000 MARCH steps",
+      "method_class": "backflow",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.762822",
+      "energy_token": "-0.762822(5)",
+      "normalization": "per_site",
+      "unit": "t",
+      "uncertainty": "0.000005",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Sec. 4.1, paragraph beginning Evaluation of the final states; Eq. (49); paper-associated Hubbard scripts and main.py",
+      "eligibility_evidence": "Original neural backflow determinant. Sec. 4.1 explicitly gives evaluation energies of final states before their separate use as GFMC guides; only those VMC values are entered.",
+      "parameter_count": null,
+      "notes": "Spin populations verified from paper-associated LaQX main.py and Hubbard example scripts at commit c6a3ee5ed889073fdaa7debd32a001ffd72314de: omitted particles_up defaults to particles//2. Exact file hashes retained in PR. 4096 walkers. Error-bar meaning is not specified for these two energies. GFMC values excluded. Initial direct-embedding determinant is not the recorded neural state."
+    },
+    {
+      "benchmark_id": "hubbard-rectangular-16x8-pbc-u8-n112-sz0",
+      "system_description": "Repulsive Hubbard model on 16x8 square-lattice torus, periodic in both directions; H=-t sum_<ij>,s(cdag_i,s c_j,s+h.c.)+U sum_i n_i,up n_i,down; each nearest-neighbor bond once; t=1, U=8, tprime=0; Nup=Ndown=56, total N=112; 1/8 hole doping. No final pinning field, chemical-potential term or constant shift.",
+      "method": "SCALE",
+      "variant": "width 256; four MLP layers, width 512; 20000 MARCH steps",
+      "method_class": "backflow",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.753059",
+      "energy_token": "-0.753059(7)",
+      "normalization": "per_site",
+      "unit": "t",
+      "uncertainty": "0.000007",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Sec. 4.1, paragraph beginning Evaluation of the final states; Eq. (49); paper-associated Hubbard scripts and main.py",
+      "eligibility_evidence": "Original neural backflow determinant. Sec. 4.1 explicitly gives evaluation energies of final states before their separate use as GFMC guides; only those VMC values are entered.",
+      "parameter_count": null,
+      "notes": "Spin populations verified from paper-associated LaQX main.py and Hubbard example scripts at commit c6a3ee5ed889073fdaa7debd32a001ffd72314de: omitted particles_up defaults to particles//2. Exact file hashes retained in PR. 4096 walkers. Error-bar meaning is not specified for these two energies. GFMC values excluded. Initial direct-embedding determinant is not the recorded neural state."
+    },
+    {
+      "benchmark_id": "j1j2-square-6x6-pbc-j2-0p5-sz0",
+      "system_description": "Spin-1/2 J1-J2 Heisenberg model on 6x6 square lattice, periodic in both directions, total Sz=0; H=J1 sum_<ij> S_i.S_j+J2 sum_<<ij>> S_i.S_j, S=sigma/2, each undirected bond once; J1=1, J2=0.5, no constant shift. D4 symmetry projection.",
+      "method": "CNN-MPS",
+      "variant": "periodic neural backflow MPS, bond dimension D=20; analytic Marshall sign; D4 projection; 15000 MARCH steps",
+      "method_class": "hybrid",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.5038070",
+      "energy_token": "-0.5038070(2)",
+      "normalization": "per_site",
+      "unit": "J1",
+      "uncertainty": "0.0000002",
+      "uncertainty_type": "unspecified",
+      "variance": "0.000017586",
+      "source_location": "Sec. 4.2, final paragraph and Fig. 3 caption; Eqs. (50), (55)",
+      "eligibility_evidence": "Independent evaluation of the final neural backflow MPS is explicitly distinguished from the trailing 200-step training averages. Analytic Marshall sign and finite D4 symmetry projection qualify under current policy.",
+      "parameter_count": null,
+      "notes": "Energy and variance are per site; Var(E_loc)/36=1.7586e-5 J1^2. Error meaning unspecified. Energy is above the rounded ED reference -0.503810; no below-exact conflict."
+    }
+  ],
+  "issues": [
+    "Sec. 4.4 NES eigenvalues omitted: paper explicitly lacks covariances needed for eigenvalue error bars. GFMC energies omitted as projection-method estimates. Sec. 4.5 Hofstadter energies held pending confirmation that the reported sector-scan means are from a separate fixed-state evaluation; nominal error bars lack autocorrelation correction."
+  ]
+}

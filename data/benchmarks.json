@@ -4161,6 +4161,24 @@
     "wiki": "hubbard-square-lattice"
   },
   {
+    "id": "hubbard-rectangular-16x8-pbc-u8-n112-sz0",
+    "name": "Hubbard",
+    "family": "Hubbard",
+    "part": "Square",
+    "category": "lattice-fermions",
+    "sites": 128,
+    "geometry": "16 by 8 rectangular lattice; periodic in both directions; nearest-neighbor hopping only",
+    "hamiltonian": "H = -t sum_<ij>,s (c†_is c_js + h.c.) + U sum_i n_iup n_idown; t = 1; U = 8; tprime = 0; no chemical-potential term or constant shift",
+    "sector": "Nup = 56; Ndown = 56; 112 electrons (1/8 hole doping); ground-state variational calculation",
+    "unit": "t",
+    "description": "Interacting fermions hopping on a lattice.",
+    "hamiltonian_latex": "H=-t\\!\\sum_{\\langle i,j\\rangle,\\sigma}\\!\\left(c^\\dagger_{i\\sigma}c_{j\\sigma}+\\mathrm{h.c.}\\right)+U\\sum_i n_{i\\uparrow}n_{i\\downarrow}",
+    "instance_label": "16 × 8 · U/t = 8 · periodic · N↑ = N↓ = 56",
+    "lattice_size": "16 × 8 · 128 sites",
+    "boundary_conditions": "Periodic in both directions",
+    "parameters_latex": "t=1,\\qquad U/t=8,\\qquad t^{\\prime}=0"
+  },
+  {
     "id": "tv-square-4x4-pbc-v0p01-n5",
     "name": "t–V",
     "family": "t–V",
