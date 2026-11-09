@@ -33,6 +33,27 @@
       "notes": "Spin populations verified from paper-associated LaQX main.py and Hubbard example scripts at commit c6a3ee5ed889073fdaa7debd32a001ffd72314de: omitted particles_up defaults to particles//2. Exact file hashes retained in PR. 4096 walkers. Error-bar meaning is not specified for these two energies. GFMC values excluded. Initial direct-embedding determinant is not the recorded neural state."
     },
     {
+      "benchmark_id": "hubbard-rectangular-16x8-pbc-u8-n112-sz0",
+      "system_description": "Repulsive Hubbard model on 16x8 square-lattice torus, periodic in both directions; H=-t sum_<ij>,s(cdag_i,s c_j,s+h.c.)+U sum_i n_i,up n_i,down; each nearest-neighbor bond once; t=1, U=8, tprime=0; Nup=Ndown=56, total N=112; 1/8 hole doping. No final pinning field, chemical-potential term or constant shift.",
+      "method": "SCALE",
+      "variant": "width 256; four MLP layers, width 512; 20000 MARCH steps",
+      "method_class": "backflow",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.753059",
+      "energy_token": "-0.753059(7)",
+      "normalization": "per_site",
+      "unit": "t",
+      "uncertainty": "0.000007",
+      "uncertainty_type": "unspecified",
+      "variance": null,
+      "source_location": "Sec. 4.1, paragraph beginning Evaluation of the final states; Eq. (49); paper-associated Hubbard scripts and main.py",
+      "eligibility_evidence": "Original neural backflow determinant. Sec. 4.1 explicitly gives evaluation energies of final states before their separate use as GFMC guides; only those VMC values are entered.",
+      "parameter_count": null,
+      "notes": "Spin populations verified from paper-associated LaQX main.py and Hubbard example scripts at commit c6a3ee5ed889073fdaa7debd32a001ffd72314de: omitted particles_up defaults to particles//2. Exact file hashes retained in PR. 4096 walkers. Error-bar meaning is not specified for these two energies. GFMC values excluded. Initial direct-embedding determinant is not the recorded neural state."
+    },
+    {
       "benchmark_id": "j1j2-square-6x6-pbc-j2-0p5-sz0",
       "system_description": "Spin-1/2 J1-J2 Heisenberg model on 6x6 square lattice, periodic in both directions, total Sz=0; H=J1 sum_<ij> S_i.S_j+J2 sum_<<ij>> S_i.S_j, S=sigma/2, each undirected bond once; J1=1, J2=0.5, no constant shift. D4 symmetry projection.",
       "method": "CNN-MPS",
