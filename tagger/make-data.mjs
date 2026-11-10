@@ -110,7 +110,7 @@ for (const f of index.facets) for (const p of f.params) (knownParams[p.base] ||=
 
 const FILLER_START = ['', '', '', 'show me', 'find', 'the', 'all', 'instances of the', 'list the', 'benchmarks for the', 'energies for', 'which instances of the', 'results on the', 'i want the', 'look for'];
 const FILLER_JOIN = ['', '', '', 'on the', 'on a', 'with', 'at', 'for', 'and', 'in', 'of', ','];
-const NOISE = ['stripe', 'phase', 'critical', 'largest', 'lowest energy', 'best', 'recent', 'ground state', 'neural network', 'transformer', 'rbm', 'vmc', 'dmrg', 'comparison', 'accuracy', '2023', 'paper', 'deconfined', 'spin liquid', 'quantum critical point', 'convergence'];
+const NOISE = ['stripe', 'phase', 'critical', 'famous', 'lowest energy', 'best', 'recent', 'ground state', 'neural network', 'transformer', 'rbm', 'vmc', 'dmrg', 'comparison', 'accuracy', '2023', 'paper', 'deconfined', 'spin liquid', 'quantum critical point', 'convergence'];
 const OPS = [['=', 6], [' = ', 4], [':', 1], [' of ', 1], [' at ', 1], [' is ', 1], [' ', 3], [' equal to ', 0.5], [' ~ ', 0.5], [' around ', 0.5], [' > ', 0.4], [' above ', 0.3], [' >= ', 0.3], [' at least ', 0.3], [' < ', 0.3], [' below ', 0.3]];
 const weighted = list => { let r = random() * list.reduce((s, [, w]) => s + w, 0); for (const [x, w] of list) { r -= w; if (r <= 0) return x; } return list[0][0]; };
 const formatValue = v => {

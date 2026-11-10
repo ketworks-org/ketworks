@@ -106,6 +106,37 @@ assert.ok([0.5, 0.55].includes(param(nearest.nearest[0], 'j2')));
 const dropped = search('kagome heisenberg open');
 assert.equal(dropped.notes[0].kind, 'dropped');
 assert.ok(dropped.nearest.every(f => f.part === 'Kagome'));
+// A model with no match falls back to its special case: J₁–J₂ on the kagome lattice is the kagome Heisenberg model.
+const kagome = index.facets.filter(f => f.family === 'Heisenberg' && f.part === 'Kagome');
+assert.ok(!index.facets.some(f => f.family === 'J₁–J₂ Heisenberg' && f.part === 'Kagome'), 'kagome J1-J2 instances exist; pick another special-case check');
+const special = search('kagome j1-j2');
+assert.equal(special.notes[0].kind, 'special');
+assert.deepEqual(special.results.map(f => f.id), kagome.map(f => f.id));
+assert.deepEqual(ids('kagome j1-j2 j2 = 0'), kagome.map(f => f.id), 'the special case has J2 = 0');
+assert.equal(search('kagome j1-j2 j2 = 0.5').notes.some(n => n.kind === 'special'), false, 'but not J2 = 0.5');
+
+// Superlatives: the largest or smallest size, or the extreme value of a parameter, among the instances found.
+const sitesOf = list => list.map(f => f.sites);
+const largestKagome = Math.max(...sitesOf(kagome)), smallestKagome = Math.min(...sitesOf(kagome));
+for (const q of ['kagome j1-j2 largest size', 'largest kagome heisenberg', 'biggest kagome heisenberg system', 'kagome heisenberg with the most sites', 'kagome heisenberg largest L']) {
+  const r = search(q);
+  assert.deepEqual(r.ignored, [], q);
+  assert.ok(r.results.length > 0 && r.results.every(f => f.part === 'Kagome' && f.sites === largestKagome), `${q}: ${r.results.map(f => f.id)}`);
+}
+assert.deepEqual(chips('kagome j1-j2 largest size'), ['Lattice: kagome', 'Model: J₁–J₂ Heisenberg', `Largest size: ${largestKagome} sites`]);
+assert.equal(removeSpans('kagome j1-j2 largest size', search('kagome j1-j2 largest size').filters[2].spans), 'kagome j1-j2');
+all('smallest kagome heisenberg', f => f.part === 'Kagome' && f.sites === smallestKagome);
+const hubbard = index.facets.filter(f => f.family === 'Hubbard' && f.dims?.join() === '8,8');
+const maxU = Math.max(...hubbard.map(f => param(f, 'u')).filter(Number.isFinite));
+all('hubbard 8x8 largest U', f => f.family === 'Hubbard' && param(f, 'u') === maxU && f.sites === 64);
+all('hubbard 8x8 highest value of u', f => param(f, 'u') === maxU && f.sites === 64);
+all('lowest doping hubbard 16x16', f => f.doping === Math.min(...index.facets.filter(g => g.family === 'Hubbard' && g.dims?.join() === '16,16' && g.doping !== null).map(g => g.doping)));
+all('largest u above 4 hubbard 8x8', f => param(f, 'u') === maxU);
+const lowestEnergy = search('lowest energy heisenberg');
+assert.deepEqual(lowestEnergy.filters.map(f => f.kind), ['family'], '"lowest energy" is not a superlative, nor text to look for');
+assert.deepEqual(lowestEnergy.ignored.map(w => w.text), ['lowest']);
+assert.equal(lowestEnergy.results.length, index.facets.filter(f => f.family === 'Heisenberg').length);
+assert.ok(!search('the most frustrated magnet').filters.some(f => f.kind === 'extreme'), '"most" needs a parameter');
 
 // Removing a chip removes its words from the query.
 assert.equal(removeSpans(main.query, main.filters[2].spans), 'the j1-j2 instances on the square lattice at');

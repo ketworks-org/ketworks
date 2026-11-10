@@ -249,6 +249,7 @@ function setQuery(value, push = false) {
 function noteText(note, index) {
   const names = filters => filters.map(f => describeFilter(f, index)).join(', ');
   if (note.kind === 'related') return `No instance of the model as named matches the other filters; these are from related models (${note.families.join(', ')}).`;
+  if (note.kind === 'special') return note.cases.map(c => `Ketboard has no ${c.from} instance that matches the other filters. These are ${c.family} instances, the ${c.condition} case of ${c.from}.`).join(' ');
   if (note.kind === 'nearest') return `No instance matches ${names(note.filters)} exactly. The closest instances:`;
   return `No instance matches every filter. Without ${names(note.filters)}:`;
 }

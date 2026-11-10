@@ -185,6 +185,12 @@ const FAMILY_ALIASES = {
   'Atoms and molecules': ['molecule', 'atom', 'molecular', 'chemistry', 'quantum chemistry', 'atoms and molecule'],
   'Solids': ['solid', 'crystal', 'periodic solid', 'material', 'crystalline solid'],
 };
+// A model with one coupling set to zero is another model on Ketboard: J₁–J₂ at J₂ = 0 is the Heisenberg model. When
+// no instance of the named model matches, the search shows its special case ("kagome J1-J2" finds kagome Heisenberg).
+const SPECIAL_CASES = {
+  'J₁–J₂ Heisenberg': {family: 'Heisenberg', param: 'j2', condition: 'J₂ = 0'},
+  't–t′ Hubbard': {family: 'Hubbard', param: "t'", condition: 't′ = 0'},
+};
 const PART_ALIASES = {
   Square: ['rectangular', 'square lattice', 'square-lattice'], Triangular: ['triangle', 'triangular lattice'],
   Honeycomb: ['hexagonal', 'honeycomb lattice'], Kagome: ['kagome lattice'], Pyrochlore: ['pyrochlore lattice'],
@@ -229,6 +235,15 @@ const FILLING_ALIASES = {
   doped: ['doped', 'hole-doped', 'hole doped', 'away from half filling', 'finite doping'],
   polarized: ['polarized', 'fully polarized', 'spin-polarized', 'spin polarized', 'ferromagnetic'], unpolarized: ['unpolarized', 'paramagnetic', 'spin-unpolarized', 'spin unpolarized'],
 };
+// Superlatives keep the instances at the extreme of what is shown. "Largest" and "smallest" mean the size unless a
+// parameter follows ("largest U"); "highest", "lowest" and the like need a parameter, so "lowest energy" is not one.
+const EXTREME_ALIASES = {
+  max: ['largest', 'biggest', 'largest size', 'biggest size', 'largest system', 'biggest system', 'largest lattice', 'largest cluster', 'largest instance',
+    'max size', 'maximum size', 'maximal size', 'most sites', 'most spins', 'largest number of sites'],
+  min: ['smallest', 'smallest size', 'smallest system', 'smallest lattice', 'smallest cluster', 'smallest instance', 'min size', 'minimum size', 'minimal size',
+    'fewest sites', 'fewest spins', 'smallest number of sites'],
+};
+const EXTREME_PARAM_ALIASES = {max: ['highest', 'maximum', 'max', 'maximal', 'most', 'strongest', 'greatest'], min: ['lowest', 'minimum', 'min', 'minimal', 'fewest', 'weakest', 'least']};
 const OP_ALIASES = {
   eq: ['=', '==', ':', 'is', 'equal', 'equal to', 'equals', 'of', 'at', 'with'],
   gt: ['>', 'above', 'over', 'greater than', 'larger than', 'more than', 'bigger than', 'higher than', 'exceeding', 'beyond'],
@@ -260,7 +275,7 @@ const phraseKey = tokens => tokens.map(t => loose(t.text)).join(' ');
 const compactKey = tokens => tokens.map(t => loose(t.text)).join('');
 const MAX_PHRASE = 5;
 // Tag priority when two lists give the same phrase: earlier wins.
-const PRIORITY = ['op', 'filling', 'family', 'part', 'dim', 'boundary', 'category', 'param', 'name', 'stop'];
+const PRIORITY = ['op', 'filling', 'extreme', 'family', 'part', 'dim', 'boundary', 'category', 'param', 'name', 'stop'];
 
 export function buildVocabulary(benchmarks, facets = benchmarks.map(facetsOf)) {
   const phrases = new Map(), compact = new Map(), caseNames = new Map();
@@ -277,6 +292,8 @@ export function buildVocabulary(benchmarks, facets = benchmarks.map(facetsOf)) {
   };
   for (const [value, list] of Object.entries(OP_ALIASES)) list.forEach(p => add(p, 'op', value));
   for (const [value, list] of Object.entries(FILLING_ALIASES)) list.forEach(p => add(p, 'filling', value));
+  for (const [value, list] of Object.entries(EXTREME_ALIASES)) list.forEach(p => add(p, 'extreme', value));
+  for (const [value, list] of Object.entries(EXTREME_PARAM_ALIASES)) list.forEach(p => add(p, 'extreme', value, {needsParam: true}));
   const families = [...new Set(benchmarks.map(b => b.family))], categories = [...new Set(benchmarks.map(b => b.category))];
   for (const family of families) { add(family, 'family', family); (FAMILY_ALIASES[family] || []).forEach(p => add(p, 'family', family)); }
   const latticeParts = new Set(facets.filter(f => f.lattice).map(f => f.part));
@@ -305,7 +322,7 @@ export function buildVocabulary(benchmarks, facets = benchmarks.map(facetsOf)) {
   if (transitionStates.length) ['transition state', 'transition-state', 'barrier height'].forEach(p => add(p, 'name', transitionStates));
   STOP.forEach(p => add(p, 'stop', null));
   const stops = new Set(STOP.map(p => phraseKey(tokenize(p))));
-  const single = [...phrases.entries()].filter(([key, e]) => !key.includes(' ') && key.length >= 4 && ['family', 'part', 'boundary', 'category', 'name', 'filling'].includes(e.type) && !(e.type === 'name' && e.word));
+  const single = [...phrases.entries()].filter(([key, e]) => !key.includes(' ') && key.length >= 4 && (['family', 'part', 'boundary', 'category', 'name', 'filling'].includes(e.type) || (e.type === 'extreme' && !e.needsParam)) && !(e.type === 'name' && e.word));
   const dataWords = new Set(facets.flatMap(f => f.wordList));
   return {phrases, compact, caseNames, single, nameParts, stops, dataWords};
 }
@@ -357,6 +374,14 @@ function splitGlued(tokens, vocab) {
 export function ruleTags(tokens, vocab) {
   const tags = [];
   const push = (type, value, from, to, extra = {}) => tags.push({type, value, from, to, start: tokens[from].start, end: tokens[to - 1].end, text: tokens.slice(from, to).map(t => t.raw).join(' '), ...extra});
+  // A one-letter parameter needs a value ("U = 8"), except after a superlative ("largest U", "highest value of h").
+  const afterExtreme = () => {
+    for (let k = tags.length - 1; k >= Math.max(0, tags.length - 3); k--) {
+      if (tags[k].type === 'extreme') return true;
+      if (tags[k].type !== 'stop' && !(tags[k].type === 'op' && tags[k].value === 'eq')) return false;
+    }
+    return false;
+  };
   for (let i = 0; i < tokens.length;) {
     const t = tokens[i];
     if (t.kind === 'num' || t.kind === 'size') { push(t.kind, t.value, i, i + 1); i++; continue; }
@@ -374,7 +399,7 @@ export function ruleTags(tokens, vocab) {
       if (span.some(x => x.kind === 'num' || x.kind === 'size' || (x.kind === 'op' && k > 1))) continue;
       const entry = vocab.phrases.get(phraseKey(span)) || (span.every(x => x.kind !== 'op') ? vocab.compact.get(compactKey(span)) : null);
       if (!entry) continue;
-      if (entry.needsValue && !valueFollows(tokens, i + k, vocab)) { if (vocab.stops.has(phraseKey(span))) best = {entry: {type: 'stop', value: null}, k}; continue; }
+      if (entry.needsValue && !valueFollows(tokens, i + k, vocab) && !afterExtreme()) { if (vocab.stops.has(phraseKey(span))) best = {entry: {type: 'stop', value: null}, k}; continue; }
       best = {entry, k};
     }
     if (!best && t.kind === 'word' && t.text.length >= 5 && !vocab.phrases.has(loose(t.text))) {
@@ -383,7 +408,7 @@ export function ruleTags(tokens, vocab) {
       for (const [key, entry] of vocab.single) { const d = editDistance(word, key, limit); if (d < distance) { distance = d; found = entry; } }
       if (found) best = {entry: found, k: 1, corrected: true};
     }
-    if (best) { push(best.entry.type, best.entry.value, i, i + best.k, {...(best.corrected ? {corrected: true} : {}), ...(best.entry.word ? {word: true} : {})}); i += best.k; continue; }
+    if (best) { push(best.entry.type, best.entry.value, i, i + best.k, {...(best.corrected ? {corrected: true} : {}), ...(best.entry.word ? {word: true} : {}), ...(best.entry.needsParam ? {needsParam: true} : {})}); i += best.k; continue; }
     push(t.kind === 'op' ? 'stop' : 'word', null, i, i + 1); i++;
   }
   return tags;
@@ -468,6 +493,20 @@ export function resolve(tags) {
       // A system's own name or formula selects it ("N2" is N₂ only); consecutive name words narrow to the systems
       // whose names contain all of them ("uracil dimer stacked").
       filters.push({kind: 'name', words: exact ? [] : texts, parts: texts.length === 1 ? [...parts] : [], spans, learned: t.learned, text: texts.join(' ')});
+      continue;
+    }
+    if (t.type === 'extreme') {
+      // What it ranges over: a parameter right after it, past filler ("largest U", "lowest value of the doping"), or the size.
+      let j = i + 1;
+      while (j < i + 4 && (tags[j]?.type === 'stop' || (tags[j]?.type === 'op' && tags[j].value === 'eq'))) j++;
+      const target = tags[j]?.type === 'param' ? tags[j] : null;
+      // Without one it is not a filter, nor a word to look for in descriptions: "lowest energy" asks for every result.
+      if (t.needsParam && !target) { words.push({...t, unused: true}); continue; }
+      // A parameter that has its own value ("largest U above 4") stays a filter of its own.
+      const own = target && !comparison(tags, j + 1, x => x.type === 'num' || x.type === 'size');
+      if (own) consumed.add(j);
+      filters.push({kind: 'extreme', dir: t.value, name: target && !['sites', 'n'].includes(target.value) ? target.value : null,
+        spans: [[t.start, own ? target.end : t.end]], learned: t.learned, text: own ? `${t.text} ${target.text}` : t.text});
       continue;
     }
     if (t.type === 'filling') {
@@ -573,6 +612,8 @@ export function matches(f, filter) {
       return {half: Math.abs((f.filling ?? -1) - 0.5) < 1e-9, unit: Math.abs((f.density ?? -1) - 1) < 1e-9, doped: (f.doping ?? 0) > 1e-9,
         polarized: f.polarized === true, unpolarized: f.polarized === false}[filter.value] ?? false;
     case 'param': {
+      // The special case of a model has the vanishing coupling at zero (the Heisenberg model has J₂ = 0).
+      if (filter.zeroFor?.includes(f.family) && !paramValues(f, filter.name).length) return satisfies(0, filter);
       if (filter.name === 'l' && (filter.op === 'eq' || filter.op === 'list')) return Boolean(f.dims) && f.dims.every(d => d === f.dims[0]) && filter.values.some(q => q.dims ? sizeMatches(f, filter) : q.value === f.dims[0]);
       if (filter.values[0].dims) return sizeMatches(f, filter);
       return paramValues(f, filter.name).some(p => satisfies(p.value, filter, p.approx));
@@ -602,6 +643,12 @@ function distance(f, filter) {
   const bound = filter.values[0].value, scale = Math.max(Math.abs(bound), 1e-3);
   return Math.min(Infinity, ...candidates.filter(Number.isFinite).map(x => satisfies(x, filter) ? 0 : Math.abs(x - bound) / scale));
 }
+// The value a superlative ranks: the number of sites (particles for systems in continuous space), or a parameter.
+function extremeValue(f, filter) {
+  if (!filter.name) return f.lattice ? f.sites : f.particles?.total ?? f.sites;
+  const values = paramValues(f, filter.name).map(p => p.value).filter(Number.isFinite);
+  return values.length ? (filter.dir === 'max' ? Math.max(...values) : Math.min(...values)) : NaN;
+}
 
 // ---------------------------------------------------------------------------------------------------------------
 export function buildIndex(benchmarks, categories = {}) {
@@ -617,6 +664,7 @@ export function searchInstances(query, index, {tagger = null} = {}) {
   // shown as unused rather than emptying the result.
   const ignored = [];
   for (const w of words) {
+    if (w.unused) { ignored.push(w); continue; }
     const word = loose(normalize(w.text)), filter = {kind: 'text', word, spans: [[w.start, w.end]], text: w.text};
     const kept = pool.filter(f => matches(f, filter));
     if (kept.length && (filters.length || kept.length < index.facets.length)) { filters.push(filter); pool = kept; } else ignored.push(w);
@@ -630,10 +678,26 @@ export function searchInstances(query, index, {tagger = null} = {}) {
       const widened = filters.map(f => related.find(r => r.spans === f.spans) || f), found = applyFilters(index.facets, widened);
       if (found.length) { results = found; notes.push({kind: 'related', families: [...new Set(found.map(f => f.family))]}); }
     }
+    // Then the model a named one reduces to: on Ketboard, J₁–J₂ on the kagome lattice is the Heisenberg model (J₂ = 0).
+    const special = filters.filter(f => f.kind === 'family' && index.families.includes(SPECIAL_CASES[f.value]?.family));
+    if (!results.length && special.length) {
+      const cases = special.map(f => ({from: f.value, ...SPECIAL_CASES[f.value]}));
+      const widened = filters.map(f => special.includes(f) ? {...f, related: [...(f.related || []), SPECIAL_CASES[f.value].family]}
+        : f.kind === 'param' && cases.some(c => c.param === f.name) ? {...f, zeroFor: cases.filter(c => c.param === f.name).map(c => c.family)} : f);
+      const found = applyFilters(index.facets, widened);
+      if (found.length) { results = found; notes.push({kind: 'special', cases}); }
+    }
     if (!results.length) {
       const NUMERIC = new Set(['param', 'size', 'any']), others = filters.filter(f => !NUMERIC.has(f.kind)), strict = filters.filter(f => NUMERIC.has(f.kind));
-      if (!strict.length) {
-        // No number to relax: drop one filter at a time, the least defining first, and say which one was dropped.
+      if (strict.length) {
+        nearest = applyFilters(index.facets, others).map(f => ({f, d: strict.reduce((sum, filter) => sum + distance(f, filter), 0)}))
+          .filter(x => Number.isFinite(x.d)).sort((a, b) => a.d - b.d);
+        // The closest tier only: values within three times the best distance (0.5 and 0.55 for 0.52, not 0.2).
+        nearest = nearest.filter(x => x.d <= 3 * nearest[0].d + 1e-9).slice(0, 12).map(x => x.f);
+        if (nearest.length) notes.push({kind: 'nearest', filters: strict});
+      }
+      if (!nearest.length) {
+        // No number to relax, or none close: drop one filter at a time, the least defining first, and say which one.
         const order = ['text', 'boundary', 'size', 'filling', 'dim', 'has', 'part', 'name', 'category', 'family'];
         for (const kind of order) {
           const dropped = filters.filter(f => f.kind === kind);
@@ -641,14 +705,18 @@ export function searchInstances(query, index, {tagger = null} = {}) {
           const found = applyFilters(index.facets, filters.filter(f => f.kind !== kind));
           if (found.length) { nearest = found; notes.push({kind: 'dropped', filters: dropped}); break; }
         }
-      } else {
-        nearest = applyFilters(index.facets, others).map(f => ({f, d: strict.reduce((sum, filter) => sum + distance(f, filter), 0)}))
-          .filter(x => Number.isFinite(x.d)).sort((a, b) => a.d - b.d);
-        // The closest tier only: values within three times the best distance (0.5 and 0.55 for 0.52, not 0.2).
-        nearest = nearest.filter(x => x.d <= 3 * nearest[0].d + 1e-9).slice(0, 12).map(x => x.f);
-        if (nearest.length) notes.push({kind: 'nearest', filters: strict});
       }
     }
+  }
+  // Superlatives last, on the instances shown: the largest or smallest size, or the extreme value of a parameter.
+  // Every instance at that value stays (all Sᶻ sectors and boundaries of the largest cluster).
+  for (const filter of filters.filter(f => f.kind === 'extreme')) {
+    const scored = (results.length ? results : nearest).map(f => ({f, x: extremeValue(f, filter)})).filter(s => Number.isFinite(s.x));
+    if (!scored.length) continue;
+    const best = (filter.dir === 'max' ? Math.max : Math.min)(...scored.map(s => s.x));
+    const kept = scored.filter(s => Math.abs(s.x - best) <= 1e-9 * Math.max(1, Math.abs(best))).map(s => s.f);
+    filter.found = {value: best, unit: filter.name ? null : kept[0].lattice ? 'sites' : kept[0].particles?.kind || 'particles'};
+    if (results.length) results = kept; else nearest = kept;
   }
   return {query, tokens, tags, filters, ignored, results, nearest, notes, understood};
 }
@@ -684,8 +752,14 @@ export function describeFilter(f, index) {
     case 'size': return f.op === 'eq' || f.op === 'list' ? `Size ${f.values.map(q => q.text).join(' or ')}` : `Sites ${OP_TEXT[f.op] || ''} ${f.values[0].text}`.replace(/\s+/g, ' ');
     case 'any': return `Any parameter or size ${valueText(f)}`;
     case 'text': return `Contains “${f.text}”`;
+    case 'extreme': {
+      const found = f.found ? `: ${f.found.value}${f.found.unit ? ` ${f.found.unit}` : ''}` : '';
+      if (!f.name) return `${f.dir === 'max' ? 'Largest' : 'Smallest'} size${found}`;
+      const sizeLike = ['l', 'particles', 'nup', 'ndown'].includes(f.name);
+      return `${f.dir === 'max' ? (sizeLike ? 'Largest' : 'Highest') : (sizeLike ? 'Smallest' : 'Lowest')} ${label(f.name)}${found}`;
+    }
     default: return f.kind;
   }
 }
 
-export const EXAMPLES = ['J1-J2 square lattice J2 = 0.5', 'Hubbard 16x16 1/8 doping', 'jellium rs = 10', 'kagome Heisenberg 6x6', 'N2 bond length 2.068', 'TFIM chain h = 1'];
+export const EXAMPLES = ['J1-J2 square lattice J2 = 0.5', 'Hubbard 16x16 1/8 doping', 'jellium rs = 10', 'largest kagome Heisenberg', 'N2 bond length 2.068', 'TFIM chain h = 1'];
