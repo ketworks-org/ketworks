@@ -9,3 +9,6 @@ dist/
 !.env.example
 .DS_Store
 node_modules/
+
+# Generated training data for the search tagger (tagger/make-data.mjs)
+tagger-data/
