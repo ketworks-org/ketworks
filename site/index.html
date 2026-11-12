@@ -32,6 +32,8 @@
 
 <section id="benchmarks" class="view interior" data-area="board" hidden>
 <div class="page-heading"><div><p class="eyebrow mark">Ketboard</p><h1>Ketboard<span class="dot">.</span></h1></div><a class="button" href="#submit">Submit a result</a></div><p class="lede wide">Variational energies of neural quantum states, by benchmark instance.</p><p class="board-stats"><!--BOARD_STATS--></p>
+<form id="board-search" class="board-search" role="search" autocomplete="off"><label for="board-query">Find instances</label><input id="board-query" type="search" spellcheck="false" placeholder="J1-J2 square lattice J2 = 0.5" aria-describedby="search-help"><p id="search-help" class="search-help">Describe the instances in words: model, lattice, size, boundaries, couplings, filling. <span id="search-examples" class="search-examples"></span></p></form>
+<div id="search-results" class="search-results" aria-live="polite" hidden></div>
 <div id="board-overview"></div>
 <div id="board-detail" hidden>
 <a class="back-link" href="#benchmarks">All instances</a>

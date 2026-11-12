@@ -19,6 +19,8 @@ const perSuffix = per => per === 'system' ? '' : ` / ${perWord(per)}`;
 const countHeader = b => b.category === 'continuum-electrons' ? 'Electrons' : 'Sites';
 import {filterRows, sortRows, rankByEnergy, summarize, withErrorBar, boundaryClass, BOUNDARY_CLASSES, orderInstances, sortInstanceSummaries} from './leaderboard.mjs';
 import {renderEnergyChart} from './charts.mjs';
+import {buildIndex, searchInstances, describeFilter, removeSpans, EXAMPLES} from './search.mjs';
+import {loadTagger} from './search-tagger.mjs';
 let dataset, submission, sort = {key: 'energy', direction: 'asc'};
 const instanceSorts = new Map();
 const $ = id => document.getElementById(id);
@@ -82,8 +84,15 @@ function route() {
   const params = new URLSearchParams(location.hash.split('?')[1] || '');
   const system = RENAMED_INSTANCES[params.get('system')] || params.get('system');
   const benchmark = dataset?.benchmarks.find(b => b.id === system);
-  $('board-overview').hidden = name !== 'benchmarks' || Boolean(benchmark);
-  if (dataset && name === 'benchmarks' && !benchmark) {
+  // A query (#benchmarks?q=…) replaces the model index with the instances it finds.
+  const query = (params.get('q') || '').trim();
+  $('board-search').hidden = Boolean(benchmark);
+  $('board-overview').hidden = name !== 'benchmarks' || Boolean(benchmark) || Boolean(query);
+  $('search-results').hidden = name !== 'benchmarks' || Boolean(benchmark) || !query;
+  // The box follows the address (links, back and forward); while typing the two already agree.
+  if ($('board-query').value.trim() !== query) $('board-query').value = query;
+  if (dataset && name === 'benchmarks' && !benchmark && query) { renderSearch(query); markFamily(null, null); }
+  else if (dataset && name === 'benchmarks' && !benchmark) {
     const [family, part] = RENAMED_FAMILIES[params.get('family')] || [params.get('family'), params.get('part')];
     renderBoardOverview(family, RENAMED_CATEGORIES[params.get('category')] || params.get('category'), part); markFamily(family, part);
   }
@@ -194,8 +203,6 @@ function familyBlock(family, summary, onlyPart) {
   // problems of different kinds are not read as one series. Lattice instances are sectioned by boundary class
   // (periodic, periodic × antiperiodic, cylinder, open); an instance can name its own section instead (continuum
   // instances are sectioned by particle number and cell, or by structure).
-  const sectionOf = b => b.group || boundaryClass(b);
-  const boundaryTitle = c => ({Cylinder: 'Cylinders (periodic along one direction, open along the other)', Open: 'Open boundaries', Periodic: 'Periodic boundaries', 'Periodic × antiperiodic': 'Periodic × antiperiodic boundaries'})[c] || c;
   (part ? [part] : parts).forEach(p => {
     const inPart = entries.filter(s => s.benchmark.part === p);
     const partHead = text('h4', '', 'part-head'); partHead.append(text('span', p));
@@ -213,6 +220,81 @@ function familyBlock(family, summary, onlyPart) {
   });
   return group;
 }
+const sectionOf = b => b.group || boundaryClass(b);
+const boundaryTitle = c => ({Cylinder: 'Cylinders (periodic along one direction, open along the other)', Open: 'Open boundaries', Periodic: 'Periodic boundaries', 'Periodic × antiperiodic': 'Periodic × antiperiodic boundaries'})[c] || c;
+
+// Search (site/search.mjs): the query is read into filters, shown as chips that remove their words from the query,
+// and the instances found are listed like a model page, one table per model, lattice and boundary class.
+let searchIndex = null, summaries = null, lastSearch = null, searchTimer = null, learnedTagger = null, taggerState = 'idle';
+// The learned tagger (search-tagger.mjs and site/search-model, about 5 MB) is fetched the first time a query has words the rules do not know.
+function wantTagger(result) {
+  if (taggerState !== 'idle' || !result.ignored.length) return;
+  taggerState = 'loading';
+  loadTagger().then(tagger => { learnedTagger = tagger; taggerState = 'ready'; }).catch(() => { taggerState = 'failed'; })
+    .finally(() => { if (new URLSearchParams(location.hash.split('?')[1] || '').get('q')?.trim()) route(); });
+}
+function searchReady() {
+  if (!searchIndex) {
+    searchIndex = buildIndex(dataset.benchmarks, dataset.categories);
+    summaries = new Map(summarize(dataset.benchmarks, dataset.results).map(s => [s.benchmark.id, s]));
+  }
+  return searchIndex;
+}
+function setQuery(value, push = false) {
+  if ($('board-query').value !== value) $('board-query').value = value;
+  const hash = value.trim() ? '#benchmarks?q=' + encodeURIComponent(value.trim()) : '#benchmarks';
+  if (location.hash !== hash) history[push ? 'pushState' : 'replaceState'](null, '', hash);
+  route();
+}
+function noteText(note, index) {
+  const names = filters => filters.map(f => describeFilter(f, index)).join(', ');
+  if (note.kind === 'related') return `No instance of the model as named matches the other filters; these are from related models (${note.families.join(', ')}).`;
+  if (note.kind === 'special') return note.cases.map(c => `Ketboard has no ${c.from} instance that matches the other filters. These are ${c.family} instances, the ${c.condition} case of ${c.from}.`).join(' ');
+  if (note.kind === 'nearest') return `No instance matches ${names(note.filters)} exactly. The closest instances:`;
+  return `No instance matches every filter. Without ${names(note.filters)}:`;
+}
+function renderSearch(query) {
+  const index = searchReady(), out = $('search-results'), result = searchInstances(query, index, {tagger: learnedTagger});
+  lastSearch = result; out.replaceChildren(); wantTagger(result);
+  const chips = text('div', '', 'search-chips');
+  result.filters.forEach(filter => {
+    const label = describeFilter(filter, index), chip = text('span', '', 'search-chip' + (filter.learned ? ' learned' : '')), remove = text('button', '×');
+    if (filter.learned) chip.title = `Read by the learned tagger from “${filter.text}”`;
+    remove.type = 'button'; remove.title = 'Remove this filter'; remove.setAttribute('aria-label', `Remove the filter ${label}`);
+    remove.addEventListener('click', () => { setQuery(removeSpans(query, filter.spans), true); $('board-query').focus(); });
+    chip.append(text('span', label, 'chip-text'), remove); chips.append(chip);
+  });
+  result.ignored.forEach(word => chips.append(text('span', taggerState === 'loading' ? `Reading “${word.text}”…` : `Not used: “${word.text}”`, 'search-chip muted')));
+  if (chips.childElementCount) out.append(chips);
+  if (result.filters.some(f => f.learned)) out.append(text('p', 'Chips with a blue border were read by a small language model trained on Ketboard’s vocabulary. Remove one if it is wrong.', 'search-help learned-note'));
+  if (!result.understood) { out.append(text('p', 'Nothing in this query names a model, lattice, system, size or coupling on Ketboard. Try one of the examples under the box.', 'search-note')); return; }
+  if (result.results.length) out.append(text('p', plural(result.results.length, 'instance'), 'search-count'));
+  result.notes.forEach(note => out.append(text('p', noteText(note, index), 'search-note')));
+  const shown = result.results.length ? result.results : result.nearest, groups = new Map();
+  if (!shown.length) { out.append(text('p', 'No instance matches. Remove a filter above.', 'search-note')); return; }
+  shown.forEach(f => { const key = `${f.family}\u0000${f.part}`; (groups.get(key) || groups.set(key, []).get(key)).push(f); });
+  groups.forEach(list => {
+    const first = list[0].benchmark, group = text('section', '', 'board-family'), head = text('div', '', 'family-head'), title = text('h3', ''), name = text('a', '');
+    name.href = partLink(first.family, first.part); name.append(lattice(latticeKind(first.family)), text('span', `${first.family} · ${first.part}`)); title.append(name);
+    head.append(title, text('p', plural(list.length, 'instance'), 'family-meta')); group.append(head);
+    const present = [...new Set(list.map(f => sectionOf(f.benchmark)))], sections = [...BOUNDARY_CLASSES.filter(c => present.includes(c)), ...present.filter(c => !BOUNDARY_CLASSES.includes(c))];
+    sections.forEach(section => {
+      if (sections.length > 1) group.append(text('h5', boundaryTitle(section), 'boundary-head'));
+      const wrap = text('div', '', 'table-scroll');
+      wrap.append(instanceTable(list.filter(f => sectionOf(f.benchmark) === section).map(f => summaries.get(f.id)), 'search:' + JSON.stringify([first.family, first.part, section])));
+      group.append(wrap);
+    });
+    out.append(group);
+  });
+}
+function renderExamples() {
+  $('search-examples').replaceChildren(text('span', 'For example: '), ...EXAMPLES.flatMap((example, i) => {
+    const button = text('button', example, 'search-example'); button.type = 'button';
+    button.addEventListener('click', () => { setQuery(example, true); $('board-query').focus(); });
+    return i ? [document.createTextNode(' · '), button] : [button];
+  }));
+}
+
 function modelIndex(container, onlyCategory) {
   const categories = dataset.categories || {};
   Object.entries(categories).forEach(([category, title]) => {
@@ -475,6 +557,17 @@ $('submit-model').addEventListener('change', () => { if (dataset) renderInstance
 $('submit-category').addEventListener('change', () => { if (!dataset) return; renderSubmitModels(); renderInstances('submit-model', 'submit-system'); syncInstanceForm(); });
 ['search', 'class-filter'].forEach(id => $(id).addEventListener('input', () => { if (dataset) renderResults(); }));
 $('wiki-search').addEventListener('input', () => { if (dataset) renderWiki(); });
+// Typing searches as it goes; the first keystroke adds a history entry, later ones replace it.
+$('board-query').addEventListener('input', () => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => { if (!dataset) return; const value = $('board-query').value, searching = new URLSearchParams(location.hash.split('?')[1] || '').has('q'); setQuery(value, !searching && Boolean(value.trim())); }, 150);
+});
+// Enter opens the instance when the search found exactly one.
+$('board-search').addEventListener('submit', event => {
+  event.preventDefault(); clearTimeout(searchTimer); if (!dataset) return;
+  setQuery($('board-query').value);
+  if (lastSearch?.results.length === 1) location.hash = '#benchmarks?system=' + encodeURIComponent(lastSearch.results[0].id);
+});
 document.querySelectorAll('.board .sort').forEach(button => button.addEventListener('click', () => {
   const key = button.dataset.sort;
   sort = key === sort.key ? {key, direction: sort.direction === 'asc' ? 'desc' : 'asc'} : {key, direction: key === 'date' ? 'desc' : 'asc'};
@@ -485,4 +578,4 @@ $('submission-form').addEventListener('submit', prepareSubmission);
 $('instance-mode').addEventListener('change', syncInstanceForm); $('continuum-fields').addEventListener('input', syncInstanceForm); $('continuum-fields').addEventListener('change', syncInstanceForm); $('new-fields').addEventListener('input', syncInstanceForm); $('new-fields').addEventListener('change', syncInstanceForm);
 $('copy-instance').addEventListener('click', async () => { try { await navigator.clipboard.writeText($('instance-json').textContent); $('copy-instance').textContent = 'Copied'; setTimeout(() => $('copy-instance').textContent = 'Copy entry', 1500); } catch { $('submission-error').textContent = 'Copy failed; select the entry and copy it by hand.'; } });
 $('copy-result').addEventListener('click', async () => { if (!submission) return; try { await navigator.clipboard.writeText($('submission-json').textContent); $('copy-result').textContent = 'Copied'; setTimeout(() => $('copy-result').textContent = 'Copy JSON', 1500); } catch { $('submission-error').textContent = 'Copy failed; select the JSON below and copy it by hand.'; } }); $('download-result').addEventListener('click', () => { if (submission) download(submission, submission.paper.id.replace(/v\d+$/, '') + '.json'); });
-route(); fetch('data.json').then(r => { if (!r.ok) throw Error('Data unavailable'); return r.json(); }).then(data => { dataset = {...data, benchmarks: orderInstances(data.benchmarks)}; renderSelects(); syncInstanceForm(); renderContents(); renderLedger(); renderWiki(); route(); }).catch(() => { $('load-error').hidden = false; });
+route(); fetch('data.json').then(r => { if (!r.ok) throw Error('Data unavailable'); return r.json(); }).then(data => { dataset = {...data, benchmarks: orderInstances(data.benchmarks)}; renderSelects(); syncInstanceForm(); renderContents(); renderLedger(); renderWiki(); renderExamples(); route(); }).catch(() => { $('load-error').hidden = false; });

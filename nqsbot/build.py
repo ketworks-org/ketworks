@@ -172,6 +172,9 @@ def build(root=ROOT, destination=None):
     for path in (root / "site").iterdir():
         if path.is_file() and not path.name.endswith(".template.html"):
             shutil.copy2(path, destination / path.name)
+        elif path.is_dir():
+            # The search tagger's weights and vocabulary (site/search-model, written by tagger/train.py).
+            shutil.copytree(path, destination / path.name, dirs_exist_ok=True)
     wiki, equations = render_content(root, destination, registry)
     slugs = {page["slug"] for page in wiki}
     for benchmark in registry.values():
