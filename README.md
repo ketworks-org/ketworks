@@ -34,7 +34,8 @@ This needs Python 3.12 and Node.js 22. The build renders LaTeX with KaTeX and wr
 | `data/benchmarks.json` | Ketboard instances: Hamiltonian, cluster, boundaries, couplings, sector |
 | `data/results/` | Reviewed Ketboard entries, one file per paper |
 | `data/proposals/` | Results for instances not yet defined; never published |
-| `site/` | Page templates, styles and scripts |
+| `site/` | Page templates, styles and scripts; `site/search.mjs` reads Ketboard search queries |
+| `site/search-model/`, `tagger/` | The learned search tagger: its weights, and the code that trains it ([tagger/README.md](tagger/README.md)) |
 | `nqsbot/` | Validation, paper metadata from arXiv, and the site build |
 | `pages/` | Pages outside Ketbook, such as About |
 | `brand/` | The Ketworks mark, avatar and social-preview image; supporter logos in `brand/supporters/` |

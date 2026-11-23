@@ -1,0 +1,118 @@
+{
+ "dev": {
+  "accuracy": 0.9977738061643621,
+  "unknown_accuracy": 0.9990266060999351,
+  "unknown_tokens": 3082,
+  "heldout_word_accuracy": null,
+  "heldout_word_tokens": 0,
+  "confident": {
+   "0.5": {
+    "precision": 0.9991701244813278,
+    "coverage": 0.9987557030277893
+   },
+   "0.6": {
+    "precision": 0.9995848899958489,
+    "coverage": 0.9987557030277893
+   },
+   "0.7": {
+    "precision": 1.0,
+    "coverage": 0.9987557030277893
+   },
+   "0.8": {
+    "precision": 1.0,
+    "coverage": 0.9987557030277893
+   },
+   "0.9": {
+    "precision": 1.0,
+    "coverage": 0.997096640398175
+   }
+  }
+ },
+ "heldout": {
+  "accuracy": 0.9488666315234581,
+  "unknown_accuracy": 0.8096080910240202,
+  "unknown_tokens": 3955,
+  "heldout_word_accuracy": 0.45174825174825173,
+  "heldout_word_tokens": 715,
+  "confident": {
+   "0.5": {
+    "precision": 0.8182406209573092,
+    "coverage": 0.7694647201946472
+   },
+   "0.6": {
+    "precision": 0.8321216126900198,
+    "coverage": 0.7658150851581509
+   },
+   "0.7": {
+    "precision": 0.8562628336755647,
+    "coverage": 0.7609489051094891
+   },
+   "0.8": {
+    "precision": 0.8697934896744838,
+    "coverage": 0.7557785888077859
+   },
+   "0.9": {
+    "precision": 0.8788853161843515,
+    "coverage": 0.7481751824817519
+   }
+  }
+ },
+ "dev_exported": {
+  "accuracy": 0.9977738061643621,
+  "unknown_accuracy": 0.9990266060999351,
+  "unknown_tokens": 3082,
+  "heldout_word_accuracy": null,
+  "heldout_word_tokens": 0,
+  "confident": {
+   "0.5": {
+    "precision": 0.9991701244813278,
+    "coverage": 0.9987557030277893
+   },
+   "0.6": {
+    "precision": 1.0,
+    "coverage": 0.9987557030277893
+   },
+   "0.7": {
+    "precision": 1.0,
+    "coverage": 0.9987557030277893
+   },
+   "0.8": {
+    "precision": 1.0,
+    "coverage": 0.9987557030277893
+   },
+   "0.9": {
+    "precision": 1.0,
+    "coverage": 0.997096640398175
+   }
+  }
+ },
+ "heldout_exported": {
+  "accuracy": 0.9488046140965611,
+  "unknown_accuracy": 0.809102402022756,
+  "unknown_tokens": 3955,
+  "heldout_word_accuracy": 0.45174825174825173,
+  "heldout_word_tokens": 715,
+  "confident": {
+   "0.5": {
+    "precision": 0.8175937904269082,
+    "coverage": 0.7688564476885644
+   },
+   "0.6": {
+    "precision": 0.8321770730095804,
+    "coverage": 0.7661192214111923
+   },
+   "0.7": {
+    "precision": 0.8553351573187414,
+    "coverage": 0.7606447688564477
+   },
+   "0.8": {
+    "precision": 0.8698390482855144,
+    "coverage": 0.7560827250608273
+   },
+   "0.9": {
+    "precision": 0.8788420300214439,
+    "coverage": 0.7478710462287105
+   }
+  }
+ }
+}
