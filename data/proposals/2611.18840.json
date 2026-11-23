@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "title": "Gapless Nature of Spin Liquid in the $S=1/2$ Kagome Heisenberg Antiferromagnet with Neural-Network Quantum States",
+    "authors": "Andreas Raikos, Alessandro Sinibaldi, Riccardo Rende, Giuseppe Carleo, Federico Becca, Luciano Loris Viteritti",
+    "published": "2026-11-13T19:00:04Z",
+    "updated": "2026-11-13T19:00:04Z",
+    "id": "2611.18840v1"
+  },
+  "source_url": "https://arxiv.org/html/2611.18840v1",
+  "source_sha256": "da03e7de226dc4782b51fbfa646e3b3609903640298ef5315157d1730c1598b7",
+  "extraction_model": "ChatGPT (automated source extraction)",
+  "issues": [
+    "Only Table 1 even-parity ground-state rows are included. Table 2 odd-parity excited states, variance/size extrapolations, literature comparisons, and values only plotted are excluded. L=12,14,16 require curator benchmark definitions; no registered size is substituted."
+  ],
+  "results": [
+    {
+      "benchmark_id": null,
+      "system_description": "Spin-1/2 nearest-neighbor kagome Heisenberg H = J sum_<ij> S_i dot S_j, S = sigma/2, J = 1, no offset; 12 x 12 three-site cells (432 spins), rhombic periodic torus along both triangular Bravais vectors, each undirected bond once; total Sz = 0, momentum Gamma, even spin-inversion parity. C6v A1 projection.",
+      "method": "Time-reversal-symmetric vision transformer",
+      "variant": "8 layers, 12 heads, d=72; real output, Gamma, P=+1; C6v A1, 300 restoration steps",
+      "method_class": "transformer",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.435813",
+      "energy_token": "-0.435813(2)",
+      "normalization": "per_site",
+      "unit": "J",
+      "uncertainty": "0.000002",
+      "uncertainty_type": "unspecified",
+      "variance": "0.00411",
+      "source_location": "End Matter Table 1, L=12 row (HTML Sx1.T1); End Matter energy-estimation paragraph; Supplemental Material optimization and symmetry restoration",
+      "eligibility_evidence": "Original final fixed-state variational energy of the explicitly represented ViT. The End Matter distinguishes final values from optimization curves and evaluates approximately 10^6 Monte Carlo samples per state with blurred sampling for unbiased variance. Time reversal and spatial/spin symmetry projections define the evaluated NQS; these are not projection Monte Carlo energies.",
+      "parameter_count": null,
+      "notes": "Printed variance per site 0.00411(2); its central value is recorded. Parenthesized energy uncertainty is printed, but its precise statistical definition is not stated, hence unspecified. Closed-form classical q=0 phase prior (phi=0,+/-2pi/3 by sublattice), not an ED sign. Sz=0 is explicitly enforced by sampling. Source code train_kagome.py at tachys-dev/kagome_vit commit 9be57ce9c34fee73d0c88f0792556eb31241bf3a, SHA256 a8030ba1c8c7fcea2a50481fa64e962daa3ccf619711b5c2fc7e1517aef1261d, confirms the three-site primitive cell and six undirected bonds per cell. Its basis equals the registered basis up to inversion and translation. Architecture/sampling evidence is from this paper, not another paper."
+    },
+    {
+      "benchmark_id": null,
+      "system_description": "Spin-1/2 nearest-neighbor kagome Heisenberg H = J sum_<ij> S_i dot S_j, S = sigma/2, J = 1, no offset; 14 x 14 three-site cells (588 spins), rhombic periodic torus along both triangular Bravais vectors, each undirected bond once; total Sz = 0, momentum Gamma, even spin-inversion parity. C6v A1 projection.",
+      "method": "Time-reversal-symmetric vision transformer",
+      "variant": "8 layers, 12 heads, d=72; real output, Gamma, P=+1; C6v A1, 300 restoration steps",
+      "method_class": "transformer",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.435749",
+      "energy_token": "-0.435749(2)",
+      "normalization": "per_site",
+      "unit": "J",
+      "uncertainty": "0.000002",
+      "uncertainty_type": "unspecified",
+      "variance": "0.00390",
+      "source_location": "End Matter Table 1, L=14 row (HTML Sx1.T1); End Matter energy-estimation paragraph; Supplemental Material optimization and symmetry restoration",
+      "eligibility_evidence": "Original final fixed-state variational energy of the explicitly represented ViT. The End Matter distinguishes final values from optimization curves and evaluates approximately 10^6 Monte Carlo samples per state with blurred sampling for unbiased variance. Time reversal and spatial/spin symmetry projections define the evaluated NQS; these are not projection Monte Carlo energies.",
+      "parameter_count": null,
+      "notes": "Printed variance per site 0.00390(2); its central value is recorded. Parenthesized energy uncertainty is printed, but its precise statistical definition is not stated, hence unspecified. Closed-form classical q=0 phase prior (phi=0,+/-2pi/3 by sublattice), not an ED sign. Sz=0 is explicitly enforced by sampling. Source code train_kagome.py at tachys-dev/kagome_vit commit 9be57ce9c34fee73d0c88f0792556eb31241bf3a, SHA256 a8030ba1c8c7fcea2a50481fa64e962daa3ccf619711b5c2fc7e1517aef1261d, confirms the three-site primitive cell and six undirected bonds per cell. Its basis equals the registered basis up to inversion and translation. Architecture/sampling evidence is from this paper, not another paper."
+    },
+    {
+      "benchmark_id": null,
+      "system_description": "Spin-1/2 nearest-neighbor kagome Heisenberg H = J sum_<ij> S_i dot S_j, S = sigma/2, J = 1, no offset; 16 x 16 three-site cells (768 spins), rhombic periodic torus along both triangular Bravais vectors, each undirected bond once; total Sz = 0, momentum Gamma, even spin-inversion parity. No point-group projection.",
+      "method": "Time-reversal-symmetric vision transformer",
+      "variant": "8 layers, 12 heads, d=72; real output, Gamma, P=+1; without point-group restoration",
+      "method_class": "transformer",
+      "method_type": "nqs",
+      "energy_type": "variational",
+      "reported_here": true,
+      "energy": "-0.435210",
+      "energy_token": "-0.435210(2)",
+      "normalization": "per_site",
+      "unit": "J",
+      "uncertainty": "0.000002",
+      "uncertainty_type": "unspecified",
+      "variance": "0.00593",
+      "source_location": "End Matter Table 1, L=16 row (HTML Sx1.T1); End Matter energy-estimation paragraph; Supplemental Material optimization and symmetry restoration",
+      "eligibility_evidence": "Original final fixed-state variational energy of the explicitly represented ViT. The End Matter distinguishes final values from optimization curves and evaluates approximately 10^6 Monte Carlo samples per state with blurred sampling for unbiased variance. Time reversal and spatial/spin symmetry projections define the evaluated NQS; these are not projection Monte Carlo energies.",
+      "parameter_count": null,
+      "notes": "Printed variance per site 0.00593(2); its central value is recorded. Parenthesized energy uncertainty is printed, but its precise statistical definition is not stated, hence unspecified. Closed-form classical q=0 phase prior (phi=0,+/-2pi/3 by sublattice), not an ED sign. Sz=0 is explicitly enforced by sampling. Source code train_kagome.py at tachys-dev/kagome_vit commit 9be57ce9c34fee73d0c88f0792556eb31241bf3a, SHA256 a8030ba1c8c7fcea2a50481fa64e962daa3ccf619711b5c2fc7e1517aef1261d, confirms the three-site primitive cell and six undirected bonds per cell. Its basis equals the registered basis up to inversion and translation. Architecture/sampling evidence is from this paper, not another paper."
+    }
+  ]
+}
